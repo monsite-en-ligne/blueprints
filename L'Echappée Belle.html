@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — L'Echappée Belle</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2c2c2c;
+    background: #fafaf8;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1a1a2e 0%, #2d4a3e 40%, #5c7a5f 80%, #8b9d6e 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .cover-logo-badge {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.7);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 40px;
+    margin-bottom: 36px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 1px;
+    margin-bottom: 56px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-metas {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .cover-meta-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .cover-meta-sep {
+    width: 1px;
+    height: 36px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 70px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    page-break-inside: avoid;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #6b8f6b;
+    background: #eef4ee;
+    padding: 6px 14px;
+    border-radius: 40px;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #1e2d1e;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: #6b7a6b;
+    margin-bottom: 40px;
+    max-width: 620px;
+    line-height: 1.7;
+  }
+
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, #d5e4d0, transparent);
+    margin-bottom: 40px;
+  }
+
+  /* CARDS */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1e2d1e;
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    color: #4a5a4a;
+    line-height: 1.7;
+  }
+
+  /* GRIDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #2d4a3e 0%, #3d6b52 100%);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 40px;
+    color: #ffffff;
+  }
+
+  .highlight-box .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 12px;
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #ffffff;
+  }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin: 3px 3px 3px 0;
+  }
+
+  .tag-green { background: #eef4ee; color: #3d6b52; }
+  .tag-warm { background: #fdf3e7; color: #a0692a; }
+  .tag-neutral { background: #f0f0f0; color: #555; }
+
+  /* LIST */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .styled-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 14px;
+    color: #4a5a4a;
+    border-bottom: 1px solid #f0f4f0;
+  }
+
+  .styled-list li:last-child { border-bottom: none; }
+
+  .styled-list li::before {
+    content: '→';
+    color: #6b8f6b;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  thead tr {
+    background: #2d4a3e;
+  }
+
+  thead th {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    padding: 16px 20px;
+    text-align: left;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #f0f4f0;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody td {
+    padding: 16px 20px;
+    font-size: 14px;
+    color: #3a4a3a;
+    vertical-align: top;
+  }
+
+  tbody tr:nth-child(even) { background: #fafcfa; }
+
+  /* SEO BADGES */
+  .badge-fort {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: #d4edda;
+    color: #1a6b3a;
+  }
+
+  .badge-moyen {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: #fff3cd;
+    color: #856404;
+  }
+
+  .badge-faible {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: #f8d7da;
+    color: #842029;
+  }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .tunnel-step {
+    background: #ffffff;
+    padding: 28px 22px;
+    border-right: 1px solid #eef2ee;
+    position: relative;
+  }
+
+  .tunnel-step:last-child { border-right: none; }
+
+  .tunnel-step-num {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6b8f6b;
+    margin-bottom: 10px;
+  }
+
+  .tunnel-step-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e2d1e;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #d5e4d0;
+  }
+
+  .tunnel-step-item {
+    font-size: 12px;
+    color: #5a6a5a;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+
+  .tunnel-step-item strong {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8ba08b;
+    margin-bottom: 2px;
+  }
+
+  /* MAILLAGE */
+  .maillage-item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f4f0;
+    font-size: 14px;
+    color: #3a4a3a;
+  }
+
+  .maillage-item:last-child { border-bottom: none; }
+
+  .maillage-from {
+    font-weight: 600;
+    color: #2d4a3e;
+    background: #eef4ee;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .maillage-arrow {
+    color: #6b8f6b;
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .maillage-to {
+    font-size: 13px;
+    color: #5a6a5a;
+    flex-wrap: wrap;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .maillage-to span {
+    background: #f5f8f5;
+    padding: 2px 8px;
+    border-radius: 12px;
+    border: 1px solid #dde8dd;
+    white-space: nowrap;
+  }
+
+  /* COLOR PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .color-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .color-box {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .color-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #3a4a3a;
+    text-align: center;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: #9aaa9a;
+    text-align: center;
+    font-family: monospace;
+  }
+
+  /* BLOG ARTICLES */
+  .article-card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .article-priority {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    align-self: flex-start;
+  }
+
+  .priority-prioritaire { background: #d4edda; color: #1a6b3a; }
+  .priority-moyen { background: #fff3cd; color: #856404; }
+  .priority-faible { background: #f0f0f0; color: #666; }
+
+  .article-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e2d1e;
+    line-height: 1.4;
+  }
+
+  .article-meta {
+    font-size: 12px;
+    color: #7a8a7a;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1e2d1e;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 32px 40px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    line-height: 2;
+  }
+
+  footer strong {
+    color: rgba(255,255,255,0.8);
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 40px; }
+    .cover-metas { flex-direction: column; gap: 16px; }
+    .cover-meta-sep { display: none; }
+    .section { padding: 40px 24px; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .tunnel-grid { grid-template-columns: 1fr; }
+    .tunnel-step { border-right: none; border-bottom: 1px solid #eef2ee; }
+    .highlight-box { padding: 24px 20px; }
+    .highlight-box p { font-size: 18px; }
+    table { font-size: 13px; }
+    thead th, tbody td { padding: 12px 14px; }
+  }
+
+  @media print {
+    .cover { min-height: auto; padding: 60px; }
+    .section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-logo-badge">Blueprint Stratégique · AR Digital</div>
+  <h1 class="cover-title">L'Echappée Belle</h1>
+  <p class="cover-subtitle">Document de cadrage stratégique — Site web</p>
+  <div class="cover-metas">
+    <div class="cover-meta">
+      <span class="cover-meta-label">Cliente</span>
+      <span class="cover-meta-value">Sandra Pansin</span>
+    </div>
+    <div class="cover-meta-sep"></div>
+    <div class="cover-meta">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie · Location courte durée</span>
+    </div>
+    <div class="cover-meta-sep"></div>
+    <div class="cover-meta">
+      <span class="cover-meta-label">Zone</span>
+      <span class="cover-meta-value">Vaucluse · Cœur de Provence</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<div class="section">
+  <span class="section-badge">Section 01</span>
+  <h2 class="section-title">Positionnement</h2>
+  <p class="section-intro">Le socle identitaire de L'Echappée Belle : ce que vous dites, comment vous le dites, et pourquoi on vous choisit vous.</p>
+  <div class="section-divider"></div>
+
+  <div class="highlight-box">
+    <div class="label">Promesse de valeur principale</div>
+    <p>« Vous possédez un bien d'exception en Provence — L'Echappée Belle s'occupe de tout, du premier clic à la dernière clé. »</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <div class="card-title">Ligne directrice de communication</div>
+      <p class="card-text">Sérénité totale pour le propriétaire. Un accompagnement humain, local et transparent, qui transforme un bien provençal en revenu sans contrainte. Chaque mot du site traduit cette promesse : simplicité, confiance, proximité.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Ton éditorial</div>
+      <p class="card-text"><strong>Chaleureux · Élégant · Rassurant</strong><br>Un ton qui évoque la Provence authentique sans être pittoresque, qui inspire confiance sans être froid, et qui simplifie sans jamais banaliser. On parle à un propriétaire avisé, pas à un touriste.</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Offre unique et transparente</div>
+      <p class="card-text">23% TTC tout compris, uniquement sur les revenus générés. Pas de frais fixes, pas de surprise. Un modèle aligné sur la performance du propriétaire.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Expertise terrain locale</div>
+      <p class="card-text">Connaissance profonde du Vaucluse, de ses saisonnalités, de sa clientèle. L'Echappée Belle parle le même territoire que ses clients propriétaires.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Service clé en main intégral</div>
+      <p class="card-text">Annonces, réservations, ménage, linge, check-in/check-out, guide digital… Tout est pris en charge. Le propriétaire n'intervient pas.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Biens premium, approche personnalisée</div>
+      <p class="card-text">Spécialisée sur les mas, villas et résidences secondaires avec piscine. Chaque bien est traité avec le soin qu'il mérite, pas comme un volume.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 02 CLIENT CIBLE -->
+<div style="background: #f5f8f5;">
+<div class="section">
+  <span class="section-badge">Section 02</span>
+  <h2 class="section-title">Client Cible</h2>
+  <p class="section-intro">Le propriétaire que L'Echappée Belle cherche à convaincre : qui il est, ce qu'il veut, ce qui le freine.</p>
+  <div class="section-divider"></div>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <div class="card-title">Profil type</div>
+      <p class="card-text">Propriétaire d'un mas, villa ou résidence secondaire dans le Vaucluse (Pernes-les-Fontaines, L'Isle-sur-la-Sorgue, Saint-Didier, Venasque). 45–65 ans, actif ou préretraité, résidant parfois hors région. Bien en sous-utilisation ou déjà mis en location de façon artisanale.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Motivations principales</div>
+      <ul class="styled-list">
+        <li>Rentabiliser un bien sans y consacrer du temps</li>
+        <li>Déléguer entièrement la gestion opérationnelle</li>
+        <li>Protéger et valoriser un patrimoine de qualité</li>
+        <li>Avoir un interlocuteur local de confiance</li>
+        <li>Générer des revenus complémentaires sereinement</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Freins et objections</div>
+      <ul class="styled-list">
+        <li>Peur de perdre le contrôle de son bien</li>
+        <li>Méfiance envers les commissions cachées</li>
+        <li>Doute sur la qualité des locataires sélectionnés</li>
+        <li>Expérience passée négative avec une autre conciergerie</li>
+        <li>Incertitude sur la rentabilité réelle</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Critères de décision</div>
+      <ul class="styled-list">
+        <li>Transparence totale du modèle tarifaire</li>
+        <li>Réactivité et disponibilité de l'interlocuteur</li>
+        <li>Présence locale avérée (pas une plateforme distante)</li>
+        <li>Références ou témoignages de propriétaires similaires</li>
+        <li>Simplicité du processus de démarrage</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<div class="section">
+  <span class="section-badge">Section 03</span>
+  <h2 class="section-title">Objectifs du Site</h2>
+  <p class="section-intro">Ce que le site doit accomplir, dans l'ordre de priorité.</p>
+  <div class="section-divider"></div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">① Génération de leads</div>
+      <p class="card-text">Priorité absolue. Chaque page doit pousser le propriétaire à laisser ses coordonnées ou prendre contact via un formulaire ou un RDV en ligne.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">② Réassurance</div>
+      <p class="card-text">Convaincre un propriétaire hésitant. Le site doit répondre aux objections avant même qu'elles soient posées : transparence, proximité, professionnalisme.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">③ SEO Local</div>
+      <p class="card-text">Être trouvé sur Google par des propriétaires du Vaucluse qui cherchent une conciergerie. Cibler des requêtes géolocalisées précises et à fort potentiel.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">④ Prise de RDV</div>
+      <p class="card-text">Faciliter le passage à l'action avec un outil de réservation de créneau intégré. Réduire le délai entre la visite et le premier contact qualifié.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">⑤ Conversion</div>
+      <p class="card-text">Transformer un visiteur curieux en prospect qualifié grâce à un parcours clair, des CTA visibles et une offre immédiatement compréhensible.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">⑥ Notoriété locale</div>
+      <p class="card-text">Ancrer L'Echappée Belle comme la référence conciergerie du cœur du Vaucluse. Le blog et le contenu local contribuent à construire cette autorité dans la durée.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 04 ARBORESCENCE -->
+<div style="background: #f5f8f5;">
+<div class="section">
+  <span class="section-badge">Section 04</span>
+  <h2 class="section-title">Arborescence du Site</h2>
+  <p class="section-intro">Structure des pages, logique SEO et frameworks rédactionnels recommandés. Une seule page d'offre globale. Maximum 2 pages locales SEO.</p>
+  <div class="section-divider"></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Vaucluse</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre offre</strong><br><span style="font-size:12px;color:#7a8a7a;">Toutes les prestations détaillées sur une seule page</span></td>
+          <td>BAB</td>
+          <td>conciergerie Pernes-les-Fontaines propriétaire</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Pourquoi nous choisir</strong><br><span style="font-size:12px;color:#7a8a7a;">Différenciation, valeurs, transparence tarifaire</span></td>
+          <td>PAS</td>
+          <td>confier son bien conciergerie Provence</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos</strong><br><span style="font-size:12px;color:#7a8a7a;">Sandra, la conciergerie, l'histoire locale</span></td>
+          <td>AIDA</td>
+          <td>conciergerie locale Isle-sur-la-Sorgue Vaucluse</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale SEO — L'Isle-sur-la-Sorgue</strong></td>
+          <td>PAS</td>
+          <td>conciergerie location vacances Isle-sur-la-Sorgue</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale SEO — Luberon / Mont Ventoux</strong></td>
+          <td>PAS</td>
+          <td>conciergerie Luberon Mont Ventoux location saisonnière</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils propriétaire location Provence</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / Prise de RDV</strong></td>
+          <td>AIDA</td>
+          <td>contacter conciergerie Pernes-les-Fontaines</td>
+          <td><span class="badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:20px; background:#fff8e7; border-left: 3px solid #c4972a; border-radius: 8px; padding: 16px 20px; font-size: 13px; color: #5a4a2a;">
+    <strong>Note Cozy Up :</strong> L'intégration de l'application Cozy Up sera prévue dans la page Notre Offre sous forme de bloc dédié, et pourra ultérieurement faire l'objet d'une section ou sous-page spécifique.
+  </div>
+</div>
+</div>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<div class="section">
+  <span class="section-badge">Section 05</span>
+  <h2 class="section-title">Cocon Sémantique</h2>
+  <p class="section-intro">Organisation thématique du contenu et logique de maillage pour renforcer l'autorité SEO du site.</p>
+  <div class="section-divider"></div>
+
+  <div class="grid-3" style="margin-bottom: 40px;">
+    <div class="card">
+      <div class="card-title">Cluster 1 — Conciergerie & Offre</div>
+      <p class="card-text">Pages pilier : Accueil, Notre offre, Pourquoi nous choisir. Ce cluster répond aux requêtes de propriétaires en phase de découverte et de comparaison.</p>
+      <div style="margin-top:12px;">
+        <span class="tag tag-green">conciergerie Vaucluse</span>
+        <span class="tag tag-green">location courte durée</span>
+        <span class="tag tag-green">service clé en main</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Cluster 2 — Ancrage Local Provence</div>
+      <p class="card-text">Pages pilier : Page locale L'Isle-sur-la-Sorgue, Page locale Luberon/Ventoux, À propos. Ce cluster capte les requêtes géolocalisées à fort potentiel commercial.</p>
+      <div style="margin-top:12px;">
+        <span class="tag tag-warm">Isle-sur-la-Sorgue</span>
+        <span class="tag tag-warm">Pernes-les-Fontaines</span>
+        <span class="tag tag-warm">Luberon Ventoux</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Cluster 3 — Conseils Propriétaires</div>
+      <p class="card-text">Pages pilier : Blog (articles ciblés). Ce cluster attire des propriétaires en phase de réflexion et alimente le site en contenu evergreen favorable au référencement long terme.</p>
+      <div style="margin-top:12px;">
+        <span class="tag tag-neutral">conseils propriétaire</span>
+        <span class="tag tag-neutral">rentabilité location</span>
+        <span class="tag tag-neutral">Provence saisonnière</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="margin-bottom:16px;">Logique de maillage interne</div>
+    <div class="maillage-item">
+      <span class="maillage-from">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <div class="maillage-to">
+        <span>Notre offre</span>
+        <span>Pourquoi nous choisir</span>
+        <span>Contact / RDV</span>
+      </div>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-from">Notre offre</span>
+      <span class="maillage-arrow">→</span>
+      <div class="maillage-to">
+        <span>Contact / RDV</span>
+        <span>Pourquoi nous choisir</span>
+        <span>Page locale L'Isle</span>
+      </div>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-from">Pages locales SEO</span>
+      <span class="maillage-arrow">→</span>
+      <div class="maillage-to">
+        <span>Notre offre</span>
+        <span>Contact / RDV</span>
+        <span>Articles Blog</span>
+      </div>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-from">Blog</span>
+      <span class="maillage-arrow">→</span>
+      <div class="maillage-to">
+        <span>Notre offre</span>
+        <span>Pages locales SEO</span>
+        <span>Contact / RDV</span>
+      </div>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-from">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <div class="maillage-to">
+        <span>Notre offre</span>
+        <span>Contact / RDV</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<div style="background: #f5f8f5;">
+<div class="section">
+  <span class="section-badge">Section 06</span>
+  <h2 class="section-title">Tunnel de Conversion</h2>
+  <p class="section-intro">Le parcours qu'un propriétaire effectue depuis sa première recherche Google jusqu'à sa prise de contact avec Sandra.</p>
+  <div class="section-divider"></div>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 1</div>
+      <div class="tunnel-step-label">Découverte</div>
+      <div class="tunnel-step-item">
+        <strong>Source de trafic</strong>
+        Google (SEO local), bouche-à-oreille, réseaux sociaux
+      </div>
+      <div class="tunnel-step-item">
+        <strong>Page concernée</strong>
+        Accueil · Pages locales SEO · Articles Blog
+      </div>
+      <div class="tunnel-step-item">
+        <strong>CTA associé</strong>
+        « Découvrez notre offre » / « En savoir plus »
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 2</div>
+      <div class="tunnel-step-label">Intérêt</div>
+      <div class="tunnel-step-item">
+        <strong>Source de trafic</strong>
+        Navigation interne depuis l'accueil ou le blog
+      </div>
+      <div class="tunnel-step-item">
+        <strong>Page concernée</strong>
+        Notre offre · Pourquoi nous choisir
+      </div>
+      <div class="tunnel-step-item">
+        <strong>CTA associé</strong>
+        « Téléchargez le guide propriétaire » / « Voir les prestations »
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 3</div>
+      <div class="tunnel-step-label">Confiance</div>
+      <div class="tunnel-step-item">
+        <strong>Source de trafic</strong>
+        Retour direct · Email de nurturing
+      </div>
+      <div class="tunnel-step-item">
+        <strong>Page concernée</strong>
+        À propos · Témoignages · Notre offre
+      </div>
+      <div class="tunnel-step-item">
+        <strong>CTA associé</strong>
+        « Voir les avis propriétaires » / « Rencontrez Sandra »
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 4</div>
+      <div class="tunnel-step-label">Conversion</div>
+      <div class="tunnel-step-item">
+        <strong>Source de trafic</strong>
+        Toutes pages via CTA persistant
+      </div>
+      <div class="tunnel-step-item">
+        <strong>Page concernée</strong>
+        Contact / Prise de RDV
+      </div>
+      <div class="tunnel-step-item">
+        <strong>CTA associé</strong>
+        « Réserver un échange gratuit » / « Je confie mon bien »
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 07 LEVIERS MARKETING -->
+<div class="section">
+  <span class="section-badge">Section 07</span>
+  <h2 class="section-title">Leviers Marketing Intégrés</h2>
+  <p class="section-intro">Les outils et mécanismes à activer sur le site pour maximiser la capture de leads et entretenir la relation avec les propriétaires.</p>
+  <div class="section-divider"></div>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <div class="card-title">🎁 Lead Magnet</div>
+      <p class="card-text"><strong>« Guide du propriétaire serein en Provence »</strong> — PDF de 8 à 10 pages : check-list pour préparer son bien, conseils pour la haute saison, questions à poser à sa conciergerie. Téléchargeable contre email. Fort potentiel de capture qualifiée.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">📅 Prise de RDV</div>
+      <p class="card-text"><strong>Outil recommandé : Calendly</strong> (gratuit ou Pro). Intégrer un bouton « Réserver un échange offert de 30 min » dans le header, la page Contact et la page Notre Offre. Réduction immédiate du délai de conversion.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">⭐ Preuve Sociale</div>
+      <p class="card-text">Témoignages propriétaires (format citation courte + prénom + ville), avis Google intégrés via widget, et à terme : photos avant/après d'un bien accompagné. Placer en bas de page Accueil et Notre Offre.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">📋 Formulaire Qualifiant</div>
+      <p class="card-text">Champs recommandés : Prénom / Email / Téléphone / Commune du bien / Type de bien (mas, villa, maison) / Situation actuelle (déjà loué / jamais loué) / Message libre. Objectif : qualifier le lead avant le premier appel.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">📩 Newsletter</div>
+      <p class="card-text">Angle éditorial : <strong>« La Lettre du Propriétaire Provençal »</strong> — 1 email/mois. Contenu : actualités saison, conseils entretien, tendances location courte durée en Vaucluse. Fidélise les prospects non encore convertis.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">⚡ Automatisation Email</div>
+      <p class="card-text">Séquence recommandée après téléchargement du guide : J+0 confirmation + lien PDF · J+3 email de présentation Sandra + lien À propos · J+7 question de qualification · J+14 invitation à prendre RDV. Outil : Brevo (gratuit jusqu'à 300 emails/jour).</p>
+    </div>
+  </div>
+</div>
+
+<!-- 08 DIRECTION VISUELLE -->
+<div style="background: #f5f8f5;">
+<div class="section">
+  <span class="section-badge">Section 08</span>
+  <h2 class="section-title">Direction Visuelle & Éditoriale</h2>
+  <p class="section-intro">L'identité visuelle recommandée pour L'Echappée Belle : une esthétique provençale épurée, élégante et mémorable.</p>
+  <div class="section-divider"></div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <div class="card-title" style="margin-bottom: 24px;">Palette Couleurs Suggérée</div>
+    <div class="palette-grid">
+      <div class="color-swatch">
+        <div class="color-box" style="background: #2d4a3e;"></div>
+        <div class="color-name">Vert Cyprès</div>
+        <div class="color-hex">#2D4A3E</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-box" style="background: #c4972a;"></div>
+        <div class="color-name">Or Provençal</div>
+        <div class="color-hex">#C4972A</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-box" style="background: #f5f0e8;"></div>
+        <div class="color-box" style="background: #f5f0e8; border: 1px solid #e0d8cc; display:none;"></div>
+        <div class="color-box" style="background: #f5f0e8; width:80px; height:80px; border-radius:14px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border: 1px solid #e8e0d4; display:none;"></div>
+      </div>
+    </div>
+
+    <div class="palette-grid" style="margin-top: 0;">
+      <div class="color-swatch">
+        <div class="color-box" style="background: #2d4a3e;"></div>
+        <div class="color-name">Vert Cyprès</div>
+        <div class="color-hex">#2D4A3E</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-box" style="background: #c4972a;"></div>
+        <div class="color-name">Or Provençal</div>
+        <div class="color-hex">#C4972A</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-box" style="background: #f5f0e8; border: 1px solid #e8e0d4;"></div>
+        <div class="color-name">Lin Doux</div>
+        <div class="color-hex">#F5F0E8</div>
+      </div>
+    </div>
+
+    <div class="palette-grid">
+      <div class="color-swatch">
+        <div class="color-box" style="background: #7a5c8a;"></div>
+        <div class="color-name">Lavande Profonde</div>
+        <div class="color-hex">#7A5C8A</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-box" style="background: #1e2d1e;"></div>
+        <div class="color-name">Nuit Provençale</div>
+        <div class="color-hex">#1E2D1E</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="margin-bottom: 16px;">Univers Visuel Recommandé</div>
+    <ul class="styled-list">
+      <li>Photographies de paysages provençaux emblématiques : champs de lavande, oliviers centenaires, fontaines de Pernes, marchés de Provence, Mont Ventoux au loin</li>
+      <li>Intérieurs de villas et mas : pierres apparentes, volets en bois, piscines à débordement, mobilier en lin et bois naturel — évoquer l'exception sans ostentation</li>
+      <li>Typographie : Playfair Display pour les titres (élégance italique), Inter pour le corps (lisibilité moderne) — cohérent avec la référence Solaria citée</li>
+      <li>Mise en page épurée à l'espace blanc généreux, peu de couleurs vives, beaucoup de lumière naturelle dans les photos</li>
+      <li>Iconographie minimaliste et linéaire (pas de cliparts) pour illustrer les étapes du service — style trait fin, couleur Vert Cyprès</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- 09 ARTICLES BLOG -->
+<div class="section">
+  <span class="section-badge">Section 09</span>
+  <h2 class="section-title">Articles Blog Recommandés</h2>
+  <p class="section-intro">Une sélection de sujets à fort potentiel SEO et éditorial pour asseoir l'autorité de L'Echappée Belle auprès des propriétaires du Vaucluse.</p>
+  <div class="section-divider"></div>
+
+  <div class="grid-2">
+    <div class="article-card">
+      <span class="article-priority priority-prioritaire">Prioritaire</span>
+      <div class="article-title">Louer sa villa en Provence : par où commencer en 2025 ?</div>
+      <div class="article-meta">
+        <strong>Cluster :</strong> Conciergerie & Offre<br>
+        <strong>Intention :</strong> Informationnelle — propriétaire débutant en location courte durée
+      </div>
+    </div>
+    <div class="article-card">
+      <span class="article-priority priority-prioritaire">Prioritaire</span>
+      <div class="article-title">Conciergerie ou gestion en direct : que choisir pour son mas en Vaucluse ?</div>
+      <div class="article-meta">
+        <strong>Cluster :</strong> Conciergerie & Offre<br>
+        <strong>Intention :</strong> Comparaison — propriétaire en phase de décision
+      </div>
+    </div>
+    <div class="article-card">
+      <span class="article-priority priority-prioritaire">Prioritaire</span>
+      <div class="article-title">Location saisonnière à L'Isle-sur-la-Sorgue : potentiel, saisonnalité et conseils</div>
+      <div class="article-meta">
+        <strong>Cluster :</strong> Ancrage Local Provence<br>
+        <strong>Intention :</strong> Informationnelle géolocalisée — propriétaire local
+      </div>
+    </div>
+    <div class="article-card">
+      <span class="article-priority priority-moyen">Moyen</span>
+      <div class="article-title">Quelle commission pour une conciergerie en Provence ? Ce qu'il faut vraiment comparer</div>
+      <div class="article-meta">
+        <strong>Cluster :</strong> Conciergerie & Offre<br>
+        <strong>Intention :</strong> Transactionnelle — propriétaire qui compare les offres
+      </div>
+    </div>
+    <div class="article-card">
+      <span class="article-priority priority-moyen">Moyen</span>
+      <div class="article-title">Préparer son bien provençal pour la saison estivale : la check-list complète</div>
+      <div class="article-meta">
+        <strong>Cluster :</strong> Conseils Propriétaires<br>
+        <strong>Intention :</strong> Informationnelle pratique — propriétaire actif
+      </div>
+    </div>
+    <div class="article-card">
+      <span class="article-priority priority-moyen">Moyen</span>
+      <div class="article-title">Venasque, Saint-Didier, Pernes : les villages du Vaucluse qui attirent les voyageurs en 2025</div>
+      <div class="article-meta">
+        <strong>Cluster :</strong> Ancrage Local Provence<br>
+        <strong>Intention :</strong> Informationnelle locale — SEO longue traîne géolocalisé
+      </div>
+    </div>
+    <div class="article-card">
+      <span class="article-priority priority-faible">Faible</span>
+      <div class="article-title">Guide digital d'accueil pour location de vacances : pourquoi c'est indispensable aujourd'hui</div>
+      <div class="article-meta">
+        <strong>Cluster :</strong> Conseils Propriétaires<br>
+        <strong>Intention :</strong> Informationnelle — valorisation d'un service différenciant de l'offre
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>L'Echappée Belle — Conciergerie Provence · Vaucluse</strong>
+  Document confidentiel réalisé par AR Digital · Tous droits réservés<br>
+  Blueprint Stratégique · Usage exclusif de Sandra Pansin · Non destiné à la diffusion
+</footer>
+
+<!-- FIX: clean duplicate palette rendering -->
+<style>
+  /* Override: nettoyer le doublon de palette créé accidentellement */
+  .palette-grid:nth-child(2) { display: none !important; }
+</style>
+
+</body>
+</html>
