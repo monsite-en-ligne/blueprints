@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blueprint Stratégique — La Vie en Rose Conciergerie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #2d2d2d;
+      background: #fafaf8;
+    }
+
+    /* COUVERTURE */
+    .cover {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #1a0a0f 0%, #3b1220 40%, #6b2d45 75%, #a0435f 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(210,120,150,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .cover::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(180,80,110,0.13) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .cover-badge {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 36px;
+    }
+
+    .cover-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 68px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.70);
+      letter-spacing: 1px;
+      margin-bottom: 52px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover-meta {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover-meta-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cover-meta-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.40);
+    }
+
+    .cover-meta-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 70px 60px;
+      page-break-inside: avoid;
+    }
+
+    .section:nth-child(even) {
+      background: #ffffff;
+    }
+
+    .section:nth-child(odd) {
+      background: #fafaf8;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 44px;
+    }
+
+    .section-badge {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #a0435f;
+      background: rgba(160,67,95,0.08);
+      padding: 6px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 700;
+      color: #1a0a0f;
+    }
+
+    /* HIGHLIGHT BOX */
+    .highlight-box {
+      background: linear-gradient(135deg, #3b1220 0%, #6b2d45 100%);
+      border-radius: 16px;
+      padding: 36px 44px;
+      margin-bottom: 40px;
+      color: #ffffff;
+    }
+
+    .highlight-box .label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 12px;
+    }
+
+    .highlight-box p {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: #fff;
+    }
+
+    /* CARDS GRILLE */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .card-icon {
+      font-size: 26px;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #1a0a0f;
+      margin-bottom: 10px;
+    }
+
+    .card p, .card li {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    .card ul {
+      padding-left: 18px;
+    }
+
+    .card ul li {
+      margin-bottom: 4px;
+    }
+
+    /* TONE TAGS */
+    .tone-tags {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .tone-tag {
+      background: rgba(160,67,95,0.10);
+      color: #a0435f;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* TABLE */
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffff;
+      font-size: 14px;
+    }
+
+    thead tr {
+      background: linear-gradient(90deg, #3b1220, #6b2d45);
+      color: #fff;
+    }
+
+    thead th {
+      padding: 14px 20px;
+      text-align: left;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      font-size: 13px;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody td {
+      padding: 14px 20px;
+      vertical-align: top;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    tbody tr:nth-child(even) {
+      background: rgba(160,67,95,0.03);
+    }
+
+    /* BADGES SEO */
+    .badge-fort {
+      background: #e8f5e9;
+      color: #2e7d32;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .badge-moyen {
+      background: #fff8e1;
+      color: #f57f17;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .badge-faible {
+      background: #fce4ec;
+      color: #c62828;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* TUNNEL */
+    .tunnel-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .tunnel-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-top: 4px solid #a0435f;
+    }
+
+    .tunnel-step {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #a0435f;
+      margin-bottom: 10px;
+    }
+
+    .tunnel-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a0a0f;
+      margin-bottom: 16px;
+    }
+
+    .tunnel-card p {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+
+    .tunnel-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-top: 14px;
+      margin-bottom: 4px;
+    }
+
+    .tunnel-cta {
+      background: rgba(160,67,95,0.10);
+      color: #a0435f;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    /* COULEURS */
+    .palette-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 10px;
+    }
+
+    .color-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .color-swatch {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    }
+
+    .color-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #333;
+      text-align: center;
+    }
+
+    .color-hex {
+      font-size: 12px;
+      color: #aaa;
+      text-align: center;
+    }
+
+    /* MAILLAGE */
+    .maillage-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px 20px;
+      background: #ffffff;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      flex-wrap: wrap;
+    }
+
+    .maillage-source {
+      font-weight: 600;
+      color: #1a0a0f;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .maillage-arrow {
+      color: #a0435f;
+      font-size: 16px;
+      font-weight: 700;
+      flex-shrink: 0;
+      line-height: 1.6;
+    }
+
+    .maillage-dest {
+      font-size: 14px;
+      color: #555;
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* BLOG */
+    .blog-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 24px 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .blog-info {
+      flex: 1;
+    }
+
+    .blog-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a0a0f;
+      margin-bottom: 6px;
+    }
+
+    .blog-meta {
+      font-size: 13px;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    .blog-cluster {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #a0435f;
+      margin-top: 4px;
+    }
+
+    /* BADGE PRIORITÉ BLOG */
+    .badge-prioritaire {
+      background: #e8f5e9;
+      color: #2e7d32;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .badge-moyen-blog {
+      background: #fff8e1;
+      color: #f57f17;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .badge-faible-blog {
+      background: #fce4ec;
+      color: #c62828;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1a0a0f;
+      color: rgba(255,255,255,0.50);
+      text-align: center;
+      padding: 32px 40px;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    footer strong {
+      color: rgba(255,255,255,0.80);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .cover-title { font-size: 38px; }
+      .cover-meta { gap: 20px; }
+      .section { padding: 40px 24px; }
+      .section-title { font-size: 26px; }
+      .grid-2, .grid-3, .tunnel-grid { grid-template-columns: 1fr; }
+      .highlight-box { padding: 24px; }
+      .highlight-box p { font-size: 18px; }
+      .blog-card { flex-direction: column; gap: 12px; }
+      .table-wrapper { overflow-x: auto; }
+      .palette-grid { gap: 20px; }
+    }
+
+    @media print {
+      .section { page-break-inside: avoid; }
+      .cover { min-height: auto; padding: 60px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COUVERTURE -->
+  <section class="cover">
+    <div class="cover-badge">Blueprint Stratégique — Document Confidentiel</div>
+    <h1 class="cover-title">La Vie en Rose<br/>Conciergerie</h1>
+    <p class="cover-subtitle">Stratégie digitale · Site web · Positionnement</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Cliente</span>
+        <span class="cover-meta-value">Romy Angevin</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Secteur</span>
+        <span class="cover-meta-value">Conciergerie LCD</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Territoire</span>
+        <span class="cover-meta-value">Haut Vaucluse &amp; Haut Var</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 POSITIONNEMENT -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-badge">01</span>
+      <h2 class="section-title">Positionnement</h2>
+    </div>
+
+    <div class="highlight-box">
+      <div class="label">Promesse de valeur principale</div>
+      <p>Confiez votre bien à une passionnée du Sud : La Vie en Rose gère votre location courte durée de A à Z, pour que vous touchiez plus — sans vous occuper de rien.</p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom: 32px;">
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h3>Ligne directrice</h3>
+        <p>Ancrage local authentique, expertise terrain et sérénité totale pour le propriétaire. Un accompagnement humain, rigoureux et orienté résultats dans des destinations provençales d'exception.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">✍️</div>
+        <h3>Ton éditorial</h3>
+        <div class="tone-tags" style="margin-top:10px;">
+          <span class="tone-tag">Chaleureux</span>
+          <span class="tone-tag">Expert</span>
+          <span class="tone-tag">Rassurant</span>
+        </div>
+        <p>Un ton à la fois professionnel et humain — celui d'une femme de terrain qui parle vrai, inspire confiance et transmet sa passion du Sud.</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-icon">🌹</div>
+        <h3>Ancrage Sud authentique</h3>
+        <p>Romy vit dans le Sud depuis près de 10 ans. Elle connaît les villages, les saisons, les voyageurs. Pas une agence distante : une gestionnaire de proximité, présente sur le terrain.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔑</div>
+        <h3>Gestion complète clé en main</h3>
+        <p>De la photo professionnelle à la communication voyageurs 7j/7, en passant par la tarification dynamique et le ménage : tout est géré. Le propriétaire n'a qu'à percevoir ses revenus.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💡</div>
+        <h3>Double regard propriétaire &amp; voyageur</h3>
+        <p>Ancienne propriétaire de meublés de tourisme, Romy comprend les deux côtés. Elle optimise la rentabilité tout en garantissant l'expérience voyageur qui fait revenir — et qui génère des avis 5 étoiles.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏡</div>
+        <h3>Expertise décoration &amp; mise en valeur</h3>
+        <p>Passionnée de déco et d'agencement, Romy valorise les biens avant même la mise en ligne : conseils, shooting photo pro, optimisation de l'annonce pour maximiser le taux de remplissage.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 CLIENT CIBLE -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-badge">02</span>
+      <h2 class="section-title">Client Cible</h2>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon">👤</div>
+        <h3>Profil type</h3>
+        <ul>
+          <li>40–65 ans, propriétaire d'une résidence secondaire en Provence ou Haut Var</li>
+          <li>Réside loin du bien ou manque de temps</li>
+          <li>Curieux de la location courte durée mais non initié</li>
+          <li>Ou déjà sur Airbnb mais épuisé par la gestion</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-icon">💬</div>
+        <h3>Motivations</h3>
+        <ul>
+          <li>Générer des revenus complémentaires sans efforts</li>
+          <li>Valoriser un bien qui reste vide une partie de l'année</li>
+          <li>Confier à quelqu'un de fiable et proche du terrain</li>
+          <li>Protéger son bien et ses voyageurs</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚧</div>
+        <h3>Freins &amp; objections</h3>
+        <ul>
+          <li>"Je ne sais pas si la commission vaut le coût"</li>
+          <li>"J'ai peur de perdre le contrôle sur mon bien"</li>
+          <li>"Je ne connais pas cette conciergerie, est-elle fiable ?"</li>
+          <li>"Je ne sais pas si mon bien est rentable en LCD"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px;">
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <h3>Critères de décision</h3>
+        <ul style="columns: 2; gap: 24px; padding-left: 18px;">
+          <li>Proximité géographique du gestionnaire</li>
+          <li>Transparence sur la commission et les services inclus</li>
+          <li>Références, avis et exemples de biens gérés</li>
+          <li>Qualité de la communication et réactivité</li>
+          <li>Capacité à valoriser le bien (photos, déco, annonce)</li>
+          <li>Présence multi-plateformes (Airbnb, Booking, etc.)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 OBJECTIFS DU SITE -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-badge">03</span>
+      <h2 class="section-title">Objectifs du Site</h2>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon">🥇</div>
+        <h3>1 — Génération de leads</h3>
+        <p>Attirer des propriétaires qualifiés via le SEO local et les convertir en contacts via un formulaire ou une prise de RDV directe.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🥈</div>
+        <h3>2 — Réassurance</h3>
+        <p>Installer la confiance : histoire de Romy, expertise terrain, avis clients, transparence sur les services et la commission.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🥉</div>
+        <h3>3 — SEO local</h3>
+        <p>Se positionner sur les requêtes de propriétaires dans le Haut Vaucluse et le Haut Var qui cherchent une conciergerie LCD.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">4️⃣</div>
+        <h3>4 — Conversion</h3>
+        <p>Transformer un visiteur curieux en prospect qualifié grâce à un parcours fluide et des CTA bien placés.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">5️⃣</div>
+        <h3>5 — Prise de RDV</h3>
+        <p>Proposer un appel découverte ou un audit offert pour entrer en relation facilement et sans friction.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">6️⃣</div>
+        <h3>6 — Notoriété locale</h3>
+        <p>Affirmer la présence de La Vie en Rose Conciergerie comme référence sur son territoire de Provence et du Haut Var.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 ARBORESCENCE -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-badge">04</span>
+      <h2 class="section-title">Arborescence du Site</h2>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>Framework</th>
+            <th>Mot-clé principal</th>
+            <th>Potentiel SEO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Accueil</strong></td>
+            <td>AIDA</td>
+            <td>conciergerie location courte durée Provence</td>
+            <td><span class="badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Nos Services</strong> (gestion complète, photos, ménage, multi-plateformes…)</td>
+            <td>PAS</td>
+            <td>gestion location saisonnière Vaucluse Var</td>
+            <td><span class="badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Pourquoi nous choisir</strong> (valeurs, équipe, histoire de Romy)</td>
+            <td>BAB</td>
+            <td>conciergerie Airbnb fiable Provence</td>
+            <td><span class="badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td><strong>Témoignages &amp; Références</strong></td>
+            <td>AIDA</td>
+            <td>avis conciergerie location saisonnière Sud</td>
+            <td><span class="badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td><strong>Contact &amp; Devis</strong></td>
+            <td>PAS</td>
+            <td>estimer revenus location courte durée Provence</td>
+            <td><span class="badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Blog</strong></td>
+            <td>—</td>
+            <td>location saisonnière Provence conseils</td>
+            <td><span class="badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Page locale SEO — Haut Vaucluse</strong> (Vaison-la-Romaine, Gigondas, Séguret…)</td>
+            <td>PAS</td>
+            <td>conciergerie location saisonnière Vaison-la-Romaine</td>
+            <td><span class="badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Page locale SEO — Haut Var</strong> (Bargème, Trigance, Comps-sur-Artuby…)</td>
+            <td>PAS</td>
+            <td>conciergerie location saisonnière Haut Var</td>
+            <td><span class="badge-fort">Fort</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 05 COCON SÉMANTIQUE -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-badge">05</span>
+      <h2 class="section-title">Cocon Sémantique</h2>
+    </div>
+
+    <div class="grid-3" style="margin-bottom: 40px;">
+      <div class="card">
+        <div class="card-icon">🌿</div>
+        <h3>Cluster 1 — Gestion locative</h3>
+        <p>Thèmes : conciergerie Airbnb, gestion location saisonnière, multi-plateformes, tarification dynamique, ménage &amp; linge, photos pro.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📍</div>
+        <h3>Cluster 2 — Territoire Provençal</h3>
+        <p>Thèmes : Vaison-la-Romaine, Gigondas, Séguret, Haut Var, Trigance, Bargème — destinations, potentiel locatif, attractivité touristique.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <h3>Cluster 3 — Rentabilité propriétaires</h3>
+        <p>Thèmes : optimisation annonce, revenus locatifs, délégation sereine, conseils déco, fiscalité LMNP, meublé de tourisme.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif; font-size:20px; margin-bottom:20px; color:#1a0a0f;">Logique de maillage interne</h3>
+
+    <div class="maillage-item">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services, Pages locales SEO, Contact</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Nos Services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Pourquoi nous choisir, Contact, articles Blog (cluster Gestion locative)</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Pages locales SEO</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services, Contact, articles Blog (cluster Territoire)</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services, Pages locales SEO, Contact (CTA en fin d'article)</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Témoignages</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact, Nos Services</span>
+    </div>
+  </section>
+
+  <!-- 06 TUNNEL DE CONVERSION -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-badge">06</span>
+      <h2 class="section-title">Tunnel de Conversion</h2>
+    </div>
+
+    <div class="tunnel-grid">
+      <div class="tunnel-card">
+        <div class="tunnel-step">Étape 1</div>
+        <h3>Découverte</h3>
+        <div class="tunnel-label">Source</div>
+        <p>SEO local Google, bouche-à-oreille, réseaux sociaux</p>
+        <div class="tunnel-label">Page</div>
+        <p>Accueil / Pages locales SEO / Articles blog</p>
+        <div class="tunnel-label">CTA</div>
+        <span class="tunnel-cta">→ Découvrez nos services</span>
+      </div>
+      <div class="tunnel-card">
+        <div class="tunnel-step">Étape 2</div>
+        <h3>Intérêt</h3>
+        <div class="tunnel-label">Source</div>
+        <p>Navigation interne, blog, page Services</p>
+        <div class="tunnel-label">Page</div>
+        <p>Nos Services / Pourquoi nous choisir</p>
+        <div class="tunnel-label">CTA</div>
+        <span class="tunnel-cta">→ Télécharger le guide gratuit</span>
+      </div>
+      <div class="tunnel-card">
+        <div class="tunnel-step">Étape 3</div>
+        <h3>Confiance</h3>
+        <div class="tunnel-label">Source</div>
+        <p>Avis clients, page À propos, témoignages</p>
+        <div class="tunnel-label">Page</div>
+        <p>Témoignages &amp; Références / Pourquoi nous</p>
+        <div class="tunnel-label">CTA</div>
+        <span class="tunnel-cta">→ Voir les avis propriétaires</span>
+      </div>
+      <div class="tunnel-card">
+        <div class="tunnel-step">Étape 4</div>
+        <h3>Conversion</h3>
+        <div class="tunnel-label">Source</div>
+        <p>Formulaire qualifiant, prise de RDV directe</p>
+        <div class="tunnel-label">Page</div>
+        <p>Contact &amp; Devis</p>
+        <div class="tunnel-label">CTA</div>
+        <span class="tunnel-cta">→ Estimer mon potentiel locatif</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 LEVIERS MARKETING -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-badge">07</span>
+      <h2 class="section-title">Leviers Marketing Intégrés</h2>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-icon">🎁</div>
+        <h3>Lead Magnet</h3>
+        <p><strong>Guide PDF : "Combien peut rapporter votre bien en Provence ?"</strong> — Estimation des revenus LCD selon la zone, la superficie et la saison. Téléchargeable contre un email.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📅</div>
+        <h3>Prise de RDV</h3>
+        <p>Outil recommandé : <strong>Calendly</strong> (gratuit, simple à intégrer). Proposer un "Appel découverte 20 min gratuit" pour qualifier les prospects et créer le lien humain dès le premier contact.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⭐</div>
+        <h3>Preuve Sociale</h3>
+        <p>Avis Google, témoignages vidéo ou écrits de propriétaires satisfaits, résultats chiffrés (taux de remplissage, revenus générés), photos avant/après des biens mis en valeur.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <h3>Formulaire Qualifiant</h3>
+        <p>Champs recommandés : Nom &amp; Prénom / Commune du bien / Type de bien (maison, appartement, mas…) / Nombre de couchages / Déjà en location ? / Message libre.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💌</div>
+        <h3>Newsletter</h3>
+        <p>Angle éditorial : <em>"La Lettre du Propriétaire Serein"</em> — conseils décoration, actualités LCD, tendances touristiques en Provence, astuces rentabilité, témoignages.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <h3>Automatisation Email</h3>
+        <p>Séquence post-lead magnet : J+0 envoi du guide / J+2 présentation de Romy et de l'équipe / J+4 témoignage propriétaire / J+7 invitation à l'appel découverte.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 DIRECTION VISUELLE -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-badge">08</span>
+      <h2 class="section-title">Direction Visuelle &amp; Éditoriale</h2>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif; font-size:20px; margin-bottom:28px; color:#1a0a0f; text-align:center;">Palette couleurs suggérée</h3>
+
+    <div class="palette-grid">
+      <div class="color-item">
+        <div class="color-swatch" style="background:#1a0a0f;"></div>
+        <div class="color-name">Nuit Provençale</div>
+        <div class="color-hex">#1a0a0f</div>
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background:#a0435f;"></div>
+        <div class="color-name">Rose Intense</div>
+        <div class="color-hex">#a0435f</div>
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background:#d4a0ae;"></div>
+        <div class="color-name">Rose Poudré</div>
+        <div class="color-hex">#d4a0ae</div>
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background:#f5ece8;"></div>
+        <div class="color-name">Lin Rosé</div>
+        <div class="color-hex">#f5ece8</div>
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background:#c8a97a;" ></div>
+        <div class="color-name">Or Provençal</div>
+        <div class="color-hex">#c8a97a</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 44px;">
+      <h3 style="font-family:'Playfair Display',serif; font-size:20px; margin-bottom:20px; color:#1a0a0f;">Univers visuel recommandé</h3>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-icon">📸</div>
+          <h3>Photographie immersive</h3>
+          <p>Biens provençaux baignés de lumière dorée, terrasses fleuries, lavande, tuiles romaines. Priorité aux heures dorées pour les extérieurs.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏵️</div>
+          <h3>Touche florale délicate</h3>
+          <p>Motifs de roses ou de fleurs de Provence en éléments graphiques discrets (séparateurs, icônes, fonds). Référence subtile au nom "La Vie en Rose".</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">✒️</div>
+          <h3>Typographie élégante</h3>
+          <p>Playfair Display pour les titres (élégance, féminité) + Inter pour le corps (lisibilité, modernité). Jamais plus de deux graisses différentes par page.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🤍</div>
+          <h3>Espaces blancs généreux</h3>
+          <p>Interface aérée, propre, premium. Le design reflète la sérénité promise au propriétaire : rien ne dépasse, tout est ordonné et agréable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 BLOG -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-badge">09</span>
+      <h2 class="section-title">Articles Blog Recommandés</h2>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-info">
+        <div class="blog-title">Location saisonnière en Provence : combien peut rapporter votre résidence secondaire ?</div>
+        <div class="blog-meta">Intention : informationnelle — propriétaire qui évalue le potentiel de son bien</div>
+        <div class="blog-cluster">Cluster — Rentabilité propriétaires</div>
+      </div>
+      <span class="badge-prioritaire">Prioritaire</span>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-info">
+        <div class="blog-title">Conciergerie Airbnb dans le Haut Vaucluse : pourquoi déléguer change tout</div>
+        <div class="blog-meta">Intention : décisionnelle — propriétaire hésitant à déléguer sa gestion</div>
+        <div class="blog-cluster">Cluster — Gestion locative</div>
+      </div>
+      <span class="badge-prioritaire">Prioritaire</span>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-info">
+        <div class="blog-title">Vaison-la-Romaine, Séguret, Gigondas : les villages les plus demandés par les voyageurs en Provence</div>
+        <div class="blog-meta">Intention : informationnelle — propriétaire qui veut savoir si sa zone est attractive</div>
+        <div class="blog-cluster">Cluster — Territoire Provençal</div>
+      </div>
+      <span class="badge-prioritaire">Prioritaire</span>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-info">
+        <div class="blog-title">5 erreurs qui font perdre des réservations sur Airbnb (et comment les éviter)</div>
+        <div class="blog-meta">Intention : éducative — propriétaire qui gère seul et cherche à optimiser</div>
+        <div class="blog-cluster">Cluster — Gestion locative</div>
+      </div>
+      <span class="badge-moyen-blog">Moyen</span>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-info">
+        <div class="blog-title">Haut Var : Trigance, Bargème, Comps-sur-Artuby — un territoire touristique encore sous-exploité</div>
+        <div class="blog-meta">Intention : informationnelle &amp; SEO local — propriétaire dans le Haut Var</div>
+        <div class="blog-cluster">Cluster — Territoire Provençal</div>
+      </div>
+      <span class="badge-moyen-blog">Moyen</span>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-info">
+        <div class="blog-title">Décoration d'un gîte provençal : les touches qui font la différence dans vos photos Airbnb</div>
+        <div class="blog-meta">Intention : inspirationnelle — propriétaire soucieux de la mise en valeur de son bien</div>
+        <div class="blog-cluster">Cluster — Rentabilité propriétaires</div>
+      </div>
+      <span class="badge-moyen-blog">Moyen</span>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-info">
+        <div class="blog-title">LMNP et meublé de tourisme en Provence : ce qu'il faut savoir avant de vous lancer</div>
+        <div class="blog-meta">Intention : informationnelle — propriétaire qui veut comprendre le cadre légal et fiscal</div>
+        <div class="blog-cluster">Cluster — Rentabilité propriétaires</div>
+      </div>
+      <span class="badge-faible-blog">Faible</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>La Vie en Rose Conciergerie</strong> — Romy Angevin</p>
+    <p style="margin-top:6px;">Document confidentiel · Préparé par AR Digital · Usage exclusif du client</p>
+  </footer>
+
+</body>
+</html>
