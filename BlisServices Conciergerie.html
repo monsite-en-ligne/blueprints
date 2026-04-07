@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blueprint Stratégique — BlisServices Conciergerie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #1a1a2e;
+      background: #f9f8f5;
+    }
+
+    /* ── COVER ── */
+    .cover {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #0d1b2a 0%, #1b3a4b 45%, #2d6a4f 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 80px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -120px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(45,106,79,0.25) 0%, transparent 70%);
+    }
+
+    .cover::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: 40%;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(27,58,75,0.35) 0%, transparent 70%);
+    }
+
+    .cover-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 28px;
+    }
+
+    .cover-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 62px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      max-width: 680px;
+    }
+
+    .cover-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.72);
+      max-width: 520px;
+      margin-bottom: 56px;
+    }
+
+    .cover-meta {
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+
+    .cover-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .cover-meta-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .cover-meta-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 80px 80px;
+    }
+
+    .section:nth-child(even) {
+      background: #ffffff;
+    }
+
+    .section-badge {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: #2d6a4f;
+      background: rgba(45,106,79,0.09);
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 700;
+      color: #0d1b2a;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+
+    .section-intro {
+      font-size: 15px;
+      color: #6b7280;
+      max-width: 640px;
+      margin-bottom: 44px;
+      line-height: 1.75;
+    }
+
+    /* ── CARDS ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+    .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; }
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px 30px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.045);
+      page-break-inside: avoid;
+    }
+
+    .card-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 700;
+      color: rgba(45,106,79,0.12);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #2d6a4f;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      font-size: 14px;
+      color: #374151;
+      line-height: 1.75;
+    }
+
+    .card-highlight {
+      background: linear-gradient(135deg, #0d1b2a 0%, #1b3a4b 100%);
+      color: #fff;
+    }
+
+    .card-highlight .card-title { color: rgba(255,255,255,0.6); }
+    .card-highlight .card-text { color: rgba(255,255,255,0.88); }
+
+    /* Promise card */
+    .promise-card {
+      background: linear-gradient(135deg, #2d6a4f 0%, #1b3a4b 100%);
+      border-radius: 14px;
+      padding: 40px 44px;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 24px rgba(45,106,79,0.2);
+    }
+
+    .promise-card .label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 14px;
+    }
+
+    .promise-card .text {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 1.5;
+    }
+
+    /* Lists */
+    ul.bl {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul.bl li {
+      padding: 7px 0;
+      padding-left: 20px;
+      position: relative;
+      font-size: 14px;
+      color: #374151;
+      line-height: 1.65;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    ul.bl li:last-child { border-bottom: none; }
+
+    ul.bl li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #2d6a4f;
+      font-size: 12px;
+      top: 9px;
+    }
+
+    /* Tags */
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 11px;
+      border-radius: 20px;
+      margin: 3px 3px 3px 0;
+    }
+
+    .tag-green { background: rgba(45,106,79,0.1); color: #2d6a4f; }
+    .tag-blue  { background: rgba(27,58,75,0.1);  color: #1b3a4b; }
+    .tag-gold  { background: rgba(184,134,11,0.1); color: #b8860b; }
+    .tag-gray  { background: rgba(107,114,128,0.1); color: #6b7280; }
+
+    /* SEO badges */
+    .badge-fort   { background: #d1fae5; color: #065f46; font-weight: 700; padding: 3px 10px; border-radius: 20px; font-size: 11px; }
+    .badge-moyen  { background: #fef3c7; color: #92400e; font-weight: 700; padding: 3px 10px; border-radius: 20px; font-size: 11px; }
+    .badge-faible { background: #f3f4f6; color: #6b7280; font-weight: 700; padding: 3px 10px; border-radius: 20px; font-size: 11px; }
+    .badge-prio   { background: #fee2e2; color: #991b1b; font-weight: 700; padding: 3px 10px; border-radius: 20px; font-size: 11px; }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      font-size: 13.5px;
+    }
+
+    table thead tr {
+      background: linear-gradient(90deg, #0d1b2a, #1b3a4b);
+      color: #fff;
+    }
+
+    table th {
+      padding: 14px 18px;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    table td {
+      padding: 13px 18px;
+      color: #374151;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+
+    table tbody tr:last-child td { border-bottom: none; }
+    table tbody tr:hover { background: rgba(45,106,79,0.03); }
+
+    /* Tunnel */
+    .tunnel {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+
+    .tunnel-step {
+      padding: 30px 24px;
+      background: #fff;
+      border-right: 1px solid rgba(0,0,0,0.06);
+      position: relative;
+    }
+
+    .tunnel-step:last-child { border-right: none; }
+
+    .tunnel-step-num {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 8px;
+    }
+
+    .tunnel-step-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #0d1b2a;
+      margin-bottom: 14px;
+    }
+
+    .tunnel-step-line {
+      font-size: 12.5px;
+      color: #6b7280;
+      line-height: 1.65;
+      margin-bottom: 8px;
+    }
+
+    .tunnel-cta {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #2d6a4f;
+      background: rgba(45,106,79,0.1);
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+
+    /* Palette */
+    .palette {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .swatch-color {
+      width: 72px;
+      height: 72px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    }
+
+    .swatch-hex {
+      font-size: 11px;
+      font-weight: 600;
+      color: #6b7280;
+      font-family: 'Inter', monospace;
+    }
+
+    .swatch-name {
+      font-size: 11px;
+      color: #9ca3af;
+      text-align: center;
+      max-width: 80px;
+    }
+
+    /* Divider */
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, #2d6a4f, #1b3a4b);
+      border-radius: 2px;
+      margin-bottom: 36px;
+    }
+
+    /* Footer */
+    footer {
+      background: #0d1b2a;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    footer strong { color: rgba(255,255,255,0.7); }
+
+    /* Cluster */
+    .cluster-card {
+      border-left: 4px solid #2d6a4f;
+      padding-left: 20px;
+      margin-bottom: 18px;
+    }
+
+    .cluster-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #0d1b2a;
+      margin-bottom: 6px;
+    }
+
+    .cluster-card p {
+      font-size: 13.5px;
+      color: #6b7280;
+      line-height: 1.65;
+    }
+
+    /* Maillage */
+    .maillage-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      font-size: 13.5px;
+    }
+
+    .maillage-row:last-child { border-bottom: none; }
+
+    .maillage-from {
+      font-weight: 600;
+      color: #0d1b2a;
+      min-width: 160px;
+    }
+
+    .maillage-arrow { color: #2d6a4f; font-weight: 700; }
+
+    .maillage-to { color: #6b7280; }
+
+    /* Print */
+    @media print {
+      .section { padding: 50px 40px; }
+      .cover { min-height: auto; padding: 60px 40px; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .tunnel { grid-template-columns: 1fr 1fr; }
+      .grid-4 { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .cover { padding: 60px 24px; }
+      .cover-title { font-size: 36px; }
+      .cover-subtitle { font-size: 15px; }
+      .cover-meta { gap: 20px; }
+
+      .section { padding: 48px 24px; }
+      .section-title { font-size: 26px; }
+
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .tunnel { grid-template-columns: 1fr; }
+      .tunnel-step { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.06); }
+      .tunnel-step:last-child { border-bottom: none; }
+
+      .palette { justify-content: flex-start; }
+
+      .table-wrap { overflow-x: auto; }
+
+      .promise-card { padding: 28px 24px; }
+      .promise-card .text { font-size: 18px; }
+
+      .maillage-row { flex-direction: column; gap: 4px; }
+      .maillage-from { min-width: unset; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ COVER ═══ -->
+<div class="cover">
+  <div class="cover-eyebrow">Blueprint Stratégique · Document confidentiel</div>
+  <h1 class="cover-title">BlisServices<br>Conciergerie</h1>
+  <p class="cover-subtitle">Stratégie digitale complète — positionnement, arborescence, SEO & conversion</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Client</span>
+      <span class="cover-meta-value">Laurine Bertrand</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie LCD</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Zone</span>
+      <span class="cover-meta-value">Annecy · Haute-Savoie · Albertville</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ 01 POSITIONNEMENT ═══ -->
+<div class="section">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Votre identité stratégique</h2>
+  <div class="divider"></div>
+
+  <div class="promise-card">
+    <div class="label">Promesse de valeur principale</div>
+    <div class="text">« Une gestion saisonnière humaine, digitalisée et sur-mesure, portée par 10 ans d'expertise hôtelière — pour des propriétaires sereins et des voyageurs qui repartent ressourcés. »</div>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <div class="card-title">Ligne directrice de communication</div>
+    <div class="card-text">Proximité terrain assumée · Excellence opérationnelle hôtelière · Conciergerie holistique et bien-être · Performance locative sans friction pour le propriétaire.</div>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <div class="card-title">Ton éditorial</div>
+    <div class="card-text">
+      <span class="tag tag-green">Chaleureux</span>
+      <span class="tag tag-blue">Professionnel</span>
+      <span class="tag tag-gold">Sincère</span>
+      <br><br>
+      Un ton qui inspire confiance sans froideur corporate : on parle vrai, avec expertise, comme une professionnelle engagée qui aime ce qu'elle fait et connaît parfaitement son territoire.
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-number">01</div>
+      <div class="card-title">Expertise hôtelière authentique</div>
+      <div class="card-text">10 ans en hôtellerie tous postes confondus : une maîtrise rare des standards d'accueil, d'hygiène et de satisfaction client que peu de conciergeries locales peuvent revendiquer.</div>
+    </div>
+    <div class="card">
+      <div class="card-number">02</div>
+      <div class="card-title">Ancrage territorial fort</div>
+      <div class="card-text">Présence physique sur le 74210, le lac d'Annecy et l'axe Albertville–Sévrier. Une connaissance fine du territoire alpin, ses saisonnalités ski et lac, ses événements locaux.</div>
+    </div>
+    <div class="card">
+      <div class="card-number">03</div>
+      <div class="card-title">Gestion 100 % digitalisée</div>
+      <div class="card-text">Check-in autonome, gestion des plateformes, tarification dynamique : une conciergerie moderne qui décharge complètement le propriétaire de la charge mentale.</div>
+    </div>
+    <div class="card">
+      <div class="card-number">04</div>
+      <div class="card-title">Approche holistique & bien-être</div>
+      <div class="card-text">Un positionnement différenciant unique : produits sains, sans perturbateurs endocriniens, univers ressourçant pour les voyageurs. Un "plus" mémorable qui fidélise et génère des avis positifs.</div>
+    </div>
+    <div class="card">
+      <div class="card-number">05</div>
+      <div class="card-title">Flexibilité & sur-mesure</div>
+      <div class="card-text">Capacité d'adaptation aux exigences des propriétaires les plus pointus comme aux attentes des voyageurs premium — un service personnalisé, jamais industrialisé.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ 02 CLIENT CIBLE ═══ -->
+<div class="section">
+  <span class="section-badge">02 — Client Cible</span>
+  <h2 class="section-title">Portrait du propriétaire idéal</h2>
+  <div class="divider"></div>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <div class="card-title">Profil type</div>
+      <div class="card-text">
+        Propriétaire d'un bien alpin ou lac, 35–60 ans, résidant parfois à distance (région parisienne, Lyon, Suisse). Investisseur locatif ou propriétaire d'une résidence secondaire souhaitant rentabiliser son bien sans en gérer l'opérationnel au quotidien.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Motivations principales</div>
+      <ul class="bl">
+        <li>Maximiser les revenus locatifs sans y consacrer de temps</li>
+        <li>Avoir un interlocuteur de confiance sur place</li>
+        <li>Garantir la qualité d'accueil pour protéger son bien</li>
+        <li>Déléguer la relation voyageurs (avis, litiges, urgences)</li>
+        <li>Bénéficier d'une tarification dynamique professionnelle</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Freins & objections fréquentes</div>
+      <ul class="bl">
+        <li>« 23 % c'est cher, je peux gérer moi-même »</li>
+        <li>Peur de perdre le contrôle de son bien</li>
+        <li>Méfiance envers une conciergerie inconnue / récente</li>
+        <li>Incertitude sur la qualité du ménage et des check-ins</li>
+        <li>Mauvaise expérience avec une conciergerie précédente</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Critères de décision</div>
+      <ul class="bl">
+        <li>Présence locale réelle et réactivité prouvée</li>
+        <li>Transparence sur les commissions et les prestations incluses</li>
+        <li>Avis clients et témoignages de propriétaires</li>
+        <li>Qualité perçue des annonces gérées (photos, textes)</li>
+        <li>Facilité de contact et clarté de l'offre</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ 03 OBJECTIFS ═══ -->
+<div class="section">
+  <span class="section-badge">03 — Objectifs du site</span>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+  <div class="divider"></div>
+
+  <div class="grid-3">
+    <div class="card card-highlight">
+      <div class="card-number" style="color:rgba(255,255,255,0.1);">01</div>
+      <div class="card-title">Génération de leads</div>
+      <div class="card-text">Objectif prioritaire : capter des propriétaires qualifiés via formulaire ou prise de RDV directe. Chaque page doit guider vers cette action.</div>
+    </div>
+    <div class="card">
+      <div class="card-number">02</div>
+      <div class="card-title">SEO local</div>
+      <div class="card-text">Se positionner sur les requêtes géolocalisées clés (Annecy, Haute-Savoie, Albertville) pour capter une audience en phase de recherche active.</div>
+    </div>
+    <div class="card">
+      <div class="card-number">03</div>
+      <div class="card-title">Réassurance & crédibilité</div>
+      <div class="card-text">Lever les freins à la confiance : expérience hôtelière, proximité terrain, preuves sociales (témoignages, photos de biens gérés).</div>
+    </div>
+    <div class="card">
+      <div class="card-number">04</div>
+      <div class="card-title">Prise de RDV</div>
+      <div class="card-text">Intégrer un agenda en ligne pour faciliter la prise de contact et qualifier automatiquement les prospects sans allers-retours email.</div>
+    </div>
+    <div class="card">
+      <div class="card-number">05</div>
+      <div class="card-title">Conversion</div>
+      <div class="card-text">Transformer les visiteurs en demandes concrètes grâce à des CTA clairs, un formulaire qualifiant et une offre lisible en quelques secondes.</div>
+    </div>
+    <div class="card">
+      <div class="card-number">06</div>
+      <div class="card-title">Notoriété locale</div>
+      <div class="card-text">Asseoir la légitimité de BlisServices sur la zone de chalandise alpine et lac via le contenu blog et le maillage SEO local.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ 04 ARBORESCENCE ═══ -->
+<div class="section">
+  <span class="section-badge">04 — Arborescence du site</span>
+  <h2 class="section-title">Structure des pages</h2>
+  <p class="section-intro">Une architecture pensée pour le référencement et la conversion — une page par offre globale, pas une page par service individuel.</p>
+  <div class="divider"></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Annecy</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre Offre Propriétaires</strong><br><small style="color:#9ca3af;">Inclut : annonces, photos, tarification, check-in/out, gestion voyageurs</small></td>
+          <td>PAS</td>
+          <td>gestion location saisonnière Haute-Savoie</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — BlisServices</strong></td>
+          <td>BAB</td>
+          <td>conciergerie proximité lac Annecy</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page SEO locale — Annecy & Lac</strong><br><small style="color:#9ca3af;">Couvre : Sevrier, Talloires, Doussard, bords du lac</small></td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Annecy lac</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page SEO locale — Albertville & Vallée</strong><br><small style="color:#9ca3af;">Couvre : axe 73200–74210, Ugine, Beaufort</small></td>
+          <td>AIDA</td>
+          <td>conciergerie location saisonnière Albertville</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils gestion location courte durée</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / Estimation</strong></td>
+          <td>PAS</td>
+          <td>confier sa location à une conciergerie</td>
+          <td><span class="badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>Mentions légales / CGU</strong></td>
+          <td>—</td>
+          <td>—</td>
+          <td><span class="badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ 05 COCON SÉMANTIQUE ═══ -->
+<div class="section">
+  <span class="section-badge">05 — Cocon Sémantique</span>
+  <h2 class="section-title">Architecture de contenus & maillage</h2>
+  <div class="divider"></div>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <div class="card-title">Cluster 1 — Gestion Locative Alpine</div>
+      <div class="cluster-card">
+        <h4>Page pilier</h4>
+        <p>Notre Offre Propriétaires</p>
+      </div>
+      <div class="cluster-card">
+        <h4>Articles satellites</h4>
+        <p>Tarification dynamique ski/lac · Préparer son bien pour la saison · Checklist départ voyageur · Optimiser son annonce Airbnb en montagne</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Cluster 2 — SEO Local Haute-Savoie</div>
+      <div class="cluster-card">
+        <h4>Pages piliers</h4>
+        <p>Page locale Annecy & Lac · Page locale Albertville & Vallée</p>
+      </div>
+      <div class="cluster-card">
+        <h4>Articles satellites</h4>
+        <p>Louer son chalet au ski vs en été · Évènements autour du lac d'Annecy · Réglementation LCD en Haute-Savoie</p>
+      </div>
+    </div>
+    <div class="card" style="grid-column: 1 / -1;">
+      <div class="card-title">Cluster 3 — Conciergerie Bien-être & Holistique</div>
+      <div class="cluster-card">
+        <h4>Page pilier</h4>
+        <p>À propos (approche différenciante BlisServices)</p>
+      </div>
+      <div class="cluster-card">
+        <h4>Articles satellites</h4>
+        <p>Produits d'accueil sains en location · Comment créer une expérience ressourçante pour ses voyageurs · Naturopathie et tourisme durable</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Logique de maillage interne</div>
+    <div class="maillage-row">
+      <span class="maillage-from">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Offre Propriétaires · Pages locales · Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">Offre Propriétaires</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Pages locales · Contact · Articles blog Cluster 1</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">Pages locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Offre Propriétaires · Contact · Articles blog Cluster 2</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Offre Propriétaires · Articles blog Cluster 3 · Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">Articles blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Page pilier du cluster · Contact / Estimation</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ 06 TUNNEL ═══ -->
+<div class="section">
+  <span class="section-badge">06 — Tunnel de Conversion</span>
+  <h2 class="section-title">Du visiteur au propriétaire convaincu</h2>
+  <div class="divider"></div>
+
+  <div class="tunnel">
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 01</div>
+      <div class="tunnel-step-label">Découverte</div>
+      <div class="tunnel-step-line"><strong>Source :</strong> Google organique, bouche-à-oreille, réseaux sociaux</div>
+      <div class="tunnel-step-line"><strong>Page :</strong> Accueil ou Page locale SEO</div>
+      <div class="tunnel-step-line"><strong>Action :</strong> Le propriétaire découvre BlisServices via une recherche géolocalisée ou une recommandation.</div>
+      <span class="tunnel-cta">En savoir plus →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 02</div>
+      <div class="tunnel-step-label">Intérêt</div>
+      <div class="tunnel-step-line"><strong>Source :</strong> Navigation interne, blog</div>
+      <div class="tunnel-step-line"><strong>Page :</strong> Offre Propriétaires · À propos</div>
+      <div class="tunnel-step-line"><strong>Action :</strong> Il explore les services, comprend la valeur ajoutée et s'identifie au profil cible.</div>
+      <span class="tunnel-cta">Découvrir l'offre →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 03</div>
+      <div class="tunnel-step-label">Confiance</div>
+      <div class="tunnel-step-line"><strong>Source :</strong> Avis, témoignages, lead magnet</div>
+      <div class="tunnel-step-line"><strong>Page :</strong> Offre · À propos · Article blog</div>
+      <div class="tunnel-step-line"><strong>Action :</strong> Il lit les témoignages, télécharge le guide, perçoit la légitimité de Laurine.</div>
+      <span class="tunnel-cta">Télécharger le guide →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 04</div>
+      <div class="tunnel-step-label">Conversion</div>
+      <div class="tunnel-step-line"><strong>Source :</strong> CTA pages, formulaire, Calendly</div>
+      <div class="tunnel-step-line"><strong>Page :</strong> Contact / Estimation</div>
+      <div class="tunnel-step-line"><strong>Action :</strong> Il réserve un appel découverte ou remplit le formulaire de demande d'estimation.</div>
+      <span class="tunnel-cta">Réserver mon appel →</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ 07 LEVIERS MARKETING ═══ -->
+<div class="section">
+  <span class="section-badge">07 — Leviers Marketing Intégrés</span>
+  <h2 class="section-title">Les outils de croissance à activer</h2>
+  <div class="divider"></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Lead Magnet recommandé</div>
+      <div class="card-text">
+        <strong>« Le Guide du propriétaire alpin serein »</strong><br>
+        PDF de 8 à 10 pages : checklist pour préparer son bien, calendrier des saisons ski/lac, erreurs fréquentes en LCD, et présentation de l'approche BlisServices. Téléchargeable en échange d'un email.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Prise de RDV</div>
+      <div class="card-text">
+        <strong>Outil recommandé : Calendly</strong> (version gratuite suffisante au démarrage)<br>
+        Intégrer un bouton "Réserver un appel découverte de 20 min" sur l'Accueil, l'Offre et la page Contact. Limite le besoin d'allers-retours et qualifie l'intention.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Preuve sociale</div>
+      <div class="card-text">
+        Priorité 1 : témoignages écrits de propriétaires (nom + commune + type de bien).<br>
+        Priorité 2 : captures d'avis voyageurs Airbnb/Booking sur les biens gérés.<br>
+        Priorité 3 : photos avant/après ménage ou mise en scène du bien.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Formulaire qualifiant</div>
+      <div class="card-text">
+        Champs recommandés :<br>
+        Prénom · Commune du bien · Type de bien (appartement / chalet / studio) · Nombre de couchages · Plateformes actuelles (Airbnb, Booking, aucune) · Message libre.<br>
+        <em style="color:#9ca3af;">Éviter les formulaires trop longs — 6 champs max.</em>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Newsletter</div>
+      <div class="card-text">
+        Angle éditorial : <strong>« La Lettre du Propriétaire Alpin »</strong><br>
+        Fréquence : 1 fois / mois. Contenu : actualité réglementaire LCD, conseil saisonnier, retour d'expérience, astuce bien-être pour l'accueil voyageur.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Automatisation e-mail</div>
+      <div class="card-text">
+        Séquence recommandée (3 emails) après téléchargement du guide :<br>
+        J+0 : Envoi du guide + message de bienvenue de Laurine.<br>
+        J+3 : Email "Les 3 erreurs qui coûtent des réservations".<br>
+        J+7 : Invitation à réserver un appel découverte offert.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ 08 DIRECTION VISUELLE ═══ -->
+<div class="section">
+  <span class="section-badge">08 — Direction Visuelle & Éditoriale</span>
+  <h2 class="section-title">Identité visuelle du site</h2>
+  <div class="divider"></div>
+
+  <div class="card" style="margin-bottom: 36px;">
+    <div class="card-title">Palette de couleurs suggérée</div>
+    <div class="palette" style="margin-top: 18px;">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0d1b2a;"></div>
+        <div class="swatch-hex">#0D1B2A</div>
+        <div class="swatch-name">Nuit alpine</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1b3a4b;"></div>
+        <div class="swatch-hex">#1B3A4B</div>
+        <div class="swatch-name">Lac profond</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#4a9e7c;"></div>
+        <div class="swatch-hex">#4A9E7C</div>
+        <div class="swatch-name">Forêt alpine</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#e8dfc8;"></div>
+        <div class="swatch-hex">#E8DFC8</div>
+        <div class="swatch-name">Lin naturel</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#f9f8f5;"></div>
+        <div class="swatch-hex">#F9F8F5</div>
+        <div class="swatch-name">Neige douce</div>
+      </div>
+    </div>
+    <p style="margin-top: 18px; font-size: 13px; color: #9ca3af;">Un univers chromatique qui évoque simultanément la montagne (nuit alpine, forêt), le lac d'Annecy (bleu profond) et l'approche bien-être (lin naturel, blanc chaud). Sobre, premium, ancré.</p>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">Univers photographique</div>
+      <div class="card-text">Intérieurs chaleureux de chalets et appartements alpins · Vues lac d'Annecy au lever du soleil · Détails d'accueil soignés (linge blanc, produits naturels, plateau de bienvenue)</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Typographie recommandée</div>
+      <div class="card-text"><strong>Titres :</strong> Playfair Display (élégance, confiance, premium).<br><strong>Corps :</strong> Inter (lisibilité, modernité, digital).<br>Un duo classique/contemporain cohérent avec l'univers.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Éléments visuels distinctifs</div>
+      <div class="card-text">Photo de Laurine souriante (crée le lien humain) · Icônes minimalistes pour les services · Bandeau de réassurance horizontal (chiffres clés, certifications)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ 09 BLOG ═══ -->
+<div class="section">
+  <span class="section-badge">09 — Articles Blog Recommandés</span>
+  <h2 class="section-title">Plan éditorial de lancement</h2>
+  <p class="section-intro">7 sujets sélectionnés pour leur potentiel SEO, leur pertinence pour la cible et leur cohérence avec le positionnement BlisServices.</p>
+  <div class="divider"></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Pourquoi confier sa location saisonnière à une conciergerie à Annecy ?</strong></td>
+          <td><span class="tag tag-blue">SEO Local</span></td>
+          <td>Informationnelle / Commerciale</td>
+          <td><span class="badge-prio">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Tarification dynamique en montagne : comment maximiser vos revenus locatifs entre ski et été ?</strong></td>
+          <td><span class="tag tag-green">Gestion Locative</span></td>
+          <td>Informationnelle</td>
+          <td><span class="badge-prio">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Réglementation location courte durée en Haute-Savoie : ce que tout propriétaire doit savoir</strong></td>
+          <td><span class="tag tag-blue">SEO Local</span></td>
+          <td>Informationnelle / Navigationnelle</td>
+          <td><span class="badge-prio">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Checklist : préparer son appartement alpin avant la saison pour un accueil 5 étoiles</strong></td>
+          <td><span class="tag tag-green">Gestion Locative</span></td>
+          <td>Informationnelle</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Produits d'accueil sains : offrir une expérience ressourçante à vos voyageurs</strong></td>
+          <td><span class="tag tag-gold">Bien-être & Holistique</span></td>
+          <td>Informationnelle / Différenciante</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Louer son bien sur le lac d'Annecy : saisonnalité, opportunités et erreurs à éviter</strong></td>
+          <td><span class="tag tag-blue">SEO Local</span></td>
+          <td>Informationnelle / Commerciale</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>5 signes qu'il est temps de déléguer la gestion de votre location courte durée</strong></td>
+          <td><span class="tag tag-green">Gestion Locative</span></td>
+          <td>Commerciale</td>
+          <td><span class="badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ FOOTER ═══ -->
+<footer>
+  <p><strong>BlisServices Conciergerie</strong> · Blueprint Stratégique · Laurine Bertrand</p>
+  <p style="margin-top: 6px;">Document confidentiel — préparé par AR Digital · Toute reproduction interdite sans autorisation</p>
+</footer>
+
+</body>
+</html>
