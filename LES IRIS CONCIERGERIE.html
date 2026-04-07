@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Les Iris Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a2e;
+    background: #f9f8f5;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1a1a2e 0%, #2d4a6e 45%, #3d6b8e 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 36px;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 18px;
+    max-width: 820px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.70);
+    margin-bottom: 52px;
+    letter-spacing: 0.5px;
+  }
+
+  .cover-metas {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.40);
+  }
+
+  .cover-meta-value {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .cover-sep {
+    width: 1px;
+    height: 36px;
+    background: rgba(255,255,255,0.20);
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 70px 60px;
+    page-break-inside: avoid;
+  }
+
+  .section:nth-child(even) {
+    background: #ffffff;
+  }
+
+  .section:nth-child(odd) {
+    background: #f9f8f5;
+  }
+
+  .section-header {
+    margin-bottom: 44px;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #3d6b8e;
+    background: rgba(61,107,142,0.10);
+    padding: 5px 14px;
+    border-radius: 30px;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #1a1a2e;
+    line-height: 1.25;
+  }
+
+  .section-intro {
+    margin-top: 12px;
+    font-size: 15px;
+    color: #5a6a7a;
+    max-width: 640px;
+    line-height: 1.7;
+  }
+
+  /* ── CARDS ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+  }
+
+  .card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #3d6b8e;
+    margin-bottom: 10px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    color: #4a5a6a;
+    line-height: 1.75;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, #2d4a6e 0%, #3d6b8e 100%);
+    border-radius: 16px;
+    padding: 40px 44px;
+    color: #ffffff;
+    margin-bottom: 36px;
+  }
+
+  .highlight-box .hl-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 14px;
+  }
+
+  .highlight-box .hl-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #ffffff;
+  }
+
+  /* ── TONE STRIP ── */
+  .tone-strip {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .tone-tag {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2d4a6e;
+    background: rgba(45,74,110,0.08);
+    padding: 6px 18px;
+    border-radius: 30px;
+    border: 1px solid rgba(45,74,110,0.15);
+  }
+
+  /* ── LIST ── */
+  .clean-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .clean-list li {
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 14px;
+    color: #3a4a5a;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .clean-list li:last-child {
+    border-bottom: none;
+  }
+
+  .clean-list li::before {
+    content: "→";
+    color: #3d6b8e;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── TUNNEL ── */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+  }
+
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+    position: relative;
+  }
+
+  .tunnel-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: rgba(61,107,142,0.12);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .tunnel-step-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #3d6b8e;
+    margin-bottom: 14px;
+  }
+
+  .tunnel-line {
+    font-size: 13px;
+    color: #4a5a6a;
+    line-height: 1.65;
+    margin-bottom: 6px;
+  }
+
+  .tunnel-line strong {
+    color: #1a1a2e;
+    font-weight: 600;
+  }
+
+  .tunnel-cta {
+    margin-top: 16px;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #3d6b8e;
+    padding: 7px 16px;
+    border-radius: 20px;
+  }
+
+  /* ── TABLE ── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 14px;
+  }
+
+  thead tr {
+    background: #2d4a6e;
+    color: #ffffff;
+  }
+
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody td {
+    padding: 15px 20px;
+    color: #3a4a5a;
+    vertical-align: top;
+  }
+
+  tbody tr:hover {
+    background: rgba(61,107,142,0.03);
+  }
+
+  /* ── SEO BADGES ── */
+  .badge-seo {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 20px;
+  }
+
+  .badge-fort {
+    background: #e6f4ea;
+    color: #1e7e34;
+  }
+
+  .badge-moyen {
+    background: #fff3cd;
+    color: #856404;
+  }
+
+  .badge-faible {
+    background: #f8d7da;
+    color: #721c24;
+  }
+
+  /* ── CLUSTERS ── */
+  .cluster-block {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cluster-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot-1 { background: #3d6b8e; }
+  .dot-2 { background: #6aab9e; }
+  .dot-3 { background: #e8a87c; }
+
+  /* ── MAILLAGE ── */
+  .maillage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: #4a5a6a;
+  }
+
+  .maillage-source {
+    font-weight: 600;
+    color: #2d4a6e;
+    background: rgba(45,74,110,0.08);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  .maillage-arrow {
+    color: #3d6b8e;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .maillage-dest {
+    color: #4a5a6a;
+    font-style: italic;
+  }
+
+  /* ── COULEURS PALETTE ── */
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+
+  .palette-swatch {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  }
+
+  .swatch-color {
+    height: 70px;
+  }
+
+  .swatch-info {
+    background: #ffffff;
+    padding: 10px 12px;
+  }
+
+  .swatch-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1a1a2e;
+    display: block;
+  }
+
+  .swatch-hex {
+    font-size: 11px;
+    color: #8a9aaa;
+    font-family: monospace;
+  }
+
+  /* ── ARTICLES BLOG ── */
+  .article-card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .article-priority {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 12px;
+    border-radius: 20px;
+    align-self: flex-start;
+  }
+
+  .priority-prioritaire {
+    background: #e6f4ea;
+    color: #1e7e34;
+  }
+
+  .priority-moyen {
+    background: #fff3cd;
+    color: #856404;
+  }
+
+  .priority-faible {
+    background: #f8d7da;
+    color: #721c24;
+  }
+
+  .article-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a2e;
+    line-height: 1.4;
+  }
+
+  .article-meta {
+    font-size: 12px;
+    color: #8a9aaa;
+  }
+
+  .article-meta span {
+    font-weight: 600;
+    color: #5a7a8a;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #1a1a2e;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    padding: 32px 40px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer strong {
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 38px; }
+    .cover-sep { display: none; }
+    .section { padding: 48px 24px; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .tunnel-grid, .palette-grid {
+      grid-template-columns: 1fr;
+    }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box .hl-text { font-size: 18px; }
+    .tone-strip { gap: 10px; }
+    .table-wrap { overflow-x: auto; }
+    table { min-width: 600px; }
+    .maillage-row { flex-wrap: wrap; }
+  }
+
+  @media print {
+    .section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════ COVER -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique · AR Digital</div>
+  <h1 class="cover-title">Les Iris Conciergerie</h1>
+  <p class="cover-subtitle">Document de positionnement stratégique — Confidentiel</p>
+  <div class="cover-metas">
+    <div class="cover-meta">
+      <span class="cover-meta-label">Client</span>
+      <span class="cover-meta-value">Didier Berhault</span>
+    </div>
+    <div class="cover-sep"></div>
+    <div class="cover-meta">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie locative</span>
+    </div>
+    <div class="cover-sep"></div>
+    <div class="cover-meta">
+      <span class="cover-meta-label">Zone</span>
+      <span class="cover-meta-value">Var (83)</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ 01 — POSITIONNEMENT -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">01 — Positionnement</span>
+    <h2 class="section-title">Identité &amp; Différenciation</h2>
+  </div>
+
+  <div class="highlight-box">
+    <div class="hl-label">Promesse de valeur principale</div>
+    <div class="hl-text">Dans le Var, Les Iris Conciergerie prend en charge intégralement la gestion de votre location courte durée — de l'annonce au ménage — pour que vous perceviez des revenus sans vous investir une seule heure.</div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:28px;">
+    <div class="card">
+      <div class="card-label">Ligne directrice</div>
+      <div class="card-title">Intendance locale sans compromis</div>
+      <div class="card-text">Un interlocuteur unique, une gestion terrain complète, un forfait transparent à 23 % TTC. L'image d'un service premium ancré dans la proximité varoise.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Ton éditorial</div>
+      <div class="card-title">Rassurant · Humain · Professionnel</div>
+      <div class="card-text">Un ton chaleureux qui inspire confiance dès le premier contact, porté par une expérience de 40 ans dans le service et la relation client. Jamais froid, jamais commercial à outrance.</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-label">Pilier 1</div>
+      <div class="card-title">L'homme de terrain du Var</div>
+      <div class="card-text">Didier est présent physiquement dans le Var. Il connaît les saisons, les événements locaux, les attentes des voyageurs de la région. Pas un opérateur national délocalisé.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Pilier 2</div>
+      <div class="card-title">Forfait tout inclus, zéro surprise</div>
+      <div class="card-text">23 % TTC, tout compris. Tarification dynamique, gestion multiplateforme, ménage, linge, check-in autonome. Le propriétaire sait exactement ce qu'il paie et ce qu'il obtient.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Pilier 3</div>
+      <div class="card-title">Optimisation active de la rentabilité</div>
+      <div class="card-text">Tarification ajustée aux saisons et événements locaux via des logiciels professionnels. L'objectif : maximiser le taux d'occupation et les revenus du propriétaire sur Airbnb, Booking et autres.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Pilier 4</div>
+      <div class="card-title">Intendance digne d'un hôtel</div>
+      <div class="card-text">Équipe ménage professionnelle, réapprovisionnement des consommables, vérification de l'état du logement à chaque rotation. Le standard des plateformes respecté à chaque séjour.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Pilier 5</div>
+      <div class="card-title">Valorisation du bien incluse</div>
+      <div class="card-text">Conseils décoration, identification des améliorations, création d'annonces attractives. La conciergerie ne gère pas seulement : elle améliore l'attractivité du bien sur le long terme.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ 02 — CLIENT CIBLE -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">02 — Client Cible</span>
+    <h2 class="section-title">Portrait du Propriétaire Idéal</h2>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:24px;">
+    <div class="card">
+      <div class="card-label">Profil type</div>
+      <div class="card-title">Le propriétaire actif du Var</div>
+      <div class="card-text">40–65 ans. Propriétaire d'un bien dans le Var (villa, appartement, maison de vacances). Déjà sur Airbnb ou Booking — ou en train d'y réfléchir. Travaille ou est à la retraite active. N'a ni le temps ni l'envie de gérer les détails opérationnels.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Motivations principales</div>
+      <div class="card-title">Ce qui le pousse à agir</div>
+      <div class="card-text">
+        <ul class="clean-list">
+          <li>Générer des revenus complémentaires sans effort personnel</li>
+          <li>Être déchargé des tâches chronophages (ménage, check-in, messages)</li>
+          <li>Maximiser l'occupation et la rentabilité</li>
+          <li>Protéger son bien et sa réputation sur les plateformes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-label">Freins &amp; objections</div>
+      <div class="card-title">Ce qui le retient</div>
+      <div class="card-text">
+        <ul class="clean-list">
+          <li>Peur de perdre le contrôle de son bien</li>
+          <li>Doutes sur la fiabilité d'un prestataire inconnu</li>
+          <li>Interrogation sur le coût réel (23 % est-ce rentable ?)</li>
+          <li>Mauvaise expérience passée avec une autre conciergerie</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Critères de décision</div>
+      <div class="card-title">Ce qui le convainc</div>
+      <div class="card-text">
+        <ul class="clean-list">
+          <li>Transparence totale sur le forfait et les services inclus</li>
+          <li>Présence locale rassurante (quelqu'un de joignable)</li>
+          <li>Preuves sociales : avis, témoignages propriétaires</li>
+          <li>Facilité à démarrer (démarches, déclaration mairie incluses)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ 03 — OBJECTIFS DU SITE -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">03 — Objectifs du Site</span>
+    <h2 class="section-title">Ce que le site doit accomplir</h2>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-label">Priorité 1</div>
+      <div class="card-title">Génération de leads</div>
+      <div class="card-text">Capter les coordonnées de propriétaires varoins intéressés via formulaire qualifiant et lead magnet. Premier objectif business du site.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Priorité 2</div>
+      <div class="card-title">Réassurance &amp; confiance</div>
+      <div class="card-text">Convaincre un propriétaire hésitant grâce au profil humain de Didier, aux avis clients et à la transparence du forfait. Lever les objections avant la prise de contact.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Priorité 3</div>
+      <div class="card-title">SEO local Var</div>
+      <div class="card-text">Apparaître sur des requêtes comme "conciergerie Airbnb Var", "gestion location courte durée Var" et capter un trafic qualifié de propriétaires locaux.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Priorité 4</div>
+      <div class="card-title">Prise de RDV</div>
+      <div class="card-text">Proposer un rendez-vous découverte facile à réserver (lien Calendly ou équivalent) pour transformer un visiteur en prospect chaud rapidement.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Priorité 5</div>
+      <div class="card-title">Conversion</div>
+      <div class="card-text">Guider chaque visiteur vers une action claire à chaque étape : télécharger le guide, prendre RDV, envoyer une demande. Aucun visiteur ne repart sans avoir eu une proposition d'action.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Priorité 6</div>
+      <div class="card-title">Notoriété locale</div>
+      <div class="card-text">Installer la marque "Les Iris Conciergerie" comme la référence de confiance pour la gestion locative courte durée dans le Var.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ 04 — ARBORESCENCE -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">04 — Arborescence du Site</span>
+    <h2 class="section-title">Structure &amp; Pages Recommandées</h2>
+    <p class="section-intro">Chaque page est pensée pour un objectif précis. Les services ne font pas l'objet d'une page individuelle — ils sont détaillés à l'intérieur de la page Offre.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong><br><span style="font-size:12px;color:#8a9aaa;">Présentation globale, promesse, CTA fort</span></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Var</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre Offre</strong><br><span style="font-size:12px;color:#8a9aaa;">Tous les services inclus dans le forfait 23 %</span></td>
+          <td>PAS</td>
+          <td>gestion complète location Airbnb Var</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À Propos</strong><br><span style="font-size:12px;color:#8a9aaa;">Histoire de Didier, valeurs, engagement</span></td>
+          <td>BAB</td>
+          <td>conciergerie humaine Var fondateur</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>Pourquoi nous confier votre bien ?</strong><br><span style="font-size:12px;color:#8a9aaa;">Réassurance, comparatif gestion seul vs. conciergerie</span></td>
+          <td>PAS</td>
+          <td>déléguer gestion location vacances Var</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie Airbnb Toulon &amp; Littoral Varois</strong><br><span style="font-size:12px;color:#8a9aaa;">Page SEO locale — zone côtière du Var</span></td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Toulon Var</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie Airbnb Haut-Var &amp; Arrière-pays</strong><br><span style="font-size:12px;color:#8a9aaa;">Page SEO locale — zone intérieure du Var</span></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée arrière-pays varois</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong><br><span style="font-size:12px;color:#8a9aaa;">Contenus SEO et nurturing propriétaires</span></td>
+          <td>—</td>
+          <td>conseils location courte durée Var</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact &amp; Prise de RDV</strong><br><span style="font-size:12px;color:#8a9aaa;">Formulaire qualifiant + calendrier RDV</span></td>
+          <td>—</td>
+          <td>demande gestion locative conciergerie Var</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ 05 — COCON SÉMANTIQUE -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">05 — Cocon Sémantique</span>
+    <h2 class="section-title">Clusters &amp; Maillage Interne</h2>
+    <p class="section-intro">3 clusters thématiques pour structurer l'autorité SEO du site et guider naturellement les visiteurs vers la conversion.</p>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title"><span class="cluster-dot dot-1"></span> Cluster 1 — Gestion locative &amp; délégation</div>
+    <div class="card-text" style="margin-bottom:16px;">Pages clés : Accueil · Notre Offre · Pourquoi nous confier votre bien<br>Thèmes couverts : gestion Airbnb Var, conciergerie tout inclus, déléguer la gestion locative, forfait transparent.</div>
+    <div class="maillage-row">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre Offre · Pourquoi nous confier votre bien · Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Notre Offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Accueil · Contact · Articles blog sur la gestion locative</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Pourquoi nous confier votre bien</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre Offre · À Propos · Contact</span>
+    </div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title"><span class="cluster-dot dot-2"></span> Cluster 2 — SEO Local Var</div>
+    <div class="card-text" style="margin-bottom:16px;">Pages clés : Page locale Toulon &amp; Littoral · Page locale Haut-Var &amp; Arrière-pays<br>Thèmes couverts : conciergerie Airbnb Toulon, gestion locative Fréjus, Saint-Tropez, Draguignan, arrière-pays varois.</div>
+    <div class="maillage-row">
+      <span class="maillage-source">Page locale Toulon</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre Offre · Contact · Article blog "Louer à Toulon"</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Page locale Haut-Var</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre Offre · Contact · Article blog "Louer dans l'arrière-pays"</span>
+    </div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title"><span class="cluster-dot dot-3"></span> Cluster 3 — Confiance &amp; Humanité</div>
+    <div class="card-text" style="margin-bottom:16px;">Pages clés : À Propos · Blog (témoignages, conseils)<br>Thèmes couverts : profil du fondateur, valeurs de la conciergerie, conseils propriétaires, déclaration meublé de tourisme.</div>
+    <div class="maillage-row">
+      <span class="maillage-source">À Propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre Offre · Contact · Articles blog "conseils"</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Articles Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre Offre · Pages locales · Contact</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ 06 — TUNNEL DE CONVERSION -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">06 — Tunnel de Conversion</span>
+    <h2 class="section-title">Du Premier Clic à la Signature</h2>
+  </div>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-number">01</div>
+      <div class="tunnel-step-title">Découverte</div>
+      <div class="tunnel-line"><strong>Source :</strong> Google (SEO local), bouche-à-oreille, réseaux sociaux</div>
+      <div class="tunnel-line"><strong>Page :</strong> Accueil / Page locale SEO</div>
+      <div class="tunnel-line"><strong>Objectif :</strong> Capter l'attention du propriétaire varois</div>
+      <span class="tunnel-cta">En savoir plus →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">02</div>
+      <div class="tunnel-step-title">Intérêt</div>
+      <div class="tunnel-line"><strong>Source :</strong> Navigation interne</div>
+      <div class="tunnel-line"><strong>Page :</strong> Notre Offre / Pourquoi nous confier votre bien</div>
+      <div class="tunnel-line"><strong>Objectif :</strong> Faire comprendre la valeur du forfait tout inclus</div>
+      <span class="tunnel-cta">Télécharger le guide →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">03</div>
+      <div class="tunnel-step-title">Confiance</div>
+      <div class="tunnel-line"><strong>Source :</strong> À Propos, avis clients, blog</div>
+      <div class="tunnel-line"><strong>Page :</strong> À Propos / Témoignages</div>
+      <div class="tunnel-line"><strong>Objectif :</strong> Lever les doutes sur la fiabilité de la conciergerie</div>
+      <span class="tunnel-cta">Voir les avis →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">04</div>
+      <div class="tunnel-step-title">Conversion</div>
+      <div class="tunnel-line"><strong>Source :</strong> CTA présents sur toutes les pages</div>
+      <div class="tunnel-line"><strong>Page :</strong> Contact &amp; Prise de RDV</div>
+      <div class="tunnel-line"><strong>Objectif :</strong> Déclencher une prise de contact ou un RDV découverte</div>
+      <span class="tunnel-cta">Prendre RDV →</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ 07 — LEVIERS MARKETING -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">07 — Leviers Marketing Intégrés</span>
+    <h2 class="section-title">Outils &amp; Mécaniques de Conversion</h2>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:24px;">
+    <div class="card">
+      <div class="card-label">Lead Magnet</div>
+      <div class="card-title">Guide PDF : "Louer en courte durée dans le Var — les 7 étapes pour se lancer sans stress"</div>
+      <div class="card-text">PDF de 8 à 10 pages téléchargeable en échange d'un email. Contenu : démarches légales, déclaration mairie, optimisation d'annonce, tarification saisonnière varoise. Positionne Didier comme expert local.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Prise de RDV</div>
+      <div class="card-title">Calendly (ou Cal.com gratuit)</div>
+      <div class="card-text">Un bouton "Réserver un appel découverte gratuit de 30 min" présent dans le header, en bas de la page Offre et sur la page Contact. Simple, sans friction, disponible 24/7.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Preuve Sociale</div>
+      <div class="card-title">Témoignages propriétaires + résultats chiffrés</div>
+      <div class="card-text">Avis Google intégrés, témoignages de propriétaires (photo + prénom + commune du Var), et si possible un indicateur de taux d'occupation moyen obtenu. Format court, authentique, géolocalisé.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Formulaire Qualifiant</div>
+      <div class="card-title">5 champs essentiels</div>
+      <div class="card-text">
+        <ul class="clean-list">
+          <li>Nom &amp; prénom</li>
+          <li>Email + téléphone</li>
+          <li>Commune du bien</li>
+          <li>Type de bien (villa / appartement / maison)</li>
+          <li>Situation actuelle (déjà en location / pas encore)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Newsletter</div>
+      <div class="card-title">Angle éditorial : "Le propriétaire serein"</div>
+      <div class="card-text">1 email mensuel avec : 1 conseil pratique pour optimiser sa location, 1 actualité locale (événements du Var impactant la demande), 1 mise en avant d'un service ou témoignage. Ton bienveillant.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Automatisation</div>
+      <div class="card-title">Séquence email post-téléchargement</div>
+      <div class="card-text">
+        <ul class="clean-list">
+          <li>J+0 : Envoi du guide PDF + email de bienvenue chaleureux</li>
+          <li>J+3 : "Votre bien est-il prêt pour la saison estivale ?" + lien Notre Offre</li>
+          <li>J+7 : Témoignage d'un propriétaire du Var + invitation à prendre RDV</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ 08 — DIRECTION VISUELLE -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">08 — Direction Visuelle &amp; Éditoriale</span>
+    <h2 class="section-title">Univers Graphique Recommandé</h2>
+    <p class="section-intro">Une identité visuelle qui évoque la Méditerranée varoises — lumière, nature, élégance discrète — sans tomber dans le cliché balnéaire.</p>
+  </div>
+
+  <div class="palette-grid" style="margin-bottom:36px;">
+    <div class="palette-swatch">
+      <div class="swatch-color" style="background:#2d4a6e;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Bleu Var profond</span>
+        <span class="swatch-hex">#2D4A6E</span>
+      </div>
+    </div>
+    <div class="palette-swatch">
+      <div class="swatch-color" style="background:#6aab9e;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Vert Méditerranée</span>
+        <span class="swatch-hex">#6AAB9E</span>
+      </div>
+    </div>
+    <div class="palette-swatch">
+      <div class="swatch-color" style="background:#e8c99a;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Sable doré</span>
+        <span class="swatch-hex">#E8C99A</span>
+      </div>
+    </div>
+    <div class="palette-swatch">
+      <div class="swatch-color" style="background:#f9f6f1;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Blanc ivoire</span>
+        <span class="swatch-hex">#F9F6F1</span>
+      </div>
+    </div>
+    <div class="palette-swatch">
+      <div class="swatch-color" style="background:#1a1a2e;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Nuit profonde</span>
+        <span class="swatch-hex">#1A1A2E</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-label">Univers visuel</div>
+      <div class="card-title">5 éléments visuels recommandés</div>
+      <div class="card-text">
+        <ul class="clean-list">
+          <li>Photos authentiques de maisons &amp; villas du Var en lumière naturelle</li>
+          <li>Portraits humains de Didier, chaleureux et professionnels</li>
+          <li>Icônes minimalistes ligne fine (check-in, clé, calendrier, linge)</li>
+          <li>Motif discret inspiré de l'iris (fleur) en fond de section</li>
+          <li>Textures papier légères en fond ivoire pour la chaleur artisanale</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Typographie &amp; Style</div>
+      <div class="card-title">Élégant sans être froid</div>
+      <div class="card-text">
+        <ul class="clean-list">
+          <li>Titres en Playfair Display — évoque le luxe accessible et le soin</li>
+          <li>Corps de texte en Inter — lisibilité maximale sur mobile</li>
+          <li>Boutons CTA arrondis, couleur Bleu Var profond</li>
+          <li>Pas de néon, pas de gradients agressifs — douceur méridionale</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ 09 — ARTICLES BLOG -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">09 — Articles Blog Recommandés</span>
+    <h2 class="section-title">Contenu SEO &amp; Nurturing</h2>
+    <p class="section-intro">7 sujets stratégiques pour attirer des propriétaires varoins via Google et renforcer la posture d'expert local de Didier.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="article-card">
+      <span class="article-priority priority-prioritaire">Prioritaire</span>
+      <div class="article-title">Louer en courte durée dans le Var : ce que la loi impose en 2024 (déclaration mairie, numéro d'enregistrement)</div>
+      <div class="article-meta">Cluster : <span>SEO Local Var</span> · Intention : informationnelle</div>
+    </div>
+    <div class="article-card">
+      <span class="article-priority priority-prioritaire">Prioritaire</span>
+      <div class="article-title">Conciergerie Airbnb dans le Var : comment choisir le bon prestataire pour son bien ?</div>
+      <div class="article-meta">Cluster : <span>Gestion locative &amp; délégation</span> · Intention : commerciale</div>
+    </div>
+    <div class="article-card">
+      <span class="article-priority priority-prioritaire">Prioritaire</span>
+      <div class="article-title">Tarification dynamique : comment maximiser ses revenus locatifs dans le Var selon la saison ?</div>
+      <div class="article-meta">Cluster : <span>Gestion locative &amp; délégation</span> · Intention : informationnelle</div>
+    </div>
+    <div class="article-card">
+      <span class="article-priority priority-moyen">Moyen</span>
+      <div class="article-title">Check-in autonome : la boîte à clefs sécurisée, pourquoi les voyageurs adorent et les propriétaires aussi</div>
+      <div class="article-meta">Cluster : <span>Confiance &amp; Humanité</span> · Intention : informationnelle</div>
+    </div>
+    <div class="article-card">
+      <span class="article-priority priority-moyen">Moyen</span>
+      <div class="article-title">5 erreurs que font les propriétaires Airbnb dans le Var (et comment les éviter)</div>
+      <div class="article-meta">Cluster : <span>Gestion locative &amp; délégation</span> · Intention : informationnelle</div>
+    </div>
+    <div class="article-card">
+      <span class="article-priority priority-moyen">Moyen</span>
+      <div class="article-title">Valoriser son appartement ou sa villa pour la location saisonnière dans le Var : décoration, photos, annonce</div>
+      <div class="article-meta">Cluster : <span>SEO Local Var</span> · Intention : informationnelle</div>
+    </div>
+    <div class="article-card">
+      <span class="article-priority priority-faible">Faible</span>
+      <div class="article-title">Gestion locative en solo vs. conciergerie : combien de temps passez-vous vraiment sur votre Airbnb ?</div>
+      <div class="article-meta">Cluster : <span>Confiance &amp; Humanité</span> · Intention : comparaison</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ FOOTER -->
+<div class="footer">
+  <strong>Les Iris Conciergerie</strong> — Blueprint Stratégique réalisé par AR Digital<br>
+  Document confidentiel · Réservé à usage interne et validation client
+</div>
+
+</body>
+</html>
