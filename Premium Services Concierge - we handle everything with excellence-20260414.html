@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Premium Services Concierge</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a1a;
+    background: #f7f7f5;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0a0a0a 0%, #1c1c1c 40%, #2e2e2e 70%, #1a1a1a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -120px; left: -120px;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(180,150,100,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(180,150,100,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #b4966a;
+    margin-bottom: 28px;
+    border: 1px solid rgba(180,150,106,0.4);
+    padding: 8px 20px;
+    border-radius: 30px;
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    letter-spacing: -1px;
+  }
+
+  .cover-subtitle {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    margin-bottom: 48px;
+    letter-spacing: 0.5px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-value {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 500;
+  }
+
+  .cover-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 70px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    page-break-inside: avoid;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 48px;
+  }
+
+  .section-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #b4966a;
+    background: rgba(180,150,106,0.1);
+    border: 1px solid rgba(180,150,106,0.3);
+    padding: 6px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #111111;
+    line-height: 1.2;
+  }
+
+  /* ALERT BOX */
+  .alert-box {
+    background: #fffbf4;
+    border: 1.5px solid #e8c97a;
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 40px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .alert-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .alert-box p {
+    font-size: 14px;
+    color: #7a5c1e;
+    line-height: 1.7;
+  }
+
+  .alert-box strong {
+    display: block;
+    font-size: 15px;
+    color: #5a3e0e;
+    margin-bottom: 6px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #0a0a0a 0%, #2e2e2e 100%);
+    border-radius: 18px;
+    padding: 40px 44px;
+    margin-bottom: 32px;
+    color: #ffffff;
+  }
+
+  .highlight-box .hl-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #b4966a;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .highlight-box .hl-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #ffffff;
+  }
+
+  .highlight-box .hl-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 10px;
+  }
+
+  /* CARDS */
+  .card-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .card-icon {
+    font-size: 26px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #111111;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card ul li {
+    font-size: 14px;
+    color: #555;
+    padding: 5px 0;
+    border-bottom: 1px solid #f0f0f0;
+    line-height: 1.6;
+  }
+
+  .card ul li:last-child { border-bottom: none; }
+
+  .card ul li::before {
+    content: '—';
+    color: #b4966a;
+    margin-right: 8px;
+    font-weight: 600;
+  }
+
+  /* OBJECTIFS */
+  .objectif-item {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 22px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 14px;
+  }
+
+  .objectif-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #b4966a;
+    width: 40px;
+    flex-shrink: 0;
+    text-align: center;
+  }
+
+  .objectif-content h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 4px;
+  }
+
+  .objectif-content p {
+    font-size: 13px;
+    color: #777;
+    line-height: 1.5;
+  }
+
+  /* TABLE */
+  .table-wrapper {
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 560px;
+  }
+
+  thead {
+    background: #111111;
+    color: #ffffff;
+  }
+
+  thead th {
+    padding: 16px 22px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: left;
+    color: rgba(255,255,255,0.8);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #f0f0ee;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody tr:hover { background: #fafaf8; }
+
+  tbody td {
+    padding: 16px 22px;
+    font-size: 14px;
+    color: #333;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  tbody td:first-child {
+    font-weight: 600;
+    color: #111;
+  }
+
+  /* SEO BADGES */
+  .badge-seo {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  .badge-fort { background: #e6f4ea; color: #1e7e34; }
+  .badge-moyen { background: #fff3cd; color: #856404; }
+  .badge-faible { background: #f1f1f1; color: #666; }
+
+  /* COCON */
+  .cluster-block {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+  }
+
+  .cluster-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #efefef;
+  }
+
+  .maillage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #555;
+  }
+
+  .maillage-arrow {
+    color: #b4966a;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .maillage-tag {
+    background: #f5f0e8;
+    border: 1px solid #e8d9bc;
+    color: #7a5c1e;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* TUNNEL */
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+  }
+
+  .tunnel-step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: rgba(180,150,106,0.15);
+    position: absolute;
+    top: 16px;
+    right: 22px;
+    line-height: 1;
+  }
+
+  .tunnel-step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #b4966a;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 13px;
+  }
+
+  .tunnel-step .t-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 16px;
+  }
+
+  .tunnel-row {
+    margin-bottom: 8px;
+  }
+
+  .tunnel-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #aaa;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .tunnel-value {
+    font-size: 14px;
+    color: #333;
+  }
+
+  .cta-pill {
+    display: inline-block;
+    background: #111111;
+    color: #b4966a;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-top: 10px;
+  }
+
+  /* LEVIERS */
+  .levier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .levier-card .l-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .levier-card h4 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #b4966a;
+    margin-bottom: 8px;
+  }
+
+  .levier-card p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.65;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 32px;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+
+  .palette-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+  }
+
+  .palette-hex {
+    font-size: 11px;
+    color: #aaa;
+    text-align: center;
+  }
+
+  .palette-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-bottom: 12px;
+  }
+
+  /* VISUEL */
+  .visuel-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .visuel-item {
+    background: #f9f9f7;
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 14px;
+    color: #444;
+    border-left: 3px solid #b4966a;
+  }
+
+  /* BLOG */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .blog-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .blog-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: #f0ece4;
+    color: #7a5c1e;
+  }
+
+  .blog-intent {
+    font-size: 12px;
+    color: #888;
+    align-self: center;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #111111;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    padding: 36px 40px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  footer strong {
+    color: rgba(255,255,255,0.7);
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+
+  /* SEPARATOR */
+  .section-sep {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #b4966a, #d4b88a);
+    border-radius: 2px;
+    margin: 0 auto 0 0;
+    margin-bottom: 0;
+  }
+
+  /* NOTE STRATÉGIQUE */
+  .note-strat {
+    background: #fafaf8;
+    border: 1px solid #e8e0d4;
+    border-radius: 10px;
+    padding: 18px 22px;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.7;
+    margin-top: 20px;
+  }
+
+  .note-strat strong {
+    color: #333;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 38px; }
+    .cover { padding: 50px 24px; }
+    .cover-meta { gap: 16px; }
+    .cover-divider { display: none; }
+
+    .section { padding: 48px 24px; }
+
+    .section h2 { font-size: 26px; }
+
+    .card-grid-2,
+    .card-grid-3 {
+      grid-template-columns: 1fr;
+    }
+
+    .visuel-list { grid-template-columns: 1fr; }
+
+    .table-wrapper { overflow-x: auto; }
+
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box .hl-text { font-size: 18px; }
+
+    .palette-row { gap: 20px; }
+    .palette-grid { gap: 16px; }
+
+    .maillage-row { flex-wrap: wrap; }
+
+    .alert-box { flex-direction: column; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-badge">Blueprint Stratégique</div>
+  <h1>Premium Services<br>Concierge</h1>
+  <p class="cover-subtitle">Document de positionnement & stratégie web — Confidentiel</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Client</span>
+      <span class="cover-meta-value">Michael Chen</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Gestion locative courte durée</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Zone</span>
+      <span class="cover-meta-value">Pacific Northwest</span>
+    </div>
+  </div>
+</section>
+
+<!-- ALERTE STRATÉGIQUE -->
+<div style="max-width:1100px; margin: 48px auto 0; padding: 0 60px;">
+  <div class="alert-box">
+    <div class="alert-icon">⚠️</div>
+    <div>
+      <strong>Note préliminaire importante — À lire avant tout</strong>
+      Certaines réponses fournies au questionnaire d'onboarding sont incomplètes ou insuffisamment précises pour construire un site web performant. Ce Blueprint a été élaboré avec les informations disponibles et les meilleures pratiques du secteur, mais <strong>une session de cadrage complémentaire de 30 minutes</strong> sera indispensable pour finaliser le contenu de votre site. Les points à clarifier sont signalés tout au long de ce document.
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section class="section">
+  <div class="section-header">
+    <span class="section-badge">01</span>
+    <h2>Positionnement</h2>
+  </div>
+
+  <div class="highlight-box">
+    <span class="hl-label">Promesse de valeur principale</span>
+    <p class="hl-text">"Nous gérons vos biens locatifs dans le Pacific Northwest avec rigueur et excellence, pour que vous perceviez vos revenus sans jamais vous préoccuper de l'opérationnel."</p>
+    <p class="hl-sub">Orientation bénéfice propriétaire · Positionnement premium · Couverture régionale affirmée</p>
+  </div>
+
+  <div class="card-grid-2" style="margin-bottom:28px;">
+    <div class="card">
+      <span class="card-icon">🧭</span>
+      <h3>Ligne directrice de communication</h3>
+      <p>Excellence opérationnelle et fiabilité sans friction — chaque propriétaire perçoit ses revenus, délègue ses contraintes et fait confiance à une équipe qui anticipe.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✍️</span>
+      <h3>Ton éditorial</h3>
+      <p><strong>Professionnel · Rassurant · Précis</strong><br>Un ton d'expert terrain qui parle concret, sans jargon inutile — comme un partenaire de confiance qui sait exactement ce qu'il fait.</p>
+    </div>
+  </div>
+
+  <div class="card-grid-3">
+    <div class="card">
+      <span class="card-icon">🔍</span>
+      <h3>Expertise terrain locale</h3>
+      <p>Connaissance approfondie du marché locatif du Pacific Northwest et de ses spécificités réglementaires.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🛠️</span>
+      <h3>Service clé en main</h3>
+      <p>De l'inspection au suivi locataire, en passant par la collecte des loyers : tout est pris en charge sous un seul interlocuteur.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">💼</span>
+      <h3>Transparence tarifaire</h3>
+      <p>Un taux de commission clair à 15 %, sans frais cachés. Le propriétaire sait exactement ce qu'il paie et ce qu'il reçoit.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🤝</span>
+      <h3>Interlocuteur unique dédié</h3>
+      <p>Un contact attitré par dossier pour une relation fluide, réactive et personnalisée.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">⭐</span>
+      <h3>Positionnement premium régional</h3>
+      <p>Une conciergerie qui ne cherche pas le volume, mais la qualité de service et la satisfaction durable de ses propriétaires.</p>
+    </div>
+  </div>
+
+  <div class="note-strat">
+    <strong>Point à clarifier :</strong> Vos différenciateurs réels (certifications, années d'expérience, nombre de biens gérés, taux d'occupation moyen) n'ont pas été communiqués. Ces éléments sont essentiels pour renforcer la crédibilité de votre positionnement premium sur le site.
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section class="section" style="padding-top:0;">
+  <div class="section-header">
+    <span class="section-badge">02</span>
+    <h2>Client Cible</h2>
+  </div>
+
+  <div class="card-grid-2">
+    <div class="card">
+      <span class="card-icon">👤</span>
+      <h3>Profil type</h3>
+      <ul>
+        <li>Propriétaire de 1 à 5 biens locatifs, 35–60 ans</li>
+        <li>Actif professionnel, peu de temps disponible</li>
+        <li>Résidant dans le Pacific Northwest ou investisseur à distance</li>
+        <li>Cherche à optimiser ses revenus locatifs sans friction</li>
+        <li>A déjà eu une mauvaise expérience de gestion en autonomie</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">💡</span>
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Déléguer entièrement la gestion quotidienne</li>
+        <li>Maximiser le taux d'occupation et les revenus</li>
+        <li>Éviter les impayés et les mauvais locataires</li>
+        <li>Avoir un interlocuteur fiable et réactif</li>
+        <li>Protéger et valoriser son patrimoine immobilier</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">🚧</span>
+      <h3>Freins & objections</h3>
+      <ul>
+        <li>"15% c'est trop cher, je peux gérer moi-même"</li>
+        <li>"Comment je sais que vous ferez vraiment le travail ?"</li>
+        <li>"J'ai déjà été déçu par une autre conciergerie"</li>
+        <li>Manque de visibilité sur les actions réalisées</li>
+        <li>Peur de perdre le contrôle sur son bien</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">✅</span>
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Réputation locale et avis clients vérifiables</li>
+        <li>Clarté de l'offre et du contrat de service</li>
+        <li>Réactivité et disponibilité de l'équipe</li>
+        <li>Taux de commission justifié par la valeur rendue</li>
+        <li>Transparence des reportings et des comptes-rendus</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section class="section" style="padding-top:0;">
+  <div class="section-header">
+    <span class="section-badge">03</span>
+    <h2>Objectifs du Site</h2>
+  </div>
+
+  <div class="objectif-item">
+    <div class="objectif-rank">1</div>
+    <div class="objectif-content">
+      <h4>Génération de leads qualifiés</h4>
+      <p>Attirer des propriétaires du Pacific Northwest prêts à déléguer la gestion de leur bien et à passer à l'action.</p>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">2</div>
+    <div class="objectif-content">
+      <h4>Réassurance & conversion</h4>
+      <p>Lever les objections (coût, fiabilité, contrôle) grâce aux preuves sociales, aux détails du service et à la transparence tarifaire.</p>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">3</div>
+    <div class="objectif-content">
+      <h4>SEO local — Pacific Northwest</h4>
+      <p>Se positionner sur les requêtes de propriétaires cherchant une conciergerie de gestion locative dans la région.</p>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">4</div>
+    <div class="objectif-content">
+      <h4>Prise de rendez-vous</h4>
+      <p>Faciliter le premier contact via un appel découverte ou un formulaire qualifiant, sans friction pour le visiteur.</p>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">5</div>
+    <div class="objectif-content">
+      <h4>Notoriété & crédibilité régionale</h4>
+      <p>Asseoir l'image d'une conciergerie sérieuse, premium et ancrée localement dans le Pacific Northwest.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section class="section" style="padding-top:0;">
+  <div class="section-header">
+    <span class="section-badge">04</span>
+    <h2>Arborescence du Site</h2>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Accueil</td>
+          <td>AIDA</td>
+          <td>conciergerie gestion locative Pacific Northwest</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Nos Services</td>
+          <td>PAS</td>
+          <td>gestion locative courte durée Pacific Northwest</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>À Propos</td>
+          <td>BAB</td>
+          <td>conciergerie locative de confiance Pacific Northwest</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Témoignages & Résultats</td>
+          <td>AIDA</td>
+          <td>avis conciergerie gestion locative</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>SEO Local — Seattle</td>
+          <td>PAS</td>
+          <td>conciergerie locative Seattle</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>SEO Local — Portland</td>
+          <td>PAS</td>
+          <td>conciergerie locative Portland</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Contact & Prise de RDV</td>
+          <td>AIDA</td>
+          <td>contacter conciergerie locative</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td>Blog</td>
+          <td>—</td>
+          <td>gestion locative courte durée conseils</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note-strat" style="margin-top:20px;">
+    <strong>Règle appliquée :</strong> Une seule page "Nos Services" regroupe l'ensemble des prestations (inspections, réparations, collecte des loyers, sélection des locataires). Les détails sont présentés sous forme de blocs internes à la page, pas en pages séparées. Deux pages locales SEO maximum ont été intégrées (Seattle & Portland), correspondant aux principales métropoles du Pacific Northwest.
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section class="section" style="padding-top:0;">
+  <div class="section-header">
+    <span class="section-badge">05</span>
+    <h2>Cocon Sémantique</h2>
+  </div>
+
+  <div class="cluster-block">
+    <h3>🏠 Cluster 1 — Gestion locative & services</h3>
+    <p style="font-size:14px; color:#555; margin-bottom:14px;">Pages pilier + articles de blog autour des services de gestion, de la sélection des locataires et des obligations du propriétaire.</p>
+    <div class="maillage-row">
+      <span class="maillage-tag">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Nos Services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Blog (articles services)</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Contact</span>
+    </div>
+  </div>
+
+  <div class="cluster-block">
+    <h3>📍 Cluster 2 — SEO local Pacific Northwest</h3>
+    <p style="font-size:14px; color:#555; margin-bottom:14px;">Pages locales géo-ciblées renforcées par des articles de blog traitant du marché locatif local.</p>
+    <div class="maillage-row">
+      <span class="maillage-tag">SEO Local Seattle</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Nos Services</span>
+    </div>
+    <div class="maillage-row" style="margin-top:8px;">
+      <span class="maillage-tag">SEO Local Portland</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Nos Services</span>
+    </div>
+    <div class="maillage-row" style="margin-top:8px;">
+      <span class="maillage-tag">Blog (marché local)</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Pages locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Contact</span>
+    </div>
+  </div>
+
+  <div class="cluster-block">
+    <h3>💬 Cluster 3 — Confiance & réassurance</h3>
+    <p style="font-size:14px; color:#555; margin-bottom:14px;">Pages et contenus visant à lever les objections et construire la relation de confiance.</p>
+    <div class="maillage-row">
+      <span class="maillage-tag">À Propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Témoignages</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Nos Services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Contact</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section class="section" style="padding-top:0;">
+  <div class="section-header">
+    <span class="section-badge">06</span>
+    <h2>Tunnel de Conversion</h2>
+  </div>
+
+  <div class="card-grid-2">
+    <div class="tunnel-step card">
+      <span class="tunnel-step-num">1</span>
+      <h3>Étape 1</h3>
+      <p class="t-title">Découverte</p>
+      <div class="tunnel-row">
+        <span class="tunnel-label">Source de trafic</span>
+        <span class="tunnel-value">Google organique (SEO), Google Maps, bouche-à-oreille</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-label">Page concernée</span>
+        <span class="tunnel-value">Accueil / Pages SEO Locales</span>
+      </div>
+      <span class="cta-pill">→ Découvrir nos services</span>
+    </div>
+
+    <div class="tunnel-step card">
+      <span class="tunnel-step-num">2</span>
+      <h3>Étape 2</h3>
+      <p class="t-title">Intérêt</p>
+      <div class="tunnel-row">
+        <span class="tunnel-label">Source de trafic</span>
+        <span class="tunnel-value">Navigation interne depuis l'accueil ou le blog</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-label">Page concernée</span>
+        <span class="tunnel-value">Nos Services / Blog</span>
+      </div>
+      <span class="cta-pill">→ Télécharger le guide gratuit</span>
+    </div>
+
+    <div class="tunnel-step card">
+      <span class="tunnel-step-num">3</span>
+      <h3>Étape 3</h3>
+      <p class="t-title">Confiance</p>
+      <div class="tunnel-row">
+        <span class="tunnel-label">Source de trafic</span>
+        <span class="tunnel-value">Relance email, navigation interne</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-label">Page concernée</span>
+        <span class="tunnel-value">À Propos / Témoignages & Résultats</span>
+      </div>
+      <span class="cta-pill">→ Voir les témoignages</span>
+    </div>
+
+    <div class="tunnel-step card">
+      <span class="tunnel-step-num">4</span>
+      <h3>Étape 4</h3>
+      <p class="t-title">Conversion</p>
+      <div class="tunnel-row">
+        <span class="tunnel-label">Source de trafic</span>
+        <span class="tunnel-value">Depuis toutes les pages (CTA persistant)</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-label">Page concernée</span>
+        <span class="tunnel-value">Contact & Prise de RDV</span>
+      </div>
+      <span class="cta-pill">→ Réserver un appel gratuit</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section class="section" style="padding-top:0;">
+  <div class="section-header">
+    <span class="section-badge">07</span>
+    <h2>Leviers Marketing Intégrés</h2>
+  </div>
+
+  <div class="card-grid-2">
+    <div class="levier-card card">
+      <span class="l-icon">🎁</span>
+      <h4>Lead Magnet</h4>
+      <p>"Guide du propriétaire : 7 erreurs à éviter avant de confier votre bien à une conciergerie dans le Pacific Northwest" — PDF téléchargeable en échange d'un email.</p>
+    </div>
+    <div class="levier-card card">
+      <span class="l-icon">📅</span>
+      <h4>Prise de rendez-vous</h4>
+      <p>Intégration de <strong>Calendly</strong> (ou equivalent) sur la page Contact pour un appel découverte de 20 minutes, sans engagement, directement depuis le site.</p>
+    </div>
+    <div class="levier-card card">
+      <span class="l-icon">⭐</span>
+      <h4>Preuve sociale</h4>
+      <p>Avis Google intégrés, témoignages écrits de propriétaires avec prénom + ville + type de bien, et indicateurs clés (ex : taux d'occupation moyen, nombre de biens gérés).</p>
+    </div>
+    <div class="levier-card card">
+      <span class="l-icon">📋</span>
+      <h4>Formulaire qualifiant</h4>
+      <p>Champs recommandés : Prénom / Email / Téléphone / Nombre de biens / Type de bien / Ville / Message libre. Permet de filtrer les leads avant le premier appel.</p>
+    </div>
+    <div class="levier-card card">
+      <span class="l-icon">📨</span>
+      <h4>Newsletter</h4>
+      <p>Angle éditorial : conseils pratiques pour propriétaires dans le Pacific Northwest — évolutions réglementaires, optimisation locative, retours d'expérience terrain.</p>
+    </div>
+    <div class="levier-card card">
+      <span class="l-icon">🤖</span>
+      <h4>Automatisation email</h4>
+      <p>Séquence de 3 emails post-téléchargement du lead magnet : J+0 remise du guide / J+3 présentation des services / J+7 invitation à réserver un appel découverte.</p>
+    </div>
+  </div>
+
+  <div class="note-strat" style="margin-top:24px;">
+    <strong>Point à clarifier :</strong> La mise en place de la preuve sociale (avis Google, témoignages, indicateurs de performance) nécessite que vous nous fournissiez des données réelles — taux d'occupation, nombre de biens gérés, durée d'activité. Ces éléments sont indispensables pour crédibiliser votre positionnement premium.
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section class="section" style="padding-top:0;">
+  <div class="section-header">
+    <span class="section-badge">08</span>
+    <h2>Direction Visuelle & Éditoriale</h2>
+  </div>
+
+  <div class="highlight-box" style="margin-bottom:40px;">
+    <span class="hl-label">Choix de palette</span>
+    <p class="hl-text">Vous avez demandé "black and white only".</p>
+    <p class="hl-sub">Nous avons respecté cette base monochrome en l'enrichissant d'un or discret — indispensable pour signifier le positionnement "premium" de votre conciergerie et créer une hiérarchie visuelle lisible. Un site 100% noir et blanc sans accent serait perçu comme austère et peu engageant.</p>
+  </div>
+
+  <div class="palette-row">
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#0a0a0a;"></div>
+      <div class="palette-name">Noir Profond</div>
+      <div class="palette-hex">#0a0a0a</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#2e2e2e;"></div>
+      <div class="palette-name">Anthracite</div>
+      <div class="palette-hex">#2e2e2e</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#b4966a;"></div>
+      <div class="palette-name">Or Premium</div>
+      <div class="palette-hex">#b4966a</div>
+    </div>
+  </div>
+  <div class="palette-row" style="margin-top:16px;">
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#f7f7f5; border:1px solid #e0e0e0;"></div>
+      <div class="palette-name">Blanc Cassé</div>
+      <div class="palette-hex">#f7f7f5</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#aaaaaa;"></div>
+      <div class="palette-name">Gris Neutre</div>
+      <div class="palette-hex">#aaaaaa</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#111; margin: 40px 0 20px;">Univers visuel recommandé</h3>
+  <div class="visuel-list">
+    <div class="visuel-item">Photographies de biens immobiliers modernes du Pacific Northwest — intérieurs soignés, lumière naturelle, qualité magazine</div>
+    <div class="visuel-item">Portraits professionnels de l'équipe en situation (inspection, remise de clés) pour humaniser et rassurer</div>
+    <div class="visuel-item">Icônes au trait fin (line icons) en noir ou or pour illustrer les services sans alourdir les pages</div>
+    <div class="visuel-item">Typographie contrastée Playfair Display (titres élégants) + Inter (corps sobre et lisible)</div>
+    <div class="visuel-item">Espaces blancs généreux pour refléter l'image premium et faciliter la lecture sur tous les écrans</div>
+  </div>
+
+  <div class="note-strat" style="margin-top:24px;">
+    <strong>Point à clarifier :</strong> Aucune photo de vos biens ni de votre équipe n'a été fournie. Pour un site premium, le contenu visuel est aussi important que le texte. Prévoyez une session photo ou fournissez-nous des visuels de qualité avant le lancement.
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section class="section" style="padding-top:0;">
+  <div class="section-header">
+    <span class="section-badge">09</span>
+    <h2>Articles Blog Recommandés</h2>
+  </div>
+
+  <div class="card-grid-2">
+    <div class="blog-card card">
+      <h4>Comment choisir sa conciergerie locative dans le Pacific Northwest : 5 critères indispensables</h4>
+      <p style="font-size:13px; color:#777; margin-top:6px;">Répond directement à la question que se posent vos prospects avant de vous contacter.</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster Confiance</span>
+        <span class="badge-seo badge-fort">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="blog-card card">
+      <h4>Gestion locative courte durée à Seattle : ce que vous devez savoir en 2024</h4>
+      <p style="font-size:13px; color:#777; margin-top:6px;">Article SEO local à fort potentiel, ancré sur la ville principale de votre zone.</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster Local</span>
+        <span class="badge-seo badge-fort">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="blog-card card">
+      <h4>Sélection de locataires : pourquoi c'est la décision la plus importante d'un propriétaire</h4>
+      <p style="font-size:13px; color:#777; margin-top:6px;">Met en valeur votre service de tenant screening tout en apportant de la valeur éducative.</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster Services</span>
+        <span class="badge-seo badge-fort">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="blog-card card">
+      <h4>Location courte durée à Portland : réglementation, opportunités et pièges à éviter</h4>
+      <p style="font-size:13px; color:#777; margin-top:6px;">Article SEO local sur Portland, renforçant la page locale et l'autorité régionale.</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster Local</span>
+        <span class="badge-seo badge-moyen">Moyen</span>
+      </div>
+    </div>
+
+    <div class="blog-card card">
+      <h4>Combien coûte vraiment la gestion locative ? Ce que cache (ou pas) le taux de commission</h4>
+      <p style="font-size:13px; color:#777; margin-top:6px;">Répond à l'objection prix et justifie votre commission de 15% par la valeur rendue.</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster Confiance</span>
+        <span class="badge-seo badge-moyen">Moyen</span>
+      </div>
+    </div>
+
+    <div class="blog-card card">
+      <h4>Inspection de bien locatif : à quelle fréquence, et pourquoi c'est non-négociable</h4>
+      <p style="font-size:13px; color:#777; margin-top:6px;">Met en avant votre service d'inspection tout en éduquant les propriétaires peu expérimentés.</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster Services</span>
+        <span class="badge-seo badge-moyen">Moyen</span>
+      </div>
+    </div>
+
+    <div class="blog-card card">
+      <h4>Propriétaire absent : comment gérer son bien à distance depuis le Pacific Northwest</h4>
+      <p style="font-size:13px; color:#777; margin-top:6px;">Cible les investisseurs non-résidents, un segment souvent très motivé à déléguer.</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster Services</span>
+        <span class="badge-seo badge-faible">Faible</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Premium Services Concierge — Michael Chen</strong>
+  Document confidentiel produit par AR Digital · Tous droits réservés · Ne pas diffuser sans autorisation
+</footer>
+
+</body>
+</html>
