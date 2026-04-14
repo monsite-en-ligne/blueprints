@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Aura Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a2e;
+    background: #f8f9fc;
+  }
+
+  /* ── COUVERTURE ── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0D1C44 0%, #1A4B8F 55%, #2C62B0 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    top: -150px; right: -150px;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    bottom: -100px; left: -100px;
+  }
+  .cover-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.85);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 40px;
+    margin-bottom: 36px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+    margin-bottom: 52px;
+    letter-spacing: 0.5px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  .cover-meta-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 70px 60px;
+    page-break-inside: avoid;
+  }
+  .section:nth-child(even) { background: #ffffff; }
+  .section:nth-child(odd) { background: #f8f9fc; }
+
+  .section-header {
+    margin-bottom: 44px;
+  }
+  .section-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #1A4B8F;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: #0D1C44;
+    line-height: 1.25;
+  }
+  .section-divider {
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(90deg, #1A4B8F, #2C62B0);
+    border-radius: 2px;
+    margin-top: 14px;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, #0D1C44 0%, #1A4B8F 100%);
+    color: #ffffff;
+    border-radius: 18px;
+    padding: 40px 44px;
+    margin-bottom: 36px;
+  }
+  .highlight-box .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 12px;
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #ffffff;
+  }
+
+  /* ── CARDS ── */
+  .cards-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .cards-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .card-icon {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0D1C44;
+    margin-bottom: 8px;
+  }
+  .card-text {
+    font-size: 14px;
+    color: #4a5568;
+    line-height: 1.7;
+  }
+
+  /* ── LISTES ── */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+  }
+  .styled-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    color: #374151;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before {
+    content: '→';
+    color: #1A4B8F;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── OBJECTIFS ── */
+  .objectif-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 24px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 16px;
+  }
+  .objectif-rank {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1A4B8F, #2C62B0);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .objectif-content strong {
+    font-size: 15px;
+    color: #0D1C44;
+    display: block;
+  }
+  .objectif-content span {
+    font-size: 13px;
+    color: #6b7280;
+  }
+
+  /* ── TABLEAU ── */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 14px;
+  }
+  thead {
+    background: linear-gradient(90deg, #0D1C44, #1A4B8F);
+    color: white;
+  }
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  tbody tr:nth-child(even) { background: #f8f9fc; }
+  tbody td {
+    padding: 14px 20px;
+    color: #374151;
+    border-bottom: 1px solid #eef0f5;
+    vertical-align: top;
+  }
+  .badge-fort { background: #dcfce7; color: #166534; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .badge-moyen { background: #fef9c3; color: #854d0e; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .badge-faible { background: #fee2e2; color: #991b1b; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .badge-prior { background: #dbeafe; color: #1e40af; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+
+  /* ── COCON ── */
+  .cluster-block {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+  }
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0D1C44;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cluster-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #1A4B8F;
+    flex-shrink: 0;
+  }
+  .maillage-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #374151;
+    margin-top: 10px;
+  }
+  .maillage-node {
+    background: #eef2fb;
+    color: #1A4B8F;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .maillage-arrow {
+    color: #1A4B8F;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ── TUNNEL ── */
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+  }
+  .tunnel-step-number {
+    position: absolute;
+    top: -14px;
+    left: 28px;
+    background: linear-gradient(135deg, #1A4B8F, #2C62B0);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0D1C44;
+    margin-top: 10px;
+    margin-bottom: 14px;
+  }
+  .tunnel-row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #4a5568;
+  }
+  .tunnel-label {
+    font-weight: 600;
+    color: #1A4B8F;
+    min-width: 60px;
+    flex-shrink: 0;
+  }
+  .cta-pill {
+    display: inline-block;
+    background: #0D1C44;
+    color: white;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  /* ── LEVIERS ── */
+  .levier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .levier-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  .levier-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0D1C44;
+    margin-bottom: 8px;
+  }
+  .levier-text {
+    font-size: 13px;
+    color: #4a5568;
+    line-height: 1.7;
+  }
+
+  /* ── PALETTE ── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .color-swatch-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .color-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .swatch-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+    text-align: center;
+  }
+  .swatch-hex {
+    font-size: 11px;
+    color: #9ca3af;
+    text-align: center;
+    font-family: 'Inter', monospace;
+  }
+
+  /* ── BLOG ── */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .blog-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0D1C44;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .blog-tag {
+    background: #eef2fb;
+    color: #1A4B8F;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .blog-intention {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 6px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #0D1C44;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 36px 40px;
+    font-size: 13px;
+  }
+  .footer strong { color: rgba(255,255,255,0.9); }
+
+  /* ── TON EDITORIAL ── */
+  .ton-pill {
+    display: inline-block;
+    background: linear-gradient(135deg, #1A4B8F, #2C62B0);
+    color: white;
+    padding: 7px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 4px;
+  }
+
+  /* ── VISUEL ── */
+  .visuel-item {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .visuel-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0D1C44, #1A4B8F);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .visuel-content strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0D1C44;
+    margin-bottom: 4px;
+  }
+  .visuel-content span {
+    font-size: 13px;
+    color: #4a5568;
+    line-height: 1.6;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 40px; }
+    .cover { padding: 48px 24px; }
+    .cover-meta { gap: 24px; }
+    .section { padding: 48px 24px; }
+    .section-title { font-size: 26px; }
+    .cards-grid-2,
+    .cards-grid-3 { grid-template-columns: 1fr; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 18px; }
+    .table-wrapper { border-radius: 10px; }
+    .palette-grid { gap: 20px; }
+    .maillage-flow { flex-wrap: wrap; }
+    .footer { padding: 28px 20px; }
+  }
+
+  @media print {
+    .section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     COUVERTURE
+══════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique</div>
+  <h1>Aura Conciergerie</h1>
+  <p class="cover-subtitle">Stratégie digitale & positionnement web — Document confidentiel</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Client</span>
+      <span class="cover-meta-value">Charlotte Maxime</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie LCD</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Zone</span>
+      <span class="cover-meta-value">Eure-et-Loir (28)</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     01 — POSITIONNEMENT
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">01 — Positionnement</span>
+    <h2 class="section-title">Votre ADN de marque</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="label">Promesse de valeur principale</div>
+    <p>Aura Conciergerie transforme chaque propriété en une expérience sensorielle mémorable — une gestion impeccable alliée à une sensibilité esthétique rare, pour des propriétaires libérés et des voyageurs apaisés.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 28px;">
+    <div class="card-title">Ligne directrice de communication</div>
+    <p class="card-text">Conciergerie premium à dimension humaine : une fondatrice au profil hybride (rigueur technologique + œil créatif) qui insuffle une énergie positive et une sérénité concrète à chaque bien confié. La communication valorise le soin du détail, l'élégance douce et la liberté offerte aux propriétaires.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 28px;">
+    <div class="card-title">Ton éditorial</div>
+    <div style="margin-bottom: 12px;">
+      <span class="ton-pill">Apaisant</span>
+      <span class="ton-pill">Élégant</span>
+      <span class="ton-pill">Authentique</span>
+    </div>
+    <p class="card-text">Un ton qui enveloppe sans jamais sur-promettre : des mots choisis, des phrases fluides, une poésie légère qui reflète l'univers sensoriel de la marque sans être précieux ni inaccessible.</p>
+  </div>
+
+  <div class="cards-grid-2">
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <div class="card-title">Un profil fondatrice unique</div>
+      <p class="card-text">Informaticienne reconvertie, Charlotte allie la précision systémique d'une technicienne et la vision esthétique d'une décoratrice. Un mélange rarissime dans le monde de la conciergerie.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <div class="card-title">Une philosophie sensorielle</div>
+      <p class="card-text">Aura ne gère pas des biens, elle crée des atmosphères. Chaque espace devient une parenthèse apaisante, une expérience de bien-être pensée dans ses moindres détails.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚙️</div>
+      <div class="card-title">Gestion transparente et fluide</div>
+      <p class="card-text">Une orchestration technique irréprochable — ménage, linge, consommables — pour offrir aux propriétaires une liberté totale, sans friction et sans surprise.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎨</div>
+      <div class="card-title">Valorisation esthétique des biens</div>
+      <p class="card-text">L'œil créatif de Charlotte est un levier direct de performance locative : des photos soignées, des espaces sublimés, une mise en scène qui fait la différence sur les plateformes.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <div class="card-title">Ancrage local Eure-et-Loir</div>
+      <p class="card-text">Une conciergerie de proximité, réactive et disponible, qui connaît son territoire et offre un interlocuteur unique — un avantage décisif face aux acteurs nationaux impersonnels.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     02 — CLIENT CIBLE
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">02 — Client Cible</span>
+    <h2 class="section-title">Portrait du propriétaire idéal</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="cards-grid-2">
+    <div class="card">
+      <div class="card-title">Profil type</div>
+      <ul class="styled-list">
+        <li>35 – 60 ans, actif ou en transition professionnelle</li>
+        <li>Propriétaire d'un bien secondaire ou d'un investissement locatif en Eure-et-Loir</li>
+        <li>A déjà tenté la gestion autonome ou cherche à déléguer pour la première fois</li>
+        <li>Sensible à la qualité, au soin des détails et à la réputation de son bien</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Motivations principales</div>
+      <ul class="styled-list">
+        <li>Maximiser ses revenus locatifs sans y consacrer du temps</li>
+        <li>Confier son bien à quelqu'un de confiance, de rigoureux et d'esthète</li>
+        <li>Obtenir un service global clé-en-main sans multiplier les interlocuteurs</li>
+        <li>Valoriser son bien pour se démarquer sur Airbnb / Booking</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Freins & objections</div>
+      <ul class="styled-list">
+        <li>« La commission de 25% est-elle justifiée ? »</li>
+        <li>« Comment savoir si mon bien sera bien entretenu ? »</li>
+        <li>« Je ne connais pas cette conciergerie, est-elle fiable ? »</li>
+        <li>« Et si j'ai besoin d'un accès urgent à mon bien ? »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Critères de décision</div>
+      <ul class="styled-list">
+        <li>Transparence sur les prestations incluses et le taux de commission</li>
+        <li>Preuves concrètes de qualité (photos, avis, avant/après)</li>
+        <li>Proximité géographique et réactivité terrain</li>
+        <li>Sentiment de confiance et d'affinité avec la fondatrice</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     03 — OBJECTIFS DU SITE
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">03 — Objectifs du Site</span>
+    <h2 class="section-title">Ce que votre site doit accomplir</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="objectif-item">
+    <div class="objectif-rank">1</div>
+    <div class="objectif-content">
+      <strong>Génération de leads propriétaires</strong>
+      <span>Capter des demandes de gestion via formulaire qualifiant et prise de RDV en ligne — priorité absolue du site.</span>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">2</div>
+    <div class="objectif-content">
+      <strong>Réassurance & confiance</strong>
+      <span>Lever les objections grâce à la transparence tarifaire, la présentation de Charlotte et les preuves sociales (avis, photos).</span>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">3</div>
+    <div class="objectif-content">
+      <strong>SEO local Eure-et-Loir</strong>
+      <span>Positionner Aura Conciergerie sur les requêtes de propriétaires qui cherchent une gestion locative courte durée dans le département 28.</span>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">4</div>
+    <div class="objectif-content">
+      <strong>Conversion & prise de RDV</strong>
+      <span>Guider chaque visiteur vers une action concrète : appel découverte ou formulaire de contact — aucune page sans CTA visible.</span>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">5</div>
+    <div class="objectif-content">
+      <strong>Notoriété de marque</strong>
+      <span>Affirmer l'univers Aura comme une signature distinctive — l'expérience visuelle du site renforce la mémorabilité de la marque.</span>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">6</div>
+    <div class="objectif-content">
+      <strong>Nurturing via contenu</strong>
+      <span>Le blog et la FAQ accompagnent les propriétaires hésitants dans leur réflexion, pour convertir sur le long terme.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     04 — ARBORESCENCE DU SITE
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">04 — Arborescence du Site</span>
+    <h2 class="section-title">Structure et architecture des pages</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Eure-et-Loir</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre offre propriétaires</strong><br><small style="color:#6b7280;">Inclut : ménage, linge, consommables, suivi</small></td>
+          <td>PAS</td>
+          <td>gestion locative airbnb Eure-et-Loir</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — Charlotte & Aura</strong></td>
+          <td>BAB</td>
+          <td>conciergerie Chartres Charlotte Maxime</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Zone d'intervention</strong><br><small style="color:#6b7280;">Page SEO locale — couvre le secteur 28 (1h autour)</small></td>
+          <td>AIDA</td>
+          <td>conciergerie Chartres Dreux Nogent-le-Rotrou</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO Local — Chartres</strong><br><small style="color:#6b7280;">Page locale dédiée à la ville principale</small></td>
+          <td>PAS</td>
+          <td>conciergerie Airbnb Chartres</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>FAQ Propriétaires</strong></td>
+          <td>—</td>
+          <td>questions conciergerie location saisonnière</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact & Prise de RDV</strong></td>
+          <td>—</td>
+          <td>contacter conciergerie Eure-et-Loir</td>
+          <td><span class="badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils location saisonnière propriétaires</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     05 — COCON SÉMANTIQUE
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">05 — Cocon Sémantique</span>
+    <h2 class="section-title">Architecture de contenu & maillage interne</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title"><div class="cluster-dot"></div> Cluster 1 — Gestion locative & délégation propriétaires</div>
+    <p style="font-size:13px;color:#4a5568;margin-bottom:12px;">Pages piliers : Accueil + Notre Offre Propriétaires + FAQ</p>
+    <div class="maillage-flow">
+      <span class="maillage-node">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-node">Notre Offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-node">FAQ Propriétaires</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-node">Contact & RDV</span>
+    </div>
+    <div class="maillage-flow" style="margin-top:8px;">
+      <span class="maillage-node">Blog (articles gestion)</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-node">Notre Offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-node">Contact & RDV</span>
+    </div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title"><div class="cluster-dot" style="background:#2C62B0;"></div> Cluster 2 — Ancrage local & territoire Eure-et-Loir</div>
+    <p style="font-size:13px;color:#4a5568;margin-bottom:12px;">Pages piliers : Zone d'intervention + Page SEO Chartres</p>
+    <div class="maillage-flow">
+      <span class="maillage-node">Zone d'intervention</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-node">SEO Local Chartres</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-node">Notre Offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-node">Contact & RDV</span>
+    </div>
+    <div class="maillage-flow" style="margin-top:8px;">
+      <span class="maillage-node">Blog (articles locaux)</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-node">Zone d'intervention</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-node">SEO Local Chartres</span>
+    </div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title"><div class="cluster-dot" style="background:#0D1C44;"></div> Cluster 3 — Confiance & identité de marque</div>
+    <p style="font-size:13px;color:#4a5568;margin-bottom:12px;">Pages piliers : À propos + Blog (positionnement)</p>
+    <div class="maillage-flow">
+      <span class="maillage-node">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-node">Notre Offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-node">Contact & RDV</span>
+    </div>
+    <div class="maillage-flow" style="margin-top:8px;">
+      <span class="maillage-node">Blog (expertise)</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-node">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-node">Notre Offre</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     06 — TUNNEL DE CONVERSION
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">06 — Tunnel de Conversion</span>
+    <h2 class="section-title">Du visiteur inconnu au client convaincu</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="cards-grid-2">
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 1 — Découverte</div>
+      <div class="tunnel-step-title">Le propriétaire vous trouve</div>
+      <div class="tunnel-row"><span class="tunnel-label">Source</span><span>Google (SEO local), bouche-à-oreille, réseaux sociaux</span></div>
+      <div class="tunnel-row"><span class="tunnel-label">Page</span><span>Accueil / Zone d'intervention / Page SEO Chartres</span></div>
+      <div class="tunnel-row"><span class="tunnel-label">CTA</span><div><span class="cta-pill">Découvrir notre offre →</span></div></div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 2 — Intérêt</div>
+      <div class="tunnel-step-title">Il explore et compare</div>
+      <div class="tunnel-row"><span class="tunnel-label">Source</span><span>Navigation interne depuis l'accueil</span></div>
+      <div class="tunnel-row"><span class="tunnel-label">Page</span><span>Notre Offre Propriétaires / Blog / FAQ</span></div>
+      <div class="tunnel-row"><span class="tunnel-label">CTA</span><div><span class="cta-pill">Télécharger le guide gratuit</span></div></div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 3 — Confiance</div>
+      <div class="tunnel-step-title">Il valide sa décision</div>
+      <div class="tunnel-row"><span class="tunnel-label">Source</span><span>Page À propos, avis clients, témoignages</span></div>
+      <div class="tunnel-row"><span class="tunnel-label">Page</span><span>À propos / Notre Offre (section preuves)</span></div>
+      <div class="tunnel-row"><span class="tunnel-label">CTA</span><div><span class="cta-pill">Voir les avis propriétaires</span></div></div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 4 — Conversion</div>
+      <div class="tunnel-step-title">Il prend contact</div>
+      <div class="tunnel-row"><span class="tunnel-label">Source</span><span>CTA récurrents sur toutes les pages</span></div>
+      <div class="tunnel-row"><span class="tunnel-label">Page</span><span>Contact & Prise de RDV</span></div>
+      <div class="tunnel-row"><span class="tunnel-label">CTA</span><div><span class="cta-pill">Réserver mon appel découverte</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     07 — LEVIERS MARKETING INTÉGRÉS
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">07 — Leviers Marketing Intégrés</span>
+    <h2 class="section-title">Les outils pour convertir et fidéliser</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="cards-grid-2">
+    <div class="levier-card">
+      <div class="levier-icon">🎁</div>
+      <div class="levier-title">Lead Magnet</div>
+      <p class="levier-text">Guide PDF téléchargeable : <em>« 7 erreurs à éviter avant de confier votre bien à une conciergerie »</em>. Format élégant aux couleurs Aura. Collecte l'email du propriétaire et initie la relation de confiance avant tout contact commercial.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📅</div>
+      <div class="levier-title">Prise de RDV en ligne</div>
+      <p class="levier-text">Outil recommandé : <strong>Calendly</strong> (gratuit, intégrable au site). Permet au propriétaire de réserver directement un appel découverte de 30 minutes avec Charlotte — sans échange d'emails intermédiaires.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">⭐</div>
+      <div class="levier-title">Preuve Sociale</div>
+      <p class="levier-text">Témoignages écrits de propriétaires satisfaits (format carte avec photo du bien), avis Google intégrés via widget, et galerie avant/après de biens valorisés par Charlotte. Ces éléments doivent apparaître sur la page Offre et l'Accueil.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📋</div>
+      <div class="levier-title">Formulaire Qualifiant</div>
+      <p class="levier-text">Champs recommandés : Type de bien (maison / appartement / autre) — Localisation — Nombre de pièces — Actuellement en location ? (oui/non) — Besoin principal — Téléphone. Permet de préparer l'appel découverte et de filtrer les demandes.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">✉️</div>
+      <div class="levier-title">Newsletter</div>
+      <p class="levier-text">Angle éditorial : <em>« La Lettre d'Aura »</em> — une newsletter mensuelle douce et inspirante combinant conseils pratiques pour propriétaires, tendances déco, actualité de la location saisonnière en Eure-et-Loir. Ton aligné sur l'univers de marque.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">🔄</div>
+      <div class="levier-title">Automatisation Email</div>
+      <p class="levier-text">Séquence de 3 emails post-téléchargement du guide : J+0 livraison du guide, J+3 email de valeur (conseil pratique), J+7 invitation à réserver un appel découverte. Outil : Brevo (gratuit jusqu'à 300 emails/jour).</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     08 — DIRECTION VISUELLE ET ÉDITORIALE
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">08 — Direction Visuelle & Éditoriale</span>
+    <h2 class="section-title">L'identité visuelle du site</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="card" style="margin-bottom:36px;">
+    <div class="card-title" style="margin-bottom:24px;">Palette de couleurs</div>
+    <div class="palette-grid">
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background:#0D1C44;"></div>
+        <div class="swatch-name">Nuit profonde</div>
+        <div class="swatch-hex">#0D1C44</div>
+      </div>
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background:#1A4B8F;"></div>
+        <div class="swatch-name">Bleu Aura</div>
+        <div class="swatch-hex">#1A4B8F</div>
+      </div>
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background:#2C62B0;"></div>
+        <div class="swatch-name">Bleu ciel profond</div>
+        <div class="swatch-hex">#2C62B0</div>
+      </div>
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background:#8FA8D8;"></div>
+        <div class="swatch-name">Brume bleue</div>
+        <div class="swatch-hex">#8FA8D8</div>
+      </div>
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background:#F5F7FB;"></div>
+        <div class="swatch-name">Blanc Aura</div>
+        <div class="swatch-hex">#F5F7FB</div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:#9ca3af;margin-top:20px;text-align:center;">Palette construite à partir des couleurs du logo transmises par Charlotte — harmonisées pour le web.</p>
+  </div>
+
+  <div class="cards-grid-2">
+    <div class="visuel-item">
+      <div class="visuel-num">1</div>
+      <div class="visuel-content">
+        <strong>Formes organiques & douces</strong>
+        <span>Aucune ligne droite : blobs, courbes fluides, masques arrondis sur les images. L'univers Aura est celui de l'apesanteur et du mouvement organique.</span>
+      </div>
+    </div>
+    <div class="visuel-item">
+      <div class="visuel-num">2</div>
+      <div class="visuel-content">
+        <strong>Effets de transparence & profondeur</strong>
+        <span>Glassmorphism léger sur les cartes, dégradés subtils bleu nuit vers bleu clair, effets de flou doux pour créer une sensation d'immersion et de légèreté.</span>
+      </div>
+    </div>
+    <div class="visuel-item">
+      <div class="visuel-num">3</div>
+      <div class="visuel-content">
+        <strong>Photographie premium & épurée</strong>
+        <span>Intérieurs soignés, lumière naturelle douce, espaces sereins. Les visuels doivent respirer — fond aéré, mise en scène minimaliste et esthétique.</span>
+      </div>
+    </div>
+    <div class="visuel-item">
+      <div class="visuel-num">4</div>
+      <div class="visuel-content">
+        <strong>Navigation fluide & carrousel immersif</strong>
+        <span>Fenêtres flottantes, transitions douces, carrousel de contenu inspiré des références client. L'expérience de navigation reflète l'univers sensoriel de la marque.</span>
+      </div>
+    </div>
+    <div class="visuel-item">
+      <div class="visuel-num">5</div>
+      <div class="visuel-content">
+        <strong>Typographie élégante & lisible</strong>
+        <span>Playfair Display pour les titres (noblesse, légèreté), Inter pour le corps du texte. Espacement généreux, hiérarchie claire, jamais de texte dense.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     09 — ARTICLES BLOG RECOMMANDÉS
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">09 — Articles Blog Recommandés</span>
+    <h2 class="section-title">Votre stratégie de contenu</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="cards-grid-2">
+    <div class="blog-card">
+      <div class="blog-card-title">Confiez votre bien en Eure-et-Loir : tout ce que vous devez savoir avant de choisir une conciergerie</div>
+      <p class="blog-intention">Intention : informationnelle — propriétaire en phase de recherche</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 1 — Gestion locative</span>
+        <span class="badge-prior">Prioritaire</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Airbnb à Chartres : comment maximiser vos revenus locatifs sans vous épuiser</div>
+      <p class="blog-intention">Intention : informationnelle + commerciale — propriétaire qui veut déléguer</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 2 — Ancrage local</span>
+        <span class="badge-prior">Prioritaire</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Commission de conciergerie : pourquoi 25% peut être le meilleur investissement pour votre bien</div>
+      <p class="blog-intention">Intention : commerciale — lever l'objection prix</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 1 — Gestion locative</span>
+        <span class="badge-prior">Prioritaire</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">5 astuces de décoration intérieure pour booster vos avis Airbnb et remplir votre calendrier</div>
+      <p class="blog-intention">Intention : informationnelle — propriétaire qui veut valoriser son bien</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 3 — Confiance & expertise</span>
+        <span class="badge-moyen">Moyen</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Location saisonnière en Eure-et-Loir : les zones les plus rentables en 2025</div>
+      <p class="blog-intention">Intention : informationnelle locale — propriétaire qui évalue le potentiel</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 2 — Ancrage local</span>
+        <span class="badge-moyen">Moyen</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Gestion locative en solo vs conciergerie : le vrai bilan temps et argent</div>
+      <p class="blog-intention">Intention : commerciale — propriétaire qui hésite à déléguer</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 1 — Gestion locative</span>
+        <span class="badge-moyen">Moyen</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Réglementation location courte durée 2025 : ce que tout propriétaire en Eure-et-Loir doit savoir</div>
+      <p class="blog-intention">Intention : informationnelle — besoin de sécurisation juridique</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 3 — Confiance & expertise</span>
+        <span class="badge-faible">Faible</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<div class="footer">
+  <p><strong>Aura Conciergerie</strong> — Charlotte Maxime</p>
+  <p style="margin-top:6px;">Document confidentiel — Produit par AR Digital · Non destiné à la diffusion publique</p>
+  <p style="margin-top:4px;font-size:11px;opacity:0.5;">Blueprint Stratégique v1.0 — Tous droits réservés</p>
+</div>
+
+</body>
+</html>
