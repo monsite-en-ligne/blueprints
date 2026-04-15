@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blueprint Stratégique — MySamVTC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #1a1a2e;
+      background: #f9f9fb;
+    }
+
+    /* ── COVER ── */
+    .cover {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #0d1b2a 0%, #1b2d45 50%, #0a3d62 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 40px;
+      page-break-after: always;
+    }
+    .cover-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #7ec8e3;
+      margin-bottom: 32px;
+    }
+    .cover-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .cover-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      font-weight: 300;
+      color: #b0c8d9;
+      margin-bottom: 48px;
+      letter-spacing: 1px;
+    }
+    .cover-meta {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cover-meta-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .cover-meta-item span:first-child {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #7ec8e3;
+      margin-bottom: 4px;
+    }
+    .cover-meta-item span:last-child {
+      font-size: 14px;
+      color: #e8f4f8;
+      font-weight: 500;
+    }
+    .cover-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, #7ec8e3, #4a9bbe);
+      margin: 0 auto 40px auto;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 70px 60px;
+      page-break-inside: avoid;
+    }
+    .section:nth-child(even) { background: #ffffff; }
+    .section:nth-child(odd) { background: #f4f7fa; }
+
+    .section-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #4a9bbe;
+      background: #e8f4f8;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 700;
+      color: #0d1b2a;
+      margin-bottom: 40px;
+      line-height: 1.2;
+    }
+
+    /* ── PROMISE BOX ── */
+    .promise-box {
+      background: linear-gradient(135deg, #0d1b2a 0%, #0a3d62 100%);
+      border-radius: 16px;
+      padding: 40px 48px;
+      margin-bottom: 40px;
+    }
+    .promise-box p {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* ── CARDS GRID ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .cards-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .card-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #0d1b2a;
+      margin-bottom: 8px;
+    }
+    .card-text {
+      font-size: 14px;
+      color: #5a6a7a;
+      line-height: 1.7;
+    }
+
+    /* ── TON EDITORIAL ── */
+    .tone-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .tone-badge {
+      background: #e8f4f8;
+      color: #0a3d62;
+      border-radius: 30px;
+      padding: 10px 22px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .tone-desc {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      font-size: 14px;
+      color: #5a6a7a;
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    /* ── LISTE STYLISÉE ── */
+    .styled-list {
+      list-style: none;
+      padding: 0;
+    }
+    .styled-list li {
+      padding: 10px 0 10px 20px;
+      border-bottom: 1px solid #eef2f6;
+      font-size: 14px;
+      color: #3a4a5a;
+      position: relative;
+    }
+    .styled-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #4a9bbe;
+      font-weight: 700;
+    }
+    .styled-list li:last-child { border-bottom: none; }
+
+    /* ── ARBORESCENCE TABLE ── */
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffff;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    thead tr {
+      background: linear-gradient(135deg, #0d1b2a, #0a3d62);
+    }
+    thead th {
+      padding: 16px 20px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #7ec8e3;
+    }
+    tbody tr { border-bottom: 1px solid #eef2f6; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #f8fbfd; }
+    tbody td {
+      padding: 16px 20px;
+      font-size: 14px;
+      color: #3a4a5a;
+      vertical-align: top;
+    }
+    .td-page { font-weight: 600; color: #0d1b2a; }
+    .td-keyword { font-style: italic; color: #5a6a7a; }
+
+    /* ── SEO BADGE ── */
+    .badge-seo {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .badge-fort { background: #d4edda; color: #155724; }
+    .badge-moyen { background: #fff3cd; color: #856404; }
+    .badge-faible { background: #f8d7da; color: #721c24; }
+
+    /* ── TUNNEL ── */
+    .tunnel-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .tunnel-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      position: relative;
+    }
+    .tunnel-step {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #4a9bbe;
+      margin-bottom: 8px;
+    }
+    .tunnel-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #0d1b2a;
+      margin-bottom: 14px;
+    }
+    .tunnel-card dl dt {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #9aabb8;
+      margin-top: 10px;
+      margin-bottom: 2px;
+    }
+    .tunnel-card dl dd {
+      font-size: 13px;
+      color: #3a4a5a;
+    }
+
+    /* ── PALETTE ── */
+    .palette-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+    .palette-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .palette-swatch {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .palette-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #0d1b2a;
+      text-align: center;
+    }
+    .palette-hex {
+      font-size: 11px;
+      color: #9aabb8;
+      font-family: monospace;
+    }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight-box {
+      background: linear-gradient(135deg, #0a3d62 0%, #1b2d45 100%);
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+    }
+    .highlight-box p {
+      font-size: 14px;
+      color: #b0c8d9;
+      line-height: 1.8;
+    }
+    .highlight-box strong {
+      color: #7ec8e3;
+    }
+
+    /* ── MAILLAGE ── */
+    .maillage-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      margin-bottom: 16px;
+    }
+    .maillage-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #0d1b2a;
+      margin-bottom: 12px;
+    }
+    .maillage-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .maillage-link {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #3a4a5a;
+    }
+    .maillage-arrow {
+      color: #4a9bbe;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── BLOG TABLE ── */
+    .blog-table tbody td:first-child { font-weight: 600; color: #0d1b2a; }
+
+    /* ── PRIORITY BADGE ── */
+    .badge-prioritaire { background: #d4edda; color: #155724; }
+    .badge-moyen-p { background: #fff3cd; color: #856404; }
+    .badge-faible-p { background: #f0f0f0; color: #555; }
+
+    /* ── OBJECTIFS ── */
+    .objectifs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .objectif-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .objectif-rank {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #c8dce8;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .objectif-content strong {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0d1b2a;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .objectif-content span {
+      font-size: 13px;
+      color: #5a6a7a;
+    }
+
+    /* ── MARKETING CARDS ── */
+    .marketing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .marketing-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .marketing-card-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #4a9bbe;
+      margin-bottom: 8px;
+    }
+    .marketing-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #0d1b2a;
+      margin-bottom: 10px;
+    }
+    .marketing-card-text {
+      font-size: 14px;
+      color: #5a6a7a;
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0d1b2a;
+      padding: 40px 60px;
+      text-align: center;
+    }
+    footer p {
+      color: #7ec8e3;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    footer p + p {
+      color: #4a6070;
+      margin-top: 8px;
+      font-size: 11px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .cover-title { font-size: 42px; }
+      .cover-meta { flex-direction: column; gap: 20px; }
+      .section { padding: 40px 24px; }
+      .section-title { font-size: 26px; }
+      .cards-grid,
+      .cards-grid-3,
+      .tunnel-grid,
+      .objectifs-grid,
+      .marketing-grid { grid-template-columns: 1fr; }
+      .table-wrapper { overflow-x: auto; }
+      .palette-grid { justify-content: flex-start; }
+      footer { padding: 32px 24px; }
+      .promise-box { padding: 28px 24px; }
+      .promise-box p { font-size: 18px; }
+    }
+
+    @media print {
+      .section { page-break-inside: avoid; }
+      .cover { page-break-after: always; }
+      body { background: #fff; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-label">Blueprint Stratégique</div>
+    <h1 class="cover-title">MySamVTC</h1>
+    <div class="cover-divider"></div>
+    <p class="cover-subtitle">Document de positionnement & stratégie web</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <span>Client</span>
+        <span>Samuel Girre</span>
+      </div>
+      <div class="cover-meta-item">
+        <span>Secteur</span>
+        <span>Transport VTC</span>
+      </div>
+      <div class="cover-meta-item">
+        <span>Zone</span>
+        <span>Rennes & Ille-et-Vilaine</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 01 POSITIONNEMENT -->
+  <section class="section">
+    <div class="section-badge">01 — Positionnement</div>
+    <h2 class="section-title">Promesse & Différenciation</h2>
+
+    <div class="promise-box">
+      <p>« MySamVTC, votre chauffeur privé en Ille-et-Vilaine : un service fiable, ponctuel et soigné, pour chaque trajet qui compte. »</p>
+    </div>
+
+    <div class="cards-grid" style="margin-bottom: 32px;">
+      <div class="card">
+        <div class="card-icon">🧭</div>
+        <div class="card-title">Ligne directrice</div>
+        <div class="card-text">Transport privé sans friction — chaque client est accompagné de bout en bout, avec discrétion et professionnalisme, du sud de l'Ille-et-Vilaine jusqu'aux grandes destinations bretonnes.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎙️</div>
+        <div class="card-title">Ton éditorial</div>
+        <div class="card-text"><strong>Rassurant · Professionnel · Chaleureux</strong><br/>Un ton humain et direct, qui inspire confiance sans être froid : on parle à des personnes, pas à des passagers.</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:#0d1b2a;margin-bottom:24px;">Piliers de différenciation</h3>
+    <div class="cards-grid-3">
+      <div class="card">
+        <div class="card-icon">📍</div>
+        <div class="card-title">Ancrage local fort</div>
+        <div class="card-text">Basé au Petit Fougeray, Samuel connaît parfaitement le territoire sud-breton et la métropole rennaise.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⏱️</div>
+        <div class="card-title">Ponctualité garantie</div>
+        <div class="card-text">Gestion rigoureuse des horaires, suivi des vols et des trains en temps réel pour des transferts sans stress.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <div class="card-title">Offre entreprises & événementiel</div>
+        <div class="card-text">Disponibilité pour les déplacements professionnels, séminaires, mariages et événements culturels bretons.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🗺️</div>
+        <div class="card-title">City tour personnalisé</div>
+        <div class="card-text">Une offre originale qui valorise la Bretagne : découverte de Rennes et ses environs avec un guide-chauffeur de confiance.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <div class="card-title">Relation de proximité</div>
+        <div class="card-text">Une communication directe avec Samuel, sans plateforme intermédiaire — réservation simplifiée et contact humain à chaque étape.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 CLIENT CIBLE -->
+  <section class="section">
+    <div class="section-badge">02 — Client Cible</div>
+    <h2 class="section-title">Profil & Motivations</h2>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">👤</div>
+        <div class="card-title">Profil type</div>
+        <div class="card-text">
+          <ul class="styled-list" style="margin-top:8px;">
+            <li>35–60 ans, actif ou cadre</li>
+            <li>Résidant en Ille-et-Vilaine (hors Rennes centre)</li>
+            <li>Voyageur régulier (gares, aéroport Rennes Saint-Jacques)</li>
+            <li>Professionnel cherchant un service de confiance pour sa société</li>
+            <li>Particulier pour événement important (mariage, soirée privée)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💡</div>
+        <div class="card-title">Motivations principales</div>
+        <div class="card-text">
+          <ul class="styled-list" style="margin-top:8px;">
+            <li>Arriver à l'heure sans stress logistique</li>
+            <li>Confier un trajet important à un professionnel fiable</li>
+            <li>Éviter les frais de parking et la fatigue de conduite</li>
+            <li>Bénéficier d'un service confort pour ses clients ou collaborateurs</li>
+            <li>Découvrir la région avec un chauffeur-guide local</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚧</div>
+        <div class="card-title">Freins & objections</div>
+        <div class="card-text">
+          <ul class="styled-list" style="margin-top:8px;">
+            <li>« Est-ce vraiment plus pratique qu'un taxi ? »</li>
+            <li>Méconnaissance de la zone d'intervention</li>
+            <li>Doute sur la disponibilité pour des horaires atypiques</li>
+            <li>Perception d'un service réservé à une clientèle aisée</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">Critères de décision</div>
+        <div class="card-text">
+          <ul class="styled-list" style="margin-top:8px;">
+            <li>Réputation et avis en ligne vérifiables</li>
+            <li>Facilité de réservation (rapidité, clarté du tarif)</li>
+            <li>Présence locale et connaissance du territoire</li>
+            <li>Réactivité et contact direct avec le chauffeur</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 OBJECTIFS DU SITE -->
+  <section class="section">
+    <div class="section-badge">03 — Objectifs du Site</div>
+    <h2 class="section-title">Priorités Stratégiques</h2>
+
+    <div class="objectifs-grid">
+      <div class="objectif-card">
+        <div class="objectif-rank">01</div>
+        <div class="objectif-content">
+          <strong>Génération de leads & conversion</strong>
+          <span>Inciter chaque visiteur à demander un devis ou à réserver directement via le site.</span>
+        </div>
+      </div>
+      <div class="objectif-card">
+        <div class="objectif-rank">02</div>
+        <div class="objectif-content">
+          <strong>SEO local Rennes & Ille-et-Vilaine</strong>
+          <span>Apparaître en premier sur les recherches locales à forte intention d'achat.</span>
+        </div>
+      </div>
+      <div class="objectif-card">
+        <div class="objectif-rank">03</div>
+        <div class="objectif-content">
+          <strong>Réassurance & crédibilité</strong>
+          <span>Rassurer les visiteurs grâce aux avis clients, à la présentation du chauffeur et aux garanties de service.</span>
+        </div>
+      </div>
+      <div class="objectif-card">
+        <div class="objectif-rank">04</div>
+        <div class="objectif-content">
+          <strong>Prise de RDV simplifiée</strong>
+          <span>Réduire les frictions à la réservation avec un formulaire clair et un outil de booking intégré.</span>
+        </div>
+      </div>
+      <div class="objectif-card">
+        <div class="objectif-rank">05</div>
+        <div class="objectif-content">
+          <strong>Notoriété locale</strong>
+          <span>Affirmer la présence de MySamVTC comme référence VTC dans le sud de l'Ille-et-Vilaine.</span>
+        </div>
+      </div>
+      <div class="objectif-card">
+        <div class="objectif-rank">06</div>
+        <div class="objectif-content">
+          <strong>Nurturing entreprises</strong>
+          <span>Cibler les professionnels avec une offre B2B dédiée et un contact spécifique.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 ARBORESCENCE -->
+  <section class="section">
+    <div class="section-badge">04 — Arborescence du Site</div>
+    <h2 class="section-title">Structure des Pages</h2>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>Framework</th>
+            <th>Mot-clé principal</th>
+            <th>Potentiel SEO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-page">Accueil</td>
+            <td>AIDA</td>
+            <td class="td-keyword">vtc rennes</td>
+            <td><span class="badge-seo badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td class="td-page">Nos Prestations</td>
+            <td>PAS</td>
+            <td class="td-keyword">chauffeur privé rennes transfert événementiel</td>
+            <td><span class="badge-seo badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td class="td-page">Espace Entreprises</td>
+            <td>BAB</td>
+            <td class="td-keyword">vtc entreprise rennes ille-et-vilaine</td>
+            <td><span class="badge-seo badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td class="td-page">À Propos — Samuel</td>
+            <td>AIDA</td>
+            <td class="td-keyword">chauffeur vtc ille-et-vilaine</td>
+            <td><span class="badge-seo badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td class="td-page">Réserver / Devis</td>
+            <td>PAS</td>
+            <td class="td-keyword">réserver vtc rennes</td>
+            <td><span class="badge-seo badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td class="td-page">VTC Rennes <em>(page locale SEO)</em></td>
+            <td>AIDA</td>
+            <td class="td-keyword">vtc rennes chauffeur privé</td>
+            <td><span class="badge-seo badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td class="td-page">VTC Aéroport Rennes <em>(page locale SEO)</em></td>
+            <td>PAS</td>
+            <td class="td-keyword">vtc aéroport rennes saint-jacques</td>
+            <td><span class="badge-seo badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td class="td-page">Blog</td>
+            <td>—</td>
+            <td class="td-keyword">conseils transport vtc bretagne</td>
+            <td><span class="badge-seo badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td class="td-page">Mentions légales / CGV</td>
+            <td>—</td>
+            <td class="td-keyword">—</td>
+            <td><span class="badge-seo badge-faible">Faible</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 05 COCON SÉMANTIQUE -->
+  <section class="section">
+    <div class="section-badge">05 — Cocon Sémantique</div>
+    <h2 class="section-title">Clusters & Maillage Interne</h2>
+
+    <div class="cards-grid" style="margin-bottom:32px;">
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <div class="card-title">Cluster 1 — Transport local & gares</div>
+        <div class="card-text">Regroupement des contenus autour des trajets quotidiens : transferts gares, aéroport, navettes. Ce cluster cible les recherches à forte intention transactionnelle en Ille-et-Vilaine.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <div class="card-title">Cluster 2 — Professionnels & événementiel</div>
+        <div class="card-text">Pages et articles dédiés aux entreprises, séminaires, city tours et événements privés. Valorise la polyvalence de l'offre MySamVTC auprès d'une clientèle B2B et premium.</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:#0d1b2a;margin-bottom:20px;">Logique de maillage interne</h3>
+
+    <div class="maillage-card">
+      <div class="maillage-card-title">Accueil</div>
+      <div class="maillage-links">
+        <div class="maillage-link"><span class="maillage-arrow">→</span><span>Nos Prestations</span></div>
+        <div class="maillage-link"><span class="maillage-arrow">→</span><span>Espace Entreprises</span></div>
+        <div class="maillage-link"><span class="maillage-arrow">→</span><span>Réserver / Devis</span></div>
+        <div class="maillage-link"><span class="maillage-arrow">→</span><span>VTC Rennes</span></div>
+      </div>
+    </div>
+
+    <div class="maillage-card">
+      <div class="maillage-card-title">Nos Prestations</div>
+      <div class="maillage-links">
+        <div class="maillage-link"><span class="maillage-arrow">→</span><span>VTC Aéroport Rennes</span></div>
+        <div class="maillage-link"><span class="maillage-arrow">→</span><span>Espace Entreprises</span></div>
+        <div class="maillage-link"><span class="maillage-arrow">→</span><span>Réserver / Devis</span></div>
+        <div class="maillage-link"><span class="maillage-arrow">→</span><span>Articles Blog (city tour, événementiel)</span></div>
+      </div>
+    </div>
+
+    <div class="maillage-card">
+      <div class="maillage-card-title">Pages locales SEO (VTC Rennes, VTC Aéroport)</div>
+      <div class="maillage-links">
+        <div class="maillage-link"><span class="maillage-arrow">→</span><span>Nos Prestations</span></div>
+        <div class="maillage-link"><span class="maillage-arrow">→</span><span>Réserver / Devis</span></div>
+        <div class="maillage-link"><span class="maillage-arrow">→</span><span>À Propos — Samuel</span></div>
+      </div>
+    </div>
+
+    <div class="maillage-card">
+      <div class="maillage-card-title">Blog</div>
+      <div class="maillage-links">
+        <div class="maillage-link"><span class="maillage-arrow">→</span><span>Page concernée par le sujet de l'article</span></div>
+        <div class="maillage-link"><span class="maillage-arrow">→</span><span>Réserver / Devis (CTA systématique en fin d'article)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 TUNNEL DE CONVERSION -->
+  <section class="section">
+    <div class="section-badge">06 — Tunnel de Conversion</div>
+    <h2 class="section-title">Du Visiteur au Client</h2>
+
+    <div class="tunnel-grid">
+      <div class="tunnel-card">
+        <div class="tunnel-step">Étape 1</div>
+        <div class="tunnel-card-title">Découverte</div>
+        <dl>
+          <dt>Source</dt>
+          <dd>Google organique, GMB, bouche-à-oreille</dd>
+          <dt>Page</dt>
+          <dd>Accueil, Pages locales SEO, Blog</dd>
+          <dt>CTA</dt>
+          <dd>« Découvrez nos prestations »</dd>
+        </dl>
+      </div>
+      <div class="tunnel-card">
+        <div class="tunnel-step">Étape 2</div>
+        <div class="tunnel-card-title">Intérêt</div>
+        <dl>
+          <dt>Source</dt>
+          <dd>Navigation interne, partage réseaux sociaux</dd>
+          <dt>Page</dt>
+          <dd>Nos Prestations, Espace Entreprises</dd>
+          <dt>CTA</dt>
+          <dd>« Demandez un devis gratuit »</dd>
+        </dl>
+      </div>
+      <div class="tunnel-card">
+        <div class="tunnel-step">Étape 3</div>
+        <div class="tunnel-card-title">Confiance</div>
+        <dl>
+          <dt>Source</dt>
+          <dd>Avis Google, page À Propos</dd>
+          <dt>Page</dt>
+          <dd>À Propos — Samuel, témoignages</dd>
+          <dt>CTA</dt>
+          <dd>« Voir les avis clients »</dd>
+        </dl>
+      </div>
+      <div class="tunnel-card">
+        <div class="tunnel-step">Étape 4</div>
+        <div class="tunnel-card-title">Conversion</div>
+        <dl>
+          <dt>Source</dt>
+          <dd>Formulaire, appel direct, WhatsApp</dd>
+          <dt>Page</dt>
+          <dd>Réserver / Devis</dd>
+          <dt>CTA</dt>
+          <dd>« Réserver maintenant »</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 LEVIERS MARKETING -->
+  <section class="section">
+    <div class="section-badge">07 — Leviers Marketing Recommandés</div>
+    <h2 class="section-title">Outils & Actions à Mettre en Place</h2>
+
+    <div class="marketing-grid">
+      <div class="marketing-card">
+        <div class="marketing-card-label">Prise de RDV</div>
+        <div class="marketing-card-title">Outil de booking intégré</div>
+        <div class="marketing-card-text">Intégrer <strong>Cal.com</strong> ou <strong>Reservio</strong> : interface simple, confirmations automatiques par email/SMS, idéal pour un chauffeur indépendant sans secrétariat.</div>
+      </div>
+      <div class="marketing-card">
+        <div class="marketing-card-label">Preuve sociale</div>
+        <div class="marketing-card-title">Avis & témoignages</div>
+        <div class="marketing-card-text">Afficher les avis Google en temps réel sur la page d'accueil. Compléter avec 2 à 3 témoignages écrits de clients entreprises ou événementiels pour crédibiliser l'offre B2B.</div>
+      </div>
+      <div class="marketing-card">
+        <div class="marketing-card-label">Formulaire qualifiant</div>
+        <div class="marketing-card-title">Champs recommandés</div>
+        <div class="marketing-card-text">Ville de départ · Destination · Date et heure · Nombre de passagers · Type de prestation (transfert, mise à disposition, événement) · Téléphone · Message libre.</div>
+      </div>
+      <div class="marketing-card">
+        <div class="marketing-card-label">Newsletter</div>
+        <div class="marketing-card-title">Angle éditorial B2B local</div>
+        <div class="marketing-card-text">Fréquence mensuelle ciblant les entreprises locales : actualités mobilité en Ille-et-Vilaine, offres préférentielles, nouveaux services. Outil suggéré : <strong>Brevo</strong> (gratuit jusqu'à 300 emails/jour).</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 DIRECTION VISUELLE -->
+  <section class="section">
+    <div class="section-badge">08 — Direction Visuelle & Éditoriale</div>
+    <h2 class="section-title">Identité Graphique Recommandée</h2>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:#0d1b2a;margin-bottom:28px;">Palette de couleurs</h3>
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#0d1b2a;"></div>
+        <div class="palette-name">Nuit Bretonne</div>
+        <div class="palette-hex">#0d1b2a</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#0a3d62;"></div>
+        <div class="palette-name">Bleu Océan</div>
+        <div class="palette-hex">#0a3d62</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#4a9bbe;"></div>
+        <div class="palette-name">Bleu Ciel Rance</div>
+        <div class="palette-hex">#4a9bbe</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#c9a84c;"></div>
+        <div class="palette-name">Or Premium</div>
+        <div class="palette-hex">#c9a84c</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#f4f7fa; border: 1px solid #dde4ed;"></div>
+        <div class="palette-name">Blanc Ardoise</div>
+        <div class="palette-hex">#f4f7fa</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:#0d1b2a;margin-bottom:24px;margin-top:40px;">Univers visuel recommandé</h3>
+    <div class="cards-grid-3">
+      <div class="card">
+        <div class="card-icon">🚗</div>
+        <div class="card-title">Photographie de véhicule</div>
+        <div class="card-text">Photos professionnelles du véhicule en milieu urbain rennais ou naturel breton. Ambiance sobre, lumière naturelle.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌆</div>
+        <div class="card-title">Paysages bretons reconnaissables</div>
+        <div class="card-text">Skyline de Rennes, gare, bords de Rance — ancrage local immédiat, renforçant la crédibilité géographique.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">👔</div>
+        <div class="card-title">Portrait du chauffeur</div>
+        <div class="card-text">Photo de Samuel en tenue professionnelle pour humaniser la marque et créer un lien de confiance immédiat.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">✨</div>
+        <div class="card-title">Icônes minimalistes</div>
+        <div class="card-text">Pictogrammes vectoriels épurés pour illustrer les services : gare, avion, entreprise, événement, city tour.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌙</div>
+        <div class="card-title">Contrastes sombres & dorés</div>
+        <div class="card-text">Sections alternant fond sombre (nuit bretonne) et accents dorés pour une identité premium cohérente.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 BLOG -->
+  <section class="section">
+    <div class="section-badge">09 — Articles Blog Recommandés</div>
+    <h2 class="section-title">Sujets Éditoriaux Prioritaires</h2>
+
+    <div class="table-wrapper">
+      <table class="blog-table">
+        <thead>
+          <tr>
+            <th>Titre de l'article</th>
+            <th>Cluster</th>
+            <th>Intention de recherche</th>
+            <th>Priorité</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>VTC ou taxi à Rennes : quelle différence et comment choisir ?</td>
+            <td>Transport local</td>
+            <td>Informationnelle / Transactionnelle</td>
+            <td><span class="badge-seo badge-prioritaire badge-seo">Prioritaire</span></td>
+          </tr>
+          <tr>
+            <td>Comment organiser le transport de vos invités le jour de votre mariage en Bretagne ?</td>
+            <td>Événementiel</td>
+            <td>Informationnelle</td>
+            <td><span class="badge-seo badge-prioritaire">Prioritaire</span></td>
+          </tr>
+          <tr>
+            <td>Navette VTC aéroport Rennes Saint-Jacques : tout ce qu'il faut savoir</td>
+            <td>Transport local</td>
+            <td>Transactionnelle</td>
+            <td><span class="badge-seo badge-prioritaire">Prioritaire</span></td>
+          </tr>
+          <tr>
+            <td>Déplacements professionnels : pourquoi externaliser vos transports à un VTC en Ille-et-Vilaine ?</td>
+            <td>Professionnels & événementiel</td>
+            <td>Informationnelle / B2B</td>
+            <td><span class="badge-seo badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td>City tour à Rennes : les incontournables à découvrir avec un chauffeur local</td>
+            <td>Professionnels & événementiel</td>
+            <td>Informationnelle / Touristique</td>
+            <td><span class="badge-seo badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td>Mise à disposition chauffeur privé : pour quels besoins et quel budget ?</td>
+            <td>Transport local</td>
+            <td>Informationnelle</td>
+            <td><span class="badge-seo badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td>5 conseils pour bien choisir son VTC lors d'un déplacement depuis le sud de l'Ille-et-Vilaine</td>
+            <td>Transport local</td>
+            <td>Informationnelle</td>
+            <td><span class="badge-seo badge-faible">Faible</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>MySamVTC — Blueprint Stratégique</p>
+    <p>Document confidentiel — Produit par AR Digital · Tous droits réservés</p>
+  </footer>
+
+</body>
+</html>
