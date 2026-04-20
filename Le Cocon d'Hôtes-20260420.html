@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Le Cocon d'Hôtes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2d1f17;
+    background: #fdf8f5;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #2d1409 0%, #623e2a 45%, #8b7468 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(196,110,71,0.18) 0%, transparent 70%);
+  }
+  .cover-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(252,245,240,0.65);
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #fcf5f0;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(252,245,240,0.75);
+    letter-spacing: 1px;
+    margin-bottom: 56px;
+    position: relative;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-item .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(252,245,240,0.45);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .cover-meta-item .value {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(252,245,240,0.9);
+  }
+  .cover-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(252,245,240,0.2);
+  }
+
+  /* LAYOUT */
+  .section {
+    padding: 70px 60px;
+  }
+  .section:nth-child(even) {
+    background: #fdf8f5;
+  }
+  .section:nth-child(odd) {
+    background: #ffffff;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 44px;
+  }
+  .section-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #c46e47;
+    background: rgba(196,110,71,0.1);
+    padding: 6px 14px;
+    border-radius: 50px;
+    white-space: nowrap;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: #2d1f17;
+  }
+
+  /* CARDS */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #623e2a;
+    margin-bottom: 10px;
+  }
+  .card-text {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #4a3728;
+  }
+
+  /* GRIDS */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #623e2a 0%, #c46e47 100%);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 40px;
+    color: #fcf5f0;
+  }
+  .highlight-box .hl-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(252,245,240,0.6);
+    margin-bottom: 12px;
+  }
+  .highlight-box .hl-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #fcf5f0;
+  }
+
+  /* LISTS */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+  }
+  .styled-list li {
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    font-size: 14px;
+    color: #4a3728;
+    border-bottom: 1px solid rgba(139,116,104,0.12);
+    line-height: 1.7;
+  }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: #c46e47;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  /* TABLE */
+  .table-wrap { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  thead tr {
+    background: #623e2a;
+    color: #fcf5f0;
+  }
+  thead th {
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  tbody tr {
+    border-bottom: 1px solid rgba(139,116,104,0.15);
+    background: #ffffff;
+  }
+  tbody tr:nth-child(even) { background: #fdf8f5; }
+  tbody td {
+    padding: 13px 18px;
+    color: #2d1f17;
+    vertical-align: top;
+  }
+
+  /* BADGES SEO */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .badge-fort { background: #d4edda; color: #1a6630; }
+  .badge-moyen { background: #fff3cd; color: #7d5a00; }
+  .badge-faible { background: #f8d7da; color: #842029; }
+  .badge-prioritaire { background: #623e2a; color: #fcf5f0; }
+  .badge-medium { background: #8b7468; color: #ffffff; }
+  .badge-low { background: #e8ddd8; color: #623e2a; }
+
+  /* TUNNEL */
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+  }
+  .tunnel-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #623e2a, #c46e47);
+    color: #fcf5f0;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+  .tunnel-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c46e47;
+    margin-bottom: 6px;
+  }
+  .tunnel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2d1f17;
+    margin-bottom: 14px;
+  }
+  .tunnel-row {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .tunnel-row span {
+    font-size: 13px;
+    color: #4a3728;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .tunnel-row span::before {
+    content: '';
+    display: inline-block;
+    min-width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #c46e47;
+    margin-top: 7px;
+  }
+
+  /* MAILLAGE */
+  .maillage-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(139,116,104,0.13);
+    font-size: 14px;
+    color: #4a3728;
+  }
+  .maillage-item:last-child { border-bottom: none; }
+  .maillage-source {
+    font-weight: 600;
+    color: #623e2a;
+  }
+  .maillage-arrow {
+    color: #c46e47;
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .maillage-dest {
+    background: rgba(196,110,71,0.1);
+    color: #623e2a;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+  }
+
+  /* COLOR SWATCHES */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .swatch-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+  }
+  .swatch-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2d1f17;
+    text-align: center;
+  }
+  .swatch-hex {
+    font-size: 11px;
+    color: #8b7468;
+    text-align: center;
+    font-family: 'Inter', monospace;
+  }
+
+  /* BLOG ARTICLES */
+  .article-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #c46e47;
+  }
+  .article-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2d1f17;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .article-meta-tag {
+    font-size: 11px;
+    color: #8b7468;
+    background: #f3ede9;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  /* SECTION SPECIFIC */
+  .two-col-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #2d1409;
+    color: rgba(252,245,240,0.6);
+    text-align: center;
+    padding: 36px 60px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  footer strong {
+    color: rgba(252,245,240,0.9);
+    font-weight: 500;
+  }
+
+  /* PRINT */
+  @media print {
+    .cover { min-height: auto; padding: 60px; }
+    .section { page-break-inside: avoid; }
+    .card { page-break-inside: avoid; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 38px; }
+    .cover-subtitle { font-size: 14px; }
+    .cover-meta { flex-direction: column; gap: 18px; }
+    .cover-divider { display: none; }
+    .section { padding: 40px 24px; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4, .two-col-info { grid-template-columns: 1fr; }
+    .highlight-box { padding: 24px; }
+    .highlight-box .hl-text { font-size: 18px; }
+    footer { padding: 28px 24px; }
+    .palette-grid { gap: 16px; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <div class="cover-tag">Blueprint Stratégique · AR Digital</div>
+  <div class="cover-title">Le Cocon d'Hôtes</div>
+  <div class="cover-subtitle">Stratégie Digitale & Positionnement Web</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="label">Cliente</span>
+      <span class="value">Valérie Marty Battut</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="label">Secteur</span>
+      <span class="value">Conciergerie LCD</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="label">Zone</span>
+      <span class="value">Albi · Gaillac · Tarn</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">01</span>
+    <h2 class="section-title">Positionnement</h2>
+  </div>
+
+  <div class="highlight-box">
+    <div class="hl-label">Promesse de valeur principale</div>
+    <div class="hl-text">« Le Cocon d'Hôtes prend soin de votre logement et de vos voyageurs avec la même exigence que si c'était le sien — pour que vous soyez serein, et vos hôtes ravis. »</div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <div class="card-title">Ligne directrice de communication</div>
+      <div class="card-text">Conciergerie humaine de proximité, alliant douceur et rigueur professionnelle pour les propriétaires du Tarn qui veulent déléguer sans inquiétude.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Ton éditorial</div>
+      <div class="card-text"><strong style="color:#c46e47;">Chaleureux · Rassurant · Professionnel</strong><br>Un ton de confiance bienveillante : on parle à un propriétaire occupé, pas à un technicien. Chaque mot doit inspirer sérénité et professionnalisme ancré dans le local.</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">🏡 Ancrage territorial fort</div>
+      <div class="card-text">Présence exclusive sur Albi, Gaillac et alentours. Un interlocuteur unique qui connaît le terrain, les contraintes locales et les attentes des voyageurs dans le Tarn.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">🤝 Gestion clé en main sans friction</div>
+      <div class="card-text">De la création d'annonce à la remise des clés, tout est géré. Le propriétaire ne gère rien : zéro stress, zéro coordination, zéro prise de tête au quotidien.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">✨ L'attention au détail comme standard</div>
+      <div class="card-text">Livret d'accueil, produits de bienvenue, linge professionnel, photos soignées : chaque logement est traité avec la même attention qu'une maison de famille.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">📊 Transparence tarifaire</div>
+      <div class="card-text">Modèle simple et lisible : 20 % TTC sur revenus nets, ménage à charge des voyageurs, mise en place payable une seule fois. Pas de surprise, pas de coût caché.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">💬 Approche fondatrice engagée</div>
+      <div class="card-text">Fondée par Valérie, passionnée d'accueil, le Cocon d'Hôtes n'est pas une franchise : c'est un engagement personnel porté par une vision humaine et sincère du service.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 CLIENT CIBLE -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">02</span>
+    <h2 class="section-title">Client Cible</h2>
+  </div>
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <div class="card-title">Profil type</div>
+      <div class="card-text">Propriétaire d'une résidence secondaire ou d'un bien locatif dans le Tarn (Albi, Gaillac), 38–65 ans, actif ou retraité dynamique. Vit parfois loin du bien ou manque de temps pour le gérer lui-même. Cherche à valoriser son investissement sans en faire un second métier.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Motivations principales</div>
+      <ul class="styled-list">
+        <li>Générer des revenus complémentaires sans contrainte opérationnelle</li>
+        <li>Déléguer entièrement la gestion à quelqu'un de confiance</li>
+        <li>Offrir une belle expérience à ses voyageurs</li>
+        <li>Protéger son bien immobilier (ménage pro, suivi rigoureux)</li>
+        <li>Eviter les mauvaises surprises liées aux plateformes</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Freins & objections</div>
+      <ul class="styled-list">
+        <li>« Je ne veux pas perdre le contrôle de mon logement »</li>
+        <li>« 20 % c'est beaucoup, j'hésite à déléguer »</li>
+        <li>« Je ne connais pas cette conciergerie, est-elle fiable ? »</li>
+        <li>« J'ai peur que ça ne vaille pas le coût si je loue peu »</li>
+        <li>« Je préfère gérer moi-même pour garder la flexibilité »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Critères de décision</div>
+      <ul class="styled-list">
+        <li>Confiance et sérieux perçus dès le premier contact</li>
+        <li>Tarification claire et compréhensible</li>
+        <li>Offre complète (pas besoin de multi-prestataires)</li>
+        <li>Présence locale réelle et réactivité</li>
+        <li>Preuves de résultats (avis, exemples, avant/après)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">03</span>
+    <h2 class="section-title">Objectifs du Site</h2>
+  </div>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">🎯 Priorité 1 — Génération de leads</div>
+      <div class="card-text">Transformer les visiteurs en contacts qualifiés via un formulaire ou une prise de RDV directe. C'est l'objectif principal de chaque page.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">📍 Priorité 2 — SEO Local</div>
+      <div class="card-text">Positionner Le Cocon d'Hôtes sur les requêtes de conciergerie à Albi et Gaillac pour capter des propriétaires locaux en recherche active.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">✅ Priorité 3 — Réassurance</div>
+      <div class="card-text">Convaincre les propriétaires indécis grâce à la transparence, l'histoire fondatrice, les valeurs et les preuves sociales intégrées au parcours.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">📅 Priorité 4 — Prise de RDV</div>
+      <div class="card-text">Faciliter le premier contact avec un CTA clair et une logique de rendez-vous découverte (appel ou visio) à chaque étape clé du site.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">🌟 Priorité 5 — Notoriété locale</div>
+      <div class="card-text">Construire une image de marque cohérente et mémorable sur le territoire tarnais via le blog, les visuels et la tonalité éditoriale.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">💡 Priorité 6 — Nurturing</div>
+      <div class="card-text">Accompagner les propriétaires hésitants dans leur réflexion via le contenu blog et un lead magnet téléchargeable, pour conclure plus tard.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 ARBORESCENCE -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">04</span>
+    <h2 class="section-title">Arborescence du Site</h2>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Albi</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre offre</strong><br><small style="color:#8b7468;">Annonces, communication, calendrier, photos, accueil, ménage</small></td>
+          <td>BAB</td>
+          <td>gestion locative courte durée Tarn</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Qui sommes-nous</strong></td>
+          <td>Storytelling</td>
+          <td>conciergerie Airbnb Albi Valérie Marty</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos tarifs</strong></td>
+          <td>PAS</td>
+          <td>tarif conciergerie Airbnb Tarn</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie Albi</strong><br><small style="color:#8b7468;">Page SEO locale #1</small></td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Albi</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie Gaillac</strong><br><small style="color:#8b7468;">Page SEO locale #2</small></td>
+          <td>AIDA</td>
+          <td>conciergerie location Gaillac Tarn</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils propriétaires location saisonnière</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / Prise de RDV</strong></td>
+          <td>PAS</td>
+          <td>conciergerie LCD contact Albi</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">05</span>
+    <h2 class="section-title">Cocon Sémantique</h2>
+  </div>
+
+  <div class="grid-3" style="margin-bottom: 32px;">
+    <div class="card">
+      <div class="card-title">Cluster 1 — Gestion locative</div>
+      <div class="card-text">Pages piliers : Accueil, Notre Offre, Tarifs<br>Articles satellites : optimiser ses revenus Airbnb, choisir une conciergerie, ménage professionnel LCD</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Cluster 2 — SEO Local Tarn</div>
+      <div class="card-text">Pages piliers : Conciergerie Albi, Conciergerie Gaillac<br>Articles satellites : louer son bien à Albi, tourisme dans le Tarn, LCD en zone rurale</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Cluster 3 — Confiance & Marque</div>
+      <div class="card-text">Pages piliers : Qui sommes-nous, Contact<br>Articles satellites : valeurs d'une bonne conciergerie, comment déléguer sereinement</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Logique de maillage interne</div>
+    <div style="margin-top: 8px;">
+      <div class="maillage-item">
+        <span class="maillage-source">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Notre Offre</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Tarifs</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact</span>
+      </div>
+      <div class="maillage-item">
+        <span class="maillage-source">Pages SEO locales</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Notre Offre</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact</span>
+      </div>
+      <div class="maillage-item">
+        <span class="maillage-source">Articles Blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Notre Offre</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Tarifs</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact</span>
+      </div>
+      <div class="maillage-item">
+        <span class="maillage-source">Qui sommes-nous</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Notre Offre</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">06</span>
+    <h2 class="section-title">Tunnel de Conversion</h2>
+  </div>
+  <div class="grid-4">
+    <div class="tunnel-step">
+      <div class="tunnel-number">1</div>
+      <div class="tunnel-label">Découverte</div>
+      <div class="tunnel-title">Le propriétaire découvre Le Cocon</div>
+      <div class="tunnel-row">
+        <span>Google (requête locale ou générique)</span>
+        <span>Recommandation bouche-à-oreille</span>
+        <span>Pages SEO locales Albi / Gaillac</span>
+        <span>CTA : « Découvrir nos services »</span>
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">2</div>
+      <div class="tunnel-label">Intérêt</div>
+      <div class="tunnel-title">Il explore l'offre et les tarifs</div>
+      <div class="tunnel-row">
+        <span>Page Notre Offre</span>
+        <span>Page Tarifs</span>
+        <span>Articles Blog (nurturing)</span>
+        <span>CTA : « Télécharger le guide gratuit »</span>
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">3</div>
+      <div class="tunnel-label">Confiance</div>
+      <div class="tunnel-title">Il se projette et se rassure</div>
+      <div class="tunnel-row">
+        <span>Page Qui sommes-nous</span>
+        <span>Témoignages propriétaires</span>
+        <span>Valeurs & histoire de Valérie</span>
+        <span>CTA : « Voir nos réalisations »</span>
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">4</div>
+      <div class="tunnel-label">Conversion</div>
+      <div class="tunnel-title">Il prend contact ou réserve un RDV</div>
+      <div class="tunnel-row">
+        <span>Page Contact / RDV</span>
+        <span>Formulaire qualifiant</span>
+        <span>Prise de RDV en ligne</span>
+        <span>CTA : « Réserver mon appel découverte »</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 07 LEVIERS MARKETING -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">07</span>
+    <h2 class="section-title">Leviers Marketing Recommandés</h2>
+  </div>
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <div class="card-title">🎁 Lead Magnet</div>
+      <div class="card-text">« Guide gratuit : 7 erreurs à éviter quand on loue sa résidence secondaire dans le Tarn »<br>Format PDF élégant à télécharger en échange d'un email. Cible directement les propriétaires en phase de réflexion.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">📅 Prise de RDV en ligne</div>
+      <div class="card-text">Outil recommandé : <strong>Calendly</strong> (gratuit, facile à intégrer).<br>Proposer un « Appel découverte de 20 min » pour qualifier les prospects sans friction et créer un premier lien humain.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">⭐ Preuve sociale</div>
+      <div class="card-text">Témoignages écrits de propriétaires satisfaits avec photo et localisation (ex : « Marie, propriétaire à Albi »). Intégrer les notes Airbnb ou Google My Business dès que disponibles.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">📋 Formulaire qualifiant</div>
+      <div class="card-text">Champs recommandés : Prénom / Localisation du bien / Type de bien (appartement, maison, gîte) / Nombre de couchages / Situation actuelle (déjà en location / nouveau projet) / Message libre</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">📩 Newsletter — Angle éditorial suggéré</div>
+    <div class="card-text">Fréquence : 1 fois par mois. Angle : « Le Carnet du Propriétaire Serein » — actualités de la location courte durée dans le Tarn, conseils pratiques, nouveautés réglementaires, astuces pour maximiser les revenus. Format court, chaleureux, signé Valérie.</div>
+  </div>
+</div>
+
+<!-- 08 DIRECTION VISUELLE -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">08</span>
+    <h2 class="section-title">Direction Visuelle & Éditoriale</h2>
+  </div>
+
+  <div style="margin-bottom: 36px;">
+    <p style="font-size:14px; color:#8b7468; margin-bottom: 24px; text-align:center; letter-spacing: 0.5px;">Palette chromatique</p>
+    <div class="palette-grid">
+      <div class="swatch-item">
+        <div class="swatch" style="background:#fcf5f0;border:1px solid rgba(139,116,104,0.2);"></div>
+        <span class="swatch-name">Lin Doux</span>
+        <span class="swatch-hex">#FCF5F0</span>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#c46e47;"></div>
+        <span class="swatch-name">Terracotta</span>
+        <span class="swatch-hex">#C46E47</span>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#623e2a;"></div>
+        <span class="swatch-name">Châtaigne</span>
+        <span class="swatch-hex">#623E2A</span>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#8b7468;"></div>
+        <span class="swatch-name">Grès</span>
+        <span class="swatch-hex">#8B7468</span>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#2d1409;"></div>
+        <span class="swatch-name">Bois Brûlé</span>
+        <span class="swatch-hex">#2D1409</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Univers visuel recommandé</div>
+      <ul class="styled-list">
+        <li>Photographies chaleureuses de logements bien décorés (lumière naturelle, tons chauds)</li>
+        <li>Textures douces : lin, bois clair, céramique — inspiré du Sud-Ouest</li>
+        <li>Icônes minimalistes ligne fine pour les services</li>
+        <li>Typographie Playfair Display (titres) + Inter (corps) — élégant et lisible</li>
+        <li>Espaces blancs généreux, mise en page aérée pour inspirer la sérénité</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Cohérence de marque</div>
+      <ul class="styled-list">
+        <li>Logo : typographique avec une variation de signe graphique évoquant un cocon ou une maison</li>
+        <li>Pas de photos stock génériques : favoriser des visuels authentiques du territoire tarnais</li>
+        <li>Fond principal Lin Doux (#fcf5f0) pour un rendu chaleureux et non agressif</li>
+        <li>Accents Terracotta (#c46e47) pour les CTA et éléments d'emphase</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 09 ARTICLES BLOG -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-badge">09</span>
+    <h2 class="section-title">Articles Blog Recommandés</h2>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 16px;">
+
+    <div class="article-card">
+      <div class="article-title">Pourquoi confier sa résidence secondaire à une conciergerie plutôt que de gérer seul ?</div>
+      <div class="article-meta">
+        <span class="article-meta-tag">Cluster : Gestion locative</span>
+        <span class="article-meta-tag">Intention : informationnelle</span>
+        <span class="badge badge-prioritaire">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="article-card">
+      <div class="article-title">Location courte durée à Albi : tout ce qu'il faut savoir avant de se lancer</div>
+      <div class="article-meta">
+        <span class="article-meta-tag">Cluster : SEO Local Tarn</span>
+        <span class="article-meta-tag">Intention : informationnelle / locale</span>
+        <span class="badge badge-prioritaire">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="article-card">
+      <div class="article-title">7 erreurs courantes des propriétaires Airbnb dans le Tarn (et comment les éviter)</div>
+      <div class="article-meta">
+        <span class="article-meta-tag">Cluster : Gestion locative</span>
+        <span class="article-meta-tag">Intention : décisionnelle</span>
+        <span class="badge badge-prioritaire">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="article-card">
+      <div class="article-title">Gaillac, Albi, Cordes-sur-Ciel : pourquoi le Tarn attire de plus en plus de voyageurs ?</div>
+      <div class="article-meta">
+        <span class="article-meta-tag">Cluster : SEO Local Tarn</span>
+        <span class="article-meta-tag">Intention : informationnelle / notoriété</span>
+        <span class="badge badge-medium">Moyen</span>
+      </div>
+    </div>
+
+    <div class="article-card">
+      <div class="article-title">Comment optimiser son annonce Airbnb pour maximiser ses réservations dans le Tarn ?</div>
+      <div class="article-meta">
+        <span class="article-meta-tag">Cluster : Gestion locative</span>
+        <span class="article-meta-tag">Intention : transactionnelle</span>
+        <span class="badge badge-prioritaire">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="article-card">
+      <div class="article-title">Ménage professionnel entre deux séjours : pourquoi c'est non-négociable pour vos avis voyageurs</div>
+      <div class="article-meta">
+        <span class="article-meta-tag">Cluster : Gestion locative</span>
+        <span class="article-meta-tag">Intention : informationnelle</span>
+        <span class="badge badge-medium">Moyen</span>
+      </div>
+    </div>
+
+    <div class="article-card">
+      <div class="article-title">Déléguer la gestion de son Airbnb : comment choisir la bonne conciergerie locale ?</div>
+      <div class="article-meta">
+        <span class="article-meta-tag">Cluster : Confiance & Marque</span>
+        <span class="article-meta-tag">Intention : décisionnelle</span>
+        <span class="badge badge-low">Faible</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Le Cocon d'Hôtes</strong> — Blueprint Stratégique · AR Digital</p>
+  <p style="margin-top: 6px;">Document confidentiel · Réservé à Valérie Marty Battut · Ne pas diffuser</p>
+</footer>
+
+</body>
+</html>
