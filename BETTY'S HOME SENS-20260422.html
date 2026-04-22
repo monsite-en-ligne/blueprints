@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blueprint Stratégique — Betty's Home Sens</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #3a3228;
+      background-color: #FCF8F6;
+    }
+
+    /* ── COVER ───────────────────────────────────────────── */
+    .cover {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #2b1f1a 0%, #4a2f28 40%, #7a4a40 75%, #E16B6E 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(225,107,110,0.18) 0%, transparent 65%);
+    }
+    .cover-badge {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #EED8CF;
+      opacity: 0.85;
+      margin-bottom: 36px;
+      position: relative;
+    }
+    .cover h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      position: relative;
+      letter-spacing: -1px;
+    }
+    .cover-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: #EED8CF;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 56px;
+      position: relative;
+    }
+    .cover-meta {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .cover-meta-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .cover-meta-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #C9B49D;
+    }
+    .cover-meta-value {
+      font-size: 13px;
+      font-weight: 500;
+      color: #FCF8F6;
+    }
+    .cover-divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #E16B6E, transparent);
+      margin: 40px auto;
+      position: relative;
+    }
+
+    /* ── SECTIONS ────────────────────────────────────────── */
+    section {
+      padding: 80px 60px;
+    }
+    section:nth-child(even) {
+      background-color: #FBF3EE;
+    }
+    section:nth-child(odd) {
+      background-color: #FCF8F6;
+    }
+
+    .section-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #E16B6E;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 700;
+      color: #2b1f1a;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .section-intro {
+      font-size: 15px;
+      color: #7a6a5e;
+      margin-bottom: 44px;
+      max-width: 640px;
+      font-weight: 300;
+    }
+
+    /* ── CARDS ───────────────────────────────────────────── */
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px 30px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: #2b1f1a;
+      margin-bottom: 10px;
+    }
+    .card p, .card li {
+      font-size: 14px;
+      color: #5a4e45;
+      line-height: 1.75;
+    }
+    .card ul {
+      padding-left: 18px;
+      margin-top: 6px;
+    }
+
+    /* ── GRIDS ───────────────────────────────────────────── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    /* ── HIGHLIGHT BOX ───────────────────────────────────── */
+    .highlight-box {
+      background: linear-gradient(135deg, #E16B6E 0%, #c95558 100%);
+      border-radius: 16px;
+      padding: 36px 40px;
+      color: #ffffff;
+      margin-bottom: 40px;
+    }
+    .highlight-box .label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #EED8CF;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .highlight-box p {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: #ffffff;
+    }
+
+    /* ── TONE PILLS ──────────────────────────────────────── */
+    .tone-pills {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .pill {
+      background: #EED8CF;
+      color: #4a2f28;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 40px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── TABLE ───────────────────────────────────────────── */
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffff;
+      font-size: 14px;
+    }
+    thead {
+      background: #2b1f1a;
+      color: #EED8CF;
+    }
+    thead th {
+      padding: 14px 18px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    tbody tr {
+      border-bottom: 1px solid #f0e8e2;
+    }
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+    tbody td {
+      padding: 14px 18px;
+      color: #5a4e45;
+      vertical-align: middle;
+    }
+    tbody tr:hover {
+      background: #FBF3EE;
+    }
+
+    /* ── SEO BADGES ──────────────────────────────────────── */
+    .badge-fort {
+      background: #d4edda;
+      color: #276235;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+    .badge-moyen {
+      background: #fff3cd;
+      color: #856404;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+    .badge-faible {
+      background: #f8d7da;
+      color: #721c24;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── PRIORITY BADGES BLOG ────────────────────────────── */
+    .badge-prioritaire {
+      background: #E16B6E;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .badge-blog-moyen {
+      background: #C9B49D;
+      color: #2b1f1a;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .badge-blog-faible {
+      background: #EED8CF;
+      color: #5a4e45;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* ── TUNNEL STEPS ────────────────────────────────────── */
+    .tunnel-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .tunnel-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      position: relative;
+    }
+    .tunnel-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #E16B6E;
+      margin-bottom: 8px;
+    }
+    .tunnel-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      color: #2b1f1a;
+      margin-bottom: 14px;
+    }
+    .tunnel-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #C9B49D;
+      margin-bottom: 4px;
+      margin-top: 10px;
+    }
+    .tunnel-val {
+      font-size: 13px;
+      color: #5a4e45;
+    }
+    .cta-pill {
+      display: inline-block;
+      margin-top: 12px;
+      background: linear-gradient(135deg, #E16B6E, #c95558);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    /* ── COCON MAILLAGE ──────────────────────────────────── */
+    .maillage-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .maillage-source {
+      background: #2b1f1a;
+      color: #EED8CF;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 20px;
+    }
+    .maillage-arrow {
+      color: #E16B6E;
+      font-size: 16px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .maillage-target {
+      background: #EED8CF;
+      color: #4a2f28;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 20px;
+    }
+
+    /* ── COLOR PALETTE ───────────────────────────────────── */
+    .palette-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .color-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 90px;
+    }
+    .color-box {
+      width: 80px;
+      height: 80px;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+    }
+    .color-name {
+      font-size: 11px;
+      font-weight: 600;
+      color: #3a3228;
+      text-align: center;
+    }
+    .color-hex {
+      font-size: 10px;
+      color: #9c8b80;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: #2b1f1a;
+      padding: 36px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: #EED8CF;
+      font-weight: 600;
+    }
+    footer .footer-meta {
+      font-size: 12px;
+      color: #9c8b80;
+      letter-spacing: 0.5px;
+    }
+    footer .footer-confidential {
+      font-size: 11px;
+      color: #7a6a5e;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── PRINT ───────────────────────────────────────────── */
+    @media print {
+      section, .card, .tunnel-card, .table-wrapper {
+        page-break-inside: avoid;
+      }
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .cover h1 { font-size: 42px; }
+      .cover-meta { gap: 20px; }
+      section { padding: 48px 24px; }
+      .section-title { font-size: 26px; }
+      .grid-2, .grid-3, .grid-4, .tunnel-grid {
+        grid-template-columns: 1fr;
+      }
+      .highlight-box { padding: 26px 22px; }
+      .highlight-box p { font-size: 18px; }
+      footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
+      .palette-grid { justify-content: flex-start; }
+      .maillage-row { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ COVER ══════════════════════════════════════════════ -->
+<div class="cover">
+  <span class="cover-badge">Blueprint Stratégique · AR Digital</span>
+  <h1>Betty's Home Sens</h1>
+  <p class="cover-subtitle">Conciergerie de location courte durée · Sens &amp; Bourgogne</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Cliente</span>
+      <span class="cover-meta-value">Béatrice Pinjon</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie LCD</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Domaine</span>
+      <span class="cover-meta-value">bettyshomesens.fr</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 01 — POSITIONNEMENT ════════════════════════════════ -->
+<section id="bp-section-01">
+  <span class="section-badge">01</span>
+  <h2 class="section-title">Positionnement</h2>
+  <p class="section-intro">Le socle identitaire et éditorial de Betty's Home Sens.</p>
+
+  <div class="highlight-box">
+    <span class="label">Promesse de valeur principale</span>
+    <p>Confiez votre bien à Betty's Home Sens et vivez sereinement, pendant qu'une conciergerie humaine, locale et haut de gamme transforme votre logement en expérience inoubliable pour vos voyageurs.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 24px;">
+    <h3>Ligne directrice de communication</h3>
+    <p>Élégance accessible, ancrage territorial assumé, et service personnalisé qui met la tranquillité du propriétaire au centre de chaque action.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 36px;">
+    <h3>Ton éditorial</h3>
+    <div class="tone-pills">
+      <span class="pill">Chaleureux</span>
+      <span class="pill">Raffiné</span>
+      <span class="pill">Rassurant</span>
+    </div>
+    <p>Un ton qui allie la douceur d'un interlocuteur de confiance à l'exigence d'un service premium : jamais froid, jamais familier, toujours élégant et sincère.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🌿 Ancrage Bourgogne &amp; Proximité Paris</h3>
+      <p>Sens à 1h de Paris : un positionnement stratégique qui attire des voyageurs franciliens et valorise chaque bien comme un refuge accessible depuis la capitale.</p>
+    </div>
+    <div class="card">
+      <h3>✨ Expérience hôte haut de gamme</h3>
+      <p>Accueil gourmand local, option romantique, pack anniversaire : des attentions signature qui élèvent chaque séjour au-delà du simple hébergement.</p>
+    </div>
+    <div class="card">
+      <h3>🤝 Gestion clé en main sans friction</h3>
+      <p>Un forfait premium complet (photos, pricing dynamique, ménage hôtelier, maintenance 7j/7) qui libère totalement le propriétaire de la gestion opérationnelle.</p>
+    </div>
+    <div class="card">
+      <h3>🏡 Service humain et local</h3>
+      <p>Pas un algorithme, une vraie personne du territoire. Béatrice connaît les biens, les voyageurs et les spécificités de la région — c'est la garantie d'un suivi personnalisé.</p>
+    </div>
+    <div class="card" style="grid-column: span 2;">
+      <h3>🎁 Options expérientielles exclusives</h3>
+      <p>Des extras soigneusement sélectionnés (vins de Bourgogne, artisans locaux, mise en scène romantique) qui génèrent des revenus additionnels et des avis 5 étoiles.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 02 — CLIENT CIBLE ══════════════════════════════════ -->
+<section id="bp-section-02">
+  <span class="section-badge">02</span>
+  <h2 class="section-title">Client Cible</h2>
+  <p class="section-intro">Portrait du propriétaire idéal de Betty's Home Sens.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Profil type</h3>
+      <ul>
+        <li>35 à 65 ans, propriétaire actif ou retraité</li>
+        <li>Résidence principale, secondaire ou investissement locatif dans l'Yonne, la Seine-et-Marne ou l'Aube</li>
+        <li>Peu disponible, peu à l'aise avec les plateformes (Airbnb, Booking) ou simplement débordé</li>
+        <li>Souhaite rentabiliser son bien sans y consacrer du temps</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Générer des revenus complémentaires passifs</li>
+        <li>Déléguer intégralement sans perte de qualité</li>
+        <li>Protéger et valoriser son patrimoine</li>
+        <li>Avoir un interlocuteur local réactif et de confiance</li>
+        <li>Offrir une belle expérience à ses hôtes</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Freins et objections</h3>
+      <ul>
+        <li>Peur de perdre le contrôle de son bien</li>
+        <li>Commission perçue comme trop élevée</li>
+        <li>Manque de visibilité sur ce qui est vraiment fait</li>
+        <li>Crainte des voyageurs peu soigneux</li>
+        <li>Méconnaissance du potentiel LCD de la région</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Transparence sur les services inclus et le prix</li>
+        <li>Références et avis de propriétaires existants</li>
+        <li>Réactivité et disponibilité de la conciergerie</li>
+        <li>Sentiment que son bien sera traité avec soin</li>
+        <li>Facilité à démarrer (accompagnement à la mise en route)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 03 — OBJECTIFS DU SITE ═════════════════════════════ -->
+<section id="bp-section-03">
+  <span class="section-badge">03</span>
+  <h2 class="section-title">Objectifs du Site</h2>
+  <p class="section-intro">Ce que le site doit accomplir, par ordre de priorité.</p>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3>🥇 Génération de leads</h3>
+      <p>Convertir les visiteurs en propriétaires contacts via des formulaires qualifiants et des CTA clairs à chaque niveau de lecture.</p>
+    </div>
+    <div class="card">
+      <h3>🥈 Réassurance</h3>
+      <p>Rassurer le propriétaire hésitant grâce aux preuves sociales, à la transparence des offres et à la mise en valeur de l'humain derrière la marque.</p>
+    </div>
+    <div class="card">
+      <h3>🥉 SEO Local</h3>
+      <p>Être trouvé sur Google par les recherches "conciergerie Sens", "gestion Airbnb Yonne" et expressions proches dans un rayon d'1h autour de Sens.</p>
+    </div>
+    <div class="card">
+      <h3>4. Prise de RDV</h3>
+      <p>Faciliter la première prise de contact avec un outil de réservation de créneaux directement intégré au site.</p>
+    </div>
+    <div class="card">
+      <h3>5. Conversion</h3>
+      <p>Transformer l'intérêt en engagement concret : signature du mandat de gestion ou appel de découverte initié depuis le site.</p>
+    </div>
+    <div class="card">
+      <h3>6. Notoriété locale</h3>
+      <p>Asseoir la réputation de Betty's Home Sens comme la référence conciergerie haut de gamme dans le secteur de l'Yonne et ses abords.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 04 — ARBORESCENCE ══════════════════════════════════ -->
+<section id="bp-section-04">
+  <span class="section-badge">04</span>
+  <h2 class="section-title">Arborescence du Site</h2>
+  <p class="section-intro">Structure recommandée — une page par offre globale, SEO intégré dès la conception.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Sens</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre Offre Propriétaires</strong></td>
+          <td>PAS</td>
+          <td>gestion Airbnb Sens propriétaire</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Expériences Voyageurs</strong></td>
+          <td>AIDA</td>
+          <td>accueil hôte premium Bourgogne</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — Betty's Story</strong></td>
+          <td>BAB</td>
+          <td>conciergerie locale Yonne humaine</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Témoignages &amp; Résultats</strong></td>
+          <td>PAS</td>
+          <td>avis conciergerie Sens propriétaires</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Sens &amp; Yonne</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Sens Yonne</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Proximité Paris / Fontainebleau</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée 1h Paris</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils gestion location saisonnière</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact &amp; RDV</strong></td>
+          <td>BAB</td>
+          <td>contacter conciergerie Sens devis</td>
+          <td><span class="badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══ 05 — COCON SÉMANTIQUE ══════════════════════════════ -->
+<section id="bp-section-05">
+  <span class="section-badge">05</span>
+  <h2 class="section-title">Cocon Sémantique</h2>
+  <p class="section-intro">Organisation thématique pour maximiser la visibilité Google et le maillage interne.</p>
+
+  <div class="grid-3" style="margin-bottom: 36px;">
+    <div class="card">
+      <h3>Cluster 1 · Gestion propriétaires</h3>
+      <p>Offre, services inclus, pricing, témoignages, FAQ propriétaires, pages locales. Cœur du SEO transactionnel.</p>
+    </div>
+    <div class="card">
+      <h3>Cluster 2 · Expérience voyageurs</h3>
+      <p>Extras, accueil, options haut de gamme, Bourgogne / région. Renforce la réputation et attire les hôtes prescripteurs.</p>
+    </div>
+    <div class="card">
+      <h3>Cluster 3 · Conseils &amp; éditorial blog</h3>
+      <p>Articles sur la LCD, fiscalité, optimisation annonce, tourisme local. Génère du trafic SEO de longue traîne et nourrit la confiance.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Logique de maillage interne</h3>
+    <div style="margin-top: 14px;">
+      <div class="maillage-row">
+        <span class="maillage-source">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target">Notre Offre Propriétaires</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target">Contact &amp; RDV</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Pages Locales</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target">Notre Offre Propriétaires</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target">Témoignages</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Articles Blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target">Notre Offre Propriétaires</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target">Contact &amp; RDV</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">À propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target">Témoignages</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target">Notre Offre Propriétaires</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Expériences Voyageurs</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target">À propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target">Contact &amp; RDV</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 06 — TUNNEL DE CONVERSION ═════════════════════════ -->
+<section id="bp-section-06">
+  <span class="section-badge">06</span>
+  <h2 class="section-title">Tunnel de Conversion</h2>
+  <p class="section-intro">Le parcours d'un propriétaire, de la première recherche Google à la signature.</p>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-card">
+      <div class="tunnel-step-num">Étape 1</div>
+      <h3>Découverte</h3>
+      <div class="tunnel-label">Source de trafic</div>
+      <div class="tunnel-val">Google (SEO local), bouche-à-oreille, réseaux sociaux</div>
+      <div class="tunnel-label">Page concernée</div>
+      <div class="tunnel-val">Accueil / Pages locales SEO</div>
+      <div class="tunnel-label">CTA</div>
+      <span class="cta-pill">Découvrir notre offre</span>
+    </div>
+    <div class="tunnel-card">
+      <div class="tunnel-step-num">Étape 2</div>
+      <h3>Intérêt</h3>
+      <div class="tunnel-label">Source de trafic</div>
+      <div class="tunnel-val">Navigation interne depuis l'accueil</div>
+      <div class="tunnel-label">Page concernée</div>
+      <div class="tunnel-val">Notre Offre Propriétaires</div>
+      <div class="tunnel-label">CTA</div>
+      <span class="cta-pill">Télécharger la brochure</span>
+    </div>
+    <div class="tunnel-card">
+      <div class="tunnel-step-num">Étape 3</div>
+      <h3>Confiance</h3>
+      <div class="tunnel-label">Source de trafic</div>
+      <div class="tunnel-val">Navigation interne, articles blog</div>
+      <div class="tunnel-label">Page concernée</div>
+      <div class="tunnel-val">Témoignages / À propos</div>
+      <div class="tunnel-label">CTA</div>
+      <span class="cta-pill">Voir les avis propriétaires</span>
+    </div>
+    <div class="tunnel-card">
+      <div class="tunnel-step-num">Étape 4</div>
+      <h3>Conversion</h3>
+      <div class="tunnel-label">Source de trafic</div>
+      <div class="tunnel-val">CTA offre + lead magnet</div>
+      <div class="tunnel-label">Page concernée</div>
+      <div class="tunnel-val">Contact &amp; RDV</div>
+      <div class="tunnel-label">CTA</div>
+      <span class="cta-pill">Réserver un appel découverte</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 07 — LEVIERS MARKETING ════════════════════════════ -->
+<section id="bp-section-07">
+  <span class="section-badge">07</span>
+  <h2 class="section-title">Leviers Marketing Recommandés</h2>
+  <p class="section-intro">Les outils concrets pour attirer, engager et convertir les propriétaires.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🎁 Lead Magnet</h3>
+      <p><strong>Guide PDF : "Combien peut rapporter votre bien à Sens et alentours en location courte durée ?"</strong><br/>
+      Un contenu ultra-ciblé qui éduque le propriétaire sur le potentiel LCD de la région et positionne Betty's Home Sens comme l'expert local incontournable.</p>
+    </div>
+    <div class="card">
+      <h3>📅 Prise de RDV</h3>
+      <p><strong>Outil recommandé : Calendly ou TidyCal</strong><br/>
+      Intégrer un bouton de réservation d'appel découverte de 20 minutes directement sur la page Offre et la page Contact. Réduction maximale des frictions à la conversion.</p>
+    </div>
+    <div class="card">
+      <h3>⭐ Preuve Sociale</h3>
+      <p><strong>Témoignages vidéo ou citations de propriétaires + captures d'avis Airbnb / Google</strong><br/>
+      Mettre en avant 3 à 5 témoignages courts et authentiques de propriétaires satisfaits. Les avis voyageurs (5 étoiles) servent de double preuve sur la qualité de l'accueil.</p>
+    </div>
+    <div class="card">
+      <h3>📋 Formulaire Qualifiant</h3>
+      <p><strong>Champs recommandés :</strong> Prénom / Type de bien (appartement, maison, gîte) / Localisation / Nombre de couchages / Déjà en location ? (oui/non) / Message libre.<br/>
+      Permet à Béatrice de préparer chaque appel et de personnaliser sa réponse.</p>
+    </div>
+    <div class="card" style="grid-column: span 2;">
+      <h3>📩 Newsletter — Angle Éditorial</h3>
+      <p><strong>"Les Secrets d'un Bien qui Performe"</strong> — Une lettre mensuelle légère et utile pour les propriétaires : actualités LCD, conseils saisonniers, bonnes pratiques d'accueil, zoom sur les tendances voyageurs en Bourgogne. Fidélise les prospects tièdes et entretient la relation avec les propriétaires existants.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 08 — DIRECTION VISUELLE ════════════════════════════ -->
+<section id="bp-section-08">
+  <span class="section-badge">08</span>
+  <h2 class="section-title">Direction Visuelle &amp; Éditoriale</h2>
+  <p class="section-intro">Une identité douce, élégante et naturelle, fidèle à l'univers de Betty's Home Sens.</p>
+
+  <div class="card" style="margin-bottom: 36px;">
+    <h3>Palette de couleurs</h3>
+    <div class="palette-grid">
+      <div class="color-swatch">
+        <div class="color-box" style="background:#E16B6E;"></div>
+        <span class="color-name">Rose Corail</span>
+        <span class="color-hex">#E16B6E</span>
+      </div>
+      <div class="color-swatch">
+        <div class="color-box" style="background:#8F8967;"></div>
+        <span class="color-name">Vert Olive Grisé</span>
+        <span class="color-hex">#8F8967</span>
+      </div>
+      <div class="color-swatch">
+        <div class="color-box" style="background:#C9B49D;"></div>
+        <span class="color-name">Beige Chaud Sable</span>
+        <span class="color-hex">#C9B49D</span>
+      </div>
+      <div class="color-swatch">
+        <div class="color-box" style="background:#EED8CF;"></div>
+        <span class="color-name">Beige Rosé Doux</span>
+        <span class="color-hex">#EED8CF</span>
+      </div>
+      <div class="color-swatch">
+        <div class="color-box" style="background:#FBF3EE; border: 1px solid #e8ddd6;"></div>
+        <span class="color-name">Beige Clair</span>
+        <span class="color-hex">#FBF3EE</span>
+      </div>
+      <div class="color-swatch">
+        <div class="color-box" style="background:#FCF8F6; border: 1px solid #e8ddd6;"></div>
+        <span class="color-name">Blanc Cassé</span>
+        <span class="color-hex">#FCF8F6</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Univers visuel recommandé</h3>
+      <ul>
+        <li><strong>Photographies lumineuses</strong> d'intérieurs soignés, linge blanc immaculé, détails décoratifs naturels (lin, bois, fleurs séchées)</li>
+        <li><strong>Textures douces</strong> — fond beige chaud, grains papier léger, effets aquarelle subtils</li>
+        <li><strong>Typographie contrastée</strong> — Playfair Display élégant pour les titres, Inter épuré pour le corps</li>
+        <li><strong>Iconographie artisanale</strong> — illustrations fines style trait, vignes, clés, maisons, produits locaux</li>
+        <li><strong>Mise en page aérée</strong> — grands espaces blancs, photos plein format, sections alternées clair/beige</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Ambiance &amp; références visuelles</h3>
+      <ul>
+        <li>Références : boutiques hôtelières de charme, marques de cosmétiques naturels haut de gamme, gîtes de prestige en Bourgogne</li>
+        <li>Pas de couleurs criardes, pas d'éléments surchargés — tout respire</li>
+        <li>Photos d'extras (bouteilles de vin, pétales, plateau petit-déjeuner) pour incarner les offres expérientielles</li>
+        <li>Portrait authentique de Béatrice — la conciergerie a un visage, une histoire, une âme</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 09 — ARTICLES BLOG ═════════════════════════════════ -->
+<section id="bp-section-09">
+  <span class="section-badge">09</span>
+  <h2 class="section-title">Articles Blog Recommandés</h2>
+  <p class="section-intro">Sujets à fort potentiel pour générer du trafic qualifié et asseoir l'expertise de Betty's Home Sens.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Combien peut rapporter votre bien en location courte durée à Sens et dans l'Yonne ?</strong></td>
+          <td>Gestion propriétaires</td>
+          <td>Informationnelle — propriétaire curieux du potentiel LCD local</td>
+          <td><span class="badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie ou gestion en solo : que choisir pour votre Airbnb dans l'Yonne ?</strong></td>
+          <td>Gestion propriétaires</td>
+          <td>Décisionnelle — propriétaire qui hésite à déléguer</td>
+          <td><span class="badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>5 erreurs qui font fuir les voyageurs sur votre annonce Airbnb (et comment les corriger)</strong></td>
+          <td>Conseils éditorial</td>
+          <td>Informationnelle — propriétaire déjà en LCD qui veut progresser</td>
+          <td><span class="badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Pourquoi Sens est une destination LCD sous-estimée à 1h de Paris</strong></td>
+          <td>SEO local / Expérience voyageurs</td>
+          <td>Informationnelle — voyageur ou propriétaire cherchant des opportunités en Bourgogne</td>
+          <td><span class="badge-blog-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Accueil gourmand local : pourquoi offrir un panier de bienvenue booste vos avis 5 étoiles</strong></td>
+          <td>Expérience voyageurs</td>
+          <td>Informationnelle — propriétaire souhaitant améliorer l'expérience hôte</td>
+          <td><span class="badge-blog-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Fiscalité de la location courte durée en 2025 : ce que tout propriétaire doit savoir</strong></td>
+          <td>Conseils éditorial</td>
+          <td>Informationnelle — propriétaire cherchant à comprendre les obligations légales</td>
+          <td><span class="badge-blog-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Pricing dynamique : comment maximiser vos revenus LCD en Bourgogne selon la saison</strong></td>
+          <td>Gestion propriétaires</td>
+          <td>Informationnelle — propriétaire souhaitant optimiser son taux d'occupation</td>
+          <td><span class="badge-blog-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════ -->
+<footer>
+  <div>
+    <div class="footer-brand">Betty's Home Sens</div>
+    <div class="footer-meta">bettyshomesens.fr · Béatrice Pinjon</div>
+  </div>
+  <div class="footer-confidential">Document confidentiel · AR Digital © 2025</div>
+</footer>
+
+</body>
+</html>
