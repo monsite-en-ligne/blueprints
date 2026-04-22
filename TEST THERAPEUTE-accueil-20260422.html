@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accueil — Rémi Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 15mm 15mm 20mm 15mm; }
+* { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --primary: #7A9E7E;
+  --primary-dark: #4F7A55;
+  --beige-light: #E8DCC8;
+  --beige-warm: #C9B899;
+  --terre: #B5735A;
+  --text-dark: #1a1a1a;
+  --text-light: #6b6b6b;
+  --white: #ffffff;
+}
+body { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: var(--text-dark); background: #f9f7f4; }
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 48px;
+  background: var(--white);
+  border-bottom: 2px solid var(--beige-light);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.nav-logo img { height: 36px; }
+.nav-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.nav-links a {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  text-decoration: none;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+.nav-links a:hover { border-bottom-color: var(--primary); }
+.nav-links a.active { color: var(--primary-dark); border-bottom-color: var(--primary-dark); font-weight: 600; }
+.page-content { padding: 70px 60px; max-width: 1100px; margin: 0 auto; }
+.hero-section {
+  background: linear-gradient(135deg, #2c3e2d 0%, #1a2e1b 60%, #3a2a1a 100%);
+  border-radius: 20px;
+  padding: 80px 60px;
+  text-align: center;
+  margin-bottom: 60px;
+}
+.hero-section h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
+.hero-section p {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.8;
+  max-width: 660px;
+  margin: 0 auto 14px auto;
+}
+.btn-primary {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--white);
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 28px;
+  text-decoration: none;
+  margin-right: 12px;
+}
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--white);
+  padding: 14px 32px;
+  border-radius: 10px;
+  border: 2px solid rgba(255,255,255,0.5);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 28px;
+  text-decoration: none;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  line-height: 1.25;
+}
+.section-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+.cards-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  margin: 40px 0;
+}
+.card {
+  background: var(--white);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border-radius: 14px;
+  padding: 32px 28px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+.card p {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-dark);
+}
+.card-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(122,158,126,0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.card-icon svg { width: 22px; height: 22px; stroke: var(--primary-dark); }
+.section-block {
+  background: var(--white);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border-radius: 14px;
+  padding: 48px 48px;
+  margin-bottom: 40px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.differencing-block {
+  background: var(--beige-light);
+  border-radius: 14px;
+  padding: 48px 48px;
+  margin-bottom: 40px;
+}
+.cta-block {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, #2c3e2d 100%);
+  border-radius: 14px;
+  padding: 52px 48px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.cta-block h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.cta-block p {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+.tarif-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 6px 18px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 4px 6px;
+}
+footer {
+  background: rgba(122,158,126,0.05);
+  border-top: 2px solid var(--primary);
+  padding: 30px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--text-light);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  .page-content { padding: 24px; }
+  .hero-section { padding: 48px 28px; }
+  .hero-section h1 { font-size: 34px; }
+  .cards-grid-3 { grid-template-columns: 1fr; }
+  .section-block { padding: 28px 24px; }
+  .cta-block { padding: 36px 24px; }
+  .cta-block h2 { font-size: 28px; }
+  footer { flex-direction: column; text-align: center; padding: 24px; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-20260422.html">
+      <img src="https://i.imgur.com/72UqvFq.png" alt="AR Digital">
+    </a>
+  </div>
+  <div class="nav-links">
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-20260422.html">Blueprint</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-accueil-20260422.html" class="active">Accueil</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-sophrologie-20260422.html">Sophrologie</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-a-propos-20260422.html">À propos</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-temoignages-20260422.html">Témoignages</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-contact-20260422.html">Contact</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-sophrologue-paris-20260422.html">Sophrologue Paris</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-sophrologue-paris-11-20260422.html">Sophrologue Paris 11</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-blog-20260422.html">Blog</a>
+  </div>
+</nav>
+
+<div class="page-content">
+
+  <div class="hero-section">
+    <h1>Vous méritez de souffler. Vraiment.</h1>
+    <p>Vous enchaînez les journées à plein régime, le soir vous n'arrivez plus à décrocher, et vous sentez que quelque chose se grippe — dans votre corps, dans votre tête. Vous n'êtes pas seul.</p>
+    <p>Rémi Test, sophrologue certifié RNCP à Paris 11, accompagne les actifs débordés à retrouver leur équilibre. En cabinet ou en visio, à votre rythme.</p>
+    <a href="#" class="btn-primary">Prendre rendez-vous</a>
+    <a href="#" class="btn-secondary">Découvrir la sophrologie</a>
+  </div>
+
+  <div class="section-block">
+    <h2 class="section-title">La sophrologie, concrètement, ça change quoi ?</h2>
+    <p class="section-text">Ce n'est pas de la relaxation passive ni une discipline réservée aux sportifs de haut niveau. La sophrologie est un outil pragmatique pour reprendre le contrôle : mieux dormir, gérer la pression au quotidien, retrouver confiance en soi.</p>
+    <p class="section-text">En quelques séances, vous apprenez des techniques que vous pouvez utiliser seul — à la maison, avant une réunion stressante, ou au cœur d'une nuit d'insomnie.</p>
+  </div>
+
+  <div class="cards-grid-3">
+    <div class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <h3>Moins de stress</h3>
+      <p>Apprenez à réguler votre système nerveux et à prendre du recul face aux situations de tension — sans fuir, sans exploser.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </div>
+      <h3>Un sommeil retrouvé</h3>
+      <p>Retrouvez des nuits réparatrices grâce à des exercices ciblés qui apaisent le mental avant de s'endormir.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <h3>Une confiance renforcée</h3>
+      <p>Reconnectez-vous à vos ressources intérieures et osez à nouveau avancer sans cette boule au ventre permanente.</p>
+    </div>
+  </div>
+
+  <div class="differencing-block">
+    <h2 class="section-title">Un sophrologue qui connaît votre réalité</h2>
+    <p class="section-text">Rémi n'a pas toujours été sophrologue. Ancien cadre, il a lui-même connu la surcharge, l'épuisement silencieux et cette impression de ne plus savoir qui il était en dehors de son travail. C'est ce parcours qui fait toute la différence.</p>
+    <p class="section-text">Pas de discours théorique, pas de posture d'autorité : une approche humaine, directe, qui part de votre vécu pour construire votre transformation.</p>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-a-propos-20260422.html" class="btn-primary" style="background: var(--primary-dark);">Son histoire</a>
+  </div>
+
+  <div class="cta-block">
+    <h2>Prêt à reprendre votre souffle ?</h2>
+    <p>La première séance est une invitation à poser ce que vous portez. Pas de jugement, pas d'engagement immédiat — juste un espace pour commencer.</p>
+    <div style="margin: 16px 0;">
+      <span class="tarif-badge">Cabinet Paris 11</span>
+      <span class="tarif-badge">Visio disponible</span>
+      <span class="tarif-badge">65 € / 55 min</span>
+      <span class="tarif-badge">Forfaits disponibles</span>
+    </div>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-contact-20260422.html" class="btn-primary">Réserver ma première séance</a>
+  </div>
+
+</div>
+
+<footer>
+  <span>Rémi Test — TEST THERAPEUTE</span>
+  <span>Thérapeute — Sophrologie</span>
+  <span>test-sophrologue.com</span>
+</footer>
+</body>
