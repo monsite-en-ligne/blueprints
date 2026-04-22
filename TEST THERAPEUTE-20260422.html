@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — TEST THERAPEUTE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --primary: #7A9E7E;
+    --primary-dark: #4F7A55;
+    --secondary: #E8DCC8;
+    --secondary-dark: #C9B899;
+    --accent: #B5735A;
+    --neutral-light: #F7F4EF;
+    --neutral-dark: #2C2C2C;
+    --text: #3A3A3A;
+    --text-light: #6B6B6B;
+    --white: #FFFFFF;
+    --shadow-card: 0 2px 12px rgba(0,0,0,0.06);
+    --radius: 14px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+    background: var(--neutral-light);
+    padding-top: 56px;
+  }
+
+  /* ─── NAV ─── */
+  nav#main-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 56px;
+    background: var(--white);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    z-index: 1000;
+  }
+
+  nav#main-nav .nav-logo img { height: 28px; display: block; }
+
+  nav#main-nav .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  nav#main-nav .nav-links a {
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+
+  nav#main-nav .nav-links a.active {
+    color: var(--primary-dark);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  nav#main-nav .nav-links a:hover { background: var(--neutral-light); }
+
+  /* ─── COVER ─── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #2E4A31 0%, #4F7A55 40%, #7A9E7E 80%, #C9B899 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 32px;
+    color: var(--white);
+  }
+
+  .cover .cover-badge {
+    font-size: 11px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 24px;
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .cover .cover-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 300;
+    margin-bottom: 48px;
+    max-width: 480px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cover-meta span {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 0.5px;
+  }
+
+  .cover-meta span strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 70px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) { background: var(--white); }
+  section:nth-child(odd) { background: var(--neutral-light); }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .section-badge {
+    font-size: 10px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--primary-dark);
+    font-weight: 600;
+    background: rgba(122,158,126,0.12);
+    padding: 6px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--neutral-dark);
+  }
+
+  .max-container { max-width: 1100px; margin: 0 auto; }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: var(--white);
+    box-shadow: var(--shadow-card);
+    border-radius: var(--radius);
+    padding: 28px;
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--neutral-dark);
+    margin-bottom: 10px;
+  }
+
+  .card p, .card li {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  .card ul { padding-left: 18px; }
+  .card ul li { margin-bottom: 4px; }
+
+  /* ─── GRIDS ─── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ─── HIGHLIGHT ─── */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border-radius: var(--radius);
+    padding: 40px;
+    color: var(--white);
+    margin-bottom: 36px;
+  }
+
+  .highlight-box .label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 14px;
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--white);
+  }
+
+  /* ─── SEC 01 ─── */
+  .tone-pills {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 16px 0 10px;
+  }
+
+  .tone-pill {
+    background: rgba(122,158,126,0.12);
+    color: var(--primary-dark);
+    border-radius: 20px;
+    padding: 6px 18px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ─── SEC 02 ─── */
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .tag {
+    background: var(--neutral-light);
+    border: 1px solid var(--secondary-dark);
+    color: var(--text);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 13px;
+  }
+
+  /* ─── SEC 03 ─── */
+  .objectives-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .objectives-list li {
+    background: var(--white);
+    border-left: 4px solid var(--primary);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 16px 20px;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .obj-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--primary);
+    min-width: 32px;
+  }
+
+  .obj-text strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--neutral-dark);
+  }
+
+  .obj-text span {
+    font-size: 13px;
+    color: var(--text-light);
+  }
+
+  /* ─── SEC 04 ─── */
+  .table-wrapper { overflow-x: auto; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+
+  thead tr {
+    background: var(--primary);
+    color: var(--white);
+  }
+
+  thead th {
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: background 0.15s;
+  }
+
+  tbody tr:hover { background: var(--neutral-light); }
+
+  tbody td {
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--text);
+    vertical-align: middle;
+  }
+
+  .badge-seo {
+    display: inline-block;
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .seo-fort { background: #D4EDDA; color: #1A6B35; }
+  .seo-moyen { background: #FFF3CD; color: #856404; }
+  .seo-faible { background: #F8D7DA; color: #721C24; }
+
+  .fw-label {
+    display: inline-block;
+    background: rgba(122,158,126,0.12);
+    color: var(--primary-dark);
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  /* ─── SEC 05 ─── */
+  .cluster-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+
+  .cluster-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--neutral-dark);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cluster-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary);
+    flex-shrink: 0;
+  }
+
+  .cluster-dot.accent { background: var(--accent); }
+  .cluster-dot.secondary { background: var(--secondary-dark); }
+
+  .maillage-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 16px;
+    background: var(--neutral-light);
+    border-radius: 8px;
+    margin-top: 8px;
+    font-size: 13px;
+  }
+
+  .maillage-row .page-chip {
+    background: var(--white);
+    border: 1px solid var(--secondary-dark);
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--primary-dark);
+  }
+
+  .maillage-arrow {
+    color: var(--primary);
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  /* ─── SEC 06 ─── */
+  .tunnel-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+    position: relative;
+  }
+
+  .tunnel-step {
+    background: var(--white);
+    box-shadow: var(--shadow-card);
+    border-radius: var(--radius);
+    padding: 28px 22px;
+    position: relative;
+  }
+
+  .tunnel-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: var(--primary);
+    z-index: 1;
+  }
+
+  .tunnel-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--primary-dark);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .tunnel-step h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--neutral-dark);
+    margin-bottom: 12px;
+  }
+
+  .tunnel-info {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 4px;
+  }
+
+  .tunnel-info strong { color: var(--text); font-weight: 600; }
+
+  .cta-chip {
+    display: inline-block;
+    margin-top: 12px;
+    background: var(--primary);
+    color: var(--white);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* ─── SEC 07 ─── */
+  .lever-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    padding: 28px;
+  }
+
+  .lever-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .lever-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--neutral-dark);
+    margin-bottom: 8px;
+  }
+
+  .lever-card p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  /* ─── SEC 08 ─── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+  }
+
+  .palette-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--neutral-dark);
+    text-align: center;
+  }
+
+  .palette-hex {
+    font-size: 11px;
+    color: var(--text-light);
+    font-family: monospace;
+  }
+
+  .visual-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .visual-item {
+    background: var(--neutral-light);
+    border-radius: 10px;
+    padding: 18px 20px;
+    font-size: 13px;
+    color: var(--text);
+    border-left: 3px solid var(--primary);
+  }
+
+  /* ─── SEC 09 ─── */
+  .blog-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: start;
+  }
+
+  .blog-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--neutral-dark);
+    margin-bottom: 6px;
+  }
+
+  .blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .blog-cluster {
+    background: rgba(122,158,126,0.12);
+    color: var(--primary-dark);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-weight: 500;
+  }
+
+  .blog-intent {
+    background: rgba(197,163,122,0.15);
+    color: #7A5C35;
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-weight: 500;
+  }
+
+  .blog-priority {
+    display: inline-block;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    align-self: start;
+  }
+
+  .prio-high { background: #D4EDDA; color: #1A6B35; }
+  .prio-mid { background: #FFF3CD; color: #856404; }
+  .prio-low { background: #F8D7DA; color: #721C24; }
+
+  .blog-list { display: flex; flex-direction: column; gap: 16px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--neutral-dark);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 13px;
+  }
+
+  footer strong { color: var(--white); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    section { padding: 48px 24px; }
+
+    .section-title { font-size: 26px; }
+
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+
+    .objectives-list { grid-template-columns: 1fr; }
+
+    .tunnel-steps { grid-template-columns: 1fr; gap: 16px; }
+
+    .tunnel-step:not(:last-child)::after {
+      content: '↓';
+      right: auto;
+      left: 50%;
+      top: auto;
+      bottom: -22px;
+      transform: translateX(-50%);
+    }
+
+    .visual-list { grid-template-columns: 1fr; }
+
+    .cover h1 { font-size: 40px; }
+
+    nav#main-nav { padding: 0 16px; }
+
+    nav#main-nav .nav-links { gap: 4px; }
+
+    .maillage-row { display: flex; flex-wrap: wrap; align-items: center; }
+
+    .blog-card { grid-template-columns: 1fr; }
+
+    table { font-size: 12px; }
+
+    .highlight-box p { font-size: 18px; }
+  }
+
+  @media print {
+    nav#main-nav { display: none; }
+    body { padding-top: 0; }
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAVIGATION ─── -->
+<nav id="main-nav">
+  <div class="nav-logo">
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-20260422.html">
+      <img src="https://i.imgur.com/72UqvFq.png" alt="AR Digital">
+    </a>
+  </div>
+  <div class="nav-links">
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-20260422.html" class="active">Blueprint</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-accueil-20260422.html">Accueil</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-sophrologie-20260422.html">Sophrologie</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-a-propos-20260422.html">À propos</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-temoignages-20260422.html">Témoignages</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-contact-20260422.html">Contact</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-sophrologue-paris-20260422.html">Sophrologue Paris</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-sophrologue-paris-11-20260422.html">Sophrologue Paris 11</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-blog-20260422.html">Blog</a>
+  </div>
+</nav>
+
+<!-- ─── COUVERTURE ─── -->
+<div class="cover">
+  <p class="cover-badge">Blueprint Stratégique — AR Digital</p>
+  <h1>Rémi Test</h1>
+  <p class="cover-sub">Sophrologue certifié — Paris 11ème</p>
+  <div class="cover-meta">
+    <span><strong>Client</strong> — TEST THERAPEUTE</span>
+    <span><strong>Domaine</strong> — test-sophrologue.com</span>
+    <span><strong>Date</strong> — 22 avril 2026</span>
+  </div>
+</div>
+
+<!-- ─── 01 — POSITIONNEMENT ─── -->
+<section id="bp-section-01">
+  <div class="max-container">
+    <div class="section-header">
+      <span class="section-badge">01</span>
+      <h2 class="section-title">Positionnement</h2>
+    </div>
+
+    <div class="highlight-box">
+      <p class="label">Promesse de valeur principale</p>
+      <p>Retrouvez un équilibre durable face au stress et à l'épuisement, grâce à un accompagnement en sophrologie humain, accessible et pensé pour les actifs qui n'ont pas le temps de craquer.</p>
+    </div>
+
+    <div class="card" style="margin-bottom: 36px;">
+      <h3>Ligne directrice de communication</h3>
+      <p>Parler à l'actif stressé comme quelqu'un qui l'a vécu, pas comme un soignant. Mettre en avant la transformation concrète (moins de stress, meilleur sommeil, regagner confiance) sans jargon clinique. Rendre la sophrologie désirable, accessible et pragmatique — pas ésotérique.</p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom: 36px;">
+      <div class="card">
+        <h3>Ton éditorial</h3>
+        <div class="tone-pills">
+          <span class="tone-pill">Chaleureux</span>
+          <span class="tone-pill">Ancré</span>
+          <span class="tone-pill">Accessible</span>
+        </div>
+        <p style="font-size:14px; margin-top:8px;">Un ton proche et sincère, qui rassure sans condescendance — comme un ami expert qui vous parle vrai, sans vous noyer sous les termes techniques.</p>
+      </div>
+      <div class="card">
+        <h3>Positionnement en une phrase</h3>
+        <p>Rémi Test n'est pas un thérapeute de l'ombre : c'est un ancien cadre qui a traversé le même chemin que ses clients, et qui accompagne aujourd'hui les actifs stressés à retrouver leur souffle — en cabinet ou en visio, à leur rythme.</p>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>Expertise terrain</h3>
+        <p>Ancien cadre reconverti, Rémi comprend de l'intérieur la réalité du monde du travail : charge mentale, injonctions de performance, épuisement silencieux. Cette crédibilité vécue est un avantage majeur.</p>
+      </div>
+      <div class="card">
+        <h3>Approche non-médicale</h3>
+        <p>La sophrologie de Rémi est douce, pragmatique, sans jargon clinique ni posture d'autorité. Le client est acteur de sa transformation — pas patient d'un protocole.</p>
+      </div>
+      <div class="card">
+        <h3>Double format de suivi</h3>
+        <p>Cabinet à Paris 11 et séances en visio : l'accessibilité géographique n'est jamais un obstacle. Idéal pour les actifs avec des agendas chargés ou en déplacement fréquent.</p>
+      </div>
+      <div class="card">
+        <h3>Certification RNCP & expérience</h3>
+        <p>8 ans de pratique et une certification RNCP reconnue apportent la réassurance nécessaire à une audience parfois sceptique sur les thérapies douces.</p>
+      </div>
+      <div class="card">
+        <h3>Tarif accessible & forfaits</h3>
+        <p>À 65 € la séance de 55 minutes avec des forfaits disponibles, l'offre est pensée pour que le mieux-être ne soit pas réservé à une élite — message fort de différenciation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 02 — CLIENT CIBLE ─── -->
+<section id="bp-section-02">
+  <div class="max-container">
+    <div class="section-header">
+      <span class="section-badge">02</span>
+      <h2 class="section-title">Client Cible</h2>
+    </div>
+
+    <div class="grid-2" style="margin-bottom: 24px;">
+      <div class="card">
+        <h3>Profil type</h3>
+        <p><strong>Âge :</strong> 30 à 50 ans<br>
+        <strong>Situation :</strong> Actif en poste — cadre, manager, indépendant, profession libérale ou salarié sous pression<br>
+        <strong>Contexte :</strong> Ressent un stress chronique, des difficultés à dormir ou un début de burn-out. A déjà essayé de "tenir" seul. Cherche une solution concrète, discrète et compatible avec une vie chargée. Vit ou travaille à Paris, ou peut consulter en visio.</p>
+      </div>
+      <div class="card">
+        <h3>Motivations principales</h3>
+        <ul>
+          <li>Retrouver un sommeil réparateur</li>
+          <li>Diminuer le stress et l'anxiété au quotidien</li>
+          <li>Reprendre confiance en soi après une période difficile</li>
+          <li>Prévenir ou sortir d'un burn-out</li>
+          <li>Trouver un équilibre durable sans médicaments</li>
+          <li>Être accompagné par quelqu'un qui "comprend vraiment"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Freins & objections</h3>
+        <ul>
+          <li>"Je ne sais pas vraiment ce qu'est la sophrologie"</li>
+          <li>"Ça ne va pas marcher pour moi, j'ai trop essayé"</li>
+          <li>"Je n'ai pas le temps pour une thérapie longue"</li>
+          <li>"Est-ce que c'est vraiment sérieux / reconnu ?"</li>
+          <li>"C'est peut-être trop cher"</li>
+          <li>"Je ne veux pas paraître faible en consultant"</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Critères de décision</h3>
+        <ul>
+          <li>Confiance dans la personne (parcours, authenticité)</li>
+          <li>Avis et témoignages clients</li>
+          <li>Clarté de l'offre et du tarif</li>
+          <li>Possibilité de consulter en ligne</li>
+          <li>Prise en charge rapide, sans délai excessif</li>
+          <li>Ton humain, non-médical, non-jugeant</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 03 — OBJECTIFS DU SITE ─── -->
+<section id="bp-section-03">
+  <div class="max-container">
+    <div class="section-header">
+      <span class="section-badge">03</span>
+      <h2 class="section-title">Objectifs du Site</h2>
+    </div>
+    <ul class="objectives-list">
+      <li>
+        <span class="obj-rank">1</span>
+        <div class="obj-text">
+          <strong>Prise de RDV</strong>
+          <span>Convertir les visiteurs en clients via un parcours fluide vers la réservation</span>
+        </div>
+      </li>
+      <li>
+        <span class="obj-rank">2</span>
+        <div class="obj-text">
+          <strong>Génération de leads</strong>
+          <span>Capter les prospects hésitants via un lead magnet avant décision</span>
+        </div>
+      </li>
+      <li>
+        <span class="obj-rank">3</span>
+        <div class="obj-text">
+          <strong>SEO local</strong>
+          <span>Être visible sur les recherches "sophrologue Paris" et "Paris 11"</span>
+        </div>
+      </li>
+      <li>
+        <span class="obj-rank">4</span>
+        <div class="obj-text">
+          <strong>Réassurance</strong>
+          <span>Lever les objections via témoignages, certifications et parcours personnel</span>
+        </div>
+      </li>
+      <li>
+        <span class="obj-rank">5</span>
+        <div class="obj-text">
+          <strong>Conversion</strong>
+          <span>Transformer la confiance en premier contact / première séance</span>
+        </div>
+      </li>
+      <li>
+        <span class="obj-rank">6</span>
+        <div class="obj-text">
+          <strong>Notoriété</strong>
+          <span>Ancrer Rémi comme référence sophrologie pour les actifs parisiens</span>
+        </div>
+      </li>
+      <li>
+        <span class="obj-rank">7</span>
+        <div class="obj-text">
+          <strong>Nurturing</strong>
+          <span>Entretenir la relation via newsletter et blog pour les prospects non prêts</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─── 04 — ARBORESCENCE ─── -->
+<section id="bp-section-04">
+  <div class="max-container">
+    <div class="section-header">
+      <span class="section-badge">04</span>
+      <h2 class="section-title">Arborescence du Site</h2>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>Framework</th>
+            <th>Mot-clé principal</th>
+            <th>Potentiel SEO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Accueil</strong></td>
+            <td><span class="fw-label">AIDA</span></td>
+            <td>sophrologue Paris</td>
+            <td><span class="badge-seo seo-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Sophrologie</strong><br><small style="color:var(--text-light);">Offres complètes : stress, burn-out, sommeil, confiance</small></td>
+            <td><span class="fw-label">PAS</span></td>
+            <td>séance sophrologie Paris</td>
+            <td><span class="badge-seo seo-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>À propos</strong></td>
+            <td><span class="fw-label">BAB</span></td>
+            <td>sophrologue certifié RNCP Paris</td>
+            <td><span class="badge-seo seo-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td><strong>Témoignages</strong></td>
+            <td><span class="fw-label">AIDA</span></td>
+            <td>avis sophrologue Paris</td>
+            <td><span class="badge-seo seo-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td><strong>Contact</strong></td>
+            <td><span class="fw-label">AIDA</span></td>
+            <td>prendre RDV sophrologue Paris</td>
+            <td><span class="badge-seo seo-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td><strong>Sophrologue Paris</strong><br><small style="color:var(--text-light);">Page SEO locale #1</small></td>
+            <td><span class="fw-label">PAS</span></td>
+            <td>sophrologue Paris</td>
+            <td><span class="badge-seo seo-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Sophrologue Paris 11</strong><br><small style="color:var(--text-light);">Page SEO locale #2</small></td>
+            <td><span class="fw-label">PAS</span></td>
+            <td>sophrologue Paris 11ème</td>
+            <td><span class="badge-seo seo-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Blog</strong></td>
+            <td><span class="fw-label">—</span></td>
+            <td>sophrologie stress anxiété</td>
+            <td><span class="badge-seo seo-fort">Fort</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 05 — COCON SÉMANTIQUE ─── -->
+<section id="bp-section-05">
+  <div class="max-container">
+    <div class="section-header">
+      <span class="section-badge">05</span>
+      <h2 class="section-title">Cocon Sémantique</h2>
+    </div>
+
+    <div class="cluster-card">
+      <h3><span class="cluster-dot"></span>Cluster 1 — Sophrologie & Bien-être des actifs</h3>
+      <p style="font-size:14px; margin-bottom:12px;">Pages et articles autour du stress, burn-out, sommeil, confiance en soi — l'univers de souffrance et de transformation du client cible.</p>
+      <p style="font-size:13px; color:var(--text-light); margin-bottom:8px;"><strong>Pages pilier :</strong> Accueil, Sophrologie, À propos</p>
+      <p style="font-size:13px; color:var(--text-light); margin-bottom:8px;"><strong>Articles satellites :</strong> Comment fonctionne la sophrologie ? / Sophrologie et burn-out / Sophrologie pour dormir / Sophrologie et préparation mentale</p>
+    </div>
+
+    <div class="cluster-card">
+      <h3><span class="cluster-dot accent"></span>Cluster 2 — SEO Local Paris</h3>
+      <p style="font-size:14px; margin-bottom:12px;">Pages et contenus ciblant les recherches géolocalisées à Paris et Paris 11ème pour capter l'intention de proximité.</p>
+      <p style="font-size:13px; color:var(--text-light); margin-bottom:8px;"><strong>Pages pilier :</strong> Sophrologue Paris, Sophrologue Paris 11</p>
+      <p style="font-size:13px; color:var(--text-light); margin-bottom:8px;"><strong>Articles satellites :</strong> Trouver un sophrologue à Paris / Sophrologie en visio vs cabinet</p>
+    </div>
+
+    <div class="cluster-card">
+      <h3><span class="cluster-dot secondary"></span>Cluster 3 — Confiance & Réassurance</h3>
+      <p style="font-size:14px; margin-bottom:12px;">Pages et contenus qui lèvent les objections, humanisent le praticien et consolident la décision de prise de RDV.</p>
+      <p style="font-size:13px; color:var(--text-light); margin-bottom:8px;"><strong>Pages pilier :</strong> À propos, Témoignages, Contact</p>
+      <p style="font-size:13px; color:var(--text-light); margin-bottom:8px;"><strong>Articles satellites :</strong> La sophrologie est-elle reconnue ? / Qu'est-ce qu'une première séance ?</p>
+    </div>
+
+    <div style="margin-top: 32px;">
+      <h3 style="font-family:'Playfair Display',serif; font-size:18px; margin-bottom:16px; color:var(--neutral-dark);">Logique de maillage interne</h3>
+      <div class="maillage-row">
+        <span class="page-chip">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="page-chip">Sophrologie</span>
+        <span class="maillage-arrow">→</span>
+        <span class="page-chip">Contact / RDV</span>
+      </div>
+      <div class="maillage-row">
+        <span class="page-chip">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="page-chip">À propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="page-chip">Témoignages</span>
+        <span class="maillage-arrow">→</span>
+        <span class="page-chip">Contact / RDV</span>
+      </div>
+      <div class="maillage-row">
+        <span class="page-chip">Sophrologue Paris</span>
+        <span class="maillage-arrow">→</span>
+        <span class="page-chip">Sophrologue Paris 11</span>
+        <span class="maillage-arrow">→</span>
+        <span class="page-chip">Sophrologie (offres)</span>
+        <span class="maillage-arrow">→</span>
+        <span class="page-chip">Contact / RDV</span>
+      </div>
+      <div class="maillage-row">
+        <span class="page-chip">Articles Blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="page-chip">Sophrologie (offres)</span>
+        <span class="maillage-arrow">+</span>
+        <span class="page-chip">À propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="page-chip">Contact / RDV</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 06 — TUNNEL DE CONVERSION ─── -->
+<section id="bp-section-06">
+  <div class="max-container">
+    <div class="section-header">
+      <span class="section-badge">06</span>
+      <h2 class="section-title">Tunnel de Conversion</h2>
+    </div>
+    <div class="tunnel-steps">
+      <div class="tunnel-step">
+        <p class="tunnel-label">Étape 1</p>
+        <h4>Découverte</h4>
+        <p class="tunnel-info"><strong>Source :</strong> Google (SEO local), bouche-à-oreille</p>
+        <p class="tunnel-info"><strong>Page :</strong> Accueil / Pages SEO Paris</p>
+        <span class="cta-chip">En savoir plus →</span>
+      </div>
+      <div class="tunnel-step">
+        <p class="tunnel-label">Étape 2</p>
+        <h4>Intérêt</h4>
+        <p class="tunnel-info"><strong>Source :</strong> Navigation interne, blog</p>
+        <p class="tunnel-info"><strong>Page :</strong> Sophrologie, Blog</p>
+        <span class="cta-chip">Télécharger le guide →</span>
+      </div>
+      <div class="tunnel-step">
+        <p class="tunnel-label">Étape 3</p>
+        <h4>Confiance</h4>
+        <p class="tunnel-info"><strong>Source :</strong> Pages internes</p>
+        <p class="tunnel-info"><strong>Page :</strong> À propos, Témoignages</p>
+        <span class="cta-chip">Lire les avis →</span>
+      </div>
+      <div class="tunnel-step">
+        <p class="tunnel-label">Étape 4</p>
+        <h4>Conversion</h4>
+        <p class="tunnel-info"><strong>Source :</strong> CTA omniprésents</p>
+        <p class="tunnel-info"><strong>Page :</strong> Contact, Outil RDV</p>
+        <span class="cta-chip">Réserver ma séance →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 07 — LEVIERS MARKETING ─── -->
+<section id="bp-section-07">
+  <div class="max-container">
+    <div class="section-header">
+      <span class="section-badge">07</span>
+      <h2 class="section-title">Leviers Marketing Recommandés</h2>
+    </div>
+    <div class="grid-3">
+      <div class="lever-card">
+        <span class="lever-icon">🎁</span>
+        <h3>Lead Magnet</h3>
+        <p><strong>« 5 techniques de sophrologie pour décompresser en 10 minutes »</strong> — Un PDF pratique, immédiatement utile pour un actif stressé. Capture l'email et prouve la valeur avant la première séance.</p>
+      </div>
+      <div class="lever-card">
+        <span class="lever-icon">📅</span>
+        <h3>Prise de RDV</h3>
+        <p><strong>Calendly</strong> (version gratuite suffisante au démarrage) ou <strong>Doctolib</strong> si visibilité additionnelle souhaitée. Intégration directe dans la page Contact et en CTA flottant sur mobile.</p>
+      </div>
+      <div class="lever-card">
+        <span class="lever-icon">⭐</span>
+        <h3>Preuve Sociale</h3>
+        <p><strong>Témoignages écrits</strong> sous forme de verbatims courts avec prénom + contexte (ex. "Marc, 42 ans, manager"). Idéalement 6 à 8 témoignages. Ajouter la note Google si elle existe.</p>
+      </div>
+      <div class="lever-card">
+        <span class="lever-icon">📋</span>
+        <h3>Formulaire Qualifiant</h3>
+        <p>Champs recommandés : Prénom / Email / Téléphone / Principal motif de consultation (menu déroulant) / Format souhaité (cabinet / visio) / Disponibilités préférées.</p>
+      </div>
+      <div class="lever-card">
+        <span class="lever-icon">✉️</span>
+        <h3>Newsletter</h3>
+        <p>Angle éditorial : <strong>« Le Souffle »</strong> — 1 email mensuel avec une technique de sophrologie praticable seul, un conseil bien-être pour les actifs, et une réflexion courte issue du vécu de Rémi.</p>
+      </div>
+      <div class="lever-card">
+        <span class="lever-icon">🔗</span>
+        <h3>CTA Récurrent</h3>
+        <p>Bouton principal unique : <strong>« Réserver une séance »</strong> — présent dans le header, en bas de chaque section, en flottant mobile. Bouton secondaire : <strong>« Télécharger le guide gratuit »</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 08 — DIRECTION VISUELLE ─── -->
+<section id="bp-section-08">
+  <div class="max-container">
+    <div class="section-header">
+      <span class="section-badge">08</span>
+      <h2 class="section-title">Direction Visuelle & Éditoriale</h2>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif; font-size:20px; margin-bottom:28px; color:var(--neutral-dark);">Palette de couleurs</h3>
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#7A9E7E;"></div>
+        <span class="palette-label">Vert Sauge</span>
+        <span class="palette-hex">#7A9E7E</span>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#4F7A55;"></div>
+        <span class="palette-label">Sauge Foncé</span>
+        <span class="palette-hex">#4F7A55</span>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#E8DCC8;"></div>
+        <span class="palette-label">Beige Doux</span>
+        <span class="palette-hex">#E8DCC8</span>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#C9B899;"></div>
+        <span class="palette-label">Beige Chaud</span>
+        <span class="palette-hex">#C9B899</span>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#B5735A;"></div>
+        <span class="palette-label">Terre Douce</span>
+        <span class="palette-hex">#B5735A</span>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif; font-size:20px; margin-bottom:20px; color:var(--neutral-dark);">Univers visuel recommandé</h3>
+    <div class="visual-list">
+      <div class="visual-item"><strong>Photographies :</strong> Portraits chaleureux de Rémi en cabinet ou en extérieur — lumière naturelle, fond neutre, regard direct. Pas de stock photo générique.</div>
+      <div class="visual-item"><strong>Illustrations :</strong> Formes organiques douces (cercles, courbes) en vert sauge et beige. Pas de pictogrammes médicaux ni de croix.</div>
+      <div class="visual-item"><strong>Typographie :</strong> Playfair Display pour les titres (élégance douce), Inter pour le corps (lisibilité moderne). Contraste soigné.</div>
+      <div class="visual-item"><strong>Ambiance générale :</strong> Minimaliste et aéré. Beaucoup d'espace blanc. Sections alternant fond beige clair et fond blanc cassé. Aucun effet visuel agressif.</div>
+      <div class="visual-item"><strong>Iconographie :</strong> Icônes en trait fin (line icons), couleur sauge. Pas d'émojis dans les pages, uniquement dans les communications informelles (newsletter).</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 09 — ARTICLES BLOG ─── -->
+<section id="bp-section-09">
+  <div class="max-container">
+    <div class="section-header">
+      <span class="section-badge">09</span>
+      <h2 class="section-title">Articles Blog Recommandés</h2>
+    </div>
+    <div class="blog-list">
+      <div class="blog-card">
+        <div>
+          <h4>Burn-out : comment la sophrologie peut vous aider à vous reconstruire durablement</h4>
+          <div class="blog-meta">
+            <span class="blog-cluster">Sophrologie & Bien-être</span>
+            <span class="blog-intent">Informationnelle — "Sophrologie burn-out"</span>
+          </div>
+        </div>
+        <span class="blog-priority prio-high">Prioritaire</span>
+      </div>
+      <div class="blog-card">
+        <div>
+          <h4>Sophrologue à Paris : comment choisir le bon professionnel pour vous ?</h4>
+          <div class="blog-meta">
+            <span class="blog-cluster">SEO Local Paris</span>
+            <span class="blog-intent">Navigationnelle — "Sophrologue Paris choisir"</span>
+          </div>
+        </div>
+        <span class="blog-priority prio-high">Prioritaire</span>
+      </div>
+      <div class="blog-card">
+        <div>
+          <h4>5 signes que vous avez besoin de sophrologie (et pas seulement de vacances)</h4>
+          <div class="blog-meta">
+            <span class="blog-cluster">Sophrologie & Bien-être</span>
+            <span class="blog-intent">Informationnelle — "Ai-je besoin de sophrologie"</span>
+          </div>
+        </div>
+        <span class="blog-priority prio-high">Prioritaire</span>
+      </div>
+      <div class="blog-card">
+        <div>
+          <h4>Sophrologie en visio : est-ce aussi efficace qu'en cabinet ?</h4>
+          <div class="blog-meta">
+            <span class="blog-cluster">SEO Local Paris</span>
+            <span class="blog-intent">Comparaison — "Sophrologie en ligne efficace"</span>
+          </div>
+        </div>
+        <span class="blog-priority prio-mid">Moyen</span>
+      </div>
+      <div class="blog-card">
+        <div>
+          <h4>Troubles du sommeil : 3 exercices de sophrologie pour enfin bien dormir</h4>
+          <div class="blog-meta">
+            <span class="blog-cluster">Sophrologie & Bien-être</span>
+            <span class="blog-intent">Transactionnelle — "Sophrologie sommeil exercices"</span>
+          </div>
+        </div>
+        <span class="blog-priority prio-mid">Moyen</span>
+      </div>
+      <div class="blog-card">
+        <div>
+          <h4>La sophrologie est-elle reconnue ? Ce que dit vraiment la certification RNCP</h4>
+          <div class="blog-meta">
+            <span class="blog-cluster">Confiance & Réassurance</span>
+            <span class="blog-intent">Informationnelle — "Sophrologie reconnue sérieuse"</span>
+          </div>
+        </div>
+        <span class="blog-priority prio-mid">Moyen</span>
+      </div>
+      <div class="blog-card">
+        <div>
+          <h4>Ma première séance de sophrologie : à quoi s'attendre concrètement ?</h4>
+          <div class="blog-meta">
+            <span class="blog-cluster">Confiance & Réassurance</span>
+            <span class="blog-intent">Informationnelle — "Première séance sophrologie"</span>
+          </div>
+        </div>
+        <span class="blog-priority prio-low">Faible</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <p><strong>Rémi Test — TEST THERAPEUTE</strong></p>
+  <p style="margin-top:6px;">Blueprint Stratégique — Document confidentiel réservé au client et à l'équipe AR Digital</p>
+  <p style="margin-top:4px; font-size:12px;">© 2026 AR Digital — Tous droits réservés</p>
+</footer>
+
+</body>
+</html>
