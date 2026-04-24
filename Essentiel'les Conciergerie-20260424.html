@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Essentiel'les Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a2e;
+    background: #f9f8f5;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0d1b3e 0%, #1a3260 45%, #c9a84c 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    page-break-after: always;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(201,168,76,0.18) 0%, transparent 60%);
+  }
+  .cover-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.85);
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    position: relative;
+  }
+  .cover h1 span {
+    color: #c9a84c;
+  }
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.72);
+    letter-spacing: 2px;
+    margin-bottom: 56px;
+    position: relative;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-item .label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.7);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .cover-meta-item .value {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+  }
+  .cover-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(201,168,76,0.35);
+  }
+  .cover-line {
+    width: 60px;
+    height: 2px;
+    background: #c9a84c;
+    margin: 0 auto 48px;
+    position: relative;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 80px 80px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+  section:nth-child(odd) {
+    background: #f9f8f5;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #c9a84c;
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #0d1b3e;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .section-intro {
+    font-size: 15px;
+    color: #6b7280;
+    margin-bottom: 48px;
+    max-width: 620px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0d1b3e;
+    margin-bottom: 10px;
+  }
+  .card p, .card li {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.75;
+  }
+  .card ul {
+    padding-left: 18px;
+  }
+  .card ul li {
+    margin-bottom: 4px;
+  }
+
+  /* ── GRIDS ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, #0d1b3e 0%, #1a3260 100%);
+    border-radius: 16px;
+    padding: 40px 48px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-box::after {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.1);
+  }
+  .highlight-box .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #c9a84c;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.5;
+    position: relative;
+  }
+
+  /* ── PILIERS ── */
+  .pilier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-top: 3px solid #c9a84c;
+  }
+  .pilier-card .pilier-num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c9a84c;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .pilier-card .card-title {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  .pilier-card p {
+    font-size: 13.5px;
+    color: #6b7280;
+    line-height: 1.7;
+  }
+
+  /* ── TON ÉDITORIAL ── */
+  .ton-grid {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .ton-badge {
+    background: #0d1b3e;
+    color: #c9a84c;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  /* ── OBJECTIFS ── */
+  .obj-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .obj-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: rgba(201,168,76,0.3);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .obj-content .obj-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0d1b3e;
+    margin-bottom: 4px;
+  }
+  .obj-content p {
+    font-size: 13.5px;
+    color: #6b7280;
+    line-height: 1.6;
+  }
+
+  /* ── TABLE ── */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    font-size: 14px;
+  }
+  thead tr {
+    background: #0d1b3e;
+  }
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    color: #c9a84c;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  tbody tr {
+    border-bottom: 1px solid #f1f0ed;
+  }
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+  tbody td {
+    padding: 16px 20px;
+    color: #374151;
+    vertical-align: top;
+  }
+  tbody tr:hover {
+    background: #fafaf8;
+  }
+  .badge-seo {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .seo-fort { background: #d1fae5; color: #065f46; }
+  .seo-moyen { background: #fef3c7; color: #92400e; }
+  .seo-faible { background: #f3f4f6; color: #6b7280; }
+
+  /* ── COCON ── */
+  .cluster-block {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+  }
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0d1b3e;
+    margin-bottom: 6px;
+  }
+  .cluster-subtitle {
+    font-size: 12px;
+    color: #c9a84c;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .cluster-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .cluster-tag {
+    background: #f3f4f6;
+    color: #374151;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12.5px;
+    font-weight: 500;
+  }
+
+  /* Maillage */
+  .maillage-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 0;
+    border-bottom: 1px dashed #e5e7eb;
+    font-size: 13.5px;
+    color: #374151;
+  }
+  .maillage-row:last-child { border-bottom: none; }
+  .maillage-source {
+    font-weight: 600;
+    color: #0d1b3e;
+    white-space: nowrap;
+  }
+  .maillage-arrow {
+    color: #c9a84c;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .maillage-dest {
+    color: #6b7280;
+    font-size: 13px;
+  }
+
+  /* ── TUNNEL ── */
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+  }
+  .tunnel-step-num {
+    position: absolute;
+    top: -14px;
+    left: 24px;
+    background: #c9a84c;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+  }
+  .tunnel-step .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0d1b3e;
+    margin-bottom: 16px;
+    margin-top: 6px;
+  }
+  .tunnel-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    font-size: 13.5px;
+  }
+  .tunnel-label {
+    font-weight: 600;
+    color: #0d1b3e;
+    min-width: 100px;
+    flex-shrink: 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .tunnel-val {
+    color: #6b7280;
+    font-size: 13.5px;
+  }
+  .cta-pill {
+    display: inline-block;
+    background: #0d1b3e;
+    color: #c9a84c;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+  /* ── LEVIERS ── */
+  .levier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .levier-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  .levier-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c9a84c;
+    margin-bottom: 8px;
+  }
+  .levier-card p {
+    font-size: 13.5px;
+    color: #6b7280;
+    line-height: 1.7;
+  }
+
+  /* ── PALETTE ── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin: 32px 0;
+  }
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .palette-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+    text-align: center;
+  }
+  .palette-hex {
+    font-size: 11px;
+    color: #9ca3af;
+    text-align: center;
+    font-family: monospace;
+  }
+
+  /* ── BLOG ── */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .blog-priority {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    align-self: flex-start;
+  }
+  .priority-p { background: #fee2e2; color: #991b1b; }
+  .priority-m { background: #fef3c7; color: #92400e; }
+  .priority-f { background: #f3f4f6; color: #6b7280; }
+  .blog-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0d1b3e;
+    line-height: 1.4;
+  }
+  .blog-meta {
+    font-size: 12.5px;
+    color: #9ca3af;
+  }
+  .blog-meta span {
+    color: #c9a84c;
+    font-weight: 500;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0d1b3e;
+    padding: 40px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 600;
+  }
+  footer .footer-brand span {
+    color: #c9a84c;
+  }
+  footer .footer-conf {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 1px;
+  }
+  footer .footer-agency {
+    font-size: 12px;
+    color: rgba(201,168,76,0.6);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    section { padding: 48px 24px; }
+    .cover h1 { font-size: 38px; }
+    .cover { padding: 60px 24px; }
+    .cover-meta { gap: 20px; }
+    .cover-divider { display: none; }
+    h2.section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 18px; }
+    footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+    .table-wrapper { overflow-x: auto; }
+    .maillage-row { flex-wrap: wrap; }
+    .tunnel-label { min-width: 80px; }
+    .palette-grid { gap: 16px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { page-break-after: always; min-height: auto; padding: 80px 60px; }
+    footer { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════ COVER ══ -->
+<div class="cover">
+  <div class="cover-logo-text">Blueprint Stratégique</div>
+  <div class="cover-line"></div>
+  <h1>Essentiel<span>'</span>les<br>Conciergerie</h1>
+  <p class="cover-subtitle">Document de positionnement & stratégie digitale</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="label">Clientes</span>
+      <span class="value">Béatrice, Florence & Alexia</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="label">Secteur</span>
+      <span class="value">Conciergerie LCD</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="label">Territoire</span>
+      <span class="value">Grand Saint-Émilionnais · Libournais · Entre-deux-Mers</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ 01 — POSITIONNEMENT ══ -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Positionnement & Identité de marque</h2>
+  <p class="section-intro">Ce que vous dites, comment vous le dites, et ce qui vous rend uniques sur votre marché.</p>
+
+  <div class="highlight-box">
+    <span class="label">Promesse de valeur principale</span>
+    <p>Trois expertes du terrain, une seule promesse : la sérénité totale pour les propriétaires, et des séjours soignés, chaleureux et mémorables pour les voyageurs — au cœur du Grand Saint-Émilionnais.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <div class="card-title">Ligne directrice de communication</div>
+    <p>Proximité locale authentique · Hospitalité haut de gamme à échelle humaine · Performance sereine sans compromis sur l'essentiel</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 40px;">
+    <div class="card-title">Ton éditorial</div>
+    <div class="ton-grid">
+      <span class="ton-badge">Chaleureux</span>
+      <span class="ton-badge">Expertise</span>
+      <span class="ton-badge">Élégant</span>
+    </div>
+    <p>Un ton ancré dans le territoire viticole bordelais : convivial comme un accueil en chai, rigoureux comme la gestion d'un grand cru, et raffiné comme les paysages de l'Entre-deux-Mers. Ni trop corporate, ni trop décontracté — toujours sincère.</p>
+  </div>
+
+  <div class="grid-3" style="margin-bottom: 0;">
+    <div class="pilier-card">
+      <span class="pilier-num">Pilier 01</span>
+      <div class="card-title">Trio de Fondatrices</div>
+      <p>Trois parcours complémentaires, une présence continue sur le terrain. Une équipe soudée qui garantit réactivité et disponibilité sans faille.</p>
+    </div>
+    <div class="pilier-card">
+      <span class="pilier-num">Pilier 02</span>
+      <div class="card-title">Ancrage Local Profond</div>
+      <p>Connaissance intime du Grand Saint-Émilionnais, du Libournais et de l'Entre-deux-Mers : vignobles, artisans, bonnes adresses. Une valeur ajoutée que personne d'autre ne peut offrir.</p>
+    </div>
+    <div class="pilier-card">
+      <span class="pilier-num">Pilier 03</span>
+      <div class="card-title">Service Clé en Main Hôtelier</div>
+      <p>De l'annonce au ménage, de la tarification dynamique à l'accueil voyageur : tout est géré avec un standard qualité hôtelière, sans que le propriétaire n'intervienne.</p>
+    </div>
+    <div class="pilier-card">
+      <span class="pilier-num">Pilier 04</span>
+      <div class="card-title">Forfait Essentiel Transparent</div>
+      <p>Un seul forfait clair à 24% TTC tout compris. Pas de frais cachés, pas de surprises. Une relation de confiance dès le premier contact.</p>
+    </div>
+    <div class="pilier-card">
+      <span class="pilier-num">Pilier 05</span>
+      <div class="card-title">Expérience Voyageur Signature</div>
+      <p>Chaque séjour est pensé pour être mémorable : sélection de biens soignés, conseils locaux personnalisés, accueil chaleureux digne de l'art de vivre bordelais.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 02 — CLIENT CIBLE ══ -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client Cible</span>
+  <h2 class="section-title">Profil du client idéal</h2>
+  <p class="section-intro">Comprendre précisément à qui vous vous adressez, pour mieux répondre à leurs attentes réelles.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Profil type — Propriétaire</div>
+      <ul>
+        <li>40–65 ans, propriétaire d'un bien dans le vignoble bordelais (maison de maître, gîte, mas viticole)</li>
+        <li>Résidant parfois à distance (Paris, grandes villes), peu disponible au quotidien</li>
+        <li>Sensible au patrimoine local et à la valorisation de son bien</li>
+        <li>Cherche la performance locative sans la charge de la gestion opérationnelle</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Motivations principales</div>
+      <ul>
+        <li>Générer des revenus locatifs sans effort personnel</li>
+        <li>Confier son bien à des personnes de confiance, ancrées localement</li>
+        <li>Optimiser l'occupation et les tarifs sans y penser</li>
+        <li>Valoriser un bien patrimonial avec soin et respect</li>
+        <li>Bénéficier d'une présence terrain réactive</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Freins & Objections</div>
+      <ul>
+        <li>« 24% c'est élevé par rapport à une gestion en direct »</li>
+        <li>« Je ne connais pas encore cette conciergerie, pas de références visibles »</li>
+        <li>« J'ai peur de perdre le contrôle sur mon bien »</li>
+        <li>« Je ne sais pas ce qui est vraiment inclus dans le forfait »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Critères de décision</div>
+      <ul>
+        <li>Confiance dans l'équipe (qui sont-elles vraiment ?)</li>
+        <li>Transparence du forfait et des prestations incluses</li>
+        <li>Preuves de résultats (exemples de biens, avis, revenus générés)</li>
+        <li>Réactivité et disponibilité perçue</li>
+        <li>Ancrage local comme gage de sérieux</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 03 — OBJECTIFS DU SITE ══ -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du Site</span>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+  <p class="section-intro">Objectifs priorisés pour orienter chaque décision de conception et de contenu.</p>
+
+  <div class="grid-2">
+    <div class="obj-card">
+      <div class="obj-rank">01</div>
+      <div class="obj-content">
+        <div class="obj-title">Génération de leads propriétaires</div>
+        <p>Convertir les visiteurs propriétaires en prises de contact qualifiées via formulaire ou appel.</p>
+      </div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">02</div>
+      <div class="obj-content">
+        <div class="obj-title">Réassurance & confiance</div>
+        <p>Rassurer le propriétaire sur le sérieux de l'équipe, la transparence du forfait et l'ancrage local.</p>
+      </div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">03</div>
+      <div class="obj-content">
+        <div class="obj-title">SEO local & visibilité organique</div>
+        <p>Être trouvées sur Google par les propriétaires du Grand Saint-Émilionnais, Libournais et Entre-deux-Mers.</p>
+      </div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">04</div>
+      <div class="obj-content">
+        <div class="obj-title">Prise de rendez-vous</div>
+        <p>Permettre une prise de contact directe et fluide, avec ou sans passer par les plateformes.</p>
+      </div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">05</div>
+      <div class="obj-content">
+        <div class="obj-title">Notoriété & ancrage territorial</div>
+        <p>Installer la marque Essentiel'les comme référence de la conciergerie sur le vignoble bordelais.</p>
+      </div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">06</div>
+      <div class="obj-content">
+        <div class="obj-title">Réservation directe voyageurs</div>
+        <p>Proposer un canal de réservation en direct pour réduire la dépendance aux plateformes OTA.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 04 — ARBORESCENCE ══ -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence du Site</span>
+  <h2 class="section-title">Structure des pages</h2>
+  <p class="section-intro">Architecture en français + version anglaise. Navigation principale en onglets dorés. Chaque page offre regroupe les services associés.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil + Présentation (À propos intégré)</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Saint-Émilion</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Valeurs</strong></td>
+          <td>BAB</td>
+          <td>conciergerie locale humaine Grand Saint-Émilionnais</td>
+          <td><span class="badge-seo seo-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>Propriétaires — Offre globale</strong><br><small style="color:#9ca3af">Sous-sections : Prise en charge locative · Intendance</small></td>
+          <td>PAS</td>
+          <td>gestion locative courte durée Libournais</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Biens</strong></td>
+          <td>AIDA</td>
+          <td>location gîte maison Saint-Émilion vignoble</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Réserver</strong><br><small style="color:#9ca3af">Réservation en direct + liens plateformes OTA</small></td>
+          <td>AIDA</td>
+          <td>réserver location courte durée Entre-deux-Mers</td>
+          <td><span class="badge-seo seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contactez-nous</strong></td>
+          <td>PAS</td>
+          <td>contacter conciergerie Saint-Émilion propriétaire</td>
+          <td><span class="badge-seo seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale SEO — Saint-Émilion & Libournais</strong></td>
+          <td>PAS</td>
+          <td>conciergerie Airbnb Saint-Émilion Libourne</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale SEO — Entre-deux-Mers</strong></td>
+          <td>PAS</td>
+          <td>conciergerie location saisonnière Entre-deux-Mers</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils propriétaires location saisonnière Gironde</td>
+          <td><span class="badge-seo seo-moyen">Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 05 — COCON SÉMANTIQUE ══ -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon Sémantique</span>
+  <h2 class="section-title">Architecture de contenu & maillage interne</h2>
+  <p class="section-intro">2 clusters thématiques pour structurer la visibilité organique et guider les visiteurs naturellement vers la conversion.</p>
+
+  <div class="cluster-block">
+    <div class="cluster-subtitle">Cluster 01</div>
+    <div class="cluster-title">Gestion locative & Propriétaires</div>
+    <p style="font-size:13.5px; color:#6b7280; margin-bottom:16px;">Positionner Essentiel'les comme l'interlocutrice de référence pour tout propriétaire souhaitant déléguer sa location courte durée en Gironde viticole.</p>
+    <div class="cluster-tags">
+      <span class="cluster-tag">Page Propriétaires</span>
+      <span class="cluster-tag">Page locale Saint-Émilion / Libournais</span>
+      <span class="cluster-tag">Page locale Entre-deux-Mers</span>
+      <span class="cluster-tag">Articles blog conseils propriétaires</span>
+      <span class="cluster-tag">Page Contact</span>
+    </div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-subtitle">Cluster 02</div>
+    <div class="cluster-title">Séjour & Expérience Voyageur</div>
+    <p style="font-size:13.5px; color:#6b7280; margin-bottom:16px;">Capter les voyageurs en recherche d'hébergement authentique dans le vignoble bordelais et les convertir en réservations directes.</p>
+    <div class="cluster-tags">
+      <span class="cluster-tag">Page Nos Biens</span>
+      <span class="cluster-tag">Page Réserver</span>
+      <span class="cluster-tag">Articles blog guide voyage Saint-Émilion</span>
+      <span class="cluster-tag">Page d'accueil</span>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 16px;">
+    <div class="card-title" style="margin-bottom: 18px;">Logique de maillage interne</div>
+    <div class="maillage-row">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Page Propriétaires · Nos Biens · Réserver · Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Page Propriétaires</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Pages locales SEO · Contact · Blog conseils propriétaires</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Pages locales SEO</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Page Propriétaires · Contact · Nos Biens</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Nos Biens</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Page Réserver · Contact · Blog guide voyage</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Articles Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Page Propriétaires · Nos Biens · Contact · Pages locales</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 06 — TUNNEL DE CONVERSION ══ -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de Conversion</span>
+  <h2 class="section-title">Parcours client de la découverte à la signature</h2>
+  <p class="section-intro">Chaque étape du tunnel est conçue pour réduire les frictions et conduire le propriétaire vers la prise de contact.</p>
+
+  <div class="grid-2">
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 1 — Découverte</span>
+      <div class="step-title">Le propriétaire vous trouve</div>
+      <div class="tunnel-row">
+        <span class="tunnel-label">Source</span>
+        <span class="tunnel-val">Google (SEO local) · Bouche-à-oreille · Réseaux sociaux (Instagram)</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-label">Page</span>
+        <span class="tunnel-val">Accueil · Pages locales SEO · Articles blog</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-label">CTA</span>
+        <span class="tunnel-val"><span class="cta-pill">Découvrir notre offre propriétaires →</span></span>
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 2 — Intérêt</span>
+      <div class="step-title">Il comprend votre valeur</div>
+      <div class="tunnel-row">
+        <span class="tunnel-label">Source</span>
+        <span class="tunnel-val">Navigation interne depuis l'accueil ou les pages locales</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-label">Page</span>
+        <span class="tunnel-val">Page Propriétaires (Prise en charge + Intendance) · Nos Valeurs</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-label">CTA</span>
+        <span class="tunnel-val"><span class="cta-pill">Télécharger notre guide propriétaire →</span></span>
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 3 — Confiance</span>
+      <div class="step-title">Il vous fait confiance</div>
+      <div class="tunnel-row">
+        <span class="tunnel-label">Source</span>
+        <span class="tunnel-val">Nos Biens · Avis clients · Témoignages propriétaires</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-label">Page</span>
+        <span class="tunnel-val">Nos Biens · Section preuves sociales sur Propriétaires</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-label">CTA</span>
+        <span class="tunnel-val"><span class="cta-pill">Voir les biens que nous gérons →</span></span>
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 4 — Conversion</span>
+      <div class="step-title">Il prend contact</div>
+      <div class="tunnel-row">
+        <span class="tunnel-label">Source</span>
+        <span class="tunnel-val">Formulaire qualifiant · Bouton de RDV · Appel direct</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-label">Page</span>
+        <span class="tunnel-val">Page Contact · CTA flottant sur toutes les pages</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-label">CTA</span>
+        <span class="tunnel-val"><span class="cta-pill">Prendre un rendez-vous gratuit →</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 07 — LEVIERS MARKETING ══ -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers Marketing Recommandés</span>
+  <h2 class="section-title">Activer la croissance dès le lancement</h2>
+  <p class="section-intro">Des outils concrets adaptés à une conciergerie locale en phase de lancement.</p>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <div class="levier-icon">📘</div>
+      <div class="levier-title">Lead Magnet</div>
+      <p>Guide PDF téléchargeable : <em>« 7 clés pour rentabiliser votre bien dans le Grand Saint-Émilionnais »</em>. Capte l'email du propriétaire en lui apportant une valeur immédiate et positionne Essentiel'les comme experte locale.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📅</div>
+      <div class="levier-title">Prise de RDV</div>
+      <p>Outil recommandé : <strong>Calendly</strong> (gratuit, simple, intégrable). Proposer un « Appel découverte 30 min offert » pour réduire la friction à l'entrée et qualifier directement les propriétaires intéressés.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">⭐</div>
+      <div class="levier-title">Preuve Sociale</div>
+      <p>Témoignages propriétaires sous forme de citations courtes avec photo du bien (pas de la personne). Avis Google intégrés. Chiffres clés : taux d'occupation moyen, nombre de biens gérés, note moyenne voyageurs.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📋</div>
+      <div class="levier-title">Formulaire Qualifiant</div>
+      <p>Champs recommandés : Type de bien · Commune · Nombre de couchages · Situation actuelle (déjà en location / nouveau projet) · Message libre · Coordonnées. Qualifier avant de rappeler.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">✉️</div>
+      <div class="levier-title">Newsletter</div>
+      <p>Angle éditorial : <em>« L'Essentiel du mois »</em> — actualité du tourisme viticole, conseils saisonniers pour propriétaires, mise en avant d'un bien du portefeuille, bons plans locaux. Rythme mensuel, bilingue FR/EN.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">🌐</div>
+      <div class="levier-title">Bilinguisme FR / EN</div>
+      <p>Version anglaise intégrale du site recommandée dès le lancement. Le vignoble bordelais attire une clientèle internationale (Royaume-Uni, États-Unis, Belgique). Clé pour les réservations directes et le référencement international.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 08 — DIRECTION VISUELLE ══ -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction Visuelle & Éditoriale</span>
+  <h2 class="section-title">L'identité visuelle du site</h2>
+  <p class="section-intro">Basée sur vos couleurs existantes : fond blanc, bleu profond de la marque et touches dorées. Un équilibre élégant qui évoque le patrimoine viticole bordelais.</p>
+
+  <div class="palette-grid">
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#0d1b3e;"></div>
+      <div class="palette-name">Bleu Nuit Logo</div>
+      <div class="palette-hex">#0d1b3e</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#c9a84c;"></div>
+      <div class="palette-name">Or Essentiel</div>
+      <div class="palette-hex">#c9a84c</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#ffffff; border: 1px solid #e5e7eb;"></div>
+      <div class="palette-name">Blanc Pur</div>
+      <div class="palette-hex">#ffffff</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#f9f8f5;"></div>
+      <div class="palette-name">Ivoire Doux</div>
+      <div class="palette-hex">#f9f8f5</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#6b7280;"></div>
+      <div class="palette-name">Gris Texte</div>
+      <div class="palette-hex">#6b7280</div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top: 16px;">
+    <div class="card">
+      <div class="card-title">Univers visuel recommandé</div>
+      <ul>
+        <li>Photographies grand format des vignobles en lumière dorée (lever / coucher de soleil)</li>
+        <li>Intérieurs de gîtes soignés : draps blancs, pierre apparente, parquet ancien</li>
+        <li>Portraits chaleureux des trois fondatrices sur le terrain</li>
+        <li>Typographie serif élégante pour les titres (type Playfair Display ou Cormorant Garamond)</li>
+        <li>Espacements généreux, layouts épurés, jamais surchargés</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Directives de mise en page</div>
+      <ul>
+        <li>Navigation principale avec onglets fond blanc, texte doré et filet doré au survol</li>
+        <li>Boutons CTA : fond bleu nuit ou doré selon le contexte (jamais les deux ensemble)</li>
+        <li>Sections alternées : fond blanc / fond ivoire pour aérer sans couleur agressive</li>
+        <li>Icônes linéaires fines, jamais de clipart</li>
+        <li>Footer bleu nuit avec mentions dorées — miroir de la couverture</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 09 — ARTICLES BLOG ══ -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles Blog Recommandés</span>
+  <h2 class="section-title">Stratégie de contenu éditorial</h2>
+  <p class="section-intro">7 sujets prioritaires pour démarrer le blog avec impact, répondre aux questions des propriétaires et capter du trafic organique qualifié.</p>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <span class="blog-priority priority-p">Prioritaire</span>
+      <div class="blog-title">Pourquoi confier son gîte à une conciergerie locale plutôt qu'à une grande plateforme nationale ?</div>
+      <div class="blog-meta">Cluster <span>Gestion locative & Propriétaires</span> · Intention : Informationnelle / Décisionnelle</div>
+    </div>
+    <div class="blog-card">
+      <span class="blog-priority priority-p">Prioritaire</span>
+      <div class="blog-title">Location courte durée à Saint-Émilion : ce que les propriétaires doivent savoir en 2025</div>
+      <div class="blog-meta">Cluster <span>Gestion locative & Propriétaires</span> · Intention : Informationnelle / SEO local</div>
+    </div>
+    <div class="blog-card">
+      <span class="blog-priority priority-p">Prioritaire</span>
+      <div class="blog-title">Comment optimiser les revenus d'une location saisonnière dans le Libournais ?</div>
+      <div class="blog-meta">Cluster <span>Gestion locative & Propriétaires</span> · Intention : Informationnelle / Transactionnelle</div>
+    </div>
+    <div class="blog-card">
+      <span class="blog-priority priority-m">Moyen</span>
+      <div class="blog-title">5 raisons de séjourner dans un gîte du vignoble bordelais plutôt qu'à l'hôtel</div>
+      <div class="blog-meta">Cluster <span>Séjour & Expérience Voyageur</span> · Intention : Informationnelle / Inspiration</div>
+    </div>
+    <div class="blog-card">
+      <span class="blog-priority priority-m">Moyen</span>
+      <div class="blog-title">Notre guide des bonnes adresses dans l'Entre-deux-Mers pour un séjour inoubliable</div>
+      <div class="blog-meta">Cluster <span>Séjour & Expérience Voyageur</span> · Intention : Informationnelle / SEO local</div>
+    </div>
+    <div class="blog-card">
+      <span class="blog-priority priority-m">Moyen</span>
+      <div class="blog-title">Tarification dynamique : comment nous maximisons vos revenus locatifs au fil des saisons</div>
+      <div class="blog-meta">Cluster <span>Gestion locative & Propriétaires</span> · Intention : Informationnelle / Réassurance</div>
+    </div>
+    <div class="blog-card">
+      <span class="blog-priority priority-f">Faible</span>
+      <div class="blog-title">Que se passe-t-il concrètement quand vous nous confiez votre bien ? (De A à Z)</div>
+      <div class="blog-meta">Cluster <span>Gestion locative & Propriétaires</span> · Intention : Décisionnelle / Réassurance</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ FOOTER ══ -->
+<footer>
+  <div class="footer-brand">Essentiel<span>'</span>les Conciergerie</div>
+  <div class="footer-conf">Document confidentiel — Réservé à l'usage interne client</div>
+  <div class="footer-agency">Blueprint réalisé par AR Digital</div>
+</footer>
+
+</body>
+</html>
