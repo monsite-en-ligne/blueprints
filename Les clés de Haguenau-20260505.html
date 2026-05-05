@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Les Clés de Haguenau</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a1a;
+    background: #f9f8f5;
+  }
+
+  /* ── COUVERTURE ── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0d0d0d 0%, #1a1209 40%, #2c1f06 70%, #0d0d0d 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(197,158,56,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c59e38;
+    border: 1px solid rgba(197,158,56,0.4);
+    border-radius: 30px;
+    padding: 8px 22px;
+    margin-bottom: 44px;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    letter-spacing: -1px;
+  }
+
+  .cover-title span {
+    color: #c59e38;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 1px;
+    margin-bottom: 56px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(197,158,56,0.7);
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-value {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .cover-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(197,158,56,0.3);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 80px 60px;
+  }
+
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+
+  section:nth-child(odd) {
+    background: #f9f8f5;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c59e38;
+    background: rgba(197,158,56,0.1);
+    border: 1px solid rgba(197,158,56,0.25);
+    border-radius: 20px;
+    padding: 6px 16px;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #0d0d0d;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 48px;
+    max-width: 620px;
+  }
+
+  /* ── GRID ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    page-break-inside: avoid;
+  }
+
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0d0d0d;
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.75;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, #0d0d0d 0%, #1f1600 100%);
+    border-radius: 16px;
+    padding: 44px 48px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(197,158,56,0.25);
+  }
+
+  .highlight-box .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c59e38;
+    margin-bottom: 14px;
+  }
+
+  .highlight-box .value {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.5;
+  }
+
+  /* ── LISTE ── */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .styled-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 14px;
+    color: #444;
+  }
+
+  .styled-list li:last-child {
+    border-bottom: none;
+  }
+
+  .styled-list li::before {
+    content: '—';
+    color: #c59e38;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  /* ── TABLEAU ── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    font-size: 14px;
+  }
+
+  thead tr {
+    background: #0d0d0d;
+  }
+
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c59e38;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody td {
+    padding: 16px 20px;
+    color: #444;
+    vertical-align: top;
+  }
+
+  tbody tr:hover {
+    background: rgba(197,158,56,0.04);
+  }
+
+  /* ── BADGES SEO ── */
+  .badge-seo {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 20px;
+    padding: 4px 12px;
+  }
+
+  .badge-fort {
+    background: rgba(34,120,60,0.12);
+    color: #1a6b38;
+  }
+
+  .badge-moyen {
+    background: rgba(197,120,0,0.12);
+    color: #a06010;
+  }
+
+  .badge-faible {
+    background: rgba(100,100,100,0.1);
+    color: #666;
+  }
+
+  /* ── TUNNEL ── */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 0;
+    padding: 32px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .tunnel-step:first-child { border-radius: 14px 0 0 14px; }
+  .tunnel-step:last-child { border-radius: 0 14px 14px 0; }
+
+  .tunnel-step + .tunnel-step {
+    border-left: none;
+  }
+
+  .tunnel-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: rgba(197,158,56,0.15);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .tunnel-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #c59e38;
+    margin-bottom: 10px;
+  }
+
+  .tunnel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0d0d0d;
+    margin-bottom: 14px;
+  }
+
+  .tunnel-detail {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.7;
+  }
+
+  .tunnel-detail strong {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #999;
+    margin-top: 10px;
+    margin-bottom: 3px;
+  }
+
+  /* ── PALETTE COULEURS ── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 32px;
+  }
+
+  .color-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .color-box {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+  }
+
+  .color-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: #aaa;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ── MAILLAGE ── */
+  .maillage-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 14px;
+    color: #444;
+  }
+
+  .maillage-item:last-child {
+    border-bottom: none;
+  }
+
+  .maillage-source {
+    font-weight: 600;
+    color: #0d0d0d;
+    white-space: nowrap;
+  }
+
+  .maillage-arrow {
+    color: #c59e38;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .maillage-target {
+    color: #555;
+  }
+
+  /* ── OBJECTIFS ── */
+  .obj-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .obj-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 18px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .obj-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: rgba(197,158,56,0.3);
+    min-width: 32px;
+    text-align: center;
+  }
+
+  .obj-text {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+  }
+
+  /* ── BLOG CARDS ── */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .blog-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0d0d0d;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .blog-tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: rgba(197,158,56,0.1);
+    color: #9a7520;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0d0d0d;
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .footer-meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 1px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    section { padding: 48px 24px; }
+
+    .cover { padding: 60px 24px; }
+    .cover-title { font-size: 40px; }
+    .cover-meta { gap: 20px; }
+    .cover-divider { display: none; }
+
+    .section-title { font-size: 26px; }
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-step:first-child { border-radius: 14px 14px 0 0; }
+    .tunnel-step:last-child { border-radius: 0 0 14px 14px; }
+    .tunnel-step + .tunnel-step { border-left: 1px solid rgba(0,0,0,0.04); border-top: none; }
+
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box .value { font-size: 18px; }
+
+    footer { flex-direction: column; padding: 32px 24px; text-align: center; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ COUVERTURE ══ -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique — AR Digital</div>
+  <h1 class="cover-title">Les Clés de<br><span>Haguenau</span></h1>
+  <p class="cover-subtitle">Document stratégique confidentiel · Création de site web</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Cliente</div>
+      <div class="cover-meta-value">Florence Mukam</div>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Secteur</div>
+      <div class="cover-meta-value">Conciergerie LCD</div>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Zone</div>
+      <div class="cover-meta-value">Haguenau & alentours</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 01 — POSITIONNEMENT ══ -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Positionnement stratégique</h2>
+  <p class="section-intro">Socle identitaire de la marque, ton éditorial et piliers de différenciation.</p>
+
+  <div class="highlight-box" style="margin-bottom: 40px;">
+    <div class="label">Promesse de valeur principale</div>
+    <div class="value">« Les Clés de Haguenau, c'est la tranquillité d'esprit pour les propriétaires — une gestion humaine, locale et irréprochable pour que chaque voyageur se sente vraiment chez lui. »</div>
+  </div>
+
+  <div class="highlight-box" style="margin-bottom: 40px;">
+    <div class="label">Ligne directrice de communication</div>
+    <div class="value">Proximité terrain · Accompagnement premium · Confiance durable</div>
+  </div>
+
+  <div class="highlight-box" style="margin-bottom: 48px;">
+    <div class="label">Ton éditorial</div>
+    <div class="value" style="font-size: 19px; margin-bottom: 10px;">Chaleureux · Professionnel · Rassurant</div>
+    <p style="color: rgba(255,255,255,0.55); font-size: 14px; line-height: 1.7; margin-top: 10px;">Un discours qui inspire confiance dès la première ligne : on parle en humain, on rassure par l'expertise locale et on valorise chaque bien comme s'il nous appartenait.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <div class="card-title">Ancrage local fort</div>
+      <p class="card-text">Implantée à Haguenau, la conciergerie connaît le territoire, ses voyageurs et ses prestataires. Une réactivité de proximité impossible à reproduire à distance.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <div class="card-title">Relation humaine et transparente</div>
+      <p class="card-text">Un interlocuteur unique, une communication claire, des propriétaires informés à chaque étape. Pas un algorithme — une vraie personne derrière chaque logement.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✨</div>
+      <div class="card-title">Attention portée aux détails</div>
+      <p class="card-text">Vérification avant chaque arrivée, livret d'accueil soigné, consommables réapprovisionnés : l'excellence se loge dans les petits gestes qui font les grands avis.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📈</div>
+      <div class="card-title">Valorisation active du logement</div>
+      <p class="card-text">Conseils d'optimisation d'annonce, recommandations d'attractivité, suivi de satisfaction voyageur — une approche orientée performance durable.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔑</div>
+      <div class="card-title">Solution clé en main à 20 %</div>
+      <p class="card-text">Une formule unique, lisible, sans surprise. Le propriétaire sait exactement ce qu'il délègue et ce qu'il gagne — simplicité et efficacité garanties.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 02 — CLIENT CIBLE ══ -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client cible</span>
+  <h2 class="section-title">Profil du propriétaire idéal</h2>
+  <p class="section-intro">Qui sont les personnes que le site doit convaincre en premier.</p>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <div class="card-title">Profil type</div>
+      <ul class="styled-list">
+        <li>35 – 60 ans, propriétaire d'un ou plusieurs logements à Haguenau ou dans le Bas-Rhin Nord</li>
+        <li>Actif ou semi-retraité, manque de temps pour gérer les rotations</li>
+        <li>Déjà sur Airbnb / Booking, insatisfait ou dépassé par la charge opérationnelle</li>
+        <li>Propriétaire bailleur souhaitant basculer vers la LCD pour maximiser ses revenus</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Motivations principales</div>
+      <ul class="styled-list">
+        <li>Déléguer totalement la gestion sans perdre le contrôle</li>
+        <li>Améliorer la note et les avis voyageurs</li>
+        <li>Augmenter le taux d'occupation et les revenus nets</li>
+        <li>Trouver un partenaire local réactif et de confiance</li>
+        <li>Dormir tranquille même en déplacement</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Freins et objections</div>
+      <ul class="styled-list">
+        <li>« La commission de 20 % est-elle justifiée ? »</li>
+        <li>« Comment je sais que mon bien est bien traité ? »</li>
+        <li>« Et si quelque chose se passe mal avec un voyageur ? »</li>
+        <li>« Je ne connais pas cette conciergerie, elle est nouvelle »</li>
+        <li>« Je veux garder la main sur mes dates et tarifs »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Critères de décision</div>
+      <ul class="styled-list">
+        <li>Présence et réactivité locale réelle (pas une plateforme nationale)</li>
+        <li>Transparence sur les services inclus et la commission</li>
+        <li>Preuves sociales : avis, témoignages, logements gérés</li>
+        <li>Facilité de contact et de prise de RDV</li>
+        <li>Sentiment d'être accompagné, pas juste "géré"</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 03 — OBJECTIFS ══ -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du site</span>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+  <p class="section-intro">Objectifs classés par ordre de priorité stratégique.</p>
+
+  <div class="obj-list">
+    <div class="obj-item">
+      <span class="obj-rank">1</span>
+      <span class="obj-text">Génération de leads — Inciter les propriétaires à prendre contact ou à demander un devis</span>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">2</span>
+      <span class="obj-text">Réassurance — Lever les objections, démontrer le sérieux et la fiabilité de Florence et de sa conciergerie</span>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">3</span>
+      <span class="obj-text">Prise de RDV — Proposer un échange téléphonique ou une rencontre pour transformer les visiteurs en clients</span>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">4</span>
+      <span class="obj-text">SEO local — Capter le trafic des propriétaires qui cherchent une conciergerie à Haguenau et dans le Bas-Rhin Nord</span>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">5</span>
+      <span class="obj-text">Conversion — Transformer la visite en demande concrète grâce à des CTA clairs et un parcours fluide</span>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">6</span>
+      <span class="obj-text">Notoriété locale — Affirmer la présence de la marque dans l'écosystème LCD d'Alsace du Nord</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 04 — ARBORESCENCE ══ -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence du site</span>
+  <h2 class="section-title">Structure des pages</h2>
+  <p class="section-intro">Pages recommandées, framework rédactionnel, mots-clés et potentiel SEO.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie Haguenau location courte durée</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre offre de gestion</strong><br><span style="font-size:12px;color:#888">Services inclus, ce qui n'est pas inclus, commission, processus</span></td>
+          <td>PAS</td>
+          <td>gestion location courte durée Haguenau</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — Florence & la conciergerie</strong></td>
+          <td>BAB</td>
+          <td>conciergerie locale Haguenau propriétaires</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Témoignages & réalisations</strong></td>
+          <td>AIDA</td>
+          <td>avis conciergerie Haguenau</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>location courte durée Alsace conseils</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / Demander un devis</strong></td>
+          <td>PAS</td>
+          <td>contacter conciergerie Haguenau</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>[SEO local] Conciergerie Bas-Rhin Nord</strong><br><span style="font-size:12px;color:#888">Page SEO couvrant la zone élargie</span></td>
+          <td>PAS</td>
+          <td>conciergerie location courte durée Bas-Rhin</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>[SEO local] Conciergerie Alsace du Nord</strong><br><span style="font-size:12px;color:#888">Page SEO ciblant les requêtes régionales</span></td>
+          <td>PAS</td>
+          <td>conciergerie Airbnb Alsace du Nord</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══ 05 — COCON SÉMANTIQUE ══ -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon sémantique</span>
+  <h2 class="section-title">Clusters thématiques & maillage</h2>
+  <p class="section-intro">Organisation des contenus pour maximiser l'autorité SEO du site.</p>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <div class="card-icon">🏠</div>
+      <div class="card-title">Cluster 1 — Gestion LCD pour propriétaires</div>
+      <p class="card-text">Pages pilier : Accueil, Offre de gestion, Contact.<br>Articles satellites : déléguer la gestion Airbnb, optimiser son annonce, bien choisir sa conciergerie.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <div class="card-title">Cluster 2 — Territoire & SEO local</div>
+      <p class="card-text">Pages pilier : SEO Bas-Rhin Nord, SEO Alsace du Nord.<br>Articles satellites : voyager à Haguenau, louer son logement en Alsace, marché LCD local.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⭐</div>
+      <div class="card-title">Cluster 3 — Confiance & expérience</div>
+      <p class="card-text">Pages pilier : À propos, Témoignages.<br>Articles satellites : comment améliorer ses avis voyageurs, l'importance du livret d'accueil, qualité de service LCD.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="margin-bottom: 18px;">Logique de maillage interne</div>
+    <div class="maillage-item">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Offre de gestion · À propos · Contact · Pages SEO locales</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Offre de gestion</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact (CTA fort) · Témoignages · À propos</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Pages SEO locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Offre de gestion · Contact · Articles blog locaux</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Articles blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Offre de gestion · Contact · Pages SEO locales selon sujet</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Témoignages</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact · Offre de gestion</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Offre de gestion · Contact</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 06 — TUNNEL DE CONVERSION ══ -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de conversion</span>
+  <h2 class="section-title">Parcours propriétaire de la découverte à la signature</h2>
+  <p class="section-intro">4 étapes pour transformer un inconnu en client confiant.</p>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-number">01</div>
+      <div class="tunnel-label">Découverte</div>
+      <div class="tunnel-title">Le propriétaire vous trouve</div>
+      <div class="tunnel-detail">
+        <strong>Source de trafic</strong>
+        Google (SEO local), bouche-à-oreille, réseaux sociaux
+        <strong>Page concernée</strong>
+        Accueil · Pages SEO locales · Articles blog
+        <strong>CTA associé</strong>
+        « Découvrez notre offre »
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">02</div>
+      <div class="tunnel-label">Intérêt</div>
+      <div class="tunnel-title">Il comprend la valeur</div>
+      <div class="tunnel-detail">
+        <strong>Source de trafic</strong>
+        Navigation interne depuis l'accueil
+        <strong>Page concernée</strong>
+        Offre de gestion · À propos
+        <strong>CTA associé</strong>
+        « Télécharger le guide gratuit »
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">03</div>
+      <div class="tunnel-label">Confiance</div>
+      <div class="tunnel-title">Il est rassuré</div>
+      <div class="tunnel-detail">
+        <strong>Source de trafic</strong>
+        Navigation interne
+        <strong>Page concernée</strong>
+        Témoignages · À propos · Blog
+        <strong>CTA associé</strong>
+        « Voir les avis propriétaires »
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">04</div>
+      <div class="tunnel-label">Conversion</div>
+      <div class="tunnel-title">Il prend contact</div>
+      <div class="tunnel-detail">
+        <strong>Source de trafic</strong>
+        CTA depuis toutes les pages
+        <strong>Page concernée</strong>
+        Contact / Demander un devis
+        <strong>CTA associé</strong>
+        « Réserver un appel gratuit de 15 min »
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 07 — LEVIERS MARKETING ══ -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers marketing recommandés</span>
+  <h2 class="section-title">Actions à activer pour accélérer les conversions</h2>
+  <p class="section-intro">Outils et contenus prioritaires pour générer des leads qualifiés.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">🎁</div>
+      <div class="card-title">Lead magnet</div>
+      <p class="card-text">« Guide : 5 erreurs qui font perdre des réservations aux propriétaires à Haguenau » — PDF court, actionnable, distribué en échange d'un email. Positionne Florence comme experte locale.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📅</div>
+      <div class="card-title">Prise de RDV</div>
+      <p class="card-text">Outil recommandé : <strong>Calendly</strong> (gratuit, intégrable). Proposer un appel découverte de 15 minutes. Bouton visible sur toutes les pages clés (header, page offre, contact).</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⭐</div>
+      <div class="card-title">Preuve sociale</div>
+      <p class="card-text">Témoignages écrits de propriétaires (nom + ville + gain concret), captures d'avis voyageurs Airbnb/Booking, chiffres clés mis en avant : taux de satisfaction, nombre de séjours gérés.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📝</div>
+      <div class="card-title">Formulaire qualifiant</div>
+      <p class="card-text">Champs recommandés : Prénom · Email · Téléphone · Ville du logement · Nombre de logements · Situation actuelle (déjà sur Airbnb ? géré seul ?) · Message libre.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✉️</div>
+      <div class="card-title">Newsletter</div>
+      <p class="card-text">Angle éditorial : « Le coin des propriétaires Alsace du Nord » — conseils LCD mensuels, actualités réglementation, témoignages, astuces pour améliorer ses avis et revenus.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 08 — DIRECTION VISUELLE ══ -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction visuelle & éditoriale</span>
+  <h2 class="section-title">Univers graphique recommandé</h2>
+  <p class="section-intro">Palette adaptée à l'univers premium et local de la conciergerie, basée sur les couleurs demandées : or, noir et blanc.</p>
+
+  <div class="palette-grid">
+    <div class="color-swatch">
+      <div class="color-box" style="background:#C59E38;"></div>
+      <div class="color-name">Or élégant</div>
+      <div class="color-hex">#C59E38</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-box" style="background:#0D0D0D;"></div>
+      <div class="color-name">Noir profond</div>
+      <div class="color-hex">#0D0D0D</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-box" style="background:#FFFFFF; border: 1px solid #e0e0e0;"></div>
+      <div class="color-name">Blanc pur</div>
+      <div class="color-hex">#FFFFFF</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-box" style="background:#F9F8F5;"></div>
+      <div class="color-name">Ivoire doux</div>
+      <div class="color-hex">#F9F8F5</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-box" style="background:#7A6120;"></div>
+      <div class="color-name">Or foncé (accent)</div>
+      <div class="color-hex">#7A6120</div>
+    </div>
+  </div>
+
+  <div style="height: 48px;"></div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-icon">🖼️</div>
+      <div class="card-title">Photographie</div>
+      <p class="card-text">Intérieurs soignés et chaleureux, lumière naturelle dorée, détails d'accueil (linge plié, plateau, clés). Ambiance hôtel boutique, pas location standard.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✍️</div>
+      <div class="card-title">Typographie</div>
+      <p class="card-text">Playfair Display pour les titres (élégance et autorité), Inter pour le corps (lisibilité moderne). Contrastes forts noir sur blanc ou or sur noir.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🗺️</div>
+      <div class="card-title">Ancrage local</div>
+      <p class="card-text">Photos de Haguenau reconnaissables (église Saint-Georges, centre-ville), carte de la zone d'intervention, mentions du territoire en fil rouge.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔲</div>
+      <div class="card-title">Mise en page</div>
+      <p class="card-text">Design épuré, espaces blancs généreux, lignes fines dorées comme séparateurs. Jamais surchargé. Chaque section respire.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">👤</div>
+      <div class="card-title">Portrait de Florence</div>
+      <p class="card-text">Photo professionnelle mais accessible, sourire naturel, arrière-plan neutre ou dans un logement géré. La personne derrière la marque est un atout de réassurance majeur.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 09 — ARTICLES BLOG ══ -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles blog recommandés</span>
+  <h2 class="section-title">Plan éditorial — premiers contenus</h2>
+  <p class="section-intro">7 sujets stratégiques pour attirer des propriétaires qualifiés via le SEO et asseoir l'expertise locale.</p>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <div class="blog-card-title">Comment maximiser ses revenus Airbnb à Haguenau : les 6 leviers essentiels</div>
+      <p style="font-size:13px;color:#666;line-height:1.7;">Intention : informationnelle — propriétaire qui cherche à optimiser son bien</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 1 — Gestion LCD</span>
+        <span class="badge-seo badge-fort">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-title">Conciergerie ou gestion en solo : que choisir quand on loue à Haguenau ?</div>
+      <p style="font-size:13px;color:#666;line-height:1.7;">Intention : décisionnelle — propriétaire hésitant à déléguer</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 1 — Gestion LCD</span>
+        <span class="badge-seo badge-fort">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-title">Location courte durée en Alsace du Nord : le marché en 2025, ce qu'il faut savoir</div>
+      <p style="font-size:13px;color:#666;line-height:1.7;">Intention : informationnelle locale — SEO territorial</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 2 — SEO local</span>
+        <span class="badge-seo badge-fort">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-title">Pourquoi un livret d'accueil soigné peut doubler vos avis 5 étoiles</div>
+      <p style="font-size:13px;color:#666;line-height:1.7;">Intention : informationnelle — propriétaire soucieux de la qualité</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 3 — Confiance</span>
+        <span class="badge-seo badge-moyen">Moyen</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-title">Les 5 erreurs qui font fuir les voyageurs sur Airbnb (et comment les éviter)</div>
+      <p style="font-size:13px;color:#666;line-height:1.7;">Intention : informationnelle — fort potentiel de partage et lead magnet</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 1 — Gestion LCD</span>
+        <span class="badge-seo badge-moyen">Moyen</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-title">Réglementation LCD en Alsace : ce que tout propriétaire doit savoir en 2025</div>
+      <p style="font-size:13px;color:#666;line-height:1.7;">Intention : informationnelle réglementaire — crédibilité et confiance</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 2 — SEO local</span>
+        <span class="badge-seo badge-moyen">Moyen</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-title">Que faire de son logement pendant les vacances ou déplacements pro ? La LCD, une vraie solution</div>
+      <p style="font-size:13px;color:#666;line-height:1.7;">Intention : informationnelle — propriétaire non encore convaincu par la LCD</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 1 — Gestion LCD</span>
+        <span class="badge-seo badge-faible">Faible</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-name">Les Clés de Haguenau</div>
+  <div class="footer-meta">Blueprint Stratégique · AR Digital · Document confidentiel · Usage exclusif Florence Mukam</div>
+</footer>
+
+</body>
+</html>
