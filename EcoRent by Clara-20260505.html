@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blueprint Stratégique — EcoRent by Clara</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #1a1a1a;
+      background: #fafafa;
+    }
+
+    /* ─── COVER ─── */
+    .cover {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #1a2e1a 0%, #2c4a2c 40%, #1a1a1a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(139, 168, 115, 0.08);
+    }
+
+    .cover::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(139, 168, 115, 0.05);
+    }
+
+    .cover-badge {
+      display: inline-block;
+      background: rgba(139, 168, 115, 0.2);
+      border: 1px solid rgba(139, 168, 115, 0.4);
+      color: #a8c98a;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 30px;
+      margin-bottom: 36px;
+    }
+
+    .cover-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .cover-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 300;
+      letter-spacing: 1px;
+      margin-bottom: 56px;
+    }
+
+    .cover-meta {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cover-meta-item {
+      text-align: center;
+    }
+
+    .cover-meta-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .cover-meta-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .cover-divider {
+      width: 1px;
+      height: 36px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      padding: 80px 60px;
+    }
+
+    section:nth-child(even) {
+      background: #f5f7f4;
+    }
+
+    section:nth-child(odd) {
+      background: #ffffff;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-badge {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #7a9e6a;
+      background: rgba(122, 158, 106, 0.1);
+      border: 1px solid rgba(122, 158, 106, 0.25);
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #1a2e1a;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .section-intro {
+      font-size: 15px;
+      color: #666;
+      margin-bottom: 44px;
+      max-width: 640px;
+    }
+
+    /* ─── CARDS ─── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      page-break-inside: avoid;
+    }
+
+    .card-icon {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: #1a2e1a;
+      margin-bottom: 8px;
+    }
+
+    .card-text {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    /* ─── HIGHLIGHT BOX ─── */
+    .highlight-box {
+      background: linear-gradient(135deg, #2c4a2c 0%, #3d6b3d 100%);
+      border-radius: 16px;
+      padding: 36px 44px;
+      color: #fff;
+      margin-bottom: 44px;
+    }
+
+    .highlight-box .label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #a8c98a;
+      margin-bottom: 12px;
+    }
+
+    .highlight-box .main-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: #fff;
+    }
+
+    /* ─── TONE ─── */
+    .tone-tags {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .tone-tag {
+      background: rgba(122, 158, 106, 0.12);
+      border: 1px solid rgba(122, 158, 106, 0.3);
+      color: #3d6b3d;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 20px;
+    }
+
+    /* ─── LISTS ─── */
+    ul.styled {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul.styled li {
+      font-size: 14px;
+      color: #444;
+      padding: 7px 0;
+      border-bottom: 1px solid #f0f0f0;
+      line-height: 1.65;
+    }
+
+    ul.styled li:last-child { border-bottom: none; }
+
+    ul.styled li::before {
+      content: '→';
+      color: #7a9e6a;
+      font-weight: 600;
+      margin-right: 10px;
+    }
+
+    /* ─── OBJECTIVES LIST ─── */
+    .obj-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .obj-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .obj-rank {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #cde0c0;
+      min-width: 36px;
+    }
+
+    .obj-content .obj-title {
+      font-weight: 600;
+      font-size: 15px;
+      color: #1a2e1a;
+    }
+
+    .obj-content .obj-desc {
+      font-size: 13px;
+      color: #666;
+    }
+
+    /* ─── TABLE ─── */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      font-size: 14px;
+    }
+
+    thead tr {
+      background: #2c4a2c;
+    }
+
+    thead th {
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 20px;
+      text-align: left;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+
+    tbody td {
+      padding: 14px 20px;
+      color: #444;
+      vertical-align: top;
+    }
+
+    .badge-seo {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .seo-fort { background: #d4edda; color: #1e6e35; }
+    .seo-moyen { background: #fff3cd; color: #856404; }
+    .seo-faible { background: #f8d7da; color: #842029; }
+
+    /* ─── CLUSTERS ─── */
+    .cluster-block {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .cluster-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #1a2e1a;
+      margin-bottom: 16px;
+    }
+
+    .cluster-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .cluster-tag {
+      background: #f0f5ed;
+      color: #3d6b3d;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid #c8ddb8;
+    }
+
+    /* ─── MAILLAGE ─── */
+    .maillage-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 14px;
+    }
+
+    .maillage-item:last-child { border-bottom: none; }
+
+    .maillage-from {
+      background: #2c4a2c;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .maillage-arrow {
+      color: #7a9e6a;
+      font-size: 16px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .maillage-to {
+      background: #f0f5ed;
+      color: #3d6b3d;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* ─── TUNNEL ─── */
+    .tunnel-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .tunnel-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tunnel-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+    }
+
+    .tunnel-card.t1::before { background: #a8c98a; }
+    .tunnel-card.t2::before { background: #7ab868; }
+    .tunnel-card.t3::before { background: #4e8a3e; }
+    .tunnel-card.t4::before { background: #2c4a2c; }
+
+    .tunnel-step {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #7a9e6a;
+      margin-bottom: 8px;
+    }
+
+    .tunnel-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #1a2e1a;
+      margin-bottom: 16px;
+    }
+
+    .tunnel-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-top: 12px;
+      margin-bottom: 4px;
+    }
+
+    .tunnel-value {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .tunnel-cta {
+      display: inline-block;
+      margin-top: 14px;
+      background: #f0f5ed;
+      color: #3d6b3d;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    /* ─── LEVIERS ─── */
+    .levier-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .levier-icon {
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+
+    .levier-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a2e1a;
+      margin-bottom: 8px;
+    }
+
+    .levier-text {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    /* ─── PALETTE ─── */
+    .palette-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 32px;
+    }
+
+    .palette-row {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .color-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .color-swatch {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    }
+
+    .color-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #2a2a2a;
+      text-align: center;
+    }
+
+    .color-hex {
+      font-size: 11px;
+      color: #aaa;
+      text-align: center;
+    }
+
+    /* ─── DIRECTION VISUELLE ─── */
+    .visual-element {
+      background: #fff;
+      border-radius: 14px;
+      padding: 24px 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .visual-element-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: #1a2e1a;
+      margin-bottom: 6px;
+    }
+
+    .visual-element-desc {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* ─── BLOG ─── */
+    .blog-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .blog-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .blog-cluster {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #7a9e6a;
+      background: rgba(122, 158, 106, 0.1);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .blog-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a2e1a;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .blog-intention {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #1a2e1a;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 40px;
+      font-size: 13px;
+    }
+
+    footer strong {
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .cover-title { font-size: 40px; }
+      .cover-meta { gap: 20px; }
+      .cover-divider { display: none; }
+
+      section { padding: 50px 24px; }
+
+      h2 { font-size: 26px; }
+
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+
+      .tunnel-grid { grid-template-columns: 1fr; }
+
+      .highlight-box { padding: 24px 20px; }
+      .highlight-box .main-text { font-size: 18px; }
+
+      .table-wrap { overflow-x: auto; }
+
+      .maillage-item {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .palette-row { gap: 20px; }
+    }
+
+    @media print {
+      section { page-break-inside: avoid; }
+      .cover { page-break-after: always; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── COVER ─── -->
+  <div class="cover">
+    <div class="cover-badge">Blueprint Stratégique</div>
+    <h1 class="cover-title">EcoRent by Clara</h1>
+    <p class="cover-subtitle">Document de positionnement &amp; stratégie digitale</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Client</span>
+        <span class="cover-meta-value">Clara Ferré</span>
+      </div>
+      <div class="cover-divider"></div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Secteur</span>
+        <span class="cover-meta-value">Conciergerie locative</span>
+      </div>
+      <div class="cover-divider"></div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Territoire</span>
+        <span class="cover-meta-value">Île-de-France</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── 01 POSITIONNEMENT ─── -->
+  <section id="bp-section-01">
+    <div class="section-inner">
+      <span class="section-badge">01 — Positionnement</span>
+      <h2>Identité &amp; Différenciation</h2>
+      <p class="section-intro">Le socle stratégique sur lequel repose l'ensemble de la communication d'EcoRent by Clara.</p>
+
+      <div class="highlight-box">
+        <div class="label">Promesse de valeur principale</div>
+        <div class="main-text">EcoRent by Clara, la conciergerie qui transforme votre bien en logement idéal pour les familles — avec exigence, soin du détail et un engagement éco-responsable sincère.</div>
+      </div>
+
+      <div class="card" style="margin-bottom: 44px;">
+        <div class="card-title">Ligne directrice de communication</div>
+        <div class="card-text">Une gestion clé en main haut de gamme, portée par une fondatrice experte et engagée, qui place le bien-être des familles et la durabilité au cœur de chaque logement géré en région parisienne.</div>
+      </div>
+
+      <div class="card" style="margin-bottom: 44px;">
+        <div class="card-title">Ton éditorial</div>
+        <div class="tone-tags">
+          <span class="tone-tag">Bienveillant</span>
+          <span class="tone-tag">Expert</span>
+          <span class="tone-tag">Engagé</span>
+        </div>
+        <div class="card-text">Un discours chaleureux et professionnel, qui rassure le propriétaire par la compétence et le convainc par la sincérité de l'approche humaine et durable.</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-icon">👨‍👩‍👧‍👦</div>
+          <div class="card-title">Spécialisation famille</div>
+          <div class="card-text">Chaque logement est sélectionné, préparé et équipé en pensant aux familles : sécurité, praticité, confort. Un créneau rare sur le marché parisien.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🌿</div>
+          <div class="card-title">Positionnement éco-responsable</div>
+          <div class="card-text">Clara intègre des pratiques durables concrètes dans la gestion des biens : un argument fort et crédible porté par ses convictions personnelles.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎓</div>
+          <div class="card-title">Fondatrice à double expertise</div>
+          <div class="card-text">Masters en management et en sciences médicales : une vision globale et rigoureuse, ancrée dans les besoins réels des familles comme des propriétaires.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">📍</div>
+          <div class="card-title">Ancrage territorial précis</div>
+          <div class="card-text">Une connaissance fine des marchés locatifs ouest et est de l'Île-de-France, des secteurs premium et des attentes de voyageurs famille en proche banlieue parisienne.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔁</div>
+          <div class="card-title">Flexibilité sans engagement</div>
+          <div class="card-text">Deux formules claires, sans engagement, avec possibilité de changement. Un positionnement de confiance rare dans un secteur encore peu transparent.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 02 CLIENT CIBLE ─── -->
+  <section id="bp-section-02">
+    <div class="section-inner">
+      <span class="section-badge">02 — Client Cible</span>
+      <h2>Profil du Propriétaire Idéal</h2>
+      <p class="section-intro">Le persona principal auquel s'adresse EcoRent by Clara sur l'ensemble de ses supports de communication.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-icon">👤</div>
+          <div class="card-title">Profil type</div>
+          <ul class="styled">
+            <li>35–55 ans, propriétaire d'un appartement T3/T4 en banlieue ouest ou est de Paris</li>
+            <li>CSP+ : cadre supérieur, profession libérale ou investisseur</li>
+            <li>Peu disponible pour gérer les contraintes opérationnelles</li>
+            <li>Sensible aux valeurs éco-responsables et à la qualité de service</li>
+            <li>Cherche à maximiser ses revenus locatifs de façon sereine</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-icon">💡</div>
+          <div class="card-title">Motivations principales</div>
+          <ul class="styled">
+            <li>Déléguer 100 % de la gestion sans stress ni friction</li>
+            <li>Générer des revenus optimisés sur Airbnb &amp; Booking</li>
+            <li>Protéger son bien avec une gestion rigoureuse</li>
+            <li>Confier le logement à une conciergerie fiable et proche</li>
+            <li>Valoriser un bien familial de façon responsable</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-icon">🚧</div>
+          <div class="card-title">Freins et objections</div>
+          <ul class="styled">
+            <li>Peur de perdre le contrôle sur son bien</li>
+            <li>Doute sur la fiabilité d'une jeune conciergerie</li>
+            <li>Comparaison avec des acteurs plus établis</li>
+            <li>Incertitude sur la rentabilité réelle en location courte durée</li>
+            <li>Crainte des dégradations ou mauvais locataires</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-icon">✅</div>
+          <div class="card-title">Critères de décision</div>
+          <ul class="styled">
+            <li>Transparence sur les commissions et les services inclus</li>
+            <li>Réactivité et disponibilité de l'équipe</li>
+            <li>Proximité géographique et connaissance du secteur</li>
+            <li>Preuves de résultats (avis, photos, données)</li>
+            <li>Flexibilité contractuelle (sans engagement)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 03 OBJECTIFS DU SITE ─── -->
+  <section id="bp-section-03">
+    <div class="section-inner">
+      <span class="section-badge">03 — Objectifs du Site</span>
+      <h2>Priorités Stratégiques</h2>
+      <p class="section-intro">Liste priorisée des objectifs que le site d'EcoRent by Clara doit atteindre, du plus critique au plus secondaire.</p>
+
+      <div class="obj-list">
+        <div class="obj-item">
+          <div class="obj-rank">01</div>
+          <div class="obj-content">
+            <div class="obj-title">Génération de leads qualifiés</div>
+            <div class="obj-desc">Capter les propriétaires en zone Île-de-France Ouest &amp; Est via des formulaires qualifiants et une proposition de valeur claire.</div>
+          </div>
+        </div>
+        <div class="obj-item">
+          <div class="obj-rank">02</div>
+          <div class="obj-content">
+            <div class="obj-title">Prise de rendez-vous</div>
+            <div class="obj-desc">Faciliter le passage à l'action avec un outil de réservation d'appel découverte directement accessible sur toutes les pages.</div>
+          </div>
+        </div>
+        <div class="obj-item">
+          <div class="obj-rank">03</div>
+          <div class="obj-content">
+            <div class="obj-title">Réassurance &amp; crédibilité</div>
+            <div class="obj-desc">Convaincre le propriétaire hésitant grâce au storytelling de Clara, aux avis clients, aux photos de logements et à la transparence tarifaire.</div>
+          </div>
+        </div>
+        <div class="obj-item">
+          <div class="obj-rank">04</div>
+          <div class="obj-content">
+            <div class="obj-title">SEO local</div>
+            <div class="obj-desc">Positionner EcoRent by Clara sur les requêtes de propriétaires cherchant une conciergerie en Île-de-France Ouest &amp; Est.</div>
+          </div>
+        </div>
+        <div class="obj-item">
+          <div class="obj-rank">05</div>
+          <div class="obj-content">
+            <div class="obj-title">Conversion des visiteurs en prospects</div>
+            <div class="obj-desc">Transformer le trafic entrant (SEO, bouche-à-oreille, réseaux sociaux) en contacts qualifiés via un tunnel de conversion bien construit.</div>
+          </div>
+        </div>
+        <div class="obj-item">
+          <div class="obj-rank">06</div>
+          <div class="obj-content">
+            <div class="obj-title">Notoriété &amp; positionnement de marque</div>
+            <div class="obj-desc">Affirmer EcoRent by Clara comme la référence conciergerie famille + éco-responsable en Île-de-France, notamment via le blog.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 04 ARBORESCENCE ─── -->
+  <section id="bp-section-04">
+    <div class="section-inner">
+      <span class="section-badge">04 — Arborescence du Site</span>
+      <h2>Structure &amp; SEO</h2>
+      <p class="section-intro">Architecture recommandée pour ecorentconciergerie.fr — une page par offre globale, mots-clés ciblés et potentiel SEO évalué.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Page</th>
+              <th>Framework</th>
+              <th>Mot-clé principal</th>
+              <th>SEO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Accueil</strong></td>
+              <td>AIDA</td>
+              <td>conciergerie location courte durée Île-de-France</td>
+              <td><span class="badge-seo seo-fort">Fort</span></td>
+            </tr>
+            <tr>
+              <td><strong>Nos Offres (Premium &amp; Light)</strong></td>
+              <td>PAS</td>
+              <td>gestion locative courte durée Île-de-France</td>
+              <td><span class="badge-seo seo-fort">Fort</span></td>
+            </tr>
+            <tr>
+              <td><strong>À propos — Clara &amp; EcoRent</strong></td>
+              <td>BAB</td>
+              <td>conciergerie éco-responsable famille Paris</td>
+              <td><span class="badge-seo seo-moyen">Moyen</span></td>
+            </tr>
+            <tr>
+              <td><strong>SEO Local — Secteur Ouest</strong><br/><small style="color:#aaa;">Courbevoie, Boulogne, Neuilly, Puteaux…</small></td>
+              <td>AIDA</td>
+              <td>conciergerie Airbnb Boulogne-Billancourt Neuilly</td>
+              <td><span class="badge-seo seo-fort">Fort</span></td>
+            </tr>
+            <tr>
+              <td><strong>SEO Local — Secteur Est</strong><br/><small style="color:#aaa;">Vincennes, Saint-Mandé, Saint-Maur…</small></td>
+              <td>AIDA</td>
+              <td>conciergerie Airbnb Vincennes Saint-Maur-des-Fossés</td>
+              <td><span class="badge-seo seo-fort">Fort</span></td>
+            </tr>
+            <tr>
+              <td><strong>Simulation de revenus</strong></td>
+              <td>PAS</td>
+              <td>simulation revenus location courte durée</td>
+              <td><span class="badge-seo seo-moyen">Moyen</span></td>
+            </tr>
+            <tr>
+              <td><strong>Blog</strong></td>
+              <td>—</td>
+              <td>conseils location courte durée propriétaire</td>
+              <td><span class="badge-seo seo-fort">Fort</span></td>
+            </tr>
+            <tr>
+              <td><strong>Contact &amp; RDV</strong></td>
+              <td>—</td>
+              <td>contacter conciergerie Île-de-France</td>
+              <td><span class="badge-seo seo-faible">Faible</span></td>
+            </tr>
+            <tr>
+              <td><strong>Mentions légales / CGU</strong></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="badge-seo seo-faible">Faible</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 05 COCON SÉMANTIQUE ─── -->
+  <section id="bp-section-05">
+    <div class="section-inner">
+      <span class="section-badge">05 — Cocon Sémantique</span>
+      <h2>Clusters &amp; Maillage Interne</h2>
+      <p class="section-intro">Organisation thématique du site pour maximiser l'autorité SEO et guider naturellement le visiteur vers la conversion.</p>
+
+      <div class="grid-2" style="margin-bottom: 44px;">
+        <div class="cluster-block">
+          <div class="cluster-title">🏡 Cluster 1 — Gestion locative &amp; conciergerie</div>
+          <div class="cluster-tags">
+            <span class="cluster-tag">Accueil</span>
+            <span class="cluster-tag">Nos Offres</span>
+            <span class="cluster-tag">Simulation revenus</span>
+            <span class="cluster-tag">SEO Local Ouest</span>
+            <span class="cluster-tag">SEO Local Est</span>
+          </div>
+          <div class="card-text">Toutes les pages orientées propriétaires qui cherchent à déléguer et à rentabiliser leur bien. Ce cluster cible les requêtes de type « conciergerie Airbnb + ville ».</div>
+        </div>
+        <div class="cluster-block">
+          <div class="cluster-title">🌿 Cluster 2 — Famille &amp; éco-responsabilité</div>
+          <div class="cluster-tags">
+            <span class="cluster-tag">À propos</span>
+            <span class="cluster-tag">Blog — logement famille</span>
+            <span class="cluster-tag">Blog — éco-responsable</span>
+          </div>
+          <div class="card-text">Pages et articles qui renforcent le positionnement différenciant d'EcoRent. Travaille la notoriété et la réassurance sur des intentions de recherche informatives.</div>
+        </div>
+        <div class="cluster-block">
+          <div class="cluster-title">📊 Cluster 3 — Performance &amp; revenus</div>
+          <div class="cluster-tags">
+            <span class="cluster-tag">Simulation revenus</span>
+            <span class="cluster-tag">Blog — optimisation tarifaire</span>
+            <span class="cluster-tag">Blog — location courte durée</span>
+          </div>
+          <div class="card-text">Attire les propriétaires en phase de décision qui cherchent à comparer et quantifier. Fort potentiel de conversion car intention d'achat élevée.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Logique de maillage interne</div>
+        <div style="margin-top: 8px;">
+          <div class="maillage-item">
+            <span class="maillage-from">Accueil</span>
+            <span class="maillage-arrow">→</span>
+            <span class="maillage-to">Nos Offres</span>
+            <span class="maillage-arrow">→</span>
+            <span class="maillage-to">Simulation revenus</span>
+            <span class="maillage-arrow">→</span>
+            <span class="maillage-to">Contact &amp; RDV</span>
+          </div>
+          <div class="maillage-item">
+            <span class="maillage-from">SEO Local Ouest / Est</span>
+            <span class="maillage-arrow">→</span>
+            <span class="maillage-to">Nos Offres</span>
+            <span class="maillage-arrow">→</span>
+            <span class="maillage-to">Contact &amp; RDV</span>
+          </div>
+          <div class="maillage-item">
+            <span class="maillage-from">Articles Blog</span>
+            <span class="maillage-arrow">→</span>
+            <span class="maillage-to">Nos Offres</span>
+            <span class="maillage-arrow">→</span>
+            <span class="maillage-to">À propos</span>
+          </div>
+          <div class="maillage-item">
+            <span class="maillage-from">À propos</span>
+            <span class="maillage-arrow">→</span>
+            <span class="maillage-to">Nos Offres</span>
+            <span class="maillage-arrow">→</span>
+            <span class="maillage-to">Contact &amp; RDV</span>
+          </div>
+          <div class="maillage-item">
+            <span class="maillage-from">Simulation revenus</span>
+            <span class="maillage-arrow">→</span>
+            <span class="maillage-to">Nos Offres</span>
+            <span class="maillage-arrow">→</span>
+            <span class="maillage-to">Contact &amp; RDV</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 06 TUNNEL DE CONVERSION ─── -->
+  <section id="bp-section-06">
+    <div class="section-inner">
+      <span class="section-badge">06 — Tunnel de Conversion</span>
+      <h2>De la Découverte à la Prise de Contact</h2>
+      <p class="section-intro">Les 4 étapes du parcours propriétaire sur ecorentconciergerie.fr, avec les sources, pages et appels à l'action associés.</p>
+
+      <div class="tunnel-grid">
+        <div class="tunnel-card t1">
+          <div class="tunnel-step">Étape 01</div>
+          <div class="tunnel-title">Découverte</div>
+          <div class="tunnel-label">Source de trafic</div>
+          <div class="tunnel-value">SEO Google, Instagram, bouche-à-oreille, réseaux locaux</div>
+          <div class="tunnel-label">Page concernée</div>
+          <div class="tunnel-value">Accueil, pages SEO locales, articles de blog</div>
+          <span class="tunnel-cta">→ Lire l'offre</span>
+        </div>
+        <div class="tunnel-card t2">
+          <div class="tunnel-step">Étape 02</div>
+          <div class="tunnel-title">Intérêt</div>
+          <div class="tunnel-label">Source de trafic</div>
+          <div class="tunnel-value">Navigation interne depuis l'accueil ou le blog</div>
+          <div class="tunnel-label">Page concernée</div>
+          <div class="tunnel-value">Nos Offres (Premium &amp; Light), Simulation revenus</div>
+          <span class="tunnel-cta">→ Simuler mes revenus</span>
+        </div>
+        <div class="tunnel-card t3">
+          <div class="tunnel-step">Étape 03</div>
+          <div class="tunnel-title">Confiance</div>
+          <div class="tunnel-label">Source de trafic</div>
+          <div class="tunnel-value">Navigation interne depuis la page Offres</div>
+          <div class="tunnel-label">Page concernée</div>
+          <div class="tunnel-value">À propos, avis clients, photos de logements gérés</div>
+          <span class="tunnel-cta">→ Découvrir Clara</span>
+        </div>
+        <div class="tunnel-card t4">
+          <div class="tunnel-step">Étape 04</div>
+          <div class="tunnel-title">Conversion</div>
+          <div class="tunnel-label">Source de trafic</div>
+          <div class="tunnel-value">CTA omniprésents sur toutes les pages</div>
+          <div class="tunnel-label">Page concernée</div>
+          <div class="tunnel-value">Contact &amp; RDV, formulaire qualifiant</div>
+          <span class="tunnel-cta">→ Prendre RDV</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 07 LEVIERS MARKETING ─── -->
+  <section id="bp-section-07">
+    <div class="section-inner">
+      <span class="section-badge">07 — Leviers Marketing Recommandés</span>
+      <h2>Accélérateurs de Croissance</h2>
+      <p class="section-intro">Les outils et contenus recommandés pour maximiser la génération de leads et la conversion des visiteurs en propriétaires partenaires.</p>
+
+      <div class="grid-2">
+        <div class="levier-card">
+          <div class="levier-icon">🎁</div>
+          <div class="levier-title">Lead Magnet</div>
+          <div class="levier-text">« Guide PDF — Combien peut rapporter votre appartement en location courte durée en Île-de-France ? » — Un guide pratique avec simulateur de revenus, checklist de mise en conformité et conseils d'optimisation. Téléchargeable en échange d'un email.</div>
+        </div>
+        <div class="levier-card">
+          <div class="levier-icon">📅</div>
+          <div class="levier-title">Prise de RDV</div>
+          <div class="levier-text">Outil recommandé : <strong>Calendly</strong> (gratuit, intégrable). CTA « Appel découverte gratuit de 20 min » présent dans le header, la page Offres et la page Contact. Permet de qualifier en amont via les questions Calendly.</div>
+        </div>
+        <div class="levier-card">
+          <div class="levier-icon">⭐</div>
+          <div class="levier-title">Preuve Sociale</div>
+          <div class="levier-text">Avis propriétaires partenaires (Google Reviews intégrés), captures d'écran d'avis voyageurs Airbnb anonymisés, photos avant/après des logements gérés, et un compteur de logements sous gestion mis à jour régulièrement.</div>
+        </div>
+        <div class="levier-card">
+          <div class="levier-icon">📋</div>
+          <div class="levier-title">Formulaire Qualifiant</div>
+          <div class="levier-text">Champs recommandés : Prénom / Email / Téléphone / Ville du bien / Type de bien (T2, T3…) / Situation actuelle (déjà loué en LCD ? non loué ?) / Question ouverte : « Quel est votre principal besoin ? »</div>
+        </div>
+        <div class="levier-card">
+          <div class="levier-icon">📩</div>
+          <div class="levier-title">Newsletter</div>
+          <div class="levier-text">Angle éditorial : « Le coin du propriétaire serein » — conseils mensuels sur la réglementation Airbnb, l'optimisation de revenus, les tendances de la LCD en IDF et les actualités EcoRent by Clara.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 08 DIRECTION VISUELLE ─── -->
+  <section id="bp-section-08">
+    <div class="section-inner">
+      <span class="section-badge">08 — Direction Visuelle &amp; Éditoriale</span>
+      <h2>Identité Graphique</h2>
+      <p class="section-intro">Une direction visuelle cohérente avec les valeurs d'EcoRent by Clara : naturel, premium, familial et engagé. Les couleurs retenues s'appuient sur les indications de Clara (vert sauge, noir, blanc).</p>
+
+      <div style="text-align: center; margin-bottom: 50px;">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 28px;">
+          <div class="palette-row">
+            <div class="color-item">
+              <div class="color-swatch" style="background: #7A9E6A;"></div>
+              <div class="color-name">Vert Sauge</div>
+              <div class="color-hex">#7A9E6A</div>
+            </div>
+            <div class="color-item">
+              <div class="color-swatch" style="background: #2C4A2C;"></div>
+              <div class="color-name">Vert Forêt</div>
+              <div class="color-hex">#2C4A2C</div>
+            </div>
+            <div class="color-item">
+              <div class="color-swatch" style="background: #1A1A1A;"></div>
+              <div class="color-name">Noir Profond</div>
+              <div class="color-hex">#1A1A1A</div>
+            </div>
+          </div>
+          <div class="palette-row">
+            <div class="color-item">
+              <div class="color-swatch" style="background: #FFFFFF; border: 1px solid #e0e0e0;"></div>
+              <div class="color-name">Blanc Pur</div>
+              <div class="color-hex">#FFFFFF</div>
+            </div>
+            <div class="color-item">
+              <div class="color-swatch" style="background: #F0F5ED;"></div>
+              <div class="color-name">Blanc Sauge</div>
+              <div class="color-hex">#F0F5ED</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="visual-element">
+          <div class="visual-element-title">📸 Photographie</div>
+          <div class="visual-element-desc">Intérieurs lumineux et épurés, ambiances familiales chaleureuses, détails éco-responsables. Palette lumineuse, ombres douces, tons naturels.</div>
+        </div>
+        <div class="visual-element">
+          <div class="visual-element-title">✍️ Typographie</div>
+          <div class="visual-element-desc">Playfair Display pour les titres (élégance, storytelling), Inter pour le corps de texte (clarté, modernité). Hiérarchie claire et aérée.</div>
+        </div>
+        <div class="visual-element">
+          <div class="visual-element-title">🌿 Icônes &amp; Motifs</div>
+          <div class="visual-element-desc">Icônes line art fines et minimalistes. Motifs botaniques discrets en fond de section. Aucun effet visuel superflu.</div>
+        </div>
+        <div class="visual-element">
+          <div class="visual-element-title">📐 Mise en page</div>
+          <div class="visual-element-desc">Grands espaces blancs, sections aérées, grilles équilibrées. L'espace crée le sentiment de sérénité et de premium.</div>
+        </div>
+        <div class="visual-element">
+          <div class="visual-element-title">🖊️ Style d'écriture</div>
+          <div class="visual-element-desc">Titres en Playfair, accroche directe et bénéfice-first. Texte court, jamais de jargon. On parle au propriétaire, pas au marché.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 09 ARTICLES BLOG ─── -->
+  <section id="bp-section-09">
+    <div class="section-inner">
+      <span class="section-badge">09 — Articles Blog Recommandés</span>
+      <h2>Stratégie de Contenu</h2>
+      <p class="section-intro">7 articles prioritaires pour alimenter le cocon sémantique, générer du trafic qualifié et renforcer l'expertise perçue d'EcoRent by Clara.</p>
+
+      <div class="grid-2">
+        <div class="blog-card">
+          <div class="blog-meta">
+            <span class="blog-cluster">Performance &amp; revenus</span>
+            <span class="badge-seo seo-fort">Prioritaire</span>
+          </div>
+          <div class="blog-title">Combien peut rapporter votre appartement en location courte durée en Île-de-France en 2025 ?</div>
+          <div class="blog-intention">Intention informationnelle / transactionnelle. Propriétaires en phase de comparaison qui veulent évaluer la rentabilité avant de décider.</div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-meta">
+            <span class="blog-cluster">Gestion locative</span>
+            <span class="badge-seo seo-fort">Prioritaire</span>
+          </div>
+          <div class="blog-title">Location courte durée en banlieue parisienne : les 5 erreurs que font les propriétaires sans conciergerie</div>
+          <div class="blog-intention">Intention informationnelle. Génère de l'intérêt et de la réassurance. Fort potentiel de maillage vers la page Offres.</div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-meta">
+            <span class="blog-cluster">Gestion locative</span>
+            <span class="badge-seo seo-fort">Prioritaire</span>
+          </div>
+          <div class="blog-title">Airbnb vs Booking.com : quelle plateforme choisir pour louer son appartement près de Paris ?</div>
+          <div class="blog-intention">Intention comparative. Cible les propriétaires en phase de démarrage qui cherchent à comprendre le marché avant de déléguer.</div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-meta">
+            <span class="blog-cluster">Famille &amp; éco-responsabilité</span>
+            <span class="badge-seo seo-moyen">Moyen</span>
+          </div>
+          <div class="blog-title">Accueillir des familles en location courte durée : les 8 équipements indispensables</div>
+          <div class="blog-intention">Intention informationnelle. Renforce le positionnement spécialiste famille. Attire des propriétaires déjà sensibles à cette niche.</div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-meta">
+            <span class="blog-cluster">Famille &amp; éco-responsabilité</span>
+            <span class="badge-seo seo-moyen">Moyen</span>
+          </div>
+          <div class="blog-title">Location courte durée éco-responsable : comment allier rentabilité et durabilité dans son logement ?</div>
+          <div class="blog-intention">Intention informationnelle. Différenciation forte sur un sujet encore peu traité par les conciergeries concurrentes en IDF.</div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-meta">
+            <span class="blog-cluster">Performance &amp; revenus</span>
+            <span class="badge-seo seo-moyen">Moyen</span>
+          </div>
+          <div class="blog-title">Optimisation tarifaire sur Airbnb : comment maximiser vos revenus sans brader votre bien ?</div>
+          <div class="blog-intention">Intention informationnelle. Fort intérêt pour les propriétaires déjà actifs qui veulent progresser. Lien naturel vers la simulation de revenus.</div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-meta">
+            <span class="blog-cluster">Gestion locative</span>
+            <span class="badge-seo seo-faible">Faible</span>
+          </div>
+          <div class="blog-title">Réglementation location courte durée en Île-de-France : ce que tout propriétaire doit savoir en 2025</div>
+          <div class="blog-intention">Intention informationnelle / légale. Crédibilise EcoRent comme expert de confiance. Trafic plus faible mais qualité de prospect élevée.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <p><strong>EcoRent by Clara</strong> — Blueprint Stratégique confidentiel</p>
+    <p style="margin-top: 6px;">Document préparé par AR Digital · Réservé à Clara Ferré · Ne pas diffuser</p>
+  </footer>
+
+</body>
+</html>
