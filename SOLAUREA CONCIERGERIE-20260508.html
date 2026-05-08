@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Solaurea Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2D2D2D;
+    background: #F9F7F2;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e2616 0%, #3D492D 45%, #2a2010 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(197,160,71,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(181,182,130,0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C5A047;
+    margin-bottom: 32px;
+    opacity: 0.9;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+  .cover-title span {
+    color: #C5A047;
+  }
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(249,247,242,0.7);
+    margin-bottom: 56px;
+    letter-spacing: 1px;
+  }
+  .cover-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #C5A047, transparent);
+    margin: 0 auto 48px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-item .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #C5A047;
+    margin-bottom: 6px;
+  }
+  .cover-meta-item .value {
+    font-size: 13px;
+    color: rgba(249,247,242,0.85);
+    font-weight: 400;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 80px 80px;
+    background: #F9F7F2;
+  }
+  .section-alt {
+    background: #ffffff;
+  }
+
+  .section-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C5A047;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #3D492D;
+    margin-bottom: 48px;
+    line-height: 1.2;
+  }
+
+  /* CARDS */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #3D492D;
+    margin-bottom: 10px;
+  }
+  .card p, .card li {
+    font-size: 14px;
+    color: #2D2D2D;
+    line-height: 1.7;
+  }
+  .card ul {
+    padding-left: 18px;
+  }
+  .card ul li {
+    margin-bottom: 4px;
+  }
+
+  /* GRIDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #3D492D, #2a3320);
+    border-radius: 16px;
+    padding: 40px 48px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-box::after {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 150px; height: 150px;
+    background: radial-gradient(circle, rgba(197,160,71,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .highlight-box .highlight-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C5A047;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .highlight-box .highlight-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.5;
+  }
+
+  /* TAG BOX */
+  .tag {
+    display: inline-block;
+    background: rgba(197,160,71,0.12);
+    color: #C5A047;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin: 3px;
+  }
+  .tag-green {
+    background: rgba(61,73,45,0.10);
+    color: #3D492D;
+  }
+  .tag-neutral {
+    background: rgba(45,45,45,0.07);
+    color: #2D2D2D;
+  }
+
+  /* SEO BADGES */
+  .seo-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+  .seo-fort { background: #d4edda; color: #1a6630; }
+  .seo-moyen { background: #fff3cd; color: #856404; }
+  .seo-faible { background: #f1f1f1; color: #666666; }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 14px;
+  }
+  thead tr {
+    background: #3D492D;
+  }
+  thead th {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 14px 20px;
+    text-align: left;
+  }
+  tbody tr {
+    border-bottom: 1px solid #f0ede6;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f9f7f0; }
+  tbody td {
+    padding: 14px 20px;
+    color: #2D2D2D;
+    vertical-align: top;
+  }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 0;
+    padding: 28px 24px;
+    position: relative;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .tunnel-step:first-child { border-radius: 14px 0 0 14px; }
+  .tunnel-step:last-child { border-radius: 0 14px 14px 0; }
+  .tunnel-step + .tunnel-step { border-left: 1px solid #f0ede6; }
+  .tunnel-step-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #C5A047;
+    margin-bottom: 8px;
+  }
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #3D492D;
+    margin-bottom: 14px;
+  }
+  .tunnel-step p {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 6px;
+    line-height: 1.6;
+  }
+  .tunnel-step .cta-box {
+    margin-top: 14px;
+    background: rgba(197,160,71,0.1);
+    border-left: 3px solid #C5A047;
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #3D492D;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 8px;
+  }
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .color-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+  }
+  .color-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2D2D2D;
+    text-align: center;
+  }
+  .color-hex {
+    font-size: 11px;
+    color: #aaa;
+    text-align: center;
+  }
+
+  /* MAILLAGE */
+  .maillage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #2D2D2D;
+    margin-bottom: 10px;
+  }
+  .maillage-source {
+    font-weight: 600;
+    color: #3D492D;
+    background: rgba(61,73,45,0.08);
+    padding: 3px 12px;
+    border-radius: 20px;
+  }
+  .maillage-arrow {
+    color: #C5A047;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .maillage-dest {
+    color: #555;
+    font-size: 13px;
+  }
+
+  /* BLOG CARDS */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .blog-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #3D492D;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .blog-card p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+
+  /* PRIORITY */
+  .priority-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .priority-prio { background: #fce8d0; color: #b05a0c; }
+  .priority-moyen { background: #e8f0e5; color: #3D492D; }
+  .priority-faible { background: #f1f1f1; color: #888; }
+
+  /* OBJECTIFS */
+  .obj-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .obj-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(197,160,71,0.35);
+    line-height: 1;
+    min-width: 36px;
+  }
+  .obj-content .obj-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: #3D492D;
+    margin-bottom: 3px;
+  }
+  .obj-content .obj-desc {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1e2616;
+    text-align: center;
+    padding: 36px 40px;
+    color: rgba(249,247,242,0.5);
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  footer span {
+    color: #C5A047;
+    font-weight: 600;
+  }
+
+  /* PRINT */
+  @media print {
+    .section, .card, .blog-card, .obj-item, .tunnel-step {
+      page-break-inside: avoid;
+    }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 36px; }
+    .cover-meta { gap: 24px; }
+    .section { padding: 48px 24px; }
+    .section-title { font-size: 26px; margin-bottom: 32px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .tunnel-grid { grid-template-columns: 1fr; }
+    .tunnel-step { border-radius: 14px !important; border-left: none !important; border-top: 1px solid #f0ede6; }
+    .tunnel-step:first-child { border-top: none; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box .highlight-text { font-size: 18px; }
+    .table-wrap { overflow-x: auto; }
+    table { min-width: 600px; }
+    .palette-grid { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique — Document Confidentiel</div>
+  <h1 class="cover-title">Solaurea<br><span>Conciergerie</span></h1>
+  <div class="cover-subtitle">Stratégie digitale & positionnement web</div>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="label">Cliente</div>
+      <div class="value">Aurélie Dreher</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="label">Secteur</div>
+      <div class="value">Conciergerie LCD</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="label">Zone</div>
+      <div class="value">Arrière-pays toulonnais</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01" class="section">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Positionnement stratégique</h2>
+
+  <div class="highlight-box">
+    <span class="highlight-label">Promesse de valeur principale</span>
+    <div class="highlight-text">
+      "Solaurea Conciergerie libère les propriétaires de l'arrière-pays toulonnais de toute contrainte locative, pour transformer chaque bien en une source de revenus sereine et chaque séjour en une expérience 5 étoiles."
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <div class="card-title">Ligne directrice de communication</div>
+      <p>Conciergerie de proximité haut de gamme, incarnée par une fondatrice passionnée et un binôme terrain réactif. Le discours met en avant la sérénité totale du propriétaire, la performance mesurable du bien et l'expérience voyageur digne de l'hôtellerie de charme provençale.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Ton éditorial</div>
+      <div style="margin-bottom: 12px;">
+        <span class="tag">Chaleureux</span>
+        <span class="tag">Expert</span>
+        <span class="tag">Rassurant</span>
+      </div>
+      <p>Un ton humain et proche, qui inspire confiance dès les premières lignes. On parle à un propriétaire soucieux, pas à un client anonyme. L'expertise se montre dans les détails, pas dans le jargon.</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">🌿 Ancrage local ultra-ciblé</div>
+      <p>Implantée à Solliès-Toucas, Solaurea connaît le terrain, les propriétaires, les rythmes saisonniers et les spécificités de l'arrière-pays toulonnais. Cette proximité est un avantage concurrentiel fort face aux grosses plateformes impersonnelles.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">✨ Gestion clé en main sans friction</div>
+      <p>Des deux formules clairement différenciées (Signature 20% / Privilège 25%) jusqu'à l'interface propriétaire en temps réel : le client délègue tout et garde le contrôle. Zéro charge mentale, visibilité totale.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🏨 Standard hôtelier en location saisonnière</div>
+      <p>Bio-nettoyage, linge de maison géré, livret d'accueil digital, photos professionnelles : Solaurea applique les codes de l'hôtellerie de charme à la location courte durée, pour des notes 5 étoiles systématiques.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">👩‍💼 Binôme fondateur crédible et humain</div>
+      <p>Aurélie (stratégie & relation clients) et Frédéric (terrain & opérationnel) forment un duo complémentaire. Cette dualité rassure les propriétaires : une personne de contact dédiée et un intervenant réactif sur place.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">📊 Optimisation tarifaire active</div>
+      <p>Ajustement dynamique des prix selon les périodes, la saisonnalité et le marché local. Le propriétaire ne "loue pas juste" — il maximise ses revenus avec une stratégie proactive et transparente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02" class="section section-alt">
+  <span class="section-badge">02 — Client cible</span>
+  <h2 class="section-title">Profil du client idéal</h2>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <div class="card-title">Profil type</div>
+      <ul>
+        <li>35 à 60 ans, propriétaire d'une résidence secondaire ou d'un bien locatif</li>
+        <li>Habite souvent hors zone (Toulon, Marseille, région parisienne)</li>
+        <li>Actif ou semi-retraité, peu disponible au quotidien</li>
+        <li>Déjà sur Airbnb ou envisage de s'y mettre</li>
+        <li>Cherche un revenu complémentaire sans gérer lui-même</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Motivations principales</div>
+      <ul>
+        <li>Rentabiliser un bien sans y passer du temps</li>
+        <li>Avoir quelqu'un de confiance sur place</li>
+        <li>Améliorer ses notes et son taux d'occupation</li>
+        <li>Déléguer les imprévus (pannes, voyageurs difficiles)</li>
+        <li>Bénéficier d'une gestion professionnelle et transparente</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Freins & objections</div>
+      <ul>
+        <li>"La commission est trop élevée"</li>
+        <li>"Je ne veux pas perdre le contrôle de mon calendrier"</li>
+        <li>"Comment savoir si le ménage est bien fait ?"</li>
+        <li>"Et si quelque chose se casse chez moi ?"</li>
+        <li>"Je ne connais pas encore cette conciergerie"</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Critères de décision</div>
+      <ul>
+        <li>Proximité géographique de la conciergerie</li>
+        <li>Réputation / avis propriétaires et voyageurs</li>
+        <li>Clarté des formules et transparence tarifaire</li>
+        <li>Réactivité ressentie dès le premier contact</li>
+        <li>Sentiment de confiance dans l'équipe en place</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03" class="section">
+  <span class="section-badge">03 — Objectifs du site</span>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+
+  <div class="grid-2">
+    <div class="obj-item">
+      <div class="obj-num">01</div>
+      <div class="obj-content">
+        <div class="obj-title">Génération de leads propriétaires</div>
+        <div class="obj-desc">Priorité absolue : capter les coordonnées de propriétaires qualifiés via formulaire ou prise de RDV directe.</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-num">02</div>
+      <div class="obj-content">
+        <div class="obj-title">SEO local — arrière-pays toulonnais</div>
+        <div class="obj-desc">Apparaître sur les requêtes locales clés autour de Solliès-Toucas, Gapeau, Var pour capter un trafic propriétaire qualifié.</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-num">03</div>
+      <div class="obj-content">
+        <div class="obj-title">Réassurance & légitimité</div>
+        <div class="obj-desc">Démontrer la crédibilité du binôme fondateur, lever les objections et instaurer la confiance avant même le premier contact.</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-num">04</div>
+      <div class="obj-content">
+        <div class="obj-title">Conversion directe</div>
+        <div class="obj-desc">Chaque page doit avoir un CTA clair menant à un formulaire ou un appel découverte. Réduire le nombre d'étapes avant le contact.</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-num">05</div>
+      <div class="obj-content">
+        <div class="obj-title">Prise de RDV qualifiée</div>
+        <div class="obj-desc">Intégrer un outil de réservation d'appel (Calendly) pour transformer les visites en échanges téléphoniques concrets.</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-num">06</div>
+      <div class="obj-content">
+        <div class="obj-title">Notoriété locale & ancrage de marque</div>
+        <div class="obj-desc">Positionner Solaurea comme LA référence conciergerie de l'arrière-pays toulonnais via un blog et une identité visuelle forte.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04" class="section section-alt">
+  <span class="section-badge">04 — Arborescence du site</span>
+  <h2 class="section-title">Structure des pages recommandée</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA — Attention, Intérêt, Désir, Action</td>
+          <td>conciergerie location saisonnière Var</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Offres Propriétaires</strong><br><small style="color:#888;">Signature, Privilège, Options — tout sur une seule page</small></td>
+          <td>PAS — Problème, Agitation, Solution</td>
+          <td>gestion location saisonnière Solliès-Toucas</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — Notre histoire</strong></td>
+          <td>BAB — Before, After, Bridge</td>
+          <td>conciergerie Airbnb arrière-pays toulonnais</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie Solliès-Toucas & Vallée du Gapeau</strong><br><small style="color:#888;">Page SEO locale #1</small></td>
+          <td>AIDA</td>
+          <td>conciergerie Solliès-Toucas location courte durée</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie Toulon & Arrière-pays Var</strong><br><small style="color:#888;">Page SEO locale #2</small></td>
+          <td>PAS</td>
+          <td>conciergerie location courte durée Toulon Var</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>Informatif / SEO</td>
+          <td>location saisonnière propriétaire Var conseils</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact & Estimation gratuite</strong></td>
+          <td>AIDA — focus conversion</td>
+          <td>estimation conciergerie location saisonnière Var</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05" class="section">
+  <span class="section-badge">05 — Cocon sémantique</span>
+  <h2 class="section-title">Architecture thématique & maillage interne</h2>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <div class="card-title">🏡 Cluster 1 — Gestion locative propriétaires</div>
+      <p><strong>Page pilier :</strong> Nos Offres Propriétaires</p>
+      <p style="margin-top: 8px;">Articles satellites :</p>
+      <ul>
+        <li>Pourquoi déléguer sa LCD dans le Var ?</li>
+        <li>Formule Signature vs Privilège : laquelle choisir ?</li>
+        <li>Comment optimiser ses revenus Airbnb en Provence</li>
+        <li>Check-list avant de confier son bien à une conciergerie</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">📍 Cluster 2 — SEO local Var & Arrière-pays</div>
+      <p><strong>Pages piliers :</strong> Pages locales Solliès-Toucas & Toulon</p>
+      <p style="margin-top: 8px;">Articles satellites :</p>
+      <ul>
+        <li>Marché LCD dans l'arrière-pays toulonnais</li>
+        <li>Louer sa maison de campagne provençale : guide pratique</li>
+        <li>Réglementation LCD dans le Var en 2025</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Logique de maillage interne</div>
+    <div style="margin-top: 16px;">
+      <div class="maillage-row">
+        <span class="maillage-source">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Offres Propriétaires, Pages SEO locales, Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Nos Offres Propriétaires</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">À propos, Contact, Articles Cluster 1</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Pages SEO locales</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Offres, Contact, Articles Cluster 2</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">À propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Offres, Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Articles Blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Page offre concernée, Page locale concernée, Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Contact</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Offres (lien de réassurance)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06" class="section section-alt">
+  <span class="section-badge">06 — Tunnel de conversion</span>
+  <h2 class="section-title">Du premier clic au propriétaire signé</h2>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 01</div>
+      <div class="tunnel-step-title">Découverte</div>
+      <p><strong>Sources :</strong> Google organique, bouche-à-oreille, réseaux sociaux (Facebook local, Instagram)</p>
+      <p><strong>Pages :</strong> Accueil, Pages SEO locales, Articles Blog</p>
+      <div class="cta-box">→ "Découvrez notre service"</div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 02</div>
+      <div class="tunnel-step-title">Intérêt</div>
+      <p><strong>Sources :</strong> Navigation interne, article blog lu jusqu'au bout</p>
+      <p><strong>Pages :</strong> Nos Offres Propriétaires, À propos</p>
+      <div class="cta-box">→ "Télécharger le guide gratuit"</div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 03</div>
+      <div class="tunnel-step-title">Confiance</div>
+      <p><strong>Sources :</strong> Avis Airbnb, témoignages propriétaires, page À propos</p>
+      <p><strong>Pages :</strong> À propos, section preuve sociale sur Offres</p>
+      <div class="cta-box">→ "Voir les avis propriétaires"</div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 04</div>
+      <div class="tunnel-step-title">Conversion</div>
+      <p><strong>Sources :</strong> CTA répétés sur toutes les pages, lead magnet capturé</p>
+      <p><strong>Pages :</strong> Contact & Estimation gratuite</p>
+      <div class="cta-box">→ "Réserver mon appel découverte"</div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07" class="section">
+  <span class="section-badge">07 — Leviers marketing recommandés</span>
+  <h2 class="section-title">Activer la croissance digitale</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">🎁 Lead Magnet — Guide PDF gratuit</div>
+      <p><strong>"Propriétaire dans le Var : le guide pour louer sereinement en courte durée"</strong></p>
+      <p style="margin-top: 8px;">Contenu : réglementation locale, check-list de mise en location, grille d'estimation de revenus. Capturé en échange de l'email sur la page Offres et l'Accueil.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">📅 Prise de RDV — Calendly</div>
+      <p><strong>Outil recommandé : Calendly (version gratuite suffisante au démarrage)</strong></p>
+      <p style="margin-top: 8px;">Format : "Appel découverte 20 min — sans engagement". Intégré directement sur la page Contact et en CTA flottant sur le site. Réduit les allers-retours email.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">⭐ Preuve sociale</div>
+      <p><strong>Types de contenu recommandés :</strong></p>
+      <ul style="margin-top: 8px;">
+        <li>Avis voyageurs Airbnb affichés avec étoiles</li>
+        <li>Citations de propriétaires partenaires</li>
+        <li>Chiffres clés (taux d'occupation, note moyenne)</li>
+        <li>Photos avant/après mise en valeur du bien</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">📋 Formulaire qualifiant</div>
+      <p><strong>Champs recommandés :</strong></p>
+      <ul style="margin-top: 8px;">
+        <li>Prénom + Email + Téléphone</li>
+        <li>Type de bien (maison, appartement, villa…)</li>
+        <li>Commune / secteur géographique</li>
+        <li>Situation actuelle (déjà en location / nouveau projet)</li>
+        <li>Message libre (optionnel)</li>
+      </ul>
+    </div>
+    <div class="card" style="grid-column: span 2;">
+      <div class="card-title">📧 Newsletter — Angle éditorial</div>
+      <p><strong>"Le courrier du propriétaire serein"</strong> — Fréquence mensuelle légère (1 email/mois max). Contenu : actualité réglementation LCD dans le Var, astuce d'optimisation saisonnière, coulisses de Solaurea, mise en avant d'un bien géré. Objectif : rester top of mind sans sur-solliciter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08" class="section section-alt">
+  <span class="section-badge">08 — Direction visuelle & éditoriale</span>
+  <h2 class="section-title">Identité visuelle Solaurea</h2>
+
+  <div class="highlight-box" style="margin-bottom: 48px;">
+    <span class="highlight-label">Univers visuel de référence</span>
+    <div class="highlight-text" style="font-size: 18px;">Provence authentique & chic — herbes sauvages, pierre sèche, lumière dorée du Var, linge blanc sous les oliviers.</div>
+  </div>
+
+  <h3 style="font-family: 'Playfair Display', serif; font-size: 22px; color: #3D492D; margin-bottom: 32px; text-align: center;">Palette de couleurs officielle</h3>
+
+  <div class="palette-grid" style="margin-bottom: 56px;">
+    <div class="palette-item">
+      <div class="color-swatch" style="background: #3D492D;"></div>
+      <div class="color-name">Vert Olive Foncé</div>
+      <div class="color-hex">#3D492D</div>
+    </div>
+    <div class="palette-item">
+      <div class="color-swatch" style="background: #C5A047;"></div>
+      <div class="color-name">Doré Solaurea</div>
+      <div class="color-hex">#C5A047</div>
+    </div>
+    <div class="palette-item">
+      <div class="color-swatch" style="background: #F9F7F2; border: 1px solid #e0ddd5;"></div>
+      <div class="color-name">Beige Sable Clair</div>
+      <div class="color-hex">#F9F7F2</div>
+    </div>
+    <div class="palette-item">
+      <div class="color-swatch" style="background: #D68D3E;"></div>
+      <div class="color-name">Terre de Sienne</div>
+      <div class="color-hex">#D68D3E</div>
+    </div>
+    <div class="palette-item">
+      <div class="color-swatch" style="background: #2D2D2D;"></div>
+      <div class="color-name">Gris Anthracite</div>
+      <div class="color-hex">#2D2D2D</div>
+    </div>
+    <div class="palette-item">
+      <div class="color-swatch" style="background: #B5B682;"></div>
+      <div class="color-name">Vert Tendre Feuilles</div>
+      <div class="color-hex">#B5B682</div>
+    </div>
+    <div class="palette-item">
+      <div class="color-swatch" style="background: #8A8E5C;"></div>
+      <div class="color-name">Vert Moyen Feuilles</div>
+      <div class="color-hex">#8A8E5C</div>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">📸 Photographie recommandée</div>
+      <p>Lumière naturelle chaude, intérieurs provençaux épurés, détails textiles (linge, céramique), extérieurs de garrigue. Pas de photographie stock — privilégier des vrais biens gérés.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🔤 Typographie recommandée</div>
+      <p><strong>Titres :</strong> Playfair Display (élégance, ancrage patrimoine)<br><strong>Corps :</strong> Inter (lisibilité, modernité)<br>Cette combinaison incarne le haut de gamme accessible.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">✏️ Éléments graphiques</div>
+      <p>Filets dorés fins, icônes linéaires épurées, bandeaux végétaux discrets (olivier, lavande), espacements généreux. Jamais de surcharge. Chaque élément respire.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🖼️ Mise en page éditoriale</div>
+      <p>Sections alternant fond beige et fond blanc. Citations propriétaires en encadrés olive foncé. Chiffres clés mis en valeur en doré. Cohérence entre tous les supports (site, PDF, email).</p>
+    </div>
+    <div class="card">
+      <div class="card-title">📱 Social media — ligne éditoriale</div>
+      <p>Visuels cohérents avec la palette. Alternance : contenu éducatif propriétaire, coulisses Solaurea, avis voyageurs, mise en valeur des biens. Ton authentique, pas institutionnel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09" class="section">
+  <span class="section-badge">09 — Articles blog recommandés</span>
+  <h2 class="section-title">Stratégie de contenu SEO</h2>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <div class="blog-card-title">Confier son Airbnb à une conciergerie dans le Var : ce qu'il faut savoir avant de se lancer</div>
+      <p><strong>Cluster :</strong> Gestion locative propriétaires</p>
+      <p><strong>Intention :</strong> Informationnelle — propriétaire en phase de réflexion</p>
+      <div style="margin-top: 10px;"><span class="priority-badge priority-prio">Prioritaire</span></div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Location courte durée à Solliès-Toucas : rentabilité, marché et opportunités en 2025</div>
+      <p><strong>Cluster :</strong> SEO local Var & Arrière-pays</p>
+      <p><strong>Intention :</strong> Informationnelle — propriétaire local cherchant à se lancer</p>
+      <div style="margin-top: 10px;"><span class="priority-badge priority-prio">Prioritaire</span></div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Formule conciergerie à 20% ou 25% : comment choisir la bonne pour votre bien ?</div>
+      <p><strong>Cluster :</strong> Gestion locative propriétaires</p>
+      <p><strong>Intention :</strong> Commerciale — propriétaire en phase de comparaison</p>
+      <div style="margin-top: 10px;"><span class="priority-badge priority-prio">Prioritaire</span></div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Réglementation location saisonnière dans le Var : ce que tout propriétaire doit connaître en 2025</div>
+      <p><strong>Cluster :</strong> SEO local Var & Arrière-pays</p>
+      <p><strong>Intention :</strong> Informationnelle — forte valeur SEO & réassurance</p>
+      <div style="margin-top: 10px;"><span class="priority-badge priority-prio">Prioritaire</span></div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Comment optimiser ses photos Airbnb pour louer plus et mieux dans l'arrière-pays provençal ?</div>
+      <p><strong>Cluster :</strong> Gestion locative propriétaires</p>
+      <p><strong>Intention :</strong> Informationnelle — amélioration de la performance</p>
+      <div style="margin-top: 10px;"><span class="priority-badge priority-moyen">Moyen</span></div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Home staging pour location saisonnière : 7 idées simples pour booster son attractivité sans gros budget</div>
+      <p><strong>Cluster :</strong> Gestion locative propriétaires</p>
+      <p><strong>Intention :</strong> Informationnelle — lien naturel avec l'offre Home Staging</p>
+      <div style="margin-top: 10px;"><span class="priority-badge priority-moyen">Moyen</span></div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Vallée du Gapeau : pourquoi cette zone attire de plus en plus de voyageurs en quête d'authenticité ?</div>
+      <p><strong>Cluster :</strong> SEO local Var & Arrière-pays</p>
+      <p><strong>Intention :</strong> Informationnelle + SEO de notoriété locale</p>
+      <div style="margin-top: 10px;"><span class="priority-badge priority-faible">Faible</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><span>Solaurea Conciergerie</span> — Blueprint Stratégique par AR Digital</p>
+  <p style="margin-top: 6px;">Document confidentiel — Usage exclusif du client. Reproduction interdite.</p>
+</footer>
+
+</body>
+</html>
