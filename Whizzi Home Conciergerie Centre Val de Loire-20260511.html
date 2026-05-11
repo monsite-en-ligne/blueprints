@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Whizzi Home Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2a1a20;
+    background: #faf8f6;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #2a1018 0%, #44284B 40%, #68515a 75%, #3a1f30 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(180,152,106,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #b4986a;
+    margin-bottom: 28px;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    max-width: 900px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: #b4986a;
+    margin-bottom: 48px;
+    font-style: italic;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cover-meta-item {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .cover-meta-item span {
+    display: block;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+    margin-top: 3px;
+    letter-spacing: 0;
+    text-transform: none;
+    font-size: 13px;
+  }
+
+  .cover-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(180,152,106,0.4);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 70px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+
+  section:nth-child(odd) {
+    background: #faf8f6;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #b4986a;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #44284B;
+    margin-bottom: 40px;
+    line-height: 1.25;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #44284B 0%, #68515a 100%);
+    border-radius: 16px;
+    padding: 36px 44px;
+    margin-bottom: 40px;
+    color: #ffffff;
+  }
+
+  .highlight-box .label {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #b4986a;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    line-height: 1.7;
+    color: #ffffff;
+  }
+
+  /* CARDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .card-icon {
+    font-size: 26px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #44284B;
+    margin-bottom: 10px;
+  }
+
+  .card p, .card li {
+    font-size: 14px;
+    color: #5a4450;
+    line-height: 1.75;
+  }
+
+  .card ul {
+    padding-left: 16px;
+  }
+
+  .card ul li {
+    margin-bottom: 4px;
+  }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 3px 3px 3px 0;
+  }
+
+  .tag-prune { background: #f0e8f2; color: #44284B; }
+  .tag-or { background: #f5ede1; color: #8a6d3b; }
+  .tag-rose { background: #f2ecee; color: #68515a; }
+
+  /* TONE ADJECTIFS */
+  .tone-list {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .tone-chip {
+    background: #44284B;
+    color: #ffffff;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 14px;
+  }
+
+  thead {
+    background: #44284B;
+    color: #ffffff;
+  }
+
+  thead th {
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #f0e8f0;
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody td {
+    padding: 14px 18px;
+    color: #5a4450;
+    vertical-align: top;
+  }
+
+  tbody tr:hover {
+    background: #faf6fb;
+  }
+
+  /* SEO BADGES */
+  .seo-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .seo-fort { background: #e8f5e9; color: #2e7d32; }
+  .seo-moyen { background: #fff8e1; color: #f57f17; }
+  .seo-faible { background: #f3e5f5; color: #6a1b9a; }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .tunnel-step {
+    background: #ffffff;
+    padding: 28px 22px;
+    border-right: 1px solid #f0e8f0;
+    position: relative;
+  }
+
+  .tunnel-step:last-child {
+    border-right: none;
+  }
+
+  .tunnel-step-num {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #b4986a;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .tunnel-step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #44284B;
+    margin-bottom: 14px;
+  }
+
+  .tunnel-meta {
+    font-size: 12px;
+    color: #7a6070;
+    margin-bottom: 6px;
+  }
+
+  .tunnel-meta strong {
+    color: #44284B;
+    font-weight: 600;
+  }
+
+  .tunnel-cta {
+    display: inline-block;
+    margin-top: 12px;
+    background: #44284B;
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  /* CLUSTER */
+  .cluster-block {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+  }
+
+  .cluster-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #44284B;
+    margin-bottom: 16px;
+  }
+
+  .cluster-pages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .cluster-page-tag {
+    background: #f0e8f2;
+    color: #44284B;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .maillage-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .maillage-list li {
+    font-size: 14px;
+    color: #5a4450;
+    padding: 5px 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid #f5f0f5;
+  }
+
+  .maillage-list li:last-child {
+    border-bottom: none;
+  }
+
+  .arrow-link {
+    color: #b4986a;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* COULEURS PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+
+  .palette-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #44284B;
+    text-align: center;
+  }
+
+  .palette-hex {
+    font-size: 11px;
+    color: #9a8a90;
+    text-align: center;
+    font-family: 'Inter', monospace;
+  }
+
+  /* BLOG */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 16px;
+  }
+
+  .blog-priority {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .blog-card-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #44284B;
+    margin-bottom: 6px;
+  }
+
+  .blog-card-body p {
+    font-size: 13px;
+    color: #7a6070;
+    margin-bottom: 4px;
+  }
+
+  /* LEVIERS */
+  .levier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .levier-card .levier-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #b4986a;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .levier-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #44284B;
+    margin-bottom: 10px;
+  }
+
+  .levier-card p {
+    font-size: 14px;
+    color: #5a4450;
+    line-height: 1.75;
+  }
+
+  /* OBJECTIFS */
+  .obj-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .obj-item {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .obj-rank {
+    background: #44284B;
+    color: #b4986a;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .obj-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #44284B;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #2a1018;
+    padding: 32px 60px;
+    text-align: center;
+  }
+
+  footer p {
+    color: rgba(255,255,255,0.4);
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  footer strong {
+    color: #b4986a;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 36px; }
+    .cover-meta { gap: 16px; }
+    .cover-divider { display: none; }
+
+    section { padding: 40px 24px; }
+
+    h2.section-title { font-size: 26px; }
+
+    .grid-2,
+    .grid-3,
+    .grid-4,
+    .obj-list { grid-template-columns: 1fr; }
+
+    .tunnel-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-step {
+      border-right: none;
+      border-bottom: 1px solid #f0e8f0;
+    }
+
+    .tunnel-step:last-child { border-bottom: none; }
+
+    .highlight-box { padding: 24px; }
+    .highlight-box p { font-size: 17px; }
+
+    .blog-card { flex-direction: column; gap: 10px; }
+
+    footer { padding: 24px; }
+
+    .palette-grid { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-eyebrow">Blueprint Stratégique</div>
+  <div class="cover-title">Whizzi Home<br>Conciergerie</div>
+  <div class="cover-subtitle">Centre Val de Loire</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      Client
+      <span>Céline Brissaire</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      Secteur
+      <span>Conciergerie LCD</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      Zone
+      <span>Orléans · Olivet · CVL</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-inner">
+    <span class="section-badge">01 — Positionnement</span>
+    <h2 class="section-title">Identité & Différenciation</h2>
+
+    <div class="highlight-box">
+      <span class="label">Promesse de valeur principale</span>
+      <p>« Une conciergerie LCD pensée par une architecte d'intérieur : vos biens sont valorisés, vos revenus optimisés, votre sérénité préservée — sans compromis. »</p>
+    </div>
+
+    <div class="card" style="margin-bottom: 24px;">
+      <h3>Ligne directrice de communication</h3>
+      <p>Expertise patrimoniale & esthétique au service de la performance locative. Whizzi Home positionne chaque bien comme une expérience voyageur premium, portée par un regard d'architecte et une gestion sans friction.</p>
+    </div>
+
+    <div class="card" style="margin-bottom: 32px;">
+      <h3>Ton éditorial</h3>
+      <div class="tone-list">
+        <span class="tone-chip">Élégant</span>
+        <span class="tone-chip">Expert</span>
+        <span class="tone-chip">Rassurant</span>
+      </div>
+      <p style="font-size:14px; color:#5a4450;">Un discours soigné, jamais technique ni jargonneux — celui d'une professionnelle qui guide avec bienveillance et autorité, et qui sait transformer un espace en récit.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <span class="card-icon">🏛️</span>
+        <h3>Double expertise unique</h3>
+        <p>10 ans d'architecture d'intérieur (Whizzi Déco) couplés à la gestion LCD : une approche patrimoniale que les conciergeries classiques ne peuvent pas offrir.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📊</span>
+        <h3>Accompagnement fiscal intégré</h3>
+        <p>Rare sur le marché : Whizzi Home intègre la dimension fiscale (micro-BIC, régime réel, charges déductibles) pour maximiser la rentabilité nette du propriétaire.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🎁</span>
+        <h3>Expérience voyageur signature</h3>
+        <p>Kit d'accueil café-thé-vin, panier de produits locaux, homestaging atypique : une expérience soignée qui booste les notes, la visibilité et les prix.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📍</span>
+        <h3>Ancrage local profond</h3>
+        <p>Présence terrain sur Orléans, Olivet et le Centre Val de Loire. Connaissance fine du marché, des saisons touristiques et des acteurs locaux.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-inner">
+    <span class="section-badge">02 — Client Cible</span>
+    <h2 class="section-title">Portrait du Propriétaire Idéal</h2>
+
+    <div class="grid-2">
+      <div class="card">
+        <span class="card-icon">👤</span>
+        <h3>Profil type</h3>
+        <p>35–65 ans, propriétaire d'un appartement ou d'une maison dans l'agglomération orléanaise (résidence secondaire, bien hérité ou investissement locatif). Actif ou jeune retraité, à l'aise avec le numérique mais dépassé par la gestion opérationnelle quotidienne.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">💡</span>
+        <h3>Motivations principales</h3>
+        <ul>
+          <li>Générer des revenus complémentaires significatifs</li>
+          <li>Déléguer totalement sans perdre le contrôle</li>
+          <li>Valoriser un bien parfois sous-estimé</li>
+          <li>Être guidé sur les enjeux fiscaux et réglementaires</li>
+          <li>Offrir une belle expérience aux voyageurs</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="card-icon">⚠️</span>
+        <h3>Freins & objections</h3>
+        <ul>
+          <li>Peur de confier ses clés à un inconnu</li>
+          <li>Doute sur la rentabilité réelle après commission</li>
+          <li>Méfiance vis-à-vis des voyageurs (dégradations)</li>
+          <li>Complexité perçue des démarches légales et fiscales</li>
+          <li>Mauvaise expérience antérieure avec une autre conciergerie</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="card-icon">✅</span>
+        <h3>Critères de décision</h3>
+        <ul>
+          <li>Proximité géographique et disponibilité terrain</li>
+          <li>Transparence sur les commissions et les revenus</li>
+          <li>Références et avis propriétaires vérifiables</li>
+          <li>Offre complète "clé en main" depuis la mise en place</li>
+          <li>Valeur ajoutée visuelle et décorative du bien</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-inner">
+    <span class="section-badge">03 — Objectifs du Site</span>
+    <h2 class="section-title">Priorités Stratégiques</h2>
+
+    <ul class="obj-list">
+      <li class="obj-item">
+        <div class="obj-rank">1</div>
+        <div class="obj-text">Génération de leads propriétaires qualifiés</div>
+      </li>
+      <li class="obj-item">
+        <div class="obj-rank">2</div>
+        <div class="obj-text">Conversion — prise de contact & prise de RDV</div>
+      </li>
+      <li class="obj-item">
+        <div class="obj-rank">3</div>
+        <div class="obj-text">Réassurance & construction de confiance</div>
+      </li>
+      <li class="obj-item">
+        <div class="obj-rank">4</div>
+        <div class="obj-text">SEO local — Orléans, Olivet, Centre Val de Loire</div>
+      </li>
+      <li class="obj-item">
+        <div class="obj-rank">5</div>
+        <div class="obj-text">Notoriété & différenciation concurrentielle</div>
+      </li>
+      <li class="obj-item">
+        <div class="obj-rank">6</div>
+        <div class="obj-text">Nurturing — contenu de valeur pour les indécis</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-inner">
+    <span class="section-badge">04 — Arborescence du Site</span>
+    <h2 class="section-title">Structure & SEO</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>Framework</th>
+            <th>Mot-clé principal</th>
+            <th>Potentiel SEO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Accueil</strong></td>
+            <td>AIDA</td>
+            <td>conciergerie location courte durée Orléans</td>
+            <td><span class="seo-badge seo-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Notre Offre</strong><br><small style="color:#9a8a90;">Tous les services détaillés sur une seule page</small></td>
+            <td>PAS</td>
+            <td>gestion locative airbnb Orléans</td>
+            <td><span class="seo-badge seo-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Notre Approche</strong><br><small style="color:#9a8a90;">Méthode, valeurs, expertise archi d'intérieur</small></td>
+            <td>BAB</td>
+            <td>conciergerie premium homestaging location</td>
+            <td><span class="seo-badge seo-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td><strong>À Propos</strong><br><small style="color:#9a8a90;">Histoire de Céline, lien avec Whizzi Déco</small></td>
+            <td>AIDA</td>
+            <td>architecte intérieur conciergerie Orléans</td>
+            <td><span class="seo-badge seo-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td><strong>Conciergerie Orléans</strong><br><small style="color:#9a8a90;">Page locale SEO #1</small></td>
+            <td>PAS</td>
+            <td>conciergerie Airbnb Orléans 45000</td>
+            <td><span class="seo-badge seo-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Conciergerie Olivet & Loiret</strong><br><small style="color:#9a8a90;">Page locale SEO #2 — Olivet + zone CVL</small></td>
+            <td>PAS</td>
+            <td>conciergerie location courte durée Loiret</td>
+            <td><span class="seo-badge seo-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Blog</strong></td>
+            <td>—</td>
+            <td>conseils location courte durée propriétaire</td>
+            <td><span class="seo-badge seo-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Contact & RDV</strong></td>
+            <td>AIDA</td>
+            <td>conciergerie devis gratuit Orléans</td>
+            <td><span class="seo-badge seo-moyen">Moyen</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 05 COCON SEMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-inner">
+    <span class="section-badge">05 — Cocon Sémantique</span>
+    <h2 class="section-title">Clusters Thématiques & Maillage</h2>
+
+    <div class="cluster-block">
+      <h3>🏠 Cluster 1 — Gestion Locative & Performance</h3>
+      <div class="cluster-pages">
+        <span class="cluster-page-tag">Accueil</span>
+        <span class="cluster-page-tag">Notre Offre</span>
+        <span class="cluster-page-tag">Conciergerie Orléans</span>
+        <span class="cluster-page-tag">Conciergerie Olivet & Loiret</span>
+        <span class="cluster-page-tag">Blog — Fiscalité / Revenus</span>
+      </div>
+      <p style="font-size:14px; color:#5a4450; margin-bottom: 16px;">Thèmes couverts : gestion Airbnb clé en main, optimisation tarifaire, accompagnement fiscal, location courte durée réglementée.</p>
+      <ul class="maillage-list">
+        <li>
+          <span>Accueil</span>
+          <span class="arrow-link">→</span>
+          <span>Notre Offre + Conciergerie Orléans</span>
+        </li>
+        <li>
+          <span>Notre Offre</span>
+          <span class="arrow-link">→</span>
+          <span>Contact & RDV + Pages locales</span>
+        </li>
+        <li>
+          <span>Pages locales</span>
+          <span class="arrow-link">→</span>
+          <span>Notre Offre + Contact & RDV</span>
+        </li>
+        <li>
+          <span>Articles Blog fiscalité</span>
+          <span class="arrow-link">→</span>
+          <span>Notre Offre + Contact & RDV</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="cluster-block">
+      <h3>✨ Cluster 2 — Valorisation & Expérience</h3>
+      <div class="cluster-pages">
+        <span class="cluster-page-tag">Notre Approche</span>
+        <span class="cluster-page-tag">À Propos</span>
+        <span class="cluster-page-tag">Blog — Déco / Homestaging</span>
+      </div>
+      <p style="font-size:14px; color:#5a4450; margin-bottom: 16px;">Thèmes couverts : homestaging atypique, expérience voyageur, valeur perçue du bien, lien Whizzi Déco.</p>
+      <ul class="maillage-list">
+        <li>
+          <span>Notre Approche</span>
+          <span class="arrow-link">→</span>
+          <span>À Propos + Notre Offre</span>
+        </li>
+        <li>
+          <span>À Propos</span>
+          <span class="arrow-link">→</span>
+          <span>Notre Approche + Contact & RDV</span>
+        </li>
+        <li>
+          <span>Articles Blog déco</span>
+          <span class="arrow-link">→</span>
+          <span>Notre Approche + Accueil</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-inner">
+    <span class="section-badge">06 — Tunnel de Conversion</span>
+    <h2 class="section-title">Du Visiteur au Propriétaire Partenaire</h2>
+
+    <div class="tunnel-grid">
+      <div class="tunnel-step">
+        <div class="tunnel-step-num">Étape 01</div>
+        <h3>Découverte</h3>
+        <p class="tunnel-meta"><strong>Source :</strong> Google local, bouche à oreille, réseaux sociaux</p>
+        <p class="tunnel-meta"><strong>Page :</strong> Accueil / Pages locales SEO</p>
+        <p class="tunnel-meta"><strong>Enjeu :</strong> Capter l'attention et créer une première impression premium</p>
+        <span class="tunnel-cta">Lire la promesse</span>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-step-num">Étape 02</div>
+        <h3>Intérêt</h3>
+        <p class="tunnel-meta"><strong>Source :</strong> Navigation interne, blog</p>
+        <p class="tunnel-meta"><strong>Page :</strong> Notre Offre / Notre Approche</p>
+        <p class="tunnel-meta"><strong>Enjeu :</strong> Démontrer la valeur unique et l'expertise différenciante</p>
+        <span class="tunnel-cta">Découvrir l'offre</span>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-step-num">Étape 03</div>
+        <h3>Confiance</h3>
+        <p class="tunnel-meta"><strong>Source :</strong> À Propos, avis, lead magnet</p>
+        <p class="tunnel-meta"><strong>Page :</strong> À Propos / Témoignages</p>
+        <p class="tunnel-meta"><strong>Enjeu :</strong> Rassurer sur le sérieux, l'ancrage local et l'expertise</p>
+        <span class="tunnel-cta">Télécharger le guide</span>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-step-num">Étape 04</div>
+        <h3>Conversion</h3>
+        <p class="tunnel-meta"><strong>Source :</strong> Toutes pages via CTA</p>
+        <p class="tunnel-meta"><strong>Page :</strong> Contact & RDV</p>
+        <p class="tunnel-meta"><strong>Enjeu :</strong> Transformer l'intérêt en prise de rendez-vous qualifié</p>
+        <span class="tunnel-cta">Réserver un audit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-inner">
+    <span class="section-badge">07 — Leviers Marketing Recommandés</span>
+    <h2 class="section-title">Activer la Croissance</h2>
+
+    <div class="grid-2">
+      <div class="levier-card">
+        <span class="levier-label">Lead Magnet</span>
+        <h3>Guide PDF — "Checklist complète pour rentabiliser votre bien en LCD à Orléans"</h3>
+        <p>Un guide pratique (10–12 pages) couvrant : critères d'éligibilité, mise à niveau du logement, obligations légales, astuces fiscales et estimation de revenus. À télécharger en échange d'un email.</p>
+      </div>
+      <div class="levier-card">
+        <span class="levier-label">Prise de RDV</span>
+        <h3>Outil recommandé : Calendly ou Tidycal</h3>
+        <p>Intégration d'un bouton "Réserver mon audit gratuit" visible sur toutes les pages. RDV de 30 min en visio ou présentiel. Rappel automatique par SMS + email pour réduire les no-shows.</p>
+      </div>
+      <div class="levier-card">
+        <span class="levier-label">Preuve Sociale</span>
+        <h3>Témoignages propriétaires + galerie avant/après</h3>
+        <p>Avis Google intégrés, citations propriétaires avec photo, galerie homestaging Whizzi Déco en before/after. Chiffres clés mis en avant : taux d'occupation moyen, revenus générés, notes voyageurs.</p>
+      </div>
+      <div class="levier-card">
+        <span class="levier-label">Formulaire Qualifiant</span>
+        <h3>Champs recommandés pour le formulaire de contact</h3>
+        <p>Prénom + email + téléphone / Type de bien (appart / maison) / Localisation / Situation actuelle (vide / déjà en LCD / autre) / Message libre / Champ "Comment avez-vous connu Whizzi Home ?"</p>
+      </div>
+      <div class="levier-card">
+        <span class="levier-label">Newsletter</span>
+        <h3>Angle éditorial : "Le Carnet du Propriétaire Serein"</h3>
+        <p>Envoi mensuel : 1 conseil fiscal ou réglementaire, 1 inspiration déco/homestaging, 1 actu du marché LCD en Centre Val de Loire. Positionnement expert, ton chaleureux, format court et lisible.</p>
+      </div>
+      <div class="levier-card">
+        <span class="levier-label">Lien Stratégique</span>
+        <h3>Pont entre Whizzi Déco et Whizzi Home</h3>
+        <p>Renvoi croisé entre les deux sites pour valoriser l'écosystème. Sur Whizzi Home : bloc "Votre bien mérite aussi d'être sublimé → Découvrir Whizzi Déco". Renforce la crédibilité et le différenciateur unique.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-inner">
+    <span class="section-badge">08 — Direction Visuelle & Éditoriale</span>
+    <h2 class="section-title">Identité & Atmosphère</h2>
+
+    <div class="card" style="margin-bottom: 32px;">
+      <h3>Palette Couleurs</h3>
+      <div class="palette-grid">
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#44284B;"></div>
+          <div class="palette-name">Prune Profond</div>
+          <div class="palette-hex">#44284B</div>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#b4986a;"></div>
+          <div class="palette-name">Doré Chaleureux</div>
+          <div class="palette-hex">#B4986A</div>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#68515a;"></div>
+          <div class="palette-name">Vieux Rose</div>
+          <div class="palette-hex">#68515A</div>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#ffffff; border: 1px solid #e8e0e4;"></div>
+          <div class="palette-name">Blanc Pur</div>
+          <div class="palette-hex">#FFFFFF</div>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#faf6f8;"></div>
+          <div class="palette-name">Blanc Rosé</div>
+          <div class="palette-hex">#FAF6F8</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Univers Visuel Recommandé</h3>
+        <ul>
+          <li style="font-size:14px; color:#5a4450; margin-bottom:8px;">📸 Photographies de biens décorés avec soin : lumière naturelle, ambiance cosy et élégante</li>
+          <li style="font-size:14px; color:#5a4450; margin-bottom:8px;">🌿 Détails lifestyle : verres de vin, livres, paniers locaux, linge de maison soigné</li>
+          <li style="font-size:14px; color:#5a4450; margin-bottom:8px;">🏙️ Vues d'Orléans et des bords de Loire pour l'ancrage local</li>
+          <li style="font-size:14px; color:#5a4450; margin-bottom:8px;">✍️ Typographie sérif élégante (Playfair Display) pour les titres, sans-serif sobre pour le corps</li>
+          <li style="font-size:14px; color:#5a4450;">🖼️ Galeries before/after pour le homestaging — format cinématique horizontal</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Références Visuelles & Inspiration</h3>
+        <p style="font-size:14px; color:#5a4450; margin-bottom:10px;"><strong style="color:#44284B;">La Bonne Conciergerie</strong> — Structure claire, ton professionnel, hiérarchie visuelle maîtrisée.</p>
+        <p style="font-size:14px; color:#5a4450; margin-bottom:10px;"><strong style="color:#44284B;">Les Clés de Milan</strong> — Élégance éditoriale, photographies soignées, ambiance haut de gamme.</p>
+        <p style="font-size:14px; color:#5a4450; margin-bottom:10px;"><strong style="color:#44284B;">Whizzi Déco</strong> — Cohérence identitaire à maintenir : même famille typographique, palette harmonisée, lien naturel entre les deux univers.</p>
+        <p style="font-size:14px; color:#5a4450;"><span class="tag tag-prune">Épuré</span><span class="tag tag-or">Premium</span><span class="tag tag-rose">Local & Authentique</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-inner">
+    <span class="section-badge">09 — Articles Blog Recommandés</span>
+    <h2 class="section-title">Plan de Contenu SEO</h2>
+
+    <div class="blog-card">
+      <div class="blog-priority">
+        <span class="seo-badge seo-fort">Prioritaire</span>
+      </div>
+      <div class="blog-card-body">
+        <h3>Location courte durée à Orléans : ce que vous devez savoir avant de vous lancer</h3>
+        <p><strong>Cluster :</strong> Gestion Locative & Performance</p>
+        <p><strong>Intention :</strong> Informationnelle — propriétaire en phase de réflexion, cherche à comprendre les règles et le potentiel local</p>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-priority">
+        <span class="seo-badge seo-fort">Prioritaire</span>
+      </div>
+      <div class="blog-card-body">
+        <h3>Micro-BIC ou régime réel : quelle fiscalité choisir pour votre Airbnb en 2025 ?</h3>
+        <p><strong>Cluster :</strong> Gestion Locative & Performance</p>
+        <p><strong>Intention :</strong> Informationnelle à forte valeur — propriétaire cherchant à optimiser sa rentabilité nette, saisit la spécificité de Whizzi Home</p>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-priority">
+        <span class="seo-badge seo-fort">Prioritaire</span>
+      </div>
+      <div class="blog-card-body">
+        <h3>Combien peut rapporter un appartement en LCD à Orléans ? Simulation réelle</h3>
+        <p><strong>Cluster :</strong> Gestion Locative & Performance</p>
+        <p><strong>Intention :</strong> Transactionnelle — propriétaire qui compare et veut se projeter, fort potentiel de conversion vers RDV</p>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-priority">
+        <span class="seo-badge seo-moyen">Moyen</span>
+      </div>
+      <div class="blog-card-body">
+        <h3>Homestaging pour la location courte durée : comment doubler vos revenus grâce à la déco</h3>
+        <p><strong>Cluster :</strong> Valorisation & Expérience</p>
+        <p><strong>Intention :</strong> Informationnelle — propriétaire curieux de valoriser son bien, met en avant l'expertise unique de Whizzi Déco</p>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-priority">
+        <span class="seo-badge seo-moyen">Moyen</span>
+      </div>
+      <div class="blog-card-body">
+        <h3>Confier son logement à une conciergerie : 5 questions à poser avant de signer</h3>
+        <p><strong>Cluster :</strong> Gestion Locative & Performance</p>
+        <p><strong>Intention :</strong> Navigationnelle / comparative — propriétaire en phase de décision finale, freine sur la confiance</p>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-priority">
+        <span class="seo-badge seo-moyen">Moyen</span>
+      </div>
+      <div class="blog-card-body">
+        <h3>Voyager à Orléans : nos adresses, bonnes tables et balades incontournables</h3>
+        <p><strong>Cluster :</strong> Valorisation & Expérience</p>
+        <p><strong>Intention :</strong> Informationnelle — trafic voyageur + signale le savoir-faire local de Whizzi Home pour les livrets d'accueil</p>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-priority">
+        <span class="seo-badge seo-faible">Faible</span>
+      </div>
+      <div class="blog-card-body">
+        <h3>Kit d'accueil voyageur : les petits détails qui font les 5 étoiles</h3>
+        <p><strong>Cluster :</strong> Valorisation & Expérience</p>
+        <p><strong>Intention :</strong> Informationnelle — article brand content illustrant la différence Whizzi Home, bon pour le maillage interne vers l'offre</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Whizzi Home Conciergerie</strong> — Blueprint Stratégique · Document confidentiel AR Digital</p>
+  <p style="margin-top:6px;">Céline Brissaire · whizzideco@gmail.com · Centre Val de Loire</p>
+</footer>
+
+</body>
+</html>
