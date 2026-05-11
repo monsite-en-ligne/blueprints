@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Infinite Lodge</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2c2c2c;
+    background: #f9f8f6;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1a1410 0%, #2e1f14 40%, #3b2d1e 70%, #1f2b1f 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(139,110,78,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(200,175,140,0.7);
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    letter-spacing: -1px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: rgba(220,200,175,0.8);
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-item .label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(180,155,120,0.6);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-item .value {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: rgba(240,225,205,0.9);
+    font-weight: 500;
+  }
+
+  .cover-sep {
+    width: 1px;
+    height: 32px;
+    background: rgba(180,155,120,0.25);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 80px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+
+  section:nth-child(odd) {
+    background: #f9f8f6;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8b6e4e;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .section-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #b89a7a;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #1e1a16;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: #6b6058;
+    max-width: 560px;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  /* CARDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1e1a16;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .card p, .card li {
+    font-size: 14px;
+    color: #5a524a;
+    line-height: 1.75;
+  }
+
+  .card ul {
+    padding-left: 16px;
+  }
+
+  .card ul li {
+    margin-bottom: 4px;
+  }
+
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(130deg, #2e1f14 0%, #3b2d1e 50%, #1f2b1f 100%);
+    border-radius: 16px;
+    padding: 40px 48px;
+    margin-bottom: 40px;
+    color: #fff;
+  }
+
+  .highlight-box .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(200,175,140,0.7);
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    line-height: 1.6;
+    color: rgba(245,235,220,0.95);
+    font-style: italic;
+  }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 3px 2px;
+  }
+
+  .tag-brown { background: #f4ede4; color: #8b6e4e; }
+  .tag-green { background: #e8f0e9; color: #3d5c3e; }
+  .tag-neutral { background: #f0eeec; color: #5a524a; }
+
+  /* BADGES SEO */
+  .badge-fort { background: #e8f0e9; color: #3d5c3e; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .badge-moyen { background: #fdf4e4; color: #8b6e1a; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .badge-faible { background: #f0eeec; color: #7a6f66; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+
+  /* BADGE PRIORITÉ */
+  .badge-prioritaire { background: #e8f0e9; color: #2d5230; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .badge-moyen-prio { background: #fdf4e4; color: #7a5c14; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .badge-faible-prio { background: #f0eeec; color: #7a6f66; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+
+  /* TABLE */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 14px;
+  }
+
+  table thead tr {
+    background: linear-gradient(90deg, #2e1f14, #3b2d1e);
+    color: rgba(240,225,205,0.9);
+  }
+
+  table th {
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid #f0eeec;
+    color: #3a332c;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  table tbody tr:hover {
+    background: #faf8f5;
+  }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .tunnel-step {
+    background: #ffffff;
+    padding: 28px;
+    border-right: 1px solid #f0eeec;
+  }
+
+  .tunnel-step:last-child {
+    border-right: none;
+  }
+
+  .tunnel-step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #d4b896;
+    line-height: 1;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .tunnel-step h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #8b6e4e;
+    margin-bottom: 16px;
+  }
+
+  .tunnel-step .meta-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #b0a090;
+    font-weight: 600;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .tunnel-step p {
+    font-size: 13px;
+    color: #5a524a;
+    line-height: 1.65;
+  }
+
+  .tunnel-cta {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 14px;
+    background: #f4ede4;
+    color: #8b6e4e;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+  }
+
+  .palette-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #3a332c;
+    text-align: center;
+  }
+
+  .palette-hex {
+    font-size: 11px;
+    color: #a09080;
+    text-align: center;
+  }
+
+  /* MAILLAGE */
+  .maillage-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #3a332c;
+  }
+
+  .maillage-from {
+    font-weight: 600;
+    color: #2e1f14;
+    background: #f4ede4;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+  }
+
+  .maillage-arrow {
+    color: #8b6e4e;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .maillage-to {
+    color: #4a6b4c;
+    background: #e8f0e9;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+  }
+
+  /* OBJECTIFS */
+  .objectifs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .objectif-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 18px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.03);
+  }
+
+  .objectif-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #d4b896;
+    min-width: 36px;
+    line-height: 1;
+  }
+
+  .objectif-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #2c2520;
+  }
+
+  .objectif-desc {
+    font-size: 13px;
+    color: #7a6f66;
+    margin-top: 2px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1a1410;
+    padding: 40px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: rgba(240,225,205,0.9);
+    font-weight: 600;
+  }
+
+  footer .footer-meta {
+    font-size: 12px;
+    color: rgba(180,155,120,0.5);
+    letter-spacing: 1px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 42px; }
+    .cover-meta { gap: 20px; }
+    .cover-sep { display: none; }
+    section { padding: 48px 24px; }
+    h2 { font-size: 26px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .tunnel-grid { grid-template-columns: 1fr; }
+    .tunnel-step { border-right: none; border-bottom: 1px solid #f0eeec; }
+    .tunnel-step:last-child { border-bottom: none; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 18px; }
+    footer { flex-direction: column; text-align: center; padding: 32px 24px; }
+    .table-wrapper { font-size: 13px; }
+    .palette-grid { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <span class="cover-label">Blueprint Stratégique — Document Confidentiel</span>
+  <h1 class="cover-title">Infinite Lodge</h1>
+  <p class="cover-subtitle">Conciergerie de location courte durée</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="label">Cliente</span>
+      <span class="value">Julie Kleguer</span>
+    </div>
+    <div class="cover-sep"></div>
+    <div class="cover-meta-item">
+      <span class="label">Secteur</span>
+      <span class="value">Est de l'Essonne</span>
+    </div>
+    <div class="cover-sep"></div>
+    <div class="cover-meta-item">
+      <span class="label">Domaine</span>
+      <span class="value">infinite-lodge.com</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-number">01</span>
+  <h2>Positionnement</h2>
+  <p class="section-intro">La fondation stratégique de votre marque : ce que vous êtes, ce que vous promettez, et comment vous vous distinguez.</p>
+
+  <div class="highlight-box">
+    <span class="label">Promesse de valeur principale</span>
+    <p>Infinite Lodge libère les propriétaires de l'Essonne du quotidien locatif — pour qu'ils perçoivent plus, gèrent moins, et dorment tranquilles.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <span class="card-icon">🎯</span>
+      <h3>Ligne directrice de communication</h3>
+      <p>Sérénité opérationnelle premium — une conciergerie qui prend tout en charge, de l'annonce à la clé, avec la rigueur d'une vraie expertise terrain locale.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🖋️</span>
+      <h3>Ton éditorial</h3>
+      <p><strong>Rassurant · Élégant · Concret</strong><br>Un ton qui inspire confiance sans jargon, qui valorise le service sans en faire trop — comme un interlocuteur fiable qui sait de quoi il parle.</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🌿</span>
+      <h3>Ancrage local fort</h3>
+      <p>Infinite Lodge opère exclusivement dans l'Est de l'Essonne : connaissance du marché local, proximité terrain, réactivité garantie — un avantage qu'une plateforme nationale ne peut pas offrir.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✨</span>
+      <h3>Service haut de gamme de bout en bout</h3>
+      <p>Photographie professionnelle, ménage premium, literie soignée, accueil personnalisé : chaque détail est pensé pour maximiser la satisfaction des voyageurs et les avis 5 étoiles.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📊</span>
+      <h3>Optimisation multi-plateformes</h3>
+      <p>Présence sur Airbnb, Booking, Abritel et Frenchy Luxury : les annonces sont gérées et optimisées en continu pour augmenter le taux d'occupation et les revenus du propriétaire.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🤝</span>
+      <h3>Expérience humaine et transparente</h3>
+      <p>10 ans d'expérience en gestion d'équipes et relation client. Une interlocutrice unique, disponible, qui connaît chaque bien et chaque propriétaire par son prénom.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">💼</span>
+      <h3>Commission claire et juste</h3>
+      <p>Un modèle simple à 25 % des revenus générés — pas de frais cachés, pas de mauvaise surprise. Le propriétaire sait exactement ce qu'il paie et ce qu'il gagne.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-number">02</span>
+  <h2>Client Cible</h2>
+  <p class="section-intro">Comprendre à qui l'on s'adresse, c'est la condition pour convaincre. Voici le profil type du propriétaire qu'Infinite Lodge doit attirer.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">👤</span>
+      <h3>Profil type</h3>
+      <p>Propriétaire de 35 à 60 ans, actif professionnellement, résidant dans l'Est de l'Essonne ou en Île-de-France. Possède un appartement, une maison ou un bien secondaire qu'il souhaite rentabiliser en location saisonnière sans y consacrer son temps.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">💡</span>
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Générer des revenus complémentaires passifs</li>
+        <li>Ne pas avoir à gérer les contraintes opérationnelles</li>
+        <li>Obtenir de bons avis voyageurs et un taux d'occupation élevé</li>
+        <li>Confier son bien à quelqu'un de fiable et de local</li>
+        <li>Être accompagné dès le démarrage (photos, annonces, accueil)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">⚠️</span>
+      <h3>Freins et objections</h3>
+      <ul>
+        <li>« 25 %, c'est trop cher » — peur de rogner sur la rentabilité</li>
+        <li>« Je ne connais pas cette conciergerie, puis-je lui faire confiance ? »</li>
+        <li>« Et si mon bien est mal entretenu ou mal représenté ? »</li>
+        <li>« Je ne sais pas si c'est adapté à mon secteur »</li>
+        <li>« J'ai peur de perdre le contrôle sur mon bien »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">✅</span>
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Transparence sur les tarifs et le fonctionnement</li>
+        <li>Preuves de résultats (avis, revenus générés, témoignages)</li>
+        <li>Réactivité et disponibilité perçues</li>
+        <li>Proximité géographique et connaissance du marché local</li>
+        <li>Qualité du service perçue via la présentation du site</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <span class="section-number">03</span>
+  <h2>Objectifs du Site</h2>
+  <p class="section-intro">Les 6 objectifs stratégiques du site, classés par priorité décroissante.</p>
+
+  <div class="objectifs-list">
+    <div class="objectif-item">
+      <span class="objectif-rank">1</span>
+      <div>
+        <div class="objectif-label">Génération de leads qualifiés</div>
+        <div class="objectif-desc">Attirer des propriétaires prêts à déléguer et les inciter à prendre contact via un formulaire ou un RDV en ligne.</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-rank">2</span>
+      <div>
+        <div class="objectif-label">Réassurance et crédibilité</div>
+        <div class="objectif-desc">Lever les doutes du propriétaire : qui est Julie, que fait Infinite Lodge exactement, quels résultats peut-on espérer ?</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-rank">3</span>
+      <div>
+        <div class="objectif-label">SEO local</div>
+        <div class="objectif-desc">Apparaître sur Google pour les recherches de propriétaires dans l'Est de l'Essonne (Corbeil-Essonnes, Évry, Brunoy…).</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-rank">4</span>
+      <div>
+        <div class="objectif-label">Conversion</div>
+        <div class="objectif-desc">Transformer les visiteurs en prospects via des CTA stratégiques, un formulaire qualifiant et une prise de RDV facilitée.</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-rank">5</span>
+      <div>
+        <div class="objectif-label">Prise de rendez-vous</div>
+        <div class="objectif-desc">Intégrer un outil de réservation de créneau pour faciliter le premier échange sans friction.</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-rank">6</span>
+      <div>
+        <div class="objectif-label">Notoriété locale</div>
+        <div class="objectif-desc">Installer Infinite Lodge comme la référence conciergerie haut de gamme de l'Est de l'Essonne grâce au blog et au contenu utile.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <span class="section-number">04</span>
+  <h2>Arborescence du Site</h2>
+  <p class="section-intro">Structure recommandée du site, pensée pour le SEO local, la conversion et la clarté du parcours propriétaire.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Essonne</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre Offre</strong><br><em style="font-size:12px; color:#9a8a7a;">(gestion complète, check-in/out, entretien, optimisation annonces — tous services réunis)</em></td>
+          <td>PAS</td>
+          <td>gestion location saisonnière Essonne</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À Propos</strong></td>
+          <td>BAB</td>
+          <td>conciergerie Airbnb Essonne expérience</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Évry-Courcouronnes & Corbeil-Essonnes</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Évry / Corbeil-Essonnes</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Est Essonne (Brunoy, Yerres, Montgeron)</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Est Essonne</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Simulateur / Estimation de revenus</strong></td>
+          <td>PAS</td>
+          <td>simulateur revenus location saisonnière</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils location courte durée Essonne</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / Prise de RDV</strong></td>
+          <td>—</td>
+          <td>contacter conciergerie Airbnb Essonne</td>
+          <td><span class="badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-number">05</span>
+  <h2>Cocon Sémantique</h2>
+  <p class="section-intro">Organisation thématique du contenu pour renforcer l'autorité du site aux yeux de Google et fluidifier le parcours lecteur.</p>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <span class="card-icon">🏡</span>
+      <h3>Cluster 1 — Gestion locative courte durée</h3>
+      <p>
+        <span class="tag tag-brown">Page Offre (pilier)</span>
+        <span class="tag tag-neutral">Simulateur revenus</span>
+        <span class="tag tag-neutral">Blog : comment maximiser ses revenus Airbnb</span>
+        <span class="tag tag-neutral">Blog : choisir sa conciergerie</span>
+        <span class="tag tag-neutral">Blog : fiscalité location saisonnière</span>
+      </p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📍</span>
+      <h3>Cluster 2 — Ancrage local Essonne</h3>
+      <p>
+        <span class="tag tag-green">Accueil (pilier)</span>
+        <span class="tag tag-neutral">Page locale Évry / Corbeil</span>
+        <span class="tag tag-neutral">Page locale Est Essonne</span>
+        <span class="tag tag-neutral">Blog : marché locatif saisonnier Essonne</span>
+        <span class="tag tag-neutral">Blog : louer son logement près de Paris</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Logique de maillage interne</h3>
+    <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 12px;">
+      <div class="maillage-row">
+        <span class="maillage-from">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Notre Offre</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Simulateur</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Contact / RDV</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-from">Pages Locales</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Notre Offre</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Contact / RDV</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-from">Articles Blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Notre Offre</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Simulateur</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Contact / RDV</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-from">À Propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Notre Offre</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Contact / RDV</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-number">06</span>
+  <h2>Tunnel de Conversion</h2>
+  <p class="section-intro">Le parcours type d'un propriétaire, de sa première recherche Google jusqu'à la signature avec Infinite Lodge.</p>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">01</span>
+      <h3>Découverte</h3>
+      <span class="meta-label">Source de trafic</span>
+      <p>SEO Google, bouche-à-oreille, réseaux sociaux locaux</p>
+      <span class="meta-label">Page concernée</span>
+      <p>Accueil · Pages locales SEO</p>
+      <span class="meta-label">CTA</span>
+      <span class="tunnel-cta">Estimer mes revenus →</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">02</span>
+      <h3>Intérêt</h3>
+      <span class="meta-label">Source de trafic</span>
+      <p>Navigation interne depuis l'accueil ou le blog</p>
+      <span class="meta-label">Page concernée</span>
+      <p>Notre Offre · Blog · Simulateur</p>
+      <span class="meta-label">CTA</span>
+      <span class="tunnel-cta">Voir notre offre →</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">03</span>
+      <h3>Confiance</h3>
+      <span class="meta-label">Source de trafic</span>
+      <p>Navigation interne — approfondissement</p>
+      <span class="meta-label">Page concernée</span>
+      <p>À Propos · Témoignages · Simulateur</p>
+      <span class="meta-label">CTA</span>
+      <span class="tunnel-cta">Télécharger le guide →</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">04</span>
+      <h3>Conversion</h3>
+      <span class="meta-label">Source de trafic</span>
+      <p>Formulaire, RDV en ligne, appel direct</p>
+      <span class="meta-label">Page concernée</span>
+      <p>Contact / Prise de RDV</p>
+      <span class="meta-label">CTA</span>
+      <span class="tunnel-cta">Prendre RDV gratuit →</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-number">07</span>
+  <h2>Leviers Marketing Recommandés</h2>
+  <p class="section-intro">Les outils concrets à activer pour transformer le trafic en prospects qualifiés et fidéliser les propriétaires.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🎁</span>
+      <h3>Lead Magnet</h3>
+      <p><strong>« Guide : Comment rentabiliser votre bien en location saisonnière dans l'Essonne »</strong> — PDF téléchargeable gratuit, positionné en bas de page Offre et en pop-up blog. Collecte d'email en échange.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📅</span>
+      <h3>Prise de Rendez-vous</h3>
+      <p>Intégration de <strong>Calendly</strong> (ou equivalent) pour permettre au propriétaire de réserver un appel découverte de 30 min directement depuis le site, sans échange d'emails.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">⭐</span>
+      <h3>Preuve Sociale</h3>
+      <p>Afficher des <strong>témoignages propriétaires</strong> avec photo, prénom, ville et revenus générés (ex : « +1 400 €/mois, Brunoy »). Intégrer les avis Google. Valoriser les notes voyageurs Airbnb.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📋</span>
+      <h3>Formulaire Qualifiant</h3>
+      <p>Champs recommandés : <strong>Prénom · Ville du bien · Type de bien · Nombre de couchages · Situation actuelle (déjà en LCD ou non) · Message libre</strong>. Permet de préparer l'échange téléphonique.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📨</span>
+      <h3>Newsletter</h3>
+      <p>Angle éditorial : <strong>« L'Essentiel Propriétaire »</strong> — conseils pratiques mensuels sur la LCD, actualités fiscales, astuces pour améliorer sa rentabilité. Nourrit la relation avant et après signature.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-number">08</span>
+  <h2>Direction Visuelle & Éditoriale</h2>
+  <p class="section-intro">Une identité visuelle inspirée du feng shui contemporain : épurée, apaisante, premium. Blanc minéral, bois chaud, vert naturel — l'harmonie au service de la confiance.</p>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <h3>Palette de couleurs</h3>
+    <div class="palette-grid" style="margin-top: 24px;">
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #FFFFFF; border: 1px solid #e0dbd4;"></div>
+        <span class="palette-name">Blanc Minéral</span>
+        <span class="palette-hex">#FFFFFF</span>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #8B6E4E;"></div>
+        <span class="palette-name">Bois Chaleureux</span>
+        <span class="palette-hex">#8B6E4E</span>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #D4B896;"></div>
+        <span class="palette-name">Sable Doux</span>
+        <span class="palette-hex">#D4B896</span>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #4A6B4C;"></div>
+        <span class="palette-name">Vert Naturel</span>
+        <span class="palette-hex">#4A6B4C</span>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #2E1F14;"></div>
+        <span class="palette-name">Brun Profond</span>
+        <span class="palette-hex">#2E1F14</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Univers visuel recommandé</h3>
+    <ul style="margin-top: 10px;">
+      <li>📷 <strong>Photographies d'intérieurs chaleureux</strong> — bois clair, plantes vertes, lumière naturelle, linge blanc impeccable</li>
+      <li>🌿 <strong>Textures organiques</strong> — lin, bois, pierre, céramique — présentes en fond de sections ou en overlays subtils</li>
+      <li>🔲 <strong>Mise en page aérée</strong> avec grands espaces blancs, pas d'éléments décoratifs superflus — sobriété feng shui</li>
+      <li>🖋️ <strong>Typographie mixte</strong> — Playfair Display pour les titres (élégance), Inter pour le corps (lisibilité, modernité)</li>
+      <li>🌀 <strong>Icônes minimalistes</strong> — trait fin, monochrome brun ou vert, jamais de clipart ou d'illustrations illustratives chargées</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09">
+  <span class="section-number">09</span>
+  <h2>Articles Blog Recommandés</h2>
+  <p class="section-intro">Un plan éditorial stratégique pour attirer du trafic qualifié, renforcer l'autorité locale et nourrir le tunnel de conversion.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Louer son logement sur Airbnb dans l'Essonne : ce qu'il faut savoir avant de se lancer</strong></td>
+          <td>Gestion LCD</td>
+          <td>Informationnelle — propriétaire débutant</td>
+          <td><span class="badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie Airbnb vs gestion en solo : quel choix est vraiment rentable ?</strong></td>
+          <td>Gestion LCD</td>
+          <td>Comparaison — propriétaire hésitant</td>
+          <td><span class="badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Combien peut-on gagner avec un logement en location courte durée dans l'Est de l'Essonne ?</strong></td>
+          <td>Ancrage local</td>
+          <td>Transactionnelle — propriétaire motivé</td>
+          <td><span class="badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>5 erreurs fréquentes des propriétaires Airbnb (et comment les éviter)</strong></td>
+          <td>Gestion LCD</td>
+          <td>Informationnelle — propriétaire en difficulté</td>
+          <td><span class="badge-moyen-prio">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Fiscalité de la location meublée courte durée en 2025 : le guide simplifié</strong></td>
+          <td>Gestion LCD</td>
+          <td>Informationnelle — propriétaire prudent</td>
+          <td><span class="badge-moyen-prio">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Pourquoi l'Essonne attire de plus en plus de voyageurs en location saisonnière</strong></td>
+          <td>Ancrage local</td>
+          <td>Informationnelle — trafic local / curiosité</td>
+          <td><span class="badge-moyen-prio">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Comment obtenir des avis 5 étoiles sur Airbnb : les secrets d'une conciergerie professionnelle</strong></td>
+          <td>Gestion LCD</td>
+          <td>Informationnelle — propriétaire ambitieux</td>
+          <td><span class="badge-faible-prio">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">Infinite Lodge</span>
+  <span class="footer-meta">Document confidentiel — Réalisé par AR Digital · 2025</span>
+</footer>
+
+</body>
+</html>
