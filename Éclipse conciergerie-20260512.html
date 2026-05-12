@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Éclipse Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8CC80;
+    --gold-dark: #9A6F2F;
+    --cream: #FAF6EE;
+    --white: #FFFFFF;
+    --text-dark: #1A1A1A;
+    --text-mid: #4A4A4A;
+    --text-soft: #7A7A7A;
+    --border: #EDE8DE;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-dark);
+    background: var(--white);
+  }
+
+  /* ── COVER ───────────────────────────────────────────────── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1A1208 0%, #2E1F08 40%, #4A3010 70%, #1A1208 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(201,168,76,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 8px 20px;
+    border-radius: 30px;
+    margin-bottom: 48px;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 900;
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  .cover-title span {
+    color: var(--gold-light);
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 1px;
+    margin-bottom: 64px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-item .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-item .value {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 400;
+  }
+
+  .cover-line {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 40px auto 0;
+    opacity: 0.5;
+  }
+
+  /* ── SECTIONS ─────────────────────────────────────────────── */
+  section {
+    padding: 80px 80px;
+  }
+
+  section:nth-child(even) {
+    background: var(--cream);
+  }
+
+  section:nth-child(odd) {
+    background: var(--white);
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: var(--text-soft);
+    max-width: 560px;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  .section-header {
+    margin-bottom: 48px;
+  }
+
+  /* ── CARDS ────────────────────────────────────────────────── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    page-break-inside: avoid;
+  }
+
+  .card-icon {
+    font-size: 26px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.75;
+  }
+
+  /* ── HIGHLIGHT BOX ────────────────────────────────────────── */
+  .highlight-box {
+    background: linear-gradient(135deg, #2E1F08 0%, #4A3010 100%);
+    border-radius: 16px;
+    padding: 44px 52px;
+    text-align: center;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(201,168,76,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .highlight-box .promise-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .highlight-box .promise-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.45;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* ── TONE STRIP ───────────────────────────────────────────── */
+  .tone-strip {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .tone-pill {
+    background: var(--white);
+    border: 1.5px solid var(--gold);
+    color: var(--gold-dark);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 30px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── LISTS ────────────────────────────────────────────────── */
+  .styled-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .styled-list li {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    padding-left: 22px;
+    position: relative;
+  }
+
+  .styled-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* ── OBJECTIFS PILLS ──────────────────────────────────────── */
+  .obj-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .obj-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--white);
+    border-radius: 14px;
+    padding: 22px 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+
+  .obj-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: rgba(201,168,76,0.25);
+    min-width: 36px;
+    line-height: 1;
+  }
+
+  .obj-content .obj-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 3px;
+  }
+
+  .obj-content .obj-desc {
+    font-size: 13px;
+    color: var(--text-soft);
+    line-height: 1.6;
+  }
+
+  /* ── TABLE ────────────────────────────────────────────────── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    font-size: 14px;
+  }
+
+  thead th {
+    background: #2E1F08;
+    color: var(--gold-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 20px;
+    text-align: left;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody td {
+    padding: 16px 20px;
+    color: var(--text-mid);
+    vertical-align: top;
+    line-height: 1.65;
+  }
+
+  tbody tr:hover {
+    background: rgba(201,168,76,0.04);
+  }
+
+  .badge-seo {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-fort { background: #D4F0D8; color: #1A6B2A; }
+  .badge-moyen { background: #FFF0CC; color: #8A6200; }
+  .badge-faible { background: #F0F0F0; color: #555; }
+
+  /* ── CLUSTERS ─────────────────────────────────────────────── */
+  .cluster-block {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    page-break-inside: avoid;
+  }
+
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cluster-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: rgba(201,168,76,0.12);
+    color: var(--gold-dark);
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  .maillage-block {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    margin-top: 24px;
+  }
+
+  .maillage-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 18px;
+  }
+
+  .maillage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: var(--text-mid);
+  }
+
+  .maillage-row:last-child { margin-bottom: 0; }
+
+  .m-page {
+    background: #2E1F08;
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+
+  .m-arrow {
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .m-target {
+    background: rgba(201,168,76,0.1);
+    color: var(--gold-dark);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+
+  /* ── TUNNEL ───────────────────────────────────────────────── */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+
+  .tunnel-step {
+    background: var(--white);
+    padding: 30px 24px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+
+  .tunnel-step:last-child { border-right: none; }
+
+  .tunnel-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: rgba(201,168,76,0.15);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .tunnel-phase {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .tunnel-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+  }
+
+  .tunnel-detail {
+    font-size: 12.5px;
+    color: var(--text-soft);
+    line-height: 1.65;
+    margin-bottom: 8px;
+  }
+
+  .tunnel-cta {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold-dark);
+    background: rgba(201,168,76,0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── LEVIERS ──────────────────────────────────────────────── */
+  .levier-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    page-break-inside: avoid;
+  }
+
+  .levier-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .levier-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .levier-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+
+  .levier-text {
+    font-size: 13.5px;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  /* ── PALETTE ──────────────────────────────────────────────── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 48px;
+  }
+
+  .color-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .color-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+
+  .color-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: var(--text-soft);
+    font-family: monospace;
+  }
+
+  /* ── BLOG ─────────────────────────────────────────────────── */
+  .blog-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    page-break-inside: avoid;
+  }
+
+  .blog-priority {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  .blog-priority.prio { background: #D4F0D8; color: #1A6B2A; }
+  .blog-priority.moyen { background: #FFF0CC; color: #8A6200; }
+  .blog-priority.faible { background: #F0F0F0; color: #555; }
+
+  .blog-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    line-height: 1.45;
+  }
+
+  .blog-meta {
+    font-size: 12.5px;
+    color: var(--text-soft);
+    line-height: 1.65;
+  }
+
+  .blog-meta span {
+    color: var(--gold-dark);
+    font-weight: 600;
+  }
+
+  /* ── DIRECTION VISUELLE ───────────────────────────────────── */
+  .visuel-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    page-break-inside: avoid;
+  }
+
+  .visuel-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: rgba(201,168,76,0.2);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .visuel-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+
+  .visuel-text {
+    font-size: 13.5px;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  /* ── FOOTER ───────────────────────────────────────────────── */
+  footer {
+    background: #1A1208;
+    padding: 40px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold-light);
+  }
+
+  footer .footer-meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.5px;
+  }
+
+  footer .footer-ar {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── RESPONSIVE ───────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 40px; }
+    .cover-meta { gap: 24px; }
+
+    section { padding: 48px 24px; }
+    .section-title { font-size: 26px; }
+
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .tunnel-grid { grid-template-columns: 1fr; }
+    .tunnel-step { border-right: none; border-bottom: 1px solid var(--border); }
+    .tunnel-step:last-child { border-bottom: none; }
+
+    .highlight-box { padding: 32px 24px; }
+    .highlight-box .promise-text { font-size: 20px; }
+
+    .maillage-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+
+    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+
+    table { font-size: 13px; }
+  }
+
+  @media print {
+    section, .card, .blog-card, .levier-card, .cluster-block, .maillage-block {
+      page-break-inside: avoid;
+    }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ COVER ══════════════════════════════════════════════════════════ -->
+<div class="cover">
+  <span class="cover-badge">Blueprint Stratégique</span>
+  <h1 class="cover-title">Éclipse<br><span>Conciergerie</span></h1>
+  <p class="cover-subtitle">Document de stratégie digitale — Confidentiel</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="label">Client</span>
+      <span class="value">Marie MBODJE</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Secteur</span>
+      <span class="value">Conciergerie & Location courte durée</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Zone</span>
+      <span class="value">Île-de-France & Yvelines</span>
+    </div>
+  </div>
+  <div class="cover-line"></div>
+</div>
+
+<!-- ══ 01 — POSITIONNEMENT ════════════════════════════════════════════ -->
+<section id="bp-section-01">
+  <div class="section-header">
+    <span class="section-badge">01 — Positionnement</span>
+    <h2 class="section-title">Votre identité de marque</h2>
+    <p class="section-intro">La base stratégique sur laquelle repose l'ensemble de votre communication digitale.</p>
+  </div>
+
+  <div class="highlight-box">
+    <span class="promise-label">Promesse de valeur principale</span>
+    <p class="promise-text">« Nous gérons votre bien en Île-de-France comme si c'était le nôtre — pour que vos voyageurs vivent une expérience inoubliable et que vous maximisiez votre rentabilité, sans effort. »</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 36px;">
+    <div class="card">
+      <span class="card-icon">🎯</span>
+      <p class="card-title">Ligne directrice de communication</p>
+      <p class="card-text">Accompagnement humain premium, ancré dans l'expérience hôtelière et la confiance relationnelle. Chaque propriétaire est traité comme un partenaire, chaque voyageur comme un invité.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✍️</span>
+      <p class="card-title">Ton éditorial</p>
+      <p class="card-text"><strong>Chaleureux · Professionnel · Rassurant</strong><br>Un ton qui inspire confiance dès la première ligne, avec la bienveillance d'un expert de terrain qui maîtrise l'art de l'accueil.</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🏨</span>
+      <p class="card-title">ADN hôtelier unique</p>
+      <p class="card-text">Marie apporte un bagage professionnel rare : la gestion de séjours en milieu hospitalier. Cette expérience forge une sensibilité exceptionnelle à l'accueil et à la mise en confiance.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">💛</span>
+      <p class="card-title">Relation humaine au cœur</p>
+      <p class="card-text">Énergie, écoute, confiance, transmission et gratitude : ces valeurs fondatrices se traduisent concrètement dans chaque interaction avec les propriétaires et les voyageurs.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📍</span>
+      <p class="card-title">Expertise locale Île-de-France</p>
+      <p class="card-text">Une connaissance terrain des marchés de l'Île-de-France et des Yvelines, avec une maîtrise des dynamiques locatives propres à chaque territoire couvert.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🔑</span>
+      <p class="card-title">Gestion clé en main complète</p>
+      <p class="card-text">De la création de l'annonce à la remise des clés, en passant par le ménage et la maintenance : le propriétaire délègue tout, sans friction, sans inquiétude.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 02 — CLIENT CIBLE ══════════════════════════════════════════════ -->
+<section id="bp-section-02">
+  <div class="section-header">
+    <span class="section-badge">02 — Client Cible</span>
+    <h2 class="section-title">Profil du propriétaire idéal</h2>
+    <p class="section-intro">Comprendre précisément qui vous devez convaincre pour adapter chaque message.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <span class="card-icon">👤</span>
+      <p class="card-title">Profil type</p>
+      <p class="card-text">Propriétaire de 35 à 60 ans, résidant en Île-de-France ou possédant un bien dans les Yvelines. Actif, peu disponible, souhaitant rentabiliser un appartement ou une maison sans y consacrer du temps. Peut être primo-bailleur ou déjà sur Airbnb sans résultats satisfaisants.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">💡</span>
+      <p class="card-title">Motivations principales</p>
+      <ul class="styled-list" style="margin-top: 4px;">
+        <li>Maximiser le revenu locatif sans s'en occuper</li>
+        <li>Déléguer entièrement la gestion opérationnelle</li>
+        <li>Valoriser son bien grâce à des annonces professionnelles</li>
+        <li>Offrir une expérience qualitative aux voyageurs</li>
+        <li>Avoir un interlocuteur de confiance et réactif</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">⚠️</span>
+      <p class="card-title">Freins & objections</p>
+      <ul class="styled-list" style="margin-top: 4px;">
+        <li>Commission perçue comme trop élevée (20–25 %)</li>
+        <li>Peur de perdre le contrôle sur son bien</li>
+        <li>Mauvaises expériences passées avec d'autres conciergeries</li>
+        <li>Méconnaissance du potentiel de la location courte durée</li>
+        <li>Crainte des dégradations ou conflits avec voyageurs</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">✅</span>
+      <p class="card-title">Critères de décision</p>
+      <ul class="styled-list" style="margin-top: 4px;">
+        <li>Transparence sur les prestations et la commission</li>
+        <li>Réactivité et disponibilité 7j/7</li>
+        <li>Preuves de résultats concrets (avis, taux d'occupation)</li>
+        <li>Sentiment d'être compris et accompagné</li>
+        <li>Professionnalisme visible dès le site web</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 03 — OBJECTIFS DU SITE ═════════════════════════════════════════ -->
+<section id="bp-section-03">
+  <div class="section-header">
+    <span class="section-badge">03 — Objectifs du site</span>
+    <h2 class="section-title">Ce que le site doit accomplir</h2>
+    <p class="section-intro">Classés par priorité décroissante pour guider chaque décision de conception.</p>
+  </div>
+
+  <div class="obj-grid">
+    <div class="obj-item">
+      <div class="obj-rank">1</div>
+      <div class="obj-content">
+        <p class="obj-title">Génération de leads qualifiés</p>
+        <p class="obj-desc">Capter les coordonnées de propriétaires intéressés via formulaire ou prise de contact directe.</p>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">2</div>
+      <div class="obj-content">
+        <p class="obj-title">Réassurance et crédibilité</p>
+        <p class="obj-desc">Convaincre le visiteur que Marie est une professionnelle sérieuse, humaine et expérimentée.</p>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">3</div>
+      <div class="obj-content">
+        <p class="obj-title">SEO local Île-de-France & Yvelines</p>
+        <p class="obj-desc">Apparaître sur les recherches de propriétaires locaux cherchant une conciergerie de confiance.</p>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">4</div>
+      <div class="obj-content">
+        <p class="obj-title">Prise de rendez-vous</p>
+        <p class="obj-desc">Faciliter la conversion par un appel ou une consultation offerte, directement depuis le site.</p>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">5</div>
+      <div class="obj-content">
+        <p class="obj-title">Notoriété et positionnement premium</p>
+        <p class="obj-desc">Installer Éclipse Conciergerie comme une référence haut de gamme sur son marché local.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 04 — ARBORESCENCE ══════════════════════════════════════════════ -->
+<section id="bp-section-04">
+  <div class="section-header">
+    <span class="section-badge">04 — Arborescence du site</span>
+    <h2 class="section-title">Structure & stratégie SEO des pages</h2>
+    <p class="section-intro">Chaque page est conçue avec un objectif précis, un framework rédactionnel et un mot-clé cible.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Île-de-France</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre offre</strong><br><small style="color:#999">Présentation globale de tous les services</small></td>
+          <td>PAS</td>
+          <td>gestion locative courte durée propriétaire</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — Marie & Éclipse</strong></td>
+          <td>BAB</td>
+          <td>conciergerie Airbnb Île-de-France fondatrice</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Simulateur de revenus</strong><br><small style="color:#999">Outil d'estimation + lead capture</small></td>
+          <td>AIDA</td>
+          <td>combien rapporte mon appartement Airbnb</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Témoignages & résultats</strong></td>
+          <td>PAS</td>
+          <td>avis conciergerie location saisonnière</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO Local — Paris & Île-de-France</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Paris gestion locative</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO Local — Yvelines</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Yvelines 78</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils location saisonnière propriétaire</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact & RDV</strong></td>
+          <td>BAB</td>
+          <td>contacter conciergerie Île-de-France</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══ 05 — COCON SÉMANTIQUE ══════════════════════════════════════════ -->
+<section id="bp-section-05">
+  <div class="section-header">
+    <span class="section-badge">05 — Cocon Sémantique</span>
+    <h2 class="section-title">Architecture de contenu & maillage</h2>
+    <p class="section-intro">Trois clusters thématiques pour dominer les résultats de recherche sur votre territoire.</p>
+  </div>
+
+  <div class="grid-3" style="margin-bottom: 24px;">
+    <div class="cluster-block">
+      <div class="cluster-title">
+        <span>Gestion locative</span>
+        <span class="cluster-tag">Cluster 1</span>
+      </div>
+      <ul class="styled-list">
+        <li>Conciergerie Airbnb Île-de-France</li>
+        <li>Gestion complète location saisonnière</li>
+        <li>Check-in / check-out automatisé</li>
+        <li>Optimisation tarifaire dynamique</li>
+        <li>Ménage professionnel entre locataires</li>
+      </ul>
+    </div>
+    <div class="cluster-block">
+      <div class="cluster-title">
+        <span>Rentabilité propriétaire</span>
+        <span class="cluster-tag">Cluster 2</span>
+      </div>
+      <ul class="styled-list">
+        <li>Simulation revenus locatifs</li>
+        <li>Taux d'occupation et optimisation</li>
+        <li>Comparatif location courte vs longue durée</li>
+        <li>Commission conciergerie : ce qu'elle inclut</li>
+        <li>Déclaration et fiscalité location saisonnière</li>
+      </ul>
+    </div>
+    <div class="cluster-block">
+      <div class="cluster-title">
+        <span>Expérience voyageur</span>
+        <span class="cluster-tag">Cluster 3</span>
+      </div>
+      <ul class="styled-list">
+        <li>Accueil hôtelier haute qualité</li>
+        <li>Communication voyageurs 7j/7</li>
+        <li>Aménagement et home staging</li>
+        <li>Gestion des avis et e-réputation</li>
+        <li>Conciergerie premium Île-de-France</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="maillage-block">
+    <p class="maillage-title">Logique de maillage interne</p>
+
+    <div class="maillage-row">
+      <span class="m-page">Accueil</span>
+      <span class="m-arrow">→</span>
+      <span class="m-target">Notre offre</span>
+      <span class="m-arrow">→</span>
+      <span class="m-target">Simulateur de revenus</span>
+      <span class="m-arrow">→</span>
+      <span class="m-target">Contact & RDV</span>
+    </div>
+    <div class="maillage-row">
+      <span class="m-page">Pages SEO locales</span>
+      <span class="m-arrow">→</span>
+      <span class="m-target">Notre offre</span>
+      <span class="m-arrow">→</span>
+      <span class="m-target">Témoignages</span>
+      <span class="m-arrow">→</span>
+      <span class="m-target">Contact & RDV</span>
+    </div>
+    <div class="maillage-row">
+      <span class="m-page">Articles Blog</span>
+      <span class="m-arrow">→</span>
+      <span class="m-target">Simulateur</span>
+      <span class="m-arrow">→</span>
+      <span class="m-target">Notre offre</span>
+      <span class="m-arrow">→</span>
+      <span class="m-target">À propos</span>
+    </div>
+    <div class="maillage-row">
+      <span class="m-page">À propos</span>
+      <span class="m-arrow">→</span>
+      <span class="m-target">Témoignages</span>
+      <span class="m-arrow">→</span>
+      <span class="m-target">Contact & RDV</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 06 — TUNNEL DE CONVERSION ═════════════════════════════════════ -->
+<section id="bp-section-06">
+  <div class="section-header">
+    <span class="section-badge">06 — Tunnel de Conversion</span>
+    <h2 class="section-title">Du visiteur au client signé</h2>
+    <p class="section-intro">Quatre étapes pour transformer un inconnu en propriétaire partenaire d'Éclipse.</p>
+  </div>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-num">01</div>
+      <div class="tunnel-phase">Découverte</div>
+      <div class="tunnel-label">Il vous trouve</div>
+      <p class="tunnel-detail"><strong>Sources :</strong> Google, réseaux sociaux, bouche-à-oreille</p>
+      <p class="tunnel-detail"><strong>Pages :</strong> Accueil, Pages SEO locales, Articles Blog</p>
+      <span class="tunnel-cta">→ Découvrir nos services</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-num">02</div>
+      <div class="tunnel-phase">Intérêt</div>
+      <div class="tunnel-label">Il explore</div>
+      <p class="tunnel-detail"><strong>Sources :</strong> Navigation interne, maillage SEO</p>
+      <p class="tunnel-detail"><strong>Pages :</strong> Notre offre, Simulateur de revenus</p>
+      <span class="tunnel-cta">→ Estimer mes revenus</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-num">03</div>
+      <div class="tunnel-phase">Confiance</div>
+      <div class="tunnel-label">Il vous évalue</div>
+      <p class="tunnel-detail"><strong>Sources :</strong> Preuve sociale, contenu blog</p>
+      <p class="tunnel-detail"><strong>Pages :</strong> À propos, Témoignages & résultats</p>
+      <span class="tunnel-cta">→ Voir les avis clients</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-num">04</div>
+      <div class="tunnel-phase">Conversion</div>
+      <div class="tunnel-label">Il vous contacte</div>
+      <p class="tunnel-detail"><strong>Sources :</strong> CTA récurrents, pop-up sortie</p>
+      <p class="tunnel-detail"><strong>Pages :</strong> Contact & RDV, Formulaire qualifiant</p>
+      <span class="tunnel-cta">→ Prendre rendez-vous</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 07 — LEVIERS MARKETING ═════════════════════════════════════════ -->
+<section id="bp-section-07">
+  <div class="section-header">
+    <span class="section-badge">07 — Leviers Marketing Recommandés</span>
+    <h2 class="section-title">Outils pour accélérer votre croissance</h2>
+    <p class="section-intro">Des mécaniques concrètes, adaptées à votre activité et à votre profil de clientèle.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="levier-card">
+      <span class="levier-icon">🎁</span>
+      <p class="levier-label">Lead Magnet</p>
+      <p class="levier-title">Guide PDF : « Combien peut rapporter votre bien en location courte durée en Île-de-France ? »</p>
+      <p class="levier-text">Un document téléchargeable avec simulation chiffrée, check-list de mise en location et erreurs à éviter. Capte l'email du propriétaire dès la visite.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">📅</span>
+      <p class="levier-label">Prise de RDV</p>
+      <p class="levier-title">Calendly ou Tidycal — Consultation découverte offerte de 30 min</p>
+      <p class="levier-text">Un appel ou une visio sans engagement pour rassurer le propriétaire hésitant. CTA visible en haut de page et après chaque section clé du site.</p>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="levier-card">
+      <span class="levier-icon">⭐</span>
+      <p class="levier-label">Preuve Sociale</p>
+      <p class="levier-title">Témoignages propriétaires + captures d'avis voyageurs Airbnb</p>
+      <p class="levier-text">Photos réelles des biens gérés, notes obtenues sur les plateformes, verbatims authentiques. Idéalement 1 à 3 témoignages vidéo courts (30 sec) à terme.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">📋</span>
+      <p class="levier-label">Formulaire Qualifiant</p>
+      <p class="levier-title">Champs recommandés pour qualifier les leads entrants</p>
+      <p class="levier-text">Localisation du bien · Type de bien (appartement / maison) · Nombre de pièces · Déjà en location ? · Disponibilité souhaitée · Email + téléphone.</p>
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="levier-card">
+      <span class="levier-icon">💌</span>
+      <p class="levier-label">Newsletter</p>
+      <p class="levier-title">Angle éditorial : « Le propriétaire serein » — 1 email/mois</p>
+      <p class="levier-text">Conseils pratiques, actualités réglementaires, résultats d'optimisation, témoignages. Objectif : rester présente dans l'esprit des prospects non encore convertis.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">🔄</span>
+      <p class="levier-label">Réactivation</p>
+      <p class="levier-title">Séquence email post-téléchargement du guide PDF</p>
+      <p class="levier-text">3 emails sur 10 jours : valeur → témoignage → invitation RDV. Automatisable via Mailchimp ou Brevo. Transforme les téléchargeurs en prospects actifs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 08 — DIRECTION VISUELLE ════════════════════════════════════════ -->
+<section id="bp-section-08">
+  <div class="section-header">
+    <span class="section-badge">08 — Direction Visuelle & Éditoriale</span>
+    <h2 class="section-title">L'identité visuelle d'Éclipse</h2>
+    <p class="section-intro">Une esthétique dorée sur fond blanc, alliant élégance premium et clarté professionnelle.</p>
+  </div>
+
+  <div class="palette-grid">
+    <div class="color-item">
+      <div class="color-swatch" style="background: #C9A84C;"></div>
+      <span class="color-name">Or Principal</span>
+      <span class="color-hex">#C9A84C</span>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background: #E8CC80;"></div>
+      <span class="color-name">Or Clair</span>
+      <span class="color-hex">#E8CC80</span>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background: #9A6F2F;"></div>
+      <span class="color-name">Or Profond</span>
+      <span class="color-hex">#9A6F2F</span>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background: #FFFFFF; border: 1px solid #EDE8DE;"></div>
+      <span class="color-name">Blanc Pur</span>
+      <span class="color-hex">#FFFFFF</span>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background: #FAF6EE;"></div>
+      <span class="color-name">Crème Douce</span>
+      <span class="color-hex">#FAF6EE</span>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background: #1A1208;"></div>
+      <span class="color-name">Brun Nuit</span>
+      <span class="color-hex">#1A1208</span>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="visuel-card">
+      <div class="visuel-num">01</div>
+      <p class="visuel-title">Photographie immobilière lumineuse</p>
+      <p class="visuel-text">Intérieurs clairs, bien mis en scène, photographiés en lumière naturelle. Ambiance cosy et premium, style hôtelier contemporain.</p>
+    </div>
+    <div class="visuel-card">
+      <div class="visuel-num">02</div>
+      <p class="visuel-title">Typographie élégante et lisible</p>
+      <p class="visuel-text">Playfair Display pour les titres (noblesse, expertise) et Inter pour le corps de texte (clarté, modernité). Contraste affirmé.</p>
+    </div>
+    <div class="visuel-card">
+      <div class="visuel-num">03</div>
+      <p class="visuel-title">Icônographie fine et sobre</p>
+      <p class="visuel-text">Pictogrammes au trait fin, style line art doré. Pas de clipart ni d'illustrations génériques. Cohérence avec l'univers premium.</p>
+    </div>
+    <div class="visuel-card">
+      <div class="visuel-num">04</div>
+      <p class="visuel-title">Photo de Marie — authentique et professionnelle</p>
+      <p class="visuel-text">Portrait humain en cadre soigné, fond neutre ou intérieur. Donne un visage à la conciergerie et renforce la confiance immédiate.</p>
+    </div>
+    <div class="visuel-card">
+      <div class="visuel-num">05</div>
+      <p class="visuel-title">Références visuelles : Hemea.com</p>
+      <p class="visuel-text">Design épuré, grands espaces blancs, mise en avant de la valeur ajoutée humaine. Un équilibre entre sophistication et accessibilité.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 09 — ARTICLES BLOG ════════════════════════════════════════════ -->
+<section id="bp-section-09">
+  <div class="section-header">
+    <span class="section-badge">09 — Articles Blog Recommandés</span>
+    <h2 class="section-title">Votre stratégie de contenu SEO</h2>
+    <p class="section-intro">Des sujets soigneusement choisis pour attirer les propriétaires au bon moment de leur réflexion.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <span class="blog-priority prio">Prioritaire</span>
+      <p class="blog-title">Combien peut vraiment rapporter votre appartement en location courte durée en Île-de-France ?</p>
+      <p class="blog-meta"><span>Cluster :</span> Rentabilité propriétaire</p>
+      <p class="blog-meta"><span>Intention :</span> Informationnelle / transactionnelle</p>
+    </div>
+    <div class="blog-card">
+      <span class="blog-priority prio">Prioritaire</span>
+      <p class="blog-title">Conciergerie Airbnb : ce que comprend réellement une commission de 20 à 25 %</p>
+      <p class="blog-meta"><span>Cluster :</span> Rentabilité propriétaire</p>
+      <p class="blog-meta"><span>Intention :</span> Informationnelle / objection</p>
+    </div>
+    <div class="blog-card">
+      <span class="blog-priority prio">Prioritaire</span>
+      <p class="blog-title">5 erreurs que font les propriétaires qui gèrent seuls leur Airbnb à Paris</p>
+      <p class="blog-meta"><span>Cluster :</span> Gestion locative</p>
+      <p class="blog-meta"><span>Intention :</span> Informationnelle / engagement</p>
+    </div>
+    <div class="blog-card">
+      <span class="blog-priority moyen">Moyen</span>
+      <p class="blog-title">Location courte durée dans les Yvelines : quel potentiel en 2024-2025 ?</p>
+      <p class="blog-meta"><span>Cluster :</span> SEO local Yvelines</p>
+      <p class="blog-meta"><span>Intention :</span> Informationnelle / locale</p>
+    </div>
+    <div class="blog-card">
+      <span class="blog-priority moyen">Moyen</span>
+      <p class="blog-title">Comment transformer un bien ordinaire en logement qui séduit les voyageurs dès les premières photos</p>
+      <p class="blog-meta"><span>Cluster :</span> Expérience voyageur</p>
+      <p class="blog-meta"><span>Intention :</span> Informationnelle / inspiration</p>
+    </div>
+    <div class="blog-card">
+      <span class="blog-priority moyen">Moyen</span>
+      <p class="blog-title">Fiscalité de la location saisonnière en 2025 : ce que tout propriétaire doit savoir</p>
+      <p class="blog-meta"><span>Cluster :</span> Rentabilité propriétaire</p>
+      <p class="blog-meta"><span>Intention :</span> Informationnelle / réglementaire</p>
+    </div>
+    <div class="blog-card">
+      <span class="blog-priority faible">Faible</span>
+      <p class="blog-title">L'art de l'accueil : pourquoi l'expérience humaine fait la différence dans la location saisonnière</p>
+      <p class="blog-meta"><span>Cluster :</span> Expérience voyageur</p>
+      <p class="blog-meta"><span>Intention :</span> Notoriété / storytelling</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════════════════════════════ -->
+<footer>
+  <span class="footer-brand">Éclipse Conciergerie</span>
+  <span class="footer-meta">Document confidentiel — Réservé à Marie MBODJE</span>
+  <span class="footer-ar">Produit par AR Digital © 2025</span>
+</footer>
+
+</body>
+</html>
