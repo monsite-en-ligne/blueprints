@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Casa Vermeille</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #2d2d2d; background: #faf8f5; }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1a3040 0%, #264653 45%, #1c2e38 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 60px 40px; position: relative; overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(184,92,59,0.18) 0%, transparent 65%),
+                radial-gradient(ellipse at 20% 80%, rgba(38,70,83,0.4) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .cover-badge {
+    display: inline-block;
+    border: 1px solid rgba(233,115,82,0.5);
+    color: rgba(233,115,82,0.85);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: 3px;
+    text-transform: uppercase; padding: 7px 20px; border-radius: 30px;
+    margin-bottom: 36px; position: relative; z-index: 1;
+  }
+  .cover h1 {
+    font-size: 72px; font-weight: 700; color: #ffffff;
+    line-height: 1.1; margin-bottom: 18px; position: relative; z-index: 1;
+    letter-spacing: -1px;
+  }
+  .cover-subtitle {
+    font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.65);
+    letter-spacing: 1px; margin-bottom: 56px; position: relative; z-index: 1;
+    font-style: italic; font-family: 'Playfair Display', serif;
+  }
+  .cover-meta {
+    display: flex; gap: 40px; align-items: center; justify-content: center;
+    position: relative; z-index: 1; flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-label {
+    font-size: 9px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+    color: rgba(233,115,82,0.7); display: block; margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.85);
+  }
+  .cover-sep {
+    width: 1px; height: 36px; background: rgba(255,255,255,0.15);
+  }
+  .cover-line {
+    width: 60px; height: 2px; background: linear-gradient(90deg, #B85C3B, #E97352);
+    margin: 0 auto 48px auto; position: relative; z-index: 1;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(odd) { background: #faf8f5; }
+  section:nth-child(even) { background: #f5f0eb; }
+
+  .section-header {
+    margin-bottom: 48px;
+  }
+  .section-badge {
+    display: inline-block;
+    font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+    color: #B85C3B; margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: 34px; font-weight: 700; color: #1c2e38;
+    line-height: 1.2;
+  }
+  .section-divider {
+    width: 48px; height: 3px;
+    background: linear-gradient(90deg, #B85C3B, #E97352);
+    border-radius: 2px; margin-top: 16px;
+  }
+
+  /* CARDS */
+  .card {
+    background: #ffffff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-radius: 14px;
+    padding: 28px;
+  }
+  .card h4 {
+    font-size: 16px; font-weight: 600; color: #1c2e38; margin-bottom: 10px;
+  }
+  .card p, .card li {
+    font-size: 14px; color: #555; line-height: 1.75;
+  }
+  .card ul { padding-left: 18px; }
+  .card ul li { margin-bottom: 4px; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #264653 0%, #1c2e38 100%);
+    border-radius: 16px; padding: 40px 48px;
+    color: #ffffff; margin-bottom: 48px;
+  }
+  .highlight-box .label {
+    font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(233,115,82,0.8); margin-bottom: 14px; display: block;
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; line-height: 1.55; color: #fff; font-style: italic;
+  }
+  .highlight-box .sub {
+    font-family: 'Inter', sans-serif; font-size: 13px; color: rgba(255,255,255,0.6);
+    margin-top: 14px; font-style: normal; display: block;
+  }
+
+  .tag-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+  .tag {
+    background: #f0ebe5; color: #B85C3B; font-size: 12px;
+    font-weight: 500; padding: 5px 14px; border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+  .tag.teal { background: #e8f0f2; color: #264653; }
+
+  /* OBJECTIFS */
+  .objectif-item {
+    display: flex; align-items: flex-start; gap: 16px;
+  }
+  .objectif-num {
+    width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; color: #fff;
+    background: linear-gradient(135deg, #B85C3B, #E97352);
+  }
+  .objectif-content h4 { font-size: 15px; margin-bottom: 4px; }
+  .objectif-content p { font-size: 13px; color: #777; }
+
+  /* TABLE */
+  .table-wrap { overflow-x: auto; border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; }
+  thead tr { background: #264653; }
+  thead th {
+    padding: 16px 20px; text-align: left; font-size: 11px;
+    font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.85);
+  }
+  tbody tr { border-bottom: 1px solid #f0ebe5; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #fdf9f7; }
+  tbody td { padding: 16px 20px; font-size: 13.5px; color: #444; vertical-align: top; line-height: 1.6; }
+  .badge-seo {
+    display: inline-block; padding: 4px 12px; border-radius: 20px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.3px;
+  }
+  .badge-fort { background: #d4edda; color: #276138; }
+  .badge-moyen { background: #fff3cd; color: #7d5a00; }
+  .badge-faible { background: #f0ebe5; color: #8a5a44; }
+  .badge-framework {
+    display: inline-block; padding: 3px 10px; border-radius: 10px;
+    font-size: 11px; font-weight: 600;
+    background: #e8f0f2; color: #264653;
+  }
+
+  /* COCON */
+  .cluster-block { margin-bottom: 36px; }
+  .cluster-title {
+    font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    color: #B85C3B; margin-bottom: 16px;
+  }
+  .maillage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+  .maillage-item {
+    background: #fff; border-radius: 12px; padding: 20px 22px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    font-size: 13px; color: #444;
+  }
+  .maillage-item strong { color: #264653; display: block; margin-bottom: 8px; font-size: 13px; }
+  .maillage-arrow {
+    display: inline-flex; align-items: center;
+    color: #B85C3B; font-weight: 600; margin-right: 4px;
+    flex-shrink: 0;
+  }
+  .maillage-link {
+    display: inline-flex; align-items: center; flex-wrap: wrap;
+    gap: 4px; margin-bottom: 4px; line-height: 1.5;
+  }
+
+  /* TUNNEL */
+  .tunnel-step {
+    position: relative;
+    display: flex; gap: 28px; align-items: flex-start; margin-bottom: 28px;
+  }
+  .tunnel-step:last-child { margin-bottom: 0; }
+  .tunnel-icon {
+    width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    background: linear-gradient(135deg, #264653, #1c2e38);
+    color: #fff;
+  }
+  .tunnel-body { flex: 1; }
+  .tunnel-step-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: #B85C3B; margin-bottom: 4px;
+  }
+  .tunnel-body h4 { font-size: 16px; color: #1c2e38; margin-bottom: 8px; }
+  .tunnel-body p { font-size: 13.5px; color: #666; margin-bottom: 6px; }
+  .cta-chip {
+    display: inline-block; background: #f0ebe5; color: #B85C3B;
+    font-size: 12px; font-weight: 600; padding: 4px 14px; border-radius: 20px;
+    margin-top: 4px;
+  }
+
+  /* LEVIERS */
+  .levier-icon {
+    font-size: 28px; margin-bottom: 14px; display: block;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex; flex-wrap: wrap; gap: 24px;
+    justify-content: center; margin-top: 8px;
+  }
+  .palette-swatch {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .swatch-box {
+    width: 80px; height: 80px; border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  }
+  .swatch-name { font-size: 12px; font-weight: 500; color: #333; text-align: center; }
+  .swatch-hex { font-size: 11px; color: #aaa; text-align: center; }
+
+  /* BLOG */
+  .blog-priority-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 6px; display: block;
+  }
+  .priority-prioritaire { color: #276138; }
+  .priority-moyen { color: #7d5a00; }
+  .priority-faible { color: #8a5a44; }
+  .blog-card-cluster {
+    font-size: 11px; color: #B85C3B; font-weight: 600; letter-spacing: 0.5px;
+    text-transform: uppercase; margin-bottom: 6px; display: block;
+  }
+  .blog-card-title { font-size: 15px; color: #1c2e38; margin-bottom: 8px; }
+  .blog-card-intention { font-size: 13px; color: #777; }
+
+  /* FOOTER */
+  footer {
+    background: #1c2e38; color: rgba(255,255,255,0.5);
+    text-align: center; padding: 36px 40px;
+    font-size: 12px; letter-spacing: 0.5px;
+  }
+  footer span { color: rgba(233,115,82,0.7); font-weight: 500; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 42px; }
+    .cover-meta { gap: 20px; }
+    .cover-sep { display: none; }
+    section { padding: 48px 24px; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .maillage-grid { grid-template-columns: 1fr; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 18px; }
+    .tunnel-step { flex-direction: column; gap: 14px; }
+    tbody td, thead th { padding: 12px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique · 2025</div>
+  <div class="cover-line"></div>
+  <h1>Casa Vermeille</h1>
+  <p class="cover-subtitle">Conciergerie haut de gamme · Côte Vermeille</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Cliente</span>
+      <span class="cover-meta-value">Adèle Droguet</span>
+    </div>
+    <div class="cover-sep"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie LCD</span>
+    </div>
+    <div class="cover-sep"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Territoire</span>
+      <span class="cover-meta-value">Côte Vermeille, 66</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-header">
+    <span class="section-badge">01 — Positionnement</span>
+    <h2 class="section-title">Votre identité de marque</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="highlight-box">
+    <span class="label">Promesse de valeur principale</span>
+    <p>« Casa Vermeille sublime votre bien sur la Côte Vermeille et offre à chaque voyageur une expérience méditerranéenne d'exception — sans que vous ayez à lever le petit doigt. »</p>
+    <span class="sub">Ligne directrice : Accompagnement premium local · Élégance méditerranéenne · Sérénité totale du propriétaire</span>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <h4>Ton éditorial</h4>
+      <div class="tag-row" style="margin-bottom: 14px;">
+        <span class="tag">Élégant</span>
+        <span class="tag">Chaleureux</span>
+        <span class="tag">Rassurant</span>
+      </div>
+      <p>Un registre haut de gamme qui ne se coupe pas de l'humain : la chaleur du Sud, l'exigence du luxe et la clarté d'un expert de confiance. On parle à un propriétaire ambitieux, pas à un prospect qu'on doit convaincre.</p>
+    </div>
+    <div class="card">
+      <h4>Ligne de communication</h4>
+      <p>Mettre en avant la valeur du temps retrouvé, la beauté du territoire et la sécurité financière. Chaque message doit évoquer à la fois le cadre (Côte Vermeille, Collioure, Méditerranée) et le résultat concret (revenus optimisés, logement valorisé, zéro stress).</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>🌊 Ancrage territorial fort</h4>
+      <p>Casa Vermeille est une conciergerie née de la Côte Vermeille. Pas une franchise. Une expertise locale qui connaît Collioure, Banyuls et Port-Vendres mieux que personne.</p>
+    </div>
+    <div class="card">
+      <h4>✨ Standard hôtelier en location courte durée</h4>
+      <p>Linge de qualité hôtelière, pack de bienvenue premium, branding visuel soigné : une expérience voyageur rare dans le segment LCD local.</p>
+    </div>
+    <div class="card">
+      <h4>🤝 Accompagnement humain et personnalisé</h4>
+      <p>Un interlocuteur unique, disponible 7j/7. Un service sur-mesure, jamais industrialisé. Le propriétaire est traité comme un partenaire, pas comme un numéro de dossier.</p>
+    </div>
+    <div class="card">
+      <h4>📊 Transparence et pilotage financier</h4>
+      <p>Rapports financiers mensuels, optimisation tarifaire active et calendrier maîtrisé : le propriétaire dispose d'une visibilité totale sur la performance de son bien.</p>
+    </div>
+    <div class="card">
+      <h4>🎨 Valorisation esthétique du bien</h4>
+      <p>Photos professionnelles, annonces haut de gamme, branding visuel cohérent : chaque logement est mis en scène pour séduire les voyageurs exigeants et maximiser le taux d'occupation.</p>
+    </div>
+    <div class="card">
+      <h4>🔁 Tout inclus, sans surprise</h4>
+      <p>25 % TTC tout compris + 150 € de frais de dossier uniques. Réapprovisionnement offert. Une grille tarifaire lisible qui inspire confiance dès le premier contact.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-header">
+    <span class="section-badge">02 — Client cible</span>
+    <h2 class="section-title">Portrait du propriétaire idéal</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <h4>Profil type</h4>
+      <ul>
+        <li>35 – 60 ans, actif ou proche de la retraite</li>
+        <li>Propriétaire d'une résidence secondaire ou d'un investissement locatif sur la Côte Vermeille</li>
+        <li>Sensible à l'esthétique, au haut de gamme et à la discrétion</li>
+        <li>Éloigné géographiquement ou manquant de temps pour gérer son bien</li>
+        <li>A déjà eu une mauvaise expérience avec une plateforme ou un gestionnaire peu rigoureux</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Motivations principales</h4>
+      <ul>
+        <li>Rentabiliser son bien sans y consacrer du temps</li>
+        <li>Préserver l'état et l'image de son logement</li>
+        <li>Déléguer à quelqu'un de confiance, proche du terrain</li>
+        <li>Offrir aux voyageurs une expérience de qualité (réputation)</li>
+        <li>Obtenir des revenus réguliers et prévisibles</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>Freins & objections</h4>
+      <ul>
+        <li>« 25 % c'est élevé » → à contrebalancer avec le tout-inclus et les frais offerts</li>
+        <li>« Je ne connais pas cette conciergerie » → rassurer avec preuves sociales et ancrage local</li>
+        <li>« J'ai peur de perdre le contrôle de mon bien » → mettre en avant la transparence et les rapports mensuels</li>
+        <li>« Je gère déjà moi-même » → valoriser le temps libéré et le gain net réel</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Critères de décision</h4>
+      <ul>
+        <li>Proximité géographique et connaissance du territoire</li>
+        <li>Qualité perçue du service (visuels, ton, site web)</li>
+        <li>Transparence tarifaire et lisibilité de l'offre</li>
+        <li>Disponibilité et réactivité de l'équipe</li>
+        <li>Avis clients et références vérifiables</li>
+        <li>Clarté du processus d'onboarding</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-header">
+    <span class="section-badge">03 — Objectifs du site</span>
+    <h2 class="section-title">Ce que le site doit accomplir</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="objectif-item">
+        <div class="objectif-num">1</div>
+        <div class="objectif-content">
+          <h4>Génération de leads qualifiés</h4>
+          <p>Objectif principal : transformer un visiteur propriétaire en prise de contact ou prise de RDV.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="objectif-item">
+        <div class="objectif-num">2</div>
+        <div class="objectif-content">
+          <h4>Réassurance et crédibilité</h4>
+          <p>Convaincre un propriétaire exigeant que Casa Vermeille est la référence locale fiable et haut de gamme.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="objectif-item">
+        <div class="objectif-num">3</div>
+        <div class="objectif-content">
+          <h4>SEO local ciblé</h4>
+          <p>Se positionner sur les requêtes de propriétaires cherchant une conciergerie à Collioure, Banyuls, Port-Vendres et alentours.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="objectif-item">
+        <div class="objectif-num">4</div>
+        <div class="objectif-content">
+          <h4>Prise de RDV directe</h4>
+          <p>Faciliter le passage à l'action avec un parcours fluide vers un formulaire ou un calendrier de rendez-vous.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="objectif-item">
+        <div class="objectif-num">5</div>
+        <div class="objectif-content">
+          <h4>Notoriété de marque locale</h4>
+          <p>Asseoir Casa Vermeille comme la conciergerie de référence sur la Côte Vermeille via un site mémorable et cohérent.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="objectif-item">
+        <div class="objectif-num">6</div>
+        <div class="objectif-content">
+          <h4>Nurturing via le blog</h4>
+          <p>Éduquer les propriétaires sur les enjeux de la LCD, renforcer l'autorité et garder le site vivant pour le SEO.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-header">
+    <span class="section-badge">04 — Arborescence du site</span>
+    <h2 class="section-title">Structure et architecture SEO</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td>Conciergerie location courte durée Côte Vermeille</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre offre propriétaires</strong></td>
+          <td><span class="badge-framework">PAS</span></td>
+          <td>Gestion location saisonnière Collioure</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos</strong></td>
+          <td><span class="badge-framework">BAB</span></td>
+          <td>Conciergerie haut de gamme Côte Vermeille</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos réalisations / Biens</strong></td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td>Conciergerie Airbnb Côte Vermeille résultats</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Simulateur / Estimateur de revenus</strong></td>
+          <td><span class="badge-framework">PAS</span></td>
+          <td>Simuler revenus location saisonnière</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact & RDV</strong></td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td>Confier son logement conciergerie Côte Vermeille</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO local — Collioure & Port-Vendres</strong></td>
+          <td><span class="badge-framework">PAS</span></td>
+          <td>Conciergerie Collioure / Port-Vendres location saisonnière</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO local — Banyuls & Argèles-sur-Mer</strong></td>
+          <td><span class="badge-framework">PAS</span></td>
+          <td>Conciergerie Banyuls-sur-Mer / Argèles location</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td><span class="badge-framework">—</span></td>
+          <td>Conseils location courte durée Côte Vermeille</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-header">
+    <span class="section-badge">05 — Cocon sémantique</span>
+    <h2 class="section-title">Architecture de contenu et maillage</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="grid-3" style="margin-bottom: 40px;">
+    <div class="card">
+      <span class="cluster-title">Cluster 1 — Gestion LCD</span>
+      <ul>
+        <li>Accueil</li>
+        <li>Notre offre propriétaires</li>
+        <li>Simulateur de revenus</li>
+        <li>Contact & RDV</li>
+        <li>Articles : rentabilité, réglementation, gestion déléguée</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="cluster-title">Cluster 2 — Territoire & Local SEO</span>
+      <ul>
+        <li>SEO local Collioure / Port-Vendres</li>
+        <li>SEO local Banyuls / Argèles</li>
+        <li>Articles : guides locaux, saisonnalité, marché locatif</li>
+        <li>À propos (ancrage territoire)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="cluster-title">Cluster 3 — Confiance & Preuve</span>
+      <ul>
+        <li>À propos</li>
+        <li>Nos réalisations / Biens</li>
+        <li>Articles : témoignages, checklist, comparaison services</li>
+        <li>Blog (autorité éditoriale)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="font-size: 20px; color: #1c2e38; margin-bottom: 20px; font-family: 'Playfair Display', serif;">Logique de maillage interne</h3>
+  <div class="maillage-grid">
+    <div class="maillage-item">
+      <strong>Accueil</strong>
+      <div class="maillage-link"><span class="maillage-arrow">→</span> Notre offre propriétaires</div>
+      <div class="maillage-link"><span class="maillage-arrow">→</span> Simulateur de revenus</div>
+      <div class="maillage-link"><span class="maillage-arrow">→</span> Contact & RDV</div>
+    </div>
+    <div class="maillage-item">
+      <strong>Notre offre propriétaires</strong>
+      <div class="maillage-link"><span class="maillage-arrow">→</span> Simulateur de revenus</div>
+      <div class="maillage-link"><span class="maillage-arrow">→</span> Contact & RDV</div>
+      <div class="maillage-link"><span class="maillage-arrow">→</span> À propos</div>
+    </div>
+    <div class="maillage-item">
+      <strong>Pages SEO locales</strong>
+      <div class="maillage-link"><span class="maillage-arrow">→</span> Notre offre propriétaires</div>
+      <div class="maillage-link"><span class="maillage-arrow">→</span> Contact & RDV</div>
+      <div class="maillage-link"><span class="maillage-arrow">→</span> Articles blog liés au territoire</div>
+    </div>
+    <div class="maillage-item">
+      <strong>Articles Blog</strong>
+      <div class="maillage-link"><span class="maillage-arrow">→</span> Notre offre propriétaires</div>
+      <div class="maillage-link"><span class="maillage-arrow">→</span> Pages SEO locales concernées</div>
+      <div class="maillage-link"><span class="maillage-arrow">→</span> Contact & RDV</div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-header">
+    <span class="section-badge">06 — Tunnel de conversion</span>
+    <h2 class="section-title">Du visiteur au propriétaire partenaire</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="tunnel-step">
+        <div class="tunnel-icon">🔍</div>
+        <div class="tunnel-body">
+          <div class="tunnel-step-label">Étape 1 — Découverte</div>
+          <h4>Le propriétaire trouve Casa Vermeille</h4>
+          <p><strong>Source :</strong> Google (SEO local), bouche-à-oreille, réseaux sociaux Instagram</p>
+          <p><strong>Page :</strong> Accueil ou page SEO locale</p>
+          <span class="cta-chip">→ Découvrez notre offre</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="tunnel-step">
+        <div class="tunnel-icon">💡</div>
+        <div class="tunnel-body">
+          <div class="tunnel-step-label">Étape 2 — Intérêt</div>
+          <h4>Il explore les services et se projette</h4>
+          <p><strong>Source :</strong> Navigation interne, blog, simulateur</p>
+          <p><strong>Page :</strong> Notre offre propriétaires · Simulateur de revenus</p>
+          <span class="cta-chip">→ Estimez vos revenus</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="tunnel-step">
+        <div class="tunnel-icon">🤝</div>
+        <div class="tunnel-body">
+          <div class="tunnel-step-label">Étape 3 — Confiance</div>
+          <h4>Il vérifie la crédibilité et les preuves</h4>
+          <p><strong>Source :</strong> Navigation vers À propos, Réalisations, Avis</p>
+          <p><strong>Page :</strong> À propos · Nos réalisations</p>
+          <span class="cta-chip">→ Voir nos biens gérés</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="tunnel-step">
+        <div class="tunnel-icon">✅</div>
+        <div class="tunnel-body">
+          <div class="tunnel-step-label">Étape 4 — Conversion</div>
+          <h4>Il prend contact ou réserve un appel</h4>
+          <p><strong>Source :</strong> CTA omniprésent, formulaire qualifiant, Calendly</p>
+          <p><strong>Page :</strong> Contact & RDV</p>
+          <span class="cta-chip">→ Prendre rendez-vous</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-header">
+    <span class="section-badge">07 — Leviers marketing recommandés</span>
+    <h2 class="section-title">Outils de croissance à activer</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="levier-icon">🎁</span>
+      <h4>Lead Magnet</h4>
+      <p><strong>« Guide PDF : Maximisez vos revenus locatifs sur la Côte Vermeille »</strong> — 10 conseils pratiques (photos, tarification, accueil) à télécharger gratuitement en échange d'un email. Positionne Casa Vermeille comme expert et alimente la liste de contacts propriétaires.</p>
+    </div>
+    <div class="card">
+      <span class="levier-icon">📅</span>
+      <h4>Prise de RDV</h4>
+      <p>Intégration <strong>Calendly</strong> (ou Cal.com) directement sur la page Contact & RDV. Proposer un appel découverte de 20 min gratuit intitulé « Évaluation offerte de votre bien ». Réduire le friction à zéro pour le premier contact.</p>
+    </div>
+    <div class="card">
+      <span class="levier-icon">⭐</span>
+      <h4>Preuve sociale</h4>
+      <p>Témoignages propriétaires avec photo, prénom et ville (ex : « Sophie, Collioure »). Cartes de résultats : <em>taux d'occupation moyen, note voyageurs, délai de mise en ligne</em>. À placer sur l'accueil, la page offre et la page contact.</p>
+    </div>
+    <div class="card">
+      <span class="levier-icon">📋</span>
+      <h4>Formulaire qualifiant</h4>
+      <p>Champs recommandés : Prénom · Email · Téléphone · Ville du bien · Type de logement · Êtes-vous déjà sur une plateforme ? · Disponibilité souhaitée. Eviter les formulaires longs — 6 champs maximum.</p>
+    </div>
+    <div class="card">
+      <span class="levier-icon">📬</span>
+      <h4>Newsletter propriétaires</h4>
+      <p>Angle éditorial : <strong>« La Lettre de la Côte Vermeille »</strong> — 1 email mensuel avec les tendances du marché LCD local, un conseil de gestion et une actualité du territoire. Renforcer l'attachement à la marque et favoriser le bouche-à-oreille.</p>
+    </div>
+    <div class="card">
+      <span class="levier-icon">🧮</span>
+      <h4>Simulateur de revenus</h4>
+      <p>Outil interactif (intégré ou externe) permettant au propriétaire d'estimer ses revenus potentiels en entrant le type de bien, sa localisation et la période. Fort levier d'engagement et de collecte de leads qualifiés.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-header">
+    <span class="section-badge">08 — Direction visuelle & éditoriale</span>
+    <h2 class="section-title">Identité graphique du site</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <h3 style="font-size: 18px; color: #1c2e38; margin-bottom: 28px; font-family: 'Playfair Display', serif;">Palette de couleurs</h3>
+  <div class="palette-grid" style="margin-bottom: 56px;">
+    <div class="palette-swatch">
+      <div class="swatch-box" style="background:#264653;"></div>
+      <span class="swatch-name">Bleu Pétrole</span>
+      <span class="swatch-hex">#264653</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="swatch-box" style="background:#B85C3B;"></div>
+      <span class="swatch-name">Terre de Sienne</span>
+      <span class="swatch-hex">#B85C3B</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="swatch-box" style="background:#E97352;"></div>
+      <span class="swatch-name">Corail Méditerranée</span>
+      <span class="swatch-hex">#E97352</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="swatch-box" style="background:#E9DDD3;"></div>
+      <span class="swatch-name">Lin Doux</span>
+      <span class="swatch-hex">#E9DDD3</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="swatch-box" style="background:#F8F4EF;"></div>
+      <span class="swatch-name">Ivoire Lumineux</span>
+      <span class="swatch-hex">#F8F4EF</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="swatch-box" style="background:#D7C6B7;"></div>
+      <span class="swatch-name">Sable Catalan</span>
+      <span class="swatch-hex">#D7C6B7</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>Note sur l'accent bleu-vert &amp; vert sauge</h4>
+      <p>Comme mentionné, intégrer ponctuellement un <strong>bleu pétrole (#264653)</strong> ou un <strong>vert sauge (#7A9E7E)</strong> sur les titres ou sous-titres crée une identité différenciante par rapport aux autres conciergeries de la région, sans rompre avec l'univers chaud et lumineux.</p>
+    </div>
+    <div class="card">
+      <h4>Univers visuel recommandé</h4>
+      <ul>
+        <li>Photographies lumineuses : terrasses, vues mer, intérieurs épurés aux tonalités chaudes</li>
+        <li>Typographie mixte : Playfair Display (titres) + Inter (corps) — contraste élégant</li>
+        <li>Formes organiques douces (sections avec courbes légères)</li>
+        <li>Icônes minimalistes, style ligne fine</li>
+        <li>Espacements généreux, jamais de surcharge visuelle</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top: 24px;">
+    <div class="card">
+      <h4>Références esthétiques client (sites cités)</h4>
+      <p><strong>hotel-lesrochesbrunes.com</strong> — élégance hôtelière méditerranéenne, photographies immersives.<br>
+      <strong>maisonnova-collioure.com</strong> — ancrage local fort, sobriété et charme catalan.<br>
+      <strong>stayease-conciergerie.com</strong> — mise en page claire, structure de page conciergerie moderne et conversion-oriented.<br>
+      <em>Synthèse visuelle souhaitée : l'élégance hôtelière des deux premiers + la structure fonctionnelle du troisième, habillée des couleurs chaudes de la Côte Vermeille.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-header">
+    <span class="section-badge">09 — Articles blog recommandés</span>
+    <h2 class="section-title">Stratégie de contenu éditoriale</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="blog-card-cluster">Cluster — Gestion LCD</span>
+      <span class="blog-priority-label priority-prioritaire">● Prioritaire</span>
+      <h4 class="blog-card-title">Combien peut rapporter votre logement sur la Côte Vermeille ? Notre estimation par ville</h4>
+      <p class="blog-card-intention">Intention : informationnelle / transactionnelle — fort potentiel de leads via simulateur intégré</p>
+    </div>
+    <div class="card">
+      <span class="blog-card-cluster">Cluster — Gestion LCD</span>
+      <span class="blog-priority-label priority-prioritaire">● Prioritaire</span>
+      <h4 class="blog-card-title">Conciergerie ou gestion en autonomie : que choisir pour votre location saisonnière ?</h4>
+      <p class="blog-card-intention">Intention : comparaison — cible les propriétaires hésitants, alimente la confiance</p>
+    </div>
+    <div class="card">
+      <span class="blog-card-cluster">Cluster — Territoire & SEO local</span>
+      <span class="blog-priority-label priority-prioritaire">● Prioritaire</span>
+      <h4 class="blog-card-title">Louer son bien à Collioure en saison : ce qu'il faut savoir avant de se lancer</h4>
+      <p class="blog-card-intention">Intention : informationnelle locale — ancrage SEO fort sur Collioure + LCD</p>
+    </div>
+    <div class="card">
+      <span class="blog-card-cluster">Cluster — Confiance & Preuve</span>
+      <span class="blog-priority-label priority-moyen">● Moyen</span>
+      <h4 class="blog-card-title">5 erreurs fréquentes des propriétaires Airbnb sur la Côte Vermeille (et comment les éviter)</h4>
+      <p class="blog-card-intention">Intention : éducative — crée de la valeur perçue et positionne Casa Vermeille comme expert</p>
+    </div>
+    <div class="card">
+      <span class="blog-card-cluster">Cluster — Territoire & SEO local</span>
+      <span class="blog-priority-label priority-moyen">● Moyen</span>
+      <h4 class="blog-card-title">Saisonnalité à Banyuls et Argèles : comment optimiser son taux d'occupation toute l'année</h4>
+      <p class="blog-card-intention">Intention : informationnelle locale — maillage vers pages SEO locales Banyuls / Argèles</p>
+    </div>
+    <div class="card">
+      <span class="blog-card-cluster">Cluster — Gestion LCD</span>
+      <span class="blog-priority-label priority-moyen">● Moyen</span>
+      <h4 class="blog-card-title">Photos de location saisonnière : pourquoi elles font (ou défont) votre annonce</h4>
+      <p class="blog-card-intention">Intention : éducative — valorise la prestation photo de Casa Vermeille, partage facile sur réseaux</p>
+    </div>
+    <div class="card">
+      <span class="blog-card-cluster">Cluster — Confiance & Preuve</span>
+      <span class="blog-priority-label priority-faible">● Secondaire</span>
+      <h4 class="blog-card-title">Checklist complète : préparer son logement pour accueillir des voyageurs haut de gamme</h4>
+      <p class="blog-card-intention">Intention : pratique / lead magnet potential — peut être converti en PDF téléchargeable</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom: 6px; font-family: 'Playfair Display', serif; font-size: 16px; color: rgba(255,255,255,0.7);">Casa Vermeille</p>
+  <p>Blueprint Stratégique · Préparé par <span>AR Digital</span> · Document confidentiel</p>
+  <p style="margin-top: 6px;">© 2025 — Adèle Droguet · CasaVermeille.fr</p>
+</footer>
+
+</body>
+</html>
