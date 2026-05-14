@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Terroirs & Rivages Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --beige: #F5EED8;
+    --beige-clair: #FAF5E9;
+    --dore: #C4A35A;
+    --dore-fonce: #A0823A;
+    --vert: #5C7A5A;
+    --vert-clair: #7A9E78;
+    --brun: #6B4E2A;
+    --texte: #2D2A22;
+    --texte-leger: #6B6456;
+    --blanc: #FFFFFF;
+    --ombre: 0 2px 12px rgba(0,0,0,0.06);
+    --radius: 14px;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--texte);
+    background: var(--blanc);
+  }
+
+  /* ===== COUVERTURE ===== */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1C1A12 0%, #2E2710 35%, #3D3318 60%, #4A3F20 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(196,163,90,0.18) 0%, transparent 65%),
+                radial-gradient(ellipse at 20% 80%, rgba(92,122,90,0.12) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dore);
+    opacity: 0.9;
+    margin-bottom: 32px;
+    border: 1px solid rgba(196,163,90,0.3);
+    padding: 8px 22px;
+    border-radius: 30px;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--blanc);
+    line-height: 1.15;
+    margin-bottom: 18px;
+    max-width: 820px;
+  }
+
+  .cover-subtitle {
+    font-size: 16px;
+    color: rgba(245,238,216,0.75);
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 52px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-item .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dore);
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-item .value {
+    font-size: 13px;
+    color: rgba(245,238,216,0.88);
+    font-weight: 400;
+  }
+
+  .cover-line {
+    width: 60px;
+    height: 1px;
+    background: var(--dore);
+    opacity: 0.4;
+    margin: 40px auto 0;
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    padding: 70px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: var(--beige-clair);
+  }
+
+  section:nth-child(odd) {
+    background: var(--blanc);
+  }
+
+  .section-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dore);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--texte);
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: var(--texte-leger);
+    margin-bottom: 44px;
+    max-width: 640px;
+  }
+
+  /* ===== GRILLES ===== */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ===== CARDS ===== */
+  .card {
+    background: var(--blanc);
+    border-radius: var(--radius);
+    box-shadow: var(--ombre);
+    padding: 28px;
+    border: 1px solid rgba(196,163,90,0.1);
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--texte);
+    margin-bottom: 10px;
+  }
+
+  .card p, .card li {
+    font-size: 14px;
+    color: var(--texte-leger);
+    line-height: 1.7;
+  }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card ul li::before {
+    content: '→ ';
+    color: var(--dore);
+    font-weight: 600;
+  }
+
+  /* ===== HIGHLIGHT BOX ===== */
+  .highlight-box {
+    background: linear-gradient(135deg, #2E2710 0%, #3D3318 100%);
+    border-radius: var(--radius);
+    padding: 40px 48px;
+    color: var(--blanc);
+    margin-bottom: 44px;
+    border-left: 4px solid var(--dore);
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 1.6;
+    color: rgba(245,238,216,0.95);
+  }
+
+  .highlight-box .tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dore);
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  /* ===== TAGS / BADGES ===== */
+  .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  .badge-fort { background: rgba(92,122,90,0.15); color: var(--vert); }
+  .badge-moyen { background: rgba(196,163,90,0.15); color: var(--dore-fonce); }
+  .badge-faible { background: rgba(107,78,42,0.12); color: var(--brun); }
+  .badge-prio { background: rgba(196,163,90,0.18); color: var(--dore-fonce); font-size: 11px; padding: 3px 10px; border-radius: 12px; }
+
+  /* ===== TONE TAGS ===== */
+  .tone-tags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+
+  .tone-tag {
+    background: rgba(196,163,90,0.12);
+    color: var(--dore-fonce);
+    border: 1px solid rgba(196,163,90,0.3);
+    padding: 6px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* ===== TABLEAU ===== */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--ombre);
+    border: 1px solid rgba(196,163,90,0.12);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--blanc);
+    font-size: 14px;
+  }
+
+  thead tr {
+    background: linear-gradient(90deg, #2E2710, #3D3318);
+  }
+
+  thead th {
+    color: var(--dore);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 16px 20px;
+    text-align: left;
+  }
+
+  tbody tr:nth-child(even) { background: rgba(245,238,216,0.3); }
+  tbody tr:nth-child(odd) { background: var(--blanc); }
+
+  tbody td {
+    padding: 14px 20px;
+    color: var(--texte);
+    border-bottom: 1px solid rgba(196,163,90,0.08);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  tbody td:first-child { font-weight: 500; }
+
+  /* ===== TUNNEL ===== */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .tunnel-step {
+    background: var(--blanc);
+    border-radius: 0;
+    padding: 28px 24px;
+    border: 1px solid rgba(196,163,90,0.12);
+    border-right: none;
+    position: relative;
+  }
+
+  .tunnel-step:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+  .tunnel-step:last-child { border-radius: 0 var(--radius) var(--radius) 0; border-right: 1px solid rgba(196,163,90,0.12); }
+
+  .tunnel-step::after {
+    content: '→';
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--dore);
+    font-size: 20px;
+    font-weight: 700;
+    z-index: 2;
+    background: var(--blanc);
+    padding: 2px 4px;
+  }
+
+  .tunnel-step:last-child::after { display: none; }
+
+  .tunnel-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dore);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .tunnel-step h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--texte);
+    margin-bottom: 12px;
+  }
+
+  .tunnel-step p, .tunnel-step li {
+    font-size: 13px;
+    color: var(--texte-leger);
+    line-height: 1.65;
+  }
+
+  .tunnel-step ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .tunnel-step ul li::before {
+    content: '· ';
+    color: var(--dore);
+    font-weight: 700;
+  }
+
+  .cta-tag {
+    display: inline-block;
+    margin-top: 10px;
+    background: rgba(196,163,90,0.15);
+    color: var(--dore-fonce);
+    padding: 5px 12px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* ===== COCON SÉMANTIQUE ===== */
+  .cluster-block {
+    background: var(--blanc);
+    border-radius: var(--radius);
+    box-shadow: var(--ombre);
+    padding: 28px;
+    border: 1px solid rgba(196,163,90,0.1);
+    margin-bottom: 24px;
+  }
+
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--texte);
+    margin-bottom: 6px;
+  }
+
+  .cluster-desc {
+    font-size: 13px;
+    color: var(--texte-leger);
+    margin-bottom: 16px;
+  }
+
+  .cluster-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .cluster-tag {
+    background: rgba(196,163,90,0.1);
+    color: var(--dore-fonce);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid rgba(196,163,90,0.2);
+  }
+
+  .maillage-block {
+    background: var(--blanc);
+    border-radius: var(--radius);
+    box-shadow: var(--ombre);
+    padding: 28px;
+    border: 1px solid rgba(196,163,90,0.1);
+  }
+
+  .maillage-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(196,163,90,0.08);
+    font-size: 14px;
+  }
+
+  .maillage-item:last-child { border-bottom: none; }
+
+  .maillage-item .source {
+    font-weight: 600;
+    color: var(--texte);
+    background: rgba(196,163,90,0.1);
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+  }
+
+  .maillage-item .arrow {
+    color: var(--dore);
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .maillage-item .dest {
+    color: var(--vert);
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* ===== COULEURS PALETTE ===== */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .color-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .color-square {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+
+  .color-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--texte);
+    text-align: center;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: var(--texte-leger);
+    font-family: 'Inter', monospace;
+  }
+
+  /* ===== PRIORITÉ ARTICLES ===== */
+  .prio-prioritaire { background: rgba(92,122,90,0.12); color: var(--vert); }
+  .prio-moyen { background: rgba(196,163,90,0.15); color: var(--dore-fonce); }
+  .prio-faible { background: rgba(107,78,42,0.1); color: var(--brun); }
+
+  /* ===== OBJECTIFS ===== */
+  .objectif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(196,163,90,0.08);
+  }
+
+  .objectif-item:last-child { border-bottom: none; }
+
+  .objectif-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--dore);
+    opacity: 0.5;
+    min-width: 40px;
+    line-height: 1;
+    padding-top: 2px;
+  }
+
+  .objectif-content h4 {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--texte);
+    margin-bottom: 4px;
+  }
+
+  .objectif-content p {
+    font-size: 13px;
+    color: var(--texte-leger);
+  }
+
+  /* ===== LEVIER ===== */
+  .levier-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: linear-gradient(135deg, #1C1A12 0%, #2E2710 100%);
+    padding: 40px 60px;
+    text-align: center;
+  }
+
+  footer p {
+    color: rgba(245,238,216,0.5);
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  footer strong {
+    color: var(--dore);
+    font-size: 15px;
+    display: block;
+    margin-bottom: 8px;
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 38px; }
+    .cover { padding: 50px 24px; }
+    .cover-meta { gap: 20px; }
+
+    section { padding: 40px 24px; }
+
+    h2.section-title { font-size: 26px; }
+
+    .grid-2, .grid-3, .grid-4, .tunnel-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-step {
+      border-radius: var(--radius) !important;
+      border-right: 1px solid rgba(196,163,90,0.12);
+      margin-bottom: 8px;
+    }
+
+    .tunnel-step::after { display: none; }
+
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 17px; }
+
+    .palette-grid { gap: 16px; }
+    .color-square { width: 70px; height: 70px; }
+
+    footer { padding: 32px 24px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 80px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique — AR Digital</div>
+  <h1 class="cover-title">Terroirs &amp; Rivages<br>Conciergerie</h1>
+  <p class="cover-subtitle">Document de positionnement stratégique — confidentiel</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="label">Cliente</span>
+      <span class="value">Fabienne Vandewalle</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Secteur</span>
+      <span class="value">Conciergerie location courte durée</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Territoire</span>
+      <span class="value">Sud-Ouest — Gironde &amp; Lot-et-Garonne</span>
+    </div>
+  </div>
+  <div class="cover-line"></div>
+</div>
+
+<!-- SECTION 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Positionnement stratégique</h2>
+  <p class="section-intro">Ce que Terroirs &amp; Rivages Conciergerie incarne, transmet et défend dans chaque prise de parole.</p>
+
+  <div class="highlight-box">
+    <span class="tag">Promesse de valeur principale</span>
+    <p>Une conciergerie ancrée dans ses terroirs, qui valorise les biens de caractère avec exigence et humanité — pour que chaque propriétaire confie son bien en toute sérénité, et chaque voyageur vive un séjour sincèrement mémorable.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <h3>Ligne directrice de communication</h3>
+      <p>Accompagnement de proximité premium : expertise terrain, exigence du détail et ancrage territorial assumé. Un discours chaleureux, direct, jamais standardisé.</p>
+    </div>
+    <div class="card">
+      <h3>Ton éditorial</h3>
+      <div class="tone-tags">
+        <span class="tone-tag">Chaleureux</span>
+        <span class="tone-tag">Exigeant</span>
+        <span class="tone-tag">Ancré</span>
+      </div>
+      <p style="margin-top: 14px; font-size: 13px; color: var(--texte-leger);">Un ton qui conjugue la bienveillance de l'accueil sudiste, la rigueur d'une professionnelle de l'immobilier et la fierté d'un territoire à faire découvrir.</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🏡 Expertise double — Immobilier &amp; Accueil</h3>
+      <p>18 ans en banque, 25+ ans en immobilier (transaction &amp; gestion locative) : une lecture fine du bien, du marché et des attentes voyageurs que peu de conciergeries peuvent revendiquer.</p>
+    </div>
+    <div class="card">
+      <h3>🌿 Territoire comme identité</h3>
+      <p>Réolais, Bazadais, Langonnais, Marmandais, Casteljaloux, Duras : un ancrage local profond, des partenariats de proximité, une connaissance des spécificités de chaque secteur.</p>
+    </div>
+    <div class="card">
+      <h3>✦ Qualité plutôt que volume</h3>
+      <p>Un portefeuille sélectif de biens de caractère, un suivi personnalisé de chaque propriétaire. Jamais de standardisation, toujours de la cohérence.</p>
+    </div>
+    <div class="card">
+      <h3>💼 Offre modulable et transparente</h3>
+      <p>Trois niveaux d'accompagnement (intendance complète, digital, à la carte) avec des tarifs clairs, sans frais cachés, et un paiement en fin de mois.</p>
+    </div>
+    <div class="card" style="grid-column: 1 / -1;">
+      <h3>🤝 Interlocutrice unique, présente 7j/7</h3>
+      <p>Un seul point de contact humain pour les propriétaires comme pour les voyageurs. Une réactivité qui rassure et une présence qui fidélise.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client Cible</span>
+  <h2 class="section-title">Portrait du propriétaire idéal</h2>
+  <p class="section-intro">Le profil type de la personne que Terroirs &amp; Rivages Conciergerie cherche à convaincre et à accompagner.</p>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <h3>Profil type</h3>
+      <ul>
+        <li>40–65 ans, propriétaire d'une maison de caractère ou d'un gîte rural dans le Sud-Ouest</li>
+        <li>Actif ou retraité, déjà en location ou en réflexion de mise en location</li>
+        <li>Attaché à son bien, soucieux de son image et de la qualité des séjours</li>
+        <li>Manque de temps ou de compétences digitales pour gérer seul les plateformes</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Générer des revenus complémentaires sans contrainte opérationnelle</li>
+        <li>Valoriser un bien de famille ou un patrimoine de qualité</li>
+        <li>Être rassuré par un interlocuteur local connu et identifié</li>
+        <li>Confier son bien à quelqu'un de fiable et professionnel</li>
+        <li>Maximiser son taux d'occupation et son revenu net</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Freins &amp; objections</h3>
+      <ul>
+        <li>« Les commissions sont trop élevées »</li>
+        <li>« Je ne sais pas si je peux vraiment faire confiance »</li>
+        <li>« J'ai déjà essayé seul et ça me convient »</li>
+        <li>« Je ne veux pas perdre le contact avec mes locataires »</li>
+        <li>« Je ne connais pas cette conciergerie, elle est nouvelle »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Proximité géographique et connaissance du secteur</li>
+        <li>Transparence sur les tarifs et les modalités</li>
+        <li>Preuves de sérieux : parcours, références, avis</li>
+        <li>Facilité de prise de contact et de rendez-vous</li>
+        <li>Sentiment d'être compris et bien accompagné</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du site</span>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+  <p class="section-intro">Liste priorisée des missions assignées au site web de Terroirs &amp; Rivages Conciergerie.</p>
+
+  <div class="card">
+    <div class="objectif-item">
+      <span class="objectif-num">01</span>
+      <div class="objectif-content">
+        <h4>Génération de leads qualifiés</h4>
+        <p>Inciter les propriétaires à prendre contact ou à réserver un appel de découverte via des CTA clairs et un formulaire qualifiant.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-num">02</span>
+      <div class="objectif-content">
+        <h4>Réassurance &amp; crédibilité</h4>
+        <p>Convaincre les propriétaires sceptiques grâce au parcours de Fabienne, à la transparence tarifaire et à une présence locale affirmée.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-num">03</span>
+      <div class="objectif-content">
+        <h4>SEO local — visibilité sur le territoire</h4>
+        <p>Positionner le site sur les requêtes locales ciblées (conciergerie Réolais, conciergerie location saisonnière Gironde Sud, etc.).</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-num">04</span>
+      <div class="objectif-content">
+        <h4>Prise de rendez-vous directe</h4>
+        <p>Faciliter la conversion via un calendrier de réservation intégré sur les pages d'offre (Intendance complète &amp; Accompagnement Digital).</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-num">05</span>
+      <div class="objectif-content">
+        <h4>Notoriété &amp; ancrage territorial</h4>
+        <p>Affirmer l'identité locale de la conciergerie, valoriser le territoire du Sud-Ouest et construire une image de marque cohérente dès le lancement.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-num">06</span>
+      <div class="objectif-content">
+        <h4>Nurturing via le blog</h4>
+        <p>Accompagner les propriétaires hésitants dans leur réflexion grâce à des contenus pédagogiques et rassurants.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence du site</span>
+  <h2 class="section-title">Structure &amp; pages recommandées</h2>
+  <p class="section-intro">Chaque page d'offre regroupe l'ensemble des services associés. Aucune page individuelle par service.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Accueil</td>
+          <td>AIDA — Attention &gt; Intérêt &gt; Désir &gt; Action</td>
+          <td>conciergerie location saisonnière Sud-Ouest</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Nos offres (Intendance complète + Accompagnement Digital + À la carte)</td>
+          <td>PAS — Problème &gt; Agitation &gt; Solution</td>
+          <td>gestion locative courte durée Gironde</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>À propos — Fabienne Vandewalle</td>
+          <td>BAB — Before &gt; After &gt; Bridge</td>
+          <td>conciergerie humaine et experte Sud-Ouest</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Notre territoire</td>
+          <td>AIDA</td>
+          <td>conciergerie Réolais Bazadais Langonnais Marmandais</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Page locale SEO — Conciergerie Réolais &amp; Bazadais (33)</td>
+          <td>PAS</td>
+          <td>conciergerie location courte durée Réolais</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Page locale SEO — Conciergerie Marmandais &amp; Casteljaloux</td>
+          <td>PAS</td>
+          <td>conciergerie location saisonnière Marmande</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Blog / Ressources propriétaires</td>
+          <td>Contenu éditorial</td>
+          <td>conseils location saisonnière propriétaire</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Contact &amp; Prise de RDV</td>
+          <td>—</td>
+          <td>contact conciergerie Sud-Ouest</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td>Mentions légales / CGU</td>
+          <td>—</td>
+          <td>—</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECTION 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon sémantique</span>
+  <h2 class="section-title">Architecture de contenu &amp; maillage</h2>
+  <p class="section-intro">Organisation thématique du contenu pour maximiser la pertinence SEO et guider l'internaute vers la conversion.</p>
+
+  <div class="cluster-block">
+    <div class="cluster-title">Cluster 1 — Gestion locative &amp; conciergerie</div>
+    <p class="cluster-desc">Page pilier : Nos Offres. Nourri par les articles de blog et les pages locales.</p>
+    <div class="cluster-tags">
+      <span class="cluster-tag">Intendance complète</span>
+      <span class="cluster-tag">Accompagnement Digital</span>
+      <span class="cluster-tag">Offre à la carte</span>
+      <span class="cluster-tag">Gestion des plateformes</span>
+      <span class="cluster-tag">Stratégie tarifaire dynamique</span>
+      <span class="cluster-tag">Check-in / Check-out</span>
+    </div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title">Cluster 2 — Territoire &amp; ancrage local</div>
+    <p class="cluster-desc">Page pilier : Notre Territoire. Reliée aux deux pages locales SEO et à l'Accueil.</p>
+    <div class="cluster-tags">
+      <span class="cluster-tag">Réolais</span>
+      <span class="cluster-tag">Bazadais</span>
+      <span class="cluster-tag">Langonnais</span>
+      <span class="cluster-tag">Marmandais</span>
+      <span class="cluster-tag">Casteljaloux</span>
+      <span class="cluster-tag">Duras</span>
+      <span class="cluster-tag">Sud-Ouest authentique</span>
+    </div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title">Cluster 3 — Conseils propriétaires &amp; pédagogie</div>
+    <p class="cluster-desc">Page pilier : Blog. Articles de fond destinés à éduquer, rassurer et qualifier les prospects.</p>
+    <div class="cluster-tags">
+      <span class="cluster-tag">Optimiser annonce Airbnb</span>
+      <span class="cluster-tag">Rentabilité location saisonnière</span>
+      <span class="cluster-tag">Fiscalité LMNP</span>
+      <span class="cluster-tag">Préparer son bien</span>
+      <span class="cluster-tag">Accueil voyageurs</span>
+    </div>
+  </div>
+
+  <div class="maillage-block">
+    <h3 style="font-family: 'Playfair Display', serif; font-size: 17px; margin-bottom: 18px; color: var(--texte);">Logique de maillage interne</h3>
+    <div class="maillage-item">
+      <span class="source">Accueil</span>
+      <span class="arrow">→</span>
+      <span class="dest">Nos Offres, À propos, Notre Territoire, Contact</span>
+    </div>
+    <div class="maillage-item">
+      <span class="source">Nos Offres</span>
+      <span class="arrow">→</span>
+      <span class="dest">Contact (RDV), Blog (articles conseils), Notre Territoire</span>
+    </div>
+    <div class="maillage-item">
+      <span class="source">Pages locales SEO</span>
+      <span class="arrow">→</span>
+      <span class="dest">Notre Territoire, Nos Offres, Contact</span>
+    </div>
+    <div class="maillage-item">
+      <span class="source">Blog (articles)</span>
+      <span class="arrow">→</span>
+      <span class="dest">Nos Offres, Contact, pages locales SEO</span>
+    </div>
+    <div class="maillage-item">
+      <span class="source">À propos</span>
+      <span class="arrow">→</span>
+      <span class="dest">Nos Offres, Contact, Notre Territoire</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de conversion</span>
+  <h2 class="section-title">Le parcours du propriétaire vers la décision</h2>
+  <p class="section-intro">Chaque étape du tunnel est conçue pour réduire les frictions et amener naturellement vers la prise de contact.</p>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <span class="tunnel-num">Étape 01</span>
+      <h4>Découverte</h4>
+      <ul>
+        <li>Google Search local</li>
+        <li>Bouche-à-oreille</li>
+        <li>Réseaux sociaux</li>
+      </ul>
+      <p style="margin-top: 10px;"><strong style="color: var(--texte); font-size: 13px;">Pages :</strong> Accueil, Pages locales SEO, Articles blog</p>
+      <span class="cta-tag">Découvrir la conciergerie</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-num">Étape 02</span>
+      <h4>Intérêt</h4>
+      <ul>
+        <li>Navigation sur les offres</li>
+        <li>Lecture de la page À propos</li>
+        <li>Consultation du territoire</li>
+      </ul>
+      <p style="margin-top: 10px;"><strong style="color: var(--texte); font-size: 13px;">Pages :</strong> Nos Offres, À propos, Notre Territoire</p>
+      <span class="cta-tag">Voir nos formules</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-num">Étape 03</span>
+      <h4>Confiance</h4>
+      <ul>
+        <li>Lecture du parcours de Fabienne</li>
+        <li>Avis &amp; preuves sociales</li>
+        <li>Transparence tarifaire</li>
+      </ul>
+      <p style="margin-top: 10px;"><strong style="color: var(--texte); font-size: 13px;">Pages :</strong> À propos, Nos Offres</p>
+      <span class="cta-tag">Télécharger le guide offert</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-num">Étape 04</span>
+      <h4>Conversion</h4>
+      <ul>
+        <li>Formulaire qualifiant</li>
+        <li>Prise de RDV calendrier</li>
+        <li>Appel découverte</li>
+      </ul>
+      <p style="margin-top: 10px;"><strong style="color: var(--texte); font-size: 13px;">Pages :</strong> Contact, Nos Offres (CTA)</p>
+      <span class="cta-tag">Réserver mon appel gratuit</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers marketing recommandés</span>
+  <h2 class="section-title">Les outils de croissance à activer</h2>
+  <p class="section-intro">Des leviers adaptés au marché local et au profil des propriétaires cibles du territoire Sud-Ouest.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="levier-icon">📥</span>
+      <h3>Lead Magnet</h3>
+      <p><strong>« Guide : 7 étapes pour mettre son gîte en location saisonnière dans le Sud-Ouest »</strong><br>PDF téléchargeable à partir d'un formulaire email. Positionne Fabienne comme experte, capte les contacts en phase de réflexion.</p>
+    </div>
+    <div class="card">
+      <span class="levier-icon">📅</span>
+      <h3>Prise de RDV</h3>
+      <p><strong>Outil recommandé : Calendly ou Koalendar</strong><br>Intégrable directement sur la page Nos Offres et la page Contact. Appel découverte de 30 min — offert et sans engagement. Réduction des frictions à l'entrée en relation.</p>
+    </div>
+    <div class="card">
+      <span class="levier-icon">⭐</span>
+      <h3>Preuve sociale</h3>
+      <p><strong>Témoignages propriétaires locaux + résultats chiffrés</strong><br>Dès les premiers clients : captures d'avis Google, verbatims sur l'évolution du taux d'occupation. Mettre en avant la proximité et la réactivité de Fabienne.</p>
+    </div>
+    <div class="card">
+      <span class="levier-icon">📋</span>
+      <h3>Formulaire qualifiant</h3>
+      <p><strong>Champs recommandés :</strong> Prénom &amp; nom — Type de bien (maison, gîte, appartement) — Secteur géographique — Statut (déjà en location / à mettre en location) — Besoin (gestion complète / digital / à la carte) — Message libre.</p>
+    </div>
+    <div class="card" style="grid-column: 1 / -1;">
+      <span class="levier-icon">✉️</span>
+      <h3>Newsletter — Angle éditorial</h3>
+      <p><strong>« Les Chroniques du Territoire »</strong> — Une lettre mensuelle pour les propriétaires du Sud-Ouest : évolution du marché local, conseils saisonniers (préparer son bien pour l'été / l'automne), nouvelles du territoire, astuce du mois pour booster sa visibilité sur les plateformes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction visuelle &amp; éditoriale</span>
+  <h2 class="section-title">L'identité visuelle recommandée</h2>
+  <p class="section-intro">Une palette chaleureuse et ancrée dans l'univers des terroirs et des rivages du Sud-Ouest, comme exprimé par Fabienne.</p>
+
+  <div class="palette-grid">
+    <div class="color-swatch">
+      <div class="color-square" style="background:#F5EED8;"></div>
+      <span class="color-name">Beige Sable</span>
+      <span class="color-hex">#F5EED8</span>
+    </div>
+    <div class="color-swatch">
+      <div class="color-square" style="background:#C4A35A;"></div>
+      <span class="color-name">Doré Mat</span>
+      <span class="color-hex">#C4A35A</span>
+    </div>
+    <div class="color-swatch">
+      <div class="color-square" style="background:#5C7A5A;"></div>
+      <span class="color-name">Vert Vigne</span>
+      <span class="color-hex">#5C7A5A</span>
+    </div>
+    <div class="color-swatch">
+      <div class="color-square" style="background:#2E2710;"></div>
+      <span class="color-name">Brun Terroir</span>
+      <span class="color-hex">#2E2710</span>
+    </div>
+    <div class="color-swatch">
+      <div class="color-square" style="background:#FAF5E9; border: 1px solid #E8DFC0;"></div>
+      <span class="color-name">Ivoire Clair</span>
+      <span class="color-hex">#FAF5E9</span>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top: 44px;">
+    <div class="card">
+      <h3>Univers visuel recommandé</h3>
+      <ul>
+        <li>Illustrations et créations virtuelles de maisons de caractère Sud-Ouest (colombages, pierres, volets en bois) — en accord avec l'absence de visuels réels à ce stade</li>
+        <li>Photographies de paysages locaux : Garonne, vignobles, forêts de pins, bastides</li>
+        <li>Photo portrait de Fabienne en médaillon, fond neutre ou extérieur naturel</li>
+        <li>Textures naturelles en arrière-plan : lin, bois clair, pierre beige</li>
+        <li>Typographie Playfair Display pour les titres (prestige, ancrage) + Inter pour le corps (lisibilité, modernité)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Références visuelles &amp; directionnelles</h3>
+      <ul>
+        <li><strong>La Bonne Conciergerie</strong> — logique de navigation claire à reprendre</li>
+        <li><strong>Les Clés de Milan</strong> — inspiration pour la structure page upsell / offres</li>
+        <li>Ambiance générale : chaleureux et accueillant, jamais agressif — vitaminé mais sobre</li>
+        <li>Photographies virtuelles de propriétés : solution recommandée pour le lancement sans biens réels</li>
+        <li>Icônes fines et linéaires, pas de flat design saturé</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles blog recommandés</span>
+  <h2 class="section-title">Stratégie de contenu éditorial</h2>
+  <p class="section-intro">Des sujets ciblés pour capter du trafic qualifié, éduquer les propriétaires et renforcer l'autorité de Terroirs &amp; Rivages Conciergerie.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mettre son gîte en location saisonnière dans le Sud-Ouest : par où commencer ?</td>
+          <td>Conseils propriétaires</td>
+          <td>Informationnelle — propriétaire débutant</td>
+          <td><span class="badge prio-prioritaire badge">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td>Conciergerie ou gestion en autonomie : quelle solution pour votre bien dans le Réolais ?</td>
+          <td>Gestion locative</td>
+          <td>Comparaison — propriétaire hésitant</td>
+          <td><span class="badge prio-prioritaire badge">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td>Comment optimiser son annonce Airbnb &amp; Booking pour louer plus et mieux en Gironde Sud</td>
+          <td>Gestion locative</td>
+          <td>Informationnelle — propriétaire actif</td>
+          <td><span class="badge prio-prioritaire badge">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td>Pourquoi le Marmandais et Casteljaloux séduisent de plus en plus les voyageurs en quête d'authenticité</td>
+          <td>Territoire &amp; local</td>
+          <td>Informationnelle — voyageur &amp; propriétaire</td>
+          <td><span class="badge prio-moyen badge">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Stratégie tarifaire dynamique : comment doubler son taux d'occupation en location courte durée</td>
+          <td>Gestion locative</td>
+          <td>Informationnelle — propriétaire cherchant à optimiser</td>
+          <td><span class="badge prio-moyen badge">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>LMNP, taxes de séjour, DPE : ce que tout propriétaire doit savoir avant de louer en 2025</td>
+          <td>Conseils propriétaires</td>
+          <td>Informationnelle — réglementaire</td>
+          <td><span class="badge prio-moyen badge">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Accueillir des voyageurs d'entreprise dans le Sud-Ouest : les clés d'une location professionnelle réussie</td>
+          <td>Gestion locative</td>
+          <td>Commerciale — propriétaire avec bien adapté</td>
+          <td><span class="badge prio-faible badge">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <strong>Terroirs &amp; Rivages Conciergerie — Fabienne Vandewalle</strong>
+  <p>Blueprint Stratégique réalisé par AR Digital · Document confidentiel · Tous droits réservés</p>
+</footer>
+
+</body>
+</html>
