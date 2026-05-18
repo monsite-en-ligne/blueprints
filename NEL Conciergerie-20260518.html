@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — NEL Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2c2c2c;
+    background: #faf9f7;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #2b2420 0%, #4a3728 40%, #7a5c48 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 32px;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 48px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .cover-meta-item span:first-child {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+  .cover-meta-item span:last-child {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+  .cover-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 70px 60px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+  section:nth-child(odd) {
+    background: #faf9f7;
+  }
+
+  .section-header {
+    margin-bottom: 48px;
+  }
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #9b7b65;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #2b2420;
+    line-height: 1.2;
+  }
+  .section-line {
+    width: 48px;
+    height: 3px;
+    background: #c8a98a;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+
+  /* ── CARDS ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #2b2420;
+    margin-bottom: 8px;
+  }
+  .card-text {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, #4a3728, #7a5c48);
+    border-radius: 16px;
+    padding: 40px 48px;
+    color: #ffffff;
+    margin-bottom: 48px;
+  }
+  .highlight-box .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 14px;
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #fff;
+  }
+
+  /* ── LISTE STYLÉE ── */
+  .styled-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .styled-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+  }
+  .styled-list li::before {
+    content: '→';
+    color: #c8a98a;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── BADGES ── */
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+  .badge-fort { background: #e8f5e9; color: #2e7d32; }
+  .badge-moyen { background: #fff8e1; color: #f57f17; }
+  .badge-faible { background: #fce4ec; color: #c62828; }
+  .badge-prioritaire { background: #e8f0fe; color: #1a56db; }
+  .badge-moyen-p { background: #fff8e1; color: #f57f17; }
+  .badge-faible-p { background: #fce4ec; color: #c62828; }
+
+  /* ── TABLEAU ── */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 14px;
+  }
+  thead tr {
+    background: #2b2420;
+    color: #ffffff;
+  }
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  tbody tr {
+    border-bottom: 1px solid #f0ede9;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td {
+    padding: 16px 20px;
+    color: #444;
+    vertical-align: top;
+  }
+  tbody tr:hover { background: #faf9f7; }
+
+  /* ── TUNNEL ── */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .tunnel-step {
+    background: #ffffff;
+    padding: 28px 24px;
+    border-right: 1px solid #f0ede9;
+    position: relative;
+  }
+  .tunnel-step:last-child { border-right: none; }
+  .tunnel-step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #ece6e0;
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+  .tunnel-step-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #9b7b65;
+    margin-bottom: 16px;
+  }
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2b2420;
+    margin-bottom: 10px;
+  }
+  .tunnel-step-text {
+    font-size: 13px;
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .tunnel-cta {
+    display: inline-block;
+    background: #f5efe9;
+    color: #7a5c48;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+
+  /* ── COCON ── */
+  .cluster-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #2b2420;
+    margin-bottom: 16px;
+  }
+  .maillage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+    font-size: 13px;
+  }
+  .maillage-source {
+    background: #f5efe9;
+    color: #7a5c48;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .maillage-arrow {
+    color: #c8a98a;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .maillage-dest {
+    background: #faf9f7;
+    color: #555;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid #ece6e0;
+    white-space: nowrap;
+  }
+
+  /* ── PALETTE COULEURS ── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 8px;
+  }
+  .swatch-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+  }
+  .swatch-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #2b2420;
+    text-align: center;
+  }
+  .swatch-hex {
+    font-size: 11px;
+    color: #aaa;
+    text-align: center;
+  }
+
+  /* ── ARTICLES BLOG ── */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .blog-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2b2420;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .blog-tag {
+    font-size: 11px;
+    font-weight: 500;
+    color: #9b7b65;
+    background: #f5efe9;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #2b2420;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 32px 40px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ── OBJECTIFS ── */
+  .objectif-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .objectif-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #ece6e0;
+    min-width: 36px;
+    line-height: 1;
+  }
+  .objectif-text {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.6;
+  }
+  .objectif-text strong {
+    display: block;
+    font-size: 15px;
+    color: #2b2420;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    section { padding: 48px 24px; }
+    .cover-title { font-size: 42px; }
+    .cover-meta { gap: 20px; }
+    .cover-divider { display: none; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4, .tunnel-grid {
+      grid-template-columns: 1fr;
+    }
+    .tunnel-step { border-right: none; border-bottom: 1px solid #f0ede9; }
+    .tunnel-step:last-child { border-bottom: none; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 18px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 80px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique · AR Digital</div>
+  <div class="cover-title">NEL Conciergerie</div>
+  <div class="cover-subtitle">Document de positionnement & stratégie web</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span>Cliente</span>
+      <span>Kelly</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span>Secteur</span>
+      <span>Conciergerie LCD</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span>Zone</span>
+      <span>Dunkerque</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 01 POSITIONNEMENT ══ -->
+<section id="bp-section-01">
+  <div class="section-header">
+    <div class="section-badge">01 — Positionnement</div>
+    <h2 class="section-title">Votre identité de marque</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="label">Promesse de valeur principale</div>
+    <p>NEL Conciergerie prend en charge votre bien à Dunkerque de A à Z — pour que vous encaissiez plus, sans y penser.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <div class="card-icon">🧭</div>
+      <div class="card-title">Ligne directrice de communication</div>
+      <div class="card-text">Excellence locale sans friction. Un interlocuteur unique, de terrain, qui optimise vos revenus locatifs avec rigueur et réactivité.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">✍️</div>
+      <div class="card-title">Ton éditorial</div>
+      <div class="card-text"><strong style="color:#2b2420;">Chaleureux · Professionnel · Rassurant</strong><br>Un discours sobre et humain, qui inspire confiance dès le premier contact sans jargon technique inutile.</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <div class="card-title">Ancrage local Dunkerque</div>
+      <div class="card-text">Une conciergerie enracinée sur le territoire dunkerquois, qui connaît les spécificités du marché local et les attentes des voyageurs de la région.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">💰</div>
+      <div class="card-title">Optimisation des revenus</div>
+      <div class="card-text">Tarification dynamique via plateforme professionnelle pour maximiser le taux d'occupation et le revenu par nuitée à chaque saison.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌟</div>
+      <div class="card-title">Objectif 5 étoiles systématique</div>
+      <div class="card-text">Communication proactive avec les voyageurs, réactivité maximale et finitions soignées pour viser l'excellence des avis sur toutes plateformes.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <div class="card-title">Gestion clé en main transparente</div>
+      <div class="card-text">Une commission claire à 25%, sans surprise. Le propriétaire délègue tout : annonce, ménage, linge, accueil, consommables et guide voyageur.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 02 CLIENT CIBLE ══ -->
+<section id="bp-section-02">
+  <div class="section-header">
+    <div class="section-badge">02 — Client Cible</div>
+    <h2 class="section-title">Profil du propriétaire idéal</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">👤</div>
+      <div class="card-title">Profil type</div>
+      <ul class="styled-list">
+        <li>Propriétaire entre 35 et 60 ans</li>
+        <li>Réside à Dunkerque ou dans la métropole</li>
+        <li>Possède 1 à 3 biens (résidence secondaire, investissement)</li>
+        <li>Actif, peu disponible pour gérer au quotidien</li>
+        <li>Sensible à la qualité, méfiant face aux arnaques</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <div class="card-title">Motivations principales</div>
+      <ul class="styled-list">
+        <li>Rentabiliser un bien sans y passer du temps</li>
+        <li>Obtenir des avis positifs et un bon classement</li>
+        <li>Avoir un interlocuteur local de confiance</li>
+        <li>Déléguer sans perdre le contrôle</li>
+        <li>Optimiser les revenus sur les plateformes</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚠️</div>
+      <div class="card-title">Freins & objections</div>
+      <ul class="styled-list">
+        <li>"Je ne sais pas si c'est rentable avec une commission"</li>
+        <li>"Et si mon bien n'est pas bien entretenu ?"</li>
+        <li>"Je veux garder un regard sur ce qu'il se passe"</li>
+        <li>"J'ai peur des mauvais voyageurs"</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">✅</div>
+      <div class="card-title">Critères de décision</div>
+      <ul class="styled-list">
+        <li>Réputation locale et avis clients</li>
+        <li>Transparence des tarifs et du fonctionnement</li>
+        <li>Réactivité et disponibilité de la conciergerie</li>
+        <li>Qualité des photos et des annonces</li>
+        <li>Résultats chiffrés (taux d'occupation, revenus)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 03 OBJECTIFS DU SITE ══ -->
+<section id="bp-section-03">
+  <div class="section-header">
+    <div class="section-badge">03 — Objectifs du site</div>
+    <h2 class="section-title">Ce que votre site doit accomplir</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 16px;">
+    <div class="objectif-item">
+      <div class="objectif-num">01</div>
+      <div class="objectif-text">
+        <strong>Génération de leads qualifiés</strong>
+        Capter les propriétaires dunkerquois en recherche active d'une conciergerie via le formulaire de contact et la prise de RDV.
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-num">02</div>
+      <div class="objectif-text">
+        <strong>SEO local — Dunkerque</strong>
+        Apparaître en première position sur les recherches "conciergerie Airbnb Dunkerque" et expressions associées.
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-num">03</div>
+      <div class="objectif-text">
+        <strong>Réassurance & crédibilité</strong>
+        Lever les doutes via la preuve sociale (avis, résultats) et la transparence de l'offre pour convertir les visiteurs hésitants.
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-num">04</div>
+      <div class="objectif-text">
+        <strong>Conversion directe</strong>
+        Transformer un visiteur en prospect chaud grâce à des CTA clairs et un formulaire qualifiant dès la page d'accueil.
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-num">05</div>
+      <div class="objectif-text">
+        <strong>Prise de RDV</strong>
+        Proposer un appel découverte simple pour réduire la friction et enclencher la relation commerciale.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 04 ARBORESCENCE ══ -->
+<section id="bp-section-04">
+  <div class="section-header">
+    <div class="section-badge">04 — Arborescence du site</div>
+    <h2 class="section-title">Structure & stratégie SEO des pages</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>Conciergerie Airbnb Dunkerque</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre offre</strong><br><span style="font-size:12px;color:#aaa;">(Services + commission inclus)</span></td>
+          <td>BAB</td>
+          <td>Gestion location courte durée Dunkerque</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — Kelly & NEL</strong></td>
+          <td>PAS</td>
+          <td>Conciergerie locale Dunkerque</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Résultats & témoignages</strong></td>
+          <td>AIDA</td>
+          <td>Avis conciergerie Dunkerque</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>Location courte durée Nord</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Dunkerque</strong><br><span style="font-size:12px;color:#aaa;">(Page SEO locale #1)</span></td>
+          <td>PAS</td>
+          <td>Conciergerie Airbnb Dunkerque centre</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Côte d'Opale</strong><br><span style="font-size:12px;color:#aaa;">(Page SEO locale #2)</span></td>
+          <td>PAS</td>
+          <td>Gestion Airbnb Côte d'Opale</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact & RDV</strong></td>
+          <td>AIDA</td>
+          <td>Confier mon bien à une conciergerie</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══ 05 COCON SÉMANTIQUE ══ -->
+<section id="bp-section-05">
+  <div class="section-header">
+    <div class="section-badge">05 — Cocon Sémantique</div>
+    <h2 class="section-title">Architecture de contenu & maillage interne</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="cluster-card">
+      <div class="cluster-title">🏠 Cluster 1 — Gestion locative LCD</div>
+      <ul class="styled-list">
+        <li>Page Accueil</li>
+        <li>Notre offre (services + commission)</li>
+        <li>Page locale Dunkerque</li>
+        <li>Page locale Côte d'Opale</li>
+        <li>Articles blog sur la gestion Airbnb</li>
+      </ul>
+    </div>
+    <div class="cluster-card">
+      <div class="cluster-title">⭐ Cluster 2 — Confiance & résultats</div>
+      <ul class="styled-list">
+        <li>À propos — Kelly & NEL</li>
+        <li>Résultats & témoignages</li>
+        <li>Articles blog sur l'optimisation des revenus</li>
+        <li>Contact & RDV</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cluster-card">
+    <div class="cluster-title" style="margin-bottom: 20px;">🔗 Logique de maillage interne</div>
+    <div class="maillage-row">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact & RDV</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Résultats & témoignages</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact & RDV</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Pages locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact & RDV</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Articles Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Pages locales</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Résultats & témoignages</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact & RDV</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 06 TUNNEL DE CONVERSION ══ -->
+<section id="bp-section-06">
+  <div class="section-header">
+    <div class="section-badge">06 — Tunnel de Conversion</div>
+    <h2 class="section-title">Du visiteur au client signé</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">01</div>
+      <div class="tunnel-step-label">Découverte</div>
+      <div class="tunnel-step-title">Le propriétaire vous trouve</div>
+      <div class="tunnel-step-text">Google "conciergerie Airbnb Dunkerque" · Bouche à oreille · Réseaux sociaux</div>
+      <span class="tunnel-cta">Page Accueil</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">02</div>
+      <div class="tunnel-step-label">Intérêt</div>
+      <div class="tunnel-step-title">Il comprend votre offre</div>
+      <div class="tunnel-step-text">Lecture de la page offre, découverte des services inclus et de la commission à 25%</div>
+      <span class="tunnel-cta">Notre offre</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">03</div>
+      <div class="tunnel-step-label">Confiance</div>
+      <div class="tunnel-step-title">Il se reconnaît dans vos résultats</div>
+      <div class="tunnel-step-text">Avis 5 étoiles, témoignages de propriétaires, à propos de Kelly et NEL</div>
+      <span class="tunnel-cta">Résultats & À propos</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">04</div>
+      <div class="tunnel-step-label">Conversion</div>
+      <div class="tunnel-step-title">Il prend contact ou réserve un appel</div>
+      <div class="tunnel-step-text">Formulaire qualifiant ou prise de RDV en ligne pour un appel découverte gratuit</div>
+      <span class="tunnel-cta">Contact & RDV</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 07 LEVIERS MARKETING ══ -->
+<section id="bp-section-07">
+  <div class="section-header">
+    <div class="section-badge">07 — Leviers Marketing Recommandés</div>
+    <h2 class="section-title">Les outils pour accélérer votre croissance</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">🎁</div>
+      <div class="card-title">Lead Magnet</div>
+      <div class="card-text">
+        <strong style="color:#2b2420;display:block;margin-bottom:6px;">Guide PDF gratuit</strong>
+        "5 erreurs à éviter quand on loue son bien à Dunkerque sur Airbnb" — téléchargeable en échange d'un email pour nourrir votre base prospects.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📅</div>
+      <div class="card-title">Prise de RDV</div>
+      <div class="card-text">
+        <strong style="color:#2b2420;display:block;margin-bottom:6px;">Outil recommandé : Calendly</strong>
+        Appel découverte de 20 minutes, gratuit et sans engagement. Réduire la friction à l'entrée pour maximiser les prises de contact.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon">💬</div>
+      <div class="card-title">Preuve sociale</div>
+      <div class="card-text">
+        <strong style="color:#2b2420;display:block;margin-bottom:6px;">Avis + chiffres clés</strong>
+        Témoignages vidéo ou texte de propriétaires satisfaits, captures d'écran d'avis 5 étoiles voyageurs, taux d'occupation moyens obtenus.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <div class="card-title">Formulaire qualifiant</div>
+      <div class="card-text">
+        <strong style="color:#2b2420;display:block;margin-bottom:6px;">Champs recommandés</strong>
+        Prénom · Email · Ville du bien · Type de bien · Actuellement en location ? · Message libre
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📩</div>
+      <div class="card-title">Newsletter</div>
+      <div class="card-text">
+        <strong style="color:#2b2420;display:block;margin-bottom:6px;">Angle éditorial : conseils propriétaires</strong>
+        Astuces pour louer mieux, actualités du marché LCD à Dunkerque, tendances saisonnières et optimisation des revenus.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 08 DIRECTION VISUELLE ══ -->
+<section id="bp-section-08">
+  <div class="section-header">
+    <div class="section-badge">08 — Direction Visuelle & Éditoriale</div>
+    <h2 class="section-title">L'identité qui reflète NEL Conciergerie</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="card" style="margin-bottom: 40px;">
+    <div class="card-title" style="margin-bottom: 20px;">🎨 Palette de couleurs suggérée</div>
+    <div class="palette-grid">
+      <div class="swatch-item">
+        <div class="swatch" style="background: #2b2420;"></div>
+        <div class="swatch-name">Brun Profond</div>
+        <div class="swatch-hex">#2B2420</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background: #c8a98a;"></div>
+        <div class="swatch-name">Caramel Nude</div>
+        <div class="swatch-hex">#C8A98A</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background: #e8d8c8;"></div>
+        <div class="swatch-name">Sable Clair</div>
+        <div class="swatch-hex">#E8D8C8</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background: #f5efe9;"></div>
+        <div class="swatch-name">Crème Poudré</div>
+        <div class="swatch-hex">#F5EFE9</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background: #faf9f7; border: 1px solid #ece6e0;"></div>
+        <div class="swatch-name">Blanc Naturel</div>
+        <div class="swatch-hex">#FAF9F7</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="margin-bottom: 20px;">🖼️ Univers visuel recommandé</div>
+    <div class="grid-2">
+      <div>
+        <ul class="styled-list">
+          <li><strong style="color:#2b2420;">Photographie d'intérieur</strong> — images lumineuses de biens propres, décorés avec soin, style cosy épuré</li>
+          <li><strong style="color:#2b2420;">Typographie minimaliste</strong> — Playfair Display pour les titres, Inter pour les corps, aucune police décorative</li>
+          <li><strong style="color:#2b2420;">Iconographie fine</strong> — icônes linéaires légères, pas de pictogrammes ronds colorés</li>
+        </ul>
+      </div>
+      <div>
+        <ul class="styled-list">
+          <li><strong style="color:#2b2420;">Espaces blancs généreux</strong> — respiration visuelle, sobriété, jamais de contenu surchargé</li>
+          <li><strong style="color:#2b2420;">Textures subtiles</strong> — arrière-plans légèrement texturés rappelant le lin ou le papier naturel pour l'ambiance "nude"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 09 ARTICLES BLOG ══ -->
+<section id="bp-section-09">
+  <div class="section-header">
+    <div class="section-badge">09 — Articles Blog Recommandés</div>
+    <h2 class="section-title">Contenu SEO & autorité thématique</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <div class="blog-card-title">Louer son appartement sur Airbnb à Dunkerque : par où commencer ?</div>
+      <div class="card-text" style="font-size:13px;">Guide pratique pour les propriétaires débutants : démarches, conseils photos, tarification.</div>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 1 — Gestion LCD</span>
+        <span class="badge badge-prioritaire">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-title">Combien gagne-t-on vraiment avec une location courte durée à Dunkerque ?</div>
+      <div class="card-text" style="font-size:13px;">Article chiffré avec estimations de revenus selon le type de bien, idéal pour attirer les propriétaires.</div>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 2 — Confiance</span>
+        <span class="badge badge-prioritaire">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-title">Conciergerie ou gestion en autonomie : que choisir pour votre bien ?</div>
+      <div class="card-text" style="font-size:13px;">Comparatif objectif pour accompagner la décision du propriétaire hésitant, fort potentiel de conversion.</div>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 1 — Gestion LCD</span>
+        <span class="badge badge-prioritaire">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-title">Comment obtenir des avis 5 étoiles sur Airbnb : les secrets d'une conciergerie pro</div>
+      <div class="card-text" style="font-size:13px;">Article expert qui valorise le savoir-faire NEL et rassure les propriétaires sur la qualité du service.</div>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 2 — Confiance</span>
+        <span class="badge badge-moyen-p">Moyen</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-title">Tarification dynamique Airbnb : pourquoi c'est indispensable pour maximiser vos revenus</div>
+      <div class="card-text" style="font-size:13px;">Explication pédagogique du pricing dynamique pour convaincre les propriétaires de la valeur ajoutée de NEL.</div>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 1 — Gestion LCD</span>
+        <span class="badge badge-moyen-p">Moyen</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-title">Que mettre dans un guide d'accueil voyageur parfait à Dunkerque ?</div>
+      <div class="card-text" style="font-size:13px;">Article pratique avec idées de contenu local, bons plans, conseils pratiques — SEO longue traîne local.</div>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 2 — Confiance</span>
+        <span class="badge badge-faible-p">Faible</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p><strong>NEL Conciergerie</strong> — Blueprint Stratégique · Document confidentiel</p>
+  <p style="margin-top:6px;">Produit par AR Digital · Tous droits réservés</p>
+</footer>
+
+</body>
+</html>
