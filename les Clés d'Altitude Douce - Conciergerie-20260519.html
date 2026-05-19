@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Les Clés d'Altitude Douce</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2c2c2c;
+    background: #fafaf8;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1a2a1a 0%, #2d3d22 40%, #3a4a28 70%, #2a3520 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center top, rgba(196,164,70,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    background: rgba(196,164,70,0.2);
+    border: 1px solid rgba(196,164,70,0.4);
+    color: #c4a446;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 24px;
+    border-radius: 40px;
+    margin-bottom: 40px;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 56px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .cover-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 70px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+
+  section:nth-child(odd) {
+    background: #fafaf8;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8a9a5a;
+    background: rgba(138,154,90,0.1);
+    border: 1px solid rgba(138,154,90,0.25);
+    padding: 6px 16px;
+    border-radius: 40px;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #1a2a1a;
+    margin-bottom: 40px;
+    line-height: 1.2;
+  }
+
+  /* GRIDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* CARDS */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    page-break-inside: avoid;
+  }
+
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1a2a1a;
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #555;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #2d3d22 0%, #3a4a28 100%);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-box::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: rgba(196,164,70,0.12);
+    border-radius: 50%;
+  }
+
+  .highlight-box-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c4a446;
+    margin-bottom: 12px;
+  }
+
+  .highlight-box-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #ffffff;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* LISTS */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .styled-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0ede6;
+    font-size: 14px;
+    color: #444;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.6;
+  }
+
+  .styled-list li:last-child {
+    border-bottom: none;
+  }
+
+  .styled-list li::before {
+    content: '→';
+    color: #8a9a5a;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 14px;
+  }
+
+  thead tr {
+    background: #2d3d22;
+  }
+
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #f0ede6;
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody td {
+    padding: 16px 20px;
+    color: #444;
+    vertical-align: middle;
+    line-height: 1.6;
+  }
+
+  tbody tr:hover {
+    background: #f9f8f5;
+  }
+
+  /* SEO BADGES */
+  .badge-fort {
+    display: inline-block;
+    background: #e8f5e9;
+    color: #2e7d32;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 40px;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-moyen {
+    display: inline-block;
+    background: #fff8e1;
+    color: #f57f17;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 40px;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-faible {
+    display: inline-block;
+    background: #fce4ec;
+    color: #c62828;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 40px;
+    letter-spacing: 0.5px;
+  }
+
+  /* PRIORITY BADGES */
+  .priority-prioritaire {
+    display: inline-block;
+    background: #e8f5e9;
+    color: #2e7d32;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 40px;
+  }
+
+  .priority-moyen {
+    display: inline-block;
+    background: #fff8e1;
+    color: #f57f17;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 40px;
+  }
+
+  .priority-faible {
+    display: inline-block;
+    background: #f3f4f6;
+    color: #6b7280;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 40px;
+  }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .tunnel-step {
+    background: #ffffff;
+    padding: 28px 24px;
+    position: relative;
+    border-radius: 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .tunnel-step:first-child {
+    border-radius: 14px 0 0 14px;
+  }
+
+  .tunnel-step:last-child {
+    border-radius: 0 14px 14px 0;
+  }
+
+  .tunnel-step + .tunnel-step {
+    border-left: 1px solid #f0ede6;
+  }
+
+  .tunnel-step-number {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c4a446;
+    margin-bottom: 8px;
+  }
+
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a2a1a;
+    margin-bottom: 16px;
+  }
+
+  .tunnel-item {
+    margin-bottom: 10px;
+  }
+
+  .tunnel-item-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8a9a5a;
+    margin-bottom: 3px;
+  }
+
+  .tunnel-item-value {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.5;
+  }
+
+  /* COCON */
+  .cocon-cluster {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+  }
+
+  .cocon-cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a2a1a;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cocon-cluster-title::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: #c4a446;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .cocon-pages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .cocon-page-tag {
+    background: #f0ede6;
+    color: #3a4a28;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 40px;
+  }
+
+  .maillage-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0ede6;
+    font-size: 13px;
+    color: #444;
+  }
+
+  .maillage-row:last-child {
+    border-bottom: none;
+  }
+
+  .maillage-source {
+    font-weight: 600;
+    color: #2d3d22;
+    white-space: nowrap;
+  }
+
+  .maillage-arrow {
+    color: #c4a446;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .maillage-dest {
+    color: #666;
+  }
+
+  /* COLOR PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .color-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .color-block {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+
+  .color-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: #aaa;
+    font-family: monospace;
+    text-align: center;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1a2a1a;
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  footer .footer-meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+  }
+
+  footer .footer-confidential {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  /* SECTION 07 LEVIERS */
+  .levier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .levier-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #c4a446;
+    margin-bottom: 8px;
+  }
+
+  .levier-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1a2a1a;
+    margin-bottom: 10px;
+  }
+
+  .levier-text {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  /* BLOG TABLE */
+  .blog-table tbody td:first-child {
+    font-weight: 500;
+    color: #2d3d22;
+  }
+
+  /* OBJECTIFS */
+  .objectif-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f0ede6;
+  }
+
+  .objectif-row:last-child {
+    border-bottom: none;
+  }
+
+  .objectif-rank {
+    width: 32px;
+    height: 32px;
+    background: #2d3d22;
+    color: #c4a446;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .objectif-content {
+    flex: 1;
+  }
+
+  .objectif-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a2a1a;
+    margin-bottom: 2px;
+  }
+
+  .objectif-desc {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    section { padding: 40px 24px; }
+    .cover-title { font-size: 38px; }
+    .cover { padding: 40px 24px; }
+    .cover-meta { gap: 20px; }
+    .cover-divider { display: none; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .tunnel-grid { grid-template-columns: 1fr; }
+    .tunnel-step:first-child { border-radius: 14px 14px 0 0; }
+    .tunnel-step:last-child { border-radius: 0 0 14px 14px; }
+    .tunnel-step + .tunnel-step { border-left: none; border-top: 1px solid #f0ede6; }
+    .table-wrap { overflow-x: auto; }
+    footer { flex-direction: column; text-align: center; padding: 32px 24px; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box-text { font-size: 18px; }
+    .palette-grid { gap: 16px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique</div>
+  <h1 class="cover-title">Les Clés d'Altitude Douce</h1>
+  <p class="cover-subtitle">Conciergerie · Location Courte Durée</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Cliente</div>
+      <div class="cover-meta-value">Perrine Besnard</div>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Secteur</div>
+      <div class="cover-meta-value">Conciergerie LCD</div>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Zone</div>
+      <div class="cover-meta-value">Digne-les-Bains · Alpes de Haute-Provence</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-badge">01</span>
+  <h2 class="section-title">Positionnement</h2>
+
+  <div class="highlight-box">
+    <div class="highlight-box-label">Promesse de valeur principale</div>
+    <div class="highlight-box-text">
+      "Votre logement, géré avec rigueur et chaleur humaine : des propriétaires sereins, des voyageurs enchantés — au cœur des Alpes de Haute-Provence."
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:40px;">
+    <div class="card-title">Ligne directrice de communication</div>
+    <div class="card-text">Conciergerie de proximité à taille humaine, alliant excellence opérationnelle, ambiance cocooning montagnarde et relation de confiance durable avec les propriétaires. Le registre est chaleureux, rassurant et ancré localement.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:40px;">
+    <div class="card-title">Ton éditorial</div>
+    <div class="card-text"><strong style="color:#2d3d22;">Chaleureux · Rigoureux · Authentique</strong><br><br>Le discours de Perrine incarne une conciergerie humaine et sérieuse à la fois : on ressent la bienveillance de l'accueil et la solidité d'un parcours professionnel exigeant. Le ton invite à la confiance sans jargon technique, avec une touche de poésie montagnarde.</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🏔️</span>
+      <div class="card-title">Ancrage local fort</div>
+      <div class="card-text">Implantée à Digne-les-Bains, Perrine connaît le territoire, ses saisons, ses atouts et ses voyageurs. Ce terrain est un avantage compétitif réel face aux plateformes nationales.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🎖️</span>
+      <div class="card-title">Profil atypique et crédible</div>
+      <div class="card-text">Responsable qualité, manager de production, épouse de militaire : un parcours qui rassure sur la rigueur, l'organisation et la fiabilité — des qualités rares dans la conciergerie artisanale.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🌿</span>
+      <div class="card-title">Expérience voyageur pensée</div>
+      <div class="card-text">Livret personnalisé, attentions locales, accueil gourmand : une approche cocooning qui génère des avis 5 étoiles et fidélise les voyageurs, valorisant ainsi le bien du propriétaire.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">💰</span>
+      <div class="card-title">Offre complète et transparente</div>
+      <div class="card-text">25% TTC tout compris (hors options), sans surprise. Un tarif clair, une communication directe et la possibilité de réservations sans plateforme pour maximiser les revenus nets.</div>
+    </div>
+    <div class="card" style="grid-column: 1 / -1;">
+      <span class="card-icon">🤝</span>
+      <div class="card-title">Relation personnalisée et durable</div>
+      <div class="card-text">Chaque propriétaire est accompagné individuellement, avec une communication transparente et un suivi régulier. Pas de gestion de masse : une conciergerie à l'écoute, qui s'adapte et s'investit dans chaque projet.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-badge">02</span>
+  <h2 class="section-title">Client Cible</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">👤</span>
+      <div class="card-title">Profil type du propriétaire</div>
+      <ul class="styled-list">
+        <li>35–65 ans, propriétaire d'un bien dans les Alpes de Haute-Provence</li>
+        <li>Actif ou en retraite, souhaitant générer des revenus locatifs sans y consacrer son temps</li>
+        <li>Peu ou pas familier avec Airbnb, Booking et la gestion opérationnelle</li>
+        <li>Sensible à la qualité, à la sécurité de son bien et à la relation humaine</li>
+        <li>Peut être non-résident (résidence secondaire, héritage, investissement)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">💡</span>
+      <div class="card-title">Motivations principales</div>
+      <ul class="styled-list">
+        <li>Générer des revenus complémentaires sans contrainte de gestion</li>
+        <li>Déléguer en toute confiance à quelqu'un de fiable et de local</li>
+        <li>Valoriser son bien et le voir bien entretenu entre les séjours</li>
+        <li>Obtenir de bonnes notes et avis pour maximiser les réservations</li>
+        <li>Bénéficier d'un accompagnement clair et transparent</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">🚧</span>
+      <div class="card-title">Freins et objections</div>
+      <ul class="styled-list">
+        <li>"25% c'est trop cher" → crainte sur le ROI</li>
+        <li>"Je ne sais pas si mon bien est assez attractif"</li>
+        <li>"Vais-je vraiment avoir confiance en quelqu'un d'autre chez moi ?"</li>
+        <li>Méconnaissance du fonctionnement d'une conciergerie</li>
+        <li>Peur de perdre le contrôle sur son logement et ses disponibilités</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">✅</span>
+      <div class="card-title">Critères de décision</div>
+      <ul class="styled-list">
+        <li>Proximité géographique et connaissance du secteur</li>
+        <li>Transparence tarifaire et absence de frais cachés</li>
+        <li>Qualité perçue du service et soin apporté au logement</li>
+        <li>Réactivité et disponibilité du prestataire</li>
+        <li>Avis clients, preuves sociales, photos de réalisations</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <span class="section-badge">03</span>
+  <h2 class="section-title">Objectifs du Site</h2>
+
+  <div class="card">
+    <div class="objectif-row">
+      <div class="objectif-rank">1</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Génération de leads propriétaires</div>
+        <div class="objectif-desc">Convaincre les propriétaires de confier leur bien via formulaire ou prise de contact directe.</div>
+      </div>
+    </div>
+    <div class="objectif-row">
+      <div class="objectif-rank">2</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Réassurance et crédibilité</div>
+        <div class="objectif-desc">Légitimer le parcours de Perrine, rassurer sur la fiabilité, transparence et qualité du service.</div>
+      </div>
+    </div>
+    <div class="objectif-row">
+      <div class="objectif-rank">3</div>
+      <div class="objectif-content">
+        <div class="objectif-title">SEO local ciblé</div>
+        <div class="objectif-desc">Être visible sur les recherches "conciergerie Digne-les-Bains", "gestion location Alpes de Haute-Provence".</div>
+      </div>
+    </div>
+    <div class="objectif-row">
+      <div class="objectif-rank">4</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Prise de RDV / contact qualifié</div>
+        <div class="objectif-desc">Simplifier le passage à l'action avec un formulaire ciblé et un accès rapide au calendrier de Perrine.</div>
+      </div>
+    </div>
+    <div class="objectif-row">
+      <div class="objectif-rank">5</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Notoriété locale et image de marque</div>
+        <div class="objectif-desc">Installer "Les Clés d'Altitude Douce" comme référence de la conciergerie premium dans le 04.</div>
+      </div>
+    </div>
+    <div class="objectif-row">
+      <div class="objectif-rank">6</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Conversion visiteur → prospect</div>
+        <div class="objectif-desc">Grâce au lead magnet et à la newsletter pour capter les indécis qui ne passent pas à l'action immédiatement.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <span class="section-badge">04</span>
+  <h2 class="section-title">Arborescence du Site</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Digne-les-Bains</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Services</strong> (propriétaires)<br><small style="color:#999;">Annonce, photos, ménage, check-in, tarification, maintenance…</small></td>
+          <td>PAS</td>
+          <td>gestion location saisonnière Alpes de Haute-Provence</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — Perrine</strong></td>
+          <td>BAB</td>
+          <td>conciergerie humaine et locale 04</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Voyageurs</strong><br><small style="color:#999;">Expérience séjour, réservation directe, région</small></td>
+          <td>AIDA</td>
+          <td>location courte durée Digne-les-Bains séjour</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale SEO — Digne-les-Bains</strong></td>
+          <td>PAS</td>
+          <td>conciergerie Airbnb Digne-les-Bains</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale SEO — Alpes de Haute-Provence</strong></td>
+          <td>PAS</td>
+          <td>conciergerie location saisonnière Alpes de Haute-Provence</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils location courte durée propriétaire</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / Devis gratuit</strong></td>
+          <td>AIDA</td>
+          <td>confier mon logement conciergerie 04</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-badge">05</span>
+  <h2 class="section-title">Cocon Sémantique</h2>
+
+  <div class="cocon-cluster">
+    <div class="cocon-cluster-title">Cluster 1 — Gestion Locative & Services Propriétaires</div>
+    <div class="cocon-pages">
+      <span class="cocon-page-tag">🏠 Page Services</span>
+      <span class="cocon-page-tag">📍 Page Digne-les-Bains</span>
+      <span class="cocon-page-tag">📍 Page Alpes de Haute-Provence</span>
+      <span class="cocon-page-tag">📝 Articles blog propriétaires</span>
+    </div>
+    <ul class="styled-list">
+      <li>Sujets couverts : gestion annonce, ménage, check-in/out, tarification dynamique, maintenance, revenus locatifs</li>
+      <li>Intention : capter les propriétaires en phase de recherche active d'un prestataire</li>
+    </ul>
+  </div>
+
+  <div class="cocon-cluster">
+    <div class="cocon-cluster-title">Cluster 2 — Expérience Voyageurs & Territoire</div>
+    <div class="cocon-pages">
+      <span class="cocon-page-tag">✈️ Page Voyageurs</span>
+      <span class="cocon-page-tag">📍 Page Digne-les-Bains</span>
+      <span class="cocon-page-tag">📝 Articles blog voyageurs</span>
+    </div>
+    <ul class="styled-list">
+      <li>Sujets couverts : séjour bien-être, activités locales, lavande, randonnée, réservation directe</li>
+      <li>Intention : attirer des voyageurs en phase de planification et générer des réservations en direct</li>
+    </ul>
+  </div>
+
+  <div class="cocon-cluster">
+    <div class="cocon-cluster-title">Cluster 3 — Confiance & Crédibilité</div>
+    <div class="cocon-pages">
+      <span class="cocon-page-tag">👩 Page À propos</span>
+      <span class="cocon-page-tag">⭐ Avis clients (intégrés)</span>
+      <span class="cocon-page-tag">📝 Articles blog expertise</span>
+    </div>
+    <ul class="styled-list">
+      <li>Sujets couverts : parcours Perrine, valeurs, méthodes de travail, témoignages propriétaires</li>
+      <li>Intention : lever les freins, rassurer, transformer un visiteur hésitant en prospect qualifié</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Logique de maillage interne</div>
+    <div style="margin-top:8px;">
+      <div class="maillage-row">
+        <span class="maillage-source">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Services · À propos · Contact · Pages locales</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Services</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact / Devis · Page Digne-les-Bains · Articles blog</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Pages locales SEO</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Services · Contact · À propos</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Services · Contact · Pages locales</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">À propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Services · Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Voyageurs</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact · Page Digne-les-Bains</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-badge">06</span>
+  <h2 class="section-title">Tunnel de Conversion</h2>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 1</div>
+      <div class="tunnel-step-title">Découverte</div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Source de trafic</div>
+        <div class="tunnel-item-value">Google (SEO local), Instagram, Facebook, bouche à oreille Digne-les-Bains</div>
+      </div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Page concernée</div>
+        <div class="tunnel-item-value">Accueil · Pages locales SEO</div>
+      </div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">CTA associé</div>
+        <div class="tunnel-item-value">"Découvrir nos services" · "Estimer mes revenus"</div>
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 2</div>
+      <div class="tunnel-step-title">Intérêt</div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Source de trafic</div>
+        <div class="tunnel-item-value">Navigation interne, articles blog, réseaux sociaux</div>
+      </div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Page concernée</div>
+        <div class="tunnel-item-value">Page Services · Blog</div>
+      </div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">CTA associé</div>
+        <div class="tunnel-item-value">"Télécharger le guide gratuit" · "Lire notre méthode"</div>
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 3</div>
+      <div class="tunnel-step-title">Confiance</div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Source de trafic</div>
+        <div class="tunnel-item-value">Navigation interne, e-mail de nurturing</div>
+      </div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Page concernée</div>
+        <div class="tunnel-item-value">Page À propos · Avis clients · Réalisations</div>
+      </div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">CTA associé</div>
+        <div class="tunnel-item-value">"Lire les avis propriétaires" · "Découvrir Perrine"</div>
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 4</div>
+      <div class="tunnel-step-title">Conversion</div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Source de trafic</div>
+        <div class="tunnel-item-value">CTA services, pop-up lead magnet, e-mail</div>
+      </div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Page concernée</div>
+        <div class="tunnel-item-value">Page Contact / Devis gratuit</div>
+      </div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">CTA associé</div>
+        <div class="tunnel-item-value">"Obtenir mon devis gratuit" · "Prendre RDV"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-badge">07</span>
+  <h2 class="section-title">Leviers Marketing Recommandés</h2>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <div class="levier-label">Lead Magnet</div>
+      <div class="levier-title">Guide PDF "5 étapes pour louer son bien sereinement dans les Alpes de Haute-Provence"</div>
+      <div class="levier-text">Un guide pratique téléchargeable (PDF) destiné aux propriétaires débutants ou hésitants. Aborde : préparer son logement, fixer ses tarifs, gérer les voyageurs, sécuriser son bien, faire appel à une conciergerie. Capture l'email en échange du téléchargement.</div>
+    </div>
+    <div class="levier-card">
+      <div class="levier-label">Prise de RDV</div>
+      <div class="levier-title">Calendrier de RDV intégré — Calendly (gratuit)</div>
+      <div class="levier-text">Perrine peut partager un lien Calendly pour des appels découverte de 20 minutes. Réduire la friction entre l'intérêt et le premier contact est crucial pour une conciergerie artisanale. Intégration possible directement sur la page Contact.</div>
+    </div>
+    <div class="levier-card">
+      <div class="levier-label">Preuve Sociale</div>
+      <div class="levier-title">Témoignages propriétaires + captures d'avis Airbnb / Google</div>
+      <div class="levier-text">Collecter 3 à 5 témoignages de propriétaires (texte + photo si possible), accompagnés d'extraits d'avis voyageurs depuis les plateformes. Mettre en avant les notes obtenues et les photos avant/après logement préparés par Perrine.</div>
+    </div>
+    <div class="levier-card">
+      <div class="levier-label">Formulaire Qualifiant</div>
+      <div class="levier-title">Formulaire de contact enrichi</div>
+      <div class="levier-text">Champs recommandés : Prénom / Nom · Téléphone · Email · Type de bien (appartement, chalet, villa…) · Localisation du bien · Déjà en location ? (oui/non) · Message libre. Ce formulaire permet à Perrine de préparer ses RDV et de prioriser les contacts.</div>
+    </div>
+    <div class="levier-card" style="grid-column: 1 / -1;">
+      <div class="levier-label">Newsletter</div>
+      <div class="levier-title">L'angle éditorial : "Le Carnet des Clés"</div>
+      <div class="levier-text">1 email mensuel pour les propriétaires abonnés. Sujets suggérés : actualités saisonnières locales (réservations d'été, saison lavande…), conseils de préparation du logement, tarification selon les événements du 04, coulisses de la conciergerie. Ton chaleureux et concret, signé Perrine.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-badge">08</span>
+  <h2 class="section-title">Direction Visuelle & Éditoriale</h2>
+
+  <div class="card" style="margin-bottom:40px;">
+    <div class="card-title">Palette Couleurs</div>
+    <div class="card-text" style="margin-bottom:24px;">Palette définie à partir des couleurs transmises par Perrine (vert, beige, or) et cohérente avec l'univers montagnard, cocooning et premium des Alpes de Haute-Provence.</div>
+    <div class="palette-grid">
+      <div class="color-swatch">
+        <div class="color-block" style="background:#2d3d22;"></div>
+        <div class="color-name">Forêt Profonde</div>
+        <div class="color-hex">#2D3D22</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#8a9a5a;"></div>
+        <div class="color-name">Vert Altitude</div>
+        <div class="color-hex">#8A9A5A</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#c4a446;"></div>
+        <div class="color-name">Or Doux</div>
+        <div class="color-hex">#C4A446</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#f0ede6; border: 1px solid #e0dbd0;"></div>
+        <div class="color-name">Beige Lin</div>
+        <div class="color-hex">#F0EDE6</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#1a2a1a;"></div>
+        <div class="color-name">Nuit Montagne</div>
+        <div class="color-hex">#1A2A1A</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Univers Visuel Recommandé</div>
+    <ul class="styled-list">
+      <li>Photographies lumineuses des Alpes de Haute-Provence : lavandes, sentiers, lumière dorée de fin de journée — éviter les clichés montagne générique</li>
+      <li>Intérieurs cocooning chaleureux : plaid texturé, bois clair, bougies, fenêtres sur forêt — ambiance "chalet bien-être" moderne et épurée</li>
+      <li>Portraits authentiques de Perrine en situation (accueil logement, préparation, terrain) pour humaniser la marque</li>
+      <li>Typographie mixte : Playfair Display pour les titres (élégance, poésie), Inter pour le corps (lisibilité, modernité)</li>
+      <li>Icônes linéaires fines, légères (style outline), cohérentes avec le positionnement épuré et chic demandé</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09">
+  <span class="section-badge">09</span>
+  <h2 class="section-title">Articles Blog Recommandés</h2>
+
+  <div class="table-wrap">
+    <table class="blog-table">
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pourquoi confier votre location saisonnière à une conciergerie à Digne-les-Bains ?</td>
+          <td>Gestion locative</td>
+          <td>Informationnelle — propriétaire hésitant à déléguer</td>
+          <td><span class="priority-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td>Tarification dynamique : comment maximiser vos revenus locatifs en Alpes de Haute-Provence</td>
+          <td>Gestion locative</td>
+          <td>Informationnelle — propriétaire souhaitant optimiser ses revenus</td>
+          <td><span class="priority-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td>Location courte durée à Digne-les-Bains : ce que les voyageurs recherchent vraiment</td>
+          <td>Expérience voyageurs</td>
+          <td>Informationnelle — propriétaire et voyageur</td>
+          <td><span class="priority-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td>Préparer son logement pour la saison estivale : nos conseils terrain pour le 04</td>
+          <td>Gestion locative</td>
+          <td>Informationnelle / transactionnelle — propriétaire en phase de préparation</td>
+          <td><span class="priority-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Que visiter autour de Digne-les-Bains ? Notre carnet local pour des séjours inoubliables</td>
+          <td>Expérience voyageurs</td>
+          <td>Informationnelle — voyageur en phase de planification</td>
+          <td><span class="priority-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>5 erreurs à éviter quand on gère soi-même sa location Airbnb en Haute-Provence</td>
+          <td>Confiance & crédibilité</td>
+          <td>Informationnelle — propriétaire en gestion autonome insatisfait</td>
+          <td><span class="priority-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Conciergerie vs gestion autonome : le vrai comparatif pour les propriétaires du 04</td>
+          <td>Confiance & crédibilité</td>
+          <td>Comparative — propriétaire en phase de décision</td>
+          <td><span class="priority-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Les Clés d'Altitude Douce</div>
+  <div class="footer-meta">Blueprint réalisé par AR Digital · 2025</div>
+  <div class="footer-confidential">Document confidentiel</div>
+</footer>
+
+</body>
+</html>
