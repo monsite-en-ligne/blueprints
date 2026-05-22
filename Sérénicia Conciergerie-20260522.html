@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Sérénicia Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1A1A1A;
+    background: #F7F5F2;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1A1A1A 0%, #2c2420 50%, #1A1A1A 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 30%, rgba(198,167,105,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover-ornament {
+    width: 60px;
+    height: 1px;
+    background: #C6A769;
+    margin: 0 auto 32px;
+  }
+  .cover-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C6A769;
+    margin-bottom: 28px;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #F7F5F2;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+  .cover-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: #D8C3A5;
+    margin-bottom: 48px;
+    font-style: italic;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .cover-meta-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8C7B75;
+    font-weight: 500;
+  }
+  .cover-meta-value {
+    font-size: 14px;
+    color: #D8C3A5;
+    font-weight: 400;
+  }
+  .cover-divider {
+    width: 1px;
+    height: 40px;
+    background: #2c2c2c;
+  }
+  .cover-bottom {
+    position: absolute;
+    bottom: 32px;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #3a3a3a;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 80px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+  section:nth-child(odd) {
+    background: #F7F5F2;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C6A769;
+    border: 1px solid rgba(198,167,105,0.35);
+    padding: 6px 14px;
+    border-radius: 30px;
+    margin-bottom: 18px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: #1A1A1A;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .section-desc {
+    font-size: 15px;
+    color: #8C7B75;
+    margin-bottom: 48px;
+    max-width: 560px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #1A1A1A 0%, #2c2420 100%);
+    border-radius: 16px;
+    padding: 40px 48px;
+    margin-bottom: 40px;
+    border-left: 4px solid #C6A769;
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #F7F5F2;
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .highlight-box .highlight-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #C6A769;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  /* CARDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(216,195,165,0.2);
+  }
+  section:nth-child(even) .card {
+    background: #F7F5F2;
+  }
+
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1A1A1A;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .card-text {
+    font-size: 14px;
+    color: #5a5a5a;
+    line-height: 1.75;
+  }
+  .card-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #C6A769;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  /* TONE TAGS */
+  .tone-tags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .tone-tag {
+    background: #1A1A1A;
+    color: #D8C3A5;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 30px;
+    letter-spacing: 0.5px;
+  }
+
+  /* LISTS */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+  }
+  .styled-list li {
+    font-size: 14px;
+    color: #3a3a3a;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(216,195,165,0.2);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.6;
+  }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before {
+    content: '—';
+    color: #C6A769;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* PRIORITY TAGS */
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+  .badge-fort { background: #e8f5e9; color: #2e7d32; }
+  .badge-moyen { background: #fff8e1; color: #f57f17; }
+  .badge-faible { background: #f5f5f5; color: #757575; }
+  .badge-prioritaire { background: #1A1A1A; color: #C6A769; }
+  .badge-prio-moyen { background: #D8C3A5; color: #1A1A1A; }
+  .badge-prio-faible { background: #f0ede8; color: #8C7B75; }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 14px;
+  }
+  thead tr {
+    background: #1A1A1A;
+    color: #D8C3A5;
+  }
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  tbody tr {
+    border-bottom: 1px solid rgba(216,195,165,0.2);
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td {
+    padding: 16px 20px;
+    color: #3a3a3a;
+    line-height: 1.6;
+    vertical-align: top;
+  }
+  tbody tr:nth-child(even) td { background: #F7F5F2; }
+  .td-page { font-weight: 600; color: #1A1A1A; }
+  .td-kw { font-family: 'Inter', sans-serif; font-size: 12px; color: #5a5a5a; }
+
+  /* TUNNEL */
+  .tunnel-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+    position: relative;
+  }
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 0;
+    padding: 30px 26px;
+    border-right: 1px solid rgba(216,195,165,0.25);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+  }
+  .tunnel-step:first-child { border-radius: 14px 0 0 14px; }
+  .tunnel-step:last-child { border-radius: 0 14px 14px 0; border-right: none; }
+  .tunnel-step-number {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #C6A769;
+    margin-bottom: 6px;
+  }
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1A1A1A;
+    margin-bottom: 16px;
+  }
+  .tunnel-item {
+    margin-bottom: 10px;
+  }
+  .tunnel-item-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8C7B75;
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+  .tunnel-item-value {
+    font-size: 13px;
+    color: #3a3a3a;
+    line-height: 1.5;
+  }
+  .tunnel-cta {
+    margin-top: 14px;
+    background: #1A1A1A;
+    color: #C6A769;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 6px;
+    display: inline-block;
+  }
+
+  /* COCON */
+  .cluster-block {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+    border: 1px solid rgba(216,195,165,0.2);
+  }
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1A1A1A;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cluster-pages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .cluster-page-tag {
+    background: #F7F5F2;
+    border: 1px solid rgba(198,167,105,0.3);
+    color: #1A1A1A;
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .maillage-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(216,195,165,0.15);
+    font-size: 13px;
+    color: #3a3a3a;
+  }
+  .maillage-row:last-child { border-bottom: none; }
+  .maillage-source {
+    font-weight: 600;
+    color: #1A1A1A;
+    white-space: nowrap;
+  }
+  .maillage-arrow {
+    color: #C6A769;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .maillage-dest {
+    color: #5a5a5a;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+  .palette-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1A1A1A;
+    text-align: center;
+  }
+  .palette-hex {
+    font-size: 11px;
+    color: #8C7B75;
+    text-align: center;
+    font-family: 'Inter', monospace;
+  }
+
+  /* OBJETIF PRIORITY */
+  .obj-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .obj-item {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 18px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid rgba(216,195,165,0.2);
+  }
+  section:nth-child(even) .obj-item { background: #F7F5F2; }
+  .obj-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(198,167,105,0.3);
+    min-width: 36px;
+    line-height: 1;
+  }
+  .obj-content {}
+  .obj-title {
+    font-weight: 600;
+    font-size: 15px;
+    color: #1A1A1A;
+    margin-bottom: 2px;
+  }
+  .obj-desc {
+    font-size: 13px;
+    color: #8C7B75;
+    line-height: 1.5;
+  }
+
+  /* BLOG */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 26px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(216,195,165,0.2);
+    border-top: 3px solid #C6A769;
+  }
+  section:nth-child(even) .blog-card { background: #F7F5F2; }
+  .blog-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1A1A1A;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .blog-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .blog-meta-row {
+    font-size: 12px;
+    color: #8C7B75;
+    display: flex;
+    gap: 6px;
+  }
+  .blog-meta-label {
+    font-weight: 600;
+    color: #5a5a5a;
+    min-width: 100px;
+  }
+
+  /* LEVIER CARD */
+  .levier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(216,195,165,0.2);
+  }
+  section:nth-child(even) .levier-card { background: #F7F5F2; }
+  .levier-icon {
+    font-size: 26px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .levier-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1A1A1A;
+    margin-bottom: 8px;
+  }
+  .levier-text {
+    font-size: 13px;
+    color: #5a5a5a;
+    line-height: 1.7;
+  }
+  .levier-detail {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #8C7B75;
+    padding-top: 10px;
+    border-top: 1px solid rgba(216,195,165,0.2);
+    font-style: italic;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1A1A1A;
+    color: #8C7B75;
+    text-align: center;
+    padding: 40px 40px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    line-height: 2;
+  }
+  footer .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #D8C3A5;
+    margin-bottom: 6px;
+  }
+  footer .footer-gold {
+    color: #C6A769;
+  }
+
+  /* DIVIDER */
+  .ornament-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .ornament-divider::before, .ornament-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(198,167,105,0.25);
+  }
+  .ornament-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #C6A769;
+  }
+
+  /* VISUEL ELEMENTS */
+  .visuel-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .visuel-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #3a3a3a;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(216,195,165,0.15);
+  }
+  .visuel-item:last-child { border-bottom: none; }
+  .visuel-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #C6A769;
+    flex-shrink: 0;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 36px; }
+    .cover-subtitle { font-size: 17px; }
+    .cover-meta { gap: 20px; }
+    .cover-divider { display: none; }
+
+    section { padding: 48px 24px; }
+
+    .section-title { font-size: 26px; }
+
+    .grid-2, .grid-3, .grid-4 {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-steps {
+      grid-template-columns: 1fr;
+    }
+    .tunnel-step:first-child { border-radius: 14px 14px 0 0; }
+    .tunnel-step:last-child { border-radius: 0 0 14px 14px; border-right: none; border-top: 1px solid rgba(216,195,165,0.25); }
+    .tunnel-step { border-right: none; border-bottom: 1px solid rgba(216,195,165,0.25); }
+
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 17px; }
+
+    .palette-grid { gap: 16px; }
+
+    .maillage-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .table-wrap { overflow-x: auto; }
+
+    .obj-rank { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-ornament"></div>
+  <div class="cover-label">Blueprint Stratégique</div>
+  <h1 class="cover-title">Sérénicia<br>Conciergerie</h1>
+  <p class="cover-subtitle">Document de stratégie digitale — Confidentiel</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Client</span>
+      <span class="cover-meta-value">Catherine Vanneville</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie Luxe LCD</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Zone</span>
+      <span class="cover-meta-value">Seine-et-Marne (77)</span>
+    </div>
+  </div>
+  <div class="cover-bottom">AR Digital — Document confidentiel</div>
+</div>
+
+<!-- SECTION 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-badge">01 — Positionnement</div>
+  <h2 class="section-title">Positionnement stratégique</h2>
+  <p class="section-desc">L'identité différenciante de Sérénicia Conciergerie sur le marché local.</p>
+
+  <div class="highlight-box">
+    <span class="highlight-label">Promesse de valeur principale</span>
+    <p>Déléguer sereinement, performer durablement — Sérénicia Conciergerie transforme chaque bien d'exception en Seine-et-Marne en une expérience haut de gamme rentable, avec le niveau d'exigence d'un palace et la proximité d'un partenaire de confiance.</p>
+  </div>
+
+  <div class="ornament-divider"><div class="ornament-dot"></div></div>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <span class="card-tag">Ligne directrice</span>
+      <div class="card-title">Excellence locale & performance sans friction</div>
+      <p class="card-text">Chaque message, chaque page, chaque interaction communique le même standard : un accompagnement premium structuré, humain et orienté résultats concrets pour le propriétaire.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Ton éditorial</span>
+      <div class="tone-tags">
+        <span class="tone-tag">Élégant</span>
+        <span class="tone-tag">Rassurant</span>
+        <span class="tone-tag">Exigeant</span>
+      </div>
+      <p class="card-text">Un ton qui inspire confiance immédiate sans être distant — chaleureux dans sa forme, rigoureux dans son fond, premium sans ostentation.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#1A1A1A; margin-bottom:24px; font-weight:600;">Piliers de différenciation</h3>
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🏡</span>
+      <div class="card-title">Spécialisation biens d'exception</div>
+      <p class="card-text">Focus exclusif sur les villas, maisons de caractère et biens atypiques — pas de gestion de masse, mais une sélection qualitative garantissant un niveau de service constant.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📍</span>
+      <div class="card-title">Expertise terrain locale</div>
+      <p class="card-text">Présence physique et réactivité garantie en Seine-et-Marne sud — Fontainebleau, Melun, Sénart — une connaissance intime du marché locatif local.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">⭐</span>
+      <div class="card-title">Standards hôtellerie 5 étoiles</div>
+      <p class="card-text">Protocoles et niveaux de service inspirés de l'hôtellerie premium appliqués à la location courte durée pour une expérience voyageur mémorable et des avis systématiquement excellents.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📊</span>
+      <div class="card-title">Performance pilotée & transparente</div>
+      <p class="card-text">Tarification dynamique, reporting mensuel détaillé et optimisation continue — le propriétaire délègue totalement mais reste informé des performances de son bien en temps réel.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🤝</span>
+      <div class="card-title">Partenariat sur mesure, pas de standardisation</div>
+      <p class="card-text">Chaque accompagnement est pensé selon le potentiel unique du bien — deux offres structurées (Premium & Signature) pour un positionnement parfaitement adapté à chaque propriétaire.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-badge">02 — Client Cible</div>
+  <h2 class="section-title">Profil du propriétaire idéal</h2>
+  <p class="section-desc">Comprendre précisément à qui s'adresse Sérénicia pour un message juste et percutant.</p>
+
+  <div class="grid-2" style="margin-bottom:24px;">
+    <div class="card">
+      <span class="card-tag">Profil type</span>
+      <div class="card-title">Le propriétaire de bien d'exception sous-valorisé</div>
+      <p class="card-text">35–60 ans, cadre supérieur ou chef d'entreprise, propriétaire d'une villa, maison de caractère ou bien atypique en Seine-et-Marne. Actif, peu disponible, conscient du potentiel de son bien mais sans temps ni expertise pour l'optimiser.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Contexte</span>
+      <div class="card-title">Entre aspiration et blocage</div>
+      <p class="card-text">Possède un bien de qualité, parfois mis en location de façon amateur ou géré seul avec des résultats décevants. Cherche un partenaire professionnel capable de valoriser son patrimoine sans le surcharger de gestion.</p>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <span class="card-tag">Motivations</span>
+      <div class="card-title">Ce qu'il recherche</div>
+      <ul class="styled-list">
+        <li>Maximiser la rentabilité de son bien</li>
+        <li>Déléguer sans perdre le contrôle</li>
+        <li>Préserver l'image et la qualité du bien</li>
+        <li>Bénéficier d'un suivi rigoureux</li>
+        <li>Trouver un partenaire fiable et discret</li>
+        <li>Avoir la tranquillité d'esprit totale</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-tag">Freins & objections</span>
+      <div class="card-title">Ce qui le freine</div>
+      <ul class="styled-list">
+        <li>Peur de perdre la maîtrise de son bien</li>
+        <li>Interrogations sur la commission (25–30 %)</li>
+        <li>Crainte des dégradations ou mauvais locataires</li>
+        <li>Méfiance envers les promesses non tenues</li>
+        <li>Expériences passées décevantes</li>
+        <li>Incertitude sur la demande réelle locale</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-tag">Critères de décision</span>
+      <div class="card-title">Ce qui le convainc</div>
+      <ul class="styled-list">
+        <li>Professionnalisme perçu dès le premier contact</li>
+        <li>Preuves sociales et avis vérifiables</li>
+        <li>Transparence sur les résultats et méthodes</li>
+        <li>Réactivité et disponibilité de l'équipe</li>
+        <li>Audit offert sans engagement (test à faible risque)</li>
+        <li>Image premium alignée avec son bien</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-badge">03 — Objectifs du site</div>
+  <h2 class="section-title">Objectifs stratégiques du site web</h2>
+  <p class="section-desc">Liste priorisée des objectifs que le site doit atteindre pour Sérénicia Conciergerie.</p>
+
+  <div class="obj-list">
+    <div class="obj-item">
+      <div class="obj-rank">01</div>
+      <div class="obj-content">
+        <div class="obj-title">Génération de leads qualifiés — Demandes d'audit offert</div>
+        <div class="obj-desc">Transformer chaque visite en demande concrète via le formulaire d'audit gratuit — objectif principal de conversion du site.</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">02</div>
+      <div class="obj-content">
+        <div class="obj-title">Réassurance & légitimité premium</div>
+        <div class="obj-desc">Convaincre en quelques secondes que Sérénicia est la conciergerie la plus qualitative et fiable de la zone — design, témoignages, About crédible.</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">03</div>
+      <div class="obj-content">
+        <div class="obj-title">SEO local — Fontainebleau, Melun, Sénart</div>
+        <div class="obj-desc">Être visible en première position sur les recherches locales conciergerie Airbnb et location courte durée dans les 3 secteurs prioritaires de la Seine-et-Marne.</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">04</div>
+      <div class="obj-content">
+        <div class="obj-title">Prise de rendez-vous (Calendly)</div>
+        <div class="obj-desc">Faciliter le passage à l'action via une prise de RDV directe et sans friction — réduire le délai entre la découverte et le premier échange avec Catherine.</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">05</div>
+      <div class="obj-content">
+        <div class="obj-title">Notoriété de marque locale</div>
+        <div class="obj-desc">Installer Sérénicia Conciergerie comme la référence premium de la gestion locative courte durée en Seine-et-Marne sud — mémorabilité et bouche-à-oreille.</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">06</div>
+      <div class="obj-content">
+        <div class="obj-title">Nurturing — Blog & contenus</div>
+        <div class="obj-desc">Éduquer les propriétaires hésitants via des contenus à valeur ajoutée positionnant Sérénicia comme expert de référence du marché LCD local.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-badge">04 — Arborescence du site</div>
+  <h2 class="section-title">Structure des pages</h2>
+  <p class="section-desc">Architecture SEO-first pensée pour la conversion et la visibilité locale — une page par offre globale, pas par service individuel.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-page">🏠 Accueil</td>
+          <td>AIDA</td>
+          <td class="td-kw">conciergerie location courte durée Seine-et-Marne</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">✨ Notre offre d'accompagnement</td>
+          <td>PAS</td>
+          <td class="td-kw">conciergerie Airbnb premium Seine-et-Marne</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">👤 À propos — Catherine Vanneville</td>
+          <td>BAB</td>
+          <td class="td-kw">conciergerie haut de gamme Seine-et-Marne</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">📍 Conciergerie Fontainebleau & Melun</td>
+          <td>AIDA</td>
+          <td class="td-kw">conciergerie Airbnb Fontainebleau Melun</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">📍 Conciergerie Sénart & Sud 77</td>
+          <td>AIDA</td>
+          <td class="td-kw">gestion Airbnb Sénart location courte durée 77</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">🎁 Audit offert — Demandez votre estimation</td>
+          <td>PAS</td>
+          <td class="td-kw">audit rentabilité location courte durée gratuit</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">⭐ Témoignages & Réalisations</td>
+          <td>BAB</td>
+          <td class="td-kw">avis conciergerie location courte durée 77</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">📝 Blog</td>
+          <td>—</td>
+          <td class="td-kw">conseils location courte durée propriétaire</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">📬 Contact</td>
+          <td>—</td>
+          <td class="td-kw">contact conciergerie Seine-et-Marne</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECTION 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-badge">05 — Cocon Sémantique</div>
+  <h2 class="section-title">Architecture sémantique & maillage</h2>
+  <p class="section-desc">Organisation thématique des contenus pour maximiser l'autorité SEO de Sérénicia sur son marché local.</p>
+
+  <div class="cluster-block">
+    <div class="cluster-title">
+      <span style="color:#C6A769;">◆</span> Cluster 1 — Gestion Locative Premium LCD
+    </div>
+    <div class="cluster-pages">
+      <span class="cluster-page-tag">Accueil</span>
+      <span class="cluster-page-tag">Notre offre d'accompagnement</span>
+      <span class="cluster-page-tag">Audit offert</span>
+      <span class="cluster-page-tag">Témoignages</span>
+      <span class="cluster-page-tag">Blog : conseils LCD</span>
+    </div>
+    <p style="font-size:13px; color:#5a5a5a;">Pages centrées sur la valeur délivrée aux propriétaires — de la découverte du service jusqu'à la conversion. Ce cluster positionne Sérénicia sur les requêtes transactionnelles à forte intention.</p>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title">
+      <span style="color:#C6A769;">◆</span> Cluster 2 — SEO Local Seine-et-Marne
+    </div>
+    <div class="cluster-pages">
+      <span class="cluster-page-tag">Conciergerie Fontainebleau & Melun</span>
+      <span class="cluster-page-tag">Conciergerie Sénart & Sud 77</span>
+      <span class="cluster-page-tag">Blog : marché LCD local</span>
+    </div>
+    <p style="font-size:13px; color:#5a5a5a;">Pages géolocalisées pour capter les requêtes locales à forte conversion — propriétaires cherchant une conciergerie sur leur secteur précis.</p>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title">
+      <span style="color:#C6A769;">◆</span> Cluster 3 — Confiance & Expertise
+    </div>
+    <div class="cluster-pages">
+      <span class="cluster-page-tag">À propos — Catherine Vanneville</span>
+      <span class="cluster-page-tag">Témoignages & Réalisations</span>
+      <span class="cluster-page-tag">Blog : expertise propriétaire</span>
+    </div>
+    <p style="font-size:13px; color:#5a5a5a;">Pages de réassurance renforçant la légitimité et l'autorité de la fondatrice — cruciales pour convertir les propriétaires hésitants.</p>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#1A1A1A; margin: 36px 0 20px; font-weight:600;">Logique de maillage interne</h3>
+  <div class="cluster-block">
+    <div class="maillage-row">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre · Audit offert · Pages locales · À propos</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Notre offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Audit offert · Témoignages · Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Pages locales (x2)</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre · Audit offert · Blog articles locaux</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre · Audit offert · Témoignages</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Articles Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre · Page locale concernée · Audit offert</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Témoignages</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Audit offert · Notre offre · Contact</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-badge">06 — Tunnel de Conversion</div>
+  <h2 class="section-title">Parcours propriétaire — De la découverte à la décision</h2>
+  <p class="section-desc">4 étapes clés pour transformer un visiteur inconnu en client Sérénicia.</p>
+
+  <div class="tunnel-steps">
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 01</div>
+      <div class="tunnel-step-title">Découverte</div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Source de trafic</div>
+        <div class="tunnel-item-value">Google (SEO local), Instagram, bouche-à-oreille</div>
+      </div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Page concernée</div>
+        <div class="tunnel-item-value">Accueil · Pages locales SEO</div>
+      </div>
+      <div class="tunnel-cta">Découvrir Sérénicia →</div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 02</div>
+      <div class="tunnel-step-title">Intérêt</div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Source de trafic</div>
+        <div class="tunnel-item-value">Navigation interne, articles blog, retargeting</div>
+      </div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Page concernée</div>
+        <div class="tunnel-item-value">Notre offre · Blog · À propos</div>
+      </div>
+      <div class="tunnel-cta">Voir nos offres →</div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 03</div>
+      <div class="tunnel-step-title">Confiance</div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Source de trafic</div>
+        <div class="tunnel-item-value">Témoignages, About Catherine, preuves sociales</div>
+      </div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Page concernée</div>
+        <div class="tunnel-item-value">Témoignages · À propos · Lead magnet</div>
+      </div>
+      <div class="tunnel-cta">Télécharger le guide →</div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 04</div>
+      <div class="tunnel-step-title">Conversion</div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Source de trafic</div>
+        <div class="tunnel-item-value">Formulaire audit, WhatsApp, Calendly</div>
+      </div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Page concernée</div>
+        <div class="tunnel-item-value">Audit offert · Contact · Pop-up sortie</div>
+      </div>
+      <div class="tunnel-cta">Demander mon audit →</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-badge">07 — Leviers Marketing Recommandés</div>
+  <h2 class="section-title">Activation de la croissance</h2>
+  <p class="section-desc">Les outils et contenus prioritaires pour convertir et fidéliser les propriétaires cibles.</p>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <span class="levier-icon">🎁</span>
+      <div class="levier-title">Lead Magnet — Guide PDF offert</div>
+      <p class="levier-text">Créer un guide téléchargeable : <em>"Propriétaire en Seine-et-Marne : combien votre bien pourrait-il vraiment rapporter ?"</em> — estimation de revenus, critères de valorisation, erreurs courantes à éviter.</p>
+      <div class="levier-detail">Capture email + qualification du lead avant l'audit. Format : PDF élégant 8–12 pages aux couleurs Sérénicia.</div>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">📅</span>
+      <div class="levier-title">Prise de RDV — Calendly</div>
+      <p class="levier-text">Intégrer Calendly directement dans la page Audit offert et en sticky sur mobile — permettre une prise de RDV en moins de 30 secondes sans échange email préalable.</p>
+      <div class="levier-detail">Outil recommandé : Calendly (plan Standard). CTA : "Réserver mon appel découverte gratuit" — visible sur toutes les pages clés.</div>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">⭐</span>
+      <div class="levier-title">Preuve sociale — Témoignages & Résultats</div>
+      <p class="levier-text">Collecter et afficher des témoignages vidéo courts (30–60s) ou des études de cas chiffrées : type de bien, zone, revenus avant/après, satisfaction propriétaire.</p>
+      <div class="levier-detail">Format idéal : carte témoignage avec photo bien + citation propriétaire + résultats chiffrés (ex : "+38 % de revenus en 3 mois").</div>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">📋</span>
+      <div class="levier-title">Formulaire qualifiant — Audit offert</div>
+      <p class="levier-text">Formulaire court et élégant pour qualifier chaque lead avant l'appel. Champs recommandés : prénom, email, téléphone, type de bien, secteur géographique, situation actuelle (en location ou non), objectif principal.</p>
+      <div class="levier-detail">Maximum 7 champs pour ne pas décourager. Terminer par un message de confirmation chaleureux et un rappel du délai de réponse.</div>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">💬</span>
+      <div class="levier-title">WhatsApp Business — Présence permanente</div>
+      <p class="levier-text">Bouton WhatsApp flottant visible sur toutes les pages — particulièrement sur mobile. Message pré-rédigé : <em>"Bonjour, je souhaite en savoir plus sur la gestion de mon bien avec Sérénicia."</em></p>
+      <div class="levier-detail">Configurer des réponses automatiques hors horaires et un message d'accueil professionnel pour maintenir le niveau de service premium.</div>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">✉️</span>
+      <div class="levier-title">Newsletter — Angle éditorial</div>
+      <p class="levier-text">Envoi mensuel aux propriétaires abonnés : évolutions du marché LCD local, tendances tarifaires, conseils optimisation, actualités Sérénicia et nouvelles réalisations.</p>
+      <div class="levier-detail">Angle : <em>"La Lettre du Propriétaire Avisé"</em> — positionner Catherine comme experte de référence du marché LCD en Seine-et-Marne sud.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-badge">08 — Direction Visuelle & Éditoriale</div>
+  <h2 class="section-title">Identité visuelle recommandée</h2>
+  <p class="section-desc">Une palette intemporelle inspirée des codes de l'hôtellerie de prestige et de l'immobilier de luxe.</p>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#1A1A1A; margin-bottom:28px; font-weight:600; text-align:center;">Palette de couleurs</h3>
+
+  <div class="palette-grid">
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#1A1A1A;"></div>
+      <div class="palette-name">Noir Profond</div>
+      <div class="palette-hex">#1A1A1A</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#C6A769;"></div>
+      <div class="palette-name">Doré Discret</div>
+      <div class="palette-hex">#C6A769</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#D8C3A5; border: 1px solid #e5d8c5;"></div>
+      <div class="palette-name">Beige Sable</div>
+      <div class="palette-hex">#D8C3A5</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#8C7B75;"></div>
+      <div class="palette-name">Taupe Élégant</div>
+      <div class="palette-hex">#8C7B75</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#F7F5F2; border: 1px solid #e8e4de;"></div>
+      <div class="palette-name">Blanc Cassé</div>
+      <div class="palette-hex">#F7F5F2</div>
+    </div>
+  </div>
+
+  <div class="ornament-divider"><div class="ornament-dot"></div></div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#1A1A1A; margin-bottom:24px; font-weight:600;">Univers visuel recommandé</h3>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-tag">Photographie</span>
+      <div class="card-title">Images immersives & lifestyle premium</div>
+      <div class="visuel-list">
+        <div class="visuel-item"><div class="visuel-bullet"></div>Photos grand format de villas et maisons de caractère en Seine-et-Marne</div>
+        <div class="visuel-item"><div class="visuel-bullet"></div>Intérieurs chaleureux avec lumière naturelle — ambiance résidentielle haut de gamme</div>
+        <div class="visuel-item"><div class="visuel-bullet"></div>Détails soignés : linge de qualité, éléments décoratifs, vue sur jardin ou forêt</div>
+        <div class="visuel-item"><div class="visuel-bullet"></div>Visuels lifestyle : propriétaire serein, voyageur satisfait, coucher de soleil sur domaine</div>
+      </div>
+    </div>
+    <div class="card">
+      <span class="card-tag">Typographie & Mise en page</span>
+      <div class="card-title">Élégance minimaliste</div>
+      <div class="visuel-list">
+        <div class="visuel-item"><div class="visuel-bullet"></div>Titres en Playfair Display — serif élégant pour ancrer le premium</div>
+        <div class="visuel-item"><div class="visuel-bullet"></div>Corps de texte Inter — modernité et lisibilité parfaite</div>
+        <div class="visuel-item"><div class="visuel-bullet"></div>Espaces blancs généreux — jamais de page surchargée</div>
+        <div class="visuel-item"><div class="visuel-bullet"></div>Filets dorés fins comme éléments décoratifs structurants</div>
+        <div class="visuel-item"><div class="visuel-bullet"></div>Sections alternées fond blanc / blanc cassé pour rythme aéré</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 09 — BLOG -->
+<section id="bp-section-09">
+  <div class="section-badge">09 — Articles Blog Recommandés</div>
+  <h2 class="section-title">Stratégie de contenu éditorial</h2>
+  <p class="section-desc">7 sujets prioritaires pour asseoir l'autorité SEO de Sérénicia et attirer des propriétaires qualifiés.</p>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <div class="blog-card-title">Combien peut rapporter votre villa en location courte durée à Fontainebleau en 2025 ?</div>
+      <div class="blog-meta">
+        <div class="blog-meta-row"><span class="blog-meta-label">Cluster</span> SEO Local Seine-et-Marne</div>
+        <div class="blog-meta-row"><span class="blog-meta-label">Intention</span> Informationnelle + transactionnelle</div>
+        <div class="blog-meta-row"><span class="blog-meta-label">Priorité</span> <span class="badge badge-prioritaire">Prioritaire</span></div>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Conciergerie Airbnb en Seine-et-Marne : comment choisir le bon partenaire pour son bien ?</div>
+      <div class="blog-meta">
+        <div class="blog-meta-row"><span class="blog-meta-label">Cluster</span> Gestion Locative Premium LCD</div>
+        <div class="blog-meta-row"><span class="blog-
