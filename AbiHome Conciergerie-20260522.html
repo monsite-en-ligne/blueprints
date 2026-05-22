@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — AbiHome Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a2a30;
+    background: #f9fbfc;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0D3F52 0%, #2A9090 60%, #1a5c6a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.12);
+    pointer-events: none;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -60px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    pointer-events: none;
+  }
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C9A84C;
+    margin-bottom: 28px;
+    opacity: 0.9;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+  .cover-subtitle {
+    font-size: 18px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    margin-bottom: 52px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .cover-meta-label {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    font-weight: 500;
+  }
+  .cover-meta-value {
+    font-size: 14px;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+  }
+  .cover-line {
+    width: 60px;
+    height: 2px;
+    background: #C9A84C;
+    margin: 0 auto 40px;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(odd) { background: #ffffff; }
+  section:nth-child(even) { background: #f4f9f9; }
+
+  .section-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #2A9090;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #0D3F52;
+    margin-bottom: 48px;
+    line-height: 1.25;
+  }
+  .section-divider {
+    width: 48px;
+    height: 3px;
+    background: #C9A84C;
+    margin-bottom: 20px;
+    border-radius: 2px;
+  }
+
+  /* GRID */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  /* CARDS */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(42,144,144,0.08);
+  }
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0D3F52;
+    margin-bottom: 10px;
+  }
+  .card p, .card li {
+    font-size: 14px;
+    color: #3d5a63;
+    line-height: 1.75;
+  }
+  .card ul {
+    padding-left: 18px;
+  }
+  .card ul li { margin-bottom: 4px; }
+
+  .card-icon {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #0D3F52, #2A9090);
+    border-radius: 16px;
+    padding: 40px 48px;
+    margin-bottom: 48px;
+    color: #fff;
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.55;
+    color: #fff;
+  }
+  .highlight-box span {
+    color: #C9A84C;
+  }
+
+  /* TONE BADGES */
+  .tone-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+  }
+  .tone-badge {
+    background: #E0F2F2;
+    color: #2A9090;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 50px;
+    letter-spacing: 0.3px;
+  }
+
+  /* TABLE */
+  .table-wrap { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 600px;
+  }
+  thead tr {
+    background: #0D3F52;
+    color: #fff;
+  }
+  thead th {
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 13px;
+  }
+  tbody tr { border-bottom: 1px solid #e8f4f4; }
+  tbody tr:nth-child(even) { background: #f4f9f9; }
+  tbody td {
+    padding: 13px 18px;
+    color: #2a4a55;
+    vertical-align: top;
+  }
+
+  /* SEO BADGES */
+  .seo-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .seo-fort { background: #d4edda; color: #1a6630; }
+  .seo-moyen { background: #fff3cd; color: #7a5900; }
+  .seo-faible { background: #f0f0f0; color: #666; }
+
+  /* PRIORITY BADGES */
+  .prio-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .prio-prioritaire { background: #d4edda; color: #1a6630; }
+  .prio-moyen { background: #fff3cd; color: #7a5900; }
+  .prio-faible { background: #f0f0f0; color: #666; }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .tunnel-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-top: 4px solid #2A9090;
+    position: relative;
+  }
+  .tunnel-step {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #2A9090;
+    margin-bottom: 10px;
+  }
+  .tunnel-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0D3F52;
+    margin-bottom: 14px;
+  }
+  .tunnel-card p {
+    font-size: 13px;
+    color: #3d5a63;
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .tunnel-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #C9A84C;
+    margin-top: 10px;
+  }
+
+  /* COLORS */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+  }
+  .palette-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0D3F52;
+    text-align: center;
+  }
+  .palette-hex {
+    font-size: 11px;
+    color: #9bb0b8;
+    text-align: center;
+    font-family: monospace;
+  }
+
+  /* MAILLAGE */
+  .maillage-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 14px;
+    color: #2a4a55;
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  .maillage-row .arrow {
+    color: #2A9090;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .maillage-row .page-tag {
+    background: #E0F2F2;
+    color: #0D3F52;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 3px 12px;
+    border-radius: 50px;
+    white-space: nowrap;
+  }
+
+  /* CLUSTER */
+  .cluster-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #2A9090;
+  }
+  .cluster-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0D3F52;
+    margin-bottom: 12px;
+  }
+  .cluster-card ul {
+    padding-left: 18px;
+  }
+  .cluster-card ul li {
+    font-size: 14px;
+    color: #3d5a63;
+    margin-bottom: 5px;
+    line-height: 1.7;
+  }
+
+  /* LEVIERS */
+  .levier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .levier-card .levier-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+  .levier-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0D3F52;
+    margin-bottom: 10px;
+  }
+  .levier-card p {
+    font-size: 14px;
+    color: #3d5a63;
+    line-height: 1.75;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0D3F52;
+    padding: 36px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: 600;
+  }
+  footer .footer-mention {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 1px;
+  }
+  footer .footer-gold {
+    color: #C9A84C;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 38px; }
+    .cover-subtitle { font-size: 15px; }
+    .cover-meta { gap: 20px; }
+    section { padding: 48px 24px; }
+    .section-title { font-size: 26px; margin-bottom: 32px; }
+    .grid-2, .grid-3, .grid-4, .tunnel-grid { grid-template-columns: 1fr; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 17px; }
+    footer { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+    .palette-grid { gap: 20px; }
+    table { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique — Document Confidentiel</div>
+  <div class="cover-line"></div>
+  <h1>AbiHome<br>Conciergerie</h1>
+  <p class="cover-subtitle">Votre feuille de route digitale pour une présence en ligne qui convertit</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Cliente</span>
+      <span class="cover-meta-value">Raphaële Abi Aklé</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie locative</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Territoire</span>
+      <span class="cover-meta-value">Côte d'Azur — Mandelieu</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-badge">Section 01</div>
+  <div class="section-divider"></div>
+  <h2 class="section-title">Positionnement</h2>
+
+  <div class="highlight-box">
+    <p>AbiHome Conciergerie, c'est la <span>tranquillité d'esprit garantie</span> pour les propriétaires de la Côte d'Azur : une gestion locative bienveillante, transparente et sans aucun compromis sur la qualité.</p>
+  </div>
+
+  <div class="card" style="margin-bottom:32px;">
+    <h3>Ligne directrice de communication</h3>
+    <p>Accompagnement local humain &amp; premium — une conciergère de terrain qui s'occupe de votre bien comme du sien, avec honnêteté et rigueur professionnelle.</p>
+    <div class="tone-row" style="margin-top:18px;">
+      <span class="tone-badge">Bienveillant</span>
+      <span class="tone-badge">Rassurant</span>
+      <span class="tone-badge">Expert</span>
+    </div>
+    <p style="font-size:13px;color:#3d5a63;font-style:italic;">Un ton chaleureux et professionnel qui inspire confiance dès les premiers mots, sans jargon technique — comme une recommandation d'une amie de confiance.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <h3>Relation de confiance absolue</h3>
+      <p>Transparence sur les tarifs, les interventions et les revenus. Raphaële s'engage à une communication claire et honnête à chaque étape de la collaboration.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <h3>Ancrage territorial fort</h3>
+      <p>Basée à Mandelieu-la-Napoule, elle connaît les spécificités de chaque secteur entre Theoule, Pégomas et Auribeau — un avantage concurrentiel terrain réel.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎓</div>
+      <h3>Formation professionnelle certifiée</h3>
+      <p>Formée par Carole Anne Conciergerie, référence nationale du secteur. Une expertise structurée qui rassure les propriétaires exigeants.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💛</div>
+      <h3>Service à la personne dans l'ADN</h3>
+      <p>Son background en soins à la personne lui confère une sensibilité unique : attention aux détails, réactivité et bienveillance sont ses réflexes naturels.</p>
+    </div>
+    <div class="card" style="grid-column: span 2;">
+      <div class="card-icon">🌊</div>
+      <h3>Passion Côte d'Azur authentique</h3>
+      <p>Elle ne gère pas des biens, elle fait rayonner un territoire qu'elle aime profondément. Cet attachement se ressent dans chaque prestation et valorise l'expérience voyageur.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-badge">Section 02</div>
+  <div class="section-divider"></div>
+  <h2 class="section-title">Client Cible</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>👤 Profil type</h3>
+      <ul>
+        <li>Propriétaire âgé de 38 à 65 ans</li>
+        <li>Résidence principale hors Côte d'Azur, ou localement actif mais débordé</li>
+        <li>Appartement ou maison de tourisme classé ou à classer</li>
+        <li>Déjà sur Airbnb / Booking ou en phase de lancement</li>
+        <li>Cherche à déléguer totalement, sans se soucier des détails opérationnels</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>💡 Motivations principales</h3>
+      <ul>
+        <li>Générer des revenus locatifs sans contrainte de présence</li>
+        <li>Protéger et valoriser un bien immobilier de qualité</li>
+        <li>Obtenir des avis 5 étoiles et maximiser le taux d'occupation</li>
+        <li>Travailler avec quelqu'un de fiable et disponible localement</li>
+        <li>Avoir une visibilité claire sur ses revenus et les interventions</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🚧 Freins et objections</h3>
+      <ul>
+        <li>Peur de perdre le contrôle sur leur bien</li>
+        <li>Doute sur la fiabilité d'une conciergerie indépendante</li>
+        <li>Préoccupation sur la transparence des coûts</li>
+        <li>Crainte d'une mauvaise gestion des voyageurs ou d'un sinistre</li>
+        <li>Comparaison avec les grandes plateformes nationales</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>✅ Critères de décision</h3>
+      <ul>
+        <li>Proximité géographique et réactivité sur le terrain</li>
+        <li>Transparence tarifaire (commission claire, pas de surprises)</li>
+        <li>Avis clients et témoignages concrets</li>
+        <li>Professionnalisme perçu (site, formation, outils)</li>
+        <li>Feeling humain et confiance relationnelle</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-badge">Section 03</div>
+  <div class="section-divider"></div>
+  <h2 class="section-title">Objectifs du Site</h2>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <h3>1 — Génération de leads</h3>
+      <p>Objectif principal. Chaque page doit inciter le propriétaire à prendre contact ou à demander un audit gratuit de son bien.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔒</div>
+      <h3>2 — Réassurance</h3>
+      <p>Lever les freins psychologiques via les valeurs, la formation, les témoignages et la transparence tarifaire affichée.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📅</div>
+      <h3>3 — Prise de RDV</h3>
+      <p>Faciliter le passage à l'action avec un accès direct à la prise de rendez-vous (audit gratuit ou appel découverte).</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔍</div>
+      <h3>4 — SEO Local</h3>
+      <p>Positionner AbiHome sur les recherches de propriétaires à Mandelieu, Theoule et les communes voisines.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌟</div>
+      <h3>5 — Notoriété locale</h3>
+      <p>Construire une image de marque reconnaissable sur la Côte d'Azur, différenciée des grands acteurs nationaux.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📖</div>
+      <h3>6 — Nurturing</h3>
+      <p>Éduquer les propriétaires hésitants via le blog et les contenus de confiance, pour les convertir dans le temps.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-badge">Section 04</div>
+  <div class="section-divider"></div>
+  <h2 class="section-title">Arborescence du Site</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Mandelieu</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Prestations</strong></td>
+          <td>PAS</td>
+          <td>gestion locative courte durée Côte d'Azur</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À Propos</strong></td>
+          <td>BAB</td>
+          <td>conciergerie Airbnb Mandelieu-la-Napoule</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Audit Gratuit / Contact</strong></td>
+          <td>AIDA</td>
+          <td>estimer potentiel locatif bien Mandelieu</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Mandelieu-la-Napoule</strong></td>
+          <td>PAS</td>
+          <td>conciergerie Mandelieu-la-Napoule Airbnb</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Théoule-sur-Mer &amp; environs</strong></td>
+          <td>PAS</td>
+          <td>conciergerie Théoule-sur-Mer location saisonnière</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils location courte durée Côte d'Azur</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-badge">Section 05</div>
+  <div class="section-divider"></div>
+  <h2 class="section-title">Cocon Sémantique</h2>
+
+  <div class="grid-2" style="margin-bottom:40px;">
+    <div class="cluster-card">
+      <h3>🏠 Cluster 1 — Gestion locative &amp; conciergerie</h3>
+      <ul>
+        <li>Conciergerie Airbnb Mandelieu-la-Napoule</li>
+        <li>Gestion location saisonnière Côte d'Azur</li>
+        <li>Délégation bien locatif Mandelieu</li>
+        <li>Ménage hôtelier entre séjours</li>
+        <li>Optimisation tarifaire Airbnb</li>
+        <li>Gestion annonces Booking VRBO</li>
+      </ul>
+    </div>
+    <div class="cluster-card">
+      <h3>📍 Cluster 2 — SEO local Côte d'Azur</h3>
+      <ul>
+        <li>Conciergerie Théoule-sur-Mer</li>
+        <li>Conciergerie Pégomas / Auribeau</li>
+        <li>Location courte durée Mandelieu-la-Napoule</li>
+        <li>Propriétaire Airbnb Côte d'Azur</li>
+        <li>Revenus locatifs passifs Alpes-Maritimes</li>
+      </ul>
+    </div>
+    <div class="cluster-card" style="grid-column: span 2;">
+      <h3>💡 Cluster 3 — Éducation propriétaire &amp; confiance</h3>
+      <ul>
+        <li>Combien gagne-t-on avec Airbnb à Mandelieu ?</li>
+        <li>Comment choisir sa conciergerie Airbnb ?</li>
+        <li>Réglementation location courte durée 2024-2025</li>
+        <li>Fiscalité location saisonnière LMNP</li>
+        <li>Optimiser son annonce Airbnb Côte d'Azur</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Logique de maillage interne</h3>
+    <div style="margin-top:14px;">
+      <div class="maillage-row">
+        <span class="page-tag">Accueil</span>
+        <span class="arrow">→</span>
+        <span class="page-tag">Nos Prestations</span>
+        <span class="arrow">→</span>
+        <span class="page-tag">Audit Gratuit</span>
+      </div>
+      <div class="maillage-row">
+        <span class="page-tag">Nos Prestations</span>
+        <span class="arrow">→</span>
+        <span class="page-tag">À Propos</span>
+        <span class="arrow">→</span>
+        <span class="page-tag">Audit Gratuit</span>
+      </div>
+      <div class="maillage-row">
+        <span class="page-tag">Pages locales</span>
+        <span class="arrow">→</span>
+        <span class="page-tag">Nos Prestations</span>
+        <span class="arrow">→</span>
+        <span class="page-tag">Audit Gratuit</span>
+      </div>
+      <div class="maillage-row">
+        <span class="page-tag">Blog</span>
+        <span class="arrow">→</span>
+        <span class="page-tag">Pages locales</span>
+        <span class="arrow">+</span>
+        <span class="page-tag">Audit Gratuit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-badge">Section 06</div>
+  <div class="section-divider"></div>
+  <h2 class="section-title">Tunnel de Conversion</h2>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-card">
+      <div class="tunnel-step">Étape 01</div>
+      <h3>Découverte</h3>
+      <div class="tunnel-label">Source de trafic</div>
+      <p>Google Search (SEO local), bouche-à-oreille, réseaux sociaux locaux</p>
+      <div class="tunnel-label">Page concernée</div>
+      <p>Accueil / Pages locales / Articles blog</p>
+      <div class="tunnel-label">CTA</div>
+      <p>« Découvrez comment ça fonctionne »</p>
+    </div>
+    <div class="tunnel-card">
+      <div class="tunnel-step">Étape 02</div>
+      <h3>Intérêt</h3>
+      <div class="tunnel-label">Source de trafic</div>
+      <p>Visiteur curieux naviguant sur le site après la page d'accueil</p>
+      <div class="tunnel-label">Page concernée</div>
+      <p>Nos Prestations / À Propos</p>
+      <div class="tunnel-label">CTA</div>
+      <p>« Voir toutes nos prestations » / « Notre histoire »</p>
+    </div>
+    <div class="tunnel-card">
+      <div class="tunnel-step">Étape 03</div>
+      <h3>Confiance</h3>
+      <div class="tunnel-label">Source de trafic</div>
+      <p>Visiteur qui lit les témoignages, consulte la page À Propos et les valeurs</p>
+      <div class="tunnel-label">Page concernée</div>
+      <p>À Propos / Avis clients / Blog</p>
+      <div class="tunnel-label">CTA</div>
+      <p>« Télécharger le guide gratuit » / « Lire les avis »</p>
+    </div>
+    <div class="tunnel-card">
+      <div class="tunnel-step">Étape 04</div>
+      <h3>Conversion</h3>
+      <div class="tunnel-label">Source de trafic</div>
+      <p>Visiteur convaincu, prêt à passer à l'action</p>
+      <div class="tunnel-label">Page concernée</div>
+      <p>Audit Gratuit / Contact / Formulaire</p>
+      <div class="tunnel-label">CTA</div>
+      <p>« Je demande mon audit gratuit » / « Prendre RDV »</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-badge">Section 07</div>
+  <div class="section-divider"></div>
+  <h2 class="section-title">Leviers Marketing Recommandés</h2>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <div class="levier-icon">🎁</div>
+      <h3>Lead Magnet</h3>
+      <p><strong>« Guide : Maximisez vos revenus Airbnb sur la Côte d'Azur »</strong> — Un PDF pratique (5-7 pages) avec des conseils sur la tarification saisonnière, la présentation d'un bien et les erreurs à éviter. Téléchargeable en échange d'un email.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📅</div>
+      <h3>Prise de RDV</h3>
+      <p>Intégration de <strong>Calendly</strong> (version gratuite suffisante au démarrage) pour un appel découverte de 20 min ou une visite d'audit du bien. Bouton présent en sticky header et en bas de chaque page clé.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">⭐</div>
+      <h3>Preuve Sociale</h3>
+      <p>Section témoignages propriétaires avec photo, prénom et ville. Mise en avant des avis Google (widget ou captures). À terme : étude de cas avec chiffres (revenus générés, taux d'occupation). Badges de formation visibles.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📋</div>
+      <h3>Formulaire Qualifiant</h3>
+      <p>Champs recommandés : Type de bien (appartement/maison/villa) · Localisation · Nb de couchages · Statut actuel (déjà sur Airbnb ? Non encore ?) · Objectif principal · Coordonnées (prénom, email, téléphone).</p>
+    </div>
+    <div class="levier-card" style="grid-column: span 2;">
+      <div class="levier-icon">✉️</div>
+      <h3>Newsletter — Angle Éditorial</h3>
+      <p><strong>« La Lettre du Propriétaire Serein »</strong> — Envoi mensuel avec : 1 conseil pratique pour optimiser son bien, 1 actu réglementaire ou fiscale, 1 retour terrain de Raphaële. Ton personnel et bienveillant, style lettre manuscrite numérique.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-badge">Section 08</div>
+  <div class="section-divider"></div>
+  <h2 class="section-title">Direction Visuelle &amp; Éditoriale</h2>
+
+  <div class="card" style="margin-bottom:36px;">
+    <h3>Palette Couleurs</h3>
+    <p style="font-size:13px;color:#3d5a63;margin-bottom:20px;">Couleurs validées par la cliente, inspirées de la mer turquoise et du soleil de la Côte d'Azur.</p>
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#2A9090;"></div>
+        <div class="palette-name">Teal</div>
+        <div class="palette-hex">#2A9090</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#E0F2F2;border:1px solid #cce8e8;"></div>
+        <div class="palette-name">Teal Clair</div>
+        <div class="palette-hex">#E0F2F2</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#C9A84C;"></div>
+        <div class="palette-name">Or / Doré</div>
+        <div class="palette-hex">#C9A84C</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#FDF6E3;border:1px solid #e8e0cc;"></div>
+        <div class="palette-name">Or Clair</div>
+        <div class="palette-hex">#FDF6E3</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#0D3F52;"></div>
+        <div class="palette-name">Bleu Profond</div>
+        <div class="palette-hex">#0D3F52</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🖼 Univers Visuel Recommandé</h3>
+      <ul>
+        <li>Photographies lumineuses de la Côte d'Azur (mer turquoise, terrasses ensoleillées, intérieurs méditerranéens clairs)</li>
+        <li>Portraits authentiques de Raphaële sur le terrain pour humaniser la marque</li>
+        <li>Photos intérieures des biens gérés : linge blanc impeccable, détails soignés</li>
+        <li>Icônes épurées en style ligne fine (stroke), couleur Teal ou Or</li>
+        <li>Textures douces : grain de sable, lin blanc, reflets azurés en arrière-plan</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>✍️ Ligne Éditoriale</h3>
+      <ul>
+        <li><strong>Ton :</strong> chaleureux, direct, professionnel sans être froid</li>
+        <li><strong>Voix :</strong> à la première personne (« Je prends soin de votre bien… »)</li>
+        <li><strong>Vocabulaire :</strong> sérénité, confiance, transparence, valorisation, Côte d'Azur</li>
+        <li><strong>À éviter :</strong> jargon technique, promesses chiffrées non vérifiables, ton commercial agressif</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-badge">Section 09</div>
+  <div class="section-divider"></div>
+  <h2 class="section-title">Articles Blog Recommandés</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Combien peut-on gagner avec Airbnb à Mandelieu-la-Napoule ?</strong></td>
+          <td>SEO Local</td>
+          <td>Informationnelle — propriétaire curieux du potentiel locatif</td>
+          <td><span class="prio-badge prio-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie Airbnb : comment bien choisir son prestataire sur la Côte d'Azur ?</strong></td>
+          <td>Confiance</td>
+          <td>Commerciale — propriétaire en phase de comparaison</td>
+          <td><span class="prio-badge prio-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Location courte durée à Mandelieu : réglementation et obligations 2025</strong></td>
+          <td>Éducation propriétaire</td>
+          <td>Informationnelle — propriétaire soucieux de la légalité</td>
+          <td><span class="prio-badge prio-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>5 erreurs qui font perdre des réservations Airbnb sur la Riviera</strong></td>
+          <td>Gestion locative</td>
+          <td>Informationnelle — propriétaire déjà actif souhaitant optimiser</td>
+          <td><span class="prio-badge prio-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Optimisation tarifaire : comment fixer le bon prix selon la saison à Théoule-sur-Mer ?</strong></td>
+          <td>SEO Local / Gestion</td>
+          <td>Informationnelle — propriétaire cherchant à maximiser ses revenus</td>
+          <td><span class="prio-badge prio-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Pourquoi confier son bien à une conciergerie locale plutôt qu'une plateforme nationale ?</strong></td>
+          <td>Confiance</td>
+          <td>Commerciale — propriétaire hésitant entre les options</td>
+          <td><span class="prio-badge prio-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Fiscalité LMNP et location saisonnière : ce que tout propriétaire doit savoir</strong></td>
+          <td>Éducation propriétaire</td>
+          <td>Informationnelle — propriétaire cherchant à comprendre la fiscalité</td>
+          <td><span class="prio-badge prio-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">AbiHome Conciergerie</div>
+  <div class="footer-gold">Blueprint Stratégique — AR Digital</div>
+  <div class="footer-mention">Document confidentiel — Usage exclusif du client</div>
+</footer>
+
+</body>
+</html>
