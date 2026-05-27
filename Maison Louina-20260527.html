@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Maison Louina</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2c2c2c;
+    background: #fafaf8;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #2d3a2e 0%, #3d5240 40%, #5a6e48 75%, #7a6248 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(194,168,130,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    background: rgba(194,168,130,0.25);
+    color: #e8d9bc;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 7px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(194,168,130,0.35);
+    margin-bottom: 36px;
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+  }
+
+  .cover h1 span {
+    color: #c2a882;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    color: rgba(255,255,255,0.72);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    margin-bottom: 52px;
+    font-style: italic;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .cover-meta-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: #e8d9bc;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 80px 80px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+
+  section:nth-child(odd):not(.cover) {
+    background: #fafaf8;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: #7a6248;
+    background: #f0e8da;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #2d3a2e;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: #7a7a6e;
+    margin-bottom: 44px;
+    max-width: 620px;
+    line-height: 1.7;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px 30px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #2d3a2e;
+    margin-bottom: 10px;
+  }
+
+  .card p, .card li {
+    font-size: 14px;
+    color: #555550;
+    line-height: 1.75;
+  }
+
+  .card ul {
+    padding-left: 18px;
+  }
+
+  .card ul li {
+    margin-bottom: 4px;
+  }
+
+  /* ── GRIDS ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, #3d5240 0%, #4e6645 100%);
+    border-radius: 18px;
+    padding: 36px 40px;
+    margin-bottom: 44px;
+    color: #ffffff;
+  }
+
+  .highlight-box .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c2a882;
+    margin-bottom: 12px;
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #ffffff;
+    font-style: italic;
+  }
+
+  /* ── TAG / PILL ── */
+  .tag {
+    display: inline-block;
+    background: #f0e8da;
+    color: #7a6248;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin: 3px 3px 3px 0;
+  }
+
+  /* ── SECTION 01 ── */
+  .ton-pills {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .ton-pill {
+    background: #eef2ec;
+    color: #3d5240;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid #c9d9c5;
+  }
+
+  /* ── SECTION 03 — OBJECTIFS ── */
+  .objectif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .objectif-num {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3d5240, #5a6e48);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .objectif-text strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d3a2e;
+    margin-bottom: 2px;
+  }
+
+  .objectif-text span {
+    font-size: 13px;
+    color: #777770;
+  }
+
+  /* ── SECTION 04 — TABLE ── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    font-size: 14px;
+  }
+
+  thead tr {
+    background: #3d5240;
+    color: #ffffff;
+  }
+
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #f0ece6;
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody td {
+    padding: 16px 20px;
+    color: #444440;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  tbody tr:hover {
+    background: #fafaf6;
+  }
+
+  .seo-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  .seo-fort { background: #d4edda; color: #1a6630; }
+  .seo-moyen { background: #fff3cd; color: #856404; }
+  .seo-faible { background: #f3e8e8; color: #842029; }
+
+  .fw-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+    background: #eef2ec;
+    color: #3d5240;
+    border: 1px solid #c9d9c5;
+  }
+
+  /* ── SECTION 05 — COCON ── */
+  .cluster-block {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 30px 32px;
+  }
+
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2d3a2e;
+    margin-bottom: 8px;
+  }
+
+  .cluster-theme {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c2a882;
+    margin-bottom: 14px;
+  }
+
+  .cluster-kw {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .maillage-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: #555550;
+  }
+
+  .maillage-page {
+    background: #eef2ec;
+    color: #3d5240;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+    border: 1px solid #c9d9c5;
+    white-space: nowrap;
+  }
+
+  .maillage-arrow {
+    color: #c2a882;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ── SECTION 06 — TUNNEL ── */
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tunnel-step::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 4px 0 0 4px;
+  }
+
+  .step-decouverte::before { background: #7a9e7e; }
+  .step-interet::before { background: #c2a882; }
+  .step-confiance::before { background: #5a6e48; }
+  .step-conversion::before { background: #3d5240; }
+
+  .tunnel-step-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 6px;
+  }
+
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2d3a2e;
+    margin-bottom: 14px;
+  }
+
+  .tunnel-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .tunnel-row-item {
+    font-size: 13px;
+    color: #555550;
+  }
+
+  .tunnel-row-item strong {
+    color: #3d5240;
+    font-weight: 600;
+  }
+
+  .cta-pill {
+    display: inline-block;
+    background: linear-gradient(135deg, #3d5240, #5a6e48);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-top: 10px;
+  }
+
+  /* ── SECTION 07 — LEVIERS ── */
+  .levier-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: #eef2ec;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+
+  /* ── SECTION 08 — COULEURS ── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 44px;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .color-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+
+  .palette-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2d3a2e;
+    text-align: center;
+  }
+
+  .palette-hex {
+    font-size: 11px;
+    color: #aaa;
+    font-family: 'Inter', monospace;
+  }
+
+  /* ── SECTION 09 — BLOG ── */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 24px 28px;
+  }
+
+  .blog-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  .blog-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #2d3a2e;
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .prio-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+
+  .prio-prioritaire { background: #d4edda; color: #1a6630; }
+  .prio-moyen { background: #fff3cd; color: #856404; }
+  .prio-faible { background: #f3e8e8; color: #842029; }
+
+  .blog-meta {
+    font-size: 12px;
+    color: #999;
+    margin-top: 6px;
+  }
+
+  .blog-meta span {
+    margin-right: 16px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #2d3a2e;
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    padding: 36px 40px;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+  }
+
+  footer strong {
+    color: #c2a882;
+  }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(90deg, #c2a882, #7a9e7e);
+    border-radius: 2px;
+    margin-bottom: 36px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 40px; }
+    .cover-meta { gap: 22px; }
+    section { padding: 50px 24px; }
+    h2 { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .cover-meta { flex-direction: column; align-items: center; gap: 16px; }
+    .highlight-box { padding: 26px 24px; }
+    .highlight-box p { font-size: 18px; }
+    .palette-grid { gap: 18px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique · AR Digital</div>
+  <h1>Maison <span>Louina</span></h1>
+  <p class="cover-subtitle">L'art de recevoir, au cœur de l'Aquitaine</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Cliente</span>
+      <span class="cover-meta-value">Gaëlle Flaman</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie locative</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Zone</span>
+      <span class="cover-meta-value">Bassin d'Arcachon · Bordeaux · Saint-Émilion</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-badge">01 — Positionnement</div>
+  <h2>Votre signature de marque</h2>
+  <div class="section-divider"></div>
+
+  <div class="highlight-box">
+    <div class="label">Promesse de valeur principale</div>
+    <p>« Une conciergerie humaine et élégante qui transforme votre bien en expérience mémorable — pour vous comme pour vos voyageurs. »</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 24px;">
+    <div class="card-title">Ligne directrice de communication</div>
+    <p>Accompagnement chaleureux & haut de gamme, ancré dans la connaissance du territoire aquitain — avec la rigueur d'une professionnelle et la douceur d'une hôte attentionnée.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 44px;">
+    <div class="card-title">Ton éditorial</div>
+    <div class="ton-pills">
+      <span class="ton-pill">Chaleureux</span>
+      <span class="ton-pill">Élégant</span>
+      <span class="ton-pill">Sincère</span>
+    </div>
+    <p style="margin-top: 14px; font-size: 14px; color: #666;">Un ton qui rassure et séduit à la fois : on parle à un propriétaire soucieux de son bien comme à un voyageur en quête d'authenticité — toujours avec douceur, précision et une vraie personnalité de marque.</p>
+  </div>
+
+  <p class="section-intro" style="margin-bottom: 28px;">4 piliers de différenciation</p>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">🏡 Double expertise terrain</div>
+      <p>Comptabilité & événementiel : Gaëlle apporte une organisation millimétrée ET un sens aigu de l'expérience client — une combinaison rare dans la conciergerie locative.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🌿 Ancrage aquitain profond</div>
+      <p>Bassin d'Arcachon, vignobles bordelais, Saint-Émilion… Une connaissance intime du territoire pour des recommandations authentiques et une gestion de proximité réelle.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🤝 Relation humaine au centre</div>
+      <p>Pas une plateforme, une personne. Gaëlle incarne Maison Louina : disponible, à l'écoute, bienveillante — le propriétaire n'est jamais un numéro de dossier.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">✨ Soin du détail & mise en valeur</div>
+      <p>De l'annonce au panier de bienvenue, chaque point de contact est soigné. L'objectif : valoriser chaque bien pour maximiser son attractivité et l'expérience voyageur.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-badge">02 — Client cible</div>
+  <h2>À qui s'adresse Maison Louina</h2>
+  <div class="section-divider"></div>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <div class="card-title">Profil type du propriétaire idéal</div>
+      <ul>
+        <li>35–60 ans, propriétaire d'une résidence secondaire ou d'un bien locatif</li>
+        <li>Bassin d'Arcachon, Bordeaux, Saint-Émilion ou Entre-Deux-Mers</li>
+        <li>Actif, peu disponible pour gérer seul les locations</li>
+        <li>Sensible à la qualité, à la présentation et à la réputation de son bien</li>
+        <li>Première expérience en location saisonnière ou déjà déçu par un prestataire impersonnel</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Motivations principales</div>
+      <ul>
+        <li>Déléguer sereinement sans perdre le contrôle</li>
+        <li>Rentabiliser son bien sans y passer du temps</li>
+        <li>Offrir une belle expérience aux voyageurs (réputation, avis)</li>
+        <li>Trouver un interlocuteur de confiance, réactif et professionnel</li>
+        <li>Valoriser un bien qui leur tient à cœur</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Freins & objections fréquents</div>
+      <ul>
+        <li>« La commission de 22 % est-elle justifiée ? »</li>
+        <li>« Je ne connais pas encore cette conciergerie, elle est nouvelle »</li>
+        <li>« Et si je perds la main sur mon bien ? »</li>
+        <li>« Comment être sûr que mon logement sera bien traité ? »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Critères de décision</div>
+      <ul>
+        <li>Proximité géographique et connaissance du secteur</li>
+        <li>Transparence sur les prestations incluses</li>
+        <li>Personnalité et fiabilité de l'interlocutrice</li>
+        <li>Avis clients / preuves sociales</li>
+        <li>Facilité et rapidité à prendre contact</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-badge">03 — Objectifs du site</div>
+  <h2>Ce que le site doit accomplir</h2>
+  <div class="section-divider"></div>
+  <p class="section-intro">Objectifs classés par priorité décroissante pour guider les choix éditoriaux et de design.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="objectif-item">
+        <div class="objectif-num">1</div>
+        <div class="objectif-text">
+          <strong>Génération de leads propriétaires</strong>
+          <span>Convertir les visiteurs en contacts qualifiés via formulaire ou prise de RDV.</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="objectif-item">
+        <div class="objectif-num">2</div>
+        <div class="objectif-text">
+          <strong>Réassurance & crédibilité</strong>
+          <span>Rassurer sur le sérieux, l'expertise et la proximité de Gaëlle dès les premières secondes.</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="objectif-item">
+        <div class="objectif-num">3</div>
+        <div class="objectif-text">
+          <strong>SEO local ciblé</strong>
+          <span>Apparaître sur les recherches "conciergerie Bassin d'Arcachon", "conciergerie Bordeaux" et "conciergerie Saint-Émilion".</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="objectif-item">
+        <div class="objectif-num">4</div>
+        <div class="objectif-text">
+          <strong>Prise de rendez-vous directe</strong>
+          <span>Proposer un accès rapide et visible au bouton contact / agenda en permanence.</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="objectif-item">
+        <div class="objectif-num">5</div>
+        <div class="objectif-text">
+          <strong>Notoriété & identité de marque</strong>
+          <span>Imposer Maison Louina comme la référence conciergerie haut de gamme en Aquitaine.</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="objectif-item">
+        <div class="objectif-num">6</div>
+        <div class="objectif-text">
+          <strong>Réservation directe voyageurs (futur)</strong>
+          <span>Préparer le site pour intégrer les biens et la réservation en ligne dès qu'ils seront disponibles.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-badge">04 — Arborescence du site</div>
+  <h2>Structure & stratégie SEO par page</h2>
+  <div class="section-divider"></div>
+  <p class="section-intro">Chaque page est pensée pour capter un segment de recherche précis tout en guidant le propriétaire vers la prise de contact.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td><span class="fw-badge">AIDA</span></td>
+          <td>Conciergerie location saisonnière Aquitaine</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos services</strong> (offre complète + complémentaires)</td>
+          <td><span class="fw-badge">PAS</span></td>
+          <td>Conciergerie Airbnb services propriétaires</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — Gaëlle & Maison Louina</strong></td>
+          <td><span class="fw-badge">BAB</span></td>
+          <td>Conciergerie humaine et de confiance Aquitaine</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos logements</strong> (à activer à terme)</td>
+          <td><span class="fw-badge">AIDA</span></td>
+          <td>Location vacances Bassin d'Arcachon sélection</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale SEO — Bassin d'Arcachon</strong></td>
+          <td><span class="fw-badge">PAS</span></td>
+          <td>Conciergerie location saisonnière Bassin d'Arcachon</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale SEO — Bordeaux & Saint-Émilion</strong></td>
+          <td><span class="fw-badge">PAS</span></td>
+          <td>Conciergerie location courte durée Bordeaux Saint-Émilion</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td><span class="fw-badge">AIDA</span></td>
+          <td>Conseils location saisonnière propriétaires</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact & Prise de RDV</strong></td>
+          <td><span class="fw-badge">BAB</span></td>
+          <td>Confier son bien conciergerie Aquitaine</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-badge">05 — Cocon sémantique</div>
+  <h2>Clusters thématiques & maillage interne</h2>
+  <div class="section-divider"></div>
+
+  <div class="grid-2" style="margin-bottom: 44px;">
+    <div class="cluster-block">
+      <div class="cluster-theme">Cluster 1</div>
+      <div class="cluster-title">Conciergerie & services aux propriétaires</div>
+      <p style="font-size: 13px; color: #666; margin-bottom: 14px;">Le cluster central, autour de la délégation, de la gestion sereine et de la valorisation du bien.</p>
+      <div class="cluster-kw">
+        <span class="tag">conciergerie Airbnb</span>
+        <span class="tag">gestion locative saisonnière</span>
+        <span class="tag">accueil voyageurs</span>
+        <span class="tag">check-in check-out</span>
+        <span class="tag">optimisation annonce</span>
+        <span class="tag">conciergerie haut de gamme</span>
+      </div>
+    </div>
+    <div class="cluster-block">
+      <div class="cluster-theme">Cluster 2</div>
+      <div class="cluster-title">Territoire & destinations aquitaines</div>
+      <p style="font-size: 13px; color: #666; margin-bottom: 14px;">Ancrage géographique fort pour le SEO local et la crédibilité terrain de Maison Louina.</p>
+      <div class="cluster-kw">
+        <span class="tag">Bassin d'Arcachon location</span>
+        <span class="tag">Bordeaux location courte durée</span>
+        <span class="tag">Saint-Émilion conciergerie</span>
+        <span class="tag">Aquitaine location vacances</span>
+        <span class="tag">Entre-Deux-Mers séjour</span>
+      </div>
+    </div>
+    <div class="cluster-block" style="grid-column: 1 / -1;">
+      <div class="cluster-theme">Cluster 3</div>
+      <div class="cluster-title">Conseils & bonnes pratiques propriétaires</div>
+      <p style="font-size: 13px; color: #666; margin-bottom: 14px;">Contenu de blog à forte valeur ajoutée pour attirer, éduquer et convertir les propriétaires en phase de réflexion.</p>
+      <div class="cluster-kw">
+        <span class="tag">rentabiliser location saisonnière</span>
+        <span class="tag">décoration bien locatif</span>
+        <span class="tag">avis voyageurs Airbnb</span>
+        <span class="tag">optimiser taux d'occupation</span>
+        <span class="tag">choisir sa conciergerie</span>
+        <span class="tag">fiscalité location meublée</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="margin-bottom: 18px;">Logique de maillage interne</div>
+    <div class="maillage-item">
+      <span class="maillage-page">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-page">Nos services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-page">Contact</span>
+      <span style="font-size: 13px; color: #888; margin-left: 6px;">(funnel propriétaire principal)</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-page">Pages locales SEO</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-page">Nos services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-page">Contact</span>
+      <span style="font-size: 13px; color: #888; margin-left: 6px;">(capter les recherches géolocalisées)</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-page">Articles blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-page">Nos services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-page">À propos</span>
+      <span style="font-size: 13px; color: #888; margin-left: 6px;">(nurturing + réassurance)</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-page">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-page">Contact</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-page">Nos logements</span>
+      <span style="font-size: 13px; color: #888; margin-left: 6px;">(vers réservation directe, futur)</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-badge">06 — Tunnel de conversion</div>
+  <h2>Du visiteur au propriétaire partenaire</h2>
+  <div class="section-divider"></div>
+
+  <div class="grid-2">
+    <div class="tunnel-step step-decouverte">
+      <div class="tunnel-step-num">Étape 01</div>
+      <div class="tunnel-step-title">🔍 Découverte</div>
+      <div class="tunnel-row">
+        <div class="tunnel-row-item"><strong>Source :</strong> Google SEO local, bouche à oreille, réseaux sociaux (Instagram)</div>
+        <div class="tunnel-row-item"><strong>Page :</strong> Accueil, Pages locales SEO</div>
+        <div class="tunnel-row-item"><strong>Objectif :</strong> Capter l'attention, donner envie de rester</div>
+      </div>
+      <div><span class="cta-pill">↓ Découvrir nos services</span></div>
+    </div>
+
+    <div class="tunnel-step step-interet">
+      <div class="tunnel-step-num">Étape 02</div>
+      <div class="tunnel-step-title">💡 Intérêt</div>
+      <div class="tunnel-row">
+        <div class="tunnel-row-item"><strong>Source :</strong> Navigation sur le site, lecture du blog</div>
+        <div class="tunnel-row-item"><strong>Page :</strong> Nos services, Articles blog</div>
+        <div class="tunnel-row-item"><strong>Objectif :</strong> Faire comprendre la valeur ajoutée de Maison Louina</div>
+      </div>
+      <div><span class="cta-pill">↓ Télécharger le guide offert</span></div>
+    </div>
+
+    <div class="tunnel-step step-confiance">
+      <div class="tunnel-step-num">Étape 03</div>
+      <div class="tunnel-step-title">🤝 Confiance</div>
+      <div class="tunnel-row">
+        <div class="tunnel-row-item"><strong>Source :</strong> Page À propos, avis clients, preuve sociale</div>
+        <div class="tunnel-row-item"><strong>Page :</strong> À propos, témoignages intégrés</div>
+        <div class="tunnel-row-item"><strong>Objectif :</strong> Lever les freins, humaniser la marque</div>
+      </div>
+      <div><span class="cta-pill">↓ Lire les témoignages</span></div>
+    </div>
+
+    <div class="tunnel-step step-conversion">
+      <div class="tunnel-step-num">Étape 04</div>
+      <div class="tunnel-step-title">🎯 Conversion</div>
+      <div class="tunnel-row">
+        <div class="tunnel-row-item"><strong>Source :</strong> Bouton contact flottant, fin de chaque page</div>
+        <div class="tunnel-row-item"><strong>Page :</strong> Contact & prise de RDV</div>
+        <div class="tunnel-row-item"><strong>Objectif :</strong> Déclencher une prise de contact ou RDV téléphonique</div>
+      </div>
+      <div><span class="cta-pill">→ Prendre rendez-vous</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-badge">07 — Leviers marketing recommandés</div>
+  <h2>Outils pour attirer & convertir</h2>
+  <div class="section-divider"></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="levier-icon">📘</div>
+      <div class="card-title">Lead magnet</div>
+      <p>Guide PDF gratuit : <em>« 7 étapes pour préparer votre logement à la location saisonnière dans le Bassin d'Arcachon »</em>. À télécharger en échange d'un email — positionne Gaëlle comme experte dès le premier contact.</p>
+    </div>
+    <div class="card">
+      <div class="levier-icon">📅</div>
+      <div class="card-title">Prise de rendez-vous</div>
+      <p>Outil recommandé : <strong>Calendly</strong> (gratuit, simple à intégrer). Propose un appel découverte de 20 min. Le bouton "Prendre RDV" doit être visible en permanence (header fixe + fin de chaque page).</p>
+    </div>
+    <div class="card">
+      <div class="levier-icon">⭐</div>
+      <div class="card-title">Preuve sociale</div>
+      <p>Dès les premiers clients : témoignages propriétaires en format citation avec photo (ou initiales). À terme : avis Google intégrés et photos de logements gérés. Mettre en avant sur l'accueil et la page services.</p>
+    </div>
+    <div class="card">
+      <div class="levier-icon">📋</div>
+      <div class="card-title">Formulaire qualifiant</div>
+      <p>Champs recommandés : Prénom / Email / Téléphone / Type de bien / Ville / Actuellement en location (oui/non) / Message libre. Un formulaire court mais ciblé pour identifier les leads sérieux rapidement.</p>
+    </div>
+    <div class="card" style="grid-column: 1 / -1;">
+      <div class="levier-icon">✉️</div>
+      <div class="card-title">Newsletter — Angle éditorial</div>
+      <p>Fréquence mensuelle. Angle : <em>« La lettre du propriétaire serein »</em> — conseils pratiques sur la location saisonnière, actualités du marché aquitain, coup de cœur d'un logement, retour d'expérience. Ton chaleureux et personnel, comme un message de Gaëlle elle-même.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-badge">08 — Direction visuelle & éditoriale</div>
+  <h2>L'identité visuelle de Maison Louina</h2>
+  <div class="section-divider"></div>
+  <p class="section-intro">Une palette douce, naturelle et distinguée — inspirée du territoire aquitain et des intérieurs chaleureux. Des rondeurs, de la lumière, du caractère.</p>
+
+  <div class="palette-grid">
+    <div class="palette-item">
+      <div class="color-swatch" style="background: #4a6741;"></div>
+      <div class="palette-name">Vert Louina</div>
+      <div class="palette-hex">#4A6741</div>
+    </div>
+    <div class="palette-item">
+      <div class="color-swatch" style="background: #f5ede0;"></div>
+      <div class="palette-name">Beige Lin</div>
+      <div class="palette-hex">#F5EDE0</div>
+    </div>
+    <div class="palette-item">
+      <div class="color-swatch" style="background: #c2a882;"></div>
+      <div class="palette-name">Sable Doré</div>
+      <div class="palette-hex">#C2A882</div>
+    </div>
+    <div class="palette-item">
+      <div class="color-swatch" style="background: #8b6347;"></div>
+      <div class="palette-name">Marron Doux</div>
+      <div class="palette-hex">#8B6347</div>
+    </div>
+    <div class="palette-item">
+      <div class="color-swatch" style="background: #faf8f4;"></div>
+      <div class="palette-name">Blanc Ivoire</div>
+      <div class="palette-hex">#FAF8F4</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Univers visuel recommandé</div>
+      <ul>
+        <li>Photos à coins arrondis (border-radius 20–30px) — douceur et chaleur visuelle</li>
+        <li>Typographies mix serif / sans-serif (ex : Cormorant Garamond + DM Sans)</li>
+        <li>Textures légères : lin, bois clair, lumière naturelle dorée</li>
+        <li>Icônes fines et épurées, jamais de clipart ou de visuels trop "tech"</li>
+        <li>Espaces blancs généreux : respiration, élégance, lisibilité</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Style d'effets & interactions</div>
+      <ul>
+        <li>Animations légères au scroll (fade-in doux) — jamais agressif</li>
+        <li>Survol de boutons : changement de teinte subtil + légère ombre</li>
+        <li>Bouton contact fixe en header : toujours visible, couleur Vert Louina</li>
+        <li>Photos de logements avec zoom doux au survol</li>
+        <li>Carrousel discret pour les futurs logements</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-badge">09 — Articles blog recommandés</div>
+  <h2>Contenu SEO & autorité thématique</h2>
+  <div class="section-divider"></div>
+  <p class="section-intro">7 sujets d'articles pour capter les propriétaires en phase de recherche et positionner Maison Louina comme référence éditoriale en Aquitaine.</p>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <div class="blog-title">Pourquoi confier sa location saisonnière à une conciergerie dans le Bassin d'Arcachon ?</div>
+        <span class="prio-badge prio-prioritaire">Prioritaire</span>
+      </div>
+      <div class="blog-meta">
+        <span>📂 Conciergerie & services</span>
+        <span>🎯 Informationnelle / commerciale</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <div class="blog-title">5 erreurs fréquentes des propriétaires qui gèrent seuls leur Airbnb</div>
+        <span class="prio-badge prio-prioritaire">Prioritaire</span>
+      </div>
+      <div class="blog-meta">
+        <span>📂 Conseils propriétaires</span>
+        <span>🎯 Informationnelle</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <div class="blog-title">Comment optimiser son annonce Airbnb pour louer plus vite sur la côte aquitaine</div>
+        <span class="prio-badge prio-prioritaire">Prioritaire</span>
+      </div>
+      <div class="blog-meta">
+        <span>📂 Conseils propriétaires</span>
+        <span>🎯 Informationnelle / SEO local</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <div class="blog-title">Location saisonnière à Bordeaux et Saint-Émilion : les spécificités du marché local</div>
+        <span class="prio-badge prio-prioritaire">Prioritaire</span>
+      </div>
+      <div class="blog-meta">
+        <span>📂 Territoire aquitain</span>
+        <span>🎯 Informationnelle / SEO local</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <div class="blog-title">Décoration & mise en valeur : comment rendre son logement irrésistible pour les voyageurs</div>
+        <span class="prio-badge prio-moyen">Moyen</span>
+      </div>
+      <div class="blog-meta">
+        <span>📂 Conseils propriétaires</span>
+        <span>🎯 Informationnelle</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <div class="blog-title">Panier de bienvenue : l'attention qui fait toute la différence pour vos avis voyageurs</div>
+        <span class="prio-badge prio-moyen">Moyen</span>
+      </div>
+      <div class="blog-meta">
+        <span>📂 Expérience voyageurs</span>
+        <span>🎯 Informationnelle</span>
+      </div>
+    </div>
+
+    <div class="blog-card" style="grid-column: 1 / -1;">
+      <div class="blog-card-top">
+        <div class="blog-title">Fiscalité de la location meublée de tourisme en 2025 : ce que tout propriétaire doit savoir</div>
+        <span class="prio-badge prio-faible">Faible</span>
+      </div>
+      <div class="blog-meta">
+        <span>📂 Conseils propriétaires</span>
+        <span>🎯 Informationnelle / réglementaire</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Maison Louina</strong> · Blueprint Stratégique · Confidentiel</p>
+  <p style="margin-top: 6px; font-size: 12px;">Document produit par AR Digital · maisonlouina.fr · © 2025</p>
+</footer>
+
+</body>
+</html>
