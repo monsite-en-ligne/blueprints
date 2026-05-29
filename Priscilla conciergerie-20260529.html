@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Priscilla Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a1a;
+    background: #fafaf8;
+  }
+
+  /* COUVERTURE */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0d0d0d 0%, #1a1208 40%, #2c1f00 70%, #0d0d0d 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(196,160,64,0.12) 0%, transparent 70%);
+  }
+
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c4a040;
+    background: rgba(196,160,64,0.1);
+    border: 1px solid rgba(196,160,64,0.3);
+    padding: 8px 20px;
+    border-radius: 30px;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-title span {
+    color: #c4a040;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 1px;
+    margin-bottom: 64px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-item .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-item .value {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+  }
+
+  .cover-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(196,160,64,0.3);
+  }
+
+  .cover-line {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #c4a040, transparent);
+    margin: 48px auto 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+
+  section:nth-child(odd) {
+    background: #fafaf8;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c4a040;
+    background: rgba(196,160,64,0.08);
+    border: 1px solid rgba(196,160,64,0.2);
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #0d0d0d;
+    margin-bottom: 40px;
+    line-height: 1.25;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #0d0d0d 0%, #2c1f00 100%);
+    border-radius: 16px;
+    padding: 40px 48px;
+    margin-bottom: 48px;
+    border-left: 4px solid #c4a040;
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #ffffff;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* GRILLES */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* CARDS */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0d0d0d;
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  .card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c4a040;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  /* LISTES */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .styled-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 14px;
+    color: #444;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .styled-list li:last-child {
+    border-bottom: none;
+  }
+
+  .styled-list li::before {
+    content: '→';
+    color: #c4a040;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* TABLEAU */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 14px;
+  }
+
+  thead {
+    background: #0d0d0d;
+  }
+
+  thead th {
+    color: #fff;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 16px 20px;
+    text-align: left;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: background 0.2s;
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody tr:hover {
+    background: rgba(196,160,64,0.04);
+  }
+
+  tbody td {
+    padding: 16px 20px;
+    color: #444;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  tbody td:first-child {
+    font-weight: 600;
+    color: #0d0d0d;
+  }
+
+  /* BADGES SEO */
+  .badge-fort {
+    background: #1a3d2b;
+    color: #4ade80;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  .badge-moyen {
+    background: #2c2200;
+    color: #f59e0b;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  .badge-faible {
+    background: #1e1e2e;
+    color: #818cf8;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  /* PRIORITÉ ARTICLES */
+  .badge-prio {
+    background: #c4a040;
+    color: #0d0d0d;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  .badge-prio-moyen {
+    background: #e8e0d0;
+    color: #5a4a20;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  .badge-prio-faible {
+    background: #f0f0f0;
+    color: #888;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  /* TUNNEL */
+  .tunnel-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+    position: relative;
+  }
+
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 0;
+    padding: 32px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+    text-align: center;
+  }
+
+  .tunnel-step:first-child {
+    border-radius: 14px 0 0 14px;
+  }
+
+  .tunnel-step:last-child {
+    border-radius: 0 14px 14px 0;
+  }
+
+  .tunnel-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #c4a040;
+    z-index: 10;
+    background: #fff;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .tunnel-number {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c4a040;
+    margin-bottom: 10px;
+  }
+
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0d0d0d;
+    margin-bottom: 12px;
+  }
+
+  .tunnel-step p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .tunnel-cta {
+    display: inline-block;
+    background: rgba(196,160,64,0.1);
+    color: #a07820;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-top: 6px;
+  }
+
+  /* PALETTE COULEURS */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .palette-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #0d0d0d;
+    text-align: center;
+  }
+
+  .palette-hex {
+    font-size: 11px;
+    color: #aaa;
+    text-align: center;
+  }
+
+  /* MAILLAGE */
+  .maillage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 14px;
+    color: #444;
+  }
+
+  .maillage-row:last-child {
+    border-bottom: none;
+  }
+
+  .maillage-source {
+    font-weight: 600;
+    color: #0d0d0d;
+    background: rgba(196,160,64,0.08);
+    border: 1px solid rgba(196,160,64,0.2);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .maillage-arrow {
+    color: #c4a040;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .maillage-dest {
+    color: #555;
+    font-size: 13px;
+  }
+
+  /* TON EDITORIAL */
+  .ton-adjectifs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .ton-badge {
+    background: #0d0d0d;
+    color: #c4a040;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 30px;
+    letter-spacing: 0.5px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0d0d0d;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 32px 40px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  footer strong {
+    color: #c4a040;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 38px; }
+    .cover-meta { flex-direction: column; gap: 20px; }
+    .cover-divider { display: none; }
+    section { padding: 48px 24px; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .tunnel-steps { grid-template-columns: 1fr; }
+    .tunnel-step { border-radius: 14px !important; }
+    .tunnel-step:not(:last-child)::after { display: none; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 17px; }
+    .palette-grid { gap: 16px; }
+    .ton-adjectifs { gap: 8px; }
+    .maillage-row { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique · AR Digital</div>
+  <h1 class="cover-title">Priscilla<br><span>Conciergerie</span></h1>
+  <p class="cover-subtitle">Document stratégique confidentiel — Validation avant production</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="label">Cliente</span>
+      <span class="value">Priscilla Bouzy</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="label">Secteur</span>
+      <span class="value">Conciergerie Airbnb</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="label">Zone</span>
+      <span class="value">Beaucaire &amp; alentours</span>
+    </div>
+  </div>
+  <div class="cover-line"></div>
+</div>
+
+<!-- SECTION 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-inner">
+    <span class="section-badge">01 — Positionnement</span>
+    <h2 class="section-title">L'identité stratégique de votre marque</h2>
+
+    <div class="highlight-box">
+      <p>« Priscilla Conciergerie, votre alliée de confiance à Beaucaire : un service humain, soigné et complet pour valoriser votre bien et offrir à vos voyageurs une expérience mémorable. »</p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom: 40px;">
+      <div class="card">
+        <span class="card-label">Ligne directrice</span>
+        <p class="card-text">Accompagnement de proximité premium — Priscilla incarne une conciergerie à visage humain, réactive et experte de son territoire, qui prend en charge chaque logement de A à Z avec soin et professionnalisme.</p>
+      </div>
+      <div class="card">
+        <span class="card-label">Ton éditorial</span>
+        <div class="ton-adjectifs">
+          <span class="ton-badge">Chaleureux</span>
+          <span class="ton-badge">Rassurant</span>
+          <span class="ton-badge">Élégant</span>
+        </div>
+        <p class="card-text">Un ton qui inspire confiance dès les premiers mots — sincère, professionnel mais jamais froid. Le propriétaire se sent accompagné, pas démarcé.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#0d0d0d; margin-bottom:24px; font-weight:700;">Piliers de différenciation</h3>
+    <div class="grid-2">
+      <div class="card">
+        <span class="card-icon">🤝</span>
+        <p class="card-title">Service tout inclus · Pack A à Z</p>
+        <p class="card-text">Un seul interlocuteur pour tout gérer : check-in/out, ménage, linge, consommables, réservations. Zéro friction pour le propriétaire.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📍</span>
+        <p class="card-title">Ancrage local fort à Beaucaire</p>
+        <p class="card-text">Présence terrain réelle et réactivité immédiate. Priscilla connaît son territoire et ses voyageurs, ce qu'une grande plateforme nationale ne peut pas offrir.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">✨</span>
+        <p class="card-title">Relation humaine et personnalisée</p>
+        <p class="card-text">Un contact direct avec la dirigeante, pas un centre d'appel. Chaque bien est traité avec l'attention qu'il mérite — une approche artisanale du service.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📈</span>
+        <p class="card-title">Optimisation des revenus locatifs</p>
+        <p class="card-text">Tarification dynamique, synchronisation des calendriers et suivi des réservations pour maximiser le taux d'occupation du logement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-inner">
+    <span class="section-badge">02 — Client Cible</span>
+    <h2 class="section-title">Le propriétaire que vous allez convaincre</h2>
+
+    <div class="grid-2" style="margin-bottom: 24px;">
+      <div class="card">
+        <span class="card-label">Profil type</span>
+        <p class="card-text">Propriétaire d'un logement à Beaucaire ou dans les environs (Nîmes, Arles, Tarascon), 35–65 ans. Actif ou en début de retraite. Il loue sur Airbnb/Booking mais n'a pas le temps ou l'envie de tout gérer. Il cherche la tranquillité d'esprit avant tout.</p>
+      </div>
+      <div class="card">
+        <span class="card-label">Motivations principales</span>
+        <ul class="styled-list">
+          <li>Déléguer entièrement sans surveiller</li>
+          <li>Maximiser ses revenus locatifs</li>
+          <li>Offrir une expérience 5 étoiles à ses voyageurs</li>
+          <li>Éviter les mauvaises notes et litiges</li>
+          <li>Travailler avec quelqu'un de fiable et proche</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <span class="card-label">Freins &amp; objections</span>
+        <ul class="styled-list">
+          <li>24 % de commission perçue comme élevée</li>
+          <li>Crainte de perdre le contrôle sur son bien</li>
+          <li>Manque de notoriété d'une nouvelle structure</li>
+          <li>Préférence pour une grande marque connue</li>
+          <li>Peur d'un engagement long et rigide</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="card-label">Critères de décision</span>
+        <ul class="styled-list">
+          <li>Confiance dans l'interlocuteur et sa proximité</li>
+          <li>Transparence sur les services inclus</li>
+          <li>Témoignages et avis de propriétaires</li>
+          <li>Clarté de l'offre et facilité de contact</li>
+          <li>Rapidité de réponse et disponibilité</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-inner">
+    <span class="section-badge">03 — Objectifs du Site</span>
+    <h2 class="section-title">Ce que le site doit accomplir</h2>
+
+    <div class="grid-2">
+      <div class="card">
+        <span class="card-label">Priorité 1</span>
+        <p class="card-title">🎯 Génération de leads qualifiés</p>
+        <p class="card-text">Inciter tout propriétaire à prendre contact ou à demander un audit gratuit de son logement via un formulaire clair et engageant.</p>
+      </div>
+      <div class="card">
+        <span class="card-label">Priorité 2</span>
+        <p class="card-title">✅ Réassurance et crédibilité</p>
+        <p class="card-text">Prouver le sérieux et l'expertise de Priscilla dès la première visite : parcours, services détaillés, témoignages, FAQ.</p>
+      </div>
+      <div class="card">
+        <span class="card-label">Priorité 3</span>
+        <p class="card-title">📞 Prise de rendez-vous</p>
+        <p class="card-text">Proposer une prise de contact directe et fluide — formulaire + appel — pour raccourcir le cycle de décision du prospect.</p>
+      </div>
+      <div class="card">
+        <span class="card-label">Priorité 4</span>
+        <p class="card-title">🔍 SEO local Beaucaire</p>
+        <p class="card-text">Être trouvé en premier sur Google par les propriétaires de la zone Beaucaire / Gard / Bouches-du-Rhône qui cherchent une conciergerie Airbnb.</p>
+      </div>
+      <div class="card">
+        <span class="card-label">Priorité 5</span>
+        <p class="card-title">🌐 Notoriété locale</p>
+        <p class="card-text">Établir Priscilla Conciergerie comme la référence locale incontournable de la conciergerie courte durée dans le secteur de Beaucaire.</p>
+      </div>
+      <div class="card">
+        <span class="card-label">Priorité 6</span>
+        <p class="card-title">📬 Nurturing &amp; conversion différée</p>
+        <p class="card-text">Garder le lien avec les prospects hésitants via blog et newsletter, et les convaincre sur la durée par du contenu utile.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-inner">
+    <span class="section-badge">04 — Arborescence du Site</span>
+    <h2 class="section-title">Structure et stratégie SEO des pages</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>Framework</th>
+            <th>Mot-clé principal</th>
+            <th>Potentiel SEO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Accueil</td>
+            <td>AIDA</td>
+            <td>conciergerie Airbnb Beaucaire</td>
+            <td><span class="badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td>Notre Offre (services inclus, pack A à Z, tarif)</td>
+            <td>PAS</td>
+            <td>conciergerie location courte durée Beaucaire</td>
+            <td><span class="badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td>À propos de Priscilla</td>
+            <td>BAB</td>
+            <td>conciergerie Priscilla Beaucaire</td>
+            <td><span class="badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td>Témoignages &amp; Réassurance</td>
+            <td>AIDA</td>
+            <td>avis conciergerie location courte durée</td>
+            <td><span class="badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td>Blog</td>
+            <td>—</td>
+            <td>conseils location saisonnière propriétaire</td>
+            <td><span class="badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td>Page locale — Nîmes</td>
+            <td>PAS</td>
+            <td>conciergerie Airbnb Nîmes</td>
+            <td><span class="badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td>Page locale — Arles / Tarascon</td>
+            <td>PAS</td>
+            <td>conciergerie Airbnb Arles Tarascon</td>
+            <td><span class="badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td>Contact &amp; Prise de RDV</td>
+            <td>AIDA</td>
+            <td>contacter conciergerie Beaucaire</td>
+            <td><span class="badge-faible">Faible</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-inner">
+    <span class="section-badge">05 — Cocon Sémantique</span>
+    <h2 class="section-title">Clusters thématiques &amp; maillage interne</h2>
+
+    <div class="grid-2" style="margin-bottom: 40px;">
+      <div class="card">
+        <span class="card-icon">🏠</span>
+        <p class="card-title">Cluster 1 — Conciergerie &amp; Services</p>
+        <p class="card-text">Regroupe : Accueil, Notre Offre, À propos, Contact. Ce cluster cible les propriétaires en phase de décision. Il porte les mots-clés commerciaux les plus directs.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📖</span>
+        <p class="card-title">Cluster 2 — Conseils Location Saisonnière</p>
+        <p class="card-text">Regroupe : Blog + articles thématiques. Ce cluster attire les propriétaires en phase de découverte via Google et nourrit la crédibilité de Priscilla en tant qu'experte.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif; font-size:18px; color:#0d0d0d; margin-bottom:20px; font-weight:700;">Logique de maillage interne</h3>
+    <div class="card">
+      <div class="maillage-row">
+        <span class="maillage-source">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Notre Offre · À propos · Contact · Pages locales</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Notre Offre</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Témoignages · Contact · Blog (articles liés aux services)</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Articles Blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Notre Offre · Contact · Pages locales concernées</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Pages locales</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Notre Offre · Contact · Témoignages</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Témoignages</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Notre Offre · Contact</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-inner">
+    <span class="section-badge">06 — Tunnel de Conversion</span>
+    <h2 class="section-title">Du premier clic à la signature du mandat</h2>
+
+    <div class="tunnel-steps">
+      <div class="tunnel-step">
+        <div class="tunnel-number">Étape 1</div>
+        <div class="tunnel-step-title">Découverte</div>
+        <p><strong>Source :</strong> Google local, bouche-à-oreille, réseaux sociaux</p>
+        <p><strong>Page :</strong> Accueil ou Page locale SEO</p>
+        <span class="tunnel-cta">→ Découvrir l'offre</span>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-number">Étape 2</div>
+        <div class="tunnel-step-title">Intérêt</div>
+        <p><strong>Source :</strong> Navigation interne, blog, offre</p>
+        <p><strong>Page :</strong> Notre Offre · À propos</p>
+        <span class="tunnel-cta">→ Télécharger le guide</span>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-number">Étape 3</div>
+        <div class="tunnel-step-title">Confiance</div>
+        <p><strong>Source :</strong> Témoignages, FAQ, À propos</p>
+        <p><strong>Page :</strong> Témoignages · À propos</p>
+        <span class="tunnel-cta">→ Voir les avis</span>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-number">Étape 4</div>
+        <div class="tunnel-step-title">Conversion</div>
+        <p><strong>Source :</strong> Formulaire, appel direct</p>
+        <p><strong>Page :</strong> Contact · Offre</p>
+        <span class="tunnel-cta">→ Demander un audit gratuit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-inner">
+    <span class="section-badge">07 — Leviers Marketing Recommandés</span>
+    <h2 class="section-title">Les outils pour attirer, convaincre et convertir</h2>
+
+    <div class="grid-2">
+      <div class="card">
+        <span class="card-icon">🎁</span>
+        <p class="card-title">Lead Magnet</p>
+        <p class="card-text">Guide PDF offert : <em>« 7 erreurs à éviter en louant votre logement sur Airbnb »</em> — Téléchargeable en échange d'un email. Idéal pour capter des propriétaires en phase de réflexion.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📅</span>
+        <p class="card-title">Prise de Rendez-vous</p>
+        <p class="card-text">Outil recommandé : <strong>Calendly</strong> (gratuit, intégrable facilement). Proposer un appel découverte de 20 minutes pour qualifier le prospect et présenter l'offre.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">⭐</span>
+        <p class="card-title">Preuve Sociale</p>
+        <p class="card-text">Collecter des témoignages écrits de propriétaires + captures d'avis voyageurs Airbnb. À terme : courte vidéo de témoignage. Afficher sur la page Offre et Témoignages.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📋</span>
+        <p class="card-title">Formulaire Qualifiant</p>
+        <p class="card-text">Champs recommandés : Prénom · Email · Téléphone · Ville du bien · Type de logement (studio, maison…) · Nombre de nuits/mois actuellement loués · Message libre.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">✉️</span>
+        <p class="card-title">Newsletter</p>
+        <p class="card-text">Angle éditorial : <em>« Le carnet du propriétaire serein »</em> — 1 email mensuel avec conseils pratiques, retours terrain, actualités location saisonnière dans le Gard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-inner">
+    <span class="section-badge">08 — Direction Visuelle &amp; Éditoriale</span>
+    <h2 class="section-title">L'univers graphique de Priscilla Conciergerie</h2>
+
+    <div class="card" style="margin-bottom: 40px;">
+      <span class="card-label">Palette de couleurs — Noir, Doré, Blanc</span>
+      <p class="card-text" style="margin-bottom: 28px;">Conformément à vos couleurs (noir, doré, blanc) et à l'univers de votre logo, la palette intègre un noir profond pour l'autorité, un or chaleureux pour l'élégance et le service premium, le blanc pour la clarté et la fluidité.</p>
+      <div class="palette-grid">
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#0d0d0d;"></div>
+          <div class="palette-name">Noir Profond</div>
+          <div class="palette-hex">#0D0D0D</div>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#c4a040;"></div>
+          <div class="palette-name">Or Chaleureux</div>
+          <div class="palette-hex">#C4A040</div>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#f5f0e8; border: 1px solid #e0d8c8;"></div>
+          <div class="palette-name">Blanc Cassé</div>
+          <div class="palette-hex">#F5F0E8</div>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#e8d89a;"></div>
+          <div class="palette-name">Or Doux</div>
+          <div class="palette-hex">#E8D89A</div>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#2c2c2c;"></div>
+          <div class="palette-name">Anthracite</div>
+          <div class="palette-hex">#2C2C2C</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#0d0d0d; margin-bottom:24px; font-weight:700;">Univers visuel recommandé</h3>
+    <div class="grid-2">
+      <div class="card">
+        <span class="card-icon">📸</span>
+        <p class="card-title">Photographie d'intérieurs lumineux</p>
+        <p class="card-text">Logements bien préparés, lits faits avec soin, pièces rangées et accueillantes. Photos chaudes, proches de l'univers boutique-hotel.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">✍️</span>
+        <p class="card-title">Typographie Playfair Display + Inter</p>
+        <p class="card-text">Titres sérif élégants (Playfair Display) associés à un corps sans-serif lisible (Inter). Alliance de tradition et de modernité.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🖤</span>
+        <p class="card-title">Contraste fort noir / or / blanc</p>
+        <p class="card-text">Design épuré, grands espaces blancs, accents dorés pour les CTA et éléments mis en valeur. Pas de surcharge visuelle.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🔲</span>
+        <p class="card-title">Icônes linéaires raffinées</p>
+        <p class="card-text">Icônes fines en trait, couleur or ou anthracite. Style Phosphor Icons ou Feather Icons. Cohérent avec l'image premium recherchée.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-inner">
+    <span class="section-badge">09 — Articles Blog Recommandés</span>
+    <h2 class="section-title">Votre stratégie de contenu SEO</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Titre de l'article</th>
+            <th>Cluster</th>
+            <th>Intention de recherche</th>
+            <th>Priorité</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pourquoi confier votre Airbnb à une conciergerie à Beaucaire ?</td>
+            <td>Conciergerie &amp; Services</td>
+            <td>Informationnelle — propriétaire hésitant</td>
+            <td><span class="badge-prio">Prioritaire</span></td>
+          </tr>
+          <tr>
+            <td>Combien coûte une conciergerie Airbnb ? (et ce que ça vous rapporte vraiment)</td>
+            <td>Conciergerie &amp; Services</td>
+            <td>Commerciale — objection sur le prix</td>
+            <td><span class="badge-prio">Prioritaire</span></td>
+          </tr>
+          <tr>
+            <td>Check-in, ménage, linge : ce que les voyageurs attendent vraiment en 2025</td>
+            <td>Conseils Location Saisonnière</td>
+            <td>Informationnelle — améliorer son bien</td>
+            <td><span class="badge-prio">Prioritaire</span></td>
+          </tr>
+          <tr>
+            <td>Location saisonnière à Beaucaire : opportunités et conseils pour les propriétaires</td>
+            <td>Conciergerie &amp; Services</td>
+            <td>Locale — propriétaires du secteur</td>
+            <td><span class="badge-prio-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td>Comment optimiser son tarif Airbnb selon les saisons dans le Gard ?</td>
+            <td>Conseils Location Saisonnière</td>
+            <td>Informationnelle — revenus locatifs</td>
+            <td><span class="badge-prio-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td>5 choses à vérifier avant de mettre votre logement en location courte durée</td>
+            <td>Conseils Location Saisonnière</td>
+            <td>Informationnelle — nouveaux propriétaires</td>
+            <td><span class="badge-prio-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td>Conciergerie vs gestion en solo : quel choix pour un propriétaire occupé ?</td>
+            <td>Conciergerie &amp; Services</td>
+            <td>Comparaison — décision d'achat</td>
+            <td><span class="badge-prio-faible">Faible</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Priscilla Conciergerie</strong> · Blueprint Stratégique · Produit par AR Digital</p>
+  <p style="margin-top:8px;">Document confidentiel — Usage exclusif client · www.priscilla-conciergerie.com</p>
+</footer>
+
+</body>
+</html>
