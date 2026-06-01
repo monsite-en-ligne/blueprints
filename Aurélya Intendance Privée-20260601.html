@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Aurélya Intendance Privée</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2c2c2c;
+    background: #faf9f7;
+  }
+
+  /* ── COUVERTURE ── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1a1410 0%, #2e1f0e 40%, #4a3220 70%, #1a1410 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(184,148,90,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #b8945a;
+    margin-bottom: 32px;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 56px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-item .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #b8945a;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-item .value {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 400;
+  }
+
+  .cover-line {
+    width: 60px;
+    height: 1px;
+    background: rgba(184,148,90,0.4);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 80px 80px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+
+  section:nth-child(odd) {
+    background: #faf9f7;
+  }
+
+  .section-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #b8945a;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #1a1410;
+    margin-bottom: 8px;
+    line-height: 1.25;
+  }
+
+  .section-desc {
+    font-size: 15px;
+    color: #7a7268;
+    margin-bottom: 48px;
+    max-width: 560px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1a1410;
+    margin-bottom: 8px;
+  }
+
+  .card p, .card li {
+    font-size: 14px;
+    color: #4a4540;
+    line-height: 1.75;
+  }
+
+  .card ul {
+    padding-left: 18px;
+  }
+
+  /* ── GRILLES ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, #2e1f0e 0%, #4a3220 100%);
+    border-radius: 16px;
+    padding: 40px 48px;
+    color: #fff;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-box::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(184,148,90,0.12);
+  }
+
+  .highlight-box .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #b8945a;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #fff;
+    position: relative;
+  }
+
+  .highlight-box .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.65);
+    margin-top: 10px;
+    position: relative;
+  }
+
+  /* ── TAGS ── */
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 20px;
+    background: #f3ede4;
+    color: #4a3220;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── TABLEAU ── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 14px;
+  }
+
+  thead tr {
+    background: #2e1f0e;
+  }
+
+  thead th {
+    padding: 14px 18px;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #b8945a;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #f0ebe3;
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody td {
+    padding: 14px 18px;
+    color: #2c2c2c;
+    vertical-align: middle;
+  }
+
+  tbody tr:hover {
+    background: #faf9f7;
+  }
+
+  /* ── BADGES SEO ── */
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+
+  .badge-fort { background: #e8f4ec; color: #2d7a4f; }
+  .badge-moyen { background: #fff4e0; color: #a06c00; }
+  .badge-faible { background: #f0ecff; color: #5b3fa8; }
+  .badge-prioritaire { background: #fde8e8; color: #b22a2a; }
+
+  /* ── TUNNEL ── */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .tunnel-step {
+    background: #fff;
+    padding: 28px 24px;
+    border-right: 1px solid #f0ebe3;
+    position: relative;
+  }
+
+  .tunnel-step:last-child {
+    border-right: none;
+  }
+
+  .tunnel-step-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #b8945a;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .tunnel-step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1410;
+    margin-bottom: 14px;
+  }
+
+  .tunnel-step .tunnel-item {
+    font-size: 13px;
+    color: #4a4540;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+
+  .tunnel-step .tunnel-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #b8945a;
+    margin-top: 10px;
+    margin-bottom: 2px;
+    display: block;
+  }
+
+  .tunnel-cta {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: #f3ede4;
+    color: #4a3220;
+    margin-top: 10px;
+  }
+
+  /* ── COULEURS ── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .color-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .color-box {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .color-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2c2c2c;
+    text-align: center;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: #9e9690;
+    text-align: center;
+  }
+
+  /* ── MAILLAGE ── */
+  .link-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #4a4540;
+    margin-bottom: 6px;
+  }
+
+  .link-row .from {
+    font-weight: 600;
+    color: #2e1f0e;
+  }
+
+  .link-row .arrow {
+    color: #b8945a;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .link-row .to {
+    color: #5b4030;
+  }
+
+  /* ── PRIORITÉ ARTICLES ── */
+  .badge-prio-prioritaire { background: #fde8e8; color: #b22a2a; }
+  .badge-prio-moyen { background: #fff4e0; color: #a06c00; }
+  .badge-prio-faible { background: #f0ecff; color: #5b3fa8; }
+
+  /* ── OBJECTIFS ── */
+  .obj-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .obj-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px 22px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .obj-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #e8d9c0;
+    line-height: 1;
+    min-width: 36px;
+  }
+
+  .obj-content h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1410;
+    margin-bottom: 3px;
+  }
+
+  .obj-content p {
+    font-size: 13px;
+    color: #7a7268;
+    line-height: 1.5;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #1a1410;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    padding: 32px 40px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  footer strong {
+    color: #b8945a;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 36px; }
+    .cover-meta { gap: 24px; }
+    section { padding: 48px 24px; }
+    h2.section-title { font-size: 26px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .tunnel-grid { grid-template-columns: 1fr; }
+    .tunnel-step { border-right: none; border-bottom: 1px solid #f0ebe3; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 18px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════ COUVERTURE ══════════════════════════════════ -->
+<div class="cover">
+  <span class="cover-label">Blueprint Stratégique</span>
+  <h1 class="cover-title">Aurélya<br>Intendance Privée</h1>
+  <p class="cover-subtitle">Document de stratégie web confidentiel</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="label">Cliente</span>
+      <span class="value">Fanny Janet</span>
+    </div>
+    <div class="cover-line"></div>
+    <div class="cover-meta-item">
+      <span class="label">Secteur</span>
+      <span class="value">Conciergerie location courte durée</span>
+    </div>
+    <div class="cover-line"></div>
+    <div class="cover-meta-item">
+      <span class="label">Territoire</span>
+      <span class="value">Pays d'Aix-en-Provence</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════ 01 — POSITIONNEMENT ══════════════════════════════════ -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Positionnement stratégique</h2>
+  <p class="section-desc">L'identité forte qui distingue Aurélya dans le paysage concurrentiel du Pays d'Aix.</p>
+
+  <div class="highlight-box">
+    <span class="label">Promesse de valeur principale</span>
+    <p>Déléguez votre bien en toute sérénité : une intendance privée, humaine et attentive, au cœur de la Provence.</p>
+    <p class="sub">Une conciergerie à taille humaine qui traite chaque propriété comme si elle était la sienne.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <h3>Ligne directrice de communication</h3>
+      <p>Accompagnement de confiance, proximité de terrain, excellence discrète. Chaque prise de parole incarne la sérénité et le soin du détail, sans sur-promesse marketing.</p>
+    </div>
+    <div class="card">
+      <h3>Ton éditorial</h3>
+      <p><strong>Chaleureux · Rassurant · Élégant</strong></p>
+      <p style="margin-top:8px;">Un ton qui reflète la relation humaine au cœur du service : bienveillant sans être familier, professionnel sans être froid, ancré dans la Provence sans être folklorique.</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>✦ Intendance à taille humaine</h3>
+      <p>Un seul interlocuteur dédié, une attention personnalisée à chaque bien. Pas une franchise, pas une plateforme : une personne qui connaît votre propriété.</p>
+    </div>
+    <div class="card">
+      <h3>✦ Discrétion & confiance absolue</h3>
+      <p>Accès aux clés, coordination des intervenants, gestion des imprévus — tout est traité avec le même sérieux qu'un régisseur de domaine privé.</p>
+    </div>
+    <div class="card">
+      <h3>✦ Ancrage fort en Pays d'Aix</h3>
+      <p>Connaissance intime du territoire, réseau local d'artisans et de prestataires, réactivité de terrain que les grandes plateformes ne peuvent offrir.</p>
+    </div>
+    <div class="card">
+      <h3>✦ Expérience voyageur soignée</h3>
+      <p>L'accueil chaleureux et les attentions au détail fidélisent les voyageurs et améliorent les notes, ce qui valorise directement le bien du propriétaire.</p>
+    </div>
+    <div class="card">
+      <h3>✦ Tranquillité d'esprit durable</h3>
+      <p>Au-delà de la prestation ponctuelle : un suivi continu, une communication transparente et une vraie relation de partenariat sur le long terme.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ 02 — CLIENT CIBLE ══════════════════════════════════ -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client Cible</span>
+  <h2 class="section-title">Portrait du propriétaire idéal</h2>
+  <p class="section-desc">Le profil des propriétaires qu'Aurélya cherche à convaincre et accompagner.</p>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <h3>Profil type</h3>
+      <p>Propriétaire de 40 à 65 ans, résidant à Aix-en-Provence ou en région parisienne, possédant une maison de charme, bastide ou mas provençal en location saisonnière. Actif, peu disponible ou éloigné géographiquement, attaché à la qualité et à la préservation de son patrimoine.</p>
+    </div>
+    <div class="card">
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Déléguer sans stress l'intégralité de l'opérationnel</li>
+        <li>Préserver la valeur et l'image de son bien</li>
+        <li>Offrir une expérience mémorable à ses voyageurs</li>
+        <li>Avoir un interlocuteur unique de confiance</li>
+        <li>Maintenir un taux d'occupation élevé sans s'impliquer</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Freins & objections</h3>
+      <ul>
+        <li>« Je ne veux pas perdre le contrôle de mon bien »</li>
+        <li>« Je ne sais pas si je peux faire confiance »</li>
+        <li>« J'ai peur des mauvaises surprises ou des dégâts »</li>
+        <li>« Les tarifs de conciergerie me semblent flous »</li>
+        <li>« J'ai déjà été déçu par un prestataire peu réactif »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Professionnalisme visible et crédibilité perçue</li>
+        <li>Transparence sur les prestations et la tarification</li>
+        <li>Réactivité et disponibilité de l'interlocutrice</li>
+        <li>Témoignages et avis de propriétaires satisfaits</li>
+        <li>Connaissance réelle du territoire et du marché local</li>
+        <li>Relation humaine et feeling dès le premier contact</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ 03 — OBJECTIFS ══════════════════════════════════ -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du Site</span>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+  <p class="section-desc">Liste priorisée des objectifs stratégiques du site web d'Aurélya Intendance Privée.</p>
+
+  <div class="obj-list">
+    <div class="obj-item">
+      <span class="obj-rank">01</span>
+      <div class="obj-content">
+        <h4>Génération de leads qualifiés</h4>
+        <p>Attirer des propriétaires de biens de qualité en Pays d'Aix et les inciter à prendre contact via un formulaire ou une prise de RDV directe.</p>
+      </div>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">02</span>
+      <div class="obj-content">
+        <h4>Réassurance & création de confiance</h4>
+        <p>Convaincre un visiteur sceptique qu'Aurélya est le partenaire fiable, humain et compétent à qui confier son bien en toute sérénité.</p>
+      </div>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">03</span>
+      <div class="obj-content">
+        <h4>SEO local — Pays d'Aix-en-Provence</h4>
+        <p>Apparaître sur les requêtes locales des propriétaires cherchant une conciergerie ou une intendance de biens sur le secteur du Pays d'Aix.</p>
+      </div>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">04</span>
+      <div class="obj-content">
+        <h4>Prise de rendez-vous</h4>
+        <p>Faciliter le passage à l'action avec un outil de prise de RDV intégré pour un premier entretien découverte sans friction.</p>
+      </div>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">05</span>
+      <div class="obj-content">
+        <h4>Notoriété & positionnement premium</h4>
+        <p>Asseoir l'image de marque d'Aurélya comme référence de l'intendance privée haut de gamme en Provence, différenciée des conciergeries généralistes.</p>
+      </div>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">06</span>
+      <div class="obj-content">
+        <h4>Nurturing des prospects tièdes</h4>
+        <p>Garder le contact avec les visiteurs non encore prêts à décider, via un lead magnet et/ou une newsletter à valeur ajoutée.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ 04 — ARBORESCENCE ══════════════════════════════════ -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence du Site</span>
+  <h2 class="section-title">Structure des pages</h2>
+  <p class="section-desc">Architecture pensée pour maximiser la conversion, le SEO local et la clarté du parcours utilisateur.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location saisonnière Pays d'Aix</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Prestations</strong></td>
+          <td>BAB</td>
+          <td>intendance privée propriétaire Provence</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À Propos — Fanny & Aurélya</strong></td>
+          <td>PAS</td>
+          <td>conciergerie à taille humaine Aix-en-Provence</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nous Rejoindre (Contact & RDV)</strong></td>
+          <td>AIDA</td>
+          <td>confier son bien conciergerie Pays d'Aix</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Aix-en-Provence</strong></td>
+          <td>PAS</td>
+          <td>conciergerie Aix-en-Provence location courte durée</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Campagne du Pays d'Aix</strong></td>
+          <td>PAS</td>
+          <td>conciergerie mas bastide Pays d'Aix</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils propriétaire location saisonnière Provence</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:#9e9690;margin-top:16px;">Les services détaillés (préparation du logement, accueil voyageurs, coordination intervenants, conciergerie voyageurs, suivi propriétaire…) sont développés à l'intérieur de la page <em>Nos Prestations</em>, sans page individuelle par service.</p>
+</section>
+
+<!-- ══════════════════════════════════ 05 — COCON SÉMANTIQUE ══════════════════════════════════ -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon Sémantique</span>
+  <h2 class="section-title">Architecture de contenu & maillage</h2>
+  <p class="section-desc">Les clusters thématiques qui renforcent l'autorité SEO d'Aurélya sur son territoire.</p>
+
+  <div class="grid-2" style="margin-bottom:32px;">
+    <div class="card">
+      <h3>Cluster 1 — Intendance & Conciergerie Privée</h3>
+      <p>Pilier central autour des mots-clés de service. Regroupe la page Accueil, la page Prestations et les deux pages locales. Capture les propriétaires en phase de recherche active d'un prestataire.</p>
+      <div class="tag-row">
+        <span class="tag">conciergerie Pays d'Aix</span>
+        <span class="tag">intendance privée</span>
+        <span class="tag">déléguer sa location</span>
+        <span class="tag">conciergerie saisonnière Provence</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Cluster 2 — Propriétaire & Optimisation de Bien</h3>
+      <p>Cluster informatif et de nurturing, porté par le blog. Attire les propriétaires en phase de réflexion ou de découverte. Renforce la crédibilité de Fanny comme experte du marché local.</p>
+      <div class="tag-row">
+        <span class="tag">rentabilité location saisonnière</span>
+        <span class="tag">optimiser annonce Airbnb</span>
+        <span class="tag">accueil voyageurs Provence</span>
+        <span class="tag">entretien bien locatif</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Logique de maillage interne</h3>
+    <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px;">
+      <div class="link-row"><span class="from">Accueil</span><span class="arrow">→</span><span class="to">Nos Prestations · Page locale Aix · Nous Rejoindre</span></div>
+      <div class="link-row"><span class="from">Nos Prestations</span><span class="arrow">→</span><span class="to">À Propos · Nous Rejoindre · Page locale Pays d'Aix</span></div>
+      <div class="link-row"><span class="from">À Propos</span><span class="arrow">→</span><span class="to">Nos Prestations · Nous Rejoindre</span></div>
+      <div class="link-row"><span class="from">Pages locales</span><span class="arrow">→</span><span class="to">Nos Prestations · Nous Rejoindre</span></div>
+      <div class="link-row"><span class="from">Articles Blog</span><span class="arrow">→</span><span class="to">Nos Prestations · Nous Rejoindre · Page locale concernée</span></div>
+      <div class="link-row"><span class="from">Nous Rejoindre</span><span class="arrow">→</span><span class="to">Accueil (retour logo) · Nos Prestations</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ 06 — TUNNEL DE CONVERSION ══════════════════════════════════ -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de Conversion</span>
+  <h2 class="section-title">Du premier clic à la prise de contact</h2>
+  <p class="section-desc">Les 4 étapes du parcours propriétaire, de la découverte à la décision.</p>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 01</span>
+      <h3>Découverte</h3>
+      <span class="tunnel-label">Source</span>
+      <p class="tunnel-item">Google (SEO local), bouche-à-oreille, réseaux sociaux Instagram / Facebook</p>
+      <span class="tunnel-label">Page</span>
+      <p class="tunnel-item">Accueil · Pages locales · Articles Blog</p>
+      <span class="tunnel-label">CTA</span>
+      <span class="tunnel-cta">En savoir plus →</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 02</span>
+      <h3>Intérêt</h3>
+      <span class="tunnel-label">Source</span>
+      <p class="tunnel-item">Navigation interne, retargeting, lead magnet téléchargé</p>
+      <span class="tunnel-label">Page</span>
+      <p class="tunnel-item">Nos Prestations · À Propos · Blog</p>
+      <span class="tunnel-label">CTA</span>
+      <span class="tunnel-cta">Télécharger le guide →</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 03</span>
+      <h3>Confiance</h3>
+      <span class="tunnel-label">Source</span>
+      <p class="tunnel-item">Témoignages, portrait de Fanny, photos de biens gérés</p>
+      <span class="tunnel-label">Page</span>
+      <p class="tunnel-item">À Propos · Section Avis Accueil</p>
+      <span class="tunnel-label">CTA</span>
+      <span class="tunnel-cta">Voir les avis →</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 04</span>
+      <h3>Conversion</h3>
+      <span class="tunnel-label">Source</span>
+      <p class="tunnel-item">CTA répétés, formulaire qualifiant, outil de réservation</p>
+      <span class="tunnel-label">Page</span>
+      <p class="tunnel-item">Nous Rejoindre · Pop-up RDV</p>
+      <span class="tunnel-label">CTA</span>
+      <span class="tunnel-cta">Prendre RDV →</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ 07 — LEVIERS MARKETING ══════════════════════════════════ -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers Marketing Recommandés</span>
+  <h2 class="section-title">Outils pour attirer, convaincre & convertir</h2>
+  <p class="section-desc">Les dispositifs marketing à activer en priorité pour maximiser les résultats du site.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🎁 Lead Magnet</h3>
+      <p><strong>« Le Guide du Propriétaire Serein en Provence »</strong><br>Un PDF de 5 à 8 pages couvrant les erreurs à éviter en location saisonnière, les critères d'un accueil réussi et les avantages de déléguer à une intendance privée. Téléchargeable en échange d'un email.</p>
+    </div>
+    <div class="card">
+      <h3>📅 Prise de RDV</h3>
+      <p><strong>Outil recommandé : Calendly ou Cal.com</strong><br>Intégré directement sur la page de contact et en CTA flottant sur tout le site. Proposer un « Entretien découverte offert de 30 min » pour réduire la friction et humaniser le premier contact.</p>
+    </div>
+    <div class="card">
+      <h3>⭐ Preuve Sociale</h3>
+      <p><strong>Témoignages vidéo courts ou citations propriétaires</strong> avec prénom, type de bien et secteur. Idéalement 3 à 5 avis affichés en page d'accueil et sur la page Prestations. Logos de plateformes (Airbnb, Booking) si pertinent.</p>
+    </div>
+    <div class="card">
+      <h3>📝 Formulaire Qualifiant</h3>
+      <p>Champs recommandés : Prénom &amp; Nom · Type de bien (maison, mas, appartement…) · Localisation · Nombre de couchages · Disponibilité actuelle sur plateformes · Message libre. Limiter à 6 champs pour maximiser les soumissions.</p>
+    </div>
+    <div class="card">
+      <h3>💌 Newsletter</h3>
+      <p><strong>Angle éditorial : « La Lettre du Propriétaire Provençal »</strong><br>Envoi mensuel avec : 1 conseil pratique sur la location saisonnière, 1 retour d'expérience terrain de Fanny, 1 actualité du marché Pays d'Aix. Ton chaleureux et personnel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ 08 — DIRECTION VISUELLE ══════════════════════════════════ -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction Visuelle & Éditoriale</span>
+  <h2 class="section-title">L'univers de marque Aurélya</h2>
+  <p class="section-desc">Les bases visuelles à partir desquelles le site sera conçu. La palette sera affinée avec le fichier d'identité visuelle transmis par Fanny.</p>
+
+  <div class="card" style="margin-bottom:32px;">
+    <h3>Palette de couleurs — Identité Aurélya</h3>
+    <p style="font-size:13px;color:#7a7268;margin-bottom:24px;">Palette provisoire cohérente avec l'univers Provence, nature et élégance discrète. Elle sera ajustée selon le fichier d'identité visuelle transmis.</p>
+    <div class="palette-grid">
+      <div class="color-swatch">
+        <div class="color-box" style="background:#1a1410;"></div>
+        <span class="color-name">Nuit Provençale</span>
+        <span class="color-hex">#1A1410</span>
+      </div>
+      <div class="color-swatch">
+        <div class="color-box" style="background:#b8945a;"></div>
+        <span class="color-name">Or de Provence</span>
+        <span class="color-hex">#B8945A</span>
+      </div>
+      <div class="color-swatch">
+        <div class="color-box" style="background:#f3ede4;"></div>
+        <span class="color-name">Lin Naturel</span>
+        <span class="color-hex">#F3EDE4</span>
+      </div>
+      <div class="color-swatch">
+        <div class="color-box" style="background:#4a3220;border:1px solid #e8e0d5;"></div>
+        <span class="color-name">Terre de Luberon</span>
+        <span class="color-hex">#4A3220</span>
+      </div>
+      <div class="color-swatch">
+        <div class="color-box" style="background:#faf9f7;border:1px solid #e8e0d5;"></div>
+        <span class="color-name">Blanc Pierre</span>
+        <span class="color-hex">#FAF9F7</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Univers visuel recommandé</h3>
+      <ul>
+        <li>Photographies lumineuses de bastides, mas provençaux et jardins ensoleillés</li>
+        <li>Plans larges de la campagne du Pays d'Aix, lavande et pierres sèches</li>
+        <li>Portrait authentique de Fanny, souriant, en situation d'accueil ou de terrain</li>
+        <li>Détails intérieurs soignés : linge blanc, table dressée, bouquet champêtre</li>
+        <li>Visuels de qualité, légèrement désaturés, ambiance dorée et naturelle</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Typographie & style graphique</h3>
+      <ul>
+        <li><strong>Titres :</strong> empattement élégant (Playfair Display ou similaire)</li>
+        <li><strong>Corps :</strong> sans-serif lisible et moderne (Inter ou Lato)</li>
+        <li>Design épuré, beaucoup d'espace blanc, pas d'éléments décoratifs surchargés</li>
+        <li>Icônes minimalistes au trait, pas de cliparts</li>
+        <li>Animations légères et discrètes (fade-in au scroll)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ 09 — ARTICLES BLOG ══════════════════════════════════ -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles Blog Recommandés</span>
+  <h2 class="section-title">Stratégie de contenu — 6 premiers articles</h2>
+  <p class="section-desc">Des sujets choisis pour attirer du trafic qualifié et démontrer l'expertise terrain d'Aurélya.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Pourquoi confier son mas provençal à une intendante privée plutôt qu'une grande plateforme ?</strong></td>
+          <td>Cluster 1</td>
+          <td>Informationnelle / Comparaison</td>
+          <td><span class="badge badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Location saisonnière en Pays d'Aix : les 5 erreurs qui font fuir les voyageurs</strong></td>
+          <td>Cluster 2</td>
+          <td>Informationnelle / Problème</td>
+          <td><span class="badge badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Checklist d'entretien : préparer son logement entre deux séjours en Provence</strong></td>
+          <td>Cluster 2</td>
+          <td>Transactionnelle / Outil pratique</td>
+          <td><span class="badge badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Comment améliorer sa note Airbnb en Pays d'Aix grâce à l'accueil personnalisé ?</strong></td>
+          <td>Cluster 2</td>
+          <td>Informationnelle / Optimisation</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Déléguer sa location à Aix-en-Provence : ce que ça change vraiment pour un propriétaire</strong></td>
+          <td>Cluster 1</td>
+          <td>Informationnelle / Décision</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Haute saison en Provence : comment anticiper et sécuriser ses locations ?</strong></td>
+          <td>Cluster 2</td>
+          <td>Informationnelle / Saisonnalité</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ FOOTER ══════════════════════════════════ -->
+<footer>
+  <p><strong>Aurélya Intendance Privée</strong> — Blueprint Stratégique</p>
+  <p style="margin-top:6px;">Document confidentiel préparé par AR Digital · Tous droits réservés</p>
+</footer>
+
+</body>
+</html>
