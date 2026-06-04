@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AB-CABS Académie | Centre de formation VTC à Noisy-le-Grand</title>
+<meta name="description" content="Découvrez AB-CABS Académie, centre de formation VTC à Noisy-le-Grand, spécialisé dans l’accompagnement des futurs chauffeurs VTC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>:root{--primary:#8A1F2E;--navy:#0F1B2D;--gold:#C5A24A;--bg:#ffffff;--soft:#faf7f2;--text:#1f2433;--muted:#6b7280;--line:#ececf0;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--bg);line-height:1.75;}
+h1,h2,h3{font-family:'Playfair Display',serif;color:var(--navy);line-height:1.2;}
+a{color:inherit;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px;}
+.nav{position:sticky;top:0;z-index:50;background:rgba(15,27,45,.97);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.08);}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:11px 24px;}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:'Playfair Display';font-size:17px;font-weight:700;white-space:nowrap;}
+.brand .mono{display:grid;place-items:center;width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#a9842f);color:var(--navy);font-size:13px;font-weight:700;}
+.brand em{font-style:normal;color:var(--gold);font-family:'Inter';font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;}
+.menu{margin-left:auto;display:flex;align-items:center;gap:2px;flex-wrap:wrap;}
+.menu a{text-decoration:none;color:rgba(255,255,255,.82);font-size:13px;font-weight:500;padding:8px 10px;border-radius:8px;}
+.menu a:hover{color:#fff;background:rgba(255,255,255,.07);}
+.menu a.active{color:var(--gold);}
+.menu a.nav-cta{background:var(--primary);color:#fff;font-weight:600;padding:9px 15px;margin-left:6px;}
+.menu a.nav-cta:hover{background:#7a1a28;}
+.burger{display:none;cursor:pointer;color:#fff;font-size:23px;margin-left:auto;}
+.navtog{display:none;}
+.hero{background:linear-gradient(135deg,#0F1B2D 0%,#1d1320 48%,#5e1620 100%);color:#fff;padding:74px 0 64px;}
+.hero .ey{color:var(--gold);font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;}
+.hero h1{color:#fff;font-size:40px;max-width:830px;margin-bottom:18px;}
+.hero .sub{font-size:17px;color:rgba(255,255,255,.82);max-width:720px;margin-bottom:26px;}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;}
+.btn{display:inline-block;text-decoration:none;background:var(--primary);color:#fff;border-radius:30px;padding:13px 26px;font-size:14.5px;font-weight:600;transition:.15s;}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.07);}
+.btn.ghost{background:transparent;border:1.6px solid rgba(255,255,255,.6);color:#fff;}
+.proofs{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;}
+.proof{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:24px;padding:7px 15px;font-size:12.5px;color:#fff;}
+.block{padding:58px 0;border-bottom:1px solid var(--line);}
+.block.alt{background:var(--soft);}
+.block h2{font-size:28px;margin-bottom:22px;max-width:780px;}
+.block p{font-size:15.5px;color:#3a3f4d;margin-bottom:12px;max-width:780px;}
+.block ul{list-style:none;margin:8px 0 16px;max-width:780px;}
+.block li{position:relative;padding-left:24px;font-size:15px;color:#3a3f4d;margin-bottom:9px;}
+.block li::before{content:"";position:absolute;left:4px;top:11px;width:7px;height:7px;border-radius:50%;background:var(--gold);}
+.sub{font-family:'Inter';font-size:12.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--primary);margin:22px 0 8px;}
+.block .cta-row{margin-top:18px;}
+.block .btn{color:#fff;}.block .btn.ghost{background:transparent;border:1.6px solid var(--primary);color:var(--primary);}
+.faq .item{border-top:1px solid var(--line);padding:18px 0;max-width:840px;}
+.faq .item:first-of-type{border-top:none;}
+.faq .q{font-weight:600;color:var(--navy);font-size:16px;margin-bottom:7px;}
+.faq .item p{font-size:14.5px;color:#4b5563;margin-bottom:5px;}
+.final{background:linear-gradient(135deg,#0F1B2D 0%,#5e1620 100%);color:#fff;padding:64px 0;text-align:center;}
+.final h2{color:#fff;font-size:30px;max-width:760px;margin:0 auto 16px;}
+.final p{color:rgba(255,255,255,.85);max-width:640px;margin:0 auto 26px;font-size:16px;}
+.final .cta-row{justify-content:center;}
+.final .btn{background:var(--gold);color:var(--navy);}
+.final .btn.ghost{background:transparent;border-color:var(--gold);color:var(--gold);}
+.foot{background:#0b1320;color:rgba(255,255,255,.72);padding:54px 0 26px;}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;}
+.foot h4{color:#fff;font-family:'Inter';font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;}
+.foot a{color:rgba(255,255,255,.72);text-decoration:none;display:block;font-size:14px;margin-bottom:9px;}
+.foot a:hover{color:var(--gold);}
+.foot .meta{font-size:14px;line-height:1.9;}
+.foot .gold{color:var(--gold);}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:34px;padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:rgba(255,255,255,.5);}
+.foot-bottom a{display:inline;color:rgba(255,255,255,.5);}
+@media(max-width:860px){
+ .burger{display:block;}
+ .menu{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;background:#0F1B2D;padding:10px 16px 18px;gap:2px;border-top:1px solid rgba(255,255,255,.08);}
+ .navtog:checked ~ .menu{display:flex;}
+ .menu a{padding:12px 10px;}.menu a.nav-cta{margin:8px 0 0;text-align:center;}
+ .hero h1{font-size:30px;}.block h2{font-size:23px;}.final h2{font-size:24px;}
+ .foot-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<header class="nav"><div class="nav-inner"><a class="brand" href="index.html"><span class="mono">AB</span><span>AB-CABS<br><em>Académie</em></span></a><input type="checkbox" id="nt" class="navtog"><label for="nt" class="burger">&#9776;</label><nav class="menu"><a href="index.html">Blueprint</a><a href="accueil.html">Accueil</a><a href="nos-formations.html">Nos formations</a><a href="financement.html">Financement</a><a href="examen-vtc.html">Examen VTC</a><a href="formation-continue-passerelle.html">Continue &amp; passerelle</a><a href="avis-resultats.html">Avis &amp; résultats</a><a href="qui-sommes-nous.html" class="active">Qui sommes-nous</a><a href="contact.html">Contact</a><a class="nav-cta" href="contact.html">Réserver un entretien</a></nav></div></header><section class="hero"><div class="wrap"><div class="ey">centre de formation VTC certifié</div><h1>Un centre de formation VTC créé pour accompagner des projets, pas seulement remplir des salles</h1><p class="sub">Depuis sa création, AB-CABS Académie accompagne des femmes et des hommes qui veulent réussir leur examen VTC, obtenir leur carte professionnelle et construire une activité solide dans le transport de personnes.</p><div class="cta-row"><a class="btn" href="qui-sommes-nous.html">Rencontrer l’équipe</a><a class="btn ghost" href="nos-formations.html">Découvrir nos formations</a></div></div></section><section class="block"><div class="wrap"><h2>Notre conviction</h2><p>Devenir chauffeur VTC est une vraie décision professionnelle.</p><p>Ce n’est pas un simple changement de statut.</p><p>C’est souvent une reconversion, un nouveau départ ou une volonté de reprendre le contrôle de son temps et de ses revenus.</p><p>Mais pour réussir, il ne suffit pas d’avoir envie.</p><p>Il faut comprendre l’examen, respecter la réglementation, apprendre à gérer une activité, adopter les bons réflexes professionnels et savoir quoi faire après l’obtention de la carte.</p><p>C’est pour cela qu’AB-CABS existe.</p></div></section><section class="block alt"><div class="wrap"><h2>Notre mission</h2><div class="sub">H2</div><p>Vous aider à passer de “je veux devenir VTC” à “je sais quoi faire maintenant”</p><p>Notre mission est de rendre le parcours plus clair.</p><p>Nous vous accompagnons pour :</p><ul><li>comprendre les prérequis ;</li><li>choisir la bonne formation ;</li><li>préparer l’examen ;</li><li>mobiliser un financement si possible ;</li><li>travailler la théorie et la pratique ;</li><li>avancer dans les démarches ;</li><li>préparer votre lancement d’activité.</li></ul><p>Nous ne promettons pas une réussite automatique.</p><p>Nous vous donnons un cadre, une méthode et un accompagnement sérieux.</p></div></section><section class="block"><div class="wrap"><h2>Une pédagogie concrète</h2><p>Chez AB-CABS, la formation repose sur une idée simple :</p><p>vous devez comprendre ce que vous apprenez.</p><p>Pas seulement mémoriser.</p><p>Nos méthodes associent :</p><ul><li>cours projetés ;</li><li>supports numériques ;</li><li>exercices pratiques ;</li><li>QCM et QRC ;</li><li>examens blancs ;</li><li>mises en situation ;</li><li>entraînement à l’épreuve pratique ;</li><li>échanges avec les formateurs.</li></ul><p>L’objectif est que vous sachiez pourquoi une notion est importante, comment elle peut tomber à l’examen et comment elle vous servira dans votre future activité.</p></div></section><section class="block alt"><div class="wrap"><h2>Un centre accessible à Noisy-le-Grand</h2><p>AB-CABS Académie est situé au Centre Commercial Les Arcades, à Noisy-le-Grand.</p><p>Le centre est accessible en RER A, depuis la gare Noisy-le-Grand Mont d’Est, et facilement identifiable depuis le centre commercial.</p><p>Cette implantation permet d’accueillir des candidats venant de Noisy-le-Grand, de Seine-Saint-Denis, du Val-de-Marne, de Paris Est, de Marne-la-Vallée et plus largement d’Île-de-France.</p></div></section><section class="block"><div class="wrap"><h2>Des chiffres qui comptent</h2><p>En 2024, AB-CABS Académie, c’est :</p><ul><li>415 élèves formés ;</li><li>22 sessions organisées ;</li><li>3 formateurs ;</li><li>87 % de réussite aux examens VTC présentés ;</li><li>100 % de satisfaction déclarée par les stagiaires répondants ;</li><li>0 % d’abandon déclaré.</li></ul><p>Ces chiffres ne sont pas là pour décorer une page.</p><p>Ils montrent une chose : la formation est suivie, structurée et évaluée.</p></div></section><section class="block alt"><div class="wrap"><h2>Au-delà de la formation</h2><p>Un futur chauffeur VTC a besoin de plus qu’un programme de cours.</p><p>Il peut avoir besoin :</p><ul><li>d’un véhicule double commande ;</li><li>d’un accompagnement pratique ;</li><li>d’un conseil sur le financement ;</li><li>d’un partenaire pour son site internet ;</li><li>d’un accompagnement juridique ;</li><li>d’une aide pour comprendre les démarches ;</li><li>d’un regard professionnel sur son projet.</li></ul><p>AB-CABS a construit un écosystème pour répondre à ces besoins, sans disperser le candidat.</p></div></section><section class="block"><div class="wrap"><h2>Notre manière de travailler</h2><div class="sub">Clarté</div><p>Vous savez ce que vous allez travailler, pourquoi et dans quel ordre.</p><div class="sub">Exigence</div><p>Le métier de VTC demande du sérieux. Nous vous préparons avec cette réalité en tête.</p><div class="sub">Accessibilité</div><p>Nous expliquons les démarches et les notions importantes avec des mots simples.</p><div class="sub">Accompagnement</div><p>Vous pouvez poser vos questions, venir au centre et faire le point sur votre projet.</p><div class="sub">Professionnalisme</div><p>Nous formons à un métier de service, de ponctualité, de présentation et de confiance.</p></div></section><section class="block alt"><div class="wrap"><h2>Pour qui nous sommes faits</h2><p>AB-CABS est fait pour vous si :</p><ul><li>vous voulez devenir chauffeur VTC ;</li><li>vous cherchez un centre sérieux en Île-de-France ;</li><li>vous avez besoin d’être guidé ;</li><li>vous voulez comprendre avant de vous inscrire ;</li><li>vous êtes prêt à travailler régulièrement ;</li><li>vous voulez préparer aussi l’après-examen.</li></ul><p>AB-CABS n’est pas fait pour vous si vous cherchez une solution miracle sans implication personnelle.</p></div></section><section class="block alt faq" id="faq"><div class="wrap"><h2>Questions fréquentes</h2><div class="item"><div class="q">AB-CABS est-il uniquement un centre de formation ?</div><p>AB-CABS est avant tout un centre de formation VTC, mais propose aussi des services complémentaires pour aider les futurs chauffeurs à préparer leur activité.</p></div><div class="item"><div class="q">Où se trouve le centre ?</div><p>Le centre est situé à Noisy-le-Grand, au Centre Commercial Les Arcades.</p></div><div class="item"><div class="q">Puis-je venir poser mes questions avant l’inscription ?</div><p>Oui. L’entretien personnalisé est recommandé pour clarifier votre projet, votre financement et la formule la plus adaptée.</p></div><div class="item"><div class="q">Formez-vous seulement les débutants ?</div><p>Non. AB-CABS accompagne aussi les chauffeurs VTC en formation continue et les taxis qui souhaitent passer vers le VTC.</p></div></div></section><section class="final"><div class="wrap"><h2>Venez parler de votre projet avec une équipe qui connaît le terrain.</h2><p>Votre parcours VTC mérite un accompagnement clair, humain et structuré.</p><div class="cta-row"><a class="btn" href="contact.html">Réserver un entretien</a><a class="btn ghost" href="nos-formations.html">Voir les formations</a></div></div></section><footer class="foot"><div class="wrap"><div class="foot-grid"><div><h4>AB-CABS Académie</h4><div class="meta">Centre Commercial Les Arcades<br>420 Clos de la Courtine<br>93160 Noisy-le-Grand<br><br><span class="gold">06 70 16 78 25</span><br>contact@ab-cabs.fr<br><br>Lun, Mar, Jeu, Ven : 9h–12h / 13h–16h<br>Mer : sur rendez-vous</div></div><div><h4>Navigation</h4><a href="accueil.html">Accueil</a>
+<a href="nos-formations.html">Nos formations</a>
+<a href="financement.html">Financement</a>
+<a href="examen-vtc.html">Examen VTC</a>
+<a href="formation-continue-passerelle.html">Continue &amp; passerelle</a>
+<a href="avis-resultats.html">Avis &amp; résultats</a>
+<a href="qui-sommes-nous.html">Qui sommes-nous</a>
+<a href="contact.html">Contact</a></div><div><h4>Zones desservies</h4><a href="formation-vtc-noisy-le-grand.html">VTC Noisy-le-Grand</a>
+<a href="formation-vtc-seine-saint-denis.html">VTC Seine-Saint-Denis</a><a href="examen-vtc.html">Guide examen VTC</a></div></div><div class="foot-bottom"><span>© 2026 AB-CABS Académie — Centre de formation VTC certifié</span><span><a href="index.html">Blueprint stratégique</a> · Maquette de navigation</span></div></div></footer>
+</body>
+</html>

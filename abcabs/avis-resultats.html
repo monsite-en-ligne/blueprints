@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avis &amp; résultats AB-CABS | Centre de formation VTC</title>
+<meta name="description" content="Découvrez les résultats, témoignages et chiffres d’AB-CABS Académie, centre de formation VTC à Noisy-le-Grand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>:root{--primary:#8A1F2E;--navy:#0F1B2D;--gold:#C5A24A;--bg:#ffffff;--soft:#faf7f2;--text:#1f2433;--muted:#6b7280;--line:#ececf0;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--bg);line-height:1.75;}
+h1,h2,h3{font-family:'Playfair Display',serif;color:var(--navy);line-height:1.2;}
+a{color:inherit;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px;}
+.nav{position:sticky;top:0;z-index:50;background:rgba(15,27,45,.97);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.08);}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:11px 24px;}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:'Playfair Display';font-size:17px;font-weight:700;white-space:nowrap;}
+.brand .mono{display:grid;place-items:center;width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#a9842f);color:var(--navy);font-size:13px;font-weight:700;}
+.brand em{font-style:normal;color:var(--gold);font-family:'Inter';font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;}
+.menu{margin-left:auto;display:flex;align-items:center;gap:2px;flex-wrap:wrap;}
+.menu a{text-decoration:none;color:rgba(255,255,255,.82);font-size:13px;font-weight:500;padding:8px 10px;border-radius:8px;}
+.menu a:hover{color:#fff;background:rgba(255,255,255,.07);}
+.menu a.active{color:var(--gold);}
+.menu a.nav-cta{background:var(--primary);color:#fff;font-weight:600;padding:9px 15px;margin-left:6px;}
+.menu a.nav-cta:hover{background:#7a1a28;}
+.burger{display:none;cursor:pointer;color:#fff;font-size:23px;margin-left:auto;}
+.navtog{display:none;}
+.hero{background:linear-gradient(135deg,#0F1B2D 0%,#1d1320 48%,#5e1620 100%);color:#fff;padding:74px 0 64px;}
+.hero .ey{color:var(--gold);font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;}
+.hero h1{color:#fff;font-size:40px;max-width:830px;margin-bottom:18px;}
+.hero .sub{font-size:17px;color:rgba(255,255,255,.82);max-width:720px;margin-bottom:26px;}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;}
+.btn{display:inline-block;text-decoration:none;background:var(--primary);color:#fff;border-radius:30px;padding:13px 26px;font-size:14.5px;font-weight:600;transition:.15s;}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.07);}
+.btn.ghost{background:transparent;border:1.6px solid rgba(255,255,255,.6);color:#fff;}
+.proofs{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;}
+.proof{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:24px;padding:7px 15px;font-size:12.5px;color:#fff;}
+.block{padding:58px 0;border-bottom:1px solid var(--line);}
+.block.alt{background:var(--soft);}
+.block h2{font-size:28px;margin-bottom:22px;max-width:780px;}
+.block p{font-size:15.5px;color:#3a3f4d;margin-bottom:12px;max-width:780px;}
+.block ul{list-style:none;margin:8px 0 16px;max-width:780px;}
+.block li{position:relative;padding-left:24px;font-size:15px;color:#3a3f4d;margin-bottom:9px;}
+.block li::before{content:"";position:absolute;left:4px;top:11px;width:7px;height:7px;border-radius:50%;background:var(--gold);}
+.sub{font-family:'Inter';font-size:12.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--primary);margin:22px 0 8px;}
+.block .cta-row{margin-top:18px;}
+.block .btn{color:#fff;}.block .btn.ghost{background:transparent;border:1.6px solid var(--primary);color:var(--primary);}
+.faq .item{border-top:1px solid var(--line);padding:18px 0;max-width:840px;}
+.faq .item:first-of-type{border-top:none;}
+.faq .q{font-weight:600;color:var(--navy);font-size:16px;margin-bottom:7px;}
+.faq .item p{font-size:14.5px;color:#4b5563;margin-bottom:5px;}
+.final{background:linear-gradient(135deg,#0F1B2D 0%,#5e1620 100%);color:#fff;padding:64px 0;text-align:center;}
+.final h2{color:#fff;font-size:30px;max-width:760px;margin:0 auto 16px;}
+.final p{color:rgba(255,255,255,.85);max-width:640px;margin:0 auto 26px;font-size:16px;}
+.final .cta-row{justify-content:center;}
+.final .btn{background:var(--gold);color:var(--navy);}
+.final .btn.ghost{background:transparent;border-color:var(--gold);color:var(--gold);}
+.foot{background:#0b1320;color:rgba(255,255,255,.72);padding:54px 0 26px;}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;}
+.foot h4{color:#fff;font-family:'Inter';font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;}
+.foot a{color:rgba(255,255,255,.72);text-decoration:none;display:block;font-size:14px;margin-bottom:9px;}
+.foot a:hover{color:var(--gold);}
+.foot .meta{font-size:14px;line-height:1.9;}
+.foot .gold{color:var(--gold);}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:34px;padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:rgba(255,255,255,.5);}
+.foot-bottom a{display:inline;color:rgba(255,255,255,.5);}
+@media(max-width:860px){
+ .burger{display:block;}
+ .menu{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;background:#0F1B2D;padding:10px 16px 18px;gap:2px;border-top:1px solid rgba(255,255,255,.08);}
+ .navtog:checked ~ .menu{display:flex;}
+ .menu a{padding:12px 10px;}.menu a.nav-cta{margin:8px 0 0;text-align:center;}
+ .hero h1{font-size:30px;}.block h2{font-size:23px;}.final h2{font-size:24px;}
+ .foot-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<header class="nav"><div class="nav-inner"><a class="brand" href="index.html"><span class="mono">AB</span><span>AB-CABS<br><em>Académie</em></span></a><input type="checkbox" id="nt" class="navtog"><label for="nt" class="burger">&#9776;</label><nav class="menu"><a href="index.html">Blueprint</a><a href="accueil.html">Accueil</a><a href="nos-formations.html">Nos formations</a><a href="financement.html">Financement</a><a href="examen-vtc.html">Examen VTC</a><a href="formation-continue-passerelle.html">Continue &amp; passerelle</a><a href="avis-resultats.html" class="active">Avis &amp; résultats</a><a href="qui-sommes-nous.html">Qui sommes-nous</a><a href="contact.html">Contact</a><a class="nav-cta" href="contact.html">Réserver un entretien</a></nav></div></header><section class="hero"><div class="wrap"><div class="ey">avis centre formation VTC</div><h1>Ils ont préparé leur projet VTC avec AB-CABS</h1><p class="sub">Avant de choisir une formation, vous avez besoin de preuves. Résultats, satisfaction, avis d’anciens élèves et témoignages : voici ce qui permet de juger concrètement l’accompagnement AB-CABS.</p><div class="cta-row"><a class="btn" href="nos-formations.html">Voir les formations</a><a class="btn ghost" href="contact.html">Réserver mon entretien</a></div></div></section><section class="block"><div class="wrap"><h2>La confiance ne se décrète pas. Elle se prouve.</h2><p>Sur un marché où beaucoup de centres promettent beaucoup de choses, les futurs chauffeurs ont raison d’être prudents.</p><p>Vous allez investir du temps, de l’argent et de l’énergie.</p><p>Vous devez savoir si le centre est sérieux, si les élèves sont suivis et si les résultats sont mesurés.</p><p>AB-CABS met en avant ses chiffres, ses avis et ses retours d’élèves pour vous aider à décider avec plus de clarté.</p></div></section><section class="block alt"><div class="wrap"><h2>Les chiffres 2024</h2><div class="sub">H2</div><p>Une année de formation suivie et mesurée</p><p>En 2024, AB-CABS Académie a formé 415 élèves.</p><p>Sur cette même année :</p><ul><li>22 sessions ont été organisées ;</li><li>3 formateurs ont animé les formations ;</li><li>87 % des candidats présentés aux examens VTC ont réussi ;</li><li>100 % de satisfaction totale a été déclarée parmi les stagiaires ayant répondu ;</li><li>0 % d’abandon a été déclaré.</li></ul><p>Ces chiffres montrent une réalité importante : l’accompagnement ne s’arrête pas à l’inscription. Il se suit, se mesure et s’améliore.</p></div></section><section class="block"><div class="wrap"><h2>Ce que les élèves viennent chercher</h2><p>Les élèves qui choisissent AB-CABS viennent souvent avec les mêmes attentes :</p><ul><li>comprendre l’examen ;</li><li>être rassurés sur leur niveau ;</li><li>éviter les erreurs administratives ;</li><li>savoir quelle formule choisir ;</li><li>trouver une solution de financement ;</li><li>se préparer à la pratique ;</li><li>se projeter dans le métier.</li></ul><p>Les avis permettent de voir si ces attentes sont réellement prises en compte.</p></div></section><section class="block alt"><div class="wrap"><h2>Témoignages à mettre en avant</h2><div class="sub">Témoignage vidéo — Philippe</div><p>Titre proposé : “Philippe raconte comment AB-CABS l’a aidé à préparer son projet VTC”</p><p>Texte d’introduction :</p><p>Dans ce témoignage, Philippe partage son expérience avec l’école, sa préparation et ce qui l’a aidé à avancer dans son parcours.</p><div class="cta-row"><a class="btn" href="avis-resultats.html">Voir le témoignage de Philippe</a></div><div class="sub">Témoignage vidéo — Atika</div><p>Titre proposé : “Atika partage son retour sur la formation AB-CABS”</p><p>Texte d’introduction :</p><p>Atika revient sur son expérience de formation, l’accompagnement reçu et les éléments qui l’ont aidée à se sentir plus prête.</p><div class="cta-row"><a class="btn" href="avis-resultats.html">Voir le témoignage d’Atika</a></div><div class="sub">Témoignage vidéo — Kamel</div><p>Titre proposé : “Kamel donne son avis sur son passage chez AB-CABS”</p><p>Texte d’introduction :</p><p>Kamel explique son parcours, ses attentes avant la formation et son ressenti après son accompagnement chez AB-CABS.</p><div class="cta-row"><a class="btn" href="avis-resultats.html">Voir le témoignage de Kamel</a></div></div></section><section class="block"><div class="wrap"><h2>Ce qui fait la différence dans les avis</h2><p>Un bon avis ne dit pas seulement “c’était bien”.</p><p>Il montre :</p><ul><li>si l’équipe est disponible ;</li><li>si les explications sont claires ;</li><li>si le candidat s’est senti accompagné ;</li><li>si les supports sont utiles ;</li><li>si la préparation pratique aide réellement ;</li><li>si les démarches sont mieux comprises après l’échange.</li></ul><p>C’est ce type de preuve qui aide un futur élève à se dire :</p><p>“Je ne serai pas seul.”</p></div></section><section class="block alt"><div class="wrap"><h2>Pourquoi les résultats ne suffisent pas seuls</h2><p>Un taux de réussite est important.</p><p>Mais il ne raconte pas tout.</p><p>Ce qui compte aussi, c’est :</p><ul><li>le niveau de départ des candidats ;</li><li>leur implication personnelle ;</li><li>la régularité du travail ;</li><li>la qualité de l’accompagnement ;</li><li>la clarté des démarches ;</li><li>la capacité du centre à répondre aux questions.</li></ul><p>AB-CABS ne vend pas une réussite garantie.</p><p>AB-CABS propose un cadre sérieux pour maximiser vos chances avec méthode.</p></div></section><section class="block"><div class="wrap"><h2>Les preuves à afficher sur la page</h2><div class="sub">Bloc chiffres</div><ul><li>415 élèves formés en 2024</li><li>22 sessions</li><li>3 formateurs</li><li>87 % de réussite</li><li>100 % de satisfaction</li><li>0 % d’abandon</li></ul><div class="sub">Bloc avis Google</div><p>Insérer les captures d’avis Google Business actuelles.</p><div class="sub">Bloc vidéos</div><p>Intégrer les témoignages Philippe, Atika, Kamel.</p><div class="sub">Bloc certifications</div><p>Afficher les éléments de réassurance disponibles : certification, CPF, France Compétences, Qualiopi si validé par le client.</p></div></section><section class="block alt faq" id="faq"><div class="wrap"><h2>Questions fréquentes</h2><div class="item"><div class="q">Le taux de réussite garantit-il que je vais réussir ?</div><p>Non. Votre réussite dépend aussi de votre travail personnel, de votre assiduité et de votre préparation. Le taux de réussite est une preuve du sérieux de l’accompagnement, pas une garantie individuelle.</p></div><div class="item"><div class="q">Les avis sont-ils vérifiables ?</div><p>La page doit idéalement afficher les avis Google et les témoignages vidéo pour permettre aux visiteurs de consulter des preuves concrètes.</p></div><div class="item"><div class="q">Pourquoi afficher les résultats 2024 ?</div><p>Parce que des chiffres datés sont plus crédibles que des affirmations générales. Ils permettent de juger une année précise.</p></div><div class="item"><div class="q">Puis-je parler à un ancien élève ?</div><p>Selon disponibilité et accord des personnes concernées, le centre peut orienter vers des témoignages ou vidéos existantes.</p></div></div></section><section class="final"><div class="wrap"><h2>Vous voulez choisir votre centre avec des preuves, pas des promesses ?</h2><p>Consultez les résultats, regardez les témoignages, puis venez poser vos questions à l’équipe.</p><div class="cta-row"><a class="btn" href="contact.html">Réserver mon entretien</a><a class="btn ghost" href="nos-formations.html">Comparer les formations</a></div></div></section><footer class="foot"><div class="wrap"><div class="foot-grid"><div><h4>AB-CABS Académie</h4><div class="meta">Centre Commercial Les Arcades<br>420 Clos de la Courtine<br>93160 Noisy-le-Grand<br><br><span class="gold">06 70 16 78 25</span><br>contact@ab-cabs.fr<br><br>Lun, Mar, Jeu, Ven : 9h–12h / 13h–16h<br>Mer : sur rendez-vous</div></div><div><h4>Navigation</h4><a href="accueil.html">Accueil</a>
+<a href="nos-formations.html">Nos formations</a>
+<a href="financement.html">Financement</a>
+<a href="examen-vtc.html">Examen VTC</a>
+<a href="formation-continue-passerelle.html">Continue &amp; passerelle</a>
+<a href="avis-resultats.html">Avis &amp; résultats</a>
+<a href="qui-sommes-nous.html">Qui sommes-nous</a>
+<a href="contact.html">Contact</a></div><div><h4>Zones desservies</h4><a href="formation-vtc-noisy-le-grand.html">VTC Noisy-le-Grand</a>
+<a href="formation-vtc-seine-saint-denis.html">VTC Seine-Saint-Denis</a><a href="examen-vtc.html">Guide examen VTC</a></div></div><div class="foot-bottom"><span>© 2026 AB-CABS Académie — Centre de formation VTC certifié</span><span><a href="index.html">Blueprint stratégique</a> · Maquette de navigation</span></div></div></footer>
+</body>
+</html>

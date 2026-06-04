@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact &amp; inscription formation VTC | AB-CABS Noisy-le-Grand</title>
+<meta name="description" content="Contactez AB-CABS Académie pour vous inscrire à une formation VTC, vérifier votre financement ou réserver un entretien personnalisé.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>:root{--primary:#8A1F2E;--navy:#0F1B2D;--gold:#C5A24A;--bg:#ffffff;--soft:#faf7f2;--text:#1f2433;--muted:#6b7280;--line:#ececf0;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--bg);line-height:1.75;}
+h1,h2,h3{font-family:'Playfair Display',serif;color:var(--navy);line-height:1.2;}
+a{color:inherit;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px;}
+.nav{position:sticky;top:0;z-index:50;background:rgba(15,27,45,.97);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.08);}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:11px 24px;}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:'Playfair Display';font-size:17px;font-weight:700;white-space:nowrap;}
+.brand .mono{display:grid;place-items:center;width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#a9842f);color:var(--navy);font-size:13px;font-weight:700;}
+.brand em{font-style:normal;color:var(--gold);font-family:'Inter';font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;}
+.menu{margin-left:auto;display:flex;align-items:center;gap:2px;flex-wrap:wrap;}
+.menu a{text-decoration:none;color:rgba(255,255,255,.82);font-size:13px;font-weight:500;padding:8px 10px;border-radius:8px;}
+.menu a:hover{color:#fff;background:rgba(255,255,255,.07);}
+.menu a.active{color:var(--gold);}
+.menu a.nav-cta{background:var(--primary);color:#fff;font-weight:600;padding:9px 15px;margin-left:6px;}
+.menu a.nav-cta:hover{background:#7a1a28;}
+.burger{display:none;cursor:pointer;color:#fff;font-size:23px;margin-left:auto;}
+.navtog{display:none;}
+.hero{background:linear-gradient(135deg,#0F1B2D 0%,#1d1320 48%,#5e1620 100%);color:#fff;padding:74px 0 64px;}
+.hero .ey{color:var(--gold);font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;}
+.hero h1{color:#fff;font-size:40px;max-width:830px;margin-bottom:18px;}
+.hero .sub{font-size:17px;color:rgba(255,255,255,.82);max-width:720px;margin-bottom:26px;}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;}
+.btn{display:inline-block;text-decoration:none;background:var(--primary);color:#fff;border-radius:30px;padding:13px 26px;font-size:14.5px;font-weight:600;transition:.15s;}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.07);}
+.btn.ghost{background:transparent;border:1.6px solid rgba(255,255,255,.6);color:#fff;}
+.proofs{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;}
+.proof{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:24px;padding:7px 15px;font-size:12.5px;color:#fff;}
+.block{padding:58px 0;border-bottom:1px solid var(--line);}
+.block.alt{background:var(--soft);}
+.block h2{font-size:28px;margin-bottom:22px;max-width:780px;}
+.block p{font-size:15.5px;color:#3a3f4d;margin-bottom:12px;max-width:780px;}
+.block ul{list-style:none;margin:8px 0 16px;max-width:780px;}
+.block li{position:relative;padding-left:24px;font-size:15px;color:#3a3f4d;margin-bottom:9px;}
+.block li::before{content:"";position:absolute;left:4px;top:11px;width:7px;height:7px;border-radius:50%;background:var(--gold);}
+.sub{font-family:'Inter';font-size:12.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--primary);margin:22px 0 8px;}
+.block .cta-row{margin-top:18px;}
+.block .btn{color:#fff;}.block .btn.ghost{background:transparent;border:1.6px solid var(--primary);color:var(--primary);}
+.faq .item{border-top:1px solid var(--line);padding:18px 0;max-width:840px;}
+.faq .item:first-of-type{border-top:none;}
+.faq .q{font-weight:600;color:var(--navy);font-size:16px;margin-bottom:7px;}
+.faq .item p{font-size:14.5px;color:#4b5563;margin-bottom:5px;}
+.final{background:linear-gradient(135deg,#0F1B2D 0%,#5e1620 100%);color:#fff;padding:64px 0;text-align:center;}
+.final h2{color:#fff;font-size:30px;max-width:760px;margin:0 auto 16px;}
+.final p{color:rgba(255,255,255,.85);max-width:640px;margin:0 auto 26px;font-size:16px;}
+.final .cta-row{justify-content:center;}
+.final .btn{background:var(--gold);color:var(--navy);}
+.final .btn.ghost{background:transparent;border-color:var(--gold);color:var(--gold);}
+.foot{background:#0b1320;color:rgba(255,255,255,.72);padding:54px 0 26px;}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;}
+.foot h4{color:#fff;font-family:'Inter';font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;}
+.foot a{color:rgba(255,255,255,.72);text-decoration:none;display:block;font-size:14px;margin-bottom:9px;}
+.foot a:hover{color:var(--gold);}
+.foot .meta{font-size:14px;line-height:1.9;}
+.foot .gold{color:var(--gold);}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:34px;padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:rgba(255,255,255,.5);}
+.foot-bottom a{display:inline;color:rgba(255,255,255,.5);}
+@media(max-width:860px){
+ .burger{display:block;}
+ .menu{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;background:#0F1B2D;padding:10px 16px 18px;gap:2px;border-top:1px solid rgba(255,255,255,.08);}
+ .navtog:checked ~ .menu{display:flex;}
+ .menu a{padding:12px 10px;}.menu a.nav-cta{margin:8px 0 0;text-align:center;}
+ .hero h1{font-size:30px;}.block h2{font-size:23px;}.final h2{font-size:24px;}
+ .foot-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<header class="nav"><div class="nav-inner"><a class="brand" href="index.html"><span class="mono">AB</span><span>AB-CABS<br><em>Académie</em></span></a><input type="checkbox" id="nt" class="navtog"><label for="nt" class="burger">&#9776;</label><nav class="menu"><a href="index.html">Blueprint</a><a href="accueil.html">Accueil</a><a href="nos-formations.html">Nos formations</a><a href="financement.html">Financement</a><a href="examen-vtc.html">Examen VTC</a><a href="formation-continue-passerelle.html">Continue &amp; passerelle</a><a href="avis-resultats.html">Avis &amp; résultats</a><a href="qui-sommes-nous.html">Qui sommes-nous</a><a href="contact.html" class="active">Contact</a><a class="nav-cta" href="contact.html">Réserver un entretien</a></nav></div></header><section class="hero"><div class="wrap"><div class="ey">inscription formation VTC</div><h1>Parlez-nous de votre projet VTC. Nous vous aidons à passer à l’étape suivante.</h1><p class="sub">Vous avez une question sur une formation, un financement, l’examen ou votre situation personnelle ? Contactez AB-CABS Académie et avançons ensemble vers la bonne solution.</p><div class="cta-row"><a class="btn" href="contact.html">Remplir le formulaire</a><a class="btn ghost" href="tel:+33670167825">Appeler le centre</a></div></div></section><section class="block"><div class="wrap"><h2>Avant de vous inscrire, faisons le point</h2><p>Chaque projet VTC est différent.</p><p>Certains candidats veulent aller vite.</p><p>D’autres veulent d’abord comprendre le CPF.</p><p>Certains hésitent entre SILVER, GOLD et PLATINIUM.</p><p>D’autres ont besoin d’une passerelle, d’une formation continue ou d’une préparation pratique.</p><p>Le rôle de l’entretien personnalisé est simple :</p><p>vous éviter de choisir dans le flou.</p></div></section><section class="block alt"><div class="wrap"><h2>Ce que nous vérifions avec vous</h2><p>Pendant l’échange, nous pouvons faire le point sur :</p><ul><li>votre objectif professionnel ;</li><li>votre disponibilité ;</li><li>votre niveau de départ ;</li><li>votre situation de financement ;</li><li>vos droits CPF ;</li><li>votre accompagnement France Travail ;</li><li>vos prérequis ;</li><li>la formule la plus adaptée ;</li><li>les prochaines dates ;</li><li>les démarches à prévoir.</li></ul><p>Vous repartez avec une vision plus claire de votre parcours.</p></div></section><section class="block"><div class="wrap"><h2>Formulaire de contact</h2><div class="sub">Titre du formulaire</div><p>Décrivez-nous votre projet</p><div class="sub">Champs recommandés</div><ul><li>Nom</li><li>Prénom</li><li>Téléphone</li><li>Email</li><li>Ville</li><li>Situation actuelle</li><li>Formation souhaitée</li><li>Mode de financement envisagé</li><li>Avez-vous le permis B depuis plus de 3 ans ?</li><li>Message</li></ul><div class="sub">Micro-copy formulaire</div><p>Plus votre message est précis, plus nous pourrons vous orienter rapidement vers la bonne solution.</p><div class="sub">Bouton</div><p>Envoyer ma demande</p><div class="sub">Message de confirmation</div><p>Votre demande a bien été envoyée. L’équipe AB-CABS vous recontactera rapidement pendant les horaires d’ouverture.</p></div></section><section class="block alt"><div class="wrap"><h2>Contact direct</h2><div class="sub">AB-CABS Académie</div><p>Centre Commercial Les Arcades</p><p>420 Clos de la Courtine</p><p>93160 Noisy-le-Grand</p><p>Téléphone : 06 70 16 78 25</p><p>Email : contact@ab-cabs.fr</p><p>Horaires :</p><p>Lundi : 9h–12h / 13h–16h</p><p>Mardi : 9h–12h / 13h–16h</p><p>Mercredi : sur rendez-vous uniquement</p><p>Jeudi : 9h–12h / 13h–16h</p><p>Vendredi : 9h–12h / 13h–16h</p></div></section><section class="block"><div class="wrap"><h2>Comment venir au centre ?</h2><div class="sub">En transport</div><p>RER A — Gare Noisy-le-Grand Mont d’Est.</p><div class="sub">En voiture</div><p>Rendez-vous au Centre Commercial Les Arcades, niveau haut.</p><p>Stationnez près de l’allée 11, porte 21, puis suivez les indications vers le bâtiment 420.</p><div class="sub">Accessibilité</div><p>Les personnes en situation de handicap peuvent contacter le centre afin d’étudier les besoins d’aménagement.</p></div></section><section class="block alt"><div class="wrap"><h2>Vous ne savez pas quelle formation choisir ?</h2><p>Pas besoin d’arriver avec une décision définitive.</p><p>Vous pouvez simplement nous dire :</p><ul><li>“Je veux devenir VTC, mais je ne sais pas par où commencer.”</li><li>“Je veux utiliser mon CPF.”</li><li>“Je suis suivi par France Travail.”</li><li>“Je suis taxi et je veux passer VTC.”</li><li>“Je dois renouveler ma carte.”</li><li>“Je veux surtout préparer la pratique.”</li></ul><p>Nous vous orienterons vers la bonne page, la bonne formule ou le bon interlocuteur.</p></div></section><section class="block"><div class="wrap"><h2>CTA par besoin</h2><div class="sub">Je veux devenir VTC</div><div class="cta-row"><a class="btn" href="nos-formations.html">Découvrir les formations initiales</a></div><div class="sub">Je veux financer ma formation</div><div class="cta-row"><a class="btn" href="financement.html">Tester mon financement</a></div><div class="sub">Je dois renouveler ma carte</div><div class="cta-row"><a class="btn" href="formation-continue-passerelle.html">Voir la formation continue</a></div><div class="sub">Je suis taxi</div><div class="cta-row"><a class="btn" href="formation-continue-passerelle.html">Voir la passerelle Taxi → VTC</a></div><div class="sub">Je prépare l’examen</div><div class="cta-row"><a class="btn" href="examen-vtc.html">Voir le guide examen</a></div></div></section><section class="block alt faq" id="faq"><div class="wrap"><h2>Questions fréquentes</h2><div class="item"><div class="q">Dois-je prendre rendez-vous avant de venir ?</div><p>C’est recommandé, surtout le mercredi qui fonctionne uniquement sur rendez-vous.</p></div><div class="item"><div class="q">Quels documents apporter ?</div><p>Si vous venez pour parler financement ou inscription, apportez vos informations CPF, France Travail si concerné, permis, situation actuelle et questions principales.</p></div><div class="item"><div class="q">Combien de temps dure l’entretien ?</div><p>L’entretien peut durer jusqu’à une heure selon votre projet et les points à vérifier.</p></div><div class="item"><div class="q">Puis-je appeler si je n’ai pas encore choisi de formation ?</div><p>Oui. C’est justement le moment idéal pour demander conseil.</p></div><div class="item"><div class="q">Que faire si personne ne répond ?</div><p>Laissez un SMS avec votre nom, votre demande et vos disponibilités. L’équipe vous rappellera.</p></div></div></section><section class="final"><div class="wrap"><h2>Votre projet VTC commence par une conversation claire.</h2><p>Expliquez-nous où vous en êtes. Nous vous aiderons à choisir la bonne suite.</p><div class="cta-row"><a class="btn" href="contact.html">Envoyer ma demande</a><a class="btn ghost" href="tel:+33670167825">Appeler AB-CABS</a></div></div></section><footer class="foot"><div class="wrap"><div class="foot-grid"><div><h4>AB-CABS Académie</h4><div class="meta">Centre Commercial Les Arcades<br>420 Clos de la Courtine<br>93160 Noisy-le-Grand<br><br><span class="gold">06 70 16 78 25</span><br>contact@ab-cabs.fr<br><br>Lun, Mar, Jeu, Ven : 9h–12h / 13h–16h<br>Mer : sur rendez-vous</div></div><div><h4>Navigation</h4><a href="accueil.html">Accueil</a>
+<a href="nos-formations.html">Nos formations</a>
+<a href="financement.html">Financement</a>
+<a href="examen-vtc.html">Examen VTC</a>
+<a href="formation-continue-passerelle.html">Continue &amp; passerelle</a>
+<a href="avis-resultats.html">Avis &amp; résultats</a>
+<a href="qui-sommes-nous.html">Qui sommes-nous</a>
+<a href="contact.html">Contact</a></div><div><h4>Zones desservies</h4><a href="formation-vtc-noisy-le-grand.html">VTC Noisy-le-Grand</a>
+<a href="formation-vtc-seine-saint-denis.html">VTC Seine-Saint-Denis</a><a href="examen-vtc.html">Guide examen VTC</a></div></div><div class="foot-bottom"><span>© 2026 AB-CABS Académie — Centre de formation VTC certifié</span><span><a href="index.html">Blueprint stratégique</a> · Maquette de navigation</span></div></div></footer>
+</body>
+</html>

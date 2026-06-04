@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — AB-CABS</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+
+:root{
+  --primary:#8A1F2E;
+  --navy:#0F1B2D;
+  --gold:#C5A24A;
+  --bg:#f8f9fa;
+  --text:#1a1a2e;
+  --muted:#6b7280;
+  --primary-10:rgba(138,31,46,0.10);
+  --primary-05:rgba(138,31,46,0.05);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--bg);line-height:1.8;}
+
+h1{font-family:'Playfair Display',serif;font-size:40px;font-weight:700;line-height:1.2;}
+h2{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;line-height:1.25;color:var(--navy);}
+h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);}
+p,td,li{font-family:'Inter',sans-serif;font-size:15px;line-height:1.8;}
+
+section{padding:70px 60px;}
+
+.eyebrow{font-family:'Inter';font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--primary);margin-bottom:14px;}
+
+.grid{display:grid;gap:24px;}
+.grid-2{grid-template-columns:repeat(2,1fr);}
+.grid-3{grid-template-columns:repeat(3,1fr);}
+
+.card{
+  background:#ffffff;
+  box-shadow:0 2px 12px rgba(0,0,0,0.06);
+  border-radius:14px;
+  padding:28px;
+}
+.card h3{margin-bottom:12px;}
+.card p{font-size:14px;color:#3a3a4a;}
+.card p + p{margin-top:10px;}
+.card ul{margin:8px 0 0 18px;}
+.card li{font-size:14px;color:#3a3a4a;margin-bottom:6px;}
+
+.eval{font-weight:600;font-size:14px;display:block;margin-top:10px;}
+.eval-fort{color:#155724;}
+.eval-dev{color:#004085;}
+.eval-oppo{color:#4a235a;}
+
+.badge{display:inline-block;border-radius:20px;padding:3px 10px;font-size:12px;font-family:'Inter';font-weight:500;white-space:nowrap;}
+.badge-fort{background:#d4edda;color:#155724;}
+.badge-moyen{background:#fff3cd;color:#856404;}
+.badge-faible{background:#f8d7da;color:#721c24;}
+.badge-prioritaire{background:#f8d7da;color:#721c24;}
+.badge-important{background:#ffe5d0;color:#c85000;}
+.badge-secondaire{background:#fff3cd;color:#856404;}
+.badge-nouvelle{background:#d4edda;color:#155724;}
+.badge-amelioree{background:#cce5ff;color:#004085;}
+.badge-retiree{background:#e2e3e5;color:#383d41;}
+
+.table-wrapper{margin-top:24px;border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06);page-break-inside:avoid;break-inside:avoid;}
+table{border-collapse:collapse;width:100%;background:#fff;}
+th{background:var(--primary-10);padding:14px 16px;text-align:left;font-family:'Inter';font-size:13px;font-weight:600;color:var(--navy);}
+td{border:1px solid #e2e8f0;padding:14px 16px;font-size:14px;vertical-align:top;}
+tr:nth-child(even) td{background:#fafafa;}
+
+.intro-text{font-size:16px;max-width:760px;color:#3a3a4a;}
+.lead{font-size:17px;color:var(--navy);font-weight:500;max-width:780px;}
+
+.pillar{border-left:4px solid var(--primary);padding-left:18px;}
+.pillar h3{font-size:18px;margin-bottom:6px;}
+
+.note-card{background:var(--navy);color:#fff;border-radius:14px;padding:32px;}
+.note-card h3{color:var(--gold);margin-bottom:14px;}
+.note-card p{color:rgba(255,255,255,0.9);font-size:15px;}
+
+/* Swatches */
+.swatch-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:10px;}
+.swatch-item{width:120px;text-align:center;}
+.swatch{width:80px;height:80px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin:0 auto;}
+.swatch-name{font-family:'Inter';font-size:13px;font-weight:600;margin-top:8px;text-align:center;}
+.swatch-hex{font-family:'Inter';font-size:12px;color:#6b7280;text-align:center;}
+
+/* Cover */
+.cover-page{
+  position:relative;
+  height:297mm;
+  background:linear-gradient(135deg,#0F1B2D 0%,#1d1320 48%,#5e1620 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;color:#fff;
+}
+.cover-logo{position:absolute;top:32px;left:40px;height:40px;}
+.cover-eyebrow{font-family:'Inter';font-size:13px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:28px;}
+.cover-title{font-family:'Playfair Display';font-size:64px;font-weight:700;color:#ffffff;letter-spacing:2px;margin-bottom:18px;}
+.cover-sub{font-family:'Inter';font-size:18px;opacity:0.75;margin-bottom:60px;}
+.cover-meta{display:flex;gap:40px;font-family:'Inter';font-size:13px;letter-spacing:1px;opacity:0.85;}
+.cover-meta span{position:relative;}
+
+/* Phase header bar */
+.phase-band{background:var(--navy);color:#fff;padding:50px 60px;}
+.phase-band .eyebrow{color:var(--gold);}
+.phase-band h2{color:#fff;}
+.phase-band p{color:rgba(255,255,255,0.8);max-width:760px;margin-top:12px;}
+
+.section-title-block{margin-bottom:34px;}
+
+footer{
+  background:var(--primary-05);
+  border-top:2px solid var(--primary);
+  padding:30px 60px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Inter';font-size:13px;color:#6b7280;
+}
+
+@media screen and (max-width:768px){
+  .grid-2,.grid-3{grid-template-columns:1fr;}
+  section{padding:24px;}
+  h2{font-size:26px;}
+  .cover-title{font-size:42px;}
+  .table-wrapper{overflow-x:auto;display:block;}
+  .cover-meta{flex-direction:column;gap:12px;}
+}
+
+@media print{
+  @page{size:A4;margin:15mm 15mm 20mm 15mm;}
+  .card{page-break-inside:avoid;break-inside:avoid;}
+  table{page-break-inside:avoid;break-inside:avoid;}
+  tr{page-break-inside:avoid;break-inside:avoid;}
+  .section-principale{page-break-before:always;break-before:page;}
+  h1,h2,h3{page-break-after:avoid;break-after:avoid;}
+  .grid{page-break-inside:avoid;break-inside:avoid;}
+  .no-print{display:none !important;}
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;color-adjust:exact !important;}
+  .card{box-shadow:0 1px 4px rgba(0,0,0,0.08) !important;}
+  .cover-page{height:267mm;page-break-after:always;break-after:page;}
+}
+</style>
+<style>
+/* ── Section "Contenu de vos pages" ── */
+.page-sim{background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(15,27,45,0.08);overflow:hidden;margin-bottom:46px;border:1px solid #ececf0;}
+.page-sim-header{background:linear-gradient(135deg,#0F1B2D 0%,#5e1620 100%);padding:26px 30px;}
+.page-sim-num{font-family:'Inter';font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.page-sim-title{font-family:'Playfair Display';color:#fff;font-size:24px;margin:0;}
+.page-kw{margin-top:14px;}
+.kw-badge{display:inline-block;background:rgba(197,162,74,0.18);color:var(--gold);border:1px solid rgba(197,162,74,0.45);border-radius:20px;padding:4px 14px;font-family:'Inter';font-size:12px;font-weight:600;}
+.page-sim-body{padding:30px;}
+.meta-box{background:#f4f4f6;border-left:3px solid var(--gold);border-radius:8px;padding:14px 16px;font-family:'Inter';font-size:13px;color:#4b5563;margin-bottom:24px;line-height:1.6;}
+.meta-k{display:inline-block;font-weight:600;color:var(--navy);min-width:128px;}
+.hero-sim{background:var(--primary-05);border:1px solid rgba(138,31,46,0.12);border-radius:14px;padding:26px;margin-bottom:24px;}
+.hero-h1{font-family:'Playfair Display';font-size:25px;font-weight:700;color:var(--navy);line-height:1.25;margin-bottom:12px;}
+.hero-sub{font-size:15px;color:#3a3a4a;margin-bottom:16px;}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+.cta-pill{display:inline-block;background:var(--primary);color:#fff;border-radius:24px;padding:9px 20px;font-family:'Inter';font-size:13px;font-weight:600;}
+.cta-pill.secondary{background:transparent;border:1.5px solid var(--primary);color:var(--primary);padding:7.5px 18px;}
+.proof-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+.proof-chip{display:inline-block;background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:5px 13px;font-family:'Inter';font-size:12px;font-weight:500;color:var(--navy);}
+.page-section.card-soft{background:#fbfbfc;border:1px solid #eef0f3;border-radius:12px;padding:22px 24px;margin-bottom:18px;}
+.page-section.card-soft h3{font-size:19px;margin-bottom:12px;}
+.page-section.card-soft p{font-size:14px;color:#3a3a4a;margin-bottom:8px;}
+.page-section.card-soft ul{margin:6px 0 12px 18px;}
+.page-section.card-soft li{font-size:14px;color:#3a3a4a;margin-bottom:5px;}
+.sub-label{font-family:'Inter';font-size:13px;font-weight:600;letter-spacing:0.4px;color:var(--primary);text-transform:uppercase;margin:14px 0 6px;}
+.faq-item{border-top:1px solid #eceef1;padding:14px 0;}
+.faq-item:first-of-type{border-top:none;padding-top:0;}
+.faq-q{font-family:'Inter';font-size:14px;font-weight:600;color:var(--navy);margin-bottom:6px;}
+.faq-item p{font-size:14px;color:#4b5563;margin-bottom:4px;}
+.cta-final-block{background:linear-gradient(135deg,#0F1B2D 0%,#5e1620 100%);border-radius:14px;padding:30px;margin-top:8px;}
+.cta-final-block h3{font-family:'Playfair Display';font-size:21px;margin-bottom:12px;}
+.cta-final-block p{color:rgba(255,255,255,0.88);font-size:14px;margin-bottom:8px;}
+.cta-final-block .cta-pill.secondary{border-color:var(--gold);color:var(--gold);}
+.cta-final-block .cta-pill{background:var(--gold);color:var(--navy);}
+@media screen and (max-width:768px){.cta-row{flex-direction:column;}.cta-pill{text-align:center;}}
+@media print{
+  .page-sim{page-break-before:always;break-before:page;box-shadow:none !important;}
+  .page-section.card-soft,.faq-item,.hero-sim,.meta-box,.cta-final-block{page-break-inside:avoid;break-inside:avoid;}
+}
+</style>
+
+<style>
+.site-nav{position:sticky;top:0;z-index:60;background:rgba(15,27,45,.97);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.08);font-family:'Inter',sans-serif;}
+.site-nav .in{max-width:1160px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:11px 24px;}
+.site-nav .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:'Playfair Display';font-size:17px;font-weight:700;white-space:nowrap;}
+.site-nav .mono{display:grid;place-items:center;width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#C5A24A,#a9842f);color:#0F1B2D;font-size:13px;font-weight:700;}
+.site-nav em{font-style:normal;color:#C5A24A;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;font-family:'Inter';}
+.site-nav .menu{margin-left:auto;display:flex;align-items:center;gap:2px;flex-wrap:wrap;}
+.site-nav .menu a{text-decoration:none;color:rgba(255,255,255,.82);font-size:13px;font-weight:500;padding:8px 10px;border-radius:8px;}
+.site-nav .menu a:hover{color:#fff;background:rgba(255,255,255,.07);}
+.site-nav .menu a.active{color:#C5A24A;}
+.site-nav .menu a.cta{background:#8A1F2E;color:#fff;font-weight:600;padding:9px 15px;margin-left:6px;}
+.site-nav .burger{display:none;cursor:pointer;color:#fff;font-size:23px;margin-left:auto;}
+.site-nav .tg{display:none;}
+.bp-flag{background:#C5A24A;color:#0F1B2D;font-size:12px;font-weight:600;letter-spacing:.5px;text-align:center;padding:7px;font-family:'Inter';}
+@media(max-width:880px){.site-nav .burger{display:block;}.site-nav .menu{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;background:#0F1B2D;padding:10px 16px 16px;}.site-nav .tg:checked ~ .menu{display:flex;}.site-nav .menu a{padding:12px 8px;}}
+@media print{.site-nav,.bp-flag{display:none !important;}}
+</style></head>
+<body>
+<header class="site-nav"><div class="in"><a class="brand" href="index.html"><span class="mono">AB</span><span>AB-CABS<br><em>Académie</em></span></a><input type="checkbox" id="bnt" class="tg"><label for="bnt" class="burger">&#9776;</label><nav class="menu"><a href="index.html" class="active">Blueprint</a><a href="accueil.html">Accueil</a><a href="nos-formations.html">Nos formations</a><a href="financement.html">Financement</a><a href="examen-vtc.html">Examen VTC</a><a href="formation-continue-passerelle.html">Continue & passerelle</a><a href="avis-resultats.html">Avis & résultats</a><a href="qui-sommes-nous.html">Qui sommes-nous</a><a href="contact.html">Contact</a><a class="cta" href="contact.html">Réserver un entretien</a></nav></div></header><div class="bp-flag">Blueprint stratégique — page principale · Aperçu du futur site via le menu</div>
+
+<!-- ════════════════ PAGE DE COUVERTURE ════════════════ -->
+<div class="cover-page">
+  <img class="cover-logo" src="https://i.imgur.com/72UqvFq.png" alt="Monsite-en-ligne">
+  <div class="cover-eyebrow">Blueprint Stratégique</div>
+  <div class="cover-title">AB-CABS</div>
+  <div class="cover-sub">Refonte du site web — Centre de formation VTC</div>
+  <div class="cover-meta">
+    <span>Juin 2026</span>
+    <span>Formation VTC · Île-de-France</span>
+    <span>AR Digital</span>
+  </div>
+</div>
+
+<!-- ════════════════ PHASE 1 ════════════════ -->
+<div class="phase-band section-principale">
+  <div class="eyebrow">Phase 1</div>
+  <h2>Analyse de votre site actuel</h2>
+  <p>Votre site ab-cabs.fr est une base déjà très solide : un vrai centre de formation reconnu, des contenus riches et un excellent ancrage local. Cette analyse met en lumière tout ce qui fonctionne déjà bien, et dessine les belles opportunités qui vous attendent pour passer au niveau supérieur.</p>
+</div>
+
+<section>
+  <div class="grid grid-2">
+
+    <div class="card">
+      <h3>A. Structure &amp; navigation</h3>
+      <p>Votre site couvre un éventail impressionnant de pages : Qui sommes-nous, formules SILVER / GOLD / PLATINIUM, formation en ligne, formation continue, passerelle Taxi→VTC, financement CPF, centre d'examen, véhicules, avis, chiffres et contact. C'est une richesse rare dans votre secteur.</p>
+      <span class="eval eval-fort">✅ Point fort : un contenu très complet, qui répond à presque toutes les questions d'un futur chauffeur.</span>
+      <span class="eval eval-oppo">🚀 Belle opportunité : regrouper ces nombreuses pages en grands univers clairs pour que le visiteur trouve l'essentiel en un clin d'œil.</span>
+    </div>
+
+    <div class="card">
+      <h3>B. Design &amp; expérience</h3>
+      <p>La navigation est fonctionnelle et les informations pratiques (adresse, horaires, accès au centre commercial Les Arcades) sont très bien détaillées. Les éléments de réassurance — 90 % de réussite, 100 % de satisfaction, référent handicap — sont présents.</p>
+      <span class="eval eval-fort">✅ Point fort : une transparence exemplaire sur les accès, horaires et conditions.</span>
+      <span class="eval eval-oppo">🚀 Belle opportunité : habiller cette qualité d'une identité visuelle premium, à la hauteur du métier d'excellence que vous formez.</span>
+    </div>
+
+    <div class="card">
+      <h3>C. Copywriting &amp; message</h3>
+      <p>Votre promesse est claire dès l'accueil : un centre de formation VTC à Noisy-le-Grand, créé en 2018, qui accompagne les projets de A à Z. Le storytelling « équipe de professionnels » et les chiffres parlants installent une vraie confiance.</p>
+      <span class="eval eval-fort">✅ Point fort : un positionnement local affirmé et des résultats mis en avant.</span>
+      <span class="eval eval-dev">💡 À développer : une promesse de valeur encore plus différenciante, qui dise pourquoi AB-CABS plutôt qu'un autre.</span>
+    </div>
+
+    <div class="card">
+      <h3>D. SEO &amp; visibilité</h3>
+      <p>C'est un véritable atout : l'expression « formation VTC Noisy-le-Grand » est présente de façon cohérente, la FAQ répond aux vraies questions (« Qui peut devenir VTC ? », « Est-ce rentable ? »), et les pages locales renforcent votre référencement de proximité.</p>
+      <span class="eval eval-fort">✅ Point fort : un SEO local déjà bien travaillé et une FAQ pertinente.</span>
+      <span class="eval eval-oppo">🚀 Belle opportunité : structurer ce contenu en cocon thématique et l'élargir à toute l'Île-de-France.</span>
+    </div>
+
+    <div class="card">
+      <h3>E. Tunnel de conversion</h3>
+      <p>Les appels à l'action « En savoir plus » sont nombreux, le contact téléphonique et l'e-mail sont visibles, et la mention « venez nous parler de votre projet » crée un lien humain rassurant.</p>
+      <span class="eval eval-fort">✅ Point fort : un contact accessible et une vraie invitation à l'échange.</span>
+      <span class="eval eval-oppo">🚀 Belle opportunité : transformer ces invitations en parcours guidé — formulaire qualifiant, prise de RDV en ligne et CTA plus engageants.</span>
+    </div>
+
+    <div class="card">
+      <h3>F. Analyse de l'inspiration</h3>
+      <p>L'exemple transmis (univers « Grande Remise ») dessine clairement la direction souhaitée :</p>
+      <ul>
+        <li><strong>Palette :</strong> bleu nuit profond, bordeaux et touches dorées.</li>
+        <li><strong>Typographie :</strong> serif élégante en titres, sans-serif lisible en corps de texte.</li>
+        <li><strong>Ambiance :</strong> luxe, sérieux, professionnel.</li>
+        <li><strong>Structure d'accueil :</strong> grand visuel d'impact, chiffres clés, cartes de formations, bandeau certifications.</li>
+        <li><strong>UX :</strong> CTA très contrastés et badges de confiance (Qualiopi, CPF, Pôle Emploi).</li>
+      </ul>
+      <span class="eval eval-oppo">🚀 Cette inspiration sert uniquement de boussole visuelle — nous gardons votre structure et vos contenus.</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════ PHASE 2 ════════════════ -->
+<div class="phase-band section-principale">
+  <div class="eyebrow">Phase 2</div>
+  <h2>Recommandations personnalisées</h2>
+  <p>Pour chaque axe, voici ce que vous faites déjà très bien, l'opportunité de croissance identifiée, et notre recommandation concrète pour la saisir.</p>
+</div>
+
+<section>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:14%;">Axe</th>
+          <th style="width:24%;">Ce qui fonctionne déjà bien</th>
+          <th style="width:24%;">Opportunité d'amélioration</th>
+          <th style="width:10%;">Priorité</th>
+          <th style="width:28%;">Notre recommandation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Structure &amp; navigation</strong></td>
+          <td>Un contenu très riche couvrant toutes les formations et démarches.</td>
+          <td>De nombreuses pages séparées qui peuvent diluer le parcours.</td>
+          <td><span class="badge badge-important">Importante</span></td>
+          <td>Regrouper les formules SILVER / GOLD / PLATINIUM sous une seule page « Nos formations », avec un comparatif clair.</td>
+        </tr>
+        <tr>
+          <td><strong>Design &amp; identité visuelle</strong></td>
+          <td>Informations pratiques limpides et réassurance présente.</td>
+          <td>Une identité neutre qui ne reflète pas encore l'excellence du métier.</td>
+          <td><span class="badge badge-prioritaire">Prioritaire</span></td>
+          <td>Adopter l'univers premium bleu nuit / bordeaux / or pour valoriser le sérieux de votre centre.</td>
+        </tr>
+        <tr>
+          <td><strong>Confort mobile</strong></td>
+          <td>Contenu accessible depuis le téléphone.</td>
+          <td>Mise en page à fluidifier sur petit écran.</td>
+          <td><span class="badge badge-important">Importante</span></td>
+          <td>Refonte « mobile-first » : boutons d'appel et d'inscription accessibles au pouce, sur toutes les pages.</td>
+        </tr>
+        <tr>
+          <td><strong>Message &amp; promesse de valeur</strong></td>
+          <td>Positionnement local clair et chiffres mis en avant.</td>
+          <td>La différenciation « pourquoi AB-CABS » mérite d'être plus visible.</td>
+          <td><span class="badge badge-prioritaire">Prioritaire</span></td>
+          <td>Une promesse forte en haut de page : accompagnement de A à Z, de la formation au lancement de l'activité.</td>
+        </tr>
+        <tr>
+          <td><strong>Visibilité SEO (local + sectoriel)</strong></td>
+          <td>« Formation VTC Noisy-le-Grand » bien positionné, FAQ utile.</td>
+          <td>Potentiel à étendre à toute l'Île-de-France et au CPF.</td>
+          <td><span class="badge badge-important">Importante</span></td>
+          <td>Construire un cocon sémantique autour de « devenir VTC », « financement CPF » et « examen VTC IDF ».</td>
+        </tr>
+        <tr>
+          <td><strong>Parcours de conversion &amp; CTAs</strong></td>
+          <td>Contact direct et invitation à l'échange.</td>
+          <td>Des CTA génériques (« En savoir plus ») peu engageants.</td>
+          <td><span class="badge badge-prioritaire">Prioritaire</span></td>
+          <td>CTA orientés action (« Réserver mon entretien », « Tester mon éligibilité CPF ») + prise de RDV en ligne.</td>
+        </tr>
+        <tr>
+          <td><strong>Confiance &amp; preuve sociale</strong></td>
+          <td>Taux de réussite, satisfaction et certification RS 5637.</td>
+          <td>Les avis d'anciens élèves pourraient être bien plus mis en avant.</td>
+          <td><span class="badge badge-important">Importante</span></td>
+          <td>Bandeau de certifications (Qualiopi, CPF, France Compétences) + témoignages vidéo d'élèves devenus chauffeurs.</td>
+        </tr>
+        <tr>
+          <td><strong>Leviers de croissance marketing</strong></td>
+          <td>Services complémentaires (coaching, véhicules, juridique).</td>
+          <td>Aucun aimant à prospects pour capter les indécis.</td>
+          <td><span class="badge badge-secondaire">Secondaire</span></td>
+          <td>Créer un guide gratuit « Devenir VTC en Île-de-France » + séquence e-mail d'accompagnement.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:32px;">
+    <div class="note-card card">
+      <h3>Note d'intention</h3>
+      <p>Vous avez déjà l'essentiel : une vraie expertise, des résultats remarquables et une notoriété locale méritée. En habillant tout cela d'une identité premium et d'un parcours de conversion guidé, votre site va passer d'une riche source d'informations à une véritable machine à inscrire des futurs chauffeurs. Imaginez chaque visiteur compris dès la première seconde, rassuré par vos certifications, et invité naturellement à réserver son entretien : c'est exactement le cap que ce Blueprint trace pour AB-CABS.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ PHASE 3 — BLUEPRINT ════════════════ -->
+<div class="phase-band section-principale">
+  <div class="eyebrow">Phase 3</div>
+  <h2>Blueprint Stratégique</h2>
+  <p>La vision complète de votre futur site, en 9 sections — du positionnement à vos contenus, en passant par votre direction visuelle.</p>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section>
+  <div class="section-title-block">
+    <div class="eyebrow">01 — Positionnement</div>
+    <h2>Le centre VTC qui vous mène jusqu'au volant… et au-delà</h2>
+  </div>
+
+  <p class="lead" style="margin-bottom:28px;">« AB-CABS forme les chauffeurs VTC d'Île-de-France et les accompagne de A à Z : de la réussite à l'examen jusqu'au lancement réussi de leur activité. »</p>
+
+  <div class="grid grid-2" style="margin-bottom:30px;">
+    <div class="card">
+      <h3>Ligne directrice de communication</h3>
+      <p>Mettre en avant l'accompagnement humain et l'excellence : on ne vend pas seulement une formation, on lance une carrière. Chaque message rappelle les résultats (90 % de réussite) et la sécurité offerte par les certifications et le financement CPF.</p>
+    </div>
+    <div class="card">
+      <h3>Ton éditorial</h3>
+      <p><strong>Rassurant · Premium · Concret.</strong></p>
+      <p>Un ton qui inspire confiance à des personnes en reconversion, valorise le métier de chauffeur haut de gamme, et reste toujours clair sur les étapes et les coûts.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-bottom:18px;">Vos piliers de différenciation</h3>
+  <div class="grid grid-2">
+    <div class="card"><div class="pillar"><h3>Accompagnement de A à Z</h3><p>De la formation à l'examen, puis au lancement de l'activité : un suivi complet que peu de centres proposent réellement.</p></div></div>
+    <div class="card"><div class="pillar"><h3>Résultats prouvés</h3><p>90 % de réussite et 100 % de satisfaction — des chiffres concrets, mesurables, mis au cœur du discours.</p></div></div>
+    <div class="card"><div class="pillar"><h3>Certifié &amp; finançable</h3><p>Certification RS 5637 (France Compétences) et financement CPF / Pôle Emploi : la formation devient accessible à tous les budgets.</p></div></div>
+    <div class="card"><div class="pillar"><h3>Ancrage local fort</h3><p>Implanté à Noisy-le-Grand, accessible en RER A, au service de toute l'Île-de-France et de l'Est parisien.</p></div></div>
+    <div class="card"><div class="pillar"><h3>Un écosystème complet</h3><p>Coaching, choix du véhicule, accompagnement juridique : tout l'environnement du futur chauffeur réuni en un seul endroit.</p></div></div>
+  </div>
+
+  <div class="card" style="margin-top:24px;background:var(--primary-05);box-shadow:none;">
+    <p style="font-size:14px;"><strong>Réponse aux opportunités de la Phase 2 :</strong> ce positionnement transforme votre richesse de contenus en une promesse claire et différenciante, et place vos preuves de confiance (résultats, certifications, CPF) au premier plan — exactement là où réside votre avantage concurrentiel.</p>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section class="section-principale">
+  <div class="section-title-block">
+    <div class="eyebrow">02 — Client cible</div>
+    <h2>À qui s'adresse votre site</h2>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Profil type</h3>
+      <p>Hommes et femmes de 25 à 50 ans, vivant en Île-de-France (Seine-Saint-Denis, Est parisien, Val-de-Marne). Souvent en reconversion ou en recherche d'une activité indépendante : anciens salariés, livreurs, personnes en recherche d'emploi souhaitant un métier stable et autonome.</p>
+    </div>
+    <div class="card">
+      <h3>Ce qui les motive à faire appel à vous</h3>
+      <ul>
+        <li>Obtenir leur carte professionnelle VTC rapidement et sereinement.</li>
+        <li>Trouver une formation finançable (CPF, Pôle Emploi).</li>
+        <li>Être accompagnés au-delà de l'examen, jusqu'au lancement de l'activité.</li>
+        <li>Choisir un centre reconnu, avec de vrais résultats.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Leurs questions &amp; hésitations</h3>
+      <ul>
+        <li>« Suis-je éligible ? » (permis, casier judiciaire)</li>
+        <li>« Combien ça coûte vraiment, et puis-je le financer ? »</li>
+        <li>« Le métier est-il rentable ? »</li>
+        <li>« Vais-je vraiment réussir l'examen ? »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Ce qui les fait choisir un centre plutôt qu'un autre</h3>
+      <ul>
+        <li>Le taux de réussite affiché et les avis d'anciens élèves.</li>
+        <li>La clarté sur le financement CPF.</li>
+        <li>La proximité et la facilité d'accès du centre.</li>
+        <li>Le sentiment d'être accompagné par de vrais professionnels.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS -->
+<section class="section-principale">
+  <div class="section-title-block">
+    <div class="eyebrow">03 — Objectifs du site</div>
+    <h2>Ce que votre site doit accomplir</h2>
+  </div>
+
+  <div class="grid grid-3">
+    <div class="card"><h3>1. Génération de leads</h3><p>Capter les futurs chauffeurs via formulaire qualifiant et test d'éligibilité CPF.</p></div>
+    <div class="card"><h3>2. Prise de rendez-vous</h3><p>Faciliter la réservation de l'entretien personnalisé, votre point d'entrée commercial fort.</p></div>
+    <div class="card"><h3>3. SEO local</h3><p>Dominer « formation VTC » sur Noisy-le-Grand et l'Est de l'Île-de-France.</p></div>
+    <div class="card"><h3>4. Réassurance</h3><p>Rassurer par les résultats, certifications et témoignages d'anciens élèves.</p></div>
+    <div class="card"><h3>5. Conversion</h3><p>Transformer un visiteur curieux en inscription, par un parcours guidé et clair.</p></div>
+    <div class="card"><h3>6. Notoriété</h3><p>Asseoir AB-CABS comme la référence VTC premium de l'Est parisien.</p></div>
+  </div>
+
+  <div class="card" style="margin-top:24px;background:var(--primary-05);box-shadow:none;">
+    <p style="font-size:14px;"><strong>Objectifs prioritaires (issus de la Phase 2) :</strong> la <strong>génération de leads</strong> et la <strong>prise de rendez-vous</strong> arrivent en tête — ce sont eux qui transformeront votre excellent trafic SEO en inscriptions concrètes.</p>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section class="section-principale">
+  <div class="section-title-block">
+    <div class="eyebrow">04 — Arborescence</div>
+    <h2>La structure de votre futur site</h2>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:26%;">Page</th>
+          <th style="width:12%;">Framework</th>
+          <th style="width:24%;">Mot-clé principal</th>
+          <th style="width:16%;">Potentiel SEO</th>
+          <th style="width:22%;">Statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Accueil</strong></td><td>AIDA</td><td>formation VTC Île-de-France</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-amelioree">Améliorée</span></td></tr>
+        <tr><td><strong>Nos formations VTC</strong> (initiales : Silver / Gold / Platinium + comparatif)</td><td>PAS</td><td>formation VTC Noisy-le-Grand</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-amelioree">Améliorée</span></td></tr>
+        <tr><td><strong>Formation continue &amp; passerelle</strong> (continue, en ligne, passerelle taxi)</td><td>BAB</td><td>renouvellement carte VTC</td><td><span class="badge badge-moyen">Moyen</span></td><td><span class="badge badge-amelioree">Améliorée</span></td></tr>
+        <tr><td><strong>Financement (CPF &amp; Pôle Emploi)</strong></td><td>PAS</td><td>formation VTC CPF</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-amelioree">Améliorée</span></td></tr>
+        <tr><td><strong>Examen VTC — Guide</strong></td><td>PAS</td><td>examen VTC Île-de-France</td><td><span class="badge badge-moyen">Moyen</span></td><td><span class="badge badge-amelioree">Améliorée</span></td></tr>
+        <tr><td><strong>Qui sommes-nous</strong></td><td>BAB</td><td>centre de formation VTC certifié</td><td><span class="badge badge-moyen">Moyen</span></td><td><span class="badge badge-amelioree">Améliorée</span></td></tr>
+        <tr><td><strong>Avis &amp; résultats</strong></td><td>AIDA</td><td>avis centre formation VTC</td><td><span class="badge badge-moyen">Moyen</span></td><td><span class="badge badge-amelioree">Améliorée</span></td></tr>
+        <tr><td><strong>Contact &amp; inscription</strong></td><td>AIDA</td><td>inscription formation VTC</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-amelioree">Améliorée</span></td></tr>
+        <tr><td><strong>Formation VTC Noisy-le-Grand</strong> <em>(page locale)</em></td><td>PAS</td><td>formation VTC Noisy-le-Grand</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-amelioree">Améliorée</span></td></tr>
+        <tr><td><strong>Formation VTC Seine-Saint-Denis / Est parisien</strong> <em>(page locale)</em></td><td>PAS</td><td>formation VTC 93</td><td><span class="badge badge-moyen">Moyen</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+        <tr><td>Blog</td><td>—</td><td>devenir chauffeur VTC</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:var(--muted);margin-top:14px;">Les services complémentaires (coaching, véhicules, accompagnement juridique) sont intégrés en sections au sein des pages existantes plutôt qu'en pages isolées, pour un parcours plus fluide.</p>
+</section>
+
+<!-- 05 COCON SEMANTIQUE -->
+<section class="section-principale">
+  <div class="section-title-block">
+    <div class="eyebrow">05 — Cocon sémantique</div>
+    <h2>Comment vos pages se renforcent entre elles</h2>
+  </div>
+
+  <div class="grid grid-3">
+    <div class="card">
+      <h3>Cluster 1 — Devenir VTC</h3>
+      <p>Cœur : « Nos formations VTC ». Autour gravitent le guide examen, la page « Qui peut devenir VTC ? » et les articles de blog sur la reconversion. Chaque contenu renvoie vers la page formation.</p>
+    </div>
+    <div class="card">
+      <h3>Cluster 2 — Financer sa formation</h3>
+      <p>Cœur : « Financement CPF &amp; Pôle Emploi ». Relié aux pages formations, au test d'éligibilité et aux articles « Combien coûte une formation VTC ? ». Objectif : lever le frein financier.</p>
+    </div>
+    <div class="card">
+      <h3>Cluster 3 — Réussir &amp; se lancer</h3>
+      <p>Cœur : « Avis &amp; résultats ». Connecté au coaching, au choix du véhicule et aux articles sur la rentabilité du métier. Objectif : projeter le visiteur dans sa future réussite.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:24px;background:var(--primary-05);box-shadow:none;">
+    <p style="font-size:14px;"><strong>Logique de maillage :</strong> chaque article de blog et chaque page locale pointe vers la page « cœur » de son cluster, qui mène elle-même vers le contact. Les moteurs de recherche comprennent ainsi votre expertise, et le visiteur est guidé naturellement, d'étape en étape, jusqu'à l'inscription.</p>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section class="section-principale">
+  <div class="section-title-block">
+    <div class="eyebrow">06 — Tunnel de conversion</div>
+    <h2>Le parcours de votre futur chauffeur</h2>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>1 · Découverte</h3>
+      <p><strong>Source :</strong> recherche Google « formation VTC Noisy-le-Grand », réseaux sociaux.</p>
+      <p><strong>Page :</strong> Accueil &amp; pages locales.</p>
+      <p><strong>CTA :</strong> « Découvrir nos formations ».</p>
+    </div>
+    <div class="card">
+      <h3>2 · Intérêt</h3>
+      <p><strong>Source :</strong> navigation interne, blog.</p>
+      <p><strong>Page :</strong> Nos formations &amp; Financement CPF.</p>
+      <p><strong>CTA :</strong> « Tester mon éligibilité CPF ».</p>
+    </div>
+    <div class="card">
+      <h3>3 · Confiance</h3>
+      <p><strong>Source :</strong> recherche d'avis, bouche-à-oreille.</p>
+      <p><strong>Page :</strong> Avis &amp; résultats, Qui sommes-nous.</p>
+      <p><strong>CTA :</strong> « Voir les témoignages ».</p>
+    </div>
+    <div class="card">
+      <h3>4 · Action</h3>
+      <p><strong>Source :</strong> visiteur convaincu.</p>
+      <p><strong>Page :</strong> Contact &amp; inscription.</p>
+      <p><strong>CTA :</strong> « Réserver mon entretien personnalisé ».</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS DE CROISSANCE -->
+<section class="section-principale">
+  <div class="section-title-block">
+    <div class="eyebrow">07 — Leviers de croissance</div>
+    <h2>Les outils pour transformer vos visiteurs</h2>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card"><h3>Lead magnet</h3><p>Guide gratuit téléchargeable : <em>« Devenir chauffeur VTC en Île-de-France : le parcours complet, du financement à la première course »</em>. Idéal pour capter les indécis en échange de leur e-mail.</p></div>
+    <div class="card"><h3>Prise de rendez-vous</h3><p>Module de réservation en ligne pour l'entretien personnalisé d'une heure (votre atout commercial) — créneaux en présentiel au centre ou par téléphone.</p></div>
+    <div class="card"><h3>Preuve sociale</h3><p>Témoignages vidéo d'anciens élèves devenus chauffeurs, compteurs de résultats (90 % de réussite, 1600+ formés) et bandeau de certifications Qualiopi / CPF / France Compétences.</p></div>
+    <div class="card"><h3>Formulaire qualifiant</h3><p>Champs adaptés : ancienneté du permis, situation actuelle, formation visée, mode de financement souhaité (CPF / Pôle Emploi / personnel), zone géographique.</p></div>
+    <div class="card"><h3>Newsletter</h3><p>Angle « Réussir comme VTC » : conseils métier, évolutions de la réglementation, astuces pour développer son activité et fidéliser sa clientèle.</p></div>
+    <div class="card"><h3>Séquence e-mail automatisée</h3><p>Après téléchargement du guide : J+0 bienvenue &amp; éligibilité, J+2 financement CPF, J+4 témoignages, J+6 invitation à réserver l'entretien — calée sur un cycle de décision court.</p></div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section class="section-principale">
+  <div class="section-title-block">
+    <div class="eyebrow">08 — Direction visuelle</div>
+    <h2>L'univers premium d'AB-CABS</h2>
+  </div>
+
+  <h3 style="text-align:center;margin-bottom:8px;">Palette de couleurs</h3>
+  <p style="text-align:center;color:var(--muted);font-size:13px;margin-bottom:18px;">Inspirée de la référence visuelle transmise — un univers de transport haut de gamme.</p>
+  <div class="swatch-grid">
+    <div class="swatch-item"><div class="swatch" style="background:#0F1B2D;"></div><div class="swatch-name">Bleu nuit</div><div class="swatch-hex">#0F1B2D</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#8A1F2E;"></div><div class="swatch-name">Bordeaux</div><div class="swatch-hex">#8A1F2E</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#C5A24A;"></div><div class="swatch-name">Or</div><div class="swatch-hex">#C5A24A</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#F8F6F1;border:1px solid #e2e8f0;"></div><div class="swatch-name">Ivoire</div><div class="swatch-hex">#F8F6F1</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#1a1a2e;"></div><div class="swatch-name">Texte</div><div class="swatch-hex">#1A1A2E</div></div>
+  </div>
+
+  <h3 style="margin-top:40px;margin-bottom:18px;">Univers visuel</h3>
+  <div class="grid grid-2">
+    <div class="card"><h3>Photographie premium</h3><p>Berlines noires, intérieurs cuir, chauffeurs en costume — l'imaginaire du transport d'excellence, comme dans votre inspiration.</p></div>
+    <div class="card"><h3>Typographie élégante</h3><p>Titres en serif racée, textes en sans-serif moderne et lisible : sérieux et raffinement à chaque page.</p></div>
+    <div class="card"><h3>Touches dorées</h3><p>Filets, icônes et chiffres clés rehaussés d'or pour signaler l'excellence sans surcharge.</p></div>
+    <div class="card"><h3>Badges de confiance</h3><p>Certifications Qualiopi, CPF et Pôle Emploi mises en valeur dans un bandeau dédié, gage de sérieux immédiat.</p></div>
+  </div>
+
+  <div class="card" style="margin-top:24px;background:var(--primary-05);box-shadow:none;">
+    <p style="font-size:14px;"><strong>Une montée en gamme :</strong> votre site actuel mise déjà sur la transparence et l'information ; cette direction visuelle vient l'habiller d'un écrin à la hauteur de votre métier, pour que la première impression reflète enfin toute la qualité de votre accompagnement.</p>
+  </div>
+</section>
+
+<!-- 09 BLOG -->
+<section class="section-principale">
+  <div class="section-title-block">
+    <div class="eyebrow">09 — Idées de contenus blog</div>
+    <h2>Des articles qui attirent vos futurs élèves</h2>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:34%;">Titre</th>
+          <th style="width:22%;">Thématique</th>
+          <th style="width:26%;">Intention de recherche</th>
+          <th style="width:18%;">Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Comment devenir chauffeur VTC en Île-de-France en 2026 ?</td><td>Reconversion</td><td>Informationnelle / découverte</td><td><span class="badge badge-prioritaire">Prioritaire</span></td></tr>
+        <tr><td>Financer sa formation VTC avec le CPF : mode d'emploi</td><td>Financement</td><td>Transactionnelle</td><td><span class="badge badge-prioritaire">Prioritaire</span></td></tr>
+        <tr><td>Examen VTC : comment s'inscrire et le réussir du premier coup</td><td>Examen</td><td>Informationnelle ciblée</td><td><span class="badge badge-prioritaire">Prioritaire</span></td></tr>
+        <tr><td>Le métier de VTC est-il rentable ? Revenus &amp; budget de départ</td><td>Rentabilité</td><td>Informationnelle / réassurance</td><td><span class="badge badge-secondaire">Utile</span></td></tr>
+        <tr><td>SILVER, GOLD ou PLATINIUM : quelle formule choisir ?</td><td>Offres</td><td>Comparative</td><td><span class="badge badge-secondaire">Utile</span></td></tr>
+        <tr><td>Passerelle Taxi → VTC : ce qui change pour vous</td><td>Passerelle</td><td>Niche / ciblée</td><td><span class="badge badge-moyen">Bonus</span></td></tr>
+        <tr><td>Bien démarrer son activité de VTC : véhicule, statut, premiers clients</td><td>Lancement</td><td>Informationnelle / fidélisation</td><td><span class="badge badge-moyen">Bonus</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<footer>
+  <span>AB-CABS</span>
+  <span>Formation VTC · Île-de-France</span>
+  <span>Confidentiel — AR Digital</span>
+</footer>
+
+</body>
+</html>

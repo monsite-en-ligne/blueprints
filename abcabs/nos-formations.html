@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formations VTC à Noisy-le-Grand | SILVER, GOLD, PLATINIUM</title>
+<meta name="description" content="Comparez les formations VTC AB-CABS : SILVER, GOLD, PLATINIUM, formation en ligne et accompagnement pratique pour préparer l’examen VTC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>:root{--primary:#8A1F2E;--navy:#0F1B2D;--gold:#C5A24A;--bg:#ffffff;--soft:#faf7f2;--text:#1f2433;--muted:#6b7280;--line:#ececf0;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--bg);line-height:1.75;}
+h1,h2,h3{font-family:'Playfair Display',serif;color:var(--navy);line-height:1.2;}
+a{color:inherit;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px;}
+.nav{position:sticky;top:0;z-index:50;background:rgba(15,27,45,.97);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.08);}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:11px 24px;}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:'Playfair Display';font-size:17px;font-weight:700;white-space:nowrap;}
+.brand .mono{display:grid;place-items:center;width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#a9842f);color:var(--navy);font-size:13px;font-weight:700;}
+.brand em{font-style:normal;color:var(--gold);font-family:'Inter';font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;}
+.menu{margin-left:auto;display:flex;align-items:center;gap:2px;flex-wrap:wrap;}
+.menu a{text-decoration:none;color:rgba(255,255,255,.82);font-size:13px;font-weight:500;padding:8px 10px;border-radius:8px;}
+.menu a:hover{color:#fff;background:rgba(255,255,255,.07);}
+.menu a.active{color:var(--gold);}
+.menu a.nav-cta{background:var(--primary);color:#fff;font-weight:600;padding:9px 15px;margin-left:6px;}
+.menu a.nav-cta:hover{background:#7a1a28;}
+.burger{display:none;cursor:pointer;color:#fff;font-size:23px;margin-left:auto;}
+.navtog{display:none;}
+.hero{background:linear-gradient(135deg,#0F1B2D 0%,#1d1320 48%,#5e1620 100%);color:#fff;padding:74px 0 64px;}
+.hero .ey{color:var(--gold);font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;}
+.hero h1{color:#fff;font-size:40px;max-width:830px;margin-bottom:18px;}
+.hero .sub{font-size:17px;color:rgba(255,255,255,.82);max-width:720px;margin-bottom:26px;}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;}
+.btn{display:inline-block;text-decoration:none;background:var(--primary);color:#fff;border-radius:30px;padding:13px 26px;font-size:14.5px;font-weight:600;transition:.15s;}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.07);}
+.btn.ghost{background:transparent;border:1.6px solid rgba(255,255,255,.6);color:#fff;}
+.proofs{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;}
+.proof{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:24px;padding:7px 15px;font-size:12.5px;color:#fff;}
+.block{padding:58px 0;border-bottom:1px solid var(--line);}
+.block.alt{background:var(--soft);}
+.block h2{font-size:28px;margin-bottom:22px;max-width:780px;}
+.block p{font-size:15.5px;color:#3a3f4d;margin-bottom:12px;max-width:780px;}
+.block ul{list-style:none;margin:8px 0 16px;max-width:780px;}
+.block li{position:relative;padding-left:24px;font-size:15px;color:#3a3f4d;margin-bottom:9px;}
+.block li::before{content:"";position:absolute;left:4px;top:11px;width:7px;height:7px;border-radius:50%;background:var(--gold);}
+.sub{font-family:'Inter';font-size:12.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--primary);margin:22px 0 8px;}
+.block .cta-row{margin-top:18px;}
+.block .btn{color:#fff;}.block .btn.ghost{background:transparent;border:1.6px solid var(--primary);color:var(--primary);}
+.faq .item{border-top:1px solid var(--line);padding:18px 0;max-width:840px;}
+.faq .item:first-of-type{border-top:none;}
+.faq .q{font-weight:600;color:var(--navy);font-size:16px;margin-bottom:7px;}
+.faq .item p{font-size:14.5px;color:#4b5563;margin-bottom:5px;}
+.final{background:linear-gradient(135deg,#0F1B2D 0%,#5e1620 100%);color:#fff;padding:64px 0;text-align:center;}
+.final h2{color:#fff;font-size:30px;max-width:760px;margin:0 auto 16px;}
+.final p{color:rgba(255,255,255,.85);max-width:640px;margin:0 auto 26px;font-size:16px;}
+.final .cta-row{justify-content:center;}
+.final .btn{background:var(--gold);color:var(--navy);}
+.final .btn.ghost{background:transparent;border-color:var(--gold);color:var(--gold);}
+.foot{background:#0b1320;color:rgba(255,255,255,.72);padding:54px 0 26px;}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;}
+.foot h4{color:#fff;font-family:'Inter';font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;}
+.foot a{color:rgba(255,255,255,.72);text-decoration:none;display:block;font-size:14px;margin-bottom:9px;}
+.foot a:hover{color:var(--gold);}
+.foot .meta{font-size:14px;line-height:1.9;}
+.foot .gold{color:var(--gold);}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:34px;padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:rgba(255,255,255,.5);}
+.foot-bottom a{display:inline;color:rgba(255,255,255,.5);}
+@media(max-width:860px){
+ .burger{display:block;}
+ .menu{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;background:#0F1B2D;padding:10px 16px 18px;gap:2px;border-top:1px solid rgba(255,255,255,.08);}
+ .navtog:checked ~ .menu{display:flex;}
+ .menu a{padding:12px 10px;}.menu a.nav-cta{margin:8px 0 0;text-align:center;}
+ .hero h1{font-size:30px;}.block h2{font-size:23px;}.final h2{font-size:24px;}
+ .foot-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<header class="nav"><div class="nav-inner"><a class="brand" href="index.html"><span class="mono">AB</span><span>AB-CABS<br><em>Académie</em></span></a><input type="checkbox" id="nt" class="navtog"><label for="nt" class="burger">&#9776;</label><nav class="menu"><a href="index.html">Blueprint</a><a href="accueil.html">Accueil</a><a href="nos-formations.html" class="active">Nos formations</a><a href="financement.html">Financement</a><a href="examen-vtc.html">Examen VTC</a><a href="formation-continue-passerelle.html">Continue &amp; passerelle</a><a href="avis-resultats.html">Avis &amp; résultats</a><a href="qui-sommes-nous.html">Qui sommes-nous</a><a href="contact.html">Contact</a><a class="nav-cta" href="contact.html">Réserver un entretien</a></nav></div></header><section class="hero"><div class="wrap"><div class="ey">formation VTC Noisy-le-Grand</div><h1>Choisissez la formation VTC adaptée à votre niveau, votre rythme et votre objectif</h1><p class="sub">Tout le monde veut réussir l’examen VTC. Mais tout le monde n’a pas le même temps, le même niveau de départ, ni le même besoin d’accompagnement. C’est pourquoi AB-CABS propose plusieurs formules de formation, du parcours essentiel à l’accompagnement renforcé.</p><div class="cta-row"><a class="btn" href="nos-formations.html">Comparer les formules</a><a class="btn ghost" href="nos-formations.html">Être conseillé sur mon choix</a></div></div></section><section class="block"><div class="wrap"><h2>Trois formules pour un même objectif : vous préparer sérieusement à l’examen VTC</h2><p>L’examen VTC demande de la méthode.</p><p>Il ne suffit pas de lire quelques supports.</p><p>Il faut comprendre les attentes, s’entraîner, repérer ses points faibles et se préparer à la théorie comme à la pratique.</p><p>Chez AB-CABS, les formules SILVER, GOLD et PLATINIUM ont été conçues pour répondre à trois profils :</p><ul><li>ceux qui veulent une formation claire et concentrée ;</li><li>ceux qui veulent plus de temps sur les matières sensibles ;</li><li>ceux qui veulent l’accompagnement le plus complet possible.</li></ul></div></section><section class="block alt"><div class="wrap"><h2>Formule SILVER</h2><div class="sub">H2</div><p>SILVER — La formation essentielle pour préparer l’examen VTC en présentiel</p><div class="sub">Texte</div><p>La formule SILVER vous donne les bases nécessaires pour préparer les épreuves théoriques et pratiques de l’examen VTC.</p><p>Pendant 35 heures réparties sur 5 jours, vous travaillez les 7 matières de l’examen théorique et les fondamentaux de l’épreuve pratique.</p><div class="sub">Ce que vous travaillez</div><ul><li>Réglementation du transport public particulier de personnes</li><li>Gestion d’entreprise</li><li>Sécurité routière</li><li>Français</li><li>Anglais</li><li>Développement commercial</li><li>Réglementation nationale spécifique VTC</li><li>Devis et facture</li><li>Aspect touristique</li><li>Qualité de prise en charge client</li><li>Préparation pratique en salle</li></ul><div class="sub">Pour qui ?</div><p>La formule SILVER est adaptée si vous êtes autonome, motivé et capable de travailler entre les séances pour consolider vos acquis.</p><div class="sub">Prix indicatif</div><p>1190 €</p><div class="cta-row"><a class="btn" href="nos-formations.html">Choisir la formule SILVER</a></div></div></section><section class="block"><div class="wrap"><h2>Formule GOLD</h2><div class="sub">H2</div><p>GOLD — Plus de temps sur les matières clés pour renforcer votre préparation</p><div class="sub">Texte</div><p>La formule GOLD reprend la base de la formule SILVER et ajoute deux journées supplémentaires sur des matières souvent déterminantes : la gestion et le développement commercial.</p><p>Ces matières ne sont pas seulement importantes pour l’examen.</p><p>Elles le sont aussi pour votre future activité.</p><p>Un chauffeur VTC doit savoir raisonner comme un professionnel indépendant : calculer, facturer, développer son activité, comprendre ses coûts et se positionner face à la concurrence.</p><div class="sub">Ce que GOLD ajoute</div><ul><li>1 jour supplémentaire en gestion</li><li>1 jour supplémentaire en développement commercial</li><li>Analyses d’examens précédents</li><li>Deuxième passage en formation offert à l’école en cas d’échec, selon conditions du centre</li><li>Bonus liés à la préparation pratique et au lancement</li></ul><div class="sub">Pour qui ?</div><p>La formule GOLD est adaptée si vous voulez sécuriser votre préparation, poser plus de questions et mieux comprendre les matières qui font souvent la différence.</p><div class="sub">Prix indicatif</div><p>2290 €</p><div class="cta-row"><a class="btn" href="nos-formations.html">Choisir la formule GOLD</a></div></div></section><section class="block alt"><div class="wrap"><h2>Formule PLATINIUM</h2><div class="sub">H2</div><p>PLATINIUM — L’accompagnement renforcé pour préparer l’examen avec un maximum de pratique</p><div class="sub">Texte</div><p>La formule PLATINIUM est le parcours le plus complet.</p><p>Elle reprend la formule GOLD et ajoute des journées supplémentaires sur la réglementation, la sécurité routière et la pratique sur route avec un professionnel du métier.</p><p>C’est la formule pensée pour les candidats qui veulent être encadrés plus longtemps, poser davantage de questions et consolider leur préparation avant l’examen.</p><div class="sub">Ce que PLATINIUM ajoute</div><ul><li>1 jour supplémentaire en réglementation générale</li><li>1 jour supplémentaire en sécurité routière</li><li>Apprentissage et évaluations sur route avec un professionnel</li><li>Passages ultérieurs en formation à l’école offerts en cas d’échec, selon conditions du centre</li><li>Accompagnement pratique renforcé</li></ul><div class="sub">Pour qui ?</div><p>La formule PLATINIUM est adaptée si vous voulez avancer avec un cadre complet, une pratique plus poussée et davantage de sécurité avant le passage à l’examen.</p><div class="sub">Prix indicatif</div><p>2990 €</p><div class="cta-row"><a class="btn" href="nos-formations.html">Choisir la formule PLATINIUM</a></div></div></section><section class="block"><div class="wrap"><h2>Tableau de comparaison</h2><div class="sub">SILVER</div><p>Durée : 35h sur 5 jours</p><p>Niveau : essentiel</p><p>Idéal pour : candidat autonome</p><p>Objectif : bases théoriques + pratique en salle</p><div class="sub">GOLD</div><p>Durée : 45h sur 7 jours</p><p>Niveau : renforcé</p><p>Idéal pour : candidat qui veut consolider la gestion et le commercial</p><p>Objectif : mieux comprendre les matières clés</p><div class="sub">PLATINIUM</div><p>Durée : 70h sur 10 jours</p><p>Niveau : complet</p><p>Idéal pour : candidat qui veut le suivi le plus poussé</p><p>Objectif : théorie renforcée + pratique sur route</p><div class="cta-row"><a class="btn" href="nos-formations.html">Je veux être conseillé sur la bonne formule</a></div></div></section><section class="block alt"><div class="wrap"><h2>Formation VTC en ligne</h2><div class="sub">H2</div><p>Vous préférez avancer à distance ?</p><p>La formation VTC en ligne vous permet de travailler à votre rythme, avec un accès flexible aux contenus.</p><p>Elle inclut notamment :</p><ul><li>contenus théoriques ;</li><li>plus de 400 QCM ;</li><li>50 QRC ;</li><li>tutoriels ;</li><li>sujets d’examens pratiques ;</li><li>coachings en visio chaque semaine ;</li><li>accès à une communauté privée.</li></ul><div class="sub">Pour qui ?</div><p>La formation en ligne est adaptée si vous êtes à l’aise avec l’apprentissage à distance, si vous avez besoin de flexibilité ou si vous ne pouvez pas vous déplacer facilement au centre.</p><div class="sub">Prix indicatif</div><p>990 €</p><div class="cta-row"><a class="btn" href="nos-formations.html">Découvrir la formation en ligne</a></div></div></section><section class="block"><div class="wrap"><h2>Formation pratique seule</h2><div class="sub">H2</div><p>Besoin de vous préparer uniquement à la pratique ?</p><p>AB-CABS propose aussi des modules de formation pratique pour travailler le déroulé de l’épreuve, les devis, les factures, la lecture de carte, la mise en situation et la conduite sur véhicule double commande selon la formule choisie.</p><div class="cta-row"><a class="btn" href="examen-vtc.html">Préparer mon épreuve pratique</a></div></div></section><section class="block alt"><div class="wrap"><h2>Vous hésitez entre deux formules ?</h2><p>C’est normal.</p><p>Le bon choix dépend de :</p><ul><li>votre niveau actuel ;</li><li>votre capacité à travailler seul ;</li><li>votre budget ;</li><li>votre disponibilité ;</li><li>votre besoin de pratique ;</li><li>votre niveau de stress face à l’examen.</li></ul><p>Un entretien personnalisé permet de clarifier tout cela rapidement.</p><p>Vous venez avec vos questions.</p><p>Nous vous aidons à choisir sans vous pousser vers une formule inutile.</p><div class="cta-row"><a class="btn" href="contact.html">Réserver mon entretien personnalisé</a></div></div></section><section class="block alt faq" id="faq"><div class="wrap"><h2>Questions fréquentes</h2><div class="item"><div class="q">Quelle formule choisir si je débute totalement ?</div><p>Si vous voulez un accompagnement plus solide, GOLD ou PLATINIUM seront souvent plus confortables. SILVER peut convenir à un candidat autonome qui a du temps pour travailler entre les séances.</p></div><div class="item"><div class="q">La formule la plus chère garantit-elle la réussite ?</div><p>Non. Aucune formation sérieuse ne peut garantir votre réussite. En revanche, une formule plus complète vous donne plus de temps, plus de pratique et plus d’accompagnement.</p></div><div class="item"><div class="q">La formation est-elle finançable ?</div><p>Selon votre situation, vous pouvez mobiliser votre CPF, un financement via France Travail ou choisir un paiement personnel avec facilités.</p></div><div class="item"><div class="q">Puis-je venir au centre avant de m’inscrire ?</div><p>Oui. L’entretien personnalisé est justement là pour faire le point sur votre projet, votre financement et la formule la plus adaptée.</p></div></div></section><section class="final"><div class="wrap"><h2>Vous voulez choisir la bonne formule sans vous tromper ?</h2><p>Parlez-nous de votre projet. En quelques minutes, nous vous aidons à identifier le parcours le plus cohérent.</p><div class="cta-row"><a class="btn" href="nos-formations.html">Être conseillé sur ma formation</a><a class="btn ghost" href="financement.html">Voir les financements</a></div></div></section><footer class="foot"><div class="wrap"><div class="foot-grid"><div><h4>AB-CABS Académie</h4><div class="meta">Centre Commercial Les Arcades<br>420 Clos de la Courtine<br>93160 Noisy-le-Grand<br><br><span class="gold">06 70 16 78 25</span><br>contact@ab-cabs.fr<br><br>Lun, Mar, Jeu, Ven : 9h–12h / 13h–16h<br>Mer : sur rendez-vous</div></div><div><h4>Navigation</h4><a href="accueil.html">Accueil</a>
+<a href="nos-formations.html">Nos formations</a>
+<a href="financement.html">Financement</a>
+<a href="examen-vtc.html">Examen VTC</a>
+<a href="formation-continue-passerelle.html">Continue &amp; passerelle</a>
+<a href="avis-resultats.html">Avis &amp; résultats</a>
+<a href="qui-sommes-nous.html">Qui sommes-nous</a>
+<a href="contact.html">Contact</a></div><div><h4>Zones desservies</h4><a href="formation-vtc-noisy-le-grand.html">VTC Noisy-le-Grand</a>
+<a href="formation-vtc-seine-saint-denis.html">VTC Seine-Saint-Denis</a><a href="examen-vtc.html">Guide examen VTC</a></div></div><div class="foot-bottom"><span>© 2026 AB-CABS Académie — Centre de formation VTC certifié</span><span><a href="index.html">Blueprint stratégique</a> · Maquette de navigation</span></div></div></footer>
+</body>
+</html>

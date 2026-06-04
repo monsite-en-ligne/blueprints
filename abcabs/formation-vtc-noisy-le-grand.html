@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formation VTC Noisy-le-Grand | Centre AB-CABS Académie</title>
+<meta name="description" content="Préparez votre examen VTC à Noisy-le-Grand avec AB-CABS Académie. Formations en présentiel, CPF, pratique, examen et accompagnement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>:root{--primary:#8A1F2E;--navy:#0F1B2D;--gold:#C5A24A;--bg:#ffffff;--soft:#faf7f2;--text:#1f2433;--muted:#6b7280;--line:#ececf0;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--bg);line-height:1.75;}
+h1,h2,h3{font-family:'Playfair Display',serif;color:var(--navy);line-height:1.2;}
+a{color:inherit;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px;}
+.nav{position:sticky;top:0;z-index:50;background:rgba(15,27,45,.97);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.08);}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:11px 24px;}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:'Playfair Display';font-size:17px;font-weight:700;white-space:nowrap;}
+.brand .mono{display:grid;place-items:center;width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#a9842f);color:var(--navy);font-size:13px;font-weight:700;}
+.brand em{font-style:normal;color:var(--gold);font-family:'Inter';font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;}
+.menu{margin-left:auto;display:flex;align-items:center;gap:2px;flex-wrap:wrap;}
+.menu a{text-decoration:none;color:rgba(255,255,255,.82);font-size:13px;font-weight:500;padding:8px 10px;border-radius:8px;}
+.menu a:hover{color:#fff;background:rgba(255,255,255,.07);}
+.menu a.active{color:var(--gold);}
+.menu a.nav-cta{background:var(--primary);color:#fff;font-weight:600;padding:9px 15px;margin-left:6px;}
+.menu a.nav-cta:hover{background:#7a1a28;}
+.burger{display:none;cursor:pointer;color:#fff;font-size:23px;margin-left:auto;}
+.navtog{display:none;}
+.hero{background:linear-gradient(135deg,#0F1B2D 0%,#1d1320 48%,#5e1620 100%);color:#fff;padding:74px 0 64px;}
+.hero .ey{color:var(--gold);font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;}
+.hero h1{color:#fff;font-size:40px;max-width:830px;margin-bottom:18px;}
+.hero .sub{font-size:17px;color:rgba(255,255,255,.82);max-width:720px;margin-bottom:26px;}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;}
+.btn{display:inline-block;text-decoration:none;background:var(--primary);color:#fff;border-radius:30px;padding:13px 26px;font-size:14.5px;font-weight:600;transition:.15s;}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.07);}
+.btn.ghost{background:transparent;border:1.6px solid rgba(255,255,255,.6);color:#fff;}
+.proofs{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;}
+.proof{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:24px;padding:7px 15px;font-size:12.5px;color:#fff;}
+.block{padding:58px 0;border-bottom:1px solid var(--line);}
+.block.alt{background:var(--soft);}
+.block h2{font-size:28px;margin-bottom:22px;max-width:780px;}
+.block p{font-size:15.5px;color:#3a3f4d;margin-bottom:12px;max-width:780px;}
+.block ul{list-style:none;margin:8px 0 16px;max-width:780px;}
+.block li{position:relative;padding-left:24px;font-size:15px;color:#3a3f4d;margin-bottom:9px;}
+.block li::before{content:"";position:absolute;left:4px;top:11px;width:7px;height:7px;border-radius:50%;background:var(--gold);}
+.sub{font-family:'Inter';font-size:12.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--primary);margin:22px 0 8px;}
+.block .cta-row{margin-top:18px;}
+.block .btn{color:#fff;}.block .btn.ghost{background:transparent;border:1.6px solid var(--primary);color:var(--primary);}
+.faq .item{border-top:1px solid var(--line);padding:18px 0;max-width:840px;}
+.faq .item:first-of-type{border-top:none;}
+.faq .q{font-weight:600;color:var(--navy);font-size:16px;margin-bottom:7px;}
+.faq .item p{font-size:14.5px;color:#4b5563;margin-bottom:5px;}
+.final{background:linear-gradient(135deg,#0F1B2D 0%,#5e1620 100%);color:#fff;padding:64px 0;text-align:center;}
+.final h2{color:#fff;font-size:30px;max-width:760px;margin:0 auto 16px;}
+.final p{color:rgba(255,255,255,.85);max-width:640px;margin:0 auto 26px;font-size:16px;}
+.final .cta-row{justify-content:center;}
+.final .btn{background:var(--gold);color:var(--navy);}
+.final .btn.ghost{background:transparent;border-color:var(--gold);color:var(--gold);}
+.foot{background:#0b1320;color:rgba(255,255,255,.72);padding:54px 0 26px;}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;}
+.foot h4{color:#fff;font-family:'Inter';font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;}
+.foot a{color:rgba(255,255,255,.72);text-decoration:none;display:block;font-size:14px;margin-bottom:9px;}
+.foot a:hover{color:var(--gold);}
+.foot .meta{font-size:14px;line-height:1.9;}
+.foot .gold{color:var(--gold);}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:34px;padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:rgba(255,255,255,.5);}
+.foot-bottom a{display:inline;color:rgba(255,255,255,.5);}
+@media(max-width:860px){
+ .burger{display:block;}
+ .menu{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;background:#0F1B2D;padding:10px 16px 18px;gap:2px;border-top:1px solid rgba(255,255,255,.08);}
+ .navtog:checked ~ .menu{display:flex;}
+ .menu a{padding:12px 10px;}.menu a.nav-cta{margin:8px 0 0;text-align:center;}
+ .hero h1{font-size:30px;}.block h2{font-size:23px;}.final h2{font-size:24px;}
+ .foot-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<header class="nav"><div class="nav-inner"><a class="brand" href="index.html"><span class="mono">AB</span><span>AB-CABS<br><em>Académie</em></span></a><input type="checkbox" id="nt" class="navtog"><label for="nt" class="burger">&#9776;</label><nav class="menu"><a href="index.html">Blueprint</a><a href="accueil.html">Accueil</a><a href="nos-formations.html">Nos formations</a><a href="financement.html">Financement</a><a href="examen-vtc.html">Examen VTC</a><a href="formation-continue-passerelle.html">Continue &amp; passerelle</a><a href="avis-resultats.html">Avis &amp; résultats</a><a href="qui-sommes-nous.html">Qui sommes-nous</a><a href="contact.html">Contact</a><a class="nav-cta" href="contact.html">Réserver un entretien</a></nav></div></header><section class="hero"><div class="wrap"><div class="ey">formation VTC Noisy-le-Grand</div><h1>Formation VTC à Noisy-le-Grand : préparez votre examen près de chez vous</h1><p class="sub">AB-CABS Académie accompagne les futurs chauffeurs VTC de Noisy-le-Grand, Marne-la-Vallée, Seine-Saint-Denis, Val-de-Marne et Paris Est avec des formations en présentiel, en ligne et un accompagnement complet.</p><div class="cta-row"><a class="btn" href="contact.html">Réserver un entretien à Noisy-le-Grand</a><a class="btn ghost" href="nos-formations.html">Voir les formations</a></div></div></section><section class="block"><div class="wrap"><h2>Un centre VTC local, accessible et spécialisé</h2><p>Quand vous préparez un examen professionnel, la proximité compte.</p><p>Pouvoir venir facilement au centre, poser vos questions, rencontrer l’équipe et suivre votre formation dans un cadre clair peut faire une vraie différence.</p><p>AB-CABS Académie est implanté à Noisy-le-Grand, au Centre Commercial Les Arcades, un emplacement accessible en transport comme en voiture.</p><p>Vous bénéficiez d’un centre local, avec une expertise spécialisée dans le métier de chauffeur VTC.</p></div></section><section class="block alt"><div class="wrap"><h2>Pourquoi se former à Noisy-le-Grand ?</h2><p>Noisy-le-Grand est un point stratégique pour les futurs chauffeurs VTC de l’Est francilien.</p><p>Le centre est accessible depuis :</p><ul><li>Noisy-le-Grand ;</li><li>Champs-sur-Marne ;</li><li>Neuilly-sur-Marne ;</li><li>Bry-sur-Marne ;</li><li>Villiers-sur-Marne ;</li><li>Montreuil ;</li><li>Rosny-sous-Bois ;</li><li>Val-de-Fontenay ;</li><li>Torcy ;</li><li>Lognes ;</li><li>Paris Est.</li></ul><p>Vous évitez des trajets inutiles vers Paris tout en bénéficiant d’un centre spécialisé VTC.</p></div></section><section class="block"><div class="wrap"><h2>Les formations disponibles à Noisy-le-Grand</h2><div class="sub">Formation initiale SILVER</div><p>35h sur 5 jours pour travailler les bases théoriques et pratiques de l’examen.</p><div class="cta-row"><a class="btn" href="nos-formations.html">Voir SILVER</a></div><div class="sub">Formation initiale GOLD</div><p>45h sur 7 jours avec des journées supplémentaires en gestion et développement commercial.</p><div class="cta-row"><a class="btn" href="nos-formations.html">Voir GOLD</a></div><div class="sub">Formation initiale PLATINIUM</div><p>70h sur 10 jours avec accompagnement renforcé et pratique sur route.</p><div class="cta-row"><a class="btn" href="nos-formations.html">Voir PLATINIUM</a></div><div class="sub">Formation continue VTC</div><p>14h sur 2 jours pour le renouvellement de la carte professionnelle.</p><div class="cta-row"><a class="btn" href="formation-continue-passerelle.html">Voir formation continue</a></div><div class="sub">Passerelle Taxi → VTC</div><p>Pour les taxis qui souhaitent préparer les épreuves spécifiques VTC.</p><div class="cta-row"><a class="btn" href="formation-continue-passerelle.html">Voir passerelle</a></div><div class="sub">Formation pratique</div><p>Pour préparer l’épreuve sur route, les mises en situation, les devis et factures.</p><div class="cta-row"><a class="btn" href="examen-vtc.html">Voir pratique</a></div></div></section><section class="block alt"><div class="wrap"><h2>Un accompagnement de proximité</h2><p>À Noisy-le-Grand, vous pouvez venir échanger directement avec l’équipe.</p><p>C’est utile pour :</p><ul><li>vérifier votre éligibilité ;</li><li>parler financement ;</li><li>comprendre le CPF ;</li><li>préparer un dossier France Travail ;</li><li>choisir la bonne formule ;</li><li>poser vos questions sur l’examen ;</li><li>comprendre les démarches après la réussite.</li></ul><p>Le contact humain permet souvent d’éviter des erreurs simples, mais coûteuses en temps.</p></div></section><section class="block"><div class="wrap"><h2>Accès au centre</h2><div class="sub">Adresse</div><p>AB-CABS Académie</p><p>Centre Commercial Les Arcades</p><p>420 Clos de la Courtine</p><p>93160 Noisy-le-Grand</p><div class="sub">En transport</div><p>RER A — Noisy-le-Grand Mont d’Est.</p><div class="sub">En voiture</div><p>Accès par le Centre Commercial Les Arcades, niveau haut. Stationnement possible au centre commercial.</p><div class="sub">Horaires</div><p>Lundi, mardi, jeudi et vendredi : 9h–12h / 13h–16h</p><p>Mercredi : sur rendez-vous uniquement</p></div></section><section class="block alt"><div class="wrap"><h2>Pourquoi AB-CABS à Noisy-le-Grand ?</h2><div class="sub">Spécialisation VTC</div><p>Le centre est dédié à la formation des futurs chauffeurs VTC et professionnels du transport.</p><div class="sub">Accompagnement complet</div><p>Formation, examen, financement, pratique, véhicule, lancement d’activité.</p><div class="sub">Résultats suivis</div><p>Les chiffres de satisfaction et de réussite sont mesurés.</p><div class="sub">Accessibilité locale</div><p>Un centre proche de l’Est parisien, sans obligation de traverser toute l’Île-de-France.</p><div class="sub">Échange humain</div><p>Vous pouvez venir au bureau et parler de votre projet avant de choisir.</p></div></section><section class="block"><div class="wrap"><h2>Maillage local</h2><div class="sub">Vous habitez en Seine-Saint-Denis ?</div><p>Découvrez notre page dédiée à la formation VTC en Seine-Saint-Denis et dans l’Est parisien.</p><div class="cta-row"><a class="btn" href="formation-vtc-seine-saint-denis.html">Formation VTC 93</a></div><div class="sub">Vous voulez financer votre formation ?</div><p>Consultez les options CPF, France Travail et paiement personnel.</p><div class="cta-row"><a class="btn" href="financement.html">Voir financement</a></div><div class="sub">Vous préparez l’examen ?</div><p>Comprenez les épreuves avant de vous inscrire.</p><div class="cta-row"><a class="btn" href="examen-vtc.html">Guide examen VTC</a></div></div></section><section class="block alt faq" id="faq"><div class="wrap"><h2>Questions fréquentes</h2><div class="item"><div class="q">Où se déroule la formation VTC à Noisy-le-Grand ?</div><p>Les formations en présentiel se déroulent chez AB-CABS Académie, au Centre Commercial Les Arcades.</p></div><div class="item"><div class="q">Le centre est-il accessible en RER ?</div><p>Oui, via le RER A, station Noisy-le-Grand Mont d’Est.</p></div><div class="item"><div class="q">Puis-je venir depuis le Val-de-Marne ou Paris Est ?</div><p>Oui. Le centre est accessible depuis de nombreuses villes de l’Est francilien.</p></div><div class="item"><div class="q">Puis-je financer une formation à Noisy-le-Grand avec mon CPF ?</div><p>Selon vos droits et la formation choisie, le CPF peut être mobilisable.</p></div><div class="item"><div class="q">Dois-je prendre rendez-vous ?</div><p>Il est conseillé de prendre rendez-vous pour être sûr d’être reçu dans les meilleures conditions.</p></div></div></section><section class="final"><div class="wrap"><h2>Vous cherchez une formation VTC à Noisy-le-Grand ?</h2><p>Venez rencontrer AB-CABS Académie et construisons votre parcours étape par étape.</p><div class="cta-row"><a class="btn" href="contact.html">Réserver mon entretien à Noisy-le-Grand</a><a class="btn ghost" href="tel:+33670167825">Appeler le centre</a></div></div></section><footer class="foot"><div class="wrap"><div class="foot-grid"><div><h4>AB-CABS Académie</h4><div class="meta">Centre Commercial Les Arcades<br>420 Clos de la Courtine<br>93160 Noisy-le-Grand<br><br><span class="gold">06 70 16 78 25</span><br>contact@ab-cabs.fr<br><br>Lun, Mar, Jeu, Ven : 9h–12h / 13h–16h<br>Mer : sur rendez-vous</div></div><div><h4>Navigation</h4><a href="accueil.html">Accueil</a>
+<a href="nos-formations.html">Nos formations</a>
+<a href="financement.html">Financement</a>
+<a href="examen-vtc.html">Examen VTC</a>
+<a href="formation-continue-passerelle.html">Continue &amp; passerelle</a>
+<a href="avis-resultats.html">Avis &amp; résultats</a>
+<a href="qui-sommes-nous.html">Qui sommes-nous</a>
+<a href="contact.html">Contact</a></div><div><h4>Zones desservies</h4><a href="formation-vtc-noisy-le-grand.html">VTC Noisy-le-Grand</a>
+<a href="formation-vtc-seine-saint-denis.html">VTC Seine-Saint-Denis</a><a href="examen-vtc.html">Guide examen VTC</a></div></div><div class="foot-bottom"><span>© 2026 AB-CABS Académie — Centre de formation VTC certifié</span><span><a href="index.html">Blueprint stratégique</a> · Maquette de navigation</span></div></div></footer>
+</body>
+</html>
