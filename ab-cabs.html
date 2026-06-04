@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — AB-CABS</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+
+:root{
+  --primary:#8A1F2E;
+  --navy:#0F1B2D;
+  --gold:#C5A24A;
+  --bg:#f8f9fa;
+  --text:#1a1a2e;
+  --muted:#6b7280;
+  --primary-10:rgba(138,31,46,0.10);
+  --primary-05:rgba(138,31,46,0.05);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--bg);line-height:1.8;}
+
+h1{font-family:'Playfair Display',serif;font-size:40px;font-weight:700;line-height:1.2;}
+h2{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;line-height:1.25;color:var(--navy);}
+h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);}
+p,td,li{font-family:'Inter',sans-serif;font-size:15px;line-height:1.8;}
+
+section{padding:70px 60px;}
+
+.eyebrow{font-family:'Inter';font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--primary);margin-bottom:14px;}
+
+.grid{display:grid;gap:24px;}
+.grid-2{grid-template-columns:repeat(2,1fr);}
+.grid-3{grid-template-columns:repeat(3,1fr);}
+
+.card{
+  background:#ffffff;
+  box-shadow:0 2px 12px rgba(0,0,0,0.06);
+  border-radius:14px;
+  padding:28px;
+}
+.card h3{margin-bottom:12px;}
+.card p{font-size:14px;color:#3a3a4a;}
+.card p + p{margin-top:10px;}
+.card ul{margin:8px 0 0 18px;}
+.card li{font-size:14px;color:#3a3a4a;margin-bottom:6px;}
+
+.eval{font-weight:600;font-size:14px;display:block;margin-top:10px;}
+.eval-fort{color:#155724;}
+.eval-dev{color:#004085;}
+.eval-oppo{color:#4a235a;}
+
+.badge{display:inline-block;border-radius:20px;padding:3px 10px;font-size:12px;font-family:'Inter';font-weight:500;white-space:nowrap;}
+.badge-fort{background:#d4edda;color:#155724;}
+.badge-moyen{background:#fff3cd;color:#856404;}
+.badge-faible{background:#f8d7da;color:#721c24;}
+.badge-prioritaire{background:#f8d7da;color:#721c24;}
+.badge-important{background:#ffe5d0;color:#c85000;}
+.badge-secondaire{background:#fff3cd;color:#856404;}
+.badge-nouvelle{background:#d4edda;color:#155724;}
+.badge-amelioree{background:#cce5ff;color:#004085;}
+.badge-retiree{background:#e2e3e5;color:#383d41;}
+
+.table-wrapper{margin-top:24px;border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06);page-break-inside:avoid;break-inside:avoid;}
+table{border-collapse:collapse;width:100%;background:#fff;}
+th{background:var(--primary-10);padding:14px 16px;text-align:left;font-family:'Inter';font-size:13px;font-weight:600;color:var(--navy);}
+td{border:1px solid #e2e8f0;padding:14px 16px;font-size:14px;vertical-align:top;}
+tr:nth-child(even) td{background:#fafafa;}
+
+.intro-text{font-size:16px;max-width:760px;color:#3a3a4a;}
+.lead{font-size:17px;color:var(--navy);font-weight:500;max-width:780px;}
+
+.pillar{border-left:4px solid var(--primary);padding-left:18px;}
+.pillar h3{font-size:18px;margin-bottom:6px;}
+
+.note-card{background:var(--navy);color:#fff;border-radius:14px;padding:32px;}
+.note-card h3{color:var(--gold);margin-bottom:14px;}
+.note-card p{color:rgba(255,255,255,0.9);font-size:15px;}
+
+/* Swatches */
+.swatch-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:10px;}
+.swatch-item{width:120px;text-align:center;}
+.swatch{width:80px;height:80px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin:0 auto;}
+.swatch-name{font-family:'Inter';font-size:13px;font-weight:600;margin-top:8px;text-align:center;}
+.swatch-hex{font-family:'Inter';font-size:12px;color:#6b7280;text-align:center;}
+
+/* Cover */
+.cover-page{
+  position:relative;
+  height:297mm;
+  background:linear-gradient(135deg,#0F1B2D 0%,#1d1320 48%,#5e1620 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;color:#fff;
+}
+.cover-logo{position:absolute;top:32px;left:40px;height:40px;}
+.cover-eyebrow{font-family:'Inter';font-size:13px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:28px;}
+.cover-title{font-family:'Playfair Display';font-size:64px;font-weight:700;color:#ffffff;letter-spacing:2px;margin-bottom:18px;}
+.cover-sub{font-family:'Inter';font-size:18px;opacity:0.75;margin-bottom:60px;}
+.cover-meta{display:flex;gap:40px;font-family:'Inter';font-size:13px;letter-spacing:1px;opacity:0.85;}
+.cover-meta span{position:relative;}
+
+/* Phase header bar */
+.phase-band{background:var(--navy);color:#fff;padding:50px 60px;}
+.phase-band .eyebrow{color:var(--gold);}
+.phase-band h2{color:#fff;}
+.phase-band p{color:rgba(255,255,255,0.8);max-width:760px;margin-top:12px;}
+
+.section-title-block{margin-bottom:34px;}
+
+footer{
+  background:var(--primary-05);
+  border-top:2px solid var(--primary);
+  padding:30px 60px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Inter';font-size:13px;color:#6b7280;
+}
+
+@media screen and (max-width:768px){
+  .grid-2,.grid-3{grid-template-columns:1fr;}
+  section{padding:24px;}
+  h2{font-size:26px;}
+  .cover-title{font-size:42px;}
+  .table-wrapper{overflow-x:auto;display:block;}
+  .cover-meta{flex-direction:column;gap:12px;}
+}
+
+@media print{
+  @page{size:A4;margin:15mm 15mm 20mm 15mm;}
+  .card{page-break-inside:avoid;break-inside:avoid;}
+  table{page-break-inside:avoid;break-inside:avoid;}
+  tr{page-break-inside:avoid;break-inside:avoid;}
+  .section-principale{page-break-before:always;break-before:page;}
+  h1,h2,h3{page-break-after:avoid;break-after:avoid;}
+  .grid{page-break-inside:avoid;break-inside:avoid;}
+  .no-print{display:none !important;}
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;color-adjust:exact !important;}
+  .card{box-shadow:0 1px 4px rgba(0,0,0,0.08) !important;}
+  .cover-page{height:267mm;page-break-after:always;break-after:page;}
+}
+</style>
+<style>
+/* ── Section "Contenu de vos pages" ── */
+.page-sim{background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(15,27,45,0.08);overflow:hidden;margin-bottom:46px;border:1px solid #ececf0;}
+.page-sim-header{background:linear-gradient(135deg,#0F1B2D 0%,#5e1620 100%);padding:26px 30px;}
+.page-sim-num{font-family:'Inter';font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.page-sim-title{font-family:'Playfair Display';color:#fff;font-size:24px;margin:0;}
+.page-kw{margin-top:14px;}
+.kw-badge{display:inline-block;background:rgba(197,162,74,0.18);color:var(--gold);border:1px solid rgba(197,162,74,0.45);border-radius:20px;padding:4px 14px;font-family:'Inter';font-size:12px;font-weight:600;}
+.page-sim-body{padding:30px;}
+.meta-box{background:#f4f4f6;border-left:3px solid var(--gold);border-radius:8px;padding:14px 16px;font-family:'Inter';font-size:13px;color:#4b5563;margin-bottom:24px;line-height:1.6;}
+.meta-k{display:inline-block;font-weight:600;color:var(--navy);min-width:128px;}
+.hero-sim{background:var(--primary-05);border:1px solid rgba(138,31,46,0.12);border-radius:14px;padding:26px;margin-bottom:24px;}
+.hero-h1{font-family:'Playfair Display';font-size:25px;font-weight:700;color:var(--navy);line-height:1.25;margin-bottom:12px;}
+.hero-sub{font-size:15px;color:#3a3a4a;margin-bottom:16px;}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+.cta-pill{display:inline-block;background:var(--primary);color:#fff;border-radius:24px;padding:9px 20px;font-family:'Inter';font-size:13px;font-weight:600;}
+.cta-pill.secondary{background:transparent;border:1.5px solid var(--primary);color:var(--primary);padding:7.5px 18px;}
+.proof-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+.proof-chip{display:inline-block;background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:5px 13px;font-family:'Inter';font-size:12px;font-weight:500;color:var(--navy);}
+.page-section.card-soft{background:#fbfbfc;border:1px solid #eef0f3;border-radius:12px;padding:22px 24px;margin-bottom:18px;}
+.page-section.card-soft h3{font-size:19px;margin-bottom:12px;}
+.page-section.card-soft p{font-size:14px;color:#3a3a4a;margin-bottom:8px;}
+.page-section.card-soft ul{margin:6px 0 12px 18px;}
+.page-section.card-soft li{font-size:14px;color:#3a3a4a;margin-bottom:5px;}
+.sub-label{font-family:'Inter';font-size:13px;font-weight:600;letter-spacing:0.4px;color:var(--primary);text-transform:uppercase;margin:14px 0 6px;}
+.faq-item{border-top:1px solid #eceef1;padding:14px 0;}
+.faq-item:first-of-type{border-top:none;padding-top:0;}
+.faq-q{font-family:'Inter';font-size:14px;font-weight:600;color:var(--navy);margin-bottom:6px;}
+.faq-item p{font-size:14px;color:#4b5563;margin-bottom:4px;}
+.cta-final-block{background:linear-gradient(135deg,#0F1B2D 0%,#5e1620 100%);border-radius:14px;padding:30px;margin-top:8px;}
+.cta-final-block h3{font-family:'Playfair Display';font-size:21px;margin-bottom:12px;}
+.cta-final-block p{color:rgba(255,255,255,0.88);font-size:14px;margin-bottom:8px;}
+.cta-final-block .cta-pill.secondary{border-color:var(--gold);color:var(--gold);}
+.cta-final-block .cta-pill{background:var(--gold);color:var(--navy);}
+@media screen and (max-width:768px){.cta-row{flex-direction:column;}.cta-pill{text-align:center;}}
+@media print{
+  .page-sim{page-break-before:always;break-before:page;box-shadow:none !important;}
+  .page-section.card-soft,.faq-item,.hero-sim,.meta-box,.cta-final-block{page-break-inside:avoid;break-inside:avoid;}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════ PAGE DE COUVERTURE ════════════════ -->
+<div class="cover-page">
+  <img class="cover-logo" src="https://i.imgur.com/72UqvFq.png" alt="Monsite-en-ligne">
+  <div class="cover-eyebrow">Blueprint Stratégique</div>
+  <div class="cover-title">AB-CABS</div>
+  <div class="cover-sub">Refonte du site web — Centre de formation VTC</div>
+  <div class="cover-meta">
+    <span>Juin 2026</span>
+    <span>Formation VTC · Île-de-France</span>
+    <span>AR Digital</span>
+  </div>
+</div>
+
+<!-- ════════════════ PHASE 1 ════════════════ -->
+<div class="phase-band section-principale">
+  <div class="eyebrow">Phase 1</div>
+  <h2>Analyse de votre site actuel</h2>
+  <p>Votre site ab-cabs.fr est une base déjà très solide : un vrai centre de formation reconnu, des contenus riches et un excellent ancrage local. Cette analyse met en lumière tout ce qui fonctionne déjà bien, et dessine les belles opportunités qui vous attendent pour passer au niveau supérieur.</p>
+</div>
+
+<section>
+  <div class="grid grid-2">
+
+    <div class="card">
+      <h3>A. Structure &amp; navigation</h3>
+      <p>Votre site couvre un éventail impressionnant de pages : Qui sommes-nous, formules SILVER / GOLD / PLATINIUM, formation en ligne, formation continue, passerelle Taxi→VTC, financement CPF, centre d'examen, véhicules, avis, chiffres et contact. C'est une richesse rare dans votre secteur.</p>
+      <span class="eval eval-fort">✅ Point fort : un contenu très complet, qui répond à presque toutes les questions d'un futur chauffeur.</span>
+      <span class="eval eval-oppo">🚀 Belle opportunité : regrouper ces nombreuses pages en grands univers clairs pour que le visiteur trouve l'essentiel en un clin d'œil.</span>
+    </div>
+
+    <div class="card">
+      <h3>B. Design &amp; expérience</h3>
+      <p>La navigation est fonctionnelle et les informations pratiques (adresse, horaires, accès au centre commercial Les Arcades) sont très bien détaillées. Les éléments de réassurance — 90 % de réussite, 100 % de satisfaction, référent handicap — sont présents.</p>
+      <span class="eval eval-fort">✅ Point fort : une transparence exemplaire sur les accès, horaires et conditions.</span>
+      <span class="eval eval-oppo">🚀 Belle opportunité : habiller cette qualité d'une identité visuelle premium, à la hauteur du métier d'excellence que vous formez.</span>
+    </div>
+
+    <div class="card">
+      <h3>C. Copywriting &amp; message</h3>
+      <p>Votre promesse est claire dès l'accueil : un centre de formation VTC à Noisy-le-Grand, créé en 2018, qui accompagne les projets de A à Z. Le storytelling « équipe de professionnels » et les chiffres parlants installent une vraie confiance.</p>
+      <span class="eval eval-fort">✅ Point fort : un positionnement local affirmé et des résultats mis en avant.</span>
+      <span class="eval eval-dev">💡 À développer : une promesse de valeur encore plus différenciante, qui dise pourquoi AB-CABS plutôt qu'un autre.</span>
+    </div>
+
+    <div class="card">
+      <h3>D. SEO &amp; visibilité</h3>
+      <p>C'est un véritable atout : l'expression « formation VTC Noisy-le-Grand » est présente de façon cohérente, la FAQ répond aux vraies questions (« Qui peut devenir VTC ? », « Est-ce rentable ? »), et les pages locales renforcent votre référencement de proximité.</p>
+      <span class="eval eval-fort">✅ Point fort : un SEO local déjà bien travaillé et une FAQ pertinente.</span>
+      <span class="eval eval-oppo">🚀 Belle opportunité : structurer ce contenu en cocon thématique et l'élargir à toute l'Île-de-France.</span>
+    </div>
+
+    <div class="card">
+      <h3>E. Tunnel de conversion</h3>
+      <p>Les appels à l'action « En savoir plus » sont nombreux, le contact téléphonique et l'e-mail sont visibles, et la mention « venez nous parler de votre projet » crée un lien humain rassurant.</p>
+      <span class="eval eval-fort">✅ Point fort : un contact accessible et une vraie invitation à l'échange.</span>
+      <span class="eval eval-oppo">🚀 Belle opportunité : transformer ces invitations en parcours guidé — formulaire qualifiant, prise de RDV en ligne et CTA plus engageants.</span>
+    </div>
+
+    <div class="card">
+      <h3>F. Analyse de l'inspiration</h3>
+      <p>L'exemple transmis (univers « Grande Remise ») dessine clairement la direction souhaitée :</p>
+      <ul>
+        <li><strong>Palette :</strong> bleu nuit profond, bordeaux et touches dorées.</li>
+        <li><strong>Typographie :</strong> serif élégante en titres, sans-serif lisible en corps de texte.</li>
+        <li><strong>Ambiance :</strong> luxe, sérieux, professionnel.</li>
+        <li><strong>Structure d'accueil :</strong> grand visuel d'impact, chiffres clés, cartes de formations, bandeau certifications.</li>
+        <li><strong>UX :</strong> CTA très contrastés et badges de confiance (Qualiopi, CPF, Pôle Emploi).</li>
+      </ul>
+      <span class="eval eval-oppo">🚀 Cette inspiration sert uniquement de boussole visuelle — nous gardons votre structure et vos contenus.</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════ PHASE 2 ════════════════ -->
+<div class="phase-band section-principale">
+  <div class="eyebrow">Phase 2</div>
+  <h2>Recommandations personnalisées</h2>
+  <p>Pour chaque axe, voici ce que vous faites déjà très bien, l'opportunité de croissance identifiée, et notre recommandation concrète pour la saisir.</p>
+</div>
+
+<section>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:14%;">Axe</th>
+          <th style="width:24%;">Ce qui fonctionne déjà bien</th>
+          <th style="width:24%;">Opportunité d'amélioration</th>
+          <th style="width:10%;">Priorité</th>
+          <th style="width:28%;">Notre recommandation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Structure &amp; navigation</strong></td>
+          <td>Un contenu très riche couvrant toutes les formations et démarches.</td>
+          <td>De nombreuses pages séparées qui peuvent diluer le parcours.</td>
+          <td><span class="badge badge-important">Importante</span></td>
+          <td>Regrouper les formules SILVER / GOLD / PLATINIUM sous une seule page « Nos formations », avec un comparatif clair.</td>
+        </tr>
+        <tr>
+          <td><strong>Design &amp; identité visuelle</strong></td>
+          <td>Informations pratiques limpides et réassurance présente.</td>
+          <td>Une identité neutre qui ne reflète pas encore l'excellence du métier.</td>
+          <td><span class="badge badge-prioritaire">Prioritaire</span></td>
+          <td>Adopter l'univers premium bleu nuit / bordeaux / or pour valoriser le sérieux de votre centre.</td>
+        </tr>
+        <tr>
+          <td><strong>Confort mobile</strong></td>
+          <td>Contenu accessible depuis le téléphone.</td>
+          <td>Mise en page à fluidifier sur petit écran.</td>
+          <td><span class="badge badge-important">Importante</span></td>
+          <td>Refonte « mobile-first » : boutons d'appel et d'inscription accessibles au pouce, sur toutes les pages.</td>
+        </tr>
+        <tr>
+          <td><strong>Message &amp; promesse de valeur</strong></td>
+          <td>Positionnement local clair et chiffres mis en avant.</td>
+          <td>La différenciation « pourquoi AB-CABS » mérite d'être plus visible.</td>
+          <td><span class="badge badge-prioritaire">Prioritaire</span></td>
+          <td>Une promesse forte en haut de page : accompagnement de A à Z, de la formation au lancement de l'activité.</td>
+        </tr>
+        <tr>
+          <td><strong>Visibilité SEO (local + sectoriel)</strong></td>
+          <td>« Formation VTC Noisy-le-Grand » bien positionné, FAQ utile.</td>
+          <td>Potentiel à étendre à toute l'Île-de-France et au CPF.</td>
+          <td><span class="badge badge-important">Importante</span></td>
+          <td>Construire un cocon sémantique autour de « devenir VTC », « financement CPF » et « examen VTC IDF ».</td>
+        </tr>
+        <tr>
+          <td><strong>Parcours de conversion &amp; CTAs</strong></td>
+          <td>Contact direct et invitation à l'échange.</td>
+          <td>Des CTA génériques (« En savoir plus ») peu engageants.</td>
+          <td><span class="badge badge-prioritaire">Prioritaire</span></td>
+          <td>CTA orientés action (« Réserver mon entretien », « Tester mon éligibilité CPF ») + prise de RDV en ligne.</td>
+        </tr>
+        <tr>
+          <td><strong>Confiance &amp; preuve sociale</strong></td>
+          <td>Taux de réussite, satisfaction et certification RS 5637.</td>
+          <td>Les avis d'anciens élèves pourraient être bien plus mis en avant.</td>
+          <td><span class="badge badge-important">Importante</span></td>
+          <td>Bandeau de certifications (Qualiopi, CPF, France Compétences) + témoignages vidéo d'élèves devenus chauffeurs.</td>
+        </tr>
+        <tr>
+          <td><strong>Leviers de croissance marketing</strong></td>
+          <td>Services complémentaires (coaching, véhicules, juridique).</td>
+          <td>Aucun aimant à prospects pour capter les indécis.</td>
+          <td><span class="badge badge-secondaire">Secondaire</span></td>
+          <td>Créer un guide gratuit « Devenir VTC en Île-de-France » + séquence e-mail d'accompagnement.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:32px;">
+    <div class="note-card card">
+      <h3>Note d'intention</h3>
+      <p>Vous avez déjà l'essentiel : une vraie expertise, des résultats remarquables et une notoriété locale méritée. En habillant tout cela d'une identité premium et d'un parcours de conversion guidé, votre site va passer d'une riche source d'informations à une véritable machine à inscrire des futurs chauffeurs. Imaginez chaque visiteur compris dès la première seconde, rassuré par vos certifications, et invité naturellement à réserver son entretien : c'est exactement le cap que ce Blueprint trace pour AB-CABS.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ PHASE 3 — BLUEPRINT ════════════════ -->
+<div class="phase-band section-principale">
+  <div class="eyebrow">Phase 3</div>
+  <h2>Blueprint Stratégique</h2>
+  <p>La vision complète de votre futur site, en 9 sections — du positionnement à vos contenus, en passant par votre direction visuelle.</p>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section>
+  <div class="section-title-block">
+    <div class="eyebrow">01 — Positionnement</div>
+    <h2>Le centre VTC qui vous mène jusqu'au volant… et au-delà</h2>
+  </div>
+
+  <p class="lead" style="margin-bottom:28px;">« AB-CABS forme les chauffeurs VTC d'Île-de-France et les accompagne de A à Z : de la réussite à l'examen jusqu'au lancement réussi de leur activité. »</p>
+
+  <div class="grid grid-2" style="margin-bottom:30px;">
+    <div class="card">
+      <h3>Ligne directrice de communication</h3>
+      <p>Mettre en avant l'accompagnement humain et l'excellence : on ne vend pas seulement une formation, on lance une carrière. Chaque message rappelle les résultats (90 % de réussite) et la sécurité offerte par les certifications et le financement CPF.</p>
+    </div>
+    <div class="card">
+      <h3>Ton éditorial</h3>
+      <p><strong>Rassurant · Premium · Concret.</strong></p>
+      <p>Un ton qui inspire confiance à des personnes en reconversion, valorise le métier de chauffeur haut de gamme, et reste toujours clair sur les étapes et les coûts.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-bottom:18px;">Vos piliers de différenciation</h3>
+  <div class="grid grid-2">
+    <div class="card"><div class="pillar"><h3>Accompagnement de A à Z</h3><p>De la formation à l'examen, puis au lancement de l'activité : un suivi complet que peu de centres proposent réellement.</p></div></div>
+    <div class="card"><div class="pillar"><h3>Résultats prouvés</h3><p>90 % de réussite et 100 % de satisfaction — des chiffres concrets, mesurables, mis au cœur du discours.</p></div></div>
+    <div class="card"><div class="pillar"><h3>Certifié &amp; finançable</h3><p>Certification RS 5637 (France Compétences) et financement CPF / Pôle Emploi : la formation devient accessible à tous les budgets.</p></div></div>
+    <div class="card"><div class="pillar"><h3>Ancrage local fort</h3><p>Implanté à Noisy-le-Grand, accessible en RER A, au service de toute l'Île-de-France et de l'Est parisien.</p></div></div>
+    <div class="card"><div class="pillar"><h3>Un écosystème complet</h3><p>Coaching, choix du véhicule, accompagnement juridique : tout l'environnement du futur chauffeur réuni en un seul endroit.</p></div></div>
+  </div>
+
+  <div class="card" style="margin-top:24px;background:var(--primary-05);box-shadow:none;">
+    <p style="font-size:14px;"><strong>Réponse aux opportunités de la Phase 2 :</strong> ce positionnement transforme votre richesse de contenus en une promesse claire et différenciante, et place vos preuves de confiance (résultats, certifications, CPF) au premier plan — exactement là où réside votre avantage concurrentiel.</p>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section class="section-principale">
+  <div class="section-title-block">
+    <div class="eyebrow">02 — Client cible</div>
+    <h2>À qui s'adresse votre site</h2>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Profil type</h3>
+      <p>Hommes et femmes de 25 à 50 ans, vivant en Île-de-France (Seine-Saint-Denis, Est parisien, Val-de-Marne). Souvent en reconversion ou en recherche d'une activité indépendante : anciens salariés, livreurs, personnes en recherche d'emploi souhaitant un métier stable et autonome.</p>
+    </div>
+    <div class="card">
+      <h3>Ce qui les motive à faire appel à vous</h3>
+      <ul>
+        <li>Obtenir leur carte professionnelle VTC rapidement et sereinement.</li>
+        <li>Trouver une formation finançable (CPF, Pôle Emploi).</li>
+        <li>Être accompagnés au-delà de l'examen, jusqu'au lancement de l'activité.</li>
+        <li>Choisir un centre reconnu, avec de vrais résultats.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Leurs questions &amp; hésitations</h3>
+      <ul>
+        <li>« Suis-je éligible ? » (permis, casier judiciaire)</li>
+        <li>« Combien ça coûte vraiment, et puis-je le financer ? »</li>
+        <li>« Le métier est-il rentable ? »</li>
+        <li>« Vais-je vraiment réussir l'examen ? »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Ce qui les fait choisir un centre plutôt qu'un autre</h3>
+      <ul>
+        <li>Le taux de réussite affiché et les avis d'anciens élèves.</li>
+        <li>La clarté sur le financement CPF.</li>
+        <li>La proximité et la facilité d'accès du centre.</li>
+        <li>Le sentiment d'être accompagné par de vrais professionnels.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS -->
+<section class="section-principale">
+  <div class="section-title-block">
+    <div class="eyebrow">03 — Objectifs du site</div>
+    <h2>Ce que votre site doit accomplir</h2>
+  </div>
+
+  <div class="grid grid-3">
+    <div class="card"><h3>1. Génération de leads</h3><p>Capter les futurs chauffeurs via formulaire qualifiant et test d'éligibilité CPF.</p></div>
+    <div class="card"><h3>2. Prise de rendez-vous</h3><p>Faciliter la réservation de l'entretien personnalisé, votre point d'entrée commercial fort.</p></div>
+    <div class="card"><h3>3. SEO local</h3><p>Dominer « formation VTC » sur Noisy-le-Grand et l'Est de l'Île-de-France.</p></div>
+    <div class="card"><h3>4. Réassurance</h3><p>Rassurer par les résultats, certifications et témoignages d'anciens élèves.</p></div>
+    <div class="card"><h3>5. Conversion</h3><p>Transformer un visiteur curieux en inscription, par un parcours guidé et clair.</p></div>
+    <div class="card"><h3>6. Notoriété</h3><p>Asseoir AB-CABS comme la référence VTC premium de l'Est parisien.</p></div>
+  </div>
+
+  <div class="card" style="margin-top:24px;background:var(--primary-05);box-shadow:none;">
+    <p style="font-size:14px;"><strong>Objectifs prioritaires (issus de la Phase 2) :</strong> la <strong>génération de leads</strong> et la <strong>prise de rendez-vous</strong> arrivent en tête — ce sont eux qui transformeront votre excellent trafic SEO en inscriptions concrètes.</p>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section class="section-principale">
+  <div class="section-title-block">
+    <div class="eyebrow">04 — Arborescence</div>
+    <h2>La structure de votre futur site</h2>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:26%;">Page</th>
+          <th style="width:12%;">Framework</th>
+          <th style="width:24%;">Mot-clé principal</th>
+          <th style="width:16%;">Potentiel SEO</th>
+          <th style="width:22%;">Statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Accueil</strong></td><td>AIDA</td><td>formation VTC Île-de-France</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-amelioree">Améliorée</span></td></tr>
+        <tr><td><strong>Nos formations VTC</strong> (initiales : Silver / Gold / Platinium + comparatif)</td><td>PAS</td><td>formation VTC Noisy-le-Grand</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-amelioree">Améliorée</span></td></tr>
+        <tr><td><strong>Formation continue &amp; passerelle</strong> (continue, en ligne, passerelle taxi)</td><td>BAB</td><td>renouvellement carte VTC</td><td><span class="badge badge-moyen">Moyen</span></td><td><span class="badge badge-amelioree">Améliorée</span></td></tr>
+        <tr><td><strong>Financement (CPF &amp; Pôle Emploi)</strong></td><td>PAS</td><td>formation VTC CPF</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-amelioree">Améliorée</span></td></tr>
+        <tr><td><strong>Examen VTC — Guide</strong></td><td>PAS</td><td>examen VTC Île-de-France</td><td><span class="badge badge-moyen">Moyen</span></td><td><span class="badge badge-amelioree">Améliorée</span></td></tr>
+        <tr><td><strong>Qui sommes-nous</strong></td><td>BAB</td><td>centre de formation VTC certifié</td><td><span class="badge badge-moyen">Moyen</span></td><td><span class="badge badge-amelioree">Améliorée</span></td></tr>
+        <tr><td><strong>Avis &amp; résultats</strong></td><td>AIDA</td><td>avis centre formation VTC</td><td><span class="badge badge-moyen">Moyen</span></td><td><span class="badge badge-amelioree">Améliorée</span></td></tr>
+        <tr><td><strong>Contact &amp; inscription</strong></td><td>AIDA</td><td>inscription formation VTC</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-amelioree">Améliorée</span></td></tr>
+        <tr><td><strong>Formation VTC Noisy-le-Grand</strong> <em>(page locale)</em></td><td>PAS</td><td>formation VTC Noisy-le-Grand</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-amelioree">Améliorée</span></td></tr>
+        <tr><td><strong>Formation VTC Seine-Saint-Denis / Est parisien</strong> <em>(page locale)</em></td><td>PAS</td><td>formation VTC 93</td><td><span class="badge badge-moyen">Moyen</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+        <tr><td>Blog</td><td>—</td><td>devenir chauffeur VTC</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:var(--muted);margin-top:14px;">Les services complémentaires (coaching, véhicules, accompagnement juridique) sont intégrés en sections au sein des pages existantes plutôt qu'en pages isolées, pour un parcours plus fluide.</p>
+</section>
+
+<!-- 05 COCON SEMANTIQUE -->
+<section class="section-principale">
+  <div class="section-title-block">
+    <div class="eyebrow">05 — Cocon sémantique</div>
+    <h2>Comment vos pages se renforcent entre elles</h2>
+  </div>
+
+  <div class="grid grid-3">
+    <div class="card">
+      <h3>Cluster 1 — Devenir VTC</h3>
+      <p>Cœur : « Nos formations VTC ». Autour gravitent le guide examen, la page « Qui peut devenir VTC ? » et les articles de blog sur la reconversion. Chaque contenu renvoie vers la page formation.</p>
+    </div>
+    <div class="card">
+      <h3>Cluster 2 — Financer sa formation</h3>
+      <p>Cœur : « Financement CPF &amp; Pôle Emploi ». Relié aux pages formations, au test d'éligibilité et aux articles « Combien coûte une formation VTC ? ». Objectif : lever le frein financier.</p>
+    </div>
+    <div class="card">
+      <h3>Cluster 3 — Réussir &amp; se lancer</h3>
+      <p>Cœur : « Avis &amp; résultats ». Connecté au coaching, au choix du véhicule et aux articles sur la rentabilité du métier. Objectif : projeter le visiteur dans sa future réussite.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:24px;background:var(--primary-05);box-shadow:none;">
+    <p style="font-size:14px;"><strong>Logique de maillage :</strong> chaque article de blog et chaque page locale pointe vers la page « cœur » de son cluster, qui mène elle-même vers le contact. Les moteurs de recherche comprennent ainsi votre expertise, et le visiteur est guidé naturellement, d'étape en étape, jusqu'à l'inscription.</p>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section class="section-principale">
+  <div class="section-title-block">
+    <div class="eyebrow">06 — Tunnel de conversion</div>
+    <h2>Le parcours de votre futur chauffeur</h2>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>1 · Découverte</h3>
+      <p><strong>Source :</strong> recherche Google « formation VTC Noisy-le-Grand », réseaux sociaux.</p>
+      <p><strong>Page :</strong> Accueil &amp; pages locales.</p>
+      <p><strong>CTA :</strong> « Découvrir nos formations ».</p>
+    </div>
+    <div class="card">
+      <h3>2 · Intérêt</h3>
+      <p><strong>Source :</strong> navigation interne, blog.</p>
+      <p><strong>Page :</strong> Nos formations &amp; Financement CPF.</p>
+      <p><strong>CTA :</strong> « Tester mon éligibilité CPF ».</p>
+    </div>
+    <div class="card">
+      <h3>3 · Confiance</h3>
+      <p><strong>Source :</strong> recherche d'avis, bouche-à-oreille.</p>
+      <p><strong>Page :</strong> Avis &amp; résultats, Qui sommes-nous.</p>
+      <p><strong>CTA :</strong> « Voir les témoignages ».</p>
+    </div>
+    <div class="card">
+      <h3>4 · Action</h3>
+      <p><strong>Source :</strong> visiteur convaincu.</p>
+      <p><strong>Page :</strong> Contact &amp; inscription.</p>
+      <p><strong>CTA :</strong> « Réserver mon entretien personnalisé ».</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS DE CROISSANCE -->
+<section class="section-principale">
+  <div class="section-title-block">
+    <div class="eyebrow">07 — Leviers de croissance</div>
+    <h2>Les outils pour transformer vos visiteurs</h2>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card"><h3>Lead magnet</h3><p>Guide gratuit téléchargeable : <em>« Devenir chauffeur VTC en Île-de-France : le parcours complet, du financement à la première course »</em>. Idéal pour capter les indécis en échange de leur e-mail.</p></div>
+    <div class="card"><h3>Prise de rendez-vous</h3><p>Module de réservation en ligne pour l'entretien personnalisé d'une heure (votre atout commercial) — créneaux en présentiel au centre ou par téléphone.</p></div>
+    <div class="card"><h3>Preuve sociale</h3><p>Témoignages vidéo d'anciens élèves devenus chauffeurs, compteurs de résultats (90 % de réussite, 1600+ formés) et bandeau de certifications Qualiopi / CPF / France Compétences.</p></div>
+    <div class="card"><h3>Formulaire qualifiant</h3><p>Champs adaptés : ancienneté du permis, situation actuelle, formation visée, mode de financement souhaité (CPF / Pôle Emploi / personnel), zone géographique.</p></div>
+    <div class="card"><h3>Newsletter</h3><p>Angle « Réussir comme VTC » : conseils métier, évolutions de la réglementation, astuces pour développer son activité et fidéliser sa clientèle.</p></div>
+    <div class="card"><h3>Séquence e-mail automatisée</h3><p>Après téléchargement du guide : J+0 bienvenue &amp; éligibilité, J+2 financement CPF, J+4 témoignages, J+6 invitation à réserver l'entretien — calée sur un cycle de décision court.</p></div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section class="section-principale">
+  <div class="section-title-block">
+    <div class="eyebrow">08 — Direction visuelle</div>
+    <h2>L'univers premium d'AB-CABS</h2>
+  </div>
+
+  <h3 style="text-align:center;margin-bottom:8px;">Palette de couleurs</h3>
+  <p style="text-align:center;color:var(--muted);font-size:13px;margin-bottom:18px;">Inspirée de la référence visuelle transmise — un univers de transport haut de gamme.</p>
+  <div class="swatch-grid">
+    <div class="swatch-item"><div class="swatch" style="background:#0F1B2D;"></div><div class="swatch-name">Bleu nuit</div><div class="swatch-hex">#0F1B2D</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#8A1F2E;"></div><div class="swatch-name">Bordeaux</div><div class="swatch-hex">#8A1F2E</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#C5A24A;"></div><div class="swatch-name">Or</div><div class="swatch-hex">#C5A24A</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#F8F6F1;border:1px solid #e2e8f0;"></div><div class="swatch-name">Ivoire</div><div class="swatch-hex">#F8F6F1</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#1a1a2e;"></div><div class="swatch-name">Texte</div><div class="swatch-hex">#1A1A2E</div></div>
+  </div>
+
+  <h3 style="margin-top:40px;margin-bottom:18px;">Univers visuel</h3>
+  <div class="grid grid-2">
+    <div class="card"><h3>Photographie premium</h3><p>Berlines noires, intérieurs cuir, chauffeurs en costume — l'imaginaire du transport d'excellence, comme dans votre inspiration.</p></div>
+    <div class="card"><h3>Typographie élégante</h3><p>Titres en serif racée, textes en sans-serif moderne et lisible : sérieux et raffinement à chaque page.</p></div>
+    <div class="card"><h3>Touches dorées</h3><p>Filets, icônes et chiffres clés rehaussés d'or pour signaler l'excellence sans surcharge.</p></div>
+    <div class="card"><h3>Badges de confiance</h3><p>Certifications Qualiopi, CPF et Pôle Emploi mises en valeur dans un bandeau dédié, gage de sérieux immédiat.</p></div>
+  </div>
+
+  <div class="card" style="margin-top:24px;background:var(--primary-05);box-shadow:none;">
+    <p style="font-size:14px;"><strong>Une montée en gamme :</strong> votre site actuel mise déjà sur la transparence et l'information ; cette direction visuelle vient l'habiller d'un écrin à la hauteur de votre métier, pour que la première impression reflète enfin toute la qualité de votre accompagnement.</p>
+  </div>
+</section>
+
+<!-- 09 BLOG -->
+<section class="section-principale">
+  <div class="section-title-block">
+    <div class="eyebrow">09 — Idées de contenus blog</div>
+    <h2>Des articles qui attirent vos futurs élèves</h2>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:34%;">Titre</th>
+          <th style="width:22%;">Thématique</th>
+          <th style="width:26%;">Intention de recherche</th>
+          <th style="width:18%;">Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Comment devenir chauffeur VTC en Île-de-France en 2026 ?</td><td>Reconversion</td><td>Informationnelle / découverte</td><td><span class="badge badge-prioritaire">Prioritaire</span></td></tr>
+        <tr><td>Financer sa formation VTC avec le CPF : mode d'emploi</td><td>Financement</td><td>Transactionnelle</td><td><span class="badge badge-prioritaire">Prioritaire</span></td></tr>
+        <tr><td>Examen VTC : comment s'inscrire et le réussir du premier coup</td><td>Examen</td><td>Informationnelle ciblée</td><td><span class="badge badge-prioritaire">Prioritaire</span></td></tr>
+        <tr><td>Le métier de VTC est-il rentable ? Revenus &amp; budget de départ</td><td>Rentabilité</td><td>Informationnelle / réassurance</td><td><span class="badge badge-secondaire">Utile</span></td></tr>
+        <tr><td>SILVER, GOLD ou PLATINIUM : quelle formule choisir ?</td><td>Offres</td><td>Comparative</td><td><span class="badge badge-secondaire">Utile</span></td></tr>
+        <tr><td>Passerelle Taxi → VTC : ce qui change pour vous</td><td>Passerelle</td><td>Niche / ciblée</td><td><span class="badge badge-moyen">Bonus</span></td></tr>
+        <tr><td>Bien démarrer son activité de VTC : véhicule, statut, premiers clients</td><td>Lancement</td><td>Informationnelle / fidélisation</td><td><span class="badge badge-moyen">Bonus</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- ════════════════ CONTENU DE VOS PAGES ════════════════ -->
+<div class="phase-band section-principale">
+  <div class="eyebrow">Contenu éditorial</div>
+  <h2>Contenu de vos pages</h2>
+  <p>Voici les textes proposés pour chaque page de votre futur site : accroches, arguments, réponses aux questions de vos futurs élèves et appels à l’action. L’ensemble est pensé pour vous présenter clairement, rassurer dès les premières secondes et donner envie de vous contacter.</p>
+</div>
+<section>
+<div class="page-sim"><div class="page-sim-header"><div class="page-sim-num">Page 1</div><h3 class="page-sim-title">ACCUEIL</h3><div class="page-kw"><span class="kw-badge">Mot-clé&nbsp;: formation VTC Île-de-France</span></div></div><div class="page-sim-body"><div class="meta-box"><div><span class="meta-k">Meta title</span> Formation VTC en Île-de-France | AB-CABS Académie</div><div style="margin-top:6px;"><span class="meta-k">Meta description</span> Formez-vous au métier de chauffeur VTC avec AB-CABS Académie à Noisy-le-Grand. Formation initiale, CPF, examen, accompagnement et lancement d’activité.</div></div><div class="hero-sim"><div class="hero-h1">Devenez chauffeur VTC avec un centre qui vous accompagne jusqu’au lancement de votre activité</div><p class="hero-sub">À Noisy-le-Grand, AB-CABS Académie forme les futurs chauffeurs VTC d’Île-de-France avec une méthode claire, des formateurs de terrain et un accompagnement complet : formation, examen, financement, démarches et premiers pas dans le métier.</p><div class="cta-row"><span class="cta-pill">Réserver mon entretien personnalisé</span><span class="cta-pill secondary">Découvrir les formations VTC</span></div><div class="proof-row"><span class="proof-chip">Centre de formation VTC à Noisy-le-Grand</span><span class="proof-chip">Formations éligibles au financement selon votre situation</span><span class="proof-chip">415 élèves formés en 2024</span><span class="proof-chip">87 % de réussite en 2024</span><span class="proof-chip">100 % de satisfaction déclarée en 2024</span><span class="proof-chip">Accompagnement avant, pendant et après l’examen</span></div></div><div class="page-section card-soft"><h3>Vous ne cherchez pas seulement une formation. Vous cherchez une vraie entrée dans le métier.</h3><p>Devenir VTC, ce n’est pas simplement suivre quelques cours et passer un examen.</p><p>C’est comprendre la réglementation, apprendre à gérer une activité, réussir les épreuves, obtenir sa carte professionnelle, choisir le bon véhicule, créer son entreprise et attirer ses premiers clients.</p><p>C’est beaucoup d’étapes.</p><p>Et c’est souvent là que les futurs chauffeurs se sentent seuls.</p><p>Chez AB-CABS Académie, notre rôle est de vous préparer sérieusement à l’examen, mais aussi de vous aider à vous projeter dans votre future activité.</p><p>Vous arrivez avec un projet.</p><p>Vous repartez avec un plan clair.</p><div class="cta-row"><span class="cta-pill">Parler de mon projet avec un conseiller</span></div></div><div class="page-section card-soft"><h3>Une méthode pensée pour les futurs chauffeurs VTC d’Île-de-France</h3><p>AB-CABS Académie accompagne des hommes et des femmes qui veulent devenir chauffeurs VTC, souvent dans un contexte de reconversion, de recherche d’indépendance ou de création d’entreprise.</p><p>Notre approche repose sur 4 piliers :</p><div class="sub-label">1. Comprendre l’examen</div><p>Vous travaillez les matières attendues : réglementation, sécurité routière, gestion, développement commercial, français, anglais et pratique professionnelle.</p><div class="sub-label">2. S’entraîner dans des conditions concrètes</div><p>Examens blancs, QCM, QRC, mises en situation, devis, factures, lecture de carte, qualité de prise en charge client.</p><div class="sub-label">3. Être accompagné dans les démarches</div><p>Financement, inscription, pièces à fournir, renouvellement, création d’activité : vous n’avez pas à tout comprendre seul.</p><div class="sub-label">4. Préparer l’après-examen</div><p>Le métier commence vraiment après l’obtention de la carte. Nous vous aidons à penser véhicule, positionnement, site internet, statut et démarrage commercial.</p></div><div class="page-section card-soft"><h3>Choisissez la formation adaptée à votre rythme</h3><div class="sub-label">Formation initiale SILVER</div><p>Pour apprendre les bases indispensables et vous préparer à l’examen VTC en présentiel.</p><p><strong>Durée :</strong> 35h sur 5 jours</p><p><strong>Idéal pour :</strong> les candidats autonomes qui veulent une formation structurée et efficace.</p><div class="cta-row"><span class="cta-pill">Voir la formule SILVER</span></div><div class="sub-label">Formation initiale GOLD</div><p>Pour aller plus loin sur les matières clés et renforcer vos chances avec un accompagnement plus complet.</p><p><strong>Durée :</strong> 45h sur 7 jours</p><p><strong>Idéal pour :</strong> les candidats qui veulent sécuriser leur préparation et bénéficier de jours supplémentaires.</p><div class="cta-row"><span class="cta-pill">Voir la formule GOLD</span></div><div class="sub-label">Formation initiale PLATINIUM</div><p>Pour les candidats qui veulent le niveau d’accompagnement le plus poussé, avec davantage de pratique et un suivi renforcé.</p><p><strong>Durée :</strong> 70h sur 10 jours</p><p><strong>Idéal pour :</strong> les candidats qui veulent être encadrés de façon intensive.</p><div class="cta-row"><span class="cta-pill">Voir la formule PLATINIUM</span></div><div class="sub-label">Formation VTC en ligne</div><p>Pour avancer à distance, avec un accès flexible aux contenus, QCM, QRC et coachings en visio.</p><div class="cta-row"><span class="cta-pill">Découvrir la formation en ligne</span></div></div><div class="page-section card-soft"><h3>Vous avez peut-être droit à un financement</h3><p>La formation VTC représente un investissement.</p><p>Avant de choisir une formule, vérifiez les solutions possibles.</p><p>Selon votre situation, vous pouvez mobiliser :</p><ul><li>votre CPF ;</li><li>un financement via France Travail ;</li><li>un paiement personnel avec facilités ;</li><li>un accompagnement pour constituer votre dossier.</li></ul><p>Le plus simple : nous échangeons avec vous, nous regardons votre situation et nous vous orientons vers la solution la plus adaptée.</p><div class="cta-row"><span class="cta-pill">Tester mon financement</span></div></div><div class="page-section card-soft"><h3>Pourquoi choisir AB-CABS Académie ?</h3><div class="sub-label">Un centre implanté à Noisy-le-Grand</div><p>Accessible en RER A, dans l’Est parisien, au sein du Centre Commercial Les Arcades.</p><div class="sub-label">Une vraie expérience terrain</div><p>Nos formations sont pensées pour l’examen, mais aussi pour la réalité du métier.</p><div class="sub-label">Des chiffres suivis</div><p>En 2024, AB-CABS Académie a formé 415 élèves, organisé 22 sessions et obtenu 100 % de satisfaction déclarée.</p><div class="sub-label">Un accompagnement humain</div><p>Vous pouvez venir nous parler de votre projet, poser vos questions et avancer avec une équipe qui connaît les blocages des futurs chauffeurs.</p><div class="sub-label">Un écosystème complet</div><p>Formation, financement, véhicule double commande, coaching, site internet, accompagnement juridique : tout est pensé pour faciliter votre passage à l’action.</p></div><div class="page-section card-soft"><h3>À qui s’adresse AB-CABS Académie ?</h3><p>Cette formation est faite pour vous si :</p><ul><li>vous voulez devenir chauffeur VTC en Île-de-France ;</li><li>vous préparez une reconversion professionnelle ;</li><li>vous cherchez une activité indépendante ;</li><li>vous voulez être accompagné dans les démarches ;</li><li>vous avez besoin d’un centre accessible depuis l’Est parisien ;</li><li>vous voulez comprendre l’examen avant de vous inscrire.</li></ul><p>Elle n’est pas faite pour vous si vous cherchez une promesse magique, sans travail personnel, sans entraînement et sans implication.</p><p>AB-CABS vous accompagne.</p><p>Mais la réussite se construit aussi avec votre régularité.</p></div><div class="page-section card-soft"><h3>Le parcours simple</h3><div class="sub-label">Étape 1 — Entretien personnalisé</div><p>Vous venez avec votre projet, vos questions et vos documents si besoin.</p><div class="sub-label">Étape 2 — Choix de la formule</div><p>Nous vous aidons à choisir entre présentiel, en ligne, SILVER, GOLD, PLATINIUM ou passerelle.</p><div class="sub-label">Étape 3 — Financement</div><p>Nous regardons les possibilités CPF, France Travail ou paiement personnel.</p><div class="sub-label">Étape 4 — Formation</div><p>Vous suivez votre programme avec des contenus théoriques, pratiques et des exercices.</p><div class="sub-label">Étape 5 — Examen</div><p>Vous vous préparez aux épreuves théoriques et pratiques.</p><div class="sub-label">Étape 6 — Lancement</div><p>Vous avancez vers la carte professionnelle, le véhicule, le statut et les premiers outils de votre activité.</p></div><div class="page-section card-soft"><h3>FAQ accueil</h3><div class="sub-label">Qui peut devenir chauffeur VTC ?</div><p>Vous devez notamment avoir le permis B depuis au moins 3 ans, passer une visite médicale, avoir une bonne maîtrise du français et respecter les conditions liées au casier judiciaire. Lors de l’entretien, nous vous aidons à vérifier les prérequis.</p><div class="sub-label">Combien coûte une formation VTC ?</div><p>Les tarifs varient selon la formule choisie : formation en ligne, SILVER, GOLD, PLATINIUM, passerelle ou formation continue. Le plus simple est de choisir en fonction de votre niveau, de votre disponibilité et de votre besoin d’accompagnement.</p><div class="sub-label">Puis-je financer ma formation avec le CPF ?</div><p>Oui, selon vos droits disponibles et votre situation. AB-CABS propose des solutions de financement CPF et peut aussi vous orienter si vous êtes accompagné par France Travail.</p><div class="sub-label">Où se trouve le centre ?</div><p>AB-CABS Académie se trouve au Centre Commercial Les Arcades, 420 Clos de la Courtine, 93160 Noisy-le-Grand.</p><div class="sub-label">Comment commencer ?</div><p>Réservez un entretien personnalisé. Vous pourrez poser vos questions, vérifier votre situation et choisir la formation la plus adaptée.</p></div><div class="cta-final-block"><h3 style="color:#fff;">Prêt à transformer votre projet VTC en plan d’action concret ?</h3><p>Parlez-nous de votre situation. Nous vous aidons à choisir la bonne formation, le bon financement et les prochaines étapes.</p><div class="cta-row"><span class="cta-pill">Réserver mon entretien personnalisé</span><span class="cta-pill secondary">Appeler le centre</span></div></div></div></div>
+<div class="page-sim"><div class="page-sim-header"><div class="page-sim-num">Page 2</div><h3 class="page-sim-title">NOS FORMATIONS VTC</h3><div class="page-kw"><span class="kw-badge">Mot-clé&nbsp;: formation VTC Noisy-le-Grand</span></div></div><div class="page-sim-body"><div class="meta-box"><div><span class="meta-k">Meta title</span> Formations VTC à Noisy-le-Grand | SILVER, GOLD, PLATINIUM</div><div style="margin-top:6px;"><span class="meta-k">Meta description</span> Comparez les formations VTC AB-CABS : SILVER, GOLD, PLATINIUM, formation en ligne et accompagnement pratique pour préparer l’examen VTC.</div></div><div class="hero-sim"><div class="hero-h1">Choisissez la formation VTC adaptée à votre niveau, votre rythme et votre objectif</div><p class="hero-sub">Tout le monde veut réussir l’examen VTC. Mais tout le monde n’a pas le même temps, le même niveau de départ, ni le même besoin d’accompagnement. C’est pourquoi AB-CABS propose plusieurs formules de formation, du parcours essentiel à l’accompagnement renforcé.</p><div class="cta-row"><span class="cta-pill">Comparer les formules</span><span class="cta-pill secondary">Être conseillé sur mon choix</span></div></div><div class="page-section card-soft"><h3>Trois formules pour un même objectif : vous préparer sérieusement à l’examen VTC</h3><p>L’examen VTC demande de la méthode.</p><p>Il ne suffit pas de lire quelques supports.</p><p>Il faut comprendre les attentes, s’entraîner, repérer ses points faibles et se préparer à la théorie comme à la pratique.</p><p>Chez AB-CABS, les formules SILVER, GOLD et PLATINIUM ont été conçues pour répondre à trois profils :</p><ul><li>ceux qui veulent une formation claire et concentrée ;</li><li>ceux qui veulent plus de temps sur les matières sensibles ;</li><li>ceux qui veulent l’accompagnement le plus complet possible.</li></ul></div><div class="page-section card-soft"><h3>Formule SILVER</h3><div class="sub-label">H2</div><p>SILVER — La formation essentielle pour préparer l’examen VTC en présentiel</p><div class="sub-label">Texte</div><p>La formule SILVER vous donne les bases nécessaires pour préparer les épreuves théoriques et pratiques de l’examen VTC.</p><p>Pendant 35 heures réparties sur 5 jours, vous travaillez les 7 matières de l’examen théorique et les fondamentaux de l’épreuve pratique.</p><div class="sub-label">Ce que vous travaillez</div><ul><li>Réglementation du transport public particulier de personnes</li><li>Gestion d’entreprise</li><li>Sécurité routière</li><li>Français</li><li>Anglais</li><li>Développement commercial</li><li>Réglementation nationale spécifique VTC</li><li>Devis et facture</li><li>Aspect touristique</li><li>Qualité de prise en charge client</li><li>Préparation pratique en salle</li></ul><div class="sub-label">Pour qui ?</div><p>La formule SILVER est adaptée si vous êtes autonome, motivé et capable de travailler entre les séances pour consolider vos acquis.</p><div class="sub-label">Prix indicatif</div><p>1190 €</p><div class="cta-row"><span class="cta-pill">Choisir la formule SILVER</span></div></div><div class="page-section card-soft"><h3>Formule GOLD</h3><div class="sub-label">H2</div><p>GOLD — Plus de temps sur les matières clés pour renforcer votre préparation</p><div class="sub-label">Texte</div><p>La formule GOLD reprend la base de la formule SILVER et ajoute deux journées supplémentaires sur des matières souvent déterminantes : la gestion et le développement commercial.</p><p>Ces matières ne sont pas seulement importantes pour l’examen.</p><p>Elles le sont aussi pour votre future activité.</p><p>Un chauffeur VTC doit savoir raisonner comme un professionnel indépendant : calculer, facturer, développer son activité, comprendre ses coûts et se positionner face à la concurrence.</p><div class="sub-label">Ce que GOLD ajoute</div><ul><li>1 jour supplémentaire en gestion</li><li>1 jour supplémentaire en développement commercial</li><li>Analyses d’examens précédents</li><li>Deuxième passage en formation offert à l’école en cas d’échec, selon conditions du centre</li><li>Bonus liés à la préparation pratique et au lancement</li></ul><div class="sub-label">Pour qui ?</div><p>La formule GOLD est adaptée si vous voulez sécuriser votre préparation, poser plus de questions et mieux comprendre les matières qui font souvent la différence.</p><div class="sub-label">Prix indicatif</div><p>2290 €</p><div class="cta-row"><span class="cta-pill">Choisir la formule GOLD</span></div></div><div class="page-section card-soft"><h3>Formule PLATINIUM</h3><div class="sub-label">H2</div><p>PLATINIUM — L’accompagnement renforcé pour préparer l’examen avec un maximum de pratique</p><div class="sub-label">Texte</div><p>La formule PLATINIUM est le parcours le plus complet.</p><p>Elle reprend la formule GOLD et ajoute des journées supplémentaires sur la réglementation, la sécurité routière et la pratique sur route avec un professionnel du métier.</p><p>C’est la formule pensée pour les candidats qui veulent être encadrés plus longtemps, poser davantage de questions et consolider leur préparation avant l’examen.</p><div class="sub-label">Ce que PLATINIUM ajoute</div><ul><li>1 jour supplémentaire en réglementation générale</li><li>1 jour supplémentaire en sécurité routière</li><li>Apprentissage et évaluations sur route avec un professionnel</li><li>Passages ultérieurs en formation à l’école offerts en cas d’échec, selon conditions du centre</li><li>Accompagnement pratique renforcé</li></ul><div class="sub-label">Pour qui ?</div><p>La formule PLATINIUM est adaptée si vous voulez avancer avec un cadre complet, une pratique plus poussée et davantage de sécurité avant le passage à l’examen.</p><div class="sub-label">Prix indicatif</div><p>2990 €</p><div class="cta-row"><span class="cta-pill">Choisir la formule PLATINIUM</span></div></div><div class="page-section card-soft"><h3>Tableau de comparaison</h3><div class="sub-label">SILVER</div><p>Durée : 35h sur 5 jours</p><p>Niveau : essentiel</p><p>Idéal pour : candidat autonome</p><p>Objectif : bases théoriques + pratique en salle</p><div class="sub-label">GOLD</div><p>Durée : 45h sur 7 jours</p><p>Niveau : renforcé</p><p>Idéal pour : candidat qui veut consolider la gestion et le commercial</p><p>Objectif : mieux comprendre les matières clés</p><div class="sub-label">PLATINIUM</div><p>Durée : 70h sur 10 jours</p><p>Niveau : complet</p><p>Idéal pour : candidat qui veut le suivi le plus poussé</p><p>Objectif : théorie renforcée + pratique sur route</p><div class="cta-row"><span class="cta-pill">Je veux être conseillé sur la bonne formule</span></div></div><div class="page-section card-soft"><h3>Formation VTC en ligne</h3><div class="sub-label">H2</div><p>Vous préférez avancer à distance ?</p><p>La formation VTC en ligne vous permet de travailler à votre rythme, avec un accès flexible aux contenus.</p><p>Elle inclut notamment :</p><ul><li>contenus théoriques ;</li><li>plus de 400 QCM ;</li><li>50 QRC ;</li><li>tutoriels ;</li><li>sujets d’examens pratiques ;</li><li>coachings en visio chaque semaine ;</li><li>accès à une communauté privée.</li></ul><div class="sub-label">Pour qui ?</div><p>La formation en ligne est adaptée si vous êtes à l’aise avec l’apprentissage à distance, si vous avez besoin de flexibilité ou si vous ne pouvez pas vous déplacer facilement au centre.</p><div class="sub-label">Prix indicatif</div><p>990 €</p><div class="cta-row"><span class="cta-pill">Découvrir la formation en ligne</span></div></div><div class="page-section card-soft"><h3>Formation pratique seule</h3><div class="sub-label">H2</div><p>Besoin de vous préparer uniquement à la pratique ?</p><p>AB-CABS propose aussi des modules de formation pratique pour travailler le déroulé de l’épreuve, les devis, les factures, la lecture de carte, la mise en situation et la conduite sur véhicule double commande selon la formule choisie.</p><div class="cta-row"><span class="cta-pill">Préparer mon épreuve pratique</span></div></div><div class="page-section card-soft"><h3>Vous hésitez entre deux formules ?</h3><p>C’est normal.</p><p>Le bon choix dépend de :</p><ul><li>votre niveau actuel ;</li><li>votre capacité à travailler seul ;</li><li>votre budget ;</li><li>votre disponibilité ;</li><li>votre besoin de pratique ;</li><li>votre niveau de stress face à l’examen.</li></ul><p>Un entretien personnalisé permet de clarifier tout cela rapidement.</p><p>Vous venez avec vos questions.</p><p>Nous vous aidons à choisir sans vous pousser vers une formule inutile.</p><div class="cta-row"><span class="cta-pill">Réserver mon entretien personnalisé</span></div></div><div class="page-section card-soft"><h3>Questions fréquentes</h3><div class="faq-item"><div class="faq-q">Quelle formule choisir si je débute totalement ?</div><p>Si vous voulez un accompagnement plus solide, GOLD ou PLATINIUM seront souvent plus confortables. SILVER peut convenir à un candidat autonome qui a du temps pour travailler entre les séances.</p></div><div class="faq-item"><div class="faq-q">La formule la plus chère garantit-elle la réussite ?</div><p>Non. Aucune formation sérieuse ne peut garantir votre réussite. En revanche, une formule plus complète vous donne plus de temps, plus de pratique et plus d’accompagnement.</p></div><div class="faq-item"><div class="faq-q">La formation est-elle finançable ?</div><p>Selon votre situation, vous pouvez mobiliser votre CPF, un financement via France Travail ou choisir un paiement personnel avec facilités.</p></div><div class="faq-item"><div class="faq-q">Puis-je venir au centre avant de m’inscrire ?</div><p>Oui. L’entretien personnalisé est justement là pour faire le point sur votre projet, votre financement et la formule la plus adaptée.</p></div></div><div class="cta-final-block"><h3 style="color:#fff;">Vous voulez choisir la bonne formule sans vous tromper ?</h3><p>Parlez-nous de votre projet. En quelques minutes, nous vous aidons à identifier le parcours le plus cohérent.</p><div class="cta-row"><span class="cta-pill">Être conseillé sur ma formation</span><span class="cta-pill secondary">Voir les financements</span></div></div></div></div>
+<div class="page-sim"><div class="page-sim-header"><div class="page-sim-num">Page 3</div><h3 class="page-sim-title">FORMATION CONTINUE &amp; PASSERELLE</h3><div class="page-kw"><span class="kw-badge">Mot-clé&nbsp;: renouvellement carte VTC</span></div></div><div class="page-sim-body"><div class="meta-box"><div><span class="meta-k">Meta title</span> Formation continue VTC 14h &amp; Passerelle Taxi VTC | AB-CABS</div><div style="margin-top:6px;"><span class="meta-k">Meta description</span> Renouvelez votre carte VTC ou préparez votre passerelle Taxi vers VTC avec AB-CABS Académie à Noisy-le-Grand.</div></div><div class="hero-sim"><div class="hero-h1">Déjà chauffeur ? Renouvelez votre carte VTC ou élargissez votre activité avec la passerelle Taxi → VTC</div><p class="hero-sub">AB-CABS accompagne les professionnels du transport dans deux situations clés : le renouvellement obligatoire de la carte VTC et la passerelle pour les taxis qui souhaitent exercer aussi en VTC.</p><div class="cta-row"><span class="cta-pill">Réserver ma place</span><span class="cta-pill secondary">Parler à un conseiller</span></div></div><div class="page-section card-soft"><h3>Quand on est déjà dans le métier, le temps compte</h3><p>Vous connaissez déjà la route.</p><p>Vous savez ce qu’est un client exigeant, une course à l’heure, un véhicule bien entretenu, une activité à gérer.</p><p>Ce dont vous avez besoin maintenant, c’est d’une formation claire, rapide et conforme à votre situation.</p><p>Chez AB-CABS, nous allons à l’essentiel :</p><p>vous aider à rester en règle, obtenir les attestations nécessaires et continuer à exercer votre métier dans de bonnes conditions.</p></div><div class="page-section card-soft"><h3>Formation continue VTC 14h</h3><div class="sub-label">H2</div><p>Renouvellement de carte VTC : une formation obligatoire tous les 5 ans</p><p>La carte professionnelle VTC doit être renouvelée tous les 5 ans. Pour cela, le chauffeur doit suivre une formation continue de 14 heures, généralement réparties sur 2 jours.</p><p>Cette formation permet de mettre à jour vos connaissances et de confirmer votre capacité à exercer dans le respect de la réglementation.</p><div class="sub-label">Ce que vous travaillez</div><ul><li>Réglementation générale du transport</li><li>Sécurité routière</li><li>Évolution de l’environnement économique</li><li>Rappels métier</li><li>Actualisation des obligations professionnelles</li></ul><div class="sub-label">Durée</div><p>14h sur 2 jours</p><div class="sub-label">Prix indicatif</div><p>200 €</p><div class="cta-row"><span class="cta-pill">M’inscrire à la formation continue</span></div></div><div class="page-section card-soft"><h3>Pourquoi ne pas attendre la dernière minute ?</h3><p>Votre carte professionnelle est votre autorisation de travailler.</p><p>Sans renouvellement, votre activité peut être bloquée.</p><p>Et dans un métier indépendant, chaque jour d’arrêt peut coûter cher.</p><p>La formation continue vous permet de sécuriser votre situation avant l’échéance.</p><p>AB-CABS vous rappelle les pièces à fournir, les étapes et les points importants pour éviter les oublis.</p><div class="cta-row"><span class="cta-pill">Vérifier ma situation</span></div></div><div class="page-section card-soft"><h3>Passerelle Taxi → VTC</h3><div class="sub-label">H2</div><p>Vous êtes taxi et vous voulez devenir aussi chauffeur VTC ?</p><p>La passerelle Taxi → VTC s’adresse aux chauffeurs de taxi qui souhaitent obtenir la carte professionnelle VTC et élargir leurs possibilités d’activité.</p><p>Vous devez préparer les épreuves spécifiques VTC et l’épreuve pratique d’admission.</p><p>AB-CABS vous accompagne sur les matières essentielles pour comprendre les attentes de l’examen et vous présenter avec méthode.</p><div class="sub-label">Formation théorique</div><p>Sur 2 jours, vous travaillez notamment :</p><ul><li>développement commercial ;</li><li>réglementation nationale spécifique VTC.</li></ul><div class="sub-label">Formation pratique</div><p>Vous préparez les thématiques de l’épreuve sur route :</p><ul><li>devis et facture ;</li><li>aspect touristique ;</li><li>sécurité routière ;</li><li>qualité de prise en charge client.</li></ul><div class="sub-label">Prix indicatif</div><p>990 €</p><div class="cta-row"><span class="cta-pill">Découvrir la passerelle Taxi → VTC</span></div></div><div class="page-section card-soft"><h3>Pourquoi faire la passerelle ?</h3><p>Être taxi et VTC peut permettre d’élargir son champ d’activité, de répondre à d’autres demandes clients et de développer une approche plus flexible du transport de personnes.</p><p>La passerelle n’est pas seulement une formalité.</p><p>C’est aussi l’occasion de comprendre les codes du VTC : relation client, réservation, positionnement, qualité de service, développement commercial.</p></div><div class="page-section card-soft"><h3>Bonus et accompagnement</h3><p>Selon la formule et les conditions du centre, AB-CABS peut vous accompagner avec :</p><ul><li>véhicule double commande le jour de l’examen pratique ;</li><li>livraison du véhicule sur place ;</li><li>coaching ;</li><li>préparation pratique ;</li><li>accompagnement dans les démarches ;</li><li>conseils pour le lancement de l’activité VTC.</li></ul></div><div class="page-section card-soft"><h3>Deux profils, deux parcours</h3><div class="sub-label">Vous êtes chauffeur VTC</div><p>Votre priorité : renouveler votre carte, rester en règle et continuer à exercer.</p><div class="cta-row"><span class="cta-pill">Renouveler ma carte VTC</span></div><div class="sub-label">Vous êtes chauffeur taxi</div><p>Votre priorité : comprendre les épreuves spécifiques, préparer la pratique et ouvrir votre activité au VTC.</p><div class="cta-row"><span class="cta-pill">Préparer ma passerelle Taxi → VTC</span></div></div><div class="page-section card-soft"><h3>Questions fréquentes</h3><div class="faq-item"><div class="faq-q">La formation continue VTC est-elle obligatoire ?</div><p>Oui. Elle est nécessaire pour le renouvellement de la carte professionnelle VTC, à effectuer tous les 5 ans.</p></div><div class="faq-item"><div class="faq-q">Combien de temps dure la formation continue ?</div><p>Elle dure 14 heures, généralement réparties sur 2 jours.</p></div><div class="faq-item"><div class="faq-q">Quand dois-je m’y prendre ?</div><p>Il est conseillé de ne pas attendre la date d’expiration de votre carte. Plus vous anticipez, plus vos démarches sont simples.</p></div><div class="faq-item"><div class="faq-q">Un taxi peut-il devenir VTC ?</div><p>Oui. Un chauffeur taxi peut devenir VTC, sous réserve de respecter les conditions et démarches prévues.</p></div><div class="faq-item"><div class="faq-q">La passerelle comprend-elle de la pratique ?</div><p>Oui, la préparation inclut les thématiques de l’épreuve pratique : devis, facture, sécurité routière, aspect touristique et prise en charge client.</p></div></div><div class="cta-final-block"><h3 style="color:#fff;">Professionnel du transport ? Gardez une longueur d’avance.</h3><p>Que vous deviez renouveler votre carte VTC ou préparer votre passerelle Taxi → VTC, AB-CABS vous accompagne avec une formation claire et concrète.</p><div class="cta-row"><span class="cta-pill">Réserver ma formation</span><span class="cta-pill secondary">Appeler AB-CABS</span></div></div></div></div>
+<div class="page-sim"><div class="page-sim-header"><div class="page-sim-num">Page 4</div><h3 class="page-sim-title">FINANCEMENT CPF &amp; FRANCE TRAVAIL</h3><div class="page-kw"><span class="kw-badge">Mot-clé&nbsp;: formation VTC CPF</span></div></div><div class="page-sim-body"><div class="meta-box"><div><span class="meta-k">Meta title</span> Financer sa formation VTC avec le CPF | AB-CABS</div><div style="margin-top:6px;"><span class="meta-k">Meta description</span> CPF, France Travail, paiement personnel : découvrez les solutions pour financer votre formation VTC avec AB-CABS Académie.</div></div><div class="hero-sim"><div class="hero-h1">Votre formation VTC peut être financée selon votre situation</div><p class="hero-sub">CPF, France Travail, paiement personnel avec facilités : avant de repousser votre projet pour une question de budget, vérifiez les solutions possibles avec AB-CABS Académie.</p><div class="cta-row"><span class="cta-pill">Tester mon financement</span><span class="cta-pill secondary">Voir les formations éligibles</span></div></div><div class="page-section card-soft"><h3>Le prix ne doit pas être le seul obstacle à votre projet</h3><p>Beaucoup de futurs chauffeurs VTC repoussent leur formation pour une raison simple :</p><p>ils ne savent pas comment la financer.</p><p>Pourtant, selon votre situation, plusieurs solutions peuvent exister.</p><p>Chez AB-CABS, nous vous aidons à y voir clair.</p><p>Pas de jargon. Pas de dossier incompréhensible.</p><p>Nous regardons votre cas et nous vous orientons vers la solution la plus adaptée.</p></div><div class="page-section card-soft"><h3>Financer avec votre CPF</h3><div class="sub-label">H2</div><p>Vous avez un Compte Personnel de Formation ?</p><p>Le CPF permet à une personne active de mobiliser des droits à la formation tout au long de sa vie professionnelle.</p><p>Si vous avez des droits disponibles, vous pouvez peut-être les utiliser pour financer tout ou partie de votre formation VTC.</p><div class="sub-label">Ce que vous pouvez faire</div><ul><li>vérifier vos droits disponibles ;</li><li>choisir une formation adaptée ;</li><li>déposer votre demande ;</li><li>compléter si nécessaire par un autre mode de paiement.</li></ul><div class="cta-row"><span class="cta-pill">Vérifier mon éligibilité CPF</span></div></div><div class="page-section card-soft"><h3>Financement via France Travail</h3><div class="sub-label">H2</div><p>Vous êtes demandeur d’emploi ?</p><p>Si vous êtes accompagné par France Travail, une demande de financement peut être étudiée selon votre projet, votre situation et les règles en vigueur.</p><p>AB-CABS peut vous orienter sur les informations à préparer pour faciliter la demande.</p><div class="sub-label">Informations utiles à prévoir</div><ul><li>identifiant France Travail ;</li><li>département d’habitation ;</li><li>projet professionnel ;</li><li>formation visée ;</li><li>dates souhaitées ;</li><li>devis si nécessaire.</li></ul><div class="cta-row"><span class="cta-pill">Préparer ma demande de financement</span></div></div><div class="page-section card-soft"><h3>Paiement personnel et facilités</h3><div class="sub-label">H2</div><p>Vous financez vous-même votre formation ?</p><p>AB-CABS propose des moyens de paiement adaptés :</p><ul><li>carte bancaire ;</li><li>chèque ;</li><li>virement ;</li><li>facilités de paiement selon conditions du centre.</li></ul><p>L’objectif est simple : vous permettre d’avancer sans bloquer votre projet dès le premier obstacle financier.</p><div class="cta-row"><span class="cta-pill">Demander les facilités de paiement</span></div></div><div class="page-section card-soft"><h3>Quelle formation choisir selon votre budget ?</h3><div class="sub-label">Formation en ligne</div><p>Pour avancer à distance avec un budget plus accessible.</p><div class="sub-label">SILVER</div><p>Pour une préparation en présentiel claire et structurée.</p><div class="sub-label">GOLD</div><p>Pour renforcer les matières clés avec plus de jours de formation.</p><div class="sub-label">PLATINIUM</div><p>Pour bénéficier d’un accompagnement plus complet et plus pratique.</p><div class="sub-label">Formation continue</div><p>Pour renouveler votre carte VTC.</p><div class="sub-label">Passerelle Taxi → VTC</div><p>Pour les chauffeurs taxi qui veulent exercer aussi en VTC.</p></div><div class="page-section card-soft"><h3>Ne choisissez pas uniquement au prix</h3><p>Une formation moins chère peut sembler rassurante au départ.</p><p>Mais si vous manquez d’accompagnement, de pratique ou de méthode, vous risquez de perdre du temps, de repasser des étapes ou de rester bloqué dans vos démarches.</p><p>Le bon choix n’est pas forcément la formule la plus chère.</p><p>C’est celle qui correspond à votre niveau, à votre autonomie et à votre objectif.</p><p>C’est exactement le rôle de l’entretien personnalisé.</p><div class="cta-row"><span class="cta-pill">Trouver la bonne formule pour mon budget</span></div></div><div class="page-section card-soft"><h3>Parcours financement</h3><div class="sub-label">Étape 1 — Vous nous expliquez votre situation</div><p>Salarié, indépendant, demandeur d’emploi, reconversion, financement personnel.</p><div class="sub-label">Étape 2 — Nous identifions les solutions possibles</div><p>CPF, France Travail, paiement personnel, facilités.</p><div class="sub-label">Étape 3 — Nous vous orientons vers la formation adaptée</div><p>En ligne, présentiel, SILVER, GOLD, PLATINIUM, passerelle ou continue.</p><div class="sub-label">Étape 4 — Vous avancez avec un plan clair</div><p>Vous savez quoi faire, dans quel ordre, avec quelles informations.</p></div><div class="page-section card-soft"><h3>Questions fréquentes</h3><div class="faq-item"><div class="faq-q">Puis-je financer toute ma formation avec le CPF ?</div><p>Cela dépend de vos droits disponibles et du prix de la formation choisie. Si vos droits ne couvrent pas tout, un complément peut être nécessaire.</p></div><div class="faq-item"><div class="faq-q">AB-CABS peut-il faire un devis pour France Travail ?</div><p>Oui, selon votre situation et les informations transmises, un devis peut être préparé pour votre espace France Travail.</p></div><div class="faq-item"><div class="faq-q">Puis-je payer moi-même ma formation ?</div><p>Oui. AB-CABS accepte plusieurs moyens de paiement et peut proposer des facilités selon conditions.</p></div><div class="faq-item"><div class="faq-q">Est-ce que toutes les formations sont finançables ?</div><p>Les possibilités dépendent de la formation, de votre situation et des règles des organismes financeurs. Le plus simple est de vérifier avec le centre.</p></div><div class="faq-item"><div class="faq-q">Dois-je choisir ma formation avant de vérifier le financement ?</div><p>Pas forcément. L’entretien permet justement de croiser votre besoin de formation avec les options de financement possibles.</p></div></div><div class="cta-final-block"><h3 style="color:#fff;">Avant de renoncer, vérifiez vos solutions de financement.</h3><p>Votre projet VTC mérite mieux qu’une décision prise dans le flou. Faites le point avec AB-CABS.</p><div class="cta-row"><span class="cta-pill">Tester mon financement</span><span class="cta-pill secondary">Réserver un entretien</span></div></div></div></div>
+<div class="page-sim"><div class="page-sim-header"><div class="page-sim-num">Page 5</div><h3 class="page-sim-title">EXAMEN VTC — GUIDE</h3><div class="page-kw"><span class="kw-badge">Mot-clé&nbsp;: examen VTC Île-de-France</span></div></div><div class="page-sim-body"><div class="meta-box"><div><span class="meta-k">Meta title</span> Examen VTC : épreuves, inscription et préparation | AB-CABS</div><div style="margin-top:6px;"><span class="meta-k">Meta description</span> Comprenez l’examen VTC : épreuves théoriques, pratique, inscription, préparation et accompagnement avec AB-CABS Académie.</div></div><div class="hero-sim"><div class="hero-h1">Examen VTC : comprenez les épreuves avant de vous inscrire</div><p class="hero-sub">L’examen VTC peut sembler complexe au départ. AB-CABS vous aide à comprendre les étapes, les matières, les attentes et la meilleure façon de vous préparer sérieusement.</p><div class="cta-row"><span class="cta-pill">Préparer mon examen VTC</span><span class="cta-pill secondary">Découvrir les formations</span></div></div><div class="page-section card-soft"><h3>L’examen VTC n’est pas seulement un test de connaissances</h3><p>Pour obtenir votre carte professionnelle VTC, vous devez réussir un examen composé d’une partie théorique et d’une partie pratique.</p><p>La difficulté ne vient pas seulement du volume de cours.</p><p>Elle vient surtout de la diversité des compétences attendues.</p><p>Vous devez comprendre la réglementation, gérer des situations professionnelles, répondre à des QCM et QRC, puis démontrer votre capacité à conduire et prendre en charge un client dans de bonnes conditions.</p><p>AB-CABS vous prépare à cette réalité.</p></div><div class="page-section card-soft"><h3>L’épreuve théorique</h3><div class="sub-label">H2</div><p>Les matières à travailler</p><p>L’épreuve théorique porte sur plusieurs matières communes ou spécifiques au métier de chauffeur VTC.</p><p>Vous pouvez notamment être évalué sur :</p><ul><li>réglementation du transport public particulier de personnes ;</li><li>gestion ;</li><li>sécurité routière ;</li><li>français ;</li><li>anglais ;</li><li>développement commercial ;</li><li>réglementation nationale spécifique VTC.</li></ul><div class="sub-label">Ce que cela implique</div><p>Vous devez apprendre, mais aussi vous entraîner à répondre correctement dans le format de l’examen.</p><p>C’est pourquoi AB-CABS intègre des exercices, des QCM, des QRC et des examens blancs.</p></div><div class="page-section card-soft"><h3>L’épreuve pratique</h3><div class="sub-label">H2</div><p>La conduite professionnelle ne se résume pas à savoir conduire</p><p>L’épreuve pratique évalue votre capacité à exercer comme chauffeur VTC dans une situation professionnelle.</p><p>Vous devez montrer que vous savez :</p><ul><li>accueillir un client ;</li><li>préparer un trajet ;</li><li>respecter la sécurité routière ;</li><li>établir un devis ou une facture ;</li><li>comprendre l’environnement touristique ;</li><li>assurer une qualité de prise en charge ;</li><li>adopter une posture professionnelle.</li></ul><p>La pratique demande de la méthode, du calme et une bonne compréhension des attentes.</p><div class="cta-row"><span class="cta-pill">Préparer mon épreuve pratique</span></div></div><div class="page-section card-soft"><h3>Ce qui bloque souvent les candidats</h3><div class="sub-label">Blocage 1 — Sous-estimer la gestion</div><p>Beaucoup de candidats se concentrent sur la conduite, mais la gestion est essentielle pour l’examen et pour la future activité.</p><div class="sub-label">Blocage 2 — Attendre trop longtemps pour s’entraîner</div><p>Lire un cours ne suffit pas. Il faut pratiquer les formats de questions.</p><div class="sub-label">Blocage 3 — Découvrir la pratique trop tard</div><p>L’épreuve pratique a ses codes. Plus vous les comprenez tôt, plus vous gagnez en sérénité.</p><div class="sub-label">Blocage 4 — Se présenter sans stratégie</div><p>Une bonne formation vous aide à savoir quoi travailler, dans quel ordre et avec quel niveau d’exigence.</p></div><div class="page-section card-soft"><h3>Comment AB-CABS vous prépare</h3><div class="sub-label">Cours structurés</div><p>Les matières sont organisées pour vous permettre d’avancer progressivement.</p><div class="sub-label">Exercices et examens blancs</div><p>Vous vous entraînez sur des formats proches de l’examen.</p><div class="sub-label">Préparation pratique</div><p>Vous travaillez les mises en situation : devis, facture, carte, prise en charge, sécurité et posture.</p><div class="sub-label">Accompagnement</div><p>Vous pouvez poser vos questions, clarifier vos démarches et éviter de rester bloqué seul.</p><div class="sub-label">Options renforcées</div><p>Selon la formule choisie, vous pouvez bénéficier de jours supplémentaires, de pratique sur route et d’un accompagnement plus poussé.</p></div><div class="page-section card-soft"><h3>Quelle formation choisir pour préparer l’examen ?</h3><div class="sub-label">SILVER</div><p>Pour une préparation essentielle en présentiel.</p><div class="sub-label">GOLD</div><p>Pour renforcer les matières clés et mieux consolider la gestion et le développement commercial.</p><div class="sub-label">PLATINIUM</div><p>Pour un accompagnement plus complet, avec davantage de pratique et d’encadrement.</p><div class="sub-label">Formation en ligne</div><p>Pour travailler à distance, avec contenus, QCM, QRC et coachings.</p><div class="sub-label">Formation pratique seule</div><p>Pour les candidats qui veulent spécifiquement préparer l’épreuve pratique.</p></div><div class="page-section card-soft"><h3>Après l’examen : les démarches ne sont pas terminées</h3><p>Réussir l’examen est une étape importante.</p><p>Mais ce n’est pas la fin du parcours.</p><p>Vous devrez ensuite avancer sur :</p><ul><li>la demande de carte professionnelle ;</li><li>l’inscription au registre VTC ;</li><li>le choix du véhicule ;</li><li>l’assurance ;</li><li>le statut ;</li><li>les outils de réservation ;</li><li>le développement commercial.</li></ul><p>AB-CABS vous aide à penser ce parcours dès la formation, pour éviter l’effet “je réussis l’examen, mais je ne sais pas quoi faire ensuite”.</p></div><div class="page-section card-soft"><h3>Questions fréquentes</h3><div class="faq-item"><div class="faq-q">L’examen VTC est-il difficile ?</div><p>Il demande une préparation sérieuse. La difficulté dépend de votre niveau de départ, de votre régularité et de votre capacité à vous entraîner dans les bons formats.</p></div><div class="faq-item"><div class="faq-q">Peut-on réussir sans formation ?</div><p>Certaines personnes essaient seules, mais une formation structurée permet de gagner du temps, de comprendre les attentes et d’éviter les erreurs classiques.</p></div><div class="faq-item"><div class="faq-q">Combien de temps faut-il pour se préparer ?</div><p>Cela dépend de la formule choisie et de votre disponibilité. AB-CABS propose des parcours de 5, 7 ou 10 jours en présentiel, ainsi qu’une formation en ligne.</p></div><div class="faq-item"><div class="faq-q">Que se passe-t-il après la théorie ?</div><p>Si vous validez la théorie, vous devez réussir l’épreuve pratique dans les conditions prévues.</p></div><div class="faq-item"><div class="faq-q">AB-CABS fournit-il un véhicule pour la pratique ?</div><p>Selon les formules et conditions du centre, un véhicule double commande peut être mis à disposition pour l’examen pratique.</p></div></div><div class="cta-final-block"><h3 style="color:#fff;">Préparez l’examen VTC avec une méthode claire.</h3><p>Ne vous contentez pas de réviser au hasard. Faites-vous accompagner par un centre qui connaît les attentes de l’examen et la réalité du métier.</p><div class="cta-row"><span class="cta-pill">Préparer mon examen avec AB-CABS</span><span class="cta-pill secondary">Comparer les formations</span></div></div></div></div>
+<div class="page-sim"><div class="page-sim-header"><div class="page-sim-num">Page 6</div><h3 class="page-sim-title">QUI SOMMES-NOUS</h3><div class="page-kw"><span class="kw-badge">Mot-clé&nbsp;: centre de formation VTC certifié</span></div></div><div class="page-sim-body"><div class="meta-box"><div><span class="meta-k">Meta title</span> AB-CABS Académie | Centre de formation VTC à Noisy-le-Grand</div><div style="margin-top:6px;"><span class="meta-k">Meta description</span> Découvrez AB-CABS Académie, centre de formation VTC à Noisy-le-Grand, spécialisé dans l’accompagnement des futurs chauffeurs VTC.</div></div><div class="hero-sim"><div class="hero-h1">Un centre de formation VTC créé pour accompagner des projets, pas seulement remplir des salles</div><p class="hero-sub">Depuis sa création, AB-CABS Académie accompagne des femmes et des hommes qui veulent réussir leur examen VTC, obtenir leur carte professionnelle et construire une activité solide dans le transport de personnes.</p><div class="cta-row"><span class="cta-pill">Rencontrer l’équipe</span><span class="cta-pill secondary">Découvrir nos formations</span></div></div><div class="page-section card-soft"><h3>Notre conviction</h3><p>Devenir chauffeur VTC est une vraie décision professionnelle.</p><p>Ce n’est pas un simple changement de statut.</p><p>C’est souvent une reconversion, un nouveau départ ou une volonté de reprendre le contrôle de son temps et de ses revenus.</p><p>Mais pour réussir, il ne suffit pas d’avoir envie.</p><p>Il faut comprendre l’examen, respecter la réglementation, apprendre à gérer une activité, adopter les bons réflexes professionnels et savoir quoi faire après l’obtention de la carte.</p><p>C’est pour cela qu’AB-CABS existe.</p></div><div class="page-section card-soft"><h3>Notre mission</h3><div class="sub-label">H2</div><p>Vous aider à passer de “je veux devenir VTC” à “je sais quoi faire maintenant”</p><p>Notre mission est de rendre le parcours plus clair.</p><p>Nous vous accompagnons pour :</p><ul><li>comprendre les prérequis ;</li><li>choisir la bonne formation ;</li><li>préparer l’examen ;</li><li>mobiliser un financement si possible ;</li><li>travailler la théorie et la pratique ;</li><li>avancer dans les démarches ;</li><li>préparer votre lancement d’activité.</li></ul><p>Nous ne promettons pas une réussite automatique.</p><p>Nous vous donnons un cadre, une méthode et un accompagnement sérieux.</p></div><div class="page-section card-soft"><h3>Une pédagogie concrète</h3><p>Chez AB-CABS, la formation repose sur une idée simple :</p><p>vous devez comprendre ce que vous apprenez.</p><p>Pas seulement mémoriser.</p><p>Nos méthodes associent :</p><ul><li>cours projetés ;</li><li>supports numériques ;</li><li>exercices pratiques ;</li><li>QCM et QRC ;</li><li>examens blancs ;</li><li>mises en situation ;</li><li>entraînement à l’épreuve pratique ;</li><li>échanges avec les formateurs.</li></ul><p>L’objectif est que vous sachiez pourquoi une notion est importante, comment elle peut tomber à l’examen et comment elle vous servira dans votre future activité.</p></div><div class="page-section card-soft"><h3>Un centre accessible à Noisy-le-Grand</h3><p>AB-CABS Académie est situé au Centre Commercial Les Arcades, à Noisy-le-Grand.</p><p>Le centre est accessible en RER A, depuis la gare Noisy-le-Grand Mont d’Est, et facilement identifiable depuis le centre commercial.</p><p>Cette implantation permet d’accueillir des candidats venant de Noisy-le-Grand, de Seine-Saint-Denis, du Val-de-Marne, de Paris Est, de Marne-la-Vallée et plus largement d’Île-de-France.</p></div><div class="page-section card-soft"><h3>Des chiffres qui comptent</h3><p>En 2024, AB-CABS Académie, c’est :</p><ul><li>415 élèves formés ;</li><li>22 sessions organisées ;</li><li>3 formateurs ;</li><li>87 % de réussite aux examens VTC présentés ;</li><li>100 % de satisfaction déclarée par les stagiaires répondants ;</li><li>0 % d’abandon déclaré.</li></ul><p>Ces chiffres ne sont pas là pour décorer une page.</p><p>Ils montrent une chose : la formation est suivie, structurée et évaluée.</p></div><div class="page-section card-soft"><h3>Au-delà de la formation</h3><p>Un futur chauffeur VTC a besoin de plus qu’un programme de cours.</p><p>Il peut avoir besoin :</p><ul><li>d’un véhicule double commande ;</li><li>d’un accompagnement pratique ;</li><li>d’un conseil sur le financement ;</li><li>d’un partenaire pour son site internet ;</li><li>d’un accompagnement juridique ;</li><li>d’une aide pour comprendre les démarches ;</li><li>d’un regard professionnel sur son projet.</li></ul><p>AB-CABS a construit un écosystème pour répondre à ces besoins, sans disperser le candidat.</p></div><div class="page-section card-soft"><h3>Notre manière de travailler</h3><div class="sub-label">Clarté</div><p>Vous savez ce que vous allez travailler, pourquoi et dans quel ordre.</p><div class="sub-label">Exigence</div><p>Le métier de VTC demande du sérieux. Nous vous préparons avec cette réalité en tête.</p><div class="sub-label">Accessibilité</div><p>Nous expliquons les démarches et les notions importantes avec des mots simples.</p><div class="sub-label">Accompagnement</div><p>Vous pouvez poser vos questions, venir au centre et faire le point sur votre projet.</p><div class="sub-label">Professionnalisme</div><p>Nous formons à un métier de service, de ponctualité, de présentation et de confiance.</p></div><div class="page-section card-soft"><h3>Pour qui nous sommes faits</h3><p>AB-CABS est fait pour vous si :</p><ul><li>vous voulez devenir chauffeur VTC ;</li><li>vous cherchez un centre sérieux en Île-de-France ;</li><li>vous avez besoin d’être guidé ;</li><li>vous voulez comprendre avant de vous inscrire ;</li><li>vous êtes prêt à travailler régulièrement ;</li><li>vous voulez préparer aussi l’après-examen.</li></ul><p>AB-CABS n’est pas fait pour vous si vous cherchez une solution miracle sans implication personnelle.</p></div><div class="page-section card-soft"><h3>Questions fréquentes</h3><div class="faq-item"><div class="faq-q">AB-CABS est-il uniquement un centre de formation ?</div><p>AB-CABS est avant tout un centre de formation VTC, mais propose aussi des services complémentaires pour aider les futurs chauffeurs à préparer leur activité.</p></div><div class="faq-item"><div class="faq-q">Où se trouve le centre ?</div><p>Le centre est situé à Noisy-le-Grand, au Centre Commercial Les Arcades.</p></div><div class="faq-item"><div class="faq-q">Puis-je venir poser mes questions avant l’inscription ?</div><p>Oui. L’entretien personnalisé est recommandé pour clarifier votre projet, votre financement et la formule la plus adaptée.</p></div><div class="faq-item"><div class="faq-q">Formez-vous seulement les débutants ?</div><p>Non. AB-CABS accompagne aussi les chauffeurs VTC en formation continue et les taxis qui souhaitent passer vers le VTC.</p></div></div><div class="cta-final-block"><h3 style="color:#fff;">Venez parler de votre projet avec une équipe qui connaît le terrain.</h3><p>Votre parcours VTC mérite un accompagnement clair, humain et structuré.</p><div class="cta-row"><span class="cta-pill">Réserver un entretien</span><span class="cta-pill secondary">Voir les formations</span></div></div></div></div>
+<div class="page-sim"><div class="page-sim-header"><div class="page-sim-num">Page 7</div><h3 class="page-sim-title">AVIS &amp; RÉSULTATS</h3><div class="page-kw"><span class="kw-badge">Mot-clé&nbsp;: avis centre formation VTC</span></div></div><div class="page-sim-body"><div class="meta-box"><div><span class="meta-k">Meta title</span> Avis &amp; résultats AB-CABS | Centre de formation VTC</div><div style="margin-top:6px;"><span class="meta-k">Meta description</span> Découvrez les résultats, témoignages et chiffres d’AB-CABS Académie, centre de formation VTC à Noisy-le-Grand.</div></div><div class="hero-sim"><div class="hero-h1">Ils ont préparé leur projet VTC avec AB-CABS</div><p class="hero-sub">Avant de choisir une formation, vous avez besoin de preuves. Résultats, satisfaction, avis d’anciens élèves et témoignages : voici ce qui permet de juger concrètement l’accompagnement AB-CABS.</p><div class="cta-row"><span class="cta-pill">Voir les formations</span><span class="cta-pill secondary">Réserver mon entretien</span></div></div><div class="page-section card-soft"><h3>La confiance ne se décrète pas. Elle se prouve.</h3><p>Sur un marché où beaucoup de centres promettent beaucoup de choses, les futurs chauffeurs ont raison d’être prudents.</p><p>Vous allez investir du temps, de l’argent et de l’énergie.</p><p>Vous devez savoir si le centre est sérieux, si les élèves sont suivis et si les résultats sont mesurés.</p><p>AB-CABS met en avant ses chiffres, ses avis et ses retours d’élèves pour vous aider à décider avec plus de clarté.</p></div><div class="page-section card-soft"><h3>Les chiffres 2024</h3><div class="sub-label">H2</div><p>Une année de formation suivie et mesurée</p><p>En 2024, AB-CABS Académie a formé 415 élèves.</p><p>Sur cette même année :</p><ul><li>22 sessions ont été organisées ;</li><li>3 formateurs ont animé les formations ;</li><li>87 % des candidats présentés aux examens VTC ont réussi ;</li><li>100 % de satisfaction totale a été déclarée parmi les stagiaires ayant répondu ;</li><li>0 % d’abandon a été déclaré.</li></ul><p>Ces chiffres montrent une réalité importante : l’accompagnement ne s’arrête pas à l’inscription. Il se suit, se mesure et s’améliore.</p></div><div class="page-section card-soft"><h3>Ce que les élèves viennent chercher</h3><p>Les élèves qui choisissent AB-CABS viennent souvent avec les mêmes attentes :</p><ul><li>comprendre l’examen ;</li><li>être rassurés sur leur niveau ;</li><li>éviter les erreurs administratives ;</li><li>savoir quelle formule choisir ;</li><li>trouver une solution de financement ;</li><li>se préparer à la pratique ;</li><li>se projeter dans le métier.</li></ul><p>Les avis permettent de voir si ces attentes sont réellement prises en compte.</p></div><div class="page-section card-soft"><h3>Vos témoignages clients</h3><div class="sub-label">Témoignage vidéo — Philippe</div><p>“Philippe raconte comment AB-CABS l’a aidé à préparer son projet VTC”</p><p>Dans ce témoignage, Philippe partage son expérience avec l’école, sa préparation et ce qui l’a aidé à avancer dans son parcours.</p><div class="cta-row"><span class="cta-pill">Voir le témoignage de Philippe</span></div><div class="sub-label">Témoignage vidéo — Atika</div><p>“Atika partage son retour sur la formation AB-CABS”</p><p>Atika revient sur son expérience de formation, l’accompagnement reçu et les éléments qui l’ont aidée à se sentir plus prête.</p><div class="cta-row"><span class="cta-pill">Voir le témoignage d’Atika</span></div><div class="sub-label">Témoignage vidéo — Kamel</div><p>“Kamel donne son avis sur son passage chez AB-CABS”</p><p>Kamel explique son parcours, ses attentes avant la formation et son ressenti après son accompagnement chez AB-CABS.</p><div class="cta-row"><span class="cta-pill">Voir le témoignage de Kamel</span></div></div><div class="page-section card-soft"><h3>Ce qui fait la différence dans les avis</h3><p>Un bon avis ne dit pas seulement “c’était bien”.</p><p>Il montre :</p><ul><li>si l’équipe est disponible ;</li><li>si les explications sont claires ;</li><li>si le candidat s’est senti accompagné ;</li><li>si les supports sont utiles ;</li><li>si la préparation pratique aide réellement ;</li><li>si les démarches sont mieux comprises après l’échange.</li></ul><p>C’est ce type de preuve qui aide un futur élève à se dire :</p><p>“Je ne serai pas seul.”</p></div><div class="page-section card-soft"><h3>Pourquoi les résultats ne suffisent pas seuls</h3><p>Un taux de réussite est important.</p><p>Mais il ne raconte pas tout.</p><p>Ce qui compte aussi, c’est :</p><ul><li>le niveau de départ des candidats ;</li><li>leur implication personnelle ;</li><li>la régularité du travail ;</li><li>la qualité de l’accompagnement ;</li><li>la clarté des démarches ;</li><li>la capacité du centre à répondre aux questions.</li></ul><p>AB-CABS ne vend pas une réussite garantie.</p><p>AB-CABS propose un cadre sérieux pour maximiser vos chances avec méthode.</p></div><div class="page-section card-soft"><h3>Vos preuves de confiance</h3><div class="sub-label">Vos chiffres clés</div><ul><li>415 élèves formés en 2024</li><li>22 sessions</li><li>3 formateurs</li><li>87 % de réussite</li><li>100 % de satisfaction</li><li>0 % d’abandon</li></ul><div class="sub-label">Vos avis Google</div><p>Vos avis Google Business, affichés directement sur la page.</p><div class="sub-label">Vos témoignages vidéo</div><p>Les témoignages vidéo de Philippe, Atika et Kamel.</p><div class="sub-label">Vos certifications</div><p>Vos gages de confiance : certification RS 5637, financement CPF et France Compétences.</p></div><div class="page-section card-soft"><h3>Questions fréquentes</h3><div class="faq-item"><div class="faq-q">Le taux de réussite garantit-il que je vais réussir ?</div><p>Non. Votre réussite dépend aussi de votre travail personnel, de votre assiduité et de votre préparation. Le taux de réussite est une preuve du sérieux de l’accompagnement, pas une garantie individuelle.</p></div><div class="faq-item"><div class="faq-q">Les avis sont-ils vérifiables ?</div><p>La page doit idéalement afficher les avis Google et les témoignages vidéo pour permettre aux visiteurs de consulter des preuves concrètes.</p></div><div class="faq-item"><div class="faq-q">Pourquoi afficher les résultats 2024 ?</div><p>Parce que des chiffres datés sont plus crédibles que des affirmations générales. Ils permettent de juger une année précise.</p></div><div class="faq-item"><div class="faq-q">Puis-je parler à un ancien élève ?</div><p>Selon disponibilité et accord des personnes concernées, le centre peut orienter vers des témoignages ou vidéos existantes.</p></div></div><div class="cta-final-block"><h3 style="color:#fff;">Vous voulez choisir votre centre avec des preuves, pas des promesses ?</h3><p>Consultez les résultats, regardez les témoignages, puis venez poser vos questions à l’équipe.</p><div class="cta-row"><span class="cta-pill">Réserver mon entretien</span><span class="cta-pill secondary">Comparer les formations</span></div></div></div></div>
+<div class="page-sim"><div class="page-sim-header"><div class="page-sim-num">Page 8</div><h3 class="page-sim-title">CONTACT &amp; INSCRIPTION</h3><div class="page-kw"><span class="kw-badge">Mot-clé&nbsp;: inscription formation VTC</span></div></div><div class="page-sim-body"><div class="meta-box"><div><span class="meta-k">Meta title</span> Contact &amp; inscription formation VTC | AB-CABS Noisy-le-Grand</div><div style="margin-top:6px;"><span class="meta-k">Meta description</span> Contactez AB-CABS Académie pour vous inscrire à une formation VTC, vérifier votre financement ou réserver un entretien personnalisé.</div></div><div class="hero-sim"><div class="hero-h1">Parlez-nous de votre projet VTC. Nous vous aidons à passer à l’étape suivante.</div><p class="hero-sub">Vous avez une question sur une formation, un financement, l’examen ou votre situation personnelle ? Contactez AB-CABS Académie et avançons ensemble vers la bonne solution.</p><div class="cta-row"><span class="cta-pill">Remplir le formulaire</span><span class="cta-pill secondary">Appeler le centre</span></div></div><div class="page-section card-soft"><h3>Avant de vous inscrire, faisons le point</h3><p>Chaque projet VTC est différent.</p><p>Certains candidats veulent aller vite.</p><p>D’autres veulent d’abord comprendre le CPF.</p><p>Certains hésitent entre SILVER, GOLD et PLATINIUM.</p><p>D’autres ont besoin d’une passerelle, d’une formation continue ou d’une préparation pratique.</p><p>Le rôle de l’entretien personnalisé est simple :</p><p>vous éviter de choisir dans le flou.</p></div><div class="page-section card-soft"><h3>Ce que nous vérifions avec vous</h3><p>Pendant l’échange, nous pouvons faire le point sur :</p><ul><li>votre objectif professionnel ;</li><li>votre disponibilité ;</li><li>votre niveau de départ ;</li><li>votre situation de financement ;</li><li>vos droits CPF ;</li><li>votre accompagnement France Travail ;</li><li>vos prérequis ;</li><li>la formule la plus adaptée ;</li><li>les prochaines dates ;</li><li>les démarches à prévoir.</li></ul><p>Vous repartez avec une vision plus claire de votre parcours.</p></div><div class="page-section card-soft"><h3>Formulaire de contact</h3><div class="sub-label">Titre du formulaire</div><p>Décrivez-nous votre projet</p><div class="sub-label">Champs recommandés</div><ul><li>Nom</li><li>Prénom</li><li>Téléphone</li><li>Email</li><li>Ville</li><li>Situation actuelle</li><li>Formation souhaitée</li><li>Mode de financement envisagé</li><li>Avez-vous le permis B depuis plus de 3 ans ?</li><li>Message</li></ul><div class="sub-label">Micro-copy formulaire</div><p>Plus votre message est précis, plus nous pourrons vous orienter rapidement vers la bonne solution.</p><div class="sub-label">Bouton</div><p>Envoyer ma demande</p><div class="sub-label">Message de confirmation</div><p>Votre demande a bien été envoyée. L’équipe AB-CABS vous recontactera rapidement pendant les horaires d’ouverture.</p></div><div class="page-section card-soft"><h3>Contact direct</h3><div class="sub-label">AB-CABS Académie</div><p>Centre Commercial Les Arcades</p><p>420 Clos de la Courtine</p><p>93160 Noisy-le-Grand</p><p>Téléphone : 06 70 16 78 25</p><p>Email : contact@ab-cabs.fr</p><p>Horaires :</p><p>Lundi : 9h–12h / 13h–16h</p><p>Mardi : 9h–12h / 13h–16h</p><p>Mercredi : sur rendez-vous uniquement</p><p>Jeudi : 9h–12h / 13h–16h</p><p>Vendredi : 9h–12h / 13h–16h</p></div><div class="page-section card-soft"><h3>Comment venir au centre ?</h3><div class="sub-label">En transport</div><p>RER A — Gare Noisy-le-Grand Mont d’Est.</p><div class="sub-label">En voiture</div><p>Rendez-vous au Centre Commercial Les Arcades, niveau haut.</p><p>Stationnez près de l’allée 11, porte 21, puis suivez les indications vers le bâtiment 420.</p><div class="sub-label">Accessibilité</div><p>Les personnes en situation de handicap peuvent contacter le centre afin d’étudier les besoins d’aménagement.</p></div><div class="page-section card-soft"><h3>Vous ne savez pas quelle formation choisir ?</h3><p>Pas besoin d’arriver avec une décision définitive.</p><p>Vous pouvez simplement nous dire :</p><ul><li>“Je veux devenir VTC, mais je ne sais pas par où commencer.”</li><li>“Je veux utiliser mon CPF.”</li><li>“Je suis suivi par France Travail.”</li><li>“Je suis taxi et je veux passer VTC.”</li><li>“Je dois renouveler ma carte.”</li><li>“Je veux surtout préparer la pratique.”</li></ul><p>Nous vous orienterons vers la bonne page, la bonne formule ou le bon interlocuteur.</p></div><div class="page-section card-soft"><h3>CTA par besoin</h3><div class="sub-label">Je veux devenir VTC</div><div class="cta-row"><span class="cta-pill">Découvrir les formations initiales</span></div><div class="sub-label">Je veux financer ma formation</div><div class="cta-row"><span class="cta-pill">Tester mon financement</span></div><div class="sub-label">Je dois renouveler ma carte</div><div class="cta-row"><span class="cta-pill">Voir la formation continue</span></div><div class="sub-label">Je suis taxi</div><div class="cta-row"><span class="cta-pill">Voir la passerelle Taxi → VTC</span></div><div class="sub-label">Je prépare l’examen</div><div class="cta-row"><span class="cta-pill">Voir le guide examen</span></div></div><div class="page-section card-soft"><h3>Questions fréquentes</h3><div class="faq-item"><div class="faq-q">Dois-je prendre rendez-vous avant de venir ?</div><p>C’est recommandé, surtout le mercredi qui fonctionne uniquement sur rendez-vous.</p></div><div class="faq-item"><div class="faq-q">Quels documents apporter ?</div><p>Si vous venez pour parler financement ou inscription, apportez vos informations CPF, France Travail si concerné, permis, situation actuelle et questions principales.</p></div><div class="faq-item"><div class="faq-q">Combien de temps dure l’entretien ?</div><p>L’entretien peut durer jusqu’à une heure selon votre projet et les points à vérifier.</p></div><div class="faq-item"><div class="faq-q">Puis-je appeler si je n’ai pas encore choisi de formation ?</div><p>Oui. C’est justement le moment idéal pour demander conseil.</p></div><div class="faq-item"><div class="faq-q">Que faire si personne ne répond ?</div><p>Laissez un SMS avec votre nom, votre demande et vos disponibilités. L’équipe vous rappellera.</p></div></div><div class="cta-final-block"><h3 style="color:#fff;">Votre projet VTC commence par une conversation claire.</h3><p>Expliquez-nous où vous en êtes. Nous vous aiderons à choisir la bonne suite.</p><div class="cta-row"><span class="cta-pill">Envoyer ma demande</span><span class="cta-pill secondary">Appeler AB-CABS</span></div></div></div></div>
+<div class="page-sim"><div class="page-sim-header"><div class="page-sim-num">Page 9</div><h3 class="page-sim-title">FORMATION VTC NOISY-LE-GRAND</h3><div class="page-kw"><span class="kw-badge">Mot-clé&nbsp;: formation VTC Noisy-le-Grand</span></div></div><div class="page-sim-body"><div class="meta-box"><div><span class="meta-k">Meta title</span> Formation VTC Noisy-le-Grand | Centre AB-CABS Académie</div><div style="margin-top:6px;"><span class="meta-k">Meta description</span> Préparez votre examen VTC à Noisy-le-Grand avec AB-CABS Académie. Formations en présentiel, CPF, pratique, examen et accompagnement.</div></div><div class="hero-sim"><div class="hero-h1">Formation VTC à Noisy-le-Grand : préparez votre examen près de chez vous</div><p class="hero-sub">AB-CABS Académie accompagne les futurs chauffeurs VTC de Noisy-le-Grand, Marne-la-Vallée, Seine-Saint-Denis, Val-de-Marne et Paris Est avec des formations en présentiel, en ligne et un accompagnement complet.</p><div class="cta-row"><span class="cta-pill">Réserver un entretien à Noisy-le-Grand</span><span class="cta-pill secondary">Voir les formations</span></div></div><div class="page-section card-soft"><h3>Un centre VTC local, accessible et spécialisé</h3><p>Quand vous préparez un examen professionnel, la proximité compte.</p><p>Pouvoir venir facilement au centre, poser vos questions, rencontrer l’équipe et suivre votre formation dans un cadre clair peut faire une vraie différence.</p><p>AB-CABS Académie est implanté à Noisy-le-Grand, au Centre Commercial Les Arcades, un emplacement accessible en transport comme en voiture.</p><p>Vous bénéficiez d’un centre local, avec une expertise spécialisée dans le métier de chauffeur VTC.</p></div><div class="page-section card-soft"><h3>Pourquoi se former à Noisy-le-Grand ?</h3><p>Noisy-le-Grand est un point stratégique pour les futurs chauffeurs VTC de l’Est francilien.</p><p>Le centre est accessible depuis :</p><ul><li>Noisy-le-Grand ;</li><li>Champs-sur-Marne ;</li><li>Neuilly-sur-Marne ;</li><li>Bry-sur-Marne ;</li><li>Villiers-sur-Marne ;</li><li>Montreuil ;</li><li>Rosny-sous-Bois ;</li><li>Val-de-Fontenay ;</li><li>Torcy ;</li><li>Lognes ;</li><li>Paris Est.</li></ul><p>Vous évitez des trajets inutiles vers Paris tout en bénéficiant d’un centre spécialisé VTC.</p></div><div class="page-section card-soft"><h3>Les formations disponibles à Noisy-le-Grand</h3><div class="sub-label">Formation initiale SILVER</div><p>35h sur 5 jours pour travailler les bases théoriques et pratiques de l’examen.</p><div class="cta-row"><span class="cta-pill">Voir SILVER</span></div><div class="sub-label">Formation initiale GOLD</div><p>45h sur 7 jours avec des journées supplémentaires en gestion et développement commercial.</p><div class="cta-row"><span class="cta-pill">Voir GOLD</span></div><div class="sub-label">Formation initiale PLATINIUM</div><p>70h sur 10 jours avec accompagnement renforcé et pratique sur route.</p><div class="cta-row"><span class="cta-pill">Voir PLATINIUM</span></div><div class="sub-label">Formation continue VTC</div><p>14h sur 2 jours pour le renouvellement de la carte professionnelle.</p><div class="cta-row"><span class="cta-pill">Voir formation continue</span></div><div class="sub-label">Passerelle Taxi → VTC</div><p>Pour les taxis qui souhaitent préparer les épreuves spécifiques VTC.</p><div class="cta-row"><span class="cta-pill">Voir passerelle</span></div><div class="sub-label">Formation pratique</div><p>Pour préparer l’épreuve sur route, les mises en situation, les devis et factures.</p><div class="cta-row"><span class="cta-pill">Voir pratique</span></div></div><div class="page-section card-soft"><h3>Un accompagnement de proximité</h3><p>À Noisy-le-Grand, vous pouvez venir échanger directement avec l’équipe.</p><p>C’est utile pour :</p><ul><li>vérifier votre éligibilité ;</li><li>parler financement ;</li><li>comprendre le CPF ;</li><li>préparer un dossier France Travail ;</li><li>choisir la bonne formule ;</li><li>poser vos questions sur l’examen ;</li><li>comprendre les démarches après la réussite.</li></ul><p>Le contact humain permet souvent d’éviter des erreurs simples, mais coûteuses en temps.</p></div><div class="page-section card-soft"><h3>Accès au centre</h3><div class="sub-label">Adresse</div><p>AB-CABS Académie</p><p>Centre Commercial Les Arcades</p><p>420 Clos de la Courtine</p><p>93160 Noisy-le-Grand</p><div class="sub-label">En transport</div><p>RER A — Noisy-le-Grand Mont d’Est.</p><div class="sub-label">En voiture</div><p>Accès par le Centre Commercial Les Arcades, niveau haut. Stationnement possible au centre commercial.</p><div class="sub-label">Horaires</div><p>Lundi, mardi, jeudi et vendredi : 9h–12h / 13h–16h</p><p>Mercredi : sur rendez-vous uniquement</p></div><div class="page-section card-soft"><h3>Pourquoi AB-CABS à Noisy-le-Grand ?</h3><div class="sub-label">Spécialisation VTC</div><p>Le centre est dédié à la formation des futurs chauffeurs VTC et professionnels du transport.</p><div class="sub-label">Accompagnement complet</div><p>Formation, examen, financement, pratique, véhicule, lancement d’activité.</p><div class="sub-label">Résultats suivis</div><p>Les chiffres de satisfaction et de réussite sont mesurés.</p><div class="sub-label">Accessibilité locale</div><p>Un centre proche de l’Est parisien, sans obligation de traverser toute l’Île-de-France.</p><div class="sub-label">Échange humain</div><p>Vous pouvez venir au bureau et parler de votre projet avant de choisir.</p></div><div class="page-section card-soft"><h3>Maillage local</h3><div class="sub-label">Vous habitez en Seine-Saint-Denis ?</div><p>Découvrez notre page dédiée à la formation VTC en Seine-Saint-Denis et dans l’Est parisien.</p><div class="cta-row"><span class="cta-pill">Formation VTC 93</span></div><div class="sub-label">Vous voulez financer votre formation ?</div><p>Consultez les options CPF, France Travail et paiement personnel.</p><div class="cta-row"><span class="cta-pill">Voir financement</span></div><div class="sub-label">Vous préparez l’examen ?</div><p>Comprenez les épreuves avant de vous inscrire.</p><div class="cta-row"><span class="cta-pill">Guide examen VTC</span></div></div><div class="page-section card-soft"><h3>Questions fréquentes</h3><div class="faq-item"><div class="faq-q">Où se déroule la formation VTC à Noisy-le-Grand ?</div><p>Les formations en présentiel se déroulent chez AB-CABS Académie, au Centre Commercial Les Arcades.</p></div><div class="faq-item"><div class="faq-q">Le centre est-il accessible en RER ?</div><p>Oui, via le RER A, station Noisy-le-Grand Mont d’Est.</p></div><div class="faq-item"><div class="faq-q">Puis-je venir depuis le Val-de-Marne ou Paris Est ?</div><p>Oui. Le centre est accessible depuis de nombreuses villes de l’Est francilien.</p></div><div class="faq-item"><div class="faq-q">Puis-je financer une formation à Noisy-le-Grand avec mon CPF ?</div><p>Selon vos droits et la formation choisie, le CPF peut être mobilisable.</p></div><div class="faq-item"><div class="faq-q">Dois-je prendre rendez-vous ?</div><p>Il est conseillé de prendre rendez-vous pour être sûr d’être reçu dans les meilleures conditions.</p></div></div><div class="cta-final-block"><h3 style="color:#fff;">Vous cherchez une formation VTC à Noisy-le-Grand ?</h3><p>Venez rencontrer AB-CABS Académie et construisons votre parcours étape par étape.</p><div class="cta-row"><span class="cta-pill">Réserver mon entretien à Noisy-le-Grand</span><span class="cta-pill secondary">Appeler le centre</span></div></div></div></div>
+<div class="page-sim"><div class="page-sim-header"><div class="page-sim-num">Page 10</div><h3 class="page-sim-title">FORMATION VTC SEINE-SAINT-DENIS / EST PARISIEN</h3><div class="page-kw"><span class="kw-badge">Mot-clé&nbsp;: formation VTC 93</span></div></div><div class="page-sim-body"><div class="meta-box"><div><span class="meta-k">Meta title</span> Formation VTC 93 &amp; Est parisien | AB-CABS Académie</div><div style="margin-top:6px;"><span class="meta-k">Meta description</span> Formation VTC en Seine-Saint-Denis et Est parisien avec AB-CABS Académie à Noisy-le-Grand. Présentiel, CPF, examen, pratique et accompagnement.</div></div><div class="hero-sim"><div class="hero-h1">Formation VTC en Seine-Saint-Denis et dans l’Est parisien</div><p class="hero-sub">Vous habitez en Seine-Saint-Denis, dans l’Est parisien ou proche de Marne-la-Vallée ? AB-CABS Académie vous accueille à Noisy-le-Grand pour préparer votre examen VTC et construire votre projet professionnel.</p><div class="cta-row"><span class="cta-pill">Trouver ma formation VTC</span><span class="cta-pill secondary">Contacter le centre</span></div></div><div class="page-section card-soft"><h3>Un centre VTC pour les candidats du 93 et de l’Est francilien</h3><p>Beaucoup de futurs chauffeurs VTC cherchent une formation proche, sérieuse et accessible.</p><p>AB-CABS Académie répond à ce besoin depuis Noisy-le-Grand, à proximité directe de la Seine-Saint-Denis, du Val-de-Marne, de Paris Est et de Marne-la-Vallée.</p><p>Vous n’avez pas besoin de choisir un centre loin de chez vous pour préparer votre projet dans de bonnes conditions.</p></div><div class="page-section card-soft"><h3>Une zone idéale pour les futurs chauffeurs VTC</h3><p>L’Est parisien est une zone stratégique pour le métier VTC.</p><p>Vous êtes proche :</p><ul><li>de Paris ;</li><li>des gares ;</li><li>des zones d’affaires ;</li><li>des centres commerciaux ;</li><li>des hôtels ;</li><li>des aéroports franciliens ;</li><li>des plateformes de réservation ;</li><li>des communes à forte mobilité.</li></ul><p>Se former dans cette zone permet de mieux se projeter dans la réalité de votre future activité.</p></div><div class="page-section card-soft"><h3>Villes concernées</h3><p>AB-CABS accueille des candidats venant notamment de :</p><ul><li>Noisy-le-Grand ;</li><li>Montreuil ;</li><li>Rosny-sous-Bois ;</li><li>Neuilly-Plaisance ;</li><li>Neuilly-sur-Marne ;</li><li>Gagny ;</li><li>Villemomble ;</li><li>Bondy ;</li><li>Bobigny ;</li><li>Saint-Denis ;</li><li>Pantin ;</li><li>Bagnolet ;</li><li>Le Raincy ;</li><li>Champs-sur-Marne ;</li><li>Torcy ;</li><li>Lognes ;</li><li>Val-de-Fontenay ;</li><li>Villiers-sur-Marne.</li></ul></div><div class="page-section card-soft"><h3>Les formations proposées pour les candidats du 93</h3><div class="sub-label">Formation initiale VTC</div><p>SILVER, GOLD ou PLATINIUM selon votre niveau, votre budget et votre besoin d’accompagnement.</p><div class="sub-label">Formation VTC en ligne</div><p>Pour les candidats qui veulent travailler à distance, avec un accès flexible aux contenus.</p><div class="sub-label">Formation continue VTC</div><p>Pour les chauffeurs déjà en activité qui doivent renouveler leur carte professionnelle.</p><div class="sub-label">Passerelle Taxi → VTC</div><p>Pour les taxis qui souhaitent étendre leur activité au VTC.</p><div class="sub-label">Formation pratique</div><p>Pour travailler l’épreuve pratique, les mises en situation et la conduite sur véhicule double commande selon options.</p></div><div class="page-section card-soft"><h3>Un parcours pensé pour les reconversions</h3><p>De nombreux candidats VTC viennent d’un autre métier.</p><p>Ils veulent :</p><ul><li>devenir indépendants ;</li><li>créer leur activité ;</li><li>retrouver une dynamique professionnelle ;</li><li>construire un revenu avec plus d’autonomie ;</li><li>exercer un métier de service ;</li><li>travailler dans une zone à forte demande.</li></ul><p>Mais une reconversion réussie demande de la méthode.</p><p>AB-CABS vous aide à passer de l’idée au plan d’action : formation, financement, examen, démarches et lancement.</p></div><div class="page-section card-soft"><h3>Financement pour les candidats du 93</h3><p>Selon votre situation, plusieurs solutions peuvent être étudiées :</p><ul><li>CPF ;</li><li>accompagnement France Travail ;</li><li>paiement personnel ;</li><li>facilités de paiement selon conditions du centre.</li></ul><p>L’objectif n’est pas de vous faire choisir une formation au hasard.</p><p>L’objectif est de trouver le parcours cohérent avec votre situation réelle.</p><div class="cta-row"><span class="cta-pill">Tester mon financement</span></div></div><div class="page-section card-soft"><h3>Pourquoi choisir AB-CABS dans l’Est parisien ?</h3><div class="sub-label">Proximité</div><p>Un centre accessible depuis le 93, le Val-de-Marne et l’Est parisien.</p><div class="sub-label">Spécialisation</div><p>Une expertise centrée sur le métier de chauffeur VTC.</p><div class="sub-label">Accompagnement</div><p>Un suivi avant, pendant et après la formation.</p><div class="sub-label">Pratique</div><p>Des modules pour préparer concrètement l’épreuve sur route.</p><div class="sub-label">Écosystème</div><p>Véhicule, site internet, accompagnement juridique, coaching, conseils de lancement.</p></div><div class="page-section card-soft"><h3>Préparer l’après-examen dans une zone concurrentielle</h3><p>En Seine-Saint-Denis et en Île-de-France, le métier de VTC peut offrir des opportunités, mais il demande une vraie posture professionnelle.</p><p>Pour vous différencier, vous devrez penser :</p><ul><li>qualité de service ;</li><li>ponctualité ;</li><li>présentation ;</li><li>relation client ;</li><li>véhicule ;</li><li>outils de réservation ;</li><li>stratégie commerciale ;</li><li>fidélisation.</li></ul><p>C’est pourquoi AB-CABS ne limite pas son discours à l’examen.</p><p>Votre objectif n’est pas seulement d’obtenir la carte.</p><p>Votre objectif est de pouvoir exercer.</p></div><div class="page-section card-soft"><h3>Pages reliées</h3><div class="sub-label">Cette page oriente vos visiteurs vers :</div><ul><li>Nos formations VTC</li><li>Financement CPF &amp; France Travail</li><li>Examen VTC — Guide</li><li>Formation VTC Noisy-le-Grand</li><li>Contact &amp; inscription</li><li>Avis &amp; résultats</li></ul><div class="sub-label">Expressions clés à privilégier</div><ul><li>formation VTC à Noisy-le-Grand</li><li>formation VTC en Seine-Saint-Denis</li><li>financer sa formation VTC avec le CPF</li><li>préparer l’examen VTC</li><li>centre de formation VTC en Île-de-France</li></ul></div><div class="page-section card-soft"><h3>Questions fréquentes</h3><div class="faq-item"><div class="faq-q">Où suivre une formation VTC en Seine-Saint-Denis ?</div><p>AB-CABS Académie vous accueille à Noisy-le-Grand, à proximité directe de nombreuses communes du 93 et de l’Est parisien.</p></div><div class="faq-item"><div class="faq-q">Est-ce adapté si j’habite à Montreuil, Rosny ou Gagny ?</div><p>Oui. Le centre est accessible depuis ces villes et d’autres communes de l’Est francilien.</p></div><div class="faq-item"><div class="faq-q">Puis-je faire financer ma formation VTC ?</div><p>Selon votre situation, le CPF, France Travail ou d’autres modalités peuvent être étudiés.</p></div><div class="faq-item"><div class="faq-q">Quelle formule choisir pour débuter ?</div><p>SILVER convient aux profils autonomes. GOLD apporte un renfort sur les matières clés. PLATINIUM offre l’accompagnement le plus complet.</p></div><div class="faq-item"><div class="faq-q">La formation prépare-t-elle aussi à la pratique ?</div><p>Oui. Selon la formule choisie, vous travaillez les thématiques pratiques et pouvez compléter avec des options dédiées.</p></div></div><div class="cta-final-block"><h3 style="color:#fff;">Vous cherchez une formation VTC dans le 93 ou l’Est parisien ?</h3><p>AB-CABS Académie vous accueille à Noisy-le-Grand pour transformer votre projet en parcours concret.</p><div class="cta-row"><span class="cta-pill">Réserver mon entretien</span><span class="cta-pill secondary">Découvrir les formations</span></div></div></div></div>
+<div class="page-sim"><div class="page-sim-header"><div class="page-sim-num">Synthèse</div><h3 class="page-sim-title">Recommandations pour l’ensemble du site</h3></div><div class="page-sim-body"><div class="sub-label">Menu principal proposé</div><p>Accueil</p><p>Nos formations VTC</p><p>Financement</p><p>Examen VTC</p><p>Formation continue &amp; passerelle</p><p>Avis &amp; résultats</p><p>Qui sommes-nous</p><p>Contact</p><div class="sub-label">Liens entre vos pages</div><p>Accueil → Nos formations</p><p>Accueil → Financement</p><p>Accueil → Avis &amp; résultats</p><p>Accueil → Contact</p><p>Nos formations → Financement</p><p>Nos formations → Examen</p><p>Nos formations → Contact</p><p>Financement → Nos formations</p><p>Financement → Contact</p><p>Examen → Nos formations</p><p>Examen → Formation pratique</p><p>Examen → Contact</p><p>Qui sommes-nous → Avis &amp; résultats</p><p>Qui sommes-nous → Contact</p><p>Pages locales → Nos formations</p><p>Pages locales → Financement</p><p>Pages locales → Contact</p><div class="sub-label">Vos appels à l’action types</div><ul><li>Réserver mon entretien personnalisé</li><li>Tester mon financement</li><li>Comparer les formations</li><li>Préparer mon examen VTC</li><li>Appeler le centre</li><li>Envoyer ma demande</li><li>Être conseillé sur ma formation</li></ul><div class="sub-label">Le ton de votre site</div><p>Clair. Sérieux. Premium. Humain.</p><p>AB-CABS ne promet pas une réussite facile.</p><p>AB-CABS promet un cadre, une méthode, une équipe et un accompagnement pour avancer plus sereinement vers le métier de chauffeur VTC.</p></div></div>
+</section>
+
+<footer>
+  <span>AB-CABS</span>
+  <span>Formation VTC · Île-de-France</span>
+  <span>Confidentiel — AR Digital</span>
+</footer>
+
+</body>
+</html>
