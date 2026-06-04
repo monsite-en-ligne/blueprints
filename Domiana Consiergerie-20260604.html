@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blueprint Stratégique — Domiana Conciergerie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #1a1a2e;
+      background: #faf9f6;
+    }
+
+    /* ── COVER ── */
+    .cover {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #0d1b2a 0%, #1a2f3f 40%, #2c3e2d 80%, #1a1a18 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 40px;
+      position: relative;
+    }
+
+    .cover-badge {
+      display: inline-block;
+      background: rgba(196,164,100,0.18);
+      border: 1px solid rgba(196,164,100,0.4);
+      color: #c4a464;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 8px 22px;
+      border-radius: 40px;
+      margin-bottom: 40px;
+    }
+
+    .cover h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 68px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      letter-spacing: -1px;
+    }
+
+    .cover-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: rgba(255,255,255,0.55);
+      font-weight: 300;
+      letter-spacing: 1px;
+      margin-bottom: 56px;
+    }
+
+    .cover-meta {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cover-meta-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cover-meta-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(196,164,100,0.7);
+    }
+
+    .cover-meta-value {
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 400;
+    }
+
+    .cover-sep {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 80px 80px;
+      page-break-inside: avoid;
+    }
+
+    section:nth-child(even) {
+      background: #f5f3ee;
+    }
+
+    section:nth-child(odd) {
+      background: #faf9f6;
+    }
+
+    .section-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #8a9e7a;
+      background: rgba(138,158,122,0.1);
+      border: 1px solid rgba(138,158,122,0.25);
+      padding: 5px 14px;
+      border-radius: 30px;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 700;
+      color: #0d1b2a;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+
+    .section-intro {
+      font-size: 15px;
+      color: #6b7280;
+      margin-bottom: 44px;
+      max-width: 620px;
+      font-weight: 300;
+    }
+
+    /* ── GRID ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .card-icon {
+      font-size: 26px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: #0d1b2a;
+      margin-bottom: 8px;
+    }
+
+    .card-text {
+      font-size: 14px;
+      color: #6b7280;
+      line-height: 1.75;
+    }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight-box {
+      background: linear-gradient(135deg, #0d1b2a 0%, #2c3e2d 100%);
+      border-radius: 18px;
+      padding: 44px 52px;
+      margin-bottom: 44px;
+      text-align: center;
+    }
+
+    .highlight-box .label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c4a464;
+      margin-bottom: 16px;
+    }
+
+    .highlight-box .promise {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 1.45;
+      max-width: 780px;
+      margin: 0 auto 16px;
+    }
+
+    .highlight-box .sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      font-weight: 300;
+    }
+
+    /* ── TAG ── */
+    .tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 4px 3px;
+    }
+
+    .tag-sage { background: rgba(138,158,122,0.12); color: #5a7a4a; border: 1px solid rgba(138,158,122,0.3); }
+    .tag-gold { background: rgba(196,164,100,0.12); color: #a07a30; border: 1px solid rgba(196,164,100,0.3); }
+    .tag-navy { background: rgba(13,27,42,0.08); color: #0d1b2a; border: 1px solid rgba(13,27,42,0.15); }
+
+    /* ── LISTE STYLÉE ── */
+    ul.styled-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul.styled-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid #f0ece4;
+      font-size: 14px;
+      color: #4b5563;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    ul.styled-list li:last-child { border-bottom: none; }
+
+    ul.styled-list li::before {
+      content: '→';
+      color: #8a9e7a;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── TABLE ── */
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffff;
+      font-size: 14px;
+    }
+
+    thead tr {
+      background: #0d1b2a;
+    }
+
+    thead th {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 16px 20px;
+      text-align: left;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #f0ece4;
+      transition: background 0.2s;
+    }
+
+    tbody tr:hover { background: #faf9f6; }
+
+    tbody td {
+      padding: 16px 20px;
+      color: #374151;
+      vertical-align: top;
+    }
+
+    tbody td:first-child { font-weight: 500; color: #0d1b2a; }
+
+    .badge-fort {
+      background: #dcfce7;
+      color: #166534;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-moyen {
+      background: #fef9c3;
+      color: #854d0e;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-faible {
+      background: #f1f5f9;
+      color: #64748b;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── TUNNEL ── */
+    .tunnel-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .tunnel-step {
+      background: #ffffff;
+      padding: 32px 24px;
+      border-right: 1px solid #f0ece4;
+      position: relative;
+    }
+
+    .tunnel-step:last-child { border-right: none; }
+
+    .tunnel-number {
+      font-size: 42px;
+      font-weight: 700;
+      color: rgba(138,158,122,0.15);
+      font-family: 'Playfair Display', serif;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .tunnel-step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #0d1b2a;
+      margin-bottom: 16px;
+    }
+
+    .tunnel-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c4a464;
+      margin-bottom: 5px;
+    }
+
+    .tunnel-value {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    .tunnel-cta {
+      display: inline-block;
+      background: #0d1b2a;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-top: 4px;
+    }
+
+    /* ── PALETTE ── */
+    .palette-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .palette-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .palette-color {
+      width: 80px;
+      height: 80px;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    .palette-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #374151;
+      text-align: center;
+    }
+
+    .palette-hex {
+      font-size: 11px;
+      color: #9ca3af;
+      font-family: monospace;
+    }
+
+    /* ── MAILLAGE ── */
+    .maillage-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0ece4;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .maillage-row:last-child { border-bottom: none; }
+
+    .maillage-source {
+      font-weight: 600;
+      color: #0d1b2a;
+      background: rgba(13,27,42,0.06);
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .maillage-arrow {
+      color: #8a9e7a;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .maillage-dest {
+      color: #5a7a4a;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* ── BLOG PRIORITY ── */
+    .badge-prioritaire {
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .badge-moyen-blog {
+      background: #fef9c3;
+      color: #854d0e;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .badge-faible-blog {
+      background: #f1f5f9;
+      color: #64748b;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* ── OBJECTIFS ── */
+    .objectif-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 20px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .objectif-rank {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #0d1b2a;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .objectif-text {
+      font-size: 14px;
+      color: #374151;
+      font-weight: 500;
+    }
+
+    .objectif-desc {
+      font-size: 13px;
+      color: #9ca3af;
+      font-weight: 300;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0d1b2a;
+      padding: 40px 80px;
+      text-align: center;
+    }
+
+    footer .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    footer .footer-conf {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    footer .footer-agency {
+      font-size: 12px;
+      color: rgba(196,164,100,0.6);
+      margin-top: 10px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .cover h1 { font-size: 38px; }
+      .cover-meta { gap: 20px; }
+      .cover-sep { display: none; }
+
+      section { padding: 48px 24px; }
+
+      h2 { font-size: 26px; }
+
+      .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .tunnel-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tunnel-step { border-right: none; border-bottom: 1px solid #f0ece4; }
+      .tunnel-step:last-child { border-bottom: none; }
+
+      .highlight-box { padding: 32px 24px; }
+      .highlight-box .promise { font-size: 20px; }
+
+      .table-wrapper { border-radius: 10px; }
+
+      footer { padding: 32px 24px; }
+
+      .palette-grid { gap: 16px; }
+    }
+
+    @media print {
+      section { page-break-inside: avoid; }
+      .cover { min-height: auto; padding: 60px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COUVERTURE -->
+  <div class="cover">
+    <div class="cover-badge">Blueprint Stratégique</div>
+    <h1>Domiana<br/>Conciergerie</h1>
+    <div class="cover-subtitle">Document de cadrage stratégique — Confidentiel</div>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Cliente</span>
+        <span class="cover-meta-value">Iryna Kolomiyets</span>
+      </div>
+      <div class="cover-sep"></div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Secteur</span>
+        <span class="cover-meta-value">Conciergerie locative</span>
+      </div>
+      <div class="cover-sep"></div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Zone</span>
+        <span class="cover-meta-value">Nice &amp; alentours</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 01 POSITIONNEMENT -->
+  <section id="bp-section-01">
+    <div class="section-badge">01 — Positionnement</div>
+    <h2>Positionnement Stratégique</h2>
+    <p class="section-intro">La boussole éditoriale et commerciale de Domiana Conciergerie.</p>
+
+    <div class="highlight-box">
+      <div class="label">Promesse de valeur principale</div>
+      <div class="promise">"Louez votre bien à Nice l'esprit libre — Domiana Conciergerie prend soin de tout, à votre place, en toutes langues."</div>
+      <div class="sub">Ligne directrice : accompagnement local premium · sérénité totale · proximité internationale</div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom: 24px;">
+      <div class="card">
+        <span class="card-icon">🎯</span>
+        <div class="card-title">Ton éditorial</div>
+        <div class="card-text">
+          <span class="tag tag-sage">Rassurant</span>
+          <span class="tag tag-gold">Élégant</span>
+          <span class="tag tag-navy">Professionnel</span>
+          <br/><br/>
+          Un discours chaleureux et structuré qui inspire confiance dès la première lecture — sans jargon, sans surcharge, avec une pointe de raffinement sudiste.
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌍</span>
+        <div class="card-title">Différenciation — Multilingue &amp; International</div>
+        <div class="card-text">Communication fluide avec les voyageurs du monde entier. Un atout rare sur le marché niçois, particulièrement prisé par une clientèle internationale sur la Côte d'Azur.</div>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="card-icon">🏡</span>
+        <div class="card-title">Différenciation — Suivi terrain quotidien</div>
+        <div class="card-text">Chaque bien est suivi avec attention au jour le jour. Le propriétaire reçoit une tranquillité totale, même à distance ou depuis l'étranger.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🤝</span>
+        <div class="card-title">Différenciation — Réseau de confiance</div>
+        <div class="card-text">En cas d'imprévu, un réseau de professionnels qualifiés est mobilisé rapidement. Une gestion opérationnelle complète sans effort pour le propriétaire.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">💸</span>
+        <div class="card-title">Différenciation — Tarification transparente</div>
+        <div class="card-text">20 % de commission claire, avec une offre d'entrée à 18 % les 3 premiers mois. Un modèle simple, lisible, sans surprise — idéal pour convaincre les propriétaires hésitants.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 CLIENT CIBLE -->
+  <section id="bp-section-02">
+    <div class="section-badge">02 — Client Cible</div>
+    <h2>Profil du Propriétaire Idéal</h2>
+    <p class="section-intro">Comprendre précisément à qui l'on s'adresse pour mieux convertir.</p>
+
+    <div class="grid-2" style="margin-bottom: 24px;">
+      <div class="card">
+        <span class="card-icon">👤</span>
+        <div class="card-title">Profil type</div>
+        <div class="card-text">
+          Propriétaire de 35 à 65 ans, résidant à Nice ou hors de la région (Paris, étranger). Possède un appartement ou une villa sur la Côte d'Azur qu'il souhaite louer en courte durée sans s'impliquer dans l'opérationnel. Peut être expatrié, actif, retraité ou investisseur.
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">💡</span>
+        <div class="card-title">Motivations principales</div>
+        <ul class="styled-list">
+          <li>Générer des revenus locatifs sans contrainte de disponibilité</li>
+          <li>Louer à distance en toute sérénité</li>
+          <li>Déléguer les échanges avec des voyageurs internationaux</li>
+          <li>Préserver la qualité de son logement</li>
+          <li>Bénéficier d'un interlocuteur de confiance, réactif et local</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <span class="card-icon">⚠️</span>
+        <div class="card-title">Freins &amp; Objections</div>
+        <ul class="styled-list">
+          <li>Peur de perdre le contrôle de son bien</li>
+          <li>Interrogation sur la commission (20 % jugé élevé sans preuve de valeur)</li>
+          <li>Méfiance envers un prestataire peu connu ou récent</li>
+          <li>Expérience négative passée avec une autre conciergerie</li>
+          <li>Inquiétude sur la barrière linguistique avec les voyageurs</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="card-icon">✅</span>
+        <div class="card-title">Critères de décision</div>
+        <ul class="styled-list">
+          <li>Transparence sur les services inclus et la commission</li>
+          <li>Références, avis ou témoignages de propriétaires satisfaits</li>
+          <li>Réactivité &amp; accessibilité de l'équipe</li>
+          <li>Connaissance du marché locatif niçois</li>
+          <li>Compétences linguistiques pour accueillir une clientèle internationale</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 OBJECTIFS DU SITE -->
+  <section id="bp-section-03">
+    <div class="section-badge">03 — Objectifs du Site</div>
+    <h2>Ce que le site doit accomplir</h2>
+    <p class="section-intro">Liste priorisée des objectifs stratégiques du site web de Domiana Conciergerie.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div class="objectif-item">
+        <div class="objectif-rank">1</div>
+        <div>
+          <div class="objectif-text">Génération de leads propriétaires</div>
+          <div class="objectif-desc">Convertir les visiteurs en prospects qualifiés via formulaire de contact ou prise de RDV</div>
+        </div>
+      </div>
+      <div class="objectif-item">
+        <div class="objectif-rank">2</div>
+        <div>
+          <div class="objectif-text">Réassurance &amp; crédibilité</div>
+          <div class="objectif-desc">Démontrer le sérieux, l'expertise et la fiabilité de Domiana dès la première visite</div>
+        </div>
+      </div>
+      <div class="objectif-item">
+        <div class="objectif-rank">3</div>
+        <div>
+          <div class="objectif-text">SEO local — Nice &amp; Côte d'Azur</div>
+          <div class="objectif-desc">Apparaître sur les requêtes de propriétaires cherchant une conciergerie à Nice</div>
+        </div>
+      </div>
+      <div class="objectif-item">
+        <div class="objectif-rank">4</div>
+        <div>
+          <div class="objectif-text">Conversion directe</div>
+          <div class="objectif-desc">Faciliter la prise de contact via CTA clairs, formulaire qualifiant et prise de RDV en ligne</div>
+        </div>
+      </div>
+      <div class="objectif-item">
+        <div class="objectif-rank">5</div>
+        <div>
+          <div class="objectif-text">Notoriété &amp; positionnement premium</div>
+          <div class="objectif-desc">Construire une image de marque distinctive sur le marché niçois de la conciergerie locative</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 ARBORESCENCE -->
+  <section id="bp-section-04">
+    <div class="section-badge">04 — Arborescence du Site</div>
+    <h2>Structure des Pages</h2>
+    <p class="section-intro">Chaque page a un objectif SEO et éditorial précis. Les services détaillés sont regroupés au sein de la page Offre.</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>Framework rédactionnel</th>
+            <th>Mot-clé principal</th>
+            <th>Potentiel SEO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Accueil</td>
+            <td>AIDA — capter l'attention, susciter l'intérêt, convaincre, appeler à l'action</td>
+            <td>conciergerie location courte durée Nice</td>
+            <td><span class="badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td>Notre Offre</td>
+            <td>BAB — Avant / Après / Bridge : transformer la douleur du propriétaire en solution concrète</td>
+            <td>conciergerie Airbnb Nice propriétaire</td>
+            <td><span class="badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td>À propos</td>
+            <td>PAS — Problème / Agitation / Solution : humaniser la marque et lever les objections</td>
+            <td>qui est Domiana Conciergerie Nice</td>
+            <td><span class="badge-faible">Faible</span></td>
+          </tr>
+          <tr>
+            <td>Conciergerie Nice (SEO local 1)</td>
+            <td>AIDA — page d'atterrissage locale centrée sur la ville de Nice</td>
+            <td>conciergerie locative Nice</td>
+            <td><span class="badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td>Conciergerie Côte d'Azur (SEO local 2)</td>
+            <td>AIDA — page locale élargie pour capter les propriétaires des alentours</td>
+            <td>conciergerie location saisonnière Côte d'Azur</td>
+            <td><span class="badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td>Blog</td>
+            <td>Informatif — contenu SEO long terme, nurturing des prospects</td>
+            <td>conseils location courte durée Nice</td>
+            <td><span class="badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td>Contact / RDV</td>
+            <td>Direct — formulaire qualifiant + prise de RDV en ligne</td>
+            <td>contacter conciergerie Nice</td>
+            <td><span class="badge-faible">Faible</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 05 COCON SÉMANTIQUE -->
+  <section id="bp-section-05">
+    <div class="section-badge">05 — Cocon Sémantique</div>
+    <h2>Architecture de Contenu &amp; Maillage Interne</h2>
+    <p class="section-intro">2 clusters thématiques pour asseoir l'autorité SEO de Domiana Conciergerie.</p>
+
+    <div class="grid-2" style="margin-bottom: 40px;">
+      <div class="card">
+        <span class="card-icon">🗝️</span>
+        <div class="card-title">Cluster 1 — Conciergerie Locative Nice</div>
+        <div class="card-text">
+          Pages piliers : Accueil · Notre Offre · Conciergerie Nice · Conciergerie Côte d'Azur<br/><br/>
+          Articles satellites : optimiser son Airbnb à Nice · check-list départ voyageur · tarifs conciergerie Côte d'Azur
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">📖</span>
+        <div class="card-title">Cluster 2 — Conseils Propriétaires</div>
+        <div class="card-text">
+          Page pilier : Blog<br/><br/>
+          Articles satellites : fiscalité location courte durée · comment déléguer sa location · erreurs à éviter en location saisonnière · louer son bien depuis l'étranger
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title" style="margin-bottom: 18px;">Logique de Maillage Interne</div>
+      <div class="maillage-row">
+        <span class="maillage-source">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Notre Offre</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact / RDV</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Notre Offre</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">À propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact / RDV</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Conciergerie Nice</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Notre Offre</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact / RDV</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Conciergerie Côte d'Azur</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Conciergerie Nice</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Notre Offre</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Articles Blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Notre Offre</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact / RDV</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 TUNNEL DE CONVERSION -->
+  <section id="bp-section-06">
+    <div class="section-badge">06 — Tunnel de Conversion</div>
+    <h2>Parcours Propriétaire — De la Découverte à la Conversion</h2>
+    <p class="section-intro">4 étapes clés pour transformer un visiteur inconnu en client Domiana.</p>
+
+    <div class="tunnel-grid">
+      <div class="tunnel-step">
+        <div class="tunnel-number">01</div>
+        <div class="tunnel-step-title">Découverte</div>
+        <div class="tunnel-label">Source de trafic</div>
+        <div class="tunnel-value">Google (SEO local) · Bouche-à-oreille · Réseaux sociaux</div>
+        <div class="tunnel-label">Page concernée</div>
+        <div class="tunnel-value">Accueil · Pages SEO Nice / Côte d'Azur</div>
+        <span class="tunnel-cta">Attirer l'attention</span>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-number">02</div>
+        <div class="tunnel-step-title">Intérêt</div>
+        <div class="tunnel-label">Source de trafic</div>
+        <div class="tunnel-value">Blog · Articles informatifs · Recherches longue traîne</div>
+        <div class="tunnel-label">Page concernée</div>
+        <div class="tunnel-value">Notre Offre · Blog · À propos</div>
+        <span class="tunnel-cta">Télécharger le guide</span>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-number">03</div>
+        <div class="tunnel-step-title">Confiance</div>
+        <div class="tunnel-label">Source de trafic</div>
+        <div class="tunnel-value">Retour direct · Email · Réseaux sociaux</div>
+        <div class="tunnel-label">Page concernée</div>
+        <div class="tunnel-value">À propos · Témoignages · Notre Offre</div>
+        <span class="tunnel-cta">Voir les avis clients</span>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-number">04</div>
+        <div class="tunnel-step-title">Conversion</div>
+        <div class="tunnel-label">Source de trafic</div>
+        <div class="tunnel-value">Toutes sources — visiteur décidé</div>
+        <div class="tunnel-label">Page concernée</div>
+        <div class="tunnel-value">Contact / RDV · Pop-in lead magnet</div>
+        <span class="tunnel-cta">Prendre RDV gratuit</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 LEVIERS MARKETING -->
+  <section id="bp-section-07">
+    <div class="section-badge">07 — Leviers Marketing Recommandés</div>
+    <h2>Activation &amp; Croissance</h2>
+    <p class="section-intro">Les outils concrets pour capter, rassurer et convertir les propriétaires niçois.</p>
+
+    <div class="grid-2" style="margin-bottom: 24px;">
+      <div class="card">
+        <span class="card-icon">🎁</span>
+        <div class="card-title">Lead Magnet</div>
+        <div class="card-text">
+          <strong>« Guide : 7 étapes pour louer son appartement à Nice sans stress »</strong><br/><br/>
+          PDF à télécharger gratuitement en échange d'un email. Contenu pratique et local pour capter les propriétaires en phase de réflexion.
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">📅</span>
+        <div class="card-title">Prise de RDV en Ligne</div>
+        <div class="card-text">
+          Outil recommandé : <strong>Calendly</strong> (gratuit, intégration simple) ou <strong>Cal.com</strong> (open source).<br/><br/>
+          Proposer un "Audit gratuit de 30 min" pour lever les freins et qualifier le prospect dès le premier échange.
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="card-icon">⭐</span>
+        <div class="card-title">Preuve Sociale</div>
+        <div class="card-text">
+          Témoignages propriétaires en format citation · Notes Google My Business mises en avant · Compteur de biens suivis · Photos réelles des logements (avec accord).
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">📋</span>
+        <div class="card-title">Formulaire Qualifiant</div>
+        <div class="card-text">
+          Champs recommandés : Prénom · Email · Téléphone · Ville du bien · Type de bien · Déjà en location (oui / non) · Message libre.
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">✉️</span>
+        <div class="card-title">Newsletter</div>
+        <div class="card-text">
+          Angle éditorial : <strong>« Le coin du propriétaire serein »</strong> — 1 email mensuel avec conseils pratiques, actualité Airbnb, astuces fiscales et success stories locales.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 DIRECTION VISUELLE -->
+  <section id="bp-section-08">
+    <div class="section-badge">08 — Direction Visuelle &amp; Éditoriale</div>
+    <h2>Identité Visuelle Recommandée</h2>
+    <p class="section-intro">Une esthétique méditerranéenne raffinée, entre élégance douce et sérieux professionnel.</p>
+
+    <div class="card" style="margin-bottom: 36px;">
+      <div class="card-title" style="margin-bottom: 24px;">Palette Chromatique</div>
+      <div class="palette-grid">
+        <div class="palette-swatch">
+          <div class="palette-color" style="background: #0d1b2a;"></div>
+          <div class="palette-name">Bleu Marine Nuit</div>
+          <div class="palette-hex">#0D1B2A</div>
+        </div>
+        <div class="palette-swatch">
+          <div class="palette-color" style="background: #8a9e7a;"></div>
+          <div class="palette-name">Vert Sauge</div>
+          <div class="palette-hex">#8A9E7A</div>
+        </div>
+        <div class="palette-swatch">
+          <div class="palette-color" style="background: #c4a464;"></div>
+          <div class="palette-name">Doré Méditerranée</div>
+          <div class="palette-hex">#C4A464</div>
+        </div>
+        <div class="palette-swatch">
+          <div class="palette-color" style="background: #e8e0d0; border: 1px solid #ddd6c6;"></div>
+          <div class="palette-name">Beige Sable</div>
+          <div class="palette-hex">#E8E0D0</div>
+        </div>
+        <div class="palette-swatch">
+          <div class="palette-color" style="background: #f5f3ee; border: 1px solid #e8e4dc;"></div>
+          <div class="palette-name">Blanc Cassé</div>
+          <div class="palette-hex">#F5F3EE</div>
+        </div>
+        <div class="palette-swatch">
+          <div class="palette-color" style="background: #d6d9dd; border: 1px solid #c8ccd0;"></div>
+          <div class="palette-name">Gris Perle</div>
+          <div class="palette-hex">#D6D9DD</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <span class="card-icon">🖼️</span>
+        <div class="card-title">Univers Visuel Recommandé</div>
+        <ul class="styled-list">
+          <li>Photographies lumineuses d'appartements niçois (Vieille-Ville, Promenade, Collines)</li>
+          <li>Portraits authentiques d'Iryna — sourire, posture professionnelle, environnement méditerranéen</li>
+          <li>Icônes fines et épurées (style "line art" en doré ou marine)</li>
+          <li>Typographie Playfair Display pour les titres — élégance intemporelle</li>
+          <li>Espaces blancs généreux, mise en page aérée inspirée de l'hôtellerie de charme</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="card-icon">✍️</span>
+        <div class="card-title">Voix de la Marque</div>
+        <ul class="styled-list">
+          <li>Vouvoiement chaleureux — proche sans être familier</li>
+          <li>Phrases courtes, claires, orientées bénéfice propriétaire</li>
+          <li>Mettre en avant la tranquillité, la simplicité et la confiance</li>
+          <li>Valoriser la dimension multilingue et internationale discrètement</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 ARTICLES BLOG -->
+  <section id="bp-section-09">
+    <div class="section-badge">09 — Articles Blog Recommandés</div>
+    <h2>Stratégie de Contenu</h2>
+    <p class="section-intro">7 articles pour générer du trafic qualifié et asseoir l'expertise de Domiana Conciergerie.</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Titre de l'article</th>
+            <th>Cluster</th>
+            <th>Intention de recherche</th>
+            <th>Priorité</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Comment louer son appartement à Nice sans s'en occuper soi-même ?</td>
+            <td>Conciergerie Nice</td>
+            <td>Informationnelle — propriétaire débutant</td>
+            <td><span class="badge-prioritaire">Prioritaire</span></td>
+          </tr>
+          <tr>
+            <td>Conciergerie Airbnb à Nice : combien ça coûte vraiment en 2025 ?</td>
+            <td>Conciergerie Nice</td>
+            <td>Commerciale — propriétaire en comparaison</td>
+            <td><span class="badge-prioritaire">Prioritaire</span></td>
+          </tr>
+          <tr>
+            <td>Louer son bien sur la Côte d'Azur depuis l'étranger : guide pratique</td>
+            <td>Conciergerie Nice</td>
+            <td>Informationnelle — propriétaire non-résident</td>
+            <td><span class="badge-prioritaire">Prioritaire</span></td>
+          </tr>
+          <tr>
+            <td>5 erreurs courantes des propriétaires qui se lancent en location courte durée</td>
+            <td>Conseils Propriétaires</td>
+            <td>Informationnelle — sensibilisation et réassurance</td>
+            <td><span class="badge-moyen-blog">Moyen</span></td>
+          </tr>
+          <tr>
+            <td>Fiscalité de la location saisonnière à Nice : ce qu'il faut savoir en 2025</td>
+            <td>Conseils Propriétaires</td>
+            <td>Informationnelle — recherche réglementaire</td>
+            <td><span class="badge-moyen-blog">Moyen</span></td>
+          </tr>
+          <tr>
+            <td>Comment optimiser son annonce Airbnb pour attirer plus de voyageurs à Nice ?</td>
+            <td>Conciergerie Nice</td>
+            <td>Informationnelle — propriétaire actif cherchant à progresser</td>
+            <td><span class="badge-moyen-blog">Moyen</span></td>
+          </tr>
+          <tr>
+            <td>Pourquoi confier son logement à une conciergerie plutôt que de gérer seul ?</td>
+            <td>Conseils Propriétaires</td>
+            <td>Décisionnelle — propriétaire en phase de choix</td>
+            <td><span class="badge-faible-blog">Faible</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-name">Domiana Conciergerie</div>
+    <div class="footer-conf">Document confidentiel — Réservé à Iryna Kolomiyets</div>
+    <div class="footer-agency">Produit par AR Digital · Blueprint Stratégique v1.0</div>
+  </footer>
+
+</body>
+</html>
