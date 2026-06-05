@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — A&A Prestige Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2c2c2c;
+    background: #faf9f7;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1410 0%, #2e221a 40%, #3d2e22 70%, #1a1410 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(201,167,110,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #c9a76e;
+    margin-bottom: 32px;
+    opacity: 0.9;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .cover-meta-item span:first-child {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c9a76e;
+    font-weight: 500;
+  }
+
+  .cover-meta-item span:last-child {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 400;
+  }
+
+  .cover-line {
+    width: 60px;
+    height: 1px;
+    background: #c9a76e;
+    margin: 32px auto;
+    opacity: 0.6;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(odd) {
+    background: #faf9f7;
+  }
+
+  section:nth-child(even) {
+    background: #f5f2ee;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #c9a76e;
+    background: rgba(201,167,110,0.1);
+    border: 1px solid rgba(201,167,110,0.3);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #1a1410;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: #7a6f65;
+    margin-bottom: 44px;
+    max-width: 600px;
+  }
+
+  /* GRILLES */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* CARDS */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    page-break-inside: avoid;
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1a1410;
+    margin-bottom: 10px;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: #6b6258;
+    line-height: 1.75;
+  }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card ul li {
+    font-size: 14px;
+    color: #6b6258;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    line-height: 1.6;
+  }
+
+  .card ul li:last-child {
+    border-bottom: none;
+  }
+
+  .card ul li::before {
+    content: '—';
+    color: #c9a76e;
+    margin-right: 8px;
+    font-size: 12px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #2e221a 0%, #3d2e22 100%);
+    border-radius: 16px;
+    padding: 40px 48px;
+    margin-bottom: 44px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-box::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(201,167,110,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #ffffff;
+    line-height: 1.5;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  .highlight-box span {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #c9a76e;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-style: normal;
+  }
+
+  /* SECTION 01 */
+  .tone-tags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .tone-tag {
+    background: rgba(201,167,110,0.12);
+    color: #8a6d42;
+    border: 1px solid rgba(201,167,110,0.4);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  /* SECTION 03 */
+  .objective-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .objective-item:last-child {
+    border-bottom: none;
+  }
+
+  .obj-rank {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #c9a76e, #a8854a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .obj-text strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1410;
+    margin-bottom: 2px;
+  }
+
+  .obj-text span {
+    font-size: 13px;
+    color: #7a6f65;
+  }
+
+  /* SECTION 04 — TABLE */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-size: 14px;
+  }
+
+  thead tr {
+    background: linear-gradient(135deg, #2e221a, #3d2e22);
+  }
+
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c9a76e;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody tr:hover {
+    background: rgba(201,167,110,0.04);
+  }
+
+  tbody td {
+    padding: 16px 20px;
+    color: #4a3f35;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  tbody td:first-child {
+    font-weight: 500;
+    color: #1a1410;
+  }
+
+  .badge-seo {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-fort {
+    background: rgba(74,124,89,0.12);
+    color: #2e7d45;
+    border: 1px solid rgba(74,124,89,0.3);
+  }
+
+  .badge-moyen {
+    background: rgba(201,167,110,0.15);
+    color: #8a6d42;
+    border: 1px solid rgba(201,167,110,0.4);
+  }
+
+  .badge-faible {
+    background: rgba(150,140,130,0.12);
+    color: #7a6f65;
+    border: 1px solid rgba(150,140,130,0.3);
+  }
+
+  /* SECTION 05 — COCON */
+  .cluster-block {
+    background: white;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+  }
+
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1410;
+    margin-bottom: 6px;
+  }
+
+  .cluster-subtitle {
+    font-size: 12px;
+    color: #c9a76e;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .cluster-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .kw-tag {
+    background: rgba(201,167,110,0.1);
+    color: #7a5c2e;
+    border: 1px solid rgba(201,167,110,0.25);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .maillage-block {
+    background: white;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-top: 24px;
+  }
+
+  .maillage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 14px;
+    color: #4a3f35;
+  }
+
+  .maillage-row:last-child {
+    border-bottom: none;
+  }
+
+  .maillage-arrow {
+    color: #c9a76e;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .maillage-from {
+    font-weight: 600;
+    color: #1a1410;
+  }
+
+  .maillage-to {
+    color: #6b6258;
+  }
+
+  /* SECTION 06 — TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .tunnel-step {
+    background: white;
+    padding: 28px 24px;
+    position: relative;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .tunnel-step:first-child {
+    border-radius: 14px 0 0 14px;
+  }
+
+  .tunnel-step:last-child {
+    border-radius: 0 14px 14px 0;
+  }
+
+  .tunnel-step + .tunnel-step {
+    border-left: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .tunnel-num {
+    font-size: 36px;
+    font-family: 'Playfair Display', serif;
+    color: rgba(201,167,110,0.25);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1410;
+    margin-bottom: 14px;
+  }
+
+  .tunnel-label {
+    font-size: 10px;
+    color: #c9a76e;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .tunnel-value {
+    font-size: 13px;
+    color: #6b6258;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+
+  .tunnel-cta {
+    display: inline-block;
+    background: rgba(201,167,110,0.1);
+    color: #8a6d42;
+    border: 1px solid rgba(201,167,110,0.3);
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  /* SECTION 07 — LEVIERS */
+  .levier-card {
+    background: white;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .levier-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(201,167,110,0.15), rgba(201,167,110,0.25));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .levier-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1410;
+    margin-bottom: 8px;
+  }
+
+  .levier-card p {
+    font-size: 13px;
+    color: #6b6258;
+    line-height: 1.7;
+  }
+
+  /* SECTION 08 — COULEURS */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
+    margin-top: 8px;
+    margin-bottom: 44px;
+  }
+
+  .color-swatch-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .color-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+
+  .color-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2c2c2c;
+    text-align: center;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: #aaa;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+  /* SECTION 09 — BLOG */
+  .blog-card {
+    background: white;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    page-break-inside: avoid;
+  }
+
+  .blog-prio {
+    flex-shrink: 0;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-top: 3px;
+  }
+
+  .blog-prio.prioritaire {
+    background: rgba(74,124,89,0.12);
+    color: #2e7d45;
+    border: 1px solid rgba(74,124,89,0.3);
+  }
+
+  .blog-prio.moyen {
+    background: rgba(201,167,110,0.15);
+    color: #8a6d42;
+    border: 1px solid rgba(201,167,110,0.4);
+  }
+
+  .blog-prio.faible {
+    background: rgba(150,140,130,0.12);
+    color: #7a6f65;
+    border: 1px solid rgba(150,140,130,0.3);
+  }
+
+  .blog-content h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1410;
+    margin-bottom: 6px;
+  }
+
+  .blog-meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .blog-meta span {
+    font-size: 12px;
+    color: #9a8f85;
+  }
+
+  .blog-meta span strong {
+    color: #6b6258;
+    font-weight: 500;
+  }
+
+  /* FOOTER */
+  footer {
+    background: linear-gradient(135deg, #1a1410, #2e221a);
+    padding: 40px 60px;
+    text-align: center;
+  }
+
+  footer p {
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  footer strong {
+    color: #c9a76e;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    section {
+      padding: 48px 24px;
+    }
+
+    .cover-title {
+      font-size: 38px;
+    }
+
+    .cover-subtitle {
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    .cover-meta {
+      gap: 24px;
+    }
+
+    h2 {
+      font-size: 26px;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-step:first-child {
+      border-radius: 14px 14px 0 0;
+    }
+
+    .tunnel-step:last-child {
+      border-radius: 0 0 14px 14px;
+    }
+
+    .tunnel-step + .tunnel-step {
+      border-left: none;
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    .highlight-box {
+      padding: 28px 24px;
+    }
+
+    .highlight-box p {
+      font-size: 18px;
+    }
+
+    .blog-card {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .palette-grid {
+      gap: 20px;
+    }
+
+    footer {
+      padding: 32px 24px;
+    }
+
+    .maillage-row {
+      flex-wrap: wrap;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-label">Blueprint Stratégique — Document Confidentiel</div>
+  <h1 class="cover-title">A&A Prestige<br>Conciergerie</h1>
+  <div class="cover-line"></div>
+  <div class="cover-subtitle">Stratégie digitale & positionnement web</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span>Cliente</span>
+      <span>Caroline Gagnère</span>
+    </div>
+    <div class="cover-meta-item">
+      <span>Secteur</span>
+      <span>Conciergerie locative premium</span>
+    </div>
+    <div class="cover-meta-item">
+      <span>Territoire</span>
+      <span>Bordeaux · Arcachon · Pays Basque</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-badge">01 — Positionnement</div>
+  <h2>Positionnement stratégique</h2>
+  <p class="section-intro">L'identité de marque, la promesse différenciante et le ton éditorial qui guideront l'ensemble du site.</p>
+
+  <div class="highlight-box">
+    <span>Promesse de valeur principale</span>
+    <p>« Votre bien mérite l'excellence — nous orchestrons chaque détail pour que vos hôtes vivent une expérience d'exception et que vous, propriétaire, retrouviez une sérénité totale. »</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 24px;">
+    <h3>Ligne directrice de communication</h3>
+    <p>Accompagnement haut de gamme fondé sur le service personnalisé, l'exigence du détail et la confiance absolue. Chaque prise de parole incarne l'élégance discrète d'une conciergerie privée premium positionnée sur le Sud-Ouest.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <h3>Ton éditorial</h3>
+    <div class="tone-tags" style="margin-bottom: 14px;">
+      <span class="tone-tag">Élégant</span>
+      <span class="tone-tag">Rassurant</span>
+      <span class="tone-tag">Précis</span>
+    </div>
+    <p>Un ton qui inspire confiance sans emphase excessive : des formulations choisies, des phrases courtes et affirmées, un vocabulaire ancré dans l'univers du service haut de gamme. Jamais clinquant, toujours discret dans sa maîtrise.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 0;">
+    <div class="card">
+      <h3>✦ Expertise du service premium</h3>
+      <p>Issue de l'univers du prêt-à-porter de luxe et diplômée en décoration d'intérieur, Caroline apporte une culture du service rarement égalée dans la conciergerie locative régionale.</p>
+    </div>
+    <div class="card">
+      <h3>✦ Vision patrimoniale du bien</h3>
+      <p>Chaque propriété est traitée comme un écrin de valeur. L'approche dépasse la simple coordination opérationnelle : la mise en valeur, l'image et la durabilité du bien sont au cœur du service.</p>
+    </div>
+    <div class="card">
+      <h3>✦ Attention portée aux voyageurs</h3>
+      <p>Services à la carte pour les hôtes (chef privé, transferts, expériences locales…) : une expérience voyageur qui fidélise, génère des avis positifs et consolide la réputation du bien.</p>
+    </div>
+    <div class="card">
+      <h3>✦ Territoire d'excellence</h3>
+      <p>Un ancrage assumé sur trois destinations premium du Sud-Ouest : Bordeaux, le Bassin d'Arcachon et le Pays Basque — des marchés à fort potentiel locatif haut de gamme.</p>
+    </div>
+    <div class="card" style="grid-column: span 2;">
+      <h3>✦ Offres structurées et transparentes</h3>
+      <p>Deux formules claires (Prestige 25% et Signature 30%) complétées par une option management de maison et une offre sur mesure — une lisibilité qui rassure les propriétaires exigeants et facilite la conversion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-badge">02 — Client Cible</div>
+  <h2>Profil du propriétaire idéal</h2>
+  <p class="section-intro">Comprendre précisément à qui l'on s'adresse pour calibrer chaque message du site.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Profil type</h3>
+      <ul>
+        <li>Propriétaire d'un bien à fort potentiel (villa, appartement prestige, résidence secondaire)</li>
+        <li>35–65 ans, CSP+, actif ou retraité aisé</li>
+        <li>Localisé à Bordeaux, sur le Bassin d'Arcachon ou au Pays Basque</li>
+        <li>Non-résident ou peu disponible pour la gestion quotidienne</li>
+        <li>Déjà convaincu de la location courte durée, mais insatisfait de la qualité actuelle</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Générer des revenus locatifs sans friction ni stress</li>
+        <li>Valoriser et préserver l'image de son bien</li>
+        <li>Offrir une expérience irréprochable à ses hôtes</li>
+        <li>Déléguer totalement à un interlocuteur de confiance</li>
+        <li>Bénéficier d'un service à la hauteur de l'exigence de son patrimoine</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Freins & objections</h3>
+      <ul>
+        <li>« Une conciergerie de plus, pourquoi celle-là ? »</li>
+        <li>Crainte d'un manque de réactivité ou de suivi</li>
+        <li>Inquiétude sur la qualité d'entretien du bien</li>
+        <li>Commission perçue comme élevée (25–30%)</li>
+        <li>Peur de perdre le contrôle sur sa propriété</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Confiance dans la personnalité et le professionnalisme de la fondatrice</li>
+        <li>Clarté et transparence de l'offre tarifaire</li>
+        <li>Preuves visuelles et avis de propriétaires satisfaits</li>
+        <li>Qualité des photos et de la mise en scène des biens</li>
+        <li>Connaissance précise du territoire et du marché local</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-badge">03 — Objectifs du site</div>
+  <h2>Objectifs stratégiques du site web</h2>
+  <p class="section-intro">Les priorités qui orienteront chaque décision de conception, de contenu et de conversion.</p>
+
+  <div class="card">
+    <div class="objective-item">
+      <div class="obj-rank">1</div>
+      <div class="obj-text">
+        <strong>Génération de leads qualifiés</strong>
+        <span>Convertir les propriétaires qui visitent le site en contacts concrets via un formulaire qualifiant ou une prise de RDV directe.</span>
+      </div>
+    </div>
+    <div class="objective-item">
+      <div class="obj-rank">2</div>
+      <div class="obj-text">
+        <strong>Réassurance & crédibilité premium</strong>
+        <span>Projeter immédiatement une image à la hauteur des attentes d'une clientèle haut de gamme : photos, ton, structure des offres, témoignages.</span>
+      </div>
+    </div>
+    <div class="objective-item">
+      <div class="obj-rank">3</div>
+      <div class="obj-text">
+        <strong>SEO local ciblé</strong>
+        <span>Être visible sur les requêtes de propriétaires recherchant une conciergerie sur Bordeaux, le Bassin d'Arcachon et le Pays Basque.</span>
+      </div>
+    </div>
+    <div class="objective-item">
+      <div class="obj-rank">4</div>
+      <div class="obj-text">
+        <strong>Conversion & prise de RDV</strong>
+        <span>Fluidifier le passage à l'action via un CTA principal fort, un formulaire contextualisé et un accès direct à l'agenda de Caroline.</span>
+      </div>
+    </div>
+    <div class="objective-item">
+      <div class="obj-rank">5</div>
+      <div class="obj-text">
+        <strong>Notoriété & différenciation</strong>
+        <span>Positionner A&A Prestige Conciergerie comme la référence premium du marché régional, au-dessus des acteurs généralistes.</span>
+      </div>
+    </div>
+    <div class="objective-item">
+      <div class="obj-rank">6</div>
+      <div class="obj-text">
+        <strong>Nurturing via contenus blog</strong>
+        <span>Accompagner les propriétaires en phase de réflexion grâce à des articles de fond positionnant Caroline comme experte du secteur.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-badge">04 — Arborescence</div>
+  <h2>Architecture du site</h2>
+  <p class="section-intro">Structure des pages recommandée, avec framework rédactionnel et potentiel SEO associé.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Accueil</td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Bordeaux</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Nos offres propriétaires</td>
+          <td>PAS</td>
+          <td>déléguer gestion locative courte durée propriétaire</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Services voyageurs</td>
+          <td>AIDA</td>
+          <td>services conciergerie hôtes Bordeaux Arcachon</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Management de maison</td>
+          <td>BAB</td>
+          <td>intendance maison résidence secondaire Bordeaux</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>À propos</td>
+          <td>BAB</td>
+          <td>conciergerie privée premium Sud-Ouest</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td>Page locale — Bordeaux & Gironde</td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Bordeaux Bassin d'Arcachon</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Page locale — Pays Basque</td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Pays Basque</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Blog</td>
+          <td>—</td>
+          <td>conseils propriétaires location saisonnière</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Contact & RDV</td>
+          <td>PAS</td>
+          <td>confier bien conciergerie premium Bordeaux</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECTION 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-badge">05 — Cocon Sémantique</div>
+  <h2>Stratégie de contenu & maillage</h2>
+  <p class="section-intro">Les clusters thématiques qui structurent l'autorité SEO du site et la logique de navigation interne.</p>
+
+  <div class="cluster-block">
+    <div class="cluster-subtitle">Cluster 1</div>
+    <div class="cluster-title">Conciergerie locative premium pour propriétaires</div>
+    <p style="font-size:14px; color:#6b6258; margin-bottom:12px;">Page pilier : <strong>Nos offres propriétaires</strong> — Articles de support : fiscalité location courte durée, comment bien choisir sa conciergerie, optimisation tarifaire, home staging efficace.</p>
+    <div class="cluster-keywords">
+      <span class="kw-tag">conciergerie location saisonnière</span>
+      <span class="kw-tag">déléguer gestion Airbnb</span>
+      <span class="kw-tag">pack conciergerie propriétaire</span>
+      <span class="kw-tag">optimisation annonce Airbnb</span>
+      <span class="kw-tag">revenus locatifs passifs</span>
+      <span class="kw-tag">home staging location courte durée</span>
+    </div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-subtitle">Cluster 2</div>
+    <div class="cluster-title">Territoire & marché local Sud-Ouest premium</div>
+    <p style="font-size:14px; color:#6b6258; margin-bottom:12px;">Pages piliers : <strong>Page locale Bordeaux & Gironde</strong> + <strong>Page locale Pays Basque</strong> — Articles de support : potentiel locatif Bassin d'Arcachon, meilleurs quartiers à Bordeaux pour la LCD, saisonnalité Biarritz.</p>
+    <div class="cluster-keywords">
+      <span class="kw-tag">conciergerie Bordeaux</span>
+      <span class="kw-tag">conciergerie Arcachon</span>
+      <span class="kw-tag">conciergerie Biarritz</span>
+      <span class="kw-tag">location saisonnière Pays Basque</span>
+      <span class="kw-tag">marché locatif Gironde</span>
+    </div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-subtitle">Cluster 3</div>
+    <div class="cluster-title">Expérience hôte & services haut de gamme</div>
+    <p style="font-size:14px; color:#6b6258; margin-bottom:12px;">Pages piliers : <strong>Services voyageurs</strong> + <strong>Management de maison</strong> — Articles de support : comment créer un livret d'accueil premium, les services qui font la différence pour vos hôtes, gérer une résidence secondaire à distance.</p>
+    <div class="cluster-keywords">
+      <span class="kw-tag">expérience hôte premium</span>
+      <span class="kw-tag">services conciergerie voyageurs</span>
+      <span class="kw-tag">intendance résidence secondaire</span>
+      <span class="kw-tag">chef privé domicile Bordeaux</span>
+      <span class="kw-tag">livret accueil personnalisé</span>
+    </div>
+  </div>
+
+  <div class="maillage-block">
+    <h3 style="font-family: 'Playfair Display', serif; font-size: 18px; color: #1a1410; margin-bottom: 16px;">Logique de maillage interne</h3>
+    <div class="maillage-row">
+      <span class="maillage-from">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Nos offres propriétaires · Page locale Bordeaux · À propos · Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">Nos offres propriétaires</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Management de maison · Services voyageurs · Contact · Articles blog Cluster 1</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">Pages locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Nos offres propriétaires · Articles blog Cluster 2 · Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">Services voyageurs</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Articles blog Cluster 3 · À propos · Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">Articles blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Page pilier du cluster · Contact · Nos offres propriétaires</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-badge">06 — Tunnel de Conversion</div>
+  <h2>Parcours propriétaire — de la découverte à la signature</h2>
+  <p class="section-intro">Les 4 étapes du tunnel, des sources d'acquisition jusqu'au premier contact qualifié.</p>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-num">01</div>
+      <div class="tunnel-step-title">Découverte</div>
+      <div class="tunnel-label">Source de trafic</div>
+      <div class="tunnel-value">Google (SEO local), bouche à oreille, réseaux sociaux Instagram, partenaires prescripteurs</div>
+      <div class="tunnel-label">Page concernée</div>
+      <div class="tunnel-value">Accueil · Pages locales</div>
+      <span class="tunnel-cta">Découvrir nos offres →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-num">02</div>
+      <div class="tunnel-step-title">Intérêt</div>
+      <div class="tunnel-label">Source de trafic</div>
+      <div class="tunnel-value">Navigation interne, articles de blog, visite de la page offres</div>
+      <div class="tunnel-label">Page concernée</div>
+      <div class="tunnel-value">Nos offres propriétaires · Blog</div>
+      <span class="tunnel-cta">Télécharger le guide →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-num">03</div>
+      <div class="tunnel-step-title">Confiance</div>
+      <div class="tunnel-label">Source de trafic</div>
+      <div class="tunnel-value">Page À propos, témoignages propriétaires, galerie de biens, management de maison</div>
+      <div class="tunnel-label">Page concernée</div>
+      <div class="tunnel-value">À propos · Services voyageurs · Management</div>
+      <span class="tunnel-cta">Lire les avis →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-num">04</div>
+      <div class="tunnel-step-title">Conversion</div>
+      <div class="tunnel-label">Source de trafic</div>
+      <div class="tunnel-value">CTA récurrent sur toutes les pages, formulaire qualifiant, agenda en ligne</div>
+      <div class="tunnel-label">Page concernée</div>
+      <div class="tunnel-value">Contact & RDV</div>
+      <span class="tunnel-cta">Prendre RDV gratuit →</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-badge">07 — Leviers de Croissance</div>
+  <h2>Outils & leviers marketing recommandés</h2>
+  <p class="section-intro">Les mécanismes concrets à mettre en place pour alimenter et convertir le flux de propriétaires.</p>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <div class="levier-icon">📘</div>
+      <h3>Lead Magnet</h3>
+      <p>« Le guide du propriétaire haut de gamme : 7 étapes pour maximiser vos revenus locatifs à Bordeaux et sur le Bassin d'Arcachon » — PDF téléchargeable gratuit en échange d'un email, idéal pour qualifier l'intention.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📅</div>
+      <h3>Prise de RDV en ligne</h3>
+      <p>Outil recommandé : <strong>Calendly</strong> (gratuit ou Pro) intégré directement sur la page Contact et en CTA flottant. Permet de proposer un appel découverte ou une visite du bien sans friction.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">⭐</div>
+      <h3>Preuve sociale</h3>
+      <p>Témoignages écrits de propriétaires (nom, ville, type de bien), galerie avant/après des biens, captures d'écran d'avis Google. Priorité au format texte long + photo du bien pour maximiser la crédibilité.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📋</div>
+      <h3>Formulaire qualifiant</h3>
+      <p>Champs recommandés : Prénom · Ville du bien · Type de bien · Superficie · Meublé ou non · Déjà en location courte durée ? · Disponibilité pour un appel. Limite à 6–7 champs pour maintenir le taux de complétion.</p>
+    </div>
+    <div class="levier-card" style="grid-column: span 2;">
+      <div class="levier-icon">✉️</div>
+      <h3>Newsletter propriétaires</h3>
+      <p>Angle éditorial : <em>« La Lettre du Propriétaire Exigeant »</em> — 1 envoi mensuel avec : tendances du marché locatif local, astuce de valorisation d'un bien, retour d'expérience voyageur, nouveauté A&A. Format court, élégant, fidèle au ton de la marque.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-badge">08 — Direction Visuelle</div>
+  <h2>Identité visuelle & éditoriale</h2>
+  <p class="section-intro">Les repères visuels qui traduisent l'univers premium, neutre et élégant d'A&A Prestige Conciergerie.</p>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <h3>Palette de couleurs</h3>
+    <p style="margin-bottom: 24px;">Tons neutres et chaleureux — beige, taupe, ivoire, or doux — pour incarner le luxe discret et la sophistication du service.</p>
+    <div class="palette-grid">
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background: #1a1410;"></div>
+        <div class="color-name">Noir Brun</div>
+        <div class="color-hex">#1A1410</div>
+      </div>
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background: #c9a76e;"></div>
+        <div class="color-name">Or Doux</div>
+        <div class="color-hex">#C9A76E</div>
+      </div>
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background: #e8ddd0;"></div>
+        <div class="color-name">Beige Ivoire</div>
+        <div class="color-hex">#E8DDD0</div>
+      </div>
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background: #b5a091;"></div>
+        <div class="color-name">Taupe</div>
+        <div class="color-hex">#B5A091</div>
+      </div>
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background: #faf9f7; border: 1px solid #e0d8cf;"></div>
+        <div class="color-name">Blanc Cassé</div>
+        <div class="color-hex">#FAF9F7</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Univers visuel recommandé</h3>
+    <ul>
+      <li>Photographies lumineuses de biens haut de gamme (salons, terrasses, vues extérieures) en lumière naturelle dorée</li>
+      <li>Portraits de Caroline en situation (visite d'un bien, accueil d'hôtes) pour humaniser la marque</li>
+      <li>Détails d'intérieur soignés : linge de lit plié, produits d'accueil disposés, art de la table</li>
+      <li>Visuels de territoire : vignobles bordelais, dune du Pilat, côte basque — pour ancrer l'expérience de destination</li>
+      <li>Iconographie minimaliste dorée sur fond blanc cassé pour les rubriques d'offres et services</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECTION 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-badge">09 — Articles Blog Recommandés</div>
+  <h2>Stratégie de contenu éditorial</h2>
+  <p class="section-intro">7 sujets d'articles pensés pour capter du trafic SEO qualifié et démontrer l'expertise de Caroline auprès des propriétaires.</p>
+
+  <div class="blog-card">
+    <span class="blog-prio prioritaire">Prioritaire</span>
+    <div class="blog-content">
+      <h4>Conciergerie Airbnb à Bordeaux : comment choisir le bon prestataire pour votre bien haut de gamme ?</h4>
+      <div class="blog-meta">
+        <span><strong>Cluster :</strong> Conciergerie locative premium propriétaires</span>
+        <span><strong>Intention :</strong> Commerciale — comparaison & décision</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-card">
+    <span class="blog-prio prioritaire">Prioritaire</span>
+    <div class="blog-content">
+      <h4>Location courte durée sur le Bassin d'Arcachon : potentiel locatif, saisonnalité et stratégie de prix</h4>
+      <div class="blog-meta">
+        <span><strong>Cluster :</strong> Territoire & marché local Sud-Ouest</span>
+        <span><strong>Intention :</strong> Informationnelle — découverte du marché</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-card">
+    <span class="blog-prio prioritaire">Prioritaire</span>
+    <div class="blog-content">
+      <h4>Home staging pour la location saisonnière : les 5 interventions qui font doubler vos notes d'évaluation</h4>
+      <div class="blog-meta">
+        <span><strong>Cluster :</strong> Conciergerie locative premium propriétaires</span>
+        <span><strong>Intention :</strong> Informationnelle — conseil & expertise</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-card">
+    <span class="blog-prio moyen">Moyen</span>
+    <div class="blog-content">
+      <h4>Gérer une résidence secondaire à distance : les solutions pour les propriétaires absents en Gironde</h4>
+      <div class="blog-meta">
+        <span><strong>Cluster :</strong> Expérience hôte & services haut de gamme</span>
+        <span><strong>Intention :</strong> Informationnelle — résolution de problème</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-card">
+    <span class="blog-prio moyen">Moyen</span>
+    <div class="blog-content">
+      <h4>Pays Basque : pourquoi votre villa mérite-t-elle une conciergerie premium plutôt qu'une agence classique ?</h4>
+      <div class="blog-meta">
+        <span><strong>Cluster :</strong> Territoire & marché local Sud-Ouest</span>
+        <span><strong>Intention :</strong> Commerciale — différenciation</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-card">
+    <span class="blog-prio moyen">Moyen</span>
+    <div class="blog-content">
+      <h4>Créer un livret d'accueil inoubliable pour vos hôtes : les secrets d'une conciergerie haut de gamme</h4>
+      <div class="blog-meta">
+        <span><strong>Cluster :</strong> Expérience hôte & services haut de gamme</span>
+        <span><strong>Intention :</strong> Informationnelle — inspiration</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-card">
+    <span class="blog-prio faible">Faible</span>
+    <div class="blog-content">
+      <h4>Fiscalité de la location meublée touristique en 2025 : ce que tout propriétaire bordelais doit savoir</h4>
+      <div class="blog-meta">
+        <span><strong>Cluster :</strong> Conciergerie locative premium propriétaires</span>
+        <span><strong>Intention :</strong> Informationnelle — réglementaire</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>A&A Prestige Conciergerie</strong> — Blueprint Stratégique · Document confidentiel · Préparé par AR Digital</p>
+  <p style="margin-top: 8px; font-size: 12px; opacity: 0.6;">Caroline Gagnère · contact@aaprestigeconciergerie.com · aaprestigeconciergerie.com</p>
+</footer>
+
+</body>
+</html>
