@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blueprint Stratégique — Vitaléa Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2F2A28;
+    background: #FAF8F5;
+  }
+
+  /* ─── COVER ─── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #2F2A28 0%, #1a1613 55%, #3d3530 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(200,160,106,0.18) 0%, transparent 65%);
+  }
+  .cover-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #C8A06A;
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #FAF8F5;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    position: relative;
+  }
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #D2C6BA;
+    letter-spacing: 0.05em;
+    margin-bottom: 52px;
+    position: relative;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+  }
+  .cover-meta span {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #EDE3D8;
+    opacity: 0.75;
+  }
+  .cover-divider {
+    width: 48px;
+    height: 2px;
+    background: #C8A06A;
+    margin: 36px auto;
+    position: relative;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 70px 60px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: #FAF8F5;
+  }
+  section:nth-child(odd) {
+    background: #ffffff;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #C8A06A;
+    background: rgba(200,160,106,0.1);
+    border: 1px solid rgba(200,160,106,0.3);
+    padding: 5px 14px;
+    border-radius: 40px;
+    margin-bottom: 14px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: #2F2A28;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: #7a7068;
+    margin-bottom: 44px;
+    max-width: 600px;
+  }
+
+  /* ─── PROMESSE HIGHLIGHT ─── */
+  .highlight-box {
+    background: linear-gradient(135deg, #2F2A28 0%, #3d3530 100%);
+    border-radius: 16px;
+    padding: 40px 48px;
+    margin-bottom: 44px;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-box::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(200,160,106,0.12);
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #FAF8F5;
+    line-height: 1.5;
+    position: relative;
+  }
+  .highlight-box .quote-mark {
+    font-size: 64px;
+    color: #C8A06A;
+    line-height: 0.6;
+    display: block;
+    margin-bottom: 16px;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+  }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    page-break-inside: avoid;
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #2F2A28;
+    margin-bottom: 10px;
+  }
+
+  .card p, .card li {
+    font-size: 14px;
+    color: #5a5350;
+    line-height: 1.75;
+  }
+
+  .card ul {
+    padding-left: 18px;
+  }
+
+  .card ul li {
+    margin-bottom: 4px;
+  }
+
+  /* ─── GRILLES ─── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ─── TON ÉDITORIAL ─── */
+  .ton-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .ton-badge {
+    background: #EDE3D8;
+    color: #2F2A28;
+    padding: 8px 22px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  /* ─── OBJECTIFS ─── */
+  .objectif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 24px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 16px;
+  }
+  .objectif-rank {
+    min-width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #C8A06A;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .objectif-text h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #2F2A28;
+    margin-bottom: 2px;
+  }
+  .objectif-text p {
+    font-size: 13px;
+    color: #7a7068;
+    line-height: 1.6;
+  }
+
+  /* ─── TABLEAU ARBORESCENCE ─── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  thead tr {
+    background: #2F2A28;
+  }
+  thead th {
+    padding: 16px 20px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #EDE3D8;
+    text-align: left;
+    font-weight: 500;
+  }
+  tbody tr {
+    border-bottom: 1px solid #f0ebe5;
+  }
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+  tbody td {
+    padding: 16px 20px;
+    font-size: 14px;
+    color: #2F2A28;
+    vertical-align: top;
+  }
+  tbody tr:hover {
+    background: #fdf9f5;
+  }
+
+  .badge-seo {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+  .seo-fort { background: rgba(200,160,106,0.2); color: #8a5f20; }
+  .seo-moyen { background: rgba(200,193,178,0.35); color: #5a4f45; }
+  .seo-faible { background: rgba(237,227,216,0.6); color: #8a7f75; }
+
+  .framework-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    background: #EDE3D8;
+    color: #2F2A28;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+
+  /* ─── COCON SÉMANTIQUE ─── */
+  .cluster {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+  }
+  .cluster h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #2F2A28;
+    margin-bottom: 14px;
+  }
+  .cluster-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .cluster-tag {
+    background: #EDE3D8;
+    color: #2F2A28;
+    padding: 5px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+  }
+
+  .maillage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #2F2A28;
+  }
+  .maillage-source {
+    background: #2F2A28;
+    color: #FAF8F5;
+    padding: 4px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .maillage-arrow {
+    color: #C8A06A;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .maillage-cible {
+    background: #EDE3D8;
+    color: #2F2A28;
+    padding: 4px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+
+  /* ─── TUNNEL ─── */
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+  }
+  .tunnel-step-num {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #C8A06A;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .tunnel-step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #2F2A28;
+    margin-bottom: 16px;
+  }
+  .tunnel-meta {
+    font-size: 13px;
+    color: #7a7068;
+    margin-bottom: 6px;
+  }
+  .tunnel-meta strong {
+    color: #2F2A28;
+    font-weight: 600;
+  }
+  .cta-pill {
+    display: inline-block;
+    margin-top: 12px;
+    background: #C8A06A;
+    color: #fff;
+    padding: 7px 18px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+
+  /* ─── LEVIERS ─── */
+  .levier-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  /* ─── PALETTE COULEURS ─── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  .palette-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #2F2A28;
+    text-align: center;
+  }
+  .palette-hex {
+    font-size: 11px;
+    color: #a09590;
+    letter-spacing: 0.06em;
+  }
+
+  /* ─── ARTICLES BLOG ─── */
+  .article-item {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    page-break-inside: avoid;
+  }
+  .article-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #2F2A28;
+    line-height: 1.4;
+  }
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .article-meta span {
+    font-size: 11px;
+    padding: 3px 11px;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+  .meta-cluster { background: #EDE3D8; color: #2F2A28; }
+  .meta-intention { background: #f0ebe5; color: #5a5350; }
+  .priority-high { background: rgba(200,160,106,0.25); color: #7a4f10; }
+  .priority-mid { background: rgba(210,198,186,0.5); color: #4a4038; }
+  .priority-low { background: #f0ebe5; color: #8a7f75; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #2F2A28;
+    color: #D2C6BA;
+    text-align: center;
+    padding: 36px 40px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+  }
+  footer strong {
+    color: #EDE3D8;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    section { padding: 40px 24px; }
+    .cover h1 { font-size: 42px; }
+    .cover-meta { gap: 18px; }
+    h2 { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 18px; }
+    .maillage-row { display: flex; flex-wrap: wrap; align-items: center; }
+    .palette-grid { gap: 18px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ COVER ═══════════════════════ -->
+<div class="cover">
+  <span class="cover-label">Blueprint Stratégique — AR Digital</span>
+  <h1>Vitaléa<br/>Conciergerie</h1>
+  <div class="cover-divider"></div>
+  <p class="cover-subtitle">Document stratégique confidentiel — Préparation site web</p>
+  <div class="cover-meta">
+    <span>Cliente : El hajji Flavie</span>
+    <span>Secteur : Jura · Méditerranée</span>
+    <span>Domaine : vitaleaconciergerie.fr</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════ 01 — POSITIONNEMENT ═══════════════════════ -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2>Positionnement stratégique</h2>
+  <p class="section-intro">La fondation identitaire de Vitaléa : ce que vous représentez, comment vous communiquez, pourquoi vous vous démarquez.</p>
+
+  <div class="highlight-box">
+    <span class="quote-mark">"</span>
+    <p>Vitaléa prend soin de votre logement comme vous le feriez vous-même — avec exigence, discrétion et une attention sincère portée à chaque détail, pour que vos voyageurs vivent une expérience inoubliable et que vous, propriétaires, retrouviez la sérénité.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <h3>Ligne directrice de communication</h3>
+      <p>Accompagnement humain et haut de gamme : une conciergerie à taille humaine qui allie exigence professionnelle et chaleur relationnelle, au cœur de territoires d'exception entre Jura et Méditerranée.</p>
+    </div>
+    <div class="card">
+      <h3>Ton éditorial</h3>
+      <div class="ton-row" style="margin-top: 12px; margin-bottom: 14px;">
+        <span class="ton-badge">Chaleureux</span>
+        <span class="ton-badge">Raffiné</span>
+        <span class="ton-badge">Rassurant</span>
+      </div>
+      <p style="font-size: 13px; color: #7a7068;">Un langage élégant sans être froid, professionnel sans être distant — celui d'un partenaire de confiance qui parle vrai et valorise l'humain à chaque ligne.</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>✦ Ancrage territorial fort</h3>
+      <p>Une présence locale profonde dans le Jura (Champagnole et 20-30 km alentour) avec une extension Méditerranée, rare et différenciante face aux acteurs nationaux.</p>
+    </div>
+    <div class="card">
+      <h3>✦ Service clé en main sur-mesure</h3>
+      <p>Une offre complète — des annonces à la maintenance, du linge aux petites attentions voyageurs — pensée pour zéro charge mentale côté propriétaire.</p>
+    </div>
+    <div class="card">
+      <h3>✦ Approche humaine et attentionnée</h3>
+      <p>Disponibilité 7j/7, communication transparente et relation de proximité : Vitaléa traite chaque logement comme si c'était le sien.</p>
+    </div>
+    <div class="card">
+      <h3>✦ Valorisation premium du bien</h3>
+      <p>Photos professionnelles, livret d'accueil personnalisé, conseils déco et petites attentions voyageurs : chaque logement est sublimé pour maximiser les avis et le taux de remplissage.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 02 — CLIENT CIBLE ═══════════════════════ -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client cible</span>
+  <h2>Portrait du propriétaire idéal</h2>
+  <p class="section-intro">Comprendre précisément à qui s'adresse Vitaléa pour adapter chaque message et chaque argument du site.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Profil type</h3>
+      <ul>
+        <li>35 – 65 ans, propriétaire actif ou retraité</li>
+        <li>Résidant dans le Jura ou la région PACA / Méditerranée</li>
+        <li>Possède 1 à 3 logements mis en location courte durée</li>
+        <li>Actif, peu disponible, ou éloigné géographiquement de son bien</li>
+        <li>A déjà tenté l'auto-gestion et ressent de la fatigue opérationnelle</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Déléguer sereinement sans perdre le contrôle</li>
+        <li>Optimiser ses revenus locatifs sans y passer du temps</li>
+        <li>Offrir une belle expérience à ses voyageurs</li>
+        <li>Maintenir son logement en parfait état</li>
+        <li>Bénéficier d'un interlocuteur local de confiance</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Freins et objections</h3>
+      <ul>
+        <li>Peur de perdre la maîtrise de son bien</li>
+        <li>Doute sur la valeur ajoutée réelle vs coût de la commission</li>
+        <li>Mauvaise expérience avec une conciergerie précédente</li>
+        <li>Méfiance envers les engagements à long terme</li>
+        <li>Besoin de transparence sur les tarifs et prestations</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Proximité géographique et réactivité terrain</li>
+        <li>Transparence sur la commission et l'offre</li>
+        <li>Qualité des photos et des annonces</li>
+        <li>Avis et témoignages de propriétaires existants</li>
+        <li>Feeling humain et confiance dès le premier contact</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 03 — OBJECTIFS DU SITE ═══════════════════════ -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du site</span>
+  <h2>Ce que le site doit accomplir</h2>
+  <p class="section-intro">Liste priorisée des missions stratégiques du site de Vitaléa, du plus critique au plus complémentaire.</p>
+
+  <div class="objectif-item">
+    <div class="objectif-rank">1</div>
+    <div class="objectif-text">
+      <h4>Génération de leads propriétaires</h4>
+      <p>Attirer des propriétaires dans le Jura et sur le littoral méditerranéen et les inciter à contacter Vitaléa via formulaire ou prise de RDV.</p>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">2</div>
+    <div class="objectif-text">
+      <h4>Réassurance et instauration de confiance</h4>
+      <p>Démontrer la fiabilité, l'expertise et l'approche humaine de Vitaléa pour lever les freins à la délégation.</p>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">3</div>
+    <div class="objectif-text">
+      <h4>SEO local — Jura</h4>
+      <p>Positionner Vitaléa sur les requêtes de propriétaires cherchant une conciergerie à Champagnole et dans le bassin jurassien.</p>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">4</div>
+    <div class="objectif-text">
+      <h4>Conversion et prise de RDV</h4>
+      <p>Transformer les visiteurs qualifiés en prospects concrets grâce à des CTA clairs et un parcours sans friction.</p>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">5</div>
+    <div class="objectif-text">
+      <h4>Notoriété et positionnement premium</h4>
+      <p>Asseoir l'image haut de gamme et humaine de Vitaléa dans un marché local encore peu mature.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 04 — ARBORESCENCE ═══════════════════════ -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence du site</span>
+  <h2>Structure des pages</h2>
+  <p class="section-intro">Architecture pensée pour maximiser le référencement naturel, la lisibilité et la conversion. Chaque page répond à une intention précise.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td><span class="framework-badge">AIDA</span></td>
+          <td>Conciergerie location courte durée Jura</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre offre</strong><br/><span style="font-size:12px;color:#a09590;">Tous les services détaillés sur cette page unique</span></td>
+          <td><span class="framework-badge">BAB</span></td>
+          <td>Service conciergerie propriétaire Jura</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos</strong></td>
+          <td><span class="framework-badge">PAS</span></td>
+          <td>Conciergerie humaine et locale Jura</td>
+          <td><span class="badge-seo seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos secteurs</strong><br/><span style="font-size:12px;color:#a09590;">Jura + Méditerranée présentés sur une page unique</span></td>
+          <td><span class="framework-badge">AIDA</span></td>
+          <td>Conciergerie Champagnole Jura</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale SEO — Champagnole</strong></td>
+          <td><span class="framework-badge">PAS</span></td>
+          <td>Conciergerie Airbnb Champagnole</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale SEO — Lons-le-Saunier</strong></td>
+          <td><span class="framework-badge">PAS</span></td>
+          <td>Conciergerie location courte durée Lons-le-Saunier</td>
+          <td><span class="badge-seo seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td><span class="framework-badge">AIDA</span></td>
+          <td>Conseils propriétaires location saisonnière</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / Estimation</strong></td>
+          <td><span class="framework-badge">BAB</span></td>
+          <td>Confier son logement conciergerie Jura</td>
+          <td><span class="badge-seo seo-moyen">Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 05 — COCON SÉMANTIQUE ═══════════════════════ -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon sémantique</span>
+  <h2>Organisation thématique du contenu</h2>
+  <p class="section-intro">Trois clusters pour structurer l'autorité de Vitaléa aux yeux de Google et guider les visiteurs vers la conversion.</p>
+
+  <div class="cluster">
+    <h3>🏡 Cluster 1 — Conciergerie & délégation propriétaires</h3>
+    <p style="font-size:14px; color:#5a5350;">Page pilier : <strong>Notre offre</strong>. Ce cluster couvre tout ce qui concerne la délégation, les services proposés et la tranquillité d'esprit du propriétaire.</p>
+    <div class="cluster-tags">
+      <span class="cluster-tag">Offre complète</span>
+      <span class="cluster-tag">Ménage & linge</span>
+      <span class="cluster-tag">Communication voyageurs</span>
+      <span class="cluster-tag">Optimisation tarifaire</span>
+      <span class="cluster-tag">Livret d'accueil</span>
+    </div>
+  </div>
+
+  <div class="cluster">
+    <h3>📍 Cluster 2 — Ancrage local Jura & Méditerranée</h3>
+    <p style="font-size:14px; color:#5a5350;">Page pilier : <strong>Nos secteurs</strong>. Ce cluster ancre Vitaléa géographiquement et capte les recherches locales à fort potentiel de conversion.</p>
+    <div class="cluster-tags">
+      <span class="cluster-tag">Champagnole</span>
+      <span class="cluster-tag">Jura</span>
+      <span class="cluster-tag">Lons-le-Saunier</span>
+      <span class="cluster-tag">Littoral méditerranéen</span>
+      <span class="cluster-tag">Haut-Jura</span>
+    </div>
+  </div>
+
+  <div class="cluster">
+    <h3>📖 Cluster 3 — Conseils & expertise propriétaires</h3>
+    <p style="font-size:14px; color:#5a5350;">Page pilier : <strong>Blog</strong>. Ce cluster attire du trafic organique qualifié via des articles pratiques et renforce la crédibilité éditoriale de Vitaléa.</p>
+    <div class="cluster-tags">
+      <span class="cluster-tag">Location saisonnière</span>
+      <span class="cluster-tag">Optimisation annonces</span>
+      <span class="cluster-tag">Fiscalité LMNP</span>
+      <span class="cluster-tag">Expérience voyageur</span>
+      <span class="cluster-tag">Rentabilité locative</span>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 32px;">
+    <h3>Logique de maillage interne</h3>
+    <div style="margin-top: 14px;">
+      <div class="maillage-row">
+        <span class="maillage-source">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-cible">Notre offre</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-cible">Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Notre offre</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-cible">Nos secteurs</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-cible">Pages locales</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Articles Blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-cible">Notre offre</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-cible">Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Pages locales</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-cible">Contact</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-cible">À propos</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">À propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-cible">Notre offre</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-cible">Contact</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 06 — TUNNEL DE CONVERSION ═══════════════════════ -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de conversion</span>
+  <h2>Du visiteur au prospect qualifié</h2>
+  <p class="section-intro">4 étapes pour transformer un propriétaire qui ne connaît pas Vitaléa en contact prêt à déléguer son bien.</p>
+
+  <div class="grid-2">
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 01</div>
+      <h3>Découverte</h3>
+      <p class="tunnel-meta"><strong>Source :</strong> Google (SEO local), bouche-à-oreille, réseaux sociaux</p>
+      <p class="tunnel-meta"><strong>Page :</strong> Accueil / Pages locales SEO</p>
+      <p class="tunnel-meta"><strong>Objectif :</strong> Capter l'attention, susciter la reconnaissance</p>
+      <span class="cta-pill">En savoir plus sur l'offre →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 02</div>
+      <h3>Intérêt</h3>
+      <p class="tunnel-meta"><strong>Source :</strong> Navigation interne, articles blog</p>
+      <p class="tunnel-meta"><strong>Page :</strong> Notre offre / Blog</p>
+      <p class="tunnel-meta"><strong>Objectif :</strong> Démontrer la valeur concrète des services Vitaléa</p>
+      <span class="cta-pill">Télécharger le guide propriétaire →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 03</div>
+      <h3>Confiance</h3>
+      <p class="tunnel-meta"><strong>Source :</strong> Témoignages, page À propos</p>
+      <p class="tunnel-meta"><strong>Page :</strong> À propos / Avis intégrés</p>
+      <p class="tunnel-meta"><strong>Objectif :</strong> Lever les freins, humaniser la relation</p>
+      <span class="cta-pill">Voir les témoignages →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 04</div>
+      <h3>Conversion</h3>
+      <p class="tunnel-meta"><strong>Source :</strong> CTA disséminés sur toutes les pages</p>
+      <p class="tunnel-meta"><strong>Page :</strong> Contact / Estimation gratuite</p>
+      <p class="tunnel-meta"><strong>Objectif :</strong> Obtenir un RDV ou un formulaire complété</p>
+      <span class="cta-pill">Obtenir mon estimation gratuite →</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 07 — LEVIERS MARKETING ═══════════════════════ -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers marketing recommandés</span>
+  <h2>Activer la croissance de Vitaléa</h2>
+  <p class="section-intro">Cinq leviers concrets à mettre en place pour maximiser la génération de leads et la fidélisation dès le lancement.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="levier-icon">🎁</div>
+      <h3>Lead Magnet</h3>
+      <p><strong>Guide PDF : "Les 7 erreurs des propriétaires qui louent seuls dans le Jura"</strong><br/>Un contenu pratique et local qui adresse directement les freins du propriétaire-cible et positionne Vitaléa comme experte dès le premier contact.</p>
+    </div>
+    <div class="card">
+      <div class="levier-icon">📅</div>
+      <h3>Prise de RDV</h3>
+      <p>Intégration de <strong>Calendly</strong> sur la page Contact pour une prise de RDV découverte 30 min sans friction. Réduction du délai entre intérêt et premier échange humain.</p>
+    </div>
+    <div class="card">
+      <div class="levier-icon">⭐</div>
+      <h3>Preuve sociale</h3>
+      <p>Témoignages vidéo ou citations de propriétaires partenaires, intégrés sur la page À propos et l'Accueil. Affichage de la note Google et du nombre d'avis en temps réel si disponible.</p>
+    </div>
+    <div class="card">
+      <div class="levier-icon">📋</div>
+      <h3>Formulaire qualifiant</h3>
+      <p>Champs recommandés : Prénom / Type de bien (appartement, chalet, maison) / Localisation / Nombre de couchages / Situation actuelle (déjà loué / nouveau / reprise) / Message libre.</p>
+    </div>
+    <div class="card" style="grid-column: 1 / -1;">
+      <div class="levier-icon">✉️</div>
+      <h3>Newsletter propriétaires</h3>
+      <p>Angle éditorial mensuel : <strong>"Le Carnet de Vitaléa"</strong> — conseils saisonniers (préparer son logement pour l'hiver jurassien, optimiser ses tarifs en haute saison estivale), actualités LCD, témoignages et coulisses de l'équipe. Ton chaleureux et incarné.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 08 — DIRECTION VISUELLE ═══════════════════════ -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction visuelle et éditoriale</span>
+  <h2>L'identité visuelle de Vitaléa</h2>
+  <p class="section-intro">Une palette naturelle et raffinée, entre pierre jurassienne et chaleur méridionale, pour une image haut de gamme et apaisante.</p>
+
+  <div class="palette-grid">
+    <div class="palette-item">
+      <div class="palette-swatch" style="background: #EDE3D8;"></div>
+      <div class="palette-name">Sable doux</div>
+      <div class="palette-hex">#EDE3D8</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background: #D2C6BA;"></div>
+      <div class="palette-name">Pierre claire</div>
+      <div class="palette-hex">#D2C6BA</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background: #C8A06A;"></div>
+      <div class="palette-name">Miel jurassien</div>
+      <div class="palette-hex">#C8A06A</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background: #2F2A28; border: 1px solid #e0dbd6;"></div>
+      <div class="palette-name">Bois profond</div>
+      <div class="palette-hex">#2F2A28</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background: #FAF8F5; border: 1px solid #e8e3de;"></div>
+      <div class="palette-name">Blanc crème</div>
+      <div class="palette-hex">#FAF8F5</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 40px;">
+    <h3>Univers visuel recommandé</h3>
+    <ul style="margin-top: 10px;">
+      <li>📷 <strong>Photographie authentique</strong> — paysages jurassiens (forêts, lacs, falaises calcaires) et intérieurs soignés, lumière naturelle, pas de mise en scène artificielle</li>
+      <li>🏔️ <strong>Contraste nature & confort</strong> — alterner visuels d'extérieur sauvage et détails intérieurs cosy (linge blanc, bois clair, bougies)</li>
+      <li>✍️ <strong>Typographie élégante</strong> — association d'une serif (Playfair Display) pour les titres et d'une sans-serif épurée (Inter) pour le corps, comme sur ce document</li>
+      <li>🌿 <strong>Textures naturelles</strong> — grains de bois, lin, pierre : un univers matière cohérent avec les tons de la palette</li>
+      <li>⬜ <strong>Espaces négatifs généreux</strong> — beaucoup d'air, peu d'éléments par écran, impression de sérénité dès la première visite</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 09 — ARTICLES BLOG ═══════════════════════ -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles blog recommandés</span>
+  <h2>Stratégie de contenu éditorial</h2>
+  <p class="section-intro">7 sujets d'articles pour asseoir l'autorité SEO de Vitaléa, attirer des propriétaires qualifiés et nourrir le tunnel de conversion.</p>
+
+  <div class="grid-2">
+
+    <div class="article-item">
+      <h4>Pourquoi confier son chalet jurassien à une conciergerie locale plutôt qu'une plateforme nationale ?</h4>
+      <div class="article-meta">
+        <span class="meta-cluster">Cluster 1 — Délégation</span>
+        <span class="meta-intention">Informationnelle / Comparaison</span>
+        <span class="priority-high">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="article-item">
+      <h4>Location saisonnière dans le Jura : quel potentiel de revenus pour votre bien en 2025 ?</h4>
+      <div class="article-meta">
+        <span class="meta-cluster">Cluster 2 — Local Jura</span>
+        <span class="meta-intention">Informationnelle / Transactionnelle</span>
+        <span class="priority-high">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="article-item">
+      <h4>Les 5 erreurs qui font fuir les voyageurs sur une annonce Airbnb dans le Jura</h4>
+      <div class="article-meta">
+        <span class="meta-cluster">Cluster 3 — Conseils</span>
+        <span class="meta-intention">Informationnelle / Problème</span>
+        <span class="priority-high">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="article-item">
+      <h4>Comment optimiser ses tarifs en location courte durée selon les saisons jurassiennes ?</h4>
+      <div class="article-meta">
+        <span class="meta-cluster">Cluster 3 — Conseils</span>
+        <span class="meta-intention">Informationnelle / Pratique</span>
+        <span class="priority-mid">Moyen</span>
+      </div>
+    </div>
+
+    <div class="article-item">
+      <h4>Livret d'accueil pour voyageurs : pourquoi c'est indispensable et comment le réussir ?</h4>
+      <div class="article-meta">
+        <span class="meta-cluster">Cluster 1 — Délégation</span>
+        <span class="meta-intention">Informationnelle / Pratique</span>
+        <span class="priority-mid">Moyen</span>
+      </div>
+    </div>
+
+    <div class="article-item">
+      <h4>Champagnole et ses environs : pourquoi les voyageurs choisissent ce territoire pour leurs séjours ?</h4>
+      <div class="article-meta">
+        <span class="meta-cluster">Cluster 2 — Local Jura</span>
+        <span class="meta-intention">Informationnelle / Découverte</span>
+        <span class="priority-mid">Moyen</span>
+      </div>
+    </div>
+
+    <div class="article-item">
+      <h4>LMNP et location saisonnière dans le Jura : ce que tout propriétaire doit savoir en 2025</h4>
+      <div class="article-meta">
+        <span class="meta-cluster">Cluster 3 — Conseils</span>
+        <span class="meta-intention">Informationnelle / Réglementaire</span>
+        <span class="priority-low">Faible</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer>
+  <p><strong>Vitaléa Conciergerie</strong> — Blueprint Stratégique</p>
+  <p style="margin-top: 8px; opacity: 0.6;">Document confidentiel préparé par AR Digital · Reproduction interdite</p>
+</footer>
+
+</body>
+</html>
