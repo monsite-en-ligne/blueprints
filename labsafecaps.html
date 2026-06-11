@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Lab-Safe Caps</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+
+:root{
+  --navy:#0E1A35;
+  --night:#0A0A0F;
+  --primary:#2D5BE0;
+  --primary-deep:#1B2A6B;
+  --cobalt:#4059A1;
+  --sky:#6FA5C5;
+  --lilac:#AAA9F2;
+  --green:#34A853;
+  --ink:#1a1a2e;
+  --ink-soft:#2d3748;
+  --bg:#f8f9fa;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;}
+
+h1{font-family:'Playfair Display',serif;font-size:40px;line-height:1.15;color:var(--ink);}
+h2{font-family:'Playfair Display',serif;font-size:32px;line-height:1.2;color:var(--ink);}
+h3{font-family:'Playfair Display',serif;font-size:22px;line-height:1.3;color:var(--ink);}
+p,td,li{font-family:'Inter',sans-serif;font-size:15px;line-height:1.8;color:var(--ink-soft);}
+
+.eyebrow{
+  display:inline-block;font-family:'Inter';font-size:12px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;color:var(--primary);margin-bottom:14px;
+}
+.section-title{display:flex;align-items:flex-start;gap:16px;margin-bottom:10px;}
+.title-bar{
+  width:6px;align-self:stretch;border-radius:6px;
+  background:linear-gradient(180deg,var(--primary),var(--lilac));flex:0 0 auto;min-height:48px;
+}
+.lead{font-size:16px;color:var(--ink-soft);max-width:760px;margin-top:6px;}
+
+/* ----- COVER ----- */
+.cover-page{
+  position:relative;height:297mm;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:60px;
+  background:
+    radial-gradient(circle at 82% 88%, rgba(170,169,242,0.55) 0%, rgba(45,91,224,0.0) 42%),
+    linear-gradient(118deg, var(--night) 0%, var(--navy) 34%, var(--primary-deep) 62%, var(--primary) 100%);
+}
+.cover-logo{position:absolute;top:32px;left:40px;height:40px;}
+.cover-title{font-size:64px;font-weight:700;color:#ffffff;letter-spacing:2px;font-family:'Playfair Display',serif;}
+.cover-sub{font-family:'Inter';font-size:18px;color:#ffffff;opacity:0.75;margin-top:18px;font-weight:400;}
+.cover-rule{width:64px;height:2px;background:rgba(255,255,255,0.4);margin:34px auto;}
+.cover-meta{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;font-family:'Inter';font-size:13px;color:#ffffff;opacity:0.8;letter-spacing:0.5px;}
+.cover-meta span{white-space:nowrap;}
+
+/* ----- SECTIONS ----- */
+.section-principale{padding:70px 60px;}
+.section-principale:nth-of-type(even){background:#ffffff;}
+.section-principale:nth-of-type(odd){background:var(--bg);}
+
+.grid{display:grid;gap:24px;margin-top:30px;}
+.grid-2{grid-template-columns:repeat(2,1fr);}
+.grid-3{grid-template-columns:repeat(3,1fr);}
+
+.card{
+  background:#ffffff;box-shadow:0 2px 12px rgba(0,0,0,0.06);
+  border-radius:14px;padding:28px;
+}
+.card h3{margin-bottom:8px;}
+.card .num{font-family:'Playfair Display',serif;font-size:26px;color:var(--primary);font-weight:700;}
+.card p{font-size:14px;}
+
+.block{margin-top:24px;}
+.block h3{margin-bottom:10px;}
+.kv{margin-top:6px;}
+.kv strong{color:var(--ink);}
+
+.promise{
+  background:linear-gradient(118deg,var(--navy),var(--primary-deep));
+  border-radius:16px;padding:34px 36px;margin-top:26px;color:#fff;
+}
+.promise .label{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--lilac);}
+.promise p{color:#fff;font-size:19px;line-height:1.6;margin-top:10px;font-weight:500;}
+
+ul.clean{list-style:none;margin-top:8px;}
+ul.clean li{position:relative;padding-left:22px;margin-bottom:8px;font-size:14px;}
+ul.clean li:before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:50%;background:var(--primary);}
+
+/* ----- BADGES ----- */
+.badge{display:inline-block;border-radius:20px;padding:3px 10px;font-size:12px;font-family:'Inter';font-weight:500;white-space:nowrap;}
+.badge-fort{background:#d4edda;color:#155724;}
+.badge-moyen{background:#fff3cd;color:#856404;}
+.badge-faible{background:#f8d7da;color:#721c24;}
+.badge-prioritaire{background:#f8d7da;color:#721c24;}
+.badge-important{background:#ffe5d0;color:#c85000;}
+.badge-secondaire{background:#fff3cd;color:#856404;}
+.badge-nouvelle{background:#d4edda;color:#155724;}
+.badge-amelioree{background:#cce5ff;color:#004085;}
+.badge-retiree{background:#e2e3e5;color:#383d41;}
+
+/* ----- TABLES ----- */
+.table-wrapper{margin-top:30px;page-break-inside:avoid;break-inside:avoid;}
+table{border-collapse:collapse;width:100%;}
+th{background:rgba(45,91,224,0.10);padding:14px 16px;text-align:left;font-family:'Inter';font-size:13px;font-weight:600;color:var(--ink);}
+td{border:1px solid #e2e8f0;padding:14px 16px;font-size:14px;vertical-align:top;}
+tr:nth-child(even) td{background:#fafafa;}
+
+/* ----- SWATCHES ----- */
+.swatch-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:30px;}
+.swatch-item{width:120px;}
+.swatch{width:80px;height:80px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin:0 auto;}
+.swatch-name{font-family:'Inter';font-size:13px;font-weight:600;margin-top:8px;text-align:center;color:var(--ink);}
+.swatch-hex{font-family:'Inter';font-size:12px;color:#6b7280;text-align:center;}
+
+/* ----- FUNNEL ----- */
+.funnel-step .num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--primary);color:#fff;font-family:'Playfair Display';font-weight:700;font-size:16px;margin-bottom:12px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag{font-size:12px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(45,91,224,0.08);color:var(--primary-deep);}
+.tag.green{background:rgba(52,168,83,0.12);color:#1e7a3a;}
+
+/* ----- FOOTER ----- */
+footer{
+  background:rgba(45,91,224,0.05);border-top:2px solid var(--primary);
+  padding:30px 60px;display:flex;justify-content:space-between;align-items:center;
+  font-family:'Inter';font-size:13px;color:#6b7280;
+}
+footer .center{font-weight:500;color:var(--ink-soft);}
+
+/* ----- PRINT ----- */
+@media print{
+  @page{size:A4;margin:15mm 15mm 20mm 15mm;}
+  .card{page-break-inside:avoid;break-inside:avoid;box-shadow:0 1px 4px rgba(0,0,0,0.08) !important;}
+  table{page-break-inside:avoid;break-inside:avoid;}
+  tr{page-break-inside:avoid;break-inside:avoid;}
+  .section-principale{page-break-before:always;break-before:page;}
+  h1,h2,h3{page-break-after:avoid;break-after:avoid;}
+  .grid{page-break-inside:avoid;break-inside:avoid;}
+  .no-print{display:none !important;}
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;color-adjust:exact !important;}
+  .cover-page{height:267mm;page-break-after:always;break-after:page;}
+}
+
+/* ----- RESPONSIVE ----- */
+@media screen and (max-width:768px){
+  .grid-2,.grid-3{grid-template-columns:1fr;}
+  .section-principale{padding:24px;}
+  h2{font-size:26px;}
+  .cover-title{font-size:40px;}
+  .table-wrapper{overflow-x:auto;display:block;}
+  footer{flex-direction:column;gap:8px;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ COUVERTURE ============ -->
+<div class="cover-page">
+  <img class="cover-logo" src="https://i.imgur.com/72UqvFq.png" alt="Monsite-en-ligne">
+  <div class="cover-title">Lab-Safe Caps</div>
+  <div class="cover-sub">Blueprint Stratégique — Création de votre site web</div>
+  <div class="cover-rule"></div>
+  <div class="cover-meta">
+    <span>Juin 2026</span>
+    <span>lab-safe-caps.fr · CPA Sciences</span>
+    <span>AR Digital</span>
+  </div>
+</div>
+
+<!-- ============ 01 POSITIONNEMENT ============ -->
+<section class="section-principale">
+  <span class="eyebrow">01 — Positionnement</span>
+  <div class="section-title"><div class="title-bar"></div><h2>Faire de Lab-Safe Caps la référence française de la sécurité des solvants HPLC</h2></div>
+  <p class="lead">Vous fabriquez en France des solutions que les grands acteurs facturent au prix fort. Votre site doit incarner cette singularité : un fabricant proche, expert et accessible, qui s'adapte à chaque paillasse plutôt que d'imposer un catalogue standard.</p>
+
+  <div class="promise">
+    <div class="label">Promesse de valeur principale</div>
+    <p>« Sécurisez vos solvants HPLC avec des bouchons et cartouches fabriqués en France, sur-mesure et livrés en 48 h — sans payer le prix des grandes marques. »</p>
+  </div>
+
+  <div class="block">
+    <h3>Ligne directrice de communication</h3>
+    <p>Le spécialiste français qui rend la sécurité des solvants HPLC simple, compatible et adaptée à chaque laboratoire — là où la concurrence reste standardisée, impersonnelle et plus chère. Chaque page rassure sur la compatibilité avec le parc existant et invite à demander un devis.</p>
+  </div>
+
+  <div class="block">
+    <h3>Ton éditorial</h3>
+    <p style="margin-bottom:6px;"><strong style="color:var(--primary)">Expert · Accessible · Rassurant.</strong></p>
+    <p>On s'adresse au chromatographiste dans son langage, sans jargon froid : des explications claires, une posture de partenaire de laboratoire plutôt que de simple fournisseur. On valorise le savoir-faire sans jamais le rendre intimidant.</p>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card"><h3>Fabrication française & sur-mesure</h3><p>Conçu et produit en France. Toute configuration hors catalogue est traitée rapidement et sans surcoût tant que le pas de vis reste standard — un argument que les grandes marques ne peuvent pas suivre.</p></div>
+    <div class="card"><h3>Innovation brevetée</h3><p>Gamme ZE « zéro émanations » (patent pending) et gamme PFAS sans fluor : des réponses techniques que peu de concurrents proposent, sur des sujets de conformité brûlants.</p></div>
+    <div class="card"><h3>Compatibilité universelle</h3><p>Compatible SCAT, B-Safe, Calibre Scientific, Valco-Vici, Phenomenex et Vap-Lock. On s'intègre au parc existant du labo : aucun besoin de tout remplacer.</p></div>
+    <div class="card"><h3>Le juste prix, livré vite</h3><p>20 à 30 % sous les grandes marques, livraison en 48 h sortie usine. Le couple qualité-prix-délai devient un véritable argument de conversion.</p></div>
+    <div class="card"><h3>Tranquillité d'esprit au quotidien</h3><p>Soupape bec-de-canard résistante aux acides et bases fortes, timer en option, zone d'écriture pour la date de remplacement : la conformité devient un automatisme, pas une charge.</p></div>
+    <div class="card"><h3>Une ambition internationale</h3><p>Recherche active de distributeurs dans le monde et travail en OEM : le site doit aussi parler aux revendeurs et intégrateurs, pas seulement aux laboratoires.</p></div>
+  </div>
+</section>
+
+<!-- ============ 02 CLIENT CIBLE ============ -->
+<section class="section-principale">
+  <span class="eyebrow">02 — Client cible</span>
+  <div class="section-title"><div class="title-bar"></div><h2>À qui parle votre site</h2></div>
+  <p class="lead">Votre marché est technique et exigeant. Bien le comprendre permet de rassurer vite et de transformer une simple visite en demande de devis.</p>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Profil type</h3>
+      <p>Responsables et techniciens de laboratoire d'analyse (HPLC, LC-MS), 30–55 ans, dans la pharma, l'agroalimentaire, l'environnement, la cosmétique, la pétrochimie, la recherche académique et les CRO. Acheteurs techniques, sensibles à la sécurité (HSE/QHSE), au budget consommables et à la conformité.</p>
+      <p style="margin-top:10px;">Seconde cible clé : <strong>distributeurs, revendeurs et intégrateurs labo</strong> à l'international, ainsi que les donneurs d'ordre <strong>OEM</strong>.</p>
+    </div>
+    <div class="card">
+      <h3>Ce qui les motive</h3>
+      <ul class="clean">
+        <li>Protéger le personnel des émanations de solvants</li>
+        <li>Rester conforme et sécuriser la paillasse</li>
+        <li>Éviter l'évaporation et la contamination des éluants</li>
+        <li>Fiabiliser les analyses et leurs résultats</li>
+        <li>Maîtriser le budget consommables sur la durée</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Leurs questions et hésitations</h3>
+      <ul class="clean">
+        <li>« Est-ce compatible avec mes bouteilles / mon système SCAT, B-Safe, Phenomenex ? »</li>
+        <li>« Quel col et quel pas de vis pour mon matériel ? (GL45, GL40, GL38, DIN) »</li>
+        <li>« Combien de sorties me faut-il ? »</li>
+        <li>« Quelle durée de vie pour la soupape ou la cartouche ? »</li>
+        <li>« Quel délai, quel prix, et puis-je avoir du sur-mesure ? »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Ce qui les fait choisir un fournisseur</h3>
+      <ul class="clean">
+        <li>Compatibilité prouvée avec leur parc existant</li>
+        <li>Conseil technique rapide et humain</li>
+        <li>Devis clair, reçu très vite</li>
+        <li>Prix et délai de livraison</li>
+        <li>Capacité réelle au sur-mesure</li>
+        <li>Réassurance : fabricant français, brevets, références</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 OBJECTIFS DU SITE ============ -->
+<section class="section-principale">
+  <span class="eyebrow">03 — Objectifs du site</span>
+  <div class="section-title"><div class="title-bar"></div><h2>Ce que votre site doit accomplir, par ordre de priorité</h2></div>
+  <p class="lead">Votre modèle repose sur la demande de devis plutôt que sur la vente en ligne directe : c'est précisément là que se joue votre différence avec les concurrents allemands, et c'est ce que le site doit servir en priorité.</p>
+
+  <div class="grid grid-2">
+    <div class="card"><span class="num">1</span><h3>Générer des devis qualifiés</h3><p>Le cœur du dispositif : capter une demande de prix et y répondre par email dans l'heure qui suit. C'est votre promesse forte et différenciante.</p></div>
+    <div class="card"><span class="num">2</span><h3>Capter des coordonnées & convertir</h3><p>Transformer le devis en première commande, notamment grâce à la remise de 20 % offerte sur la 1ʳᵉ commande quand le visiteur laisse ses coordonnées.</p></div>
+    <div class="card"><span class="num">3</span><h3>Gagner en visibilité SEO sectorielle</h3><p>Se positionner sur les requêtes techniques (bouchons de sécurité HPLC, cartouches charbon actif, compatibilités marques) au niveau national et technique.</p></div>
+    <div class="card"><span class="num">4</span><h3>Rassurer et crédibiliser</h3><p>Mettre en avant la fabrication française, les brevets et les compatibilités pour lever l'hésitation avant la demande de devis.</p></div>
+    <div class="card"><span class="num">5</span><h3>Développer le réseau international</h3><p>Attirer distributeurs et partenaires OEM via une page et un message dédiés.</p></div>
+    <div class="card"><span class="num">6</span><h3>Entretenir la relation (nurturing)</h3><p>Newsletter « sécurité & conformité au labo » pour rester présent entre deux achats et fidéliser.</p></div>
+  </div>
+</section>
+
+<!-- ============ 04 ARBORESCENCE ============ -->
+<section class="section-principale">
+  <span class="eyebrow">04 — Arborescence</span>
+  <div class="section-title"><div class="title-bar"></div><h2>La structure de votre site</h2></div>
+  <p class="lead">Conformément à votre vision : la page « familles produits » remplace la table des matières. Au clic sur une famille, l'ensemble des produits se déploie dans l'ordre du catalogue. Une seule page par famille (jamais une page par produit individuel), des frameworks de persuasion adaptés et un potentiel SEO évalué.</p>
+
+  <div class="table-wrapper">
+  <table>
+    <thead>
+      <tr><th>Page</th><th>Framework</th><th>Mot-clé principal</th><th>Potentiel SEO</th><th>Statut</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Accueil</strong> — intro + barre de recherche, bandeau atouts défilant, bandeau promo</td><td>AIDA</td><td>bouchon de sécurité HPLC fabricant français</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+      <tr><td><strong>Familles produits</strong> (ex-table des matières, familles cliquables)</td><td>AIDA</td><td>accessoires sécurité solvants HPLC</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+      <tr><td>Bouchons Lab-Safe Caps (éluants HPLC)</td><td>PAS</td><td>bouchon sécurité éluant HPLC GL45</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+      <tr><td>Cartouches de charbon actif</td><td>PAS</td><td>cartouche charbon actif solvants HPLC</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+      <tr><td>Bouchons Waste Caps (solvants usagés)</td><td>PAS</td><td>bouchon bidon solvants usagés HPLC</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+      <tr><td>Innovations — ZE zéro émanations & PFAS</td><td>AIDA</td><td>cartouche charbon actif zéro émanations PFAS</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+      <tr><td>Adaptateurs & accessoires (raccords, écrous, tubes…)</td><td>BAB</td><td>adaptateur col GL45 raccord cannelé HPLC</td><td><span class="badge badge-moyen">Moyen</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+      <tr><td>Bidons & bacs de rétention</td><td>BAB</td><td>bidon solvants usagés bac de rétention labo</td><td><span class="badge badge-moyen">Moyen</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+      <tr><td><strong>Demande de devis</strong> (réponse &lt; 1 h + remise 1ʳᵉ commande)</td><td>AIDA</td><td>devis bouchon sécurité HPLC</td><td><span class="badge badge-moyen">Moyen</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+      <tr><td>À propos — Fabricant français & savoir-faire</td><td>BAB</td><td>fabricant français accessoires HPLC</td><td><span class="badge badge-moyen">Moyen</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+      <tr><td>Distributeurs & OEM</td><td>BAB</td><td>distributeur OEM sécurité solvants laboratoire</td><td><span class="badge badge-faible">Faible</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+      <tr><td>Blog — Conseils sécurité HPLC</td><td>PAS</td><td>sécurité solvants HPLC laboratoire</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+      <tr><td>Contact (signaux locaux : Saint-Germain-en-Laye)</td><td>—</td><td>contact Lab-Safe Caps Saint-Germain-en-Laye</td><td><span class="badge badge-faible">Faible</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:18px;font-size:13px;color:#6b7280;">Le SEO local reste secondaire ici : votre marché est national et international, c'est le SEO technique et sectoriel qui porte le plus de valeur. Une seule page à signal local (Contact) suffit, dans la limite recommandée de 2 pages locales.</p>
+</section>
+
+<!-- ============ 05 COCON SÉMANTIQUE ============ -->
+<section class="section-principale">
+  <span class="eyebrow">05 — Cocon sémantique</span>
+  <div class="section-title"><div class="title-bar"></div><h2>Organiser le contenu pour dominer votre niche</h2></div>
+  <p class="lead">Trois grappes thématiques structurent votre expertise autour du cycle de vie complet du solvant : on l'alimente, on le récupère, on assure la compatibilité. Chaque grappe renforce les autres et ramène vers la demande de devis.</p>
+
+  <div class="grid grid-3">
+    <div class="card">
+      <h3>Cluster 1 — Sécurité des éluants</h3>
+      <p><strong>Page pilier :</strong> Bouchons Lab-Safe Caps.</p>
+      <p style="margin-top:8px;">Articles satellites : soupape bec-de-canard, choix du col (GL45/GL40/GL38), quand changer la soupape, spécial PFAS. Relié au cluster Innovations.</p>
+    </div>
+    <div class="card">
+      <h3>Cluster 2 — Solvants usagés</h3>
+      <p><strong>Pages piliers :</strong> Waste Caps + Cartouches de charbon actif.</p>
+      <p style="margin-top:8px;">Articles satellites : neutralisation des émanations (KOH / H₂SO₄), zéro émanations, bidons & bacs de rétention, détecteur de niveau. Relié à Bidons & bacs.</p>
+    </div>
+    <div class="card">
+      <h3>Cluster 3 — Compatibilité & sur-mesure</h3>
+      <p><strong>Page pilier :</strong> Adaptateurs & accessoires.</p>
+      <p style="margin-top:8px;">Articles satellites : compatibilité SCAT / B-Safe / Phenomenex / Vap-Lock, pas de vis et raccords, configurations hors catalogue. Relié à toutes les familles.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Logique de maillage interne</h3>
+    <p>Chaque article de blog renvoie vers sa page famille pilier <em>et</em> vers la demande de devis. Les pages familles « alimentation » et « évacuation » se citent mutuellement pour couvrir l'ensemble du cycle du solvant : un visiteur venu pour un bouchon découvre naturellement les cartouches et les bidons. La page Compatibilité agit en carrefour, reliée à toutes les familles, car c'est la question n°1 de votre cible.</p>
+  </div>
+</section>
+
+<!-- ============ 06 TUNNEL DE CONVERSION ============ -->
+<section class="section-principale">
+  <span class="eyebrow">06 — Tunnel de conversion</span>
+  <div class="section-title"><div class="title-bar"></div><h2>Du premier clic au devis envoyé</h2></div>
+  <p class="lead">Quatre étapes pour accompagner le visiteur, avec à chaque fois la source de trafic, la page concernée et l'appel à l'action.</p>
+
+  <div class="grid grid-2">
+    <div class="card funnel-step">
+      <span class="num">1</span>
+      <h3>Découverte</h3>
+      <p><strong>Source :</strong> SEO sectoriel, recherches de compatibilité, bouche-à-oreille labo, salons (ex. analytica).</p>
+      <p><strong>Page :</strong> Accueil, articles de blog, pages familles.</p>
+      <p><strong>CTA :</strong> « Trouver le bouchon compatible avec mon système ».</p>
+    </div>
+    <div class="card funnel-step">
+      <span class="num">2</span>
+      <h3>Intérêt</h3>
+      <p><strong>Source :</strong> navigation dans les familles produits (table des matières interactive) + barre de recherche.</p>
+      <p><strong>Page :</strong> pages familles, déploiement des produits.</p>
+      <p><strong>CTA :</strong> « Demander un devis — réponse en moins d'une heure ».</p>
+    </div>
+    <div class="card funnel-step">
+      <span class="num">3</span>
+      <h3>Confiance</h3>
+      <p><strong>Source :</strong> bandeau d'atouts défilant, blocs de réassurance, logos de compatibilité.</p>
+      <p><strong>Page :</strong> À propos, sections preuve sur les pages familles.</p>
+      <p><strong>CTA :</strong> « Voir les compatibilités » / consulter les témoignages.</p>
+    </div>
+    <div class="card funnel-step">
+      <span class="num">4</span>
+      <h3>Action</h3>
+      <p><strong>Source :</strong> formulaire de devis qualifiant + pop-in remise.</p>
+      <p><strong>Page :</strong> Demande de devis.</p>
+      <p><strong>CTA :</strong> « Recevoir mon devis et ma remise de 20 % ».</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 LEVIERS DE CROISSANCE ============ -->
+<section class="section-principale">
+  <span class="eyebrow">07 — Leviers de croissance</span>
+  <div class="section-title"><div class="title-bar"></div><h2>Les outils marketing qui feront grandir Lab-Safe Caps</h2></div>
+  <p class="lead">Des leviers pensés pour votre métier de fabricant B2B et pour servir votre promesse : le devis rapide et la première commande.</p>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Lead magnet</h3>
+      <p>Un <strong>« Guide de compatibilité & sécurité des solvants HPLC »</strong> en PDF, et surtout un <strong>configurateur de bouchon</strong> (col, nombre de sorties, pas de vis, marque compatible) qui débouche directement sur le devis. Le catalogue FR / EN / ES est téléchargeable contre un email.</p>
+    </div>
+    <div class="card">
+      <h3>Prise de devis / RDV</h3>
+      <p>Formulaire de devis avec <strong>engagement de réponse sous 1 h</strong> et possibilité de rappel téléphonique. Option visio « conseil technique » pour les configurations complexes ou les projets OEM.</p>
+    </div>
+    <div class="card">
+      <h3>Preuve sociale</h3>
+      <p>Logos des compatibilités (SCAT, B-Safe, Phenomenex, Vap-Lock…), label <strong>« Fabricant Français »</strong>, brevet en cours (gamme ZE), avis de laboratoires, photos sur paillasse et chiffres clés : livraison 48 h, 20 à 30 % moins cher.</p>
+    </div>
+    <div class="card">
+      <h3>Formulaire qualifiant</h3>
+      <p>Champs adaptés au métier : marque / système, diamètre de col (GL45 / GL40 / GL38 / DIN), nombre de sorties, diamètres de tubes, application (éluant, usagé, PFAS, acides-bases), cadence, pays (export) et besoin OEM (oui / non).</p>
+    </div>
+    <div class="card">
+      <h3>Newsletter</h3>
+      <p>Angle <strong>« Sécurité & conformité au laboratoire »</strong> : bonnes pratiques de gestion des solvants, nouveautés produits, dates de salons. Utile, jamais intrusive.</p>
+    </div>
+    <div class="card">
+      <h3>Séquence email automatisée</h3>
+      <p>Adaptée au cycle B2B : J0 devis + remise → J+2 relance et conseil compatibilité → J+7 cas d'usage et innovation ZE → J+21 ouverture distributeur / OEM, puis nurturing mensuel via la newsletter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 DIRECTION VISUELLE ============ -->
+<section class="section-principale">
+  <span class="eyebrow">08 — Direction visuelle</span>
+  <div class="section-title"><div class="title-bar"></div><h2>L'univers graphique du site</h2></div>
+  <p class="lead">La direction visuelle s'appuie entièrement sur votre identité CPA Sciences — le logo losange au flacon et le dégradé de votre carte de visite et de votre catalogue. C'est cette élégance qui vous démarquera, sans rien emprunter à personne.</p>
+
+  <h3 style="margin-top:34px;">Palette de couleurs</h3>
+  <div class="swatch-grid">
+    <div class="swatch-item"><div class="swatch" style="background:#0E1A35;"></div><div class="swatch-name">Bleu nuit</div><div class="swatch-hex">#0E1A35</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#2D5BE0;"></div><div class="swatch-name">Bleu royal CPA</div><div class="swatch-hex">#2D5BE0</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#4059A1;"></div><div class="swatch-name">Cobalt</div><div class="swatch-hex">#4059A1</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#6FA5C5;"></div><div class="swatch-name">Bleu ciel</div><div class="swatch-hex">#6FA5C5</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#AAA9F2;"></div><div class="swatch-name">Lilas</div><div class="swatch-hex">#AAA9F2</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#34A853;"></div><div class="swatch-name">Vert innovation</div><div class="swatch-hex">#34A853</div></div>
+  </div>
+
+  <div class="block" style="margin-top:36px;">
+    <h3>Univers visuel</h3>
+    <div class="grid grid-2" style="margin-top:18px;">
+      <div class="card"><h3>Le dégradé signature</h3><p>Noir → bleu nuit → cobalt → lilas, repris de votre carte de visite, en fond de hero et de sections clés. C'est votre signature, immédiatement reconnaissable.</p></div>
+      <div class="card"><h3>Logo & rendus 3D produits</h3><p>Logo losange / flacon CPA en blanc sur les fonds sombres. Rendus 3D des produits sur fonds dégradés bleu-violet, dans la continuité directe du catalogue.</p></div>
+      <div class="card"><h3>Iconographie technique épurée</h3><p>Pictogrammes clairs (cols, sorties, pas de vis) et logos de compatibilité, pour répondre visuellement à la question n°1 de vos clients.</p></div>
+      <div class="card"><h3>Cartes & badges</h3><p>Cartes blanches arrondies aux ombres douces, badges « Nouveau », « Patent pending » et « Fabricant Français » pour rythmer la lecture et mettre en valeur vos atouts.</p></div>
+    </div>
+    <p style="margin-top:18px;font-size:13px;color:#6b7280;">Le vert est réservé aux gammes innovation (ZE zéro émanations, PFAS), exactement comme dans votre catalogue, pour les signaler d'un coup d'œil.</p>
+  </div>
+</section>
+
+<!-- ============ 09 IDÉES DE CONTENUS BLOG ============ -->
+<section class="section-principale">
+  <span class="eyebrow">09 — Idées de contenus blog</span>
+  <div class="section-title"><div class="title-bar"></div><h2>Des sujets qui répondent aux vraies questions de vos clients</h2></div>
+  <p class="lead">Chaque sujet nourrit le SEO sectoriel, alimente les clusters et ramène vers une demande de devis.</p>
+
+  <div class="table-wrapper">
+  <table>
+    <thead>
+      <tr><th>Titre accrocheur</th><th>Thématique</th><th>Intention de recherche</th><th>Priorité</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Quand faut-il remplacer la soupape de ventilation de votre bouchon HPLC ?</td><td>Entretien & sécurité</td><td>Informationnelle</td><td><span class="badge badge-prioritaire">Prioritaire</span></td></tr>
+      <tr><td>GL45, GL40, GL38, DIN : comment choisir le bon col pour vos bouteilles d'éluant</td><td>Guide compatibilité</td><td>Informationnelle / commerciale</td><td><span class="badge badge-prioritaire">Prioritaire</span></td></tr>
+      <tr><td>Analyse des PFAS : pourquoi un bouchon sans fluor change tout</td><td>Innovation & conformité</td><td>Informationnelle</td><td><span class="badge badge-prioritaire">Prioritaire</span></td></tr>
+      <tr><td>Bouchons compatibles SCAT, B-Safe, Phenomenex : s'adapter sans changer tout votre parc</td><td>Compatibilité</td><td>Commerciale</td><td><span class="badge badge-prioritaire">Prioritaire</span></td></tr>
+      <tr><td>Émanations de solvants : comprendre la technologie zéro émanations (KOH + H₂SO₄)</td><td>Sécurité & innovation</td><td>Informationnelle</td><td><span class="badge badge-important">Utile</span></td></tr>
+      <tr><td>Gérer ses solvants usagés en sécurité : bidons, bacs de rétention et détecteur de niveau</td><td>Bonnes pratiques</td><td>Informationnelle</td><td><span class="badge badge-important">Utile</span></td></tr>
+      <tr><td>Fabricant français vs grandes marques : qualité équivalente, 20 à 30 % moins cher</td><td>Positionnement</td><td>Commerciale</td><td><span class="badge badge-secondaire">Bonus</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<footer>
+  <span>Lab-Safe Caps</span>
+  <span class="center">Sécurité des solvants HPLC</span>
+  <span>Confidentiel — AR Digital</span>
+</footer>
+
+</body>
+</html>
