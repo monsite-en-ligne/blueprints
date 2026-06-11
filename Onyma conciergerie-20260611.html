@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Onyma Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a2e;
+    background: #F8F6F2;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0d2238 0%, #1B3A5C 55%, #2a5080 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: rgba(212,169,106,0.08);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: rgba(212,169,106,0.06);
+  }
+  .cover-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #D4A96A;
+    border: 1px solid rgba(212,169,106,0.4);
+    border-radius: 30px;
+    padding: 8px 22px;
+    margin-bottom: 36px;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 1px;
+    margin-bottom: 52px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(212,169,106,0.7);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+  .cover-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #D4A96A, transparent);
+    margin: 0 auto 48px;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 80px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+  section:nth-child(odd) {
+    background: #F8F6F2;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #D4A96A;
+    background: rgba(212,169,106,0.1);
+    border-radius: 20px;
+    padding: 6px 16px;
+    margin-bottom: 14px;
+  }
+
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #1B3A5C;
+    margin-bottom: 8px;
+    line-height: 1.25;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: #6b7280;
+    margin-bottom: 44px;
+    max-width: 600px;
+  }
+
+  /* CARDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .card-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1B3A5C;
+    margin-bottom: 10px;
+  }
+  .card-text {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.7;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #1B3A5C 0%, #2a5080 100%);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-box::after {
+    content: '';
+    position: absolute;
+    right: -30px; top: -30px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(212,169,106,0.1);
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.55;
+    position: relative;
+    z-index: 1;
+  }
+  .highlight-box span {
+    color: #D4A96A;
+  }
+
+  /* TAG LISTS */
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .tag {
+    background: rgba(27,58,92,0.07);
+    color: #1B3A5C;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .tag-gold {
+    background: rgba(212,169,106,0.12);
+    color: #9a6f2e;
+  }
+
+  /* ORDERED LIST */
+  .priority-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  .priority-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 14px;
+    color: #374151;
+  }
+  .priority-list li:last-child { border-bottom: none; }
+  .priority-num {
+    min-width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #1B3A5C;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    margin-top: 24px;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 14px;
+  }
+  thead tr {
+    background: #1B3A5C;
+  }
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+  }
+  tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td {
+    padding: 16px 20px;
+    color: #374151;
+    vertical-align: top;
+  }
+  tbody tr:hover { background: rgba(27,58,92,0.02); }
+  .td-page { font-weight: 600; color: #1B3A5C; }
+
+  /* SEO BADGES */
+  .badge-seo {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .badge-fort { background: #d1fae5; color: #065f46; }
+  .badge-moyen { background: #fef9c3; color: #713f12; }
+  .badge-faible { background: #f3f4f6; color: #6b7280; }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+  }
+  .tunnel-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-top: 3px solid #D4A96A;
+    position: relative;
+  }
+  .tunnel-step {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #D4A96A;
+    margin-bottom: 10px;
+  }
+  .tunnel-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #1B3A5C;
+    margin-bottom: 16px;
+  }
+  .tunnel-detail {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 6px;
+    line-height: 1.6;
+  }
+  .tunnel-detail strong {
+    color: #374151;
+    font-weight: 600;
+  }
+  .tunnel-cta {
+    display: inline-block;
+    margin-top: 14px;
+    background: rgba(27,58,92,0.07);
+    color: #1B3A5C;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* COULEURS */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  .swatch-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  }
+  .swatch-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+    text-align: center;
+  }
+  .swatch-hex {
+    font-size: 11px;
+    color: #9ca3af;
+    text-align: center;
+  }
+
+  /* MAILLAGE */
+  .maillage-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 16px;
+  }
+  .maillage-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 14px;
+    color: #374151;
+  }
+  .maillage-list li:last-child { border-bottom: none; }
+  .maillage-from {
+    font-weight: 600;
+    color: #1B3A5C;
+    white-space: nowrap;
+  }
+  .maillage-arrow {
+    color: #D4A96A;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .maillage-to {
+    color: #4b5563;
+  }
+
+  /* BLOG */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .blog-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .blog-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1B3A5C;
+    line-height: 1.4;
+    flex: 1;
+  }
+  .blog-meta {
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 4px;
+  }
+  .blog-meta span {
+    font-weight: 500;
+    color: #374151;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0d2238;
+    padding: 40px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  .footer-brand span { color: #D4A96A; }
+  .footer-mention {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+  }
+  .footer-ardigital {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* PRIORITY BLOG */
+  .badge-prio-p { background: #dbeafe; color: #1e40af; }
+  .badge-prio-m { background: #fef9c3; color: #713f12; }
+  .badge-prio-f { background: #f3f4f6; color: #6b7280; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    section { padding: 40px 24px; }
+    .cover { padding: 50px 24px; }
+    .cover-title { font-size: 40px; }
+    .cover-meta { gap: 24px; }
+    h2.section-title { font-size: 26px; }
+    .grid-2, .grid-3, .tunnel-grid { grid-template-columns: 1fr; }
+    .table-wrap { overflow-x: auto; }
+    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+    .highlight-box p { font-size: 18px; }
+    .palette-grid { gap: 16px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique · AR Digital</div>
+  <h1 class="cover-title">Onyma<br>Conciergerie</h1>
+  <div class="cover-divider"></div>
+  <p class="cover-subtitle">Document confidentiel de positionnement & stratégie web</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Cliente</span>
+      <span class="cover-meta-value">Marta Santa-Pau</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Location courte durée</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Zone</span>
+      <span class="cover-meta-value">Bordeaux & Métropole</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Identité & Différenciation</h2>
+  <p class="section-intro">Ce que Onyma est, dit et incarne face à ses concurrents.</p>
+
+  <div class="highlight-box">
+    <p>À Bordeaux et sa métropole, <span>Onyma</span> libère les propriétaires de toute contrainte locative — avec la chaleur d'un accueil à la bordelaise et la rigueur d'un service premium.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🧭</span>
+      <div class="card-title">Ligne directrice</div>
+      <div class="card-text">Accompagnement humain et local premium. Onyma ne délègue pas à distance — elle est sur le terrain, avec une présence réelle à chaque étape du séjour.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">✍️</span>
+      <div class="card-title">Ton éditorial</div>
+      <div class="card-text"><strong>Chaleureux · Confiant · Raffiné.</strong> Un registre qui inspire la confiance sans être froid, qui séduit sans être tapageur — comme Bordeaux elle-même.</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 24px;" class="grid-3">
+    <div class="card">
+      <span class="card-icon">🌍</span>
+      <div class="card-title">Ancrage local authentique</div>
+      <div class="card-text">30 ans à Bordeaux, une connaissance intime du territoire. Onyma n'est pas une franchise — c'est une conciergerie née d'ici, pour ici.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🫶</span>
+      <div class="card-title">Présence humaine réelle</div>
+      <div class="card-text">Pas de chatbots, pas d'automatisation froide. Marta et son équipe répondent, accueillent et interviennent en personne.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">✨</span>
+      <div class="card-title">Standards hôteliers accessibles</div>
+      <div class="card-text">Linge impeccable, ménage professionnel, contrôle qualité systématique — la rigueur d'un hôtel appliquée à la location privée.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">📍</span>
+      <div class="card-title">Couverture métropolitaine complète</div>
+      <div class="card-text">Rive gauche, rive droite, périphérie, vignoble — 30 km de rayon sans zones exclues, une rareté dans l'offre locale.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🎭</span>
+      <div class="card-title">Sensibilité culturelle unique</div>
+      <div class="card-text">Une fondatrice passée par la scène, formée à l'attention et au détail. Onyma transforme chaque bien en expérience mémorable.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client Cible</span>
+  <h2 class="section-title">Portrait du Propriétaire Idéal</h2>
+  <p class="section-intro">À qui s'adresse Onyma, et ce qui le convainc.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">👤</span>
+      <div class="card-title">Profil type</div>
+      <div class="card-text">35–65 ans. Investisseur local ou non-résident, propriétaire d'un ou plusieurs biens sur Bordeaux Métropole. Actif, peu disponible, soucieux de la rentabilité et de l'image de son bien.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">💡</span>
+      <div class="card-title">Motivations principales</div>
+      <div class="card-text">Générer des revenus passifs · Déléguer sans perdre le contrôle · Valoriser son patrimoine · Être rassuré par un interlocuteur local de confiance · Eviter les mauvaises surprises.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">⚠️</span>
+      <div class="card-title">Freins & objections</div>
+      <div class="card-text">Peur de la commission trop élevée · Méfiance envers l'impersonnalité des grandes franchises · Crainte de perdre le contrôle sur son bien · Mauvaises expériences passées.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">✅</span>
+      <div class="card-title">Critères de décision</div>
+      <div class="card-text">Transparence tarifaire · Réactivité · Présence terrain confirmée · Références et avis clients · Clarté des offres · Contact humain disponible avant de signer.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du Site</span>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+  <p class="section-intro">Classés par priorité stratégique pour Onyma.</p>
+
+  <ol class="priority-list">
+    <li>
+      <span class="priority-num">1</span>
+      <div><strong>Génération de leads qualifiés</strong> — Capturer les propriétaires en recherche active via formulaire d'estimation ou prise de RDV.</div>
+    </li>
+    <li>
+      <span class="priority-num">2</span>
+      <div><strong>Réassurance & crédibilité</strong> — Convaincre un visiteur sceptique que Onyma est fiable, humaine et professionnelle.</div>
+    </li>
+    <li>
+      <span class="priority-num">3</span>
+      <div><strong>SEO local Bordeaux</strong> — Être visible sur les requêtes "conciergerie Bordeaux", "gestion Airbnb Bordeaux" et requêtes géolocalisées.</div>
+    </li>
+    <li>
+      <span class="priority-num">4</span>
+      <div><strong>Prise de RDV / contact</strong> — Réduire le temps entre la découverte et la conversation avec Marta.</div>
+    </li>
+    <li>
+      <span class="priority-num">5</span>
+      <div><strong>Notoriété & positionnement premium</strong> — Installer Onyma comme la référence conciergerie haut de gamme sur la métropole bordelaise.</div>
+    </li>
+  </ol>
+</section>
+
+<!-- SECTION 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence du Site</span>
+  <h2 class="section-title">Structure & Stratégie SEO</h2>
+  <p class="section-intro">Une page par offre globale. Les services sont détaillés à l'intérieur des pages offre.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-page">Accueil</td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Bordeaux</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">Notre offre</td>
+          <td>PAS</td>
+          <td>conciergerie location courte durée Bordeaux</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">À propos — Marta & Onyma</td>
+          <td>BAB</td>
+          <td>conciergerie locale Bordeaux</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">Estimation gratuite</td>
+          <td>AIDA</td>
+          <td>estimation rentabilité location saisonnière Bordeaux</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">SEO Local — Bordeaux & Métropole</td>
+          <td>PAS</td>
+          <td>conciergerie Bordeaux Mérignac Pessac Lormont</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">SEO Local — Entre-deux-Mers & Vignoble</td>
+          <td>AIDA</td>
+          <td>conciergerie location saisonnière Entre-deux-Mers</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">Blog</td>
+          <td>—</td>
+          <td>gestion location saisonnière Bordeaux conseils</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">Contact</td>
+          <td>AIDA</td>
+          <td>conciergerie Bordeaux contact</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECTION 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon Sémantique</span>
+  <h2 class="section-title">Architecture de Contenu & Maillage</h2>
+  <p class="section-intro">3 clusters thématiques pour dominer les requêtes prioritaires.</p>
+
+  <div class="grid-3">
+    <div class="card">
+      <span class="card-icon">🏠</span>
+      <div class="card-title">Cluster 1 — Conciergerie & Services</div>
+      <div class="card-text">Pages : Accueil · Notre offre · Estimation gratuite. Cœur du site, mots-clés transactionnels, taux de conversion maximal.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">📍</span>
+      <div class="card-title">Cluster 2 — SEO Local Bordeaux</div>
+      <div class="card-text">Pages : SEO Bordeaux & Métropole · SEO Entre-deux-Mers. Mots-clés géolocalisés, capture du trafic local qualifié.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">📝</span>
+      <div class="card-title">Cluster 3 — Contenu & Expertise</div>
+      <div class="card-text">Pages : Blog · À propos. Longue traîne, requêtes informationnelles, autorité de domaine et confiance propriétaire.</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 36px;" class="card">
+    <div class="card-title" style="margin-bottom:16px;">Logique de maillage interne</div>
+    <ul class="maillage-list">
+      <li>
+        <span class="maillage-from">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Notre offre · Estimation gratuite · À propos · Pages locales</span>
+      </li>
+      <li>
+        <span class="maillage-from">Notre offre</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Estimation gratuite · Contact · Articles blog liés à la rentabilité</span>
+      </li>
+      <li>
+        <span class="maillage-from">Pages SEO locales</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Accueil · Notre offre · Estimation gratuite</span>
+      </li>
+      <li>
+        <span class="maillage-from">Articles blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Notre offre · Estimation gratuite · Pages locales concernées</span>
+      </li>
+      <li>
+        <span class="maillage-from">À propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Notre offre · Contact · Estimation gratuite</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECTION 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de Conversion</span>
+  <h2 class="section-title">Du Premier Clic à la Signature</h2>
+  <p class="section-intro">4 étapes claires pour transformer un visiteur en client Onyma.</p>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-card">
+      <div class="tunnel-step">Étape 1</div>
+      <h3>Découverte</h3>
+      <p class="tunnel-detail"><strong>Source :</strong> Google (SEO local), bouche-à-oreille, réseaux sociaux</p>
+      <p class="tunnel-detail"><strong>Page :</strong> Accueil / Page locale SEO</p>
+      <span class="tunnel-cta">→ En savoir plus</span>
+    </div>
+    <div class="tunnel-card">
+      <div class="tunnel-step">Étape 2</div>
+      <h3>Intérêt</h3>
+      <p class="tunnel-detail"><strong>Source :</strong> Navigation interne, article blog</p>
+      <p class="tunnel-detail"><strong>Page :</strong> Notre offre / Blog</p>
+      <span class="tunnel-cta">→ Télécharger le guide</span>
+    </div>
+    <div class="tunnel-card">
+      <div class="tunnel-step">Étape 3</div>
+      <h3>Confiance</h3>
+      <p class="tunnel-detail"><strong>Source :</strong> Page À propos, témoignages, avis</p>
+      <p class="tunnel-detail"><strong>Page :</strong> À propos / Témoignages</p>
+      <span class="tunnel-cta">→ Voir les avis</span>
+    </div>
+    <div class="tunnel-card">
+      <div class="tunnel-step">Étape 4</div>
+      <h3>Conversion</h3>
+      <p class="tunnel-detail"><strong>Source :</strong> CTA stratégiques sur toutes les pages</p>
+      <p class="tunnel-detail"><strong>Page :</strong> Estimation gratuite / Contact</p>
+      <span class="tunnel-cta">→ Estimer mon bien</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers Marketing Recommandés</span>
+  <h2 class="section-title">Outils de Croissance & Capture</h2>
+  <p class="section-intro">Des leviers concrets, adaptés à l'activité et à l'image d'Onyma.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🎁</span>
+      <div class="card-title">Lead Magnet</div>
+      <div class="card-text">"Guide du propriétaire bordelais : combien peut vraiment rapporter votre bien en location saisonnière ?" — PDF téléchargeable, 6 à 8 pages, avec simulateur de revenus.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">📅</span>
+      <div class="card-title">Prise de RDV</div>
+      <div class="card-text">Outil recommandé : <strong>Calendly</strong> (gratuit, intégrable facilement). Proposer un RDV découverte de 20 min offert pour dédramatiser le premier contact.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">⭐</span>
+      <div class="card-title">Preuve Sociale</div>
+      <div class="card-text">Avis Google vérifiés · Témoignages vidéo courts de propriétaires · Captures de notes Airbnb · Indicateur "X biens accompagnés à Bordeaux".</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">📋</span>
+      <div class="card-title">Formulaire Qualifiant</div>
+      <div class="card-text">Champs recommandés : Ville / quartier du bien · Type (appartement, maison, studio) · Situation actuelle (déjà en location ? géré seul ?) · Disponibilité pour un appel.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">💌</span>
+      <div class="card-title">Newsletter</div>
+      <div class="card-text">Angle éditorial : "La Lettre du Propriétaire Bordelais" — 1 fois par mois. Conseils saison, tendances tarifaires Bordeaux, coulisses Onyma, adresses recommandées.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction Visuelle & Éditoriale</span>
+  <h2 class="section-title">Identité Graphique & Univers</h2>
+  <p class="section-intro">Une direction visuelle qui reflète le premium, le local et la chaleur bordelaise.</p>
+
+  <div class="card" style="margin-bottom: 28px;">
+    <div class="card-title">Palette Chromatique</div>
+    <div class="palette-grid">
+      <div class="swatch-item">
+        <div class="swatch" style="background:#1B3A5C;"></div>
+        <div class="swatch-name">Bleu Nuit</div>
+        <div class="swatch-hex">#1B3A5C</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#D4A96A;"></div>
+        <div class="swatch-name">Sable Doré</div>
+        <div class="swatch-hex">#D4A96A</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#F8F6F2; border: 1px solid #e5e2dd;"></div>
+        <div class="swatch-name">Blanc Sable</div>
+        <div class="swatch-hex">#F8F6F2</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#2a5080;"></div>
+        <div class="swatch-name">Bleu Atlantique</div>
+        <div class="swatch-hex">#2A5080</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#1a1a2e;"></div>
+        <div class="swatch-name">Encre Profonde</div>
+        <div class="swatch-hex">#1A1A2E</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">📸</span>
+      <div class="card-title">Univers Visuel Recommandé</div>
+      <div class="card-text">Photos lumineuses des biens accompagnés · Portraits chaleureux de Marta en contexte local · Images de Bordeaux authentiques (quais, vignes, façades dorées) · Détails hôteliers (linge plié, lits soignés).</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🖋️</span>
+      <div class="card-title">Style Éditorial</div>
+      <div class="card-text">Titres en Playfair Display pour l'élégance · Corps de texte en Inter pour la lisibilité · Phrases courtes, actives, sans jargon technique · Tutoiement possible si le ton de Marta le porte naturellement.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles Blog Recommandés</span>
+  <h2 class="section-title">Stratégie de Contenu</h2>
+  <p class="section-intro">7 sujets pour asseoir l'expertise d'Onyma et capter le trafic organique.</p>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <div class="blog-card-header">
+        <h3>Combien peut rapporter votre appartement à Bordeaux en location courte durée ?</h3>
+        <span class="badge-seo badge-prio-p">Prioritaire</span>
+      </div>
+      <p class="blog-meta">Cluster : <span>Conciergerie & Services</span></p>
+      <p class="blog-meta">Intention : <span>Informationnelle / transactionnelle</span></p>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-header">
+        <h3>Conciergerie Airbnb à Bordeaux : comment bien choisir son prestataire ?</h3>
+        <span class="badge-seo badge-prio-p">Prioritaire</span>
+      </div>
+      <p class="blog-meta">Cluster : <span>Conciergerie & Services</span></p>
+      <p class="blog-meta">Intention : <span>Comparaison / décision</span></p>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-header">
+        <h3>Location saisonnière à Bordeaux : les quartiers les plus rentables en 2025</h3>
+        <span class="badge-seo badge-prio-p">Prioritaire</span>
+      </div>
+      <p class="blog-meta">Cluster : <span>SEO Local Bordeaux</span></p>
+      <p class="blog-meta">Intention : <span>Informationnelle / locale</span></p>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-header">
+        <h3>Gérer soi-même son Airbnb ou déléguer à une conciergerie : le vrai comparatif</h3>
+        <span class="badge-seo badge-prio-p">Prioritaire</span>
+      </div>
+      <p class="blog-meta">Cluster : <span>Conciergerie & Services</span></p>
+      <p class="blog-meta">Intention : <span>Comparaison / décision</span></p>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-header">
+        <h3>Optimiser son annonce Airbnb à Bordeaux : 7 erreurs courantes à éviter</h3>
+        <span class="badge-seo badge-moyen">Moyen</span>
+      </div>
+      <p class="blog-meta">Cluster : <span>Contenu & Expertise</span></p>
+      <p class="blog-meta">Intention : <span>Informationnelle / conseil</span></p>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-header">
+        <h3>Location saisonnière dans le vignoble bordelais : opportunités et conseils</h3>
+        <span class="badge-seo badge-moyen">Moyen</span>
+      </div>
+      <p class="blog-meta">Cluster : <span>SEO Local Bordeaux</span></p>
+      <p class="blog-meta">Intention : <span>Informationnelle / locale</span></p>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-header">
+        <h3>Tarification dynamique : comment maximiser vos revenus locatifs à Bordeaux selon les saisons ?</h3>
+        <span class="badge-seo badge-faible">Faible</span>
+      </div>
+      <p class="blog-meta">Cluster : <span>Contenu & Expertise</span></p>
+      <p class="blog-meta">Intention : <span>Informationnelle / technique</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Onyma <span>Conciergerie</span></div>
+  <div class="footer-mention">Document confidentiel — Usage interne uniquement</div>
+  <div class="footer-ardigital">Blueprint réalisé par AR Digital</div>
+</footer>
+
+</body>
+</html>
