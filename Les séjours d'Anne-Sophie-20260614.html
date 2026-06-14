@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Les séjours d'Anne-Sophie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a2e;
+    background: #f9f7f4;
+  }
+
+  /* COUVERTURE */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0d1b3e 0%, #1a3060 45%, #1c2e5a 70%, #0a1428 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,160,80,0.12) 0%, transparent 70%);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,160,80,0.08) 0%, transparent 70%);
+  }
+
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c4a050;
+    border: 1px solid rgba(196,160,80,0.4);
+    padding: 7px 18px;
+    border-radius: 30px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 1px;
+    margin-bottom: 56px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .cover-meta-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c4a050;
+  }
+
+  .cover-meta-value {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 400;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+
+  section:nth-child(odd) {
+    background: #f9f7f4;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+
+  .section-badge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c4a050;
+    background: rgba(196,160,80,0.1);
+    border: 1px solid rgba(196,160,80,0.25);
+    padding: 6px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: #0d1b3e;
+    line-height: 1.2;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #0d1b3e 0%, #1a3060 100%);
+    border-radius: 16px;
+    padding: 40px 48px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-box::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,160,80,0.15) 0%, transparent 70%);
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    color: #ffffff;
+    line-height: 1.6;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  .highlight-box span {
+    color: #c4a050;
+  }
+
+  /* CARDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0d1b3e;
+    margin-bottom: 8px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  .card-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c4a050;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  /* LISTE PROPRE */
+  .clean-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .clean-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    font-size: 14px;
+    color: #444;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .clean-list li:last-child { border-bottom: none; }
+
+  .clean-list li::before {
+    content: '—';
+    color: #c4a050;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* TABLEAU */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  thead tr {
+    background: #0d1b3e;
+  }
+
+  thead th {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    padding: 16px 20px;
+    text-align: left;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody tr:hover { background: rgba(196,160,80,0.04); }
+
+  tbody td {
+    padding: 16px 20px;
+    font-size: 13.5px;
+    color: #333;
+    vertical-align: top;
+  }
+
+  .badge-fort {
+    background: #d4f1e4;
+    color: #1a6640;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-moyen {
+    background: #fff3cd;
+    color: #7a5a00;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-faible {
+    background: #f0f0f0;
+    color: #666;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .tunnel-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-top: 3px solid #c4a050;
+  }
+
+  .tunnel-step {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #c4a050;
+    margin-bottom: 8px;
+  }
+
+  .tunnel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0d1b3e;
+    margin-bottom: 16px;
+  }
+
+  .tunnel-item {
+    margin-bottom: 10px;
+  }
+
+  .tunnel-item-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 2px;
+  }
+
+  .tunnel-item-value {
+    font-size: 13.5px;
+    color: #444;
+    line-height: 1.6;
+  }
+
+  .cta-tag {
+    display: inline-block;
+    background: rgba(196,160,80,0.12);
+    color: #8a6b1e;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-top: 10px;
+    border: 1px solid rgba(196,160,80,0.3);
+  }
+
+  /* PALETTE COULEURS */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 12px;
+  }
+
+  .color-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .color-square {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .color-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: #aaa;
+    text-align: center;
+  }
+
+  /* BLOG CARDS */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .blog-priority-p {
+    font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 20px;
+    background: #d4f1e4; color: #1a6640; letter-spacing: 0.5px;
+    display: inline-block; margin-bottom: 10px;
+  }
+
+  .blog-priority-m {
+    font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 20px;
+    background: #fff3cd; color: #7a5a00; letter-spacing: 0.5px;
+    display: inline-block; margin-bottom: 10px;
+  }
+
+  .blog-priority-f {
+    font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 20px;
+    background: #f0f0f0; color: #666; letter-spacing: 0.5px;
+    display: inline-block; margin-bottom: 10px;
+  }
+
+  .blog-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0d1b3e;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .blog-meta {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .blog-meta strong {
+    color: #333;
+    font-weight: 600;
+  }
+
+  /* MAILLAGE */
+  .maillage-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    font-size: 13.5px;
+    color: #444;
+  }
+
+  .maillage-row:last-child { border-bottom: none; }
+
+  .maillage-from {
+    font-weight: 600;
+    color: #0d1b3e;
+  }
+
+  .maillage-arrow {
+    color: #c4a050;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .maillage-to {
+    color: #555;
+  }
+
+  /* OBJECTIFS */
+  .objectif-rank {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: #0d1b3e;
+    color: #c4a050;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .objectif-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .objectif-row:last-child { border-bottom: none; }
+
+  .objectif-content strong {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #0d1b3e;
+    display: block;
+  }
+
+  .objectif-content span {
+    font-size: 13px;
+    color: #666;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0d1b3e;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 40px 40px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  footer strong {
+    color: #c4a050;
+    font-weight: 600;
+  }
+
+  .footer-divider {
+    width: 40px;
+    height: 1px;
+    background: rgba(196,160,80,0.4);
+    margin: 12px auto;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 38px; }
+    .cover-meta { gap: 24px; }
+    section { padding: 48px 24px; }
+    .section-title { font-size: 26px; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 17px; }
+    .grid-2, .grid-3, .grid-4, .tunnel-grid { grid-template-columns: 1fr; }
+    .section-header { flex-wrap: wrap; gap: 12px; }
+    .palette-grid { gap: 16px; }
+    .maillage-row { flex-direction: row; flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique</div>
+  <h1 class="cover-title">Les séjours<br>d'Anne-Sophie</h1>
+  <p class="cover-subtitle">Document de positionnement &amp; stratégie digitale</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Cliente</span>
+      <span class="cover-meta-value">Anne-Sophie Colin</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie locative</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Zone</span>
+      <span class="cover-meta-value">Alpilles &amp; alentours</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-header">
+    <span class="section-badge">01</span>
+    <h2 class="section-title">Positionnement</h2>
+  </div>
+
+  <div class="highlight-box">
+    <p>Une conciergerie <span>humaine et de proximité</span> qui prend soin de votre logement dans les Alpilles, avec la rigueur d'une professionnelle de santé et la douceur d'une voisine de confiance.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <span class="card-label">Ligne directrice</span>
+      <p class="card-text">Proximité terrain, accompagnement bienveillant, fiabilité sans faille. Anne-Sophie ne gère pas des biens — elle prend soin de logements comme si c'était les siens.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Ton éditorial</span>
+      <p class="card-text"><strong style="color:#0d1b3e;">Sincère · Élégant · Rassurant</strong><br><br>Un ton chaleureux sans excès commercial, sobre sans être froid. Comme une conversation de confiance entre personnes sérieuses.</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <div class="card-title">Une présence locale authentique</div>
+      <p class="card-text">Basée à Eyguières, Anne-Sophie connaît les réalités du terrain, des communes et des propriétaires de la zone Alpilles.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💛</div>
+      <div class="card-title">L'héritage du soin paramédical</div>
+      <p class="card-text">Son parcours soignant apporte une rigueur, une écoute et une bienveillance rares dans le secteur de la conciergerie.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✨</div>
+      <div class="card-title">Une offre claire, sans surprise</div>
+      <p class="card-text">Un taux unique à 20 %, une transparence totale sur les prestations, aucun jargon. Le propriétaire sait exactement ce qu'il reçoit.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <div class="card-title">Interlocutrice unique et disponible</div>
+      <p class="card-text">Anne-Sophie est l'unique point de contact : pas de rotation d'équipe, pas d'intermédiaire. La relation est directe et durable.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <div class="card-title">Ancrage dans un territoire de charme</div>
+      <p class="card-text">Les Alpilles, Saint-Rémy, Maussane : un terrain de jeu touristique premium qui valorise naturellement la qualité du service proposé.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-header">
+    <span class="section-badge">02</span>
+    <h2 class="section-title">Client cible</h2>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <span class="card-label">Profil type</span>
+      <p class="card-text">Propriétaire entre 40 et 65 ans, résidant à distance ou débordé par son activité principale. Possède une résidence secondaire ou un bien locatif dans les Alpilles. Cherche à déléguer en toute confiance à une personne sérieuse et locale.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Motivations principales</span>
+      <ul class="clean-list" style="margin-top: 4px;">
+        <li>Optimiser les revenus locatifs sans s'épuiser</li>
+        <li>Confier son bien à quelqu'un de fiable et proche</li>
+        <li>Avoir une interlocutrice réactive et disponible</li>
+        <li>Offrir une bonne expérience à ses voyageurs</li>
+        <li>Déléguer sans perdre le contrôle sur son logement</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-label">Freins &amp; objections</span>
+      <ul class="clean-list" style="margin-top: 4px;">
+        <li>« Et si je perds le contrôle de mon bien ? »</li>
+        <li>« 20 % c'est peut-être trop cher »</li>
+        <li>« Je ne connais pas cette conciergerie »</li>
+        <li>« Et si la personne n'est pas disponible ? »</li>
+        <li>« J'ai eu une mauvaise expérience par le passé »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-label">Critères de décision</span>
+      <ul class="clean-list" style="margin-top: 4px;">
+        <li>La proximité géographique réelle</li>
+        <li>La transparence des tarifs</li>
+        <li>La personnalité et les valeurs ressenties</li>
+        <li>Les avis ou recommandations locales</li>
+        <li>La clarté de l'offre et la facilité de contact</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-header">
+    <span class="section-badge">03</span>
+    <h2 class="section-title">Objectifs du site</h2>
+  </div>
+
+  <div class="card" style="max-width: 800px; margin: 0 auto;">
+    <div class="objectif-row">
+      <span class="objectif-rank">1</span>
+      <div class="objectif-content">
+        <strong>Réassurance &amp; confiance</strong>
+        <span>Convaincre un propriétaire hésitant qu'il peut confier son bien les yeux fermés.</span>
+      </div>
+    </div>
+    <div class="objectif-row">
+      <span class="objectif-rank">2</span>
+      <div class="objectif-content">
+        <strong>Génération de leads qualifiés</strong>
+        <span>Capter des demandes de propriétaires dans la zone Alpilles via formulaire ou prise de contact.</span>
+      </div>
+    </div>
+    <div class="objectif-row">
+      <span class="objectif-rank">3</span>
+      <div class="objectif-content">
+        <strong>SEO local</strong>
+        <span>Être visible sur Google pour les recherches "conciergerie Airbnb + ville" dans les communes cibles.</span>
+      </div>
+    </div>
+    <div class="objectif-row">
+      <span class="objectif-rank">4</span>
+      <div class="objectif-content">
+        <strong>Prise de contact directe</strong>
+        <span>Faciliter le premier échange via formulaire qualifiant ou email mis en avant.</span>
+      </div>
+    </div>
+    <div class="objectif-row">
+      <span class="objectif-rank">5</span>
+      <div class="objectif-content">
+        <strong>Notoriété locale</strong>
+        <span>Installer la marque "Les séjours d'Anne-Sophie" comme référence conciergerie dans les Alpilles.</span>
+      </div>
+    </div>
+    <div class="objectif-row">
+      <span class="objectif-rank">6</span>
+      <div class="objectif-content">
+        <strong>Conversion</strong>
+        <span>Transformer les visiteurs en prospects via une page offre claire et un CTA accessible à tout moment.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-header">
+    <span class="section-badge">04</span>
+    <h2 class="section-title">Arborescence du site</h2>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>Conciergerie location courte durée Alpilles</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos prestations</strong></td>
+          <td>PAS</td>
+          <td>Services conciergerie Airbnb Alpilles</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos</strong></td>
+          <td>BAB</td>
+          <td>Conciergerie locale de confiance Eyguières</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Zone d'intervention — Alpilles</strong></td>
+          <td>AIDA</td>
+          <td>Conciergerie Airbnb Saint-Rémy-de-Provence Maussane</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Zone d'intervention — Eyguières &amp; Grans</strong></td>
+          <td>AIDA</td>
+          <td>Conciergerie location courte durée Eyguières Grans</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>Conseils propriétaires Airbnb Provence</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact</strong></td>
+          <td>—</td>
+          <td>Contacter conciergerie Alpilles</td>
+          <td><span class="badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-header">
+    <span class="section-badge">05</span>
+    <h2 class="section-title">Cocon sémantique</h2>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <span class="card-label">Cluster 1 — Services conciergerie</span>
+      <div class="card-title" style="font-size: 15px; margin-bottom: 12px;">Autour de la page Prestations</div>
+      <ul class="clean-list">
+        <li>Coordination ménage &amp; blanchisserie</li>
+        <li>Suivi des réservations Airbnb / Booking</li>
+        <li>Création &amp; optimisation d'annonce</li>
+        <li>Accompagnement des voyageurs</li>
+        <li>Article blog : "Comment bien préparer son logement pour la saison"</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-label">Cluster 2 — SEO local Alpilles</span>
+      <div class="card-title" style="font-size: 15px; margin-bottom: 12px;">Autour des pages Zones d'intervention</div>
+      <ul class="clean-list">
+        <li>Page zone Alpilles (Saint-Rémy, Maussane, Paradou)</li>
+        <li>Page zone Eyguières &amp; Grans</li>
+        <li>Article blog : "Louer en courte durée dans les Alpilles : ce qu'il faut savoir"</li>
+        <li>Article blog : "Conciergerie ou faire soi-même : le vrai calcul"</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-label">Logique de maillage interne</span>
+    <div class="maillage-row">
+      <span class="maillage-from">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Prestations · À propos · Zones d'intervention · Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">Prestations</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Contact · Articles blog cluster 1 · Zones d'intervention</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">Zones d'intervention</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Prestations · Contact · Articles blog cluster 2</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Prestations · Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">Articles blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Prestations · Zones d'intervention · Contact</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-header">
+    <span class="section-badge">06</span>
+    <h2 class="section-title">Tunnel de conversion</h2>
+  </div>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-card">
+      <div class="tunnel-step">Étape 1</div>
+      <div class="tunnel-title">Découverte</div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Source de trafic</div>
+        <div class="tunnel-item-value">Google organique, bouche-à-oreille local, réseaux sociaux</div>
+      </div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Page concernée</div>
+        <div class="tunnel-item-value">Accueil · Pages zones d'intervention · Articles blog</div>
+      </div>
+      <span class="cta-tag">→ Découvrir les prestations</span>
+    </div>
+
+    <div class="tunnel-card">
+      <div class="tunnel-step">Étape 2</div>
+      <div class="tunnel-title">Intérêt</div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Source de trafic</div>
+        <div class="tunnel-item-value">Navigation interne, blog, page zone</div>
+      </div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Page concernée</div>
+        <div class="tunnel-item-value">Page Prestations · Page À propos</div>
+      </div>
+      <span class="cta-tag">→ En savoir plus sur Anne-Sophie</span>
+    </div>
+
+    <div class="tunnel-card">
+      <div class="tunnel-step">Étape 3</div>
+      <div class="tunnel-title">Confiance</div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Source de trafic</div>
+        <div class="tunnel-item-value">Retour sur le site, consultation approfondie</div>
+      </div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Page concernée</div>
+        <div class="tunnel-item-value">À propos · Avis · Détails de l'offre</div>
+      </div>
+      <span class="cta-tag">→ Je fais confiance à Anne-Sophie</span>
+    </div>
+
+    <div class="tunnel-card">
+      <div class="tunnel-step">Étape 4</div>
+      <div class="tunnel-title">Conversion</div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Source de trafic</div>
+        <div class="tunnel-item-value">CTA présents sur toutes les pages clés</div>
+      </div>
+      <div class="tunnel-item">
+        <div class="tunnel-item-label">Page concernée</div>
+        <div class="tunnel-item-value">Page Contact · Formulaire qualifiant</div>
+      </div>
+      <span class="cta-tag">→ Je prends contact maintenant</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-header">
+    <span class="section-badge">07</span>
+    <h2 class="section-title">Leviers marketing recommandés</h2>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">🎁</div>
+      <div class="card-title">Lead magnet</div>
+      <p class="card-text">Un guide PDF téléchargeable : <em>"5 étapes pour préparer votre logement Airbnb dans les Alpilles"</em>. Simple à produire, utile pour le propriétaire, et permet de capter une adresse email qualifiée.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📅</div>
+      <div class="card-title">Prise de rendez-vous</div>
+      <p class="card-text">Intégration de <strong>Calendly</strong> (gratuit) pour proposer un échange téléphonique de 20 minutes, sans engagement. Rassurant pour un primo-accédant à la délégation.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⭐</div>
+      <div class="card-title">Preuve sociale</div>
+      <p class="card-text">Avis Google mis en avant, témoignages propriétaires en format citation courte avec prénom et commune, et captures d'avis voyageurs sur les annonces suivies.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <div class="card-title">Formulaire qualifiant</div>
+      <p class="card-text">Champs recommandés : Prénom · Commune du bien · Type de bien (appartement / maison) · Situation actuelle (déjà sur Airbnb / pas encore) · Message libre.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✉️</div>
+      <div class="card-title">Newsletter</div>
+      <p class="card-text">Angle éditorial : <em>"La lettre des propriétaires Alpilles"</em> — conseils saisonniers, retours d'expérience, astuces pour maximiser les réservations en Provence.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-header">
+    <span class="section-badge">08</span>
+    <h2 class="section-title">Direction visuelle &amp; éditoriale</h2>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px; text-align: center;">
+    <span class="card-label" style="display: block; text-align: center; margin-bottom: 24px;">Palette couleurs</span>
+    <div class="palette-grid">
+      <div class="color-swatch">
+        <div class="color-square" style="background: #0d1b3e;"></div>
+        <div class="color-name">Bleu Marine</div>
+        <div class="color-hex">#0d1b3e</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-square" style="background: #c4a050;"></div>
+        <div class="color-name">Or doux</div>
+        <div class="color-hex">#c4a050</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-square" style="background: #f9f7f4;"></div>
+        <div class="color-name">Blanc cassé</div>
+        <div class="color-hex">#f9f7f4</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-square" style="background: #e8e0d4; border: 1px solid #ddd;"></div>
+        <div class="color-name">Lin clair</div>
+        <div class="color-hex">#e8e0d4</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-square" style="background: #3a3a3a;"></div>
+        <div class="color-name">Anthracite texte</div>
+        <div class="color-hex">#3a3a3a</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-label">Univers visuel recommandé</span>
+      <ul class="clean-list" style="margin-top: 4px;">
+        <li>Photographies lumineuses de villages des Alpilles et d'intérieurs de mas provençaux</li>
+        <li>Portraits chaleureux et naturels d'Anne-Sophie en situation (extérieur ensoleillé)</li>
+        <li>Typographie Playfair Display pour les titres — élégance sans ostentation</li>
+        <li>Icônes fines, minimalistes, dans le ton doré du logo</li>
+        <li>Larges espaces blancs cassé pour respiration et sobriété</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-label">À éviter absolument</span>
+      <ul class="clean-list" style="margin-top: 4px;">
+        <li>Fond sombre sur les pages de contenu</li>
+        <li>Animations ou effets visuels distrayants</li>
+        <li>Jargon marketing ou promesses exagérées</li>
+        <li>Photos de stock génériques (préférer des photos locales réelles)</li>
+        <li>Couleurs vives ou contrastes criards incompatibles avec l'élégance sobre</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-header">
+    <span class="section-badge">09</span>
+    <h2 class="section-title">Articles blog recommandés</h2>
+  </div>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <span class="blog-priority-p">Prioritaire</span>
+      <div class="blog-title">Louer son bien en courte durée dans les Alpilles : ce que tout propriétaire doit savoir</div>
+      <div class="blog-meta">
+        <strong>Cluster :</strong> SEO local Alpilles<br>
+        <strong>Intention :</strong> Informationnelle — propriétaire qui découvre la LCD en Provence
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <span class="blog-priority-p">Prioritaire</span>
+      <div class="blog-title">Conciergerie ou gestion en solo : quel est le vrai coût pour un propriétaire Airbnb ?</div>
+      <div class="blog-meta">
+        <strong>Cluster :</strong> Services conciergerie<br>
+        <strong>Intention :</strong> Comparaison — propriétaire qui hésite à déléguer
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <span class="blog-priority-p">Prioritaire</span>
+      <div class="blog-title">Comment optimiser son annonce Airbnb autour de Saint-Rémy-de-Provence ?</div>
+      <div class="blog-meta">
+        <strong>Cluster :</strong> Services conciergerie<br>
+        <strong>Intention :</strong> Pratique — propriétaire cherchant à améliorer ses réservations
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <span class="blog-priority-m">Moyen</span>
+      <div class="blog-title">Préparer son logement pour la saison estivale en Provence : la checklist complète</div>
+      <div class="blog-meta">
+        <strong>Cluster :</strong> Services conciergerie<br>
+        <strong>Intention :</strong> Pratique — propriétaire en phase de préparation active
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <span class="blog-priority-m">Moyen</span>
+      <div class="blog-title">Pourquoi les voyageurs adorent séjourner dans les Alpilles (et comment en profiter en tant que propriétaire)</div>
+      <div class="blog-meta">
+        <strong>Cluster :</strong> SEO local Alpilles<br>
+        <strong>Intention :</strong> Inspirationnelle — valorisation du territoire pour attirer propriétaires
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <span class="blog-priority-m">Moyen</span>
+      <div class="blog-title">Les 5 erreurs courantes des propriétaires Airbnb débutants (et comment les éviter)</div>
+      <div class="blog-meta">
+        <strong>Cluster :</strong> Services conciergerie<br>
+        <strong>Intention :</strong> Éducationnelle — propriétaire néophyte cherchant à se rassurer
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <span class="blog-priority-f">Secondaire</span>
+      <div class="blog-title">Conciergerie à Eyguières : comment trouver un prestataire de confiance près de chez vous ?</div>
+      <div class="blog-meta">
+        <strong>Cluster :</strong> SEO local Alpilles<br>
+        <strong>Intention :</strong> Transactionnelle locale — propriétaire en recherche active d'un prestataire
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <strong>Les séjours d'Anne-Sophie</strong> — Blueprint Stratégique
+  </div>
+  <div class="footer-divider"></div>
+  <div>Document confidentiel · Réalisé par AR Digital · Toute reproduction interdite</div>
+</footer>
+
+</body>
+</html>
