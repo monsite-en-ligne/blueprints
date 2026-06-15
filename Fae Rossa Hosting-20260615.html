@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Fae Rossa Hosting</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0d0d0d 0%, #1c0808 40%, #3a0e0e 70%, #da3f3f22 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 480px; height: 480px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #da3f3f18 0%, transparent 70%);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffde5912 0%, transparent 70%);
+  }
+
+  .cover-badge {
+    display: inline-block;
+    border: 1px solid #ffde5966;
+    color: #ffde59;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 50px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover h1 span {
+    color: #da3f3f;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: #ffffff99;
+    letter-spacing: 1.5px;
+    margin-bottom: 56px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-item .label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffffff44;
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-item .value {
+    display: block;
+    font-size: 13px;
+    color: #ffffff99;
+    font-weight: 400;
+  }
+
+  .cover-divider {
+    width: 1px;
+    height: 32px;
+    background: #ffffff22;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+
+  section:nth-child(odd) {
+    background: #f7f5f2;
+  }
+
+  .section-header {
+    margin-bottom: 48px;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #da3f3f;
+    margin-bottom: 12px;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: #0d0d0d;
+    line-height: 1.2;
+  }
+
+  .section-header p {
+    font-size: 15px;
+    color: #666;
+    margin-top: 10px;
+    max-width: 580px;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, #0d0d0d 0%, #1c0808 60%, #3a0e0e 100%);
+    border-radius: 18px;
+    padding: 44px 48px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-box::after {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #da3f3f20 0%, transparent 70%);
+  }
+
+  .highlight-box .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ffde59;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.5;
+    max-width: 680px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── CARDS ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .cards-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0ece8;
+  }
+
+  .card-icon {
+    width: 36px;
+    height: 36px;
+    background: #da3f3f12;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 16px;
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0d0d0d;
+    margin-bottom: 10px;
+  }
+
+  .card p, .card li {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  .card ul {
+    padding-left: 16px;
+  }
+
+  .card ul li {
+    margin-bottom: 4px;
+  }
+
+  /* ── TON ÉDITORIAL ── */
+  .ton-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .ton-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0ece8;
+    text-align: center;
+  }
+
+  .ton-card .adj {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #da3f3f;
+    margin-bottom: 6px;
+  }
+
+  .ton-card p {
+    font-size: 13px;
+    color: #777;
+  }
+
+  /* ── TABLEAU ── */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0ece8;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 14px;
+  }
+
+  thead tr {
+    background: #0d0d0d;
+  }
+
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffffff99;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #f0ece8;
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody td {
+    padding: 16px 20px;
+    vertical-align: top;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  tbody tr:hover {
+    background: #fdf9f7;
+  }
+
+  .badge-seo {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .badge-fort { background: #0d0d0d; color: #ffde59; }
+  .badge-moyen { background: #f5f0eb; color: #8a6a3a; }
+  .badge-faible { background: #f5f5f5; color: #999; }
+
+  .badge-framework {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    background: #da3f3f12;
+    color: #da3f3f;
+  }
+
+  /* ── COCON ── */
+  .cluster-block {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0ece8;
+    margin-bottom: 24px;
+  }
+
+  .cluster-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0d0d0d;
+    margin-bottom: 14px;
+  }
+
+  .cluster-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .cluster-tag {
+    background: #da3f3f10;
+    color: #da3f3f;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 13px;
+    border-radius: 20px;
+    border: 1px solid #da3f3f25;
+  }
+
+  .maillage-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 13px;
+    color: #555;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0ece8;
+  }
+
+  .maillage-row:last-child {
+    border-bottom: none;
+  }
+
+  .maillage-source {
+    font-weight: 600;
+    color: #0d0d0d;
+    background: #f5f5f5;
+    padding: 3px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  .maillage-arrow {
+    color: #da3f3f;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .maillage-dest {
+    color: #555;
+  }
+
+  /* ── TUNNEL ── */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0ece8;
+    overflow: hidden;
+  }
+
+  .tunnel-step {
+    padding: 32px 24px;
+    border-right: 1px solid #f0ece8;
+    position: relative;
+  }
+
+  .tunnel-step:last-child {
+    border-right: none;
+  }
+
+  .tunnel-step-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #da3f3f;
+    margin-bottom: 10px;
+  }
+
+  .tunnel-step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0d0d0d;
+    margin-bottom: 16px;
+  }
+
+  .tunnel-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 4px;
+    margin-top: 12px;
+  }
+
+  .tunnel-value {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.6;
+  }
+
+  .tunnel-cta {
+    display: inline-block;
+    margin-top: 14px;
+    background: #da3f3f;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── LEVIERS ── */
+  .levier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0ece8;
+  }
+
+  .levier-card .levier-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .levier-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0d0d0d;
+    margin-bottom: 10px;
+  }
+
+  .levier-card p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  /* ── DIRECTION VISUELLE ── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+
+  .palette-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+  }
+
+  .palette-hex {
+    font-size: 11px;
+    color: #aaa;
+    text-align: center;
+    font-family: monospace;
+  }
+
+  .visuel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  /* ── BLOG ── */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0ece8;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .blog-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0d0d0d;
+    line-height: 1.4;
+  }
+
+  .blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .blog-cluster {
+    font-size: 11px;
+    background: #0d0d0d10;
+    color: #444;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .blog-intention {
+    font-size: 12px;
+    color: #888;
+    font-style: italic;
+  }
+
+  .badge-prioritaire { background: #0d0d0d; color: #ffde59; }
+  .badge-moyen-blog { background: #f5f0eb; color: #8a6a3a; }
+  .badge-faible-blog { background: #f5f5f5; color: #999; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #0d0d0d;
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .footer-name span {
+    color: #da3f3f;
+  }
+
+  .footer-mention {
+    font-size: 11px;
+    color: #ffffff44;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .footer-ar {
+    font-size: 11px;
+    color: #ffffff33;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 38px; }
+    .cover-meta { gap: 20px; }
+    .cover-divider { display: none; }
+
+    section { padding: 48px 24px; }
+
+    .section-header h2 { font-size: 26px; }
+
+    .cards-grid,
+    .cards-grid-2,
+    .ton-grid,
+    .visuel-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-step {
+      border-right: none;
+      border-bottom: 1px solid #f0ece8;
+    }
+
+    .tunnel-step:last-child {
+      border-bottom: none;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    .maillage-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer {
+      flex-direction: column;
+      text-align: center;
+      padding: 32px 24px;
+    }
+
+    .highlight-box {
+      padding: 32px 24px;
+    }
+
+    .highlight-box p {
+      font-size: 18px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <span class="cover-badge">Blueprint Stratégique</span>
+  <h1>Fae Rossa<br><span>Hosting</span></h1>
+  <p class="cover-subtitle">Document de stratégie digitale — Confidentiel</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="label">Cliente</span>
+      <span class="value">Agnès Jobard</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="label">Secteur</span>
+      <span class="value">Conciergerie LCD</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="label">Territoire</span>
+      <span class="value">Jonzac — Haute-Saintonge</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-header">
+    <span class="section-badge">01 — Positionnement</span>
+    <h2>L'identité stratégique de Fae Rossa Hosting</h2>
+    <p>Ce que vous incarnez, comment vous parlez, pourquoi les propriétaires vous choisissent.</p>
+  </div>
+
+  <div class="highlight-box">
+    <span class="label">Promesse de valeur principale</span>
+    <p>« Fae Rossa Hosting prend soin de votre bien comme si c'était le sien — pour que chaque séjour en Haute-Saintonge devienne une expérience mémorable et chaque propriétaire retrouve sa sérénité. »</p>
+  </div>
+
+  <div class="cards-grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <h3>Ligne directrice de communication</h3>
+      <p>Accompagnement local premium, proximité humaine et rigueur terrain. Chaque message traduit l'engagement d'une partenaire de confiance, pas d'un simple prestataire.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✍️</div>
+      <h3>Phrase de positionnement éditorial</h3>
+      <p>Un ton qui allie l'élégance d'un service haut de gamme, la chaleur d'une présence locale et la clarté d'une experte terrain — pour rassurer sans jamais survendre.</p>
+    </div>
+  </div>
+
+  <div class="ton-grid" style="margin-bottom: 40px;">
+    <div class="ton-card">
+      <div class="adj">Élégant</div>
+      <p>Vocabulaire soigné, formulations raffinées, jamais clinquant</p>
+    </div>
+    <div class="ton-card">
+      <div class="adj">Rassurant</div>
+      <p>Chaque mot construit la confiance, lève les doutes implicites</p>
+    </div>
+    <div class="ton-card">
+      <div class="adj">Ancré</div>
+      <p>Références locales, connaissance du territoire, authenticité Saintonge</p>
+    </div>
+  </div>
+
+  <div class="section-header" style="margin-bottom: 24px;">
+    <h2 style="font-size: 22px;">Piliers de différenciation</h2>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <h3>Ancrage local fort</h3>
+      <p>Implantée au cœur de Jonzac et de la Haute-Saintonge, Fae Rossa Hosting connaît le territoire, les voyageurs et les contraintes locales mieux que quiconque.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔍</div>
+      <h3>Exigence du détail</h3>
+      <p>Un contrôle qualité systématique après chaque passage, une coordination rigoureuse du ménage et de la blanchisserie : zéro approximation.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h3>Réactivité opérationnelle</h3>
+      <p>Disponibilité réelle pour les voyageurs et les propriétaires, coordination des imprévus sans délai ni stress pour le propriétaire.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <h3>Relation sur-mesure</h3>
+      <p>Chaque propriétaire bénéficie d'un suivi personnalisé et d'une communication transparente. Pas de formule standardisée.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📸</div>
+      <h3>Valorisation dès le départ</h3>
+      <p>Photos professionnelles offertes à l'entrée, optimisation de l'annonce et diffusion multi-plateformes : le bien est mis en valeur dès le premier jour.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-header">
+    <span class="section-badge">02 — Client Cible</span>
+    <h2>Le propriétaire idéal de Fae Rossa Hosting</h2>
+    <p>Comprendre précisément à qui s'adresse le site pour adapter chaque message.</p>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon">👤</div>
+      <h3>Profil type</h3>
+      <p>Propriétaire de 38 à 65 ans, résidant en Haute-Saintonge ou hors région. Possède un bien secondaire ou un logement locatif, souvent acquis par héritage ou investissement. Actif, peu disponible au quotidien, soucieux de valoriser son patrimoine.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💡</div>
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Déléguer sans perdre le contrôle</li>
+        <li>Générer des revenus complémentaires fiables</li>
+        <li>Protéger et valoriser son bien</li>
+        <li>Offrir une expérience de qualité aux voyageurs</li>
+        <li>Gagner du temps et de la sérénité</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">🚧</div>
+      <h3>Freins et objections</h3>
+      <ul>
+        <li>Peur de perdre la maîtrise de son logement</li>
+        <li>Interrogation sur la commission (20 % justifiés ?)</li>
+        <li>Doute sur la qualité du ménage et du suivi</li>
+        <li>Méfiance envers un prestataire inconnu en local</li>
+        <li>Complexité perçue du passage en LCD</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">✅</div>
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Présence locale et réactivité prouvée</li>
+        <li>Transparence sur les services inclus</li>
+        <li>Preuves sociales (avis, témoignages)</li>
+        <li>Clarté tarifaire sans surprise</li>
+        <li>Sentiment de confiance humaine</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-header">
+    <span class="section-badge">03 — Objectifs du Site</span>
+    <h2>Ce que le site doit accomplir, dans l'ordre</h2>
+    <p>Hiérarchie des objectifs pour orienter toutes les décisions de conception et de contenu.</p>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon">🥇</div>
+      <h3>1 — Génération de leads</h3>
+      <p>Capturer les coordonnées de propriétaires qualifiés via des formulaires et un lead magnet adapté. Priorité absolue.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🥈</div>
+      <h3>2 — Réassurance</h3>
+      <p>Lever les doutes des propriétaires hésitants grâce aux preuves sociales, à la transparence des services et au ton rassurant.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🥉</div>
+      <h3>3 — Conversion / Prise de RDV</h3>
+      <p>Transformer les visiteurs intéressés en rendez-vous téléphoniques ou visites de découverte via des CTA clairs et un outil de réservation.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔎</div>
+      <h3>4 — SEO local</h3>
+      <p>Être visible sur Google pour les requêtes de propriétaires en Haute-Saintonge cherchant une conciergerie ou un accompagnement LCD.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌐</div>
+      <h3>5 — Notoriété</h3>
+      <p>Asseoir la réputation de Fae Rossa Hosting sur le territoire via un site professionnel, cohérent et mémorable.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📬</div>
+      <h3>6 — Nurturing</h3>
+      <p>Maintenir le contact avec les prospects non encore convertis via newsletter et contenu de valeur régulier.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-header">
+    <span class="section-badge">04 — Arborescence du Site</span>
+    <h2>Structure des pages et stratégie SEO associée</h2>
+    <p>Une page par offre globale. Les services sont détaillés à l'intérieur. Maximum 2 pages locales SEO.</p>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td>conciergerie Jonzac location courte durée</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Services</strong><br><small style="color:#999">Détail complet de l'offre à 20 % TTC</small></td>
+          <td><span class="badge-framework">PAS</span></td>
+          <td>conciergerie location courte durée Haute-Saintonge</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À Propos</strong></td>
+          <td><span class="badge-framework">BAB</span></td>
+          <td>conciergerie Agnès Jobard Jonzac</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>Le Territoire</strong><br><small style="color:#999">Haute-Saintonge, attraits locaux, voyageurs</small></td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td>location saisonnière Jonzac Haute-Saintonge</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie Jonzac</strong><br><small style="color:#999">Page locale SEO #1</small></td>
+          <td><span class="badge-framework">PAS</span></td>
+          <td>conciergerie Jonzac propriétaires</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie Haute-Saintonge</strong><br><small style="color:#999">Page locale SEO #2</small></td>
+          <td><span class="badge-framework">PAS</span></td>
+          <td>conciergerie location courte durée Haute-Saintonge</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td>conseils location courte durée propriétaire</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / RDV</strong></td>
+          <td><span class="badge-framework">BAB</span></td>
+          <td>conciergerie location Jonzac contact</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-header">
+    <span class="section-badge">05 — Cocon Sémantique</span>
+    <h2>Clusters thématiques et maillage interne</h2>
+    <p>Logique de liens entre pages pour renforcer l'autorité SEO du site et guider l'utilisateur.</p>
+  </div>
+
+  <div class="cluster-block">
+    <h3>Cluster 1 — Offre & Services propriétaires</h3>
+    <div class="cluster-tags">
+      <span class="cluster-tag">Nos Services</span>
+      <span class="cluster-tag">Accueil</span>
+      <span class="cluster-tag">Contact / RDV</span>
+      <span class="cluster-tag">Page locale Jonzac</span>
+      <span class="cluster-tag">Page locale Haute-Saintonge</span>
+    </div>
+    <p style="font-size:13px; color:#666;">Ce cluster capte les propriétaires en phase de décision. La page Services est le hub central ; les pages locales alimentent les requêtes géolocalisées et renvoient vers Services et Contact.</p>
+  </div>
+
+  <div class="cluster-block">
+    <h3>Cluster 2 — Territoire & Expérience voyageur</h3>
+    <div class="cluster-tags">
+      <span class="cluster-tag">Le Territoire</span>
+      <span class="cluster-tag">Blog (articles locaux)</span>
+      <span class="cluster-tag">À Propos</span>
+    </div>
+    <p style="font-size:13px; color:#666;">Ce cluster renforce l'ancrage local d'Agnès et la légitimité de la conciergerie. Il attire des recherches informatives et oriente vers l'offre de services.</p>
+  </div>
+
+  <div class="cluster-block">
+    <h3>Maillage interne — Logique de liens</h3>
+    <div class="maillage-row">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services, Le Territoire, Contact / RDV</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Nos Services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact / RDV, À Propos, Page locale Jonzac</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Pages locales (×2)</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services, Contact / RDV</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services, Le Territoire, Contact / RDV</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Le Territoire</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services, À Propos</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">À Propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services, Contact / RDV</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-header">
+    <span class="section-badge">06 — Tunnel de Conversion</span>
+    <h2>Du premier clic au rendez-vous signé</h2>
+    <p>4 étapes pour transformer un visiteur inconnu en propriétaire partenaire de Fae Rossa Hosting.</p>
+  </div>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 01</div>
+      <h3>Découverte</h3>
+      <div class="tunnel-label">Source de trafic</div>
+      <div class="tunnel-value">Google (SEO local), bouche-à-oreille, réseaux sociaux</div>
+      <div class="tunnel-label">Page concernée</div>
+      <div class="tunnel-value">Accueil / Pages locales SEO</div>
+      <span class="tunnel-cta">Lire la promesse</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 02</div>
+      <h3>Intérêt</h3>
+      <div class="tunnel-label">Source de trafic</div>
+      <div class="tunnel-value">Navigation interne, blog, lead magnet</div>
+      <div class="tunnel-label">Page concernée</div>
+      <div class="tunnel-value">Nos Services / Le Territoire / Blog</div>
+      <span class="tunnel-cta">Télécharger le guide</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 03</div>
+      <h3>Confiance</h3>
+      <div class="tunnel-label">Source de trafic</div>
+      <div class="tunnel-value">Retour sur le site, email nurturing</div>
+      <div class="tunnel-label">Page concernée</div>
+      <div class="tunnel-value">À Propos / Témoignages / Blog</div>
+      <span class="tunnel-cta">Voir les avis</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 04</div>
+      <h3>Conversion</h3>
+      <div class="tunnel-label">Source de trafic</div>
+      <div class="tunnel-value">CTA directs sur toutes les pages</div>
+      <div class="tunnel-label">Page concernée</div>
+      <div class="tunnel-value">Contact / Formulaire qualifiant / RDV</div>
+      <span class="tunnel-cta">Prendre RDV</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-header">
+    <span class="section-badge">07 — Leviers Marketing Recommandés</span>
+    <h2>Les outils pour convertir et fidéliser</h2>
+    <p>Actionnables dès le lancement du site pour maximiser le retour sur investissement.</p>
+  </div>
+
+  <div class="cards-grid">
+    <div class="levier-card">
+      <div class="levier-icon">🎁</div>
+      <h3>Lead Magnet</h3>
+      <p>« Guide gratuit : 7 étapes pour lancer sa location saisonnière en Haute-Saintonge sans stress » — PDF téléchargeable en échange de l'email. Positionne Agnès comme experte locale.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📅</div>
+      <h3>Prise de RDV</h3>
+      <p>Outil recommandé : <strong>Calendly</strong> (gratuit, intégrable) ou <strong>TidyCal</strong>. Créneaux dédiés "Appel découverte propriétaire — 20 min" pour qualifier sans friction.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">⭐</div>
+      <h3>Preuve Sociale</h3>
+      <p>Collecte d'avis Google et témoignages écrits de propriétaires partenaires. Encadrés visuels mis en avant sur la page Accueil et page Services. Section "Ils nous font confiance".</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📋</div>
+      <h3>Formulaire Qualifiant</h3>
+      <p>Champs recommandés : Prénom / Commune du bien / Type de logement / Disponibilité annuelle / Situation actuelle (déjà en LCD ou non) / Message libre.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📧</div>
+      <h3>Newsletter</h3>
+      <p>Angle éditorial : « La lettre du propriétaire serin » — conseils pratiques LCD, actualités locales Haute-Saintonge, retours terrain d'Agnès. Fréquence : 1 fois/mois.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-header">
+    <span class="section-badge">08 — Direction Visuelle & Éditoriale</span>
+    <h2>L'univers graphique de Fae Rossa Hosting</h2>
+    <p>Palette issue du logo du client. Style élégant, classique, chic — inspiré de conciergepc.com et conciergerieduneetvigne.fr.</p>
+  </div>
+
+  <div class="palette-grid">
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#da3f3f;"></div>
+      <div class="palette-name">Rouge Fae</div>
+      <div class="palette-hex">#da3f3f</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#ffde59; border: 1px solid #e8c83a;"></div>
+      <div class="palette-name">Or Soleil</div>
+      <div class="palette-hex">#ffde59</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#000000;"></div>
+      <div class="palette-name">Noir Absolu</div>
+      <div class="palette-hex">#000000</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#ffffff; border: 1px solid #e5e5e5;"></div>
+      <div class="palette-name">Blanc Pur</div>
+      <div class="palette-hex">#ffffff</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#f5f0eb;"></div>
+      <div class="palette-name">Crème Douce</div>
+      <div class="palette-hex">#f5f0eb</div>
+    </div>
+  </div>
+
+  <div class="visuel-grid">
+    <div class="card">
+      <div class="card-icon">🖼️</div>
+      <h3>Photographie d'ambiance</h3>
+      <p>Intérieurs lumineux, chaleureux et soignés. Paysages de Saintonge, vignobles, thermes de Jonzac. Photos en lumière naturelle, teintes chaudes.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✒️</div>
+      <h3>Typographie</h3>
+      <p>Playfair Display pour les titres (serif élégant, connotation prestige). Inter pour le corps de texte. Aucune police décorative excessive.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📐</div>
+      <h3>Mise en page</h3>
+      <p>Grands espaces blancs, sections aérées. Sections sombres (#000) alternées avec sections claires (#fff / #f5f0eb) pour rythmer la lecture.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔴</div>
+      <h3>Accents colorés</h3>
+      <p>Le rouge (#da3f3f) pour les CTA, badges et highlights. L'or (#ffde59) pour les éléments de mise en valeur sur fond sombre. Utilisation sobre, jamais saturée.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <h3>Icônes & éléments graphiques</h3>
+      <p>Pictogrammes fins en ligne (stroke icons). Séparateurs graphiques discrets. Éventuellement un motif subtil inspiré de la Saintonge (feuillage de vigne, motif roman).</p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-header">
+    <span class="section-badge">09 — Articles Blog Recommandés</span>
+    <h2>Stratégie de contenu pour attirer et convaincre</h2>
+    <p>7 articles prioritaires pour les 6 premiers mois de publication. Chaque article renforce le SEO et nourrit la relation propriétaire.</p>
+  </div>
+
+  <div class="cards-grid">
+    <div class="blog-card">
+      <h3>Pourquoi confier sa location saisonnière à une conciergerie à Jonzac ?</h3>
+      <div class="blog-meta">
+        <span class="blog-cluster">Offre & Services</span>
+        <span class="badge-seo badge-prioritaire" style="font-size:11px; padding:3px 10px; border-radius:20px;">Prioritaire</span>
+      </div>
+      <div class="blog-intention">Informationnelle — propriétaire qui hésite à déléguer</div>
+    </div>
+    <div class="blog-card">
+      <h3>Location courte durée en Haute-Saintonge : les erreurs à éviter en tant que propriétaire</h3>
+      <div class="blog-meta">
+        <span class="blog-cluster">Offre & Services</span>
+        <span class="badge-seo badge-prioritaire" style="font-size:11px; padding:3px 10px; border-radius:20px;">Prioritaire</span>
+      </div>
+      <div class="blog-intention">Informationnelle — propriétaire débutant en LCD</div>
+    </div>
+    <div class="blog-card">
+      <h3>Jonzac et ses thermes : pourquoi votre bien attire des voyageurs toute l'année</h3>
+      <div class="blog-meta">
+        <span class="blog-cluster">Territoire & Expérience</span>
+        <span class="badge-seo badge-prioritaire" style="font-size:11px; padding:3px 10px; border-radius:20px;">Prioritaire</span>
+      </div>
+      <div class="blog-intention">Informationnelle — propriétaire cherchant à évaluer la demande locale</div>
+    </div>
+    <div class="blog-card">
+      <h3>Combien peut rapporter votre logement en location courte durée à Jonzac ?</h3>
+      <div class="blog-meta">
+        <span class="blog-cluster">Offre & Services</span>
+        <span class="badge-seo badge-prioritaire" style="font-size:11px; padding:3px 10px; border-radius:20px;">Prioritaire</span>
+      </div>
+      <div class="blog-intention">Transactionnelle — propriétaire en phase d'évaluation financière</div>
+    </div>
+    <div class="blog-card">
+      <h3>La checklist du propriétaire serein : tout ce qu'une conciergerie prend en charge pour vous</h3>
+      <div class="blog-meta">
+        <span class="blog-cluster">Offre & Services</span>
+        <span class="badge-seo badge-moyen" style="font-size:11px; padding:3px 10px; border-radius:20px; background:#f5f0eb; color:#8a6a3a;">Moyen</span>
+      </div>
+      <div class="blog-intention">Informationnelle — propriétaire qui veut comparer l'offre</div>
+    </div>
+    <div class="blog-card">
+      <h3>Haute-Saintonge : les meilleurs coins à découvrir pour vos voyageurs (guide local 2025)</h3>
+      <div class="blog-meta">
+        <span class="blog-cluster">Territoire & Expérience</span>
+        <span class="badge-seo badge-moyen" style="font-size:11px; padding:3px 10px; border-radius:20px; background:#f5f0eb; color:#8a6a3a;">Moyen</span>
+      </div>
+      <div class="blog-intention">Informationnelle — voyageur et propriétaire curieux du territoire</div>
+    </div>
+    <div class="blog-card">
+      <h3>Comment bien préparer son logement pour la saison estivale en Saintonge ?</h3>
+      <div class="blog-meta">
+        <span class="blog-cluster">Offre & Services</span>
+        <span class="badge-seo badge-faible" style="font-size:11px; padding:3px 10px; border-radius:20px; background:#f5f5f5; color:#999;">Faible</span>
+      </div>
+      <div class="blog-intention">Informationnelle — propriétaire souhaitant optimiser son bien</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-name">Fae Rossa <span>Hosting</span></div>
+  <div class="footer-mention">Document confidentiel — Usage exclusif d'Agnès Jobard</div>
+  <div class="footer-ar">Produit par AR Digital © 2025</div>
+</footer>
+
+</body>
+</html>
