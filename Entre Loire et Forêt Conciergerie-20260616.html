@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Entre Loire et Forêt Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2c2c2c;
+    background: #faf8f5;
+  }
+
+  /* COUVERTURE */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1f3a2b 0%, #2d5240 40%, #3b6b52 70%, #ad8330 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(173,131,48,0.15);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: rgba(164,183,146,0.12);
+  }
+
+  .cover-badge {
+    display: inline-block;
+    background: rgba(173,131,48,0.3);
+    border: 1px solid rgba(173,131,48,0.6);
+    color: #f3e6e1;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 30px;
+    margin-bottom: 40px;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    max-width: 800px;
+  }
+
+  .cover-subtitle {
+    font-size: 17px;
+    color: rgba(243,230,225,0.85);
+    font-weight: 300;
+    margin-bottom: 56px;
+    letter-spacing: 0.5px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(173,131,48,0.9);
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-value {
+    font-size: 14px;
+    color: #f3e6e1;
+    font-weight: 500;
+  }
+
+  .cover-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(243,230,225,0.25);
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 80px 60px;
+  }
+
+  .section:nth-child(even) {
+    background: #ffffff;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ad8330;
+    background: rgba(173,131,48,0.1);
+    border: 1px solid rgba(173,131,48,0.25);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #1f3a2b;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: #6b6b6b;
+    max-width: 680px;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  /* PROMESSE HIGHLIGHT */
+  .highlight-box {
+    background: linear-gradient(135deg, #1f3a2b 0%, #2d5240 100%);
+    border-radius: 18px;
+    padding: 44px 48px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-box::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(173,131,48,0.15);
+  }
+
+  .highlight-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ad8330;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .highlight-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #f3e6e1;
+    line-height: 1.6;
+    font-weight: 600;
+    max-width: 780px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* CARDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    page-break-inside: avoid;
+  }
+
+  .card-icon {
+    font-size: 26px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f3a2b;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .card-text {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  /* TAG */
+  .tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 3px 3px 3px 0;
+  }
+
+  .tag-green { background: rgba(31,58,43,0.1); color: #1f3a2b; }
+  .tag-gold { background: rgba(173,131,48,0.12); color: #7a5e22; }
+  .tag-warm { background: rgba(243,230,225,0.8); color: #8a5a4a; border: 1px solid rgba(184,140,84,0.3); }
+
+  /* TABLEAU */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 14px;
+  }
+
+  thead {
+    background: #1f3a2b;
+    color: #f3e6e1;
+  }
+
+  thead th {
+    padding: 16px 18px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: background 0.2s;
+  }
+
+  tbody tr:hover { background: rgba(243,230,225,0.3); }
+
+  tbody td {
+    padding: 15px 18px;
+    color: #333;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  /* BADGES SEO */
+  .badge-fort {
+    display: inline-block;
+    background: rgba(31,58,43,0.12);
+    color: #1f3a2b;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  .badge-moyen {
+    display: inline-block;
+    background: rgba(173,131,48,0.15);
+    color: #7a5e22;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  .badge-faible {
+    display: inline-block;
+    background: rgba(164,183,146,0.2);
+    color: #4a6040;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 0;
+    padding: 28px 24px;
+    border: 1px solid rgba(0,0,0,0.06);
+    position: relative;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .tunnel-step:first-child { border-radius: 14px 0 0 14px; }
+  .tunnel-step:last-child { border-radius: 0 14px 14px 0; }
+
+  .tunnel-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: rgba(173,131,48,0.2);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .tunnel-step-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1f3a2b;
+    margin-bottom: 16px;
+  }
+
+  .tunnel-detail {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 6px;
+  }
+
+  .tunnel-detail strong {
+    color: #1f3a2b;
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+
+  .tunnel-cta {
+    display: inline-block;
+    margin-top: 14px;
+    background: rgba(173,131,48,0.12);
+    color: #7a5e22;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+
+  /* COCON */
+  .cluster-block {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    margin-bottom: 24px;
+  }
+
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f3a2b;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(173,131,48,0.2);
+  }
+
+  .maillage-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #444;
+  }
+
+  .maillage-page {
+    background: rgba(31,58,43,0.08);
+    color: #1f3a2b;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .maillage-arrow {
+    color: #ad8330;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+    margin: 36px 0;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+
+  .palette-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+  }
+
+  .palette-hex {
+    font-size: 11px;
+    color: #999;
+    text-align: center;
+    font-family: monospace;
+  }
+
+  /* BLOG CARDS */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    page-break-inside: avoid;
+  }
+
+  .blog-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .blog-priority-p {
+    display: inline-block;
+    background: rgba(31,58,43,0.12);
+    color: #1f3a2b;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+
+  .blog-priority-m {
+    display: inline-block;
+    background: rgba(173,131,48,0.15);
+    color: #7a5e22;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+
+  .blog-priority-f {
+    display: inline-block;
+    background: rgba(164,183,146,0.2);
+    color: #4a6040;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+
+  .blog-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1f3a2b;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .blog-meta {
+    font-size: 12px;
+    color: #888;
+    line-height: 1.6;
+  }
+
+  .blog-meta span {
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* LEVIERS */
+  .levier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    border-left: 4px solid #ad8330;
+    page-break-inside: avoid;
+  }
+
+  .levier-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ad8330;
+    margin-bottom: 10px;
+  }
+
+  .levier-text {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.7;
+  }
+
+  /* OBJECTIFS */
+  .objectif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 24px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    margin-bottom: 12px;
+  }
+
+  .objectif-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(173,131,48,0.3);
+    line-height: 1;
+    min-width: 36px;
+  }
+
+  .objectif-content {}
+
+  .objectif-title {
+    font-weight: 700;
+    font-size: 15px;
+    color: #1f3a2b;
+    margin-bottom: 4px;
+  }
+
+  .objectif-desc {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1f3a2b;
+    color: rgba(243,230,225,0.7);
+    text-align: center;
+    padding: 40px 60px;
+    font-size: 13px;
+  }
+
+  footer strong {
+    color: #f3e6e1;
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 38px; }
+    .cover { padding: 48px 24px; }
+    .cover-meta { gap: 20px; }
+    .cover-divider { display: none; }
+
+    .section { padding: 48px 24px; }
+
+    .section-title { font-size: 26px; }
+
+    .grid-2, .grid-3, .grid-4, .tunnel-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-step:first-child { border-radius: 14px 14px 0 0; }
+    .tunnel-step:last-child { border-radius: 0 0 14px 14px; }
+
+    .highlight-box { padding: 28px 24px; }
+    .highlight-text { font-size: 18px; }
+
+    .table-wrapper { overflow-x: auto; }
+
+    .palette-grid { gap: 20px; }
+
+    footer { padding: 32px 24px; }
+  }
+
+  @media print {
+    .cover { min-height: auto; padding: 60px 40px; }
+    .section { page-break-inside: avoid; }
+    .card, .levier-card, .blog-card, .cluster-block { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique</div>
+  <h1 class="cover-title">Entre Loire<br>et Forêt</h1>
+  <p class="cover-subtitle">Document de stratégie digitale — Confidentiel</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Cliente</div>
+      <div class="cover-meta-value">Sandrine Ravard</div>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Secteur</div>
+      <div class="cover-meta-value">Conciergerie LCD</div>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Zone</div>
+      <div class="cover-meta-value">Loiret & alentours</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01" class="section">
+  <div class="section-inner">
+    <span class="section-badge">01</span>
+    <h2 class="section-title">Positionnement</h2>
+    <p class="section-intro">Le socle identitaire d'Entre Loire et Forêt Conciergerie — ce qui vous distingue, ce que vous incarnez, ce que vous promettez.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">Promesse de valeur principale</span>
+      <p class="highlight-text">« Propriétaires du Loiret, déléguez votre location courte durée à une conciergerie locale de confiance — et retrouvez la tranquillité d'esprit sans sacrifier la qualité de l'accueil. »</p>
+    </div>
+
+    <div class="highlight-box" style="background: linear-gradient(135deg, #6b4a1e 0%, #ad8330 100%); margin-bottom: 48px;">
+      <span class="highlight-label">Ligne directrice de communication</span>
+      <p class="highlight-text" style="font-size: 18px;">Proximité humaine · Rigueur professionnelle · Passion de l'accueil</p>
+    </div>
+
+    <div style="margin-bottom: 40px;">
+      <p class="card-title" style="font-size: 14px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #ad8330; margin-bottom: 16px;">Ton éditorial</p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px;">
+        <span class="tag tag-green">Chaleureux</span>
+        <span class="tag tag-gold">Rassurant</span>
+        <span class="tag tag-warm">Ancré</span>
+      </div>
+      <p class="card-text">Une voix sincère et proche, qui parle propriétaire à propriétaire, sans jargon technique — avec la bienveillance d'une experte qui comprend vos enjeux pour y avoir été elle-même.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <span class="card-icon">🌿</span>
+        <div class="card-title">Ancrage local authentique</div>
+        <p class="card-text">Basée à Neuville-aux-Bois, Sandrine est une actrice du territoire — pas une franchise anonyme. Elle connaît le Loiret, ses voyageurs, ses spécificités.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🤝</span>
+        <div class="card-title">Propriétaire parmi les propriétaires</div>
+        <p class="card-text">Investisseuse elle-même, elle comprend les enjeux côté bailleur. Cette double expérience crédibilise chaque conseil et renforce la confiance.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🛎️</span>
+        <div class="card-title">Culture de l'accueil voyageur</div>
+        <p class="card-text">Grande voyageuse et utilisatrice de LCD, Sandrine sait ce qui fait la différence pour un séjour mémorable — et l'applique à chaque bien.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">⚡</span>
+        <div class="card-title">Réactivité & rigueur professionnelle</div>
+        <p class="card-text">30 ans dans des environnements exigeants (santé, commercial B2B) ont forgé des réflexes d'écoute, de réactivité et de suivi que l'on retrouve dans chaque mission.</p>
+      </div>
+      <div class="card" style="grid-column: 1 / -1;">
+        <span class="card-icon">📊</span>
+        <div class="card-title">Pilotage de la performance, pas seulement l'opérationnel</div>
+        <p class="card-text">Grâce au suivi mensuel des revenus, du taux d'occupation et des avis voyageurs, les propriétaires ont une vision claire de leur rentabilité — et non juste une délégation à l'aveugle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02" class="section">
+  <div class="section-inner">
+    <span class="section-badge">02</span>
+    <h2 class="section-title">Client Cible</h2>
+    <p class="section-intro">Le propriétaire idéal que le site doit convaincre et rassurer dès les premières secondes de navigation.</p>
+
+    <div class="grid-2" style="margin-bottom: 24px;">
+      <div class="card">
+        <span class="card-icon">👤</span>
+        <div class="card-title">Profil type</div>
+        <p class="card-text">Propriétaire de 38 à 65 ans, actif ou en transition professionnelle, possédant un bien résidentiel dans le Loiret (maison de campagne, gîte, appartement). Souvent primo-investisseur en LCD ou propriétaire lassé de la gestion en autonomie.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">💡</span>
+        <div class="card-title">Motivations principales</div>
+        <p class="card-text">Déléguer sans perdre le contrôle · Optimiser les revenus locatifs · Préserver la qualité d'accueil · Gagner du temps et de la sérénité · Être accompagné par quelqu'un de local et de fiable</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <span class="card-icon">🚧</span>
+        <div class="card-title">Freins et objections</div>
+        <p class="card-text">« Est-ce que je peux vraiment faire confiance ? » · Peur de perdre la maîtrise de son bien · Inquiétude sur le coût de la commission · Mauvaise expérience passée avec un prestataire · Manque de visibilité sur les résultats</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">✅</span>
+        <div class="card-title">Critères de décision</div>
+        <p class="card-text">Proximité géographique · Transparence sur les tarifs · Références et avis clients · Réactivité et disponibilité · Professionnalisme perçu dès le premier contact · Suivi des performances clair</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03" class="section">
+  <div class="section-inner">
+    <span class="section-badge">03</span>
+    <h2 class="section-title">Objectifs du Site</h2>
+    <p class="section-intro">Ce que le site web doit accomplir, classé par ordre de priorité stratégique.</p>
+
+    <div class="objectif-item">
+      <div class="objectif-rank">1</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Génération de leads qualifiés</div>
+        <p class="objectif-desc">Inciter les propriétaires à prendre contact ou à demander un audit gratuit de leur bien — premier pas vers la conversion.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">2</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Réassurance & confiance</div>
+        <p class="objectif-desc">Démontrer le sérieux et l'expertise de Sandrine via son parcours atypique, sa double casquette propriétaire/prestataire et ses preuves sociales.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">3</div>
+      <div class="objectif-content">
+        <div class="objectif-title">SEO local — Loiret</div>
+        <p class="objectif-desc">Être visible sur les recherches de propriétaires du Loiret cherchant une conciergerie LCD locale, sur Google et les moteurs d'IA générative.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">4</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Prise de rendez-vous</div>
+        <p class="objectif-desc">Faciliter le premier échange via un outil de réservation en ligne — supprimer toute friction dans le passage à l'action.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">5</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Notoriété locale</div>
+        <p class="objectif-desc">Installer la marque « Entre Loire et Forêt » dans l'esprit des propriétaires du territoire comme la référence conciergerie LCD du Loiret.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04" class="section">
+  <div class="section-inner">
+    <span class="section-badge">04</span>
+    <h2 class="section-title">Arborescence du Site</h2>
+    <p class="section-intro">Structure des pages recommandées, avec le framework rédactionnel et le potentiel SEO de chacune.</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>Framework</th>
+            <th>Mot-clé principal</th>
+            <th>Potentiel SEO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Accueil</strong></td>
+            <td>AIDA</td>
+            <td>conciergerie location courte durée Loiret</td>
+            <td><span class="badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Nos Services</strong><br><span style="font-size:12px;color:#888;">Offre principale + complémentaires détaillés sur une seule page</span></td>
+            <td>PAS</td>
+            <td>services conciergerie Airbnb Loiret</td>
+            <td><span class="badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>À propos</strong></td>
+            <td>BAB</td>
+            <td>conciergerie de confiance propriétaire Loiret</td>
+            <td><span class="badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td><strong>Conciergerie Orléans</strong><br><span style="font-size:12px;color:#888;">Page locale SEO #1</span></td>
+            <td>AIDA</td>
+            <td>conciergerie location courte durée Orléans</td>
+            <td><span class="badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Conciergerie Loiret</strong><br><span style="font-size:12px;color:#888;">Page locale SEO #2</span></td>
+            <td>PAS</td>
+            <td>conciergerie Airbnb Loiret</td>
+            <td><span class="badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Blog</strong></td>
+            <td>—</td>
+            <td>conseils location courte durée propriétaire</td>
+            <td><span class="badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td><strong>Contact</strong></td>
+            <td>—</td>
+            <td>contacter conciergerie Loiret</td>
+            <td><span class="badge-faible">Faible</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05" class="section">
+  <div class="section-inner">
+    <span class="section-badge">05</span>
+    <h2 class="section-title">Cocon Sémantique</h2>
+    <p class="section-intro">Organisation thématique du contenu pour maximiser l'autorité SEO et guider les visiteurs vers la conversion.</p>
+
+    <div class="cluster-block">
+      <div class="cluster-title">🏡 Cluster 1 — Délégation & sérénité propriétaire</div>
+      <p class="card-text" style="margin-bottom: 16px;"><strong style="color:#1f3a2b;">Pages piliers :</strong> Accueil · Nos Services · À propos</p>
+      <p class="card-text" style="margin-bottom: 16px;"><strong style="color:#1f3a2b;">Articles satellites :</strong> « Comment choisir sa conciergerie LCD ? » · « Checklist pour déléguer sa location » · « Pourquoi confier son bien à un local ? »</p>
+    </div>
+
+    <div class="cluster-block">
+      <div class="cluster-title">📍 Cluster 2 — Présence locale Loiret</div>
+      <p class="card-text" style="margin-bottom: 16px;"><strong style="color:#1f3a2b;">Pages piliers :</strong> Conciergerie Orléans · Conciergerie Loiret</p>
+      <p class="card-text" style="margin-bottom: 16px;"><strong style="color:#1f3a2b;">Articles satellites :</strong> « Louer son bien à Orléans en courte durée » · « Tendances LCD dans le Val de Loire »</p>
+    </div>
+
+    <div class="cluster-block" style="margin-bottom: 0;">
+      <div class="cluster-title" style="margin-bottom: 20px;">🔗 Logique de maillage interne</div>
+      <div class="maillage-item">
+        <span class="maillage-page">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="card-text">Nos Services · À propos · Pages locales · Contact</span>
+      </div>
+      <div class="maillage-item">
+        <span class="maillage-page">Nos Services</span>
+        <span class="maillage-arrow">→</span>
+        <span class="card-text">Contact (CTA principal) · À propos · Pages locales</span>
+      </div>
+      <div class="maillage-item">
+        <span class="maillage-page">À propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="card-text">Nos Services · Contact</span>
+      </div>
+      <div class="maillage-item">
+        <span class="maillage-page">Pages locales</span>
+        <span class="maillage-arrow">→</span>
+        <span class="card-text">Nos Services · Contact · Articles Blog</span>
+      </div>
+      <div class="maillage-item">
+        <span class="maillage-page">Articles Blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="card-text">Nos Services · Pages locales · Contact</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06" class="section">
+  <div class="section-inner">
+    <span class="section-badge">06</span>
+    <h2 class="section-title">Tunnel de Conversion</h2>
+    <p class="section-intro">Le parcours du propriétaire, de la découverte à la prise de contact — chaque étape doit être fluide et cohérente.</p>
+
+    <div class="tunnel-grid">
+      <div class="tunnel-step">
+        <div class="tunnel-number">01</div>
+        <div class="tunnel-step-title">Découverte</div>
+        <div class="tunnel-detail"><strong>Sources</strong>Google organique · Bouche-à-oreille · Réseaux sociaux</div>
+        <div class="tunnel-detail"><strong>Page</strong>Accueil · Pages locales · Articles blog</div>
+        <span class="tunnel-cta">→ Accroche forte + identité visuelle</span>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-number">02</div>
+        <div class="tunnel-step-title">Intérêt</div>
+        <div class="tunnel-detail"><strong>Sources</strong>Navigation interne · Lecture des services</div>
+        <div class="tunnel-detail"><strong>Page</strong>Nos Services · À propos</div>
+        <span class="tunnel-cta">→ Télécharger le lead magnet</span>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-number">03</div>
+        <div class="tunnel-step-title">Confiance</div>
+        <div class="tunnel-detail"><strong>Sources</strong>Avis Google · Témoignages · Parcours Sandrine</div>
+        <div class="tunnel-detail"><strong>Page</strong>À propos · Nos Services (section preuves)</div>
+        <span class="tunnel-cta">→ Voir les avis / En savoir plus</span>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-number">04</div>
+        <div class="tunnel-step-title">Conversion</div>
+        <div class="tunnel-detail"><strong>Sources</strong>CTA omniprésents · Formulaire qualifiant</div>
+        <div class="tunnel-detail"><strong>Page</strong>Contact · Pop-up RDV</div>
+        <span class="tunnel-cta">→ Prendre RDV gratuit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07" class="section">
+  <div class="section-inner">
+    <span class="section-badge">07</span>
+    <h2 class="section-title">Leviers Marketing Recommandés</h2>
+    <p class="section-intro">Les outils concrets pour attirer, convertir et fidéliser les propriétaires du Loiret.</p>
+
+    <div class="grid-2">
+      <div class="levier-card">
+        <div class="levier-title">Lead Magnet</div>
+        <p class="levier-text"><strong style="color:#1f3a2b;">« Guide gratuit : 7 étapes pour louer son bien sereinement dans le Loiret »</strong><br>PDF téléchargeable traitant de la réglementation locale, la fiscalité LCD, la mise en valeur du bien, et les critères de choix d'une conciergerie.</p>
+      </div>
+      <div class="levier-card">
+        <div class="levier-title">Prise de Rendez-vous</div>
+        <p class="levier-text"><strong style="color:#1f3a2b;">Outil recommandé : Calendly</strong><br>Intégré directement sur la page Contact et en CTA flottant. Appel découverte 30 min gratuit — sans engagement. Message de confirmation automatique rassurant.</p>
+      </div>
+      <div class="levier-card">
+        <div class="levier-title">Preuve Sociale</div>
+        <p class="levier-text"><strong style="color:#1f3a2b;">Format recommandé : témoignages texte + photo propriétaire</strong><br>Avis Google embarqués · Résultats chiffrés (taux d'occupation, revenus générés) · Logos plateformes partenaires (Airbnb, Booking).</p>
+      </div>
+      <div class="levier-card">
+        <div class="levier-title">Formulaire Qualifiant</div>
+        <p class="levier-text"><strong style="color:#1f3a2b;">Champs recommandés :</strong> Prénom · Ville du bien · Type de bien (maison / appart / gîte) · Nombre de couchages · Situation actuelle (déjà en LCD / souhait de démarrer) · Message libre.</p>
+      </div>
+      <div class="levier-card" style="grid-column: 1 / -1;">
+        <div class="levier-title">Newsletter</div>
+        <p class="levier-text"><strong style="color:#1f3a2b;">Angle éditorial :</strong> « Les coulisses de la conciergerie » — conseils pratiques pour propriétaires, actualités LCD dans le Loiret, tendances saisonnières, retours d'expérience. Fréquence mensuelle, ton chaleureux et personnel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08" class="section">
+  <div class="section-inner">
+    <span class="section-badge">08</span>
+    <h2 class="section-title">Direction Visuelle & Éditoriale</h2>
+    <p class="section-intro">Un univers inspiré de la nature du Loiret, des tons chauds et terracotta que vous affectionnez — chaleureux, authentique, premium sans ostentation.</p>
+
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #f3e6e1;"></div>
+        <div class="palette-name">Lin Doux</div>
+        <div class="palette-hex">#f3e6e1</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #ad8330;"></div>
+        <div class="palette-name">Or Ambré</div>
+        <div class="palette-hex">#ad8330</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #1f3a2b;"></div>
+        <div class="palette-name">Forêt Profonde</div>
+        <div class="palette-hex">#1f3a2b</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #b88c54;"></div>
+        <div class="palette-name">Terracotta Doré</div>
+        <div class="palette-hex">#b88c54</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #a4b792;"></div>
+        <div class="palette-name">Sauge Claire</div>
+        <div class="palette-hex">#a4b792</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <span class="card-icon">📸</span>
+        <div class="card-title">Photographie</div>
+        <p class="card-text">Intérieurs chaleureux et soignés, lumière naturelle dorée, matières naturelles (bois, lin, rotin). Paysages de Loire et forêts en fond. Éviter les photos trop cliniques ou froides.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">✍️</span>
+        <div class="card-title">Typographie</div>
+        <p class="card-text">Serif élégant pour les titres (Playfair Display) — évoque le patrimoine et la qualité. Sans-serif épuré pour le corps (Inter ou DM Sans). Contrastes marqués entre grands titres et texte courant.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🎨</span>
+        <div class="card-title">Illustrations & icônes</div>
+        <p class="card-text">Icônes ligne fine dans les tons dorés ou vert forêt. Possibilité d'intégrer des illustrations botaniques discrètes (branches, feuilles) en éléments décoratifs de fond.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌿</span>
+        <div class="card-title">Ambiance générale</div>
+        <p class="card-text">L'univers de "le grenier d'Emma" : authentique, chaleureux, artisanal. Grands espaces blancs cassés, textures naturelles, détails soignés. Le luxe discret du terroir.</p>
+      </div>
+      <div class="card" style="grid-column: 1 / -1;">
+        <span class="card-icon">📐</span>
+        <div class="card-title">Mise en page & composition</div>
+        <p class="card-text">Sections aérées, larges marges, alternance fond lin clair / fond blanc cassé. Jamais de design trop chargé ou trop corporate. Chaque section respire et invite à lire la suite.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09" class="section">
+  <div class="section-inner">
+    <span class="section-badge">09</span>
+    <h2 class="section-title">Articles Blog Recommandés</h2>
+    <p class="section-intro">Sujets stratégiques pour renforcer le SEO, démontrer l'expertise de Sandrine et attirer des propriétaires qualifiés.</p>
+
+    <div class="grid-2">
+      <div class="blog-card">
+        <div class="blog-card-header">
+          <div class="blog-title">5 raisons de confier sa location courte durée à une conciergerie locale dans le Loiret</div>
+          <span class="blog-priority-p">Prioritaire</span>
+        </div>
+        <div class="blog-meta">
+          <span>🏷️ Cluster : Délégation propriétaire</span>
+          <span>🔍 Intention : informationnelle / décisionnelle</span>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-card-header">
+          <div class="blog-title">Comment maximiser les revenus de sa location saisonnière à Orléans ?</div>
+          <span class="blog-priority-p">Prioritaire</span>
+        </div>
+        <div class="blog-meta">
+          <span>🏷️ Cluster : Présence locale Loiret</span>
+          <span>🔍 Intention : informationnelle / commerciale</span>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-card-header">
+          <div class="blog-title">Airbnb vs Booking : quelle plateforme choisir pour louer son bien dans le Val de Loire ?</div>
+          <span class="blog-priority-p">Prioritaire</span>
+        </div>
+        <div class="blog-meta">
+          <span>🏷️ Cluster : Délégation propriétaire</span>
+          <span>🔍 Intention : comparaison / informationnelle</span>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-card-header">
+          <div class="blog-title">Check-list : tout ce qu'il faut prévoir avant d'ouvrir sa location courte durée</div>
+          <span class="blog-priority-m">Moyen</span>
+        </div>
+        <div class="blog-meta">
+          <span>🏷️ Cluster : Délégation propriétaire</span>
+          <span>🔍 Intention : pratique / débutant</span>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-card-header">
+          <div class="blog-title">Tarification dynamique en LCD : comment ne pas laisser de revenus sur la table ?</div>
+          <span class="blog-priority-m">Moyen</span>
+        </div>
+        <div class="blog-meta">
+          <span>🏷️ Cluster : Délégation propriétaire</span>
+          <span>🔍 Intention : informationnelle / optimisation</span>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-card-header">
+          <div class="blog-title">Louer son gîte ou sa maison de campagne dans le Loiret : réglementation et fiscalité 2025</div>
+          <span class="blog-priority-m">Moyen</span>
+        </div>
+        <div class="blog-meta">
+          <span>🏷️ Cluster : Présence locale Loiret</span>
+          <span>🔍 Intention : réglementaire / informationnelle</span>
+        </div>
+      </div>
+      <div class="blog-card" style="grid-column: 1 / -1;">
+        <div class="blog-card-header">
+          <div class="blog-title">Home staging pour location courte durée : nos conseils pour attirer plus de voyageurs</div>
+          <span class="blog-priority-f">Faible</span>
+        </div>
+        <div class="blog-meta">
+          <span>🏷️ Cluster : Délégation propriétaire</span>
+          <span>🔍 Intention : pratique / inspiration</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Entre Loire et Forêt Conciergerie</strong>
+  Document confidentiel — Réalisé par AR Digital · Stratégie digitale exclusive pour Sandrine Ravard
+</footer>
+
+</body>
+</html>
