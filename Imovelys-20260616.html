@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Imovelys</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1d2c24;
+    background: #f7f5f0;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #101211 0%, #1d2c24 50%, #2a1a0f 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(156,89,57,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 380px; height: 380px;
+    background: radial-gradient(circle, rgba(156,89,57,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #9c5939;
+    border: 1px solid rgba(156,89,57,0.4);
+    padding: 8px 20px;
+    border-radius: 30px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 4px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(230,226,217,0.75);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(156,89,57,0.8);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-value {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(230,226,217,0.9);
+  }
+
+  .cover-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(156,89,57,0.3);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 80px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+
+  section:nth-child(odd) {
+    background: #f7f5f0;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 52px;
+  }
+
+  .section-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #9c5939;
+    background: rgba(156,89,57,0.08);
+    border: 1px solid rgba(156,89,57,0.2);
+    padding: 7px 14px;
+    border-radius: 6px;
+    white-space: nowrap;
+    margin-top: 6px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: #1d2c24;
+    line-height: 1.2;
+  }
+
+  .section-desc {
+    font-size: 14px;
+    color: #7a7a6e;
+    margin-top: 6px;
+    font-weight: 400;
+  }
+
+  /* CARDS */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px 30px;
+  }
+
+  .card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #9c5939;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1d2c24;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .card-text {
+    font-size: 14px;
+    color: #4a5048;
+    line-height: 1.75;
+  }
+
+  /* GRIDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #1d2c24 0%, #101211 100%);
+    border-radius: 16px;
+    padding: 40px 44px;
+    margin-bottom: 40px;
+    border-left: 4px solid #9c5939;
+  }
+
+  .highlight-box .hl-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #9c5939;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .highlight-box .hl-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #e6e2d9;
+    line-height: 1.5;
+  }
+
+  /* TONE BOX */
+  .tone-box {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  .tone-tag {
+    background: rgba(156,89,57,0.1);
+    color: #9c5939;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 30px;
+    border: 1px solid rgba(156,89,57,0.25);
+    letter-spacing: 0.5px;
+  }
+
+  /* LISTS */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .styled-list li {
+    font-size: 14px;
+    color: #4a5048;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.6;
+  }
+
+  .styled-list li:last-child { border-bottom: none; }
+
+  .styled-list li::before {
+    content: '—';
+    color: #9c5939;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* PRIORITIES */
+  .badge-fort {
+    display: inline-block;
+    background: #1d2c24;
+    color: #e6e2d9;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 20px;
+  }
+
+  .badge-moyen {
+    display: inline-block;
+    background: #9c5939;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 20px;
+  }
+
+  .badge-faible {
+    display: inline-block;
+    background: rgba(156,89,57,0.12);
+    color: #9c5939;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 20px;
+    border: 1px solid rgba(156,89,57,0.25);
+  }
+
+  .badge-prio {
+    display: inline-block;
+    background: #1d2c24;
+    color: #e6e2d9;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 20px;
+  }
+
+  .badge-prio-moyen {
+    display: inline-block;
+    background: #9c5939;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 20px;
+  }
+
+  .badge-prio-faible {
+    display: inline-block;
+    background: rgba(156,89,57,0.12);
+    color: #9c5939;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 20px;
+    border: 1px solid rgba(156,89,57,0.25);
+  }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 14px;
+  }
+
+  thead {
+    background: #1d2c24;
+  }
+
+  thead th {
+    color: #e6e2d9;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 20px;
+    text-align: left;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: background 0.2s;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(156,89,57,0.03); }
+
+  tbody td {
+    padding: 16px 20px;
+    color: #4a5048;
+    vertical-align: middle;
+  }
+
+  tbody td strong {
+    color: #1d2c24;
+    font-weight: 600;
+  }
+
+  /* TUNNEL */
+  .tunnel-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+    position: relative;
+  }
+
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 0;
+    padding: 32px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+    border-right: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .tunnel-step:first-child { border-radius: 14px 0 0 14px; }
+  .tunnel-step:last-child { border-radius: 0 14px 14px 0; border-right: none; }
+
+  .tunnel-step-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #9c5939;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1d2c24;
+    margin-bottom: 16px;
+  }
+
+  .tunnel-item {
+    font-size: 13px;
+    color: #4a5048;
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+
+  .tunnel-item-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #9c5939;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  /* MAILLAGE */
+  .maillage-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: #4a5048;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .maillage-row:last-child { border-bottom: none; }
+
+  .maillage-source {
+    font-weight: 600;
+    color: #1d2c24;
+    background: rgba(29,44,36,0.07);
+    padding: 4px 12px;
+    border-radius: 6px;
+  }
+
+  .maillage-arrow {
+    color: #9c5939;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .maillage-dest {
+    background: rgba(156,89,57,0.08);
+    color: #9c5939;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    border: 1px solid rgba(156,89,57,0.2);
+  }
+
+  /* COLOR PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+
+  .palette-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1d2c24;
+    text-align: center;
+  }
+
+  .palette-hex {
+    font-size: 11px;
+    color: #9a9a8e;
+    text-align: center;
+    font-family: 'Inter', monospace;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #101211;
+    padding: 40px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #e6e2d9;
+    letter-spacing: 2px;
+  }
+
+  .footer-meta {
+    font-size: 12px;
+    color: rgba(230,226,217,0.4);
+    letter-spacing: 1px;
+    text-align: right;
+  }
+
+  .separator-line {
+    width: 48px;
+    height: 2px;
+    background: #9c5939;
+    margin: 20px 0 28px 0;
+    border-radius: 2px;
+  }
+
+  /* CLUSTER TITLE */
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1d2c24;
+    margin-bottom: 6px;
+  }
+
+  .cluster-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #9c5939;
+    background: rgba(156,89,57,0.1);
+    border: 1px solid rgba(156,89,57,0.2);
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+
+  /* OBJECTIVES */
+  .obj-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .obj-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 18px 22px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .obj-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(156,89,57,0.2);
+    min-width: 36px;
+    line-height: 1;
+  }
+
+  .obj-content strong {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1d2c24;
+    display: block;
+  }
+
+  .obj-content span {
+    font-size: 13px;
+    color: #7a7a6e;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 42px; }
+    .cover-meta { gap: 20px; }
+    .cover-divider { display: none; }
+    section { padding: 50px 24px; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .tunnel-steps { grid-template-columns: 1fr; }
+    .tunnel-step { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .tunnel-step:first-child { border-radius: 14px 14px 0 0; }
+    .tunnel-step:last-child { border-radius: 0 0 14px 14px; border-bottom: none; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box .hl-text { font-size: 17px; }
+    footer { padding: 32px 24px; }
+    .footer-meta { text-align: left; }
+    .palette-grid { gap: 16px; }
+    .section-header { flex-direction: column; gap: 10px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 80px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <span class="cover-badge">Blueprint Stratégique</span>
+  <h1 class="cover-title">IMOVELYS</h1>
+  <p class="cover-subtitle">Cabinet de valorisation immobilière premium</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Client</span>
+      <span class="cover-meta-value">Brahim Douair</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Valorisation immobilière</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Zones</span>
+      <span class="cover-meta-value">Strasbourg · Marrakech</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-header">
+    <span class="section-badge">01</span>
+    <div>
+      <h2 class="section-title">Positionnement</h2>
+      <p class="section-desc">L'identité stratégique d'Imovelys sur son marché</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <span class="hl-label">Promesse de valeur principale</span>
+    <p class="hl-text">Imovelys transforme votre bien immobilier en un actif performant et durable — grâce à une expertise terrain de plus de 10 ans, une approche patrimoniale rigoureuse et un accompagnement premium de Strasbourg à Marrakech.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <span class="card-label">Ligne directrice de communication</span>
+    <p class="card-text">Valorisation patrimoniale premium · Expertise terrain éprouvée · Sérénité totale pour le propriétaire</p>
+  </div>
+
+  <div class="tone-box">
+    <span class="tone-tag">Élégant</span>
+    <span class="tone-tag">Expert</span>
+    <span class="tone-tag">Rassurant</span>
+  </div>
+
+  <div class="card" style="margin-bottom: 40px;">
+    <span class="card-label">Ton éditorial</span>
+    <p class="card-text">Un cabinet qui parle le langage des propriétaires exigeants : précis, posé, jamais agressif commercialement. Chaque mot renforce la crédibilité et la confiance, comme un conseiller patrimonial de haut niveau.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-label">Différenciateur 01</span>
+      <h3 class="card-title">Expérience propriétaire avant tout</h3>
+      <p class="card-text">Imovelys a d'abord exploité ses propres biens. Cette légitimité terrain — 10 ans de pratique réelle — est une preuve que peu de concurrents peuvent revendiquer.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Différenciateur 02</span>
+      <h3 class="card-title">Approche patrimoniale & opérationnelle</h3>
+      <p class="card-text">Au-delà de la simple sous-location, Imovelys adopte une vision à long terme : chaque décision sert la valorisation durable du patrimoine du propriétaire.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Différenciateur 03</span>
+      <h3 class="card-title">Double expertise France – Maroc</h3>
+      <p class="card-text">Un positionnement géographique rare qui ouvre un marché spécifique : propriétaires franco-marocains ou investisseurs internationaux cherchant à valoriser un bien des deux côtés de la Méditerranée.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Différenciateur 04</span>
+      <h3 class="card-title">Optimisation tarifaire & stratégie digitale</h3>
+      <p class="card-text">Revenue management, création de contenu, mise en avant digitale : Imovelys maximise les taux d'occupation et le revenu net, là où d'autres se contentent de publier une annonce.</p>
+    </div>
+    <div class="card" style="grid-column: 1 / -1;">
+      <span class="card-label">Différenciateur 05</span>
+      <h3 class="card-title">Offres claires et transparentes</h3>
+      <p class="card-text">Deux formules lisibles (Essentielle 20 % / Premium 25 %) avec un périmètre détaillé — sans surprise. La clarté tarifaire est elle-même un signal de confiance pour des propriétaires exigeants.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-header">
+    <span class="section-badge">02</span>
+    <div>
+      <h2 class="section-title">Client Cible</h2>
+      <p class="section-desc">Portrait précis du propriétaire idéal d'Imovelys</p>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 28px;">
+    <div class="card">
+      <span class="card-label">Profil type</span>
+      <h3 class="card-title">Le propriétaire-investisseur exigeant</h3>
+      <p class="card-text">35–60 ans · Cadre supérieur, chef d'entreprise ou investisseur · Possède un ou plusieurs biens à Strasbourg ou Marrakech · Manque de temps ou de proximité géographique · Cherche un partenaire de confiance, pas un simple prestataire.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Profil secondaire</span>
+      <h3 class="card-title">Le propriétaire franco-marocain</h3>
+      <p class="card-text">Propriétaire d'un bien au Maroc (Marrakech) et/ou en France (Strasbourg) · Recherche un interlocuteur unique capable de piloter les deux géographies · Sensible à la notion de patrimoine familial et de transmission.</p>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <span class="card-label">Motivations principales</span>
+      <ul class="styled-list">
+        <li>Générer des revenus locatifs optimisés</li>
+        <li>Déléguer sans perdre le contrôle</li>
+        <li>Préserver la qualité du bien sur le long terme</li>
+        <li>Sécuriser ses revenus face aux aléas locatifs</li>
+        <li>Profiter d'une expertise qu'il ne possède pas</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-label">Freins &amp; objections</span>
+      <ul class="styled-list">
+        <li>« Mon bien est-il entre de bonnes mains ? »</li>
+        <li>« Les commissions sont-elles justifiées ? »</li>
+        <li>« Vais-je perdre la main sur mon logement ? »</li>
+        <li>« Quelle différence avec d'autres conciergeries ? »</li>
+        <li>« Comment suivre les performances à distance ? »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-label">Critères de décision</span>
+      <ul class="styled-list">
+        <li>Expérience et légitimité terrain prouvée</li>
+        <li>Transparence tarifaire et reporting régulier</li>
+        <li>Qualité de la relation et réactivité</li>
+        <li>Résultats tangibles (taux d'occupation, revenus)</li>
+        <li>Présence sur les deux zones géographiques</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-header">
+    <span class="section-badge">03</span>
+    <div>
+      <h2 class="section-title">Objectifs du Site</h2>
+      <p class="section-desc">Priorités stratégiques du site imovelys.fr</p>
+    </div>
+  </div>
+
+  <div class="obj-list">
+    <div class="obj-item">
+      <span class="obj-rank">01</span>
+      <div class="obj-content">
+        <strong>Génération de leads qualifiés</strong>
+        <span>Attirer des propriétaires à Strasbourg et Marrakech prêts à confier leur bien</span>
+      </div>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">02</span>
+      <div class="obj-content">
+        <strong>Réassurance &amp; crédibilité</strong>
+        <span>Prouver l'expertise terrain, lever les doutes et installer une confiance immédiate</span>
+      </div>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">03</span>
+      <div class="obj-content">
+        <strong>Prise de rendez-vous</strong>
+        <span>Transformer chaque visite en échange concret via un formulaire ou un agenda en ligne</span>
+      </div>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">04</span>
+      <div class="obj-content">
+        <strong>SEO local ciblé</strong>
+        <span>Se positionner sur les requêtes propriétaires à Strasbourg et Marrakech</span>
+      </div>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">05</span>
+      <div class="obj-content">
+        <strong>Conversion de l'offre</strong>
+        <span>Présenter les formules Essentielle et Premium de façon claire et convaincante</span>
+      </div>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">06</span>
+      <div class="obj-content">
+        <strong>Notoriété &amp; positionnement premium</strong>
+        <span>Affirmer le positionnement haut de gamme d'Imovelys face à des concurrents standardisés</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-header">
+    <span class="section-badge">04</span>
+    <div>
+      <h2 class="section-title">Arborescence du Site</h2>
+      <p class="section-desc">Architecture des pages et stratégie SEO associée</p>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie locative premium</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Offres</strong><br><span style="font-size:12px;color:#9a9a8e;">Essentielle &amp; Premium détaillées sur une seule page</span></td>
+          <td>PAS</td>
+          <td>service conciergerie location courte durée</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À Propos</strong></td>
+          <td>BAB</td>
+          <td>cabinet valorisation immobilière</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie Strasbourg</strong><br><span style="font-size:12px;color:#9a9a8e;">Page locale SEO #1</span></td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Strasbourg</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie Marrakech</strong><br><span style="font-size:12px;color:#9a9a8e;">Page locale SEO #2</span></td>
+          <td>AIDA</td>
+          <td>conciergerie location Marrakech</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseil investissement locatif</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / RDV</strong></td>
+          <td>PAS</td>
+          <td>déléguer gestion locative</td>
+          <td><span class="badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-header">
+    <span class="section-badge">05</span>
+    <div>
+      <h2 class="section-title">Cocon Sémantique</h2>
+      <p class="section-desc">Clusters thématiques et logique de maillage interne</p>
+    </div>
+  </div>
+
+  <div class="grid-3" style="margin-bottom: 48px;">
+    <div class="card">
+      <span class="cluster-tag">Cluster 01</span>
+      <h3 class="cluster-title">Valorisation locative premium</h3>
+      <p class="card-text">Accueil · Nos Offres · Articles blog sur optimisation tarifaire, revenue management et rentabilité locative. Cluster central qui capte l'intention principale du propriétaire.</p>
+    </div>
+    <div class="card">
+      <span class="cluster-tag">Cluster 02</span>
+      <h3 class="cluster-title">Présence locale Strasbourg – Marrakech</h3>
+      <p class="card-text">Pages locales SEO · Articles blog sur les marchés locatifs de Strasbourg et Marrakech · Ancrage géographique fort pour capter les recherches de proximité.</p>
+    </div>
+    <div class="card">
+      <span class="cluster-tag">Cluster 03</span>
+      <h3 class="cluster-title">Légitimité &amp; confiance patrimoniale</h3>
+      <p class="card-text">À Propos · Articles de fond sur la sous-location professionnelle, les obligations légales et la protection du patrimoine · Renforce l'autorité et la crédibilité d'Imovelys.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-label">Logique de maillage interne</span>
+    <div style="margin-top: 8px;">
+      <div class="maillage-row">
+        <span class="maillage-source">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Offres</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact / RDV</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Nos Offres</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Conciergerie Strasbourg</span>
+        <span class="maillage-arrow">+</span>
+        <span class="maillage-dest">Conciergerie Marrakech</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">À Propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Offres</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact / RDV</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Articles Blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Pages locales SEO</span>
+        <span class="maillage-arrow">+</span>
+        <span class="maillage-dest">Nos Offres</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Pages locales</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Offres</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact / RDV</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-header">
+    <span class="section-badge">06</span>
+    <div>
+      <h2 class="section-title">Tunnel de Conversion</h2>
+      <p class="section-desc">Parcours du propriétaire de la découverte à la prise de contact</p>
+    </div>
+  </div>
+
+  <div class="tunnel-steps">
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 01</span>
+      <div class="tunnel-step-title">Découverte</div>
+      <div class="tunnel-item">
+        <span class="tunnel-item-label">Source de trafic</span>
+        Google SEO local · Réseaux sociaux · Bouche-à-oreille
+      </div>
+      <div class="tunnel-item">
+        <span class="tunnel-item-label">Page concernée</span>
+        Accueil · Pages locales Strasbourg / Marrakech
+      </div>
+      <div class="tunnel-item">
+        <span class="tunnel-item-label">CTA</span>
+        « Découvrez nos offres » · « Estimez vos revenus »
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 02</span>
+      <div class="tunnel-step-title">Intérêt</div>
+      <div class="tunnel-item">
+        <span class="tunnel-item-label">Source de trafic</span>
+        Navigation interne · Blog · Comparaison offres
+      </div>
+      <div class="tunnel-item">
+        <span class="tunnel-item-label">Page concernée</span>
+        Nos Offres · Blog · À Propos
+      </div>
+      <div class="tunnel-item">
+        <span class="tunnel-item-label">CTA</span>
+        « Télécharger le guide propriétaire » · « Voir les formules »
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 03</span>
+      <div class="tunnel-step-title">Confiance</div>
+      <div class="tunnel-item">
+        <span class="tunnel-item-label">Source de trafic</span>
+        Navigation interne · Avis clients · Études de cas
+      </div>
+      <div class="tunnel-item">
+        <span class="tunnel-item-label">Page concernée</span>
+        À Propos · Nos Offres (section preuves sociales)
+      </div>
+      <div class="tunnel-item">
+        <span class="tunnel-item-label">CTA</span>
+        « Parlez-nous de votre bien » · « Voir les témoignages »
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 04</span>
+      <div class="tunnel-step-title">Conversion</div>
+      <div class="tunnel-item">
+        <span class="tunnel-item-label">Source de trafic</span>
+        CTA multiples · Email de suivi · Relance lead magnet
+      </div>
+      <div class="tunnel-item">
+        <span class="tunnel-item-label">Page concernée</span>
+        Contact / RDV
+      </div>
+      <div class="tunnel-item">
+        <span class="tunnel-item-label">CTA</span>
+        « Prendre rendez-vous » · « Confier mon bien »
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-header">
+    <span class="section-badge">07</span>
+    <div>
+      <h2 class="section-title">Leviers Marketing Recommandés</h2>
+      <p class="section-desc">Actions concrètes pour accélérer la génération de leads</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-label">Lead Magnet</span>
+      <h3 class="card-title">Guide PDF — « Maximiser la rentabilité de votre bien »</h3>
+      <p class="card-text">Un guide de 8 à 12 pages à télécharger gratuitement : checklist avant mise en location, erreurs classiques des propriétaires, méthode Imovelys pour optimiser les revenus. Capte l'email et qualifie l'intention.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Prise de RDV</span>
+      <h3 class="card-title">Calendly ou Cal.com</h3>
+      <p class="card-text">Intégration d'un agenda en ligne directement sur la page Contact. Proposer un « Appel découverte offert de 30 minutes » pour lever les freins et créer un premier contact qualitatif sans friction.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Preuve Sociale</span>
+      <h3 class="card-title">Témoignages propriétaires + chiffres clés</h3>
+      <p class="card-text">Avis écrits de propriétaires satisfaits · Indicateurs concrets : taux d'occupation moyen, revenus générés, nombre de biens gérés · Photos avant/après de biens valorisés par Imovelys.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Formulaire Qualifiant</span>
+      <h3 class="card-title">Champs recommandés</h3>
+      <ul class="styled-list" style="margin-top: 6px;">
+        <li>Prénom &amp; Nom</li>
+        <li>Email &amp; Téléphone</li>
+        <li>Localisation du bien (Strasbourg / Marrakech / Autre)</li>
+        <li>Type de bien (appartement, maison, villa…)</li>
+        <li>Situation actuelle (déjà en location / non exploité)</li>
+        <li>Message libre</li>
+      </ul>
+    </div>
+    <div class="card" style="grid-column: 1 / -1;">
+      <span class="card-label">Newsletter</span>
+      <h3 class="card-title">Angle éditorial — « L'Actif Performant »</h3>
+      <p class="card-text">1 email mensuel destiné aux propriétaires : conseils pour maximiser les revenus locatifs, actualités réglementaires, tendances des marchés de Strasbourg et Marrakech, retours d'expérience terrain. Positionne Imovelys en expert de confiance sur la durée.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-header">
+    <span class="section-badge">08</span>
+    <div>
+      <h2 class="section-title">Direction Visuelle &amp; Éditoriale</h2>
+      <p class="section-desc">Identité graphique et ambiance recommandées pour imovelys.fr</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom: 40px;">
+    <span class="card-label">Palette de couleurs</span>
+    <div style="margin-top: 20px;">
+      <div class="palette-grid">
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#9c5939;"></div>
+          <span class="palette-name">Terracotta Doré</span>
+          <span class="palette-hex">#9C5939</span>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#1d2c24;"></div>
+          <span class="palette-name">Vert Nuit</span>
+          <span class="palette-hex">#1D2C24</span>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#e6e2d9;"></div>
+          <span class="palette-name">Sable Ivoire</span>
+          <span class="palette-hex">#E6E2D9</span>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#101211; border: 1px solid rgba(0,0,0,0.12);"></div>
+          <span class="palette-name">Noir Profond</span>
+          <span class="palette-hex">#101211</span>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#f7f5f0; border: 1px solid rgba(0,0,0,0.08);"></div>
+          <span class="palette-name">Blanc Naturel</span>
+          <span class="palette-hex">#F7F5F0</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-label">Univers visuel recommandé</span>
+    <div class="grid-2" style="margin-top: 16px; gap: 16px;">
+      <div>
+        <p class="card-text" style="margin-bottom: 10px;"><strong style="color:#1d2c24;">Photographie</strong><br>Intérieurs haut de gamme, lumière naturelle dorée · Biens bien décorés de Strasbourg et de Marrakech · Portraits humains du fondateur pour humaniser le cabinet</p>
+      </div>
+      <div>
+        <p class="card-text" style="margin-bottom: 10px;"><strong style="color:#1d2c24;">Typographie</strong><br>Playfair Display pour les titres (élégance intemporelle) · Inter ou Lato pour le corps de texte (lisibilité, modernité)</p>
+      </div>
+      <div>
+        <p class="card-text" style="margin-bottom: 10px;"><strong style="color:#1d2c24;">Style graphique</strong><br>Épuré, minimaliste, grandes respirations blanches · Pas de surcharge · Accents terracotta utilisés avec parcimonie comme touche de chaleur</p>
+      </div>
+      <div>
+        <p class="card-text" style="margin-bottom: 10px;"><strong style="color:#1d2c24;">Inspirations visuelles</strong><br>Références : maison-rouge.com (site apprécié par le client) · Cabinets de conseil patrimonial premium · Agences immobilières de luxe méditerranéennes</p>
+      </div>
+      <div style="grid-column: 1 / -1;">
+        <p class="card-text"><strong style="color:#1d2c24;">Iconographie</strong><br>Icônes ligne fine, jamais de clipart · Illustrations minimalistes à l'occasion · Pas de stock photo générique — photos authentiques des biens réels Imovelys à privilégier</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-header">
+    <span class="section-badge">09</span>
+    <div>
+      <h2 class="section-title">Articles Blog Recommandés</h2>
+      <p class="section-desc">Stratégie de contenu pour renforcer le SEO et l'autorité d'Imovelys</p>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Conciergerie Airbnb à Strasbourg : comment choisir le bon prestataire ?</strong></td>
+          <td>Présence locale</td>
+          <td>Informationnelle / Commerciale</td>
+          <td><span class="badge-prio">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Location courte durée à Marrakech : les clés pour optimiser vos revenus en 2025</strong></td>
+          <td>Présence locale</td>
+          <td>Informationnelle / Commerciale</td>
+          <td><span class="badge-prio">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Sous-location professionnelle : ce que tout propriétaire doit savoir avant de déléguer</strong></td>
+          <td>Légitimité &amp; confiance</td>
+          <td>Informationnelle</td>
+          <td><span class="badge-prio">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Comment maximiser le taux d'occupation de votre bien en location saisonnière ?</strong></td>
+          <td>Valorisation locative</td>
+          <td>Informationnelle</td>
+          <td><span class="badge-prio-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Décoration et home staging : pourquoi ça change tout à la rentabilité de votre bien</strong></td>
+          <td>Valorisation locative</td>
+          <td>Informationnelle</td>
+          <td><span class="badge-prio-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Investir dans l'immobilier locatif entre la France et le Maroc : enjeux et opportunités</strong></td>
+          <td>Légitimité &amp; confiance</td>
+          <td>Informationnelle / Transactionnelle</td>
+          <td><span class="badge-prio-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Revenue management en location courte durée : la méthode Imovelys pour booster vos revenus</strong></td>
+          <td>Valorisation locative</td>
+          <td>Informationnelle / Marque</td>
+          <td><span class="badge-prio-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">IMOVELYS</div>
+  <div class="footer-meta">
+    Document confidentiel · Réservé à Brahim Douair<br>
+    Produit par AR Digital · imovelys.fr
+  </div>
+</footer>
+
+</body>
+</html>
