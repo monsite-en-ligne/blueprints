@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Via Nobile Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2a2a2a;
+    background: #F5F0E8;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0d2330 0%, #1C3A4A 45%, #2a5068 80%, #1a3345 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(184,154,106,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 20%, rgba(122,155,168,0.10) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .cover-ornament {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #B89A6A, transparent);
+    margin: 0 auto 32px;
+  }
+
+  .cover-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #B89A6A;
+    margin-bottom: 24px;
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+
+  .cover h1 span {
+    color: #B89A6A;
+    font-style: italic;
+  }
+
+  .cover-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: italic;
+    color: #7A9BA8;
+    margin-bottom: 48px;
+    letter-spacing: 0.5px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-item .meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #7A9BA8;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-item .meta-value {
+    font-size: 13px;
+    color: #C9D8D0;
+    font-weight: 400;
+  }
+
+  .cover-meta-sep {
+    width: 1px;
+    height: 36px;
+    background: rgba(184,154,106,0.3);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 70px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+
+  section:nth-child(odd) {
+    background: #F5F0E8;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #B89A6A;
+    border: 1px solid rgba(184,154,106,0.4);
+    border-radius: 20px;
+    padding: 5px 14px;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #1C3A4A;
+    margin-bottom: 8px;
+    line-height: 1.25;
+  }
+
+  .section-subtitle {
+    font-size: 15px;
+    color: #7A9BA8;
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+
+  .section-header {
+    margin-bottom: 44px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, #B89A6A, #C9D8D0);
+    margin: 12px 0 0;
+    border-radius: 2px;
+  }
+
+  /* CARDS */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(28,58,74,0.06);
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1C3A4A;
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.75;
+  }
+
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  /* GRIDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #1C3A4A 0%, #2a5068 100%);
+    border-radius: 16px;
+    padding: 40px 48px;
+    color: #ffffff;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-box::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(184,154,106,0.1);
+  }
+
+  .highlight-box .hl-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #B89A6A;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .highlight-box .hl-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 1.5;
+    color: #F5F0E8;
+    max-width: 700px;
+  }
+
+  /* TAG LISTS */
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 20px;
+    background: #F5F0E8;
+    color: #1C3A4A;
+    border: 1px solid rgba(28,58,74,0.12);
+  }
+
+  /* LISTE */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .styled-list li {
+    font-size: 14px;
+    color: #444;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(28,58,74,0.06);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.6;
+  }
+
+  .styled-list li:last-child {
+    border-bottom: none;
+  }
+
+  .styled-list li::before {
+    content: '—';
+    color: #B89A6A;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* PRIORITY BADGES */
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 11px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-fort { background: #d4edda; color: #1a5c2a; }
+  .badge-moyen { background: #fff3cd; color: #856404; }
+  .badge-faible { background: #f0e8ff; color: #5a3a8a; }
+
+  /* TABLE */
+  .table-wrap { overflow-x: auto; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+
+  table thead tr {
+    background: #1C3A4A;
+    color: #ffffff;
+  }
+
+  table thead th {
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  table tbody tr {
+    border-bottom: 1px solid rgba(28,58,74,0.07);
+    transition: background 0.15s;
+  }
+
+  table tbody tr:last-child { border-bottom: none; }
+
+  table tbody tr:hover { background: rgba(201,216,208,0.2); }
+
+  table tbody td {
+    padding: 14px 18px;
+    color: #3a3a3a;
+    line-height: 1.55;
+    vertical-align: top;
+  }
+
+  table tbody td:first-child {
+    font-weight: 600;
+    color: #1C3A4A;
+  }
+
+  /* COCON */
+  .cluster-block {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(28,58,74,0.06);
+  }
+
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1C3A4A;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #B89A6A;
+  }
+
+  .cluster-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .cluster-kw {
+    font-size: 12px;
+    background: #F5F0E8;
+    color: #1C3A4A;
+    border: 1px solid rgba(184,154,106,0.3);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-weight: 500;
+  }
+
+  /* TUNNEL */
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(28,58,74,0.06);
+    position: relative;
+  }
+
+  .tunnel-step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: rgba(184,154,106,0.18);
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    line-height: 1;
+  }
+
+  .tunnel-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #B89A6A;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .tunnel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1C3A4A;
+    margin-bottom: 14px;
+  }
+
+  .tunnel-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13.5px;
+    color: #555;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+
+  .tunnel-row strong {
+    color: #1C3A4A;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .cta-pill {
+    display: inline-block;
+    background: linear-gradient(90deg, #1C3A4A, #2a5068);
+    color: #F5F0E8;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-top: 10px;
+  }
+
+  /* LEVIERS */
+  .levier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(28,58,74,0.06);
+  }
+
+  .levier-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .levier-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1C3A4A;
+    margin-bottom: 8px;
+  }
+
+  .levier-text {
+    font-size: 13.5px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  /* COLORS PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 32px;
+  }
+
+  .color-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .color-box {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .color-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1C3A4A;
+    text-align: center;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: #999;
+    text-align: center;
+    font-family: 'Inter', monospace;
+  }
+
+  /* MAILLAGE */
+  .maillage-row {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(28,58,74,0.06);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .maillage-from {
+    font-weight: 600;
+    color: #1C3A4A;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .maillage-arrow {
+    color: #B89A6A;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .maillage-to {
+    font-size: 13.5px;
+    color: #555;
+    flex: 1;
+  }
+
+  /* BLOG */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(28,58,74,0.06);
+  }
+
+  .blog-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1C3A4A;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 8px;
+  }
+
+  .blog-meta span {
+    background: #F5F0E8;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(28,58,74,0.08);
+    color: #4a4a4a;
+  }
+
+  .blog-intention {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* ORDERED OBJECTIVES */
+  .obj-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .obj-item {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(28,58,74,0.06);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .obj-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(184,154,106,0.5);
+    flex-shrink: 0;
+    width: 36px;
+    line-height: 1;
+  }
+
+  .obj-content {}
+
+  .obj-title {
+    font-weight: 600;
+    color: #1C3A4A;
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
+
+  .obj-desc {
+    font-size: 13px;
+    color: #666;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1C3A4A;
+    color: #C9D8D0;
+    text-align: center;
+    padding: 36px 40px;
+  }
+
+  footer .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #F5F0E8;
+    margin-bottom: 8px;
+  }
+
+  footer .footer-note {
+    font-size: 12px;
+    color: #7A9BA8;
+    letter-spacing: 1px;
+  }
+
+  footer .footer-agency {
+    font-size: 11px;
+    color: rgba(122,155,168,0.6);
+    margin-top: 12px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    section { padding: 40px 24px; }
+
+    .cover h1 { font-size: 38px; }
+    .cover-subtitle { font-size: 15px; }
+    .cover-meta { flex-direction: column; gap: 16px; }
+    .cover-meta-sep { display: none; }
+
+    .section-title { font-size: 26px; }
+
+    .grid-2, .grid-3, .grid-4 {
+      grid-template-columns: 1fr;
+    }
+
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box .hl-text { font-size: 17px; }
+
+    .maillage-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .maillage-arrow { display: flex; align-items: center; flex-wrap: wrap; }
+
+    .tunnel-step-num { font-size: 32px; }
+
+    .obj-item { flex-direction: row; }
+
+    .palette-grid { gap: 16px; }
+    .color-box { width: 64px; height: 64px; }
+
+    table { font-size: 12px; }
+    table thead th { padding: 10px 12px; }
+    table tbody td { padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-ornament"></div>
+  <div class="cover-label">Blueprint Stratégique · Document confidentiel</div>
+  <h1>Via Nobile<br><span>Collection</span></h1>
+  <div class="cover-subtitle">Maison de Conciergerie Privée · Hérault &amp; Gard</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="meta-label">Fondatrices</span>
+      <span class="meta-value">Gioia Cittadini-Barale &amp; Nathalie Stessels</span>
+    </div>
+    <div class="cover-meta-sep"></div>
+    <div class="cover-meta-item">
+      <span class="meta-label">Secteur</span>
+      <span class="meta-value">Conciergerie Privée · Location Courte Durée</span>
+    </div>
+    <div class="cover-meta-sep"></div>
+    <div class="cover-meta-item">
+      <span class="meta-label">Territoire</span>
+      <span class="meta-value">De Montpellier à la Petite Camargue &amp; arrière-pays</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-header">
+    <div class="section-badge">01 — Positionnement</div>
+    <h2 class="section-title">L'identité stratégique<br>de Via Nobile Collection</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">Ce qui vous distingue, ce qui vous définit, ce qui vous rend inoubliables.</p>
+  </div>
+
+  <div class="highlight-box">
+    <span class="hl-label">Promesse de valeur principale</span>
+    <div class="hl-text">« Via Nobile Collection accompagne chaque propriétaire du sud de la France avec l'exigence d'une maison privée : une sérénité absolue pour vous, une expérience mémorable pour vos hôtes. »</div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <span class="card-icon">🧭</span>
+      <div class="card-title">Ligne directrice de communication</div>
+      <div class="card-text">L'excellence discrète au service du territoire. Chaque propriété est traitée comme une résidence privée, chaque hôte accueilli comme un invité privilégié. Le luxe ne se proclame pas — il se ressent.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">✒️</span>
+      <div class="card-title">Ton éditorial</div>
+      <div class="card-text"><strong>Raffiné · Humain · Ancré</strong><br><br>Un ton qui conjugue l'élégance du service haut de gamme avec la chaleur d'un accompagnement personnalisé et la sincérité d'un attachement profond au territoire occitan.</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#1C3A4A; margin-bottom:24px; font-weight:600;">Piliers de différenciation</h3>
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">👑</span>
+      <div class="card-title">Duo fondatrices aux parcours complémentaires</div>
+      <div class="card-text">Cheffe gastronomique italienne et gouvernante formée à l'hôtellerie de luxe : une alliance de compétences unique qui irrigue chaque propriété accompagnée d'un raffinement rare.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🏛️</span>
+      <div class="card-title">Structure à taille humaine, standards d'exception</div>
+      <div class="card-text">Pas d'industrialisation des prestations. Via Nobile fonctionne sur un modèle de maison privée : un portefeuille sélectif, un suivi au plus près, une exigence constante.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🌿</span>
+      <div class="card-title">Connaissance intime du territoire</div>
+      <div class="card-text">De Palavas à la Petite Camargue, de Sète aux Cévennes et à l'Aveyron : un ancrage local profond qui valorise chaque propriété dans son environnement authentique.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">✨</span>
+      <div class="card-title">L'art de l'espace comme levier de valeur</div>
+      <div class="card-text">Au-delà de la rigueur opérationnelle, Nathalie apporte un regard sur l'énergie et la présence des lieux — ce qui transforme un bien en sanctuaire et une nuitée en souvenir.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-header">
+    <div class="section-badge">02 — Client Cible</div>
+    <h2 class="section-title">Le propriétaire<br>que vous accompagnez</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">Portrait précis pour un message parfaitement calibré.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <span class="card-icon">👤</span>
+      <div class="card-title">Profil type</div>
+      <div class="card-text">Propriétaire de 42 à 65 ans, résidant à distance ou localement, possédant une à trois propriétés à fort potentiel dans l'Hérault, le Gard ou l'arrière-pays. Actif, exigeant, attaché à la valorisation de son patrimoine et à la qualité de l'expérience hôte. Il recherche la tranquillité d'esprit plus que la simple optimisation tarifaire.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">💡</span>
+      <div class="card-title">Motivations principales</div>
+      <ul class="styled-list">
+        <li>Déléguer entièrement sans perdre le contrôle</li>
+        <li>Préserver la qualité et l'image de son bien</li>
+        <li>Maximiser ses revenus locatifs sans effort</li>
+        <li>Offrir une expérience mémorable à ses hôtes</li>
+        <li>Travailler avec des professionnels de confiance</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🚧</span>
+      <div class="card-title">Freins et objections</div>
+      <ul class="styled-list">
+        <li>Peur de perdre le contrôle sur son bien</li>
+        <li>Doutes sur la fiabilité d'une structure nouvelle</li>
+        <li>Comparaison avec des concierges moins chers</li>
+        <li>Inquiétude sur le profil des voyageurs accueillis</li>
+        <li>Méconnaissance de ce que recouvre réellement le service</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">⚖️</span>
+      <div class="card-title">Critères de décision</div>
+      <ul class="styled-list">
+        <li>Qualité perçue des fondatrices et de leur parcours</li>
+        <li>Transparence et clarté des offres proposées</li>
+        <li>Preuves concrètes (avis, réalisations, témoignages)</li>
+        <li>Réactivité et disponibilité ressenties dès le premier contact</li>
+        <li>Cohérence entre le positionnement haut de gamme et les visuels du site</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-header">
+    <div class="section-badge">03 — Objectifs du Site</div>
+    <h2 class="section-title">Ce que le site<br>doit accomplir</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">Liste priorisée des missions stratégiques de votre présence en ligne.</p>
+  </div>
+
+  <div class="obj-list">
+    <div class="obj-item">
+      <div class="obj-num">1</div>
+      <div class="obj-content">
+        <div class="obj-title">Réassurance &amp; crédibilité premium</div>
+        <div class="obj-desc">Le site doit immédiatement refléter l'exigence de Via Nobile Collection. Chaque élément — texte, visuel, typographie — doit confirmer le positionnement haut de gamme avant même que le visiteur lise une ligne.</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-num">2</div>
+      <div class="obj-content">
+        <div class="obj-title">Génération de leads qualifiés (propriétaires)</div>
+        <div class="obj-desc">Attirer des propriétaires de biens premium qui souhaitent déléguer. Toutes les pages doivent orienter vers un formulaire de contact ou une prise de rendez-vous.</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-num">3</div>
+      <div class="obj-content">
+        <div class="obj-title">Prise de rendez-vous directe</div>
+        <div class="obj-desc">Faciliter le premier contact avec un outil de réservation de créneau — réduire la friction entre la découverte et l'échange humain.</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-num">4</div>
+      <div class="obj-content">
+        <div class="obj-title">SEO local ciblé (Hérault · Gard · Camargue)</div>
+        <div class="obj-desc">Capter les propriétaires qui cherchent activement une conciergerie dans leurs secteurs géographiques (Montpellier, Palavas, Sète, Petite Camargue…).</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-num">5</div>
+      <div class="obj-content">
+        <div class="obj-title">Notoriété &amp; rayonnement territorial</div>
+        <div class="obj-desc">Positionner Via Nobile Collection comme la référence conciergerie premium entre Montpellier et la Petite Camargue, avec un blog et des pages locales stratégiques.</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-num">6</div>
+      <div class="obj-content">
+        <div class="obj-title">Conversion &amp; nurturing</div>
+        <div class="obj-desc">Un lead magnet (guide ou estimation) pour capturer les contacts de propriétaires encore hésitants, nourrir la relation avant la décision.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-header">
+    <div class="section-badge">04 — Arborescence du Site</div>
+    <h2 class="section-title">Structure &amp; architecture<br>des pages</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">Chaque page est pensée pour un objectif précis — SEO, réassurance ou conversion.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Accueil</td>
+          <td>AIDA — Capter, intéresser, désirer, agir</td>
+          <td>conciergerie location courte durée Montpellier</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Notre Maison (À propos)</td>
+          <td>BAB — Avant / Après / Pont</td>
+          <td>conciergerie haut de gamme Hérault</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Nos Services aux Propriétaires</td>
+          <td>PAS — Problème / Agitation / Solution</td>
+          <td>services conciergerie propriétaire Montpellier</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>L'Expérience Hôte</td>
+          <td>AIDA — Émotionnel et sensoriel</td>
+          <td>accueil voyageurs location saisonnière luxe</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Notre Territoire (page locale SEO 1)</td>
+          <td>PAS — ancrage local &amp; SEO géographique</td>
+          <td>conciergerie Montpellier Palavas Sète Camargue</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Conciergerie arrière-pays (page locale SEO 2)</td>
+          <td>AIDA — Découverte d'un territoire méconnu</td>
+          <td>conciergerie Cévennes Aveyron Pézenas location saisonnière</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Blog / Actualités</td>
+          <td>Éditorial — Autorité &amp; SEO longue traîne</td>
+          <td>conseils propriétaire location courte durée</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Nos Partenaires</td>
+          <td>BAB — Réseau &amp; réassurance</td>
+          <td>partenaires conciergerie Hérault</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td>Contact / Rendez-vous</td>
+          <td>Direct — Conversion pure</td>
+          <td>contact conciergerie Via Nobile Montpellier</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECTION 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-header">
+    <div class="section-badge">05 — Cocon Sémantique</div>
+    <h2 class="section-title">Architecture de sens<br>&amp; maillage interne</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">Les clusters thématiques qui structurent votre autorité SEO.</p>
+  </div>
+
+  <div class="grid-3" style="margin-bottom:40px;">
+    <div class="cluster-block">
+      <div class="cluster-title">Cluster 1 — Conciergerie &amp; Services</div>
+      <div class="cluster-keywords">
+        <span class="cluster-kw">conciergerie Montpellier</span>
+        <span class="cluster-kw">services propriétaires</span>
+        <span class="cluster-kw">accueil hôtes</span>
+        <span class="cluster-kw">ménage premium</span>
+        <span class="cluster-kw">linge hôtelier</span>
+        <span class="cluster-kw">maintenance bien</span>
+        <span class="cluster-kw">annonces optimisées</span>
+      </div>
+      <div class="card-text">Pages : Accueil → Services Propriétaires → Expérience Hôte → Contact</div>
+    </div>
+    <div class="cluster-block">
+      <div class="cluster-title">Cluster 2 — Territoire &amp; Ancrage local</div>
+      <div class="cluster-keywords">
+        <span class="cluster-kw">Palavas-les-Flots</span>
+        <span class="cluster-kw">Sète location</span>
+        <span class="cluster-kw">Petite Camargue</span>
+        <span class="cluster-kw">Pézenas</span>
+        <span class="cluster-kw">Cévennes</span>
+        <span class="cluster-kw">Aveyron</span>
+        <span class="cluster-kw">Hérault Gard</span>
+      </div>
+      <div class="card-text">Pages : Notre Territoire → Arrière-pays → Blog articles locaux → Accueil</div>
+    </div>
+    <div class="cluster-block">
+      <div class="cluster-title">Cluster 3 — Expertise &amp; Confiance</div>
+      <div class="cluster-keywords">
+        <span class="cluster-kw">conciergerie haut de gamme</span>
+        <span class="cluster-kw">maison privée</span>
+        <span class="cluster-kw">gouvernance hôtelière</span>
+        <span class="cluster-kw">sérénité propriétaire</span>
+        <span class="cluster-kw">art de l'espace</span>
+        <span class="cluster-kw">expérience mémorable</span>
+      </div>
+      <div class="card-text">Pages : Notre Maison → Blog → Partenaires → Services</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#1C3A4A; margin-bottom:20px; font-weight:600;">Logique de maillage interne</h3>
+
+  <div class="maillage-row">
+    <span class="maillage-from">Accueil</span>
+    <span class="maillage-arrow">→</span>
+    <span class="maillage-to">Services Propriétaires · Notre Maison · Notre Territoire · Contact</span>
+  </div>
+  <div class="maillage-row">
+    <span class="maillage-from">Services Propriétaires</span>
+    <span class="maillage-arrow">→</span>
+    <span class="maillage-to">Expérience Hôte · Contact/RDV · Notre Maison</span>
+  </div>
+  <div class="maillage-row">
+    <span class="maillage-from">Notre Territoire (SEO)</span>
+    <span class="maillage-arrow">→</span>
+    <span class="maillage-to">Services Propriétaires · Contact · Articles Blog locaux</span>
+  </div>
+  <div class="maillage-row">
+    <span class="maillage-from">Arrière-pays (SEO)</span>
+    <span class="maillage-arrow">→</span>
+    <span class="maillage-to">Notre Territoire · Services Propriétaires · Blog</span>
+  </div>
+  <div class="maillage-row">
+    <span class="maillage-from">Blog</span>
+    <span class="maillage-arrow">→</span>
+    <span class="maillage-to">Services · Notre Territoire · Contact (CTA fin d'article)</span>
+  </div>
+  <div class="maillage-row">
+    <span class="maillage-from">Notre Maison</span>
+    <span class="maillage-arrow">→</span>
+    <span class="maillage-to">Services · Partenaires · Contact</span>
+  </div>
+</section>
+
+<!-- SECTION 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-header">
+    <div class="section-badge">06 — Tunnel de Conversion</div>
+    <h2 class="section-title">Du premier regard<br>au rendez-vous signé</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">Le parcours d'un propriétaire depuis sa première recherche jusqu'à la collaboration.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">1</div>
+      <span class="tunnel-label">Étape 01</span>
+      <div class="tunnel-title">Découverte</div>
+      <div class="tunnel-row"><strong>Source :</strong> Google (SEO local), bouche à oreille, réseaux sociaux</div>
+      <div class="tunnel-row"><strong>Page :</strong> Accueil · Pages locales SEO</div>
+      <div class="tunnel-row"><strong>Objectif :</strong> Créer une première impression d'excellence et ancrer l'identité de marque</div>
+      <div><span class="cta-pill">→ Découvrir nos services</span></div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">2</div>
+      <span class="tunnel-label">Étape 02</span>
+      <div class="tunnel-title">Intérêt</div>
+      <div class="tunnel-row"><strong>Source :</strong> Navigation interne depuis l'accueil</div>
+      <div class="tunnel-row"><strong>Page :</strong> Services Propriétaires · Notre Maison</div>
+      <div class="tunnel-row"><strong>Objectif :</strong> Comprendre l'offre, s'identifier, ressentir la différence Via Nobile</div>
+      <div><span class="cta-pill">→ Télécharger le guide propriétaire</span></div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">3</div>
+      <span class="tunnel-label">Étape 03</span>
+      <div class="tunnel-title">Confiance</div>
+      <div class="tunnel-row"><strong>Source :</strong> Blog · Témoignages · Partenaires</div>
+      <div class="tunnel-row"><strong>Page :</strong> Notre Maison · Blog · Partenaires</div>
+      <div class="tunnel-row"><strong>Objectif :</strong> Lever les objections grâce à la preuve sociale et au parcours des fondatrices</div>
+      <div><span class="cta-pill">→ Lire les témoignages</span></div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">4</div>
+      <span class="tunnel-label">Étape 04</span>
+      <div class="tunnel-title">Conversion</div>
+      <div class="tunnel-row"><strong>Source :</strong> CTA depuis toutes les pages</div>
+      <div class="tunnel-row"><strong>Page :</strong> Contact / Rendez-vous</div>
+      <div class="tunnel-row"><strong>Objectif :</strong> Déclencher une prise de rendez-vous ou un envoi de formulaire qualifié</div>
+      <div><span class="cta-pill">→ Prendre rendez-vous</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-header">
+    <div class="section-badge">07 — Leviers Marketing Recommandés</div>
+    <h2 class="section-title">Les outils qui transforment<br>les visiteurs en clients</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">Chaque levier est adapté à votre positionnement et à votre cible propriétaire.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <span class="levier-icon">📘</span>
+      <div class="levier-title">Lead Magnet</div>
+      <div class="levier-text"><strong>« Le Guide Via Nobile : les 7 exigences d'une conciergerie premium pour valoriser votre bien dans l'Hérault et le Gard »</strong><br><br>Un PDF élégant et structuré, téléchargeable en échange d'un email. Il éduque le propriétaire, illustre votre savoir-faire et crée une relation avant le premier échange.</div>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">📅</span>
+      <div class="levier-title">Prise de Rendez-vous</div>
+      <div class="levier-text"><strong>Outil recommandé : Calendly (version Pro) ou TidyCal</strong><br><br>Intégrer un module de prise de RDV directement dans la page Contact. Proposer un « Entretien Découverte » de 30 minutes — ton raffiné, pas de jargon commercial. Option visioconférence ou déplacement sur site.</div>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">⭐</span>
+      <div class="levier-title">Preuve Sociale</div>
+      <div class="levier-text"><strong>Témoignages propriétaires vidéo ou écrits · Scores Airbnb/Booking · Captures d'avis voyageurs</strong><br><br>Mettre en avant des verbatims authentiques de propriétaires satisfaits, idéalement avec photo. Afficher les étoiles obtenues sur les plateformes pour les biens accompagnés.</div>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">📝</span>
+      <div class="levier-title">Formulaire Qualifiant</div>
+      <div class="levier-text"><strong>Champs recommandés :</strong><br>— Prénom / Nom<br>— Email + Téléphone<br>— Localisation du bien<br>— Type de bien (villa, mas, appartement…)<br>— Disponibilité actuelle (déjà loué / à mettre en location)<br>— Message libre</div>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">✉️</span>
+      <div class="levier-title">Newsletter</div>
+      <div class="levier-text"><strong>Angle éditorial : « La Lettre Via Nobile »</strong><br><br>Envoi mensuel. Contenu : tendances de la location saisonnière dans le sud, conseils de présentation d'un bien, portrait d'un territoire, coulisses de la maison. Ton : élégant, inspirant, local. Outil : Brevo (ex-Sendinblue) ou Mailchimp.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-header">
+    <div class="section-badge">08 — Direction Visuelle &amp; Éditoriale</div>
+    <h2 class="section-title">L'univers sensoriel<br>de Via Nobile Collection</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">Une identité visuelle cohérente, élégante et ancrée dans votre territoire.</p>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#1C3A4A; margin-bottom:8px; font-weight:600; text-align:center;">Palette de Couleurs</h3>
+  <p style="text-align:center; font-size:13.5px; color:#777; margin-bottom:0;">Vos couleurs signature — transmises lors de l'onboarding</p>
+
+  <div class="palette-grid">
+    <div class="color-swatch">
+      <div class="color-box" style="background:#1C3A4A;"></div>
+      <div class="color-name">Mer Profonde</div>
+      <div class="color-hex">#1C3A4A</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-box" style="background:#7A9BA8;"></div>
+      <div class="color-name">Horizon</div>
+      <div class="color-hex">#7A9BA8</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-box" style="background:#C9D8D0; border:1px solid #ddd;"></div>
+      <div class="color-name">Écume</div>
+      <div class="color-hex">#C9D8D0</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-box" style="background:#B89A6A;"></div>
+      <div class="color-name">Or Nobile</div>
+      <div class="color-hex">#B89A6A</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-box" style="background:#8B7355;"></div>
+      <div class="color-name">Falaise</div>
+      <div class="color-hex">#8B7355</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-box" style="background:#F5F0E8; border:1px solid #ddd;"></div>
+      <div class="color-name">Blanc Lumière</div>
+      <div class="color-hex">#F5F0E8</div>
+    </div>
+  </div>
+
+  <div style="margin-top:52px;">
+    <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#1C3A4A; margin-bottom:24px; font-weight:600;">Univers Visuel Recommandé</h3>
+    <div class="grid-3">
+      <div class="card">
+        <span class="card-icon">📸</span>
+        <div class="card-title">Photographie d'ambiance</div>
+        <div class="card-text">Biens en lumière naturelle méditerranéenne, détails intérieurs soignés (linge, fleurs fraîches, art de la table), paysages du territoire (mer, garrigue, mas en pierre).</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🖋️</span>
+        <div class="card-title">Typographie</div>
+        <div class="card-text">Playfair Display (titres, citations, noms propres) + Inter ou Lato (corps de texte). Contraste entre sérif élégant et sans-sérif moderne.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🪶</span>
+        <div class="card-title">Blanc, espace &amp; minimalisme</div>
+        <div class="card-text">Large utilisation de l'espace blanc. Pas de surcharge visuelle. Chaque élément respire. Le luxe se manifeste dans ce qu'on ne dit pas.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">✦</span>
+        <div class="card-title">Ornements dorés discrets</div>
+        <div class="card-text">Filets Or Nobile (#B89A6A) pour séparer les sections. Petites icônes linéaires ou motifs géométriques inspirés de l'architecture locale.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌊</span>
+        <div class="card-title">Dégradés nautiques</div>
+        <div class="card-text">Transitions douces entre Mer Profonde (#1C3A4A) et Horizon (#7A9BA8) pour les fonds de sections ou les pages de couverture. Évoque la mer et le ciel du Languedoc.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 09 — BLOG -->
+<section id="bp-section-09">
+  <div class="section-header">
+    <div class="section-badge">09 — Articles Blog Recommandés</div>
+    <h2 class="section-title">Le contenu qui construit<br>votre autorité SEO</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">7 sujets d'articles pour capter, convaincre et fidéliser vos futurs propriétaires.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <div class="blog-meta">
+        <span>Cluster 1 — Services</span>
+        <span class="badge badge-fort">Prioritaire</span>
+      </div>
+      <div class="blog-card-title">« Confier son bien à une conciergerie à Montpellier : ce que vous devez vraiment exiger »</div>
+      <div class="blog-intention">Intention informationnelle + comparaison. Capture les propriétaires en phase de recherche active d'une conciergerie locale.</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-meta">
+        <span>Cluster 2 — Territoire</span>
+        <span class="badge badge-fort">Prioritaire</span>
+      </div>
+      <div class="blog-card-title">« Location saisonnière à Palavas-les-Flots : comment maximiser son taux d'occupation en 2025 »</div>
+      <div class="blog-intention">Intention informationnelle + locale. Capte les propriétaires palavasiens via une longue traîne géographique très ciblée.</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-meta">
+        <span>Cluster 2 — Territoire</span>
+        <span class="badge badge-fort">Prioritaire</span>
+      </div>
+      <div class="blog-card-title">« Pourquoi louer un mas en Petite Camargue attire de plus en plus les voyageurs premium »</div>
+      <div class="blog-intention">Intention éditoriale + SEO territorial. Valorise les biens de caractère et positionne Via Nobile sur l'hôte haut de gamme.</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-meta">
+        <span>Cluster 3 — Expertise</span>
+        <span class="badge badge-moyen">Moyen</span>
+      </div>
+      <div class="blog-card-title">« L'art de préparer une propriété pour ses hôtes : les standards que nous appliquons chez Via Nobile »</div>
+      <div class="blog-intention">Intention de réassurance. Démontre le savoir-faire opérationnel et la philosophie de la maison — renforce la crédibilité.</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-meta">
+        <span>Cluster 1 — Services</span>
+        <span class="badge badge-moyen">Moyen</span>
+      </div>
+      <div class="blog-card-title">« Location courte durée dans l'Hérault : 5 erreurs que font les propriétaires qui gèrent seuls »</div>
+      <div class="blog-intention">Intention PAS (Problème / Agitation). Touche les propriétaires autonomes qui doutent — les amène à envisager la délégation.</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-meta">
+        <span>Cluster 2 — Territoire</span>
+        <span class="badge badge-moyen">Moyen</span>
+      </div>
+      <div class="blog-card-title">« Sète, Pézenas, Cévennes : quel territoire offre le meilleur potentiel locatif saisonnier ? »</div>
+      <div class="blog-intention">Intention comparative + informationnel. Positionne Via Nobile sur une large empreinte géographique tout en attirant des profils qualifiés.</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-meta">
+        <span>Cluster 3 — Expertise</span>
+        <span class="badge badge-faible">Faible</span>
+      </div>
+      <div class="blog-card-title">« Ce que change une gouvernante form
