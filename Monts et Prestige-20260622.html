@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Monts & Prestige</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2c2c2c;
+    background: #faf8f5;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(150deg, #2a2e2a 0%, #3d4139 40%, #5a4e3a 100%);
+    padding: 60px 40px;
+    position: relative;
+  }
+
+  .cover-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #CDB38B;
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #d4c9b8;
+    margin-bottom: 48px;
+    letter-spacing: 1px;
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 1px;
+    background: #CDB38B;
+    margin: 0 auto 40px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #A68A64;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    color: #f0ebe3;
+    font-weight: 400;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+
+  .section-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #A68A64;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #2a2e2a;
+    margin-bottom: 10px;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: #6b6b6b;
+    margin-bottom: 48px;
+    max-width: 640px;
+  }
+
+  .section-divider {
+    width: 40px;
+    height: 2px;
+    background: #CDB38B;
+    margin-bottom: 48px;
+  }
+
+  /* GRID */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* CARDS */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0ebe3;
+  }
+
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #2a2e2a;
+    margin-bottom: 8px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    color: #5a5a5a;
+    line-height: 1.7;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #3d4139 0%, #5a4e3a 100%);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 40px;
+    color: #f0ebe3;
+  }
+
+  .highlight-box .label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #CDB38B;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #f0ebe3;
+  }
+
+  /* TAGS & BADGES */
+  .tag {
+    display: inline-block;
+    background: #f5f0eb;
+    color: #5a4e3a;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 13px;
+    margin: 4px 4px 4px 0;
+    font-weight: 500;
+  }
+
+  .badge-fort {
+    display: inline-block;
+    background: #3d4139;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .badge-moyen {
+    display: inline-block;
+    background: #A68A64;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .badge-faible {
+    display: inline-block;
+    background: #d6cfc5;
+    color: #5a4e3a;
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .badge-prioritaire {
+    display: inline-block;
+    background: #3d4139;
+    color: #fff;
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .badge-article-moyen {
+    display: inline-block;
+    background: #A68A64;
+    color: #fff;
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .badge-article-faible {
+    display: inline-block;
+    background: #d6cfc5;
+    color: #5a4e3a;
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    background: #ffffff;
+  }
+
+  thead {
+    background: #3d4139;
+    color: #f0ebe3;
+  }
+
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #f0ebe3;
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody td {
+    padding: 16px 20px;
+    color: #3a3a3a;
+    vertical-align: top;
+  }
+
+  tbody tr:hover {
+    background: #faf8f5;
+  }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .tunnel-step {
+    padding: 32px 24px;
+    background: #ffffff;
+    border-right: 1px solid #f0ebe3;
+    position: relative;
+  }
+
+  .tunnel-step:last-child {
+    border-right: none;
+  }
+
+  .tunnel-step-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: #CDB38B;
+    opacity: 0.4;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .tunnel-step-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #A68A64;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2a2e2a;
+    margin-bottom: 16px;
+  }
+
+  .tunnel-step p {
+    font-size: 13px;
+    color: #6b6b6b;
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+
+  .tunnel-step .tunnel-label-inner {
+    font-size: 11px;
+    font-weight: 600;
+    color: #A68A64;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .tunnel-cta {
+    display: inline-block;
+    background: #f5f0eb;
+    color: #5a4e3a;
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+
+  /* COCON */
+  .cluster-block {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+    border: 1px solid #f0ebe3;
+  }
+
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2a2e2a;
+    margin-bottom: 16px;
+  }
+
+  .maillage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #3a3a3a;
+  }
+
+  .maillage-arrow {
+    color: #CDB38B;
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .maillage-target {
+    color: #A68A64;
+    font-weight: 500;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 16px;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  }
+
+  .palette-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #2a2e2a;
+    text-align: center;
+  }
+
+  .palette-hex {
+    font-size: 12px;
+    color: #aaa;
+    text-align: center;
+  }
+
+  /* OBJECS PRIORITES */
+  .objective-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0ebe3;
+  }
+
+  .objective-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #CDB38B;
+    font-weight: 700;
+    min-width: 36px;
+    line-height: 1;
+  }
+
+  .objective-text strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: #2a2e2a;
+    margin-bottom: 2px;
+  }
+
+  .objective-text span {
+    font-size: 13px;
+    color: #6b6b6b;
+  }
+
+  /* LEVIER */
+  .levier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0ebe3;
+  }
+
+  .levier-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #A68A64;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .levier-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2a2e2a;
+    margin-bottom: 10px;
+  }
+
+  .levier-text {
+    font-size: 14px;
+    color: #5a5a5a;
+    line-height: 1.7;
+  }
+
+  /* BLOG */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0ebe3;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .blog-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2a2e2a;
+  }
+
+  .blog-meta {
+    font-size: 13px;
+    color: #6b6b6b;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #2a2e2a;
+    color: #a0a0a0;
+    text-align: center;
+    padding: 36px 40px;
+    font-size: 13px;
+  }
+
+  footer strong {
+    color: #CDB38B;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    section { padding: 48px 24px; }
+    .cover-title { font-size: 40px; }
+    .cover-meta { gap: 24px; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .tunnel-grid { grid-template-columns: 1fr; }
+    .tunnel-step { border-right: none; border-bottom: 1px solid #f0ebe3; }
+    .tunnel-step:last-child { border-bottom: none; }
+    .table-wrap { overflow-x: auto; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 16px; }
+    .palette-grid { gap: 16px; }
+    .maillage-row { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <span class="cover-eyebrow">Blueprint Stratégique</span>
+  <h1 class="cover-title">Monts & Prestige</h1>
+  <p class="cover-subtitle">Document de stratégie digitale — Confidentiel</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Cliente</span>
+      <span class="cover-meta-value">Lauren Humbert</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie & Location courte durée</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Zone</span>
+      <span class="cover-meta-value">Briançon · Serre-Chevalier</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-badge">01</span>
+  <h2 class="section-title">Positionnement</h2>
+  <div class="section-divider"></div>
+
+  <div class="highlight-box" style="margin-bottom: 40px;">
+    <span class="label">Promesse de valeur</span>
+    <p>Monts & Prestige transforme chaque séjour en expérience alpine d'exception — un service de conciergerie haut de gamme, signé par une professionnelle de l'hôtellerie, au cœur de la vallée de Serre-Chevalier.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 40px;">
+    <span class="card-title" style="font-size:14px; color:#A68A64; letter-spacing:2px; text-transform:uppercase; font-family:'Inter',sans-serif;">Ligne directrice de communication</span>
+    <p class="card-text" style="margin-top:10px; font-size:15px; color:#2a2e2a;">Expertise hôtelière authentique · Service discret et attentionné · Ancrage montagnard premium</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 40px;">
+    <span class="card-title" style="font-size:14px; color:#A68A64; letter-spacing:2px; text-transform:uppercase; font-family:'Inter',sans-serif;">Ton éditorial</span>
+    <p class="card-text" style="margin-top:10px;"><strong>Chaleureux · Raffiné · Rassurant</strong><br>Un ton proche et humain, qui allie l'élégance du service hôtelier de prestige à la sincérité d'un accueil montagnard authentique — jamais froid, jamais commercial.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🏔️</span>
+      <div class="card-title">Ancrage territorial fort</div>
+      <p class="card-text">Une présence exclusive sur la vallée de Serre-Chevalier (Chantemerle, Villeneuve, Le Monêtier-les-Bains) — une connaissance terrain que nul acteur généraliste ne peut égaler.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🎓</span>
+      <div class="card-title">Expertise hôtelière</div>
+      <p class="card-text">Un parcours professionnel solide entre Alpes françaises et Québec, au sein d'établissements hôteliers et de résidences de prestige — une légitimité rare dans le secteur.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✨</span>
+      <div class="card-title">Service haut de gamme pour les voyageurs</div>
+      <p class="card-text">Kit d'accueil soigné, assistance 7j/7, check-in/check-out organisés : chaque voyageur bénéficie d'une attention digne d'un hôtel de charme.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🔗</span>
+      <div class="card-title">Diffusion multi-plateformes optimisée</div>
+      <p class="card-text">Présence sur plusieurs OTA, calendriers synchronisés et outils professionnels pour maximiser l'occupation du bien tout au long de l'année.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🤝</span>
+      <div class="card-title">Approche humaine et personnalisée</div>
+      <p class="card-text">Une interlocutrice unique, disponible et impliquée — pas un call center, pas un process automatisé, mais une relation de confiance construite dans la durée.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-badge">02</span>
+  <h2 class="section-title">Client Cible</h2>
+  <div class="section-divider"></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">👤</span>
+      <div class="card-title">Profil type</div>
+      <p class="card-text">Propriétaire de chalet ou appartement de montagne, 38–60 ans, actif ou cadre, résidant hors des Hautes-Alpes. Il loue son bien en courte durée mais manque de temps ou de proximité pour l'opérer sereinement. Il est exigeant sur la qualité et n'accepte pas l'approximation.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">💡</span>
+      <div class="card-title">Motivations principales</div>
+      <p class="card-text">
+        Rentabiliser son bien sans y consacrer du temps<br>
+        Déléguer à une personne de confiance<br>
+        Offrir une expérience qualitative à ses voyageurs<br>
+        Valoriser son patrimoine immobilier<br>
+        Bénéficier d'une visibilité maximale sur les plateformes
+      </p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🚧</span>
+      <div class="card-title">Freins & Objections</div>
+      <p class="card-text">
+        "Je ne connais pas cette conciergerie"<br>
+        "Est-ce que mon bien sera bien entretenu ?"<br>
+        "Je ne veux pas perdre le contrôle"<br>
+        "Les commissions sont-elles justifiées ?"<br>
+        "Que se passe-t-il en cas de problème ?"
+      </p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✅</span>
+      <div class="card-title">Critères de décision</div>
+      <p class="card-text">
+        Expérience et légitimité professionnelle<br>
+        Réactivité et disponibilité<br>
+        Transparence sur les prestations incluses<br>
+        Qualité du service rendu aux voyageurs<br>
+        Proximité et connaissance du territoire
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <span class="section-badge">03</span>
+  <h2 class="section-title">Objectifs du Site</h2>
+  <div class="section-divider"></div>
+
+  <div class="objective-item">
+    <span class="objective-rank">1</span>
+    <div class="objective-text">
+      <strong>Génération de leads propriétaires</strong>
+      <span>Capter des demandes de propriétaires souhaitant confier leur bien via formulaire qualifié ou prise de contact directe.</span>
+    </div>
+  </div>
+  <div class="objective-item">
+    <span class="objective-rank">2</span>
+    <div class="objective-text">
+      <strong>Réassurance & crédibilité</strong>
+      <span>Démontrer l'expertise et la fiabilité de Lauren via son parcours, ses témoignages et la clarté des prestations proposées.</span>
+    </div>
+  </div>
+  <div class="objective-item">
+    <span class="objective-rank">3</span>
+    <div class="objective-text">
+      <strong>SEO local — Serre-Chevalier & Briançon</strong>
+      <span>Positionner Monts & Prestige sur les requêtes de propriétaires cherchant une conciergerie dans la vallée.</span>
+    </div>
+  </div>
+  <div class="objective-item">
+    <span class="objective-rank">4</span>
+    <div class="objective-text">
+      <strong>Prise de rendez-vous</strong>
+      <span>Faciliter la prise de contact via un outil de réservation en ligne ou un formulaire simple et qualifiant.</span>
+    </div>
+  </div>
+  <div class="objective-item">
+    <span class="objective-rank">5</span>
+    <div class="objective-text">
+      <strong>Notoriété & image de marque</strong>
+      <span>Installer Monts & Prestige comme la référence conciergerie premium de la vallée de Serre-Chevalier.</span>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <span class="section-badge">04</span>
+  <h2 class="section-title">Arborescence du Site</h2>
+  <div class="section-divider"></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie Serre-Chevalier</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Prestations</strong><br><span style="font-size:12px;color:#888;">(intendance, check-in/out, ménage, optimisation annonce, multi-OTA…)</span></td>
+          <td>PAS</td>
+          <td>conciergerie location courte durée Briançon</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À Propos — Lauren Humbert</strong></td>
+          <td>BAB</td>
+          <td>conciergerie haut de gamme Hautes-Alpes</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Biens</strong><br><span style="font-size:12px;color:#888;">(galerie chalets & appartements de la vallée)</span></td>
+          <td>AIDA</td>
+          <td>chalets et appartements Serre-Chevalier conciergerie</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact & Estimation</strong></td>
+          <td>PAS</td>
+          <td>confier son bien Serre-Chevalier</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie Serre-Chevalier</strong><br><span style="font-size:12px;color:#888;">(page locale SEO #1)</span></td>
+          <td>AIDA</td>
+          <td>conciergerie Serre-Chevalier location saisonnière</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie Briançon</strong><br><span style="font-size:12px;color:#888;">(page locale SEO #2)</span></td>
+          <td>AIDA</td>
+          <td>conciergerie Briançon appartement montagne</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils propriétaire location montagne</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-badge">05</span>
+  <h2 class="section-title">Cocon Sémantique</h2>
+  <div class="section-divider"></div>
+
+  <div class="cluster-block">
+    <div class="cluster-title">🏔️ Cluster 1 — Conciergerie & Location courte durée</div>
+    <p style="font-size:14px;color:#6b6b6b;margin-bottom:16px;">Requêtes autour du service, du délégation et de la valorisation de bien en montagne.</p>
+    <div class="maillage-row">
+      <span><strong>Accueil</strong></span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Nos Prestations</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact & Estimation</span>
+    </div>
+    <div class="maillage-row">
+      <span><strong>Nos Prestations</strong></span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">À Propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact & Estimation</span>
+    </div>
+    <div class="maillage-row">
+      <span><strong>Blog (articles conseils)</strong></span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Nos Prestations</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact & Estimation</span>
+    </div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title">📍 Cluster 2 — SEO Local Serre-Chevalier & Briançon</div>
+    <p style="font-size:14px;color:#6b6b6b;margin-bottom:16px;">Requêtes géolocalisées visant les propriétaires de la vallée et les alentours.</p>
+    <div class="maillage-row">
+      <span><strong>Conciergerie Serre-Chevalier</strong></span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Nos Prestations</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact & Estimation</span>
+    </div>
+    <div class="maillage-row">
+      <span><strong>Conciergerie Briançon</strong></span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Nos Prestations</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact & Estimation</span>
+    </div>
+    <div class="maillage-row">
+      <span><strong>Pages locales</strong></span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">À Propos</span>
+      <span style="font-size:13px;color:#888;">(renforcement de la crédibilité locale)</span>
+    </div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title">✨ Cluster 3 — Confiance & Expérience</div>
+    <p style="font-size:14px;color:#6b6b6b;margin-bottom:16px;">Contenus qui rassurent, valorisent le parcours de Lauren et renforcent la décision.</p>
+    <div class="maillage-row">
+      <span><strong>À Propos</strong></span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Nos Biens</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact & Estimation</span>
+    </div>
+    <div class="maillage-row">
+      <span><strong>Nos Biens</strong></span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Nos Prestations</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">À Propos</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-badge">06</span>
+  <h2 class="section-title">Tunnel de Conversion</h2>
+  <div class="section-divider"></div>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <span class="tunnel-step-number">01</span>
+      <span class="tunnel-step-label">Découverte</span>
+      <div class="tunnel-step-title">Le propriétaire vous trouve</div>
+      <p><span class="tunnel-label-inner">Source :</span><br>Google (SEO local), bouche-à-oreille, réseaux sociaux</p>
+      <p><span class="tunnel-label-inner">Page :</span><br>Accueil / Pages locales SEO</p>
+      <span class="tunnel-cta">→ Découvrir nos prestations</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-number">02</span>
+      <span class="tunnel-step-label">Intérêt</span>
+      <div class="tunnel-step-title">Il explore votre offre</div>
+      <p><span class="tunnel-label-inner">Source :</span><br>Navigation interne, blog, Nos Biens</p>
+      <p><span class="tunnel-label-inner">Page :</span><br>Nos Prestations / Blog</p>
+      <span class="tunnel-cta">→ En savoir plus</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-number">03</span>
+      <span class="tunnel-step-label">Confiance</span>
+      <div class="tunnel-step-title">Il se projette avec vous</div>
+      <p><span class="tunnel-label-inner">Source :</span><br>Page À Propos, avis, portfolio biens</p>
+      <p><span class="tunnel-label-inner">Page :</span><br>À Propos / Nos Biens</p>
+      <span class="tunnel-cta">→ Voir les biens gérés</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-number">04</span>
+      <span class="tunnel-step-label">Conversion</span>
+      <div class="tunnel-step-title">Il vous contacte</div>
+      <p><span class="tunnel-label-inner">Source :</span><br>CTA présents sur toutes les pages</p>
+      <p><span class="tunnel-label-inner">Page :</span><br>Contact & Estimation</p>
+      <span class="tunnel-cta">→ Estimer mon bien</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-badge">07</span>
+  <h2 class="section-title">Leviers Marketing Recommandés</h2>
+  <div class="section-divider"></div>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <span class="levier-label">Lead Magnet</span>
+      <div class="levier-title">Guide "Propriétaire serein à Serre-Chevalier"</div>
+      <p class="levier-text">Un PDF téléchargeable (5–7 pages) qui explique comment optimiser la rentabilité d'un chalet ou appartement de montagne sans y consacrer du temps. Capture d'email en échange du guide.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-label">Prise de rendez-vous</span>
+      <div class="levier-title">Calendly ou Cal.com</div>
+      <p class="levier-text">Un lien de réservation intégré sur la page Contact & Estimation pour planifier un appel découverte de 20 minutes. Simple, professionnel, sans friction.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-label">Preuve sociale</span>
+      <div class="levier-title">Témoignages propriétaires + avis voyageurs</div>
+      <p class="levier-text">Citations de propriétaires satisfaits (prénom + ville), captures d'avis Airbnb/Booking, et note moyenne mise en avant. Format carte ou bandeau défilant sur l'accueil.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-label">Formulaire qualifiant</span>
+      <div class="levier-title">Champs recommandés sur la page Contact</div>
+      <p class="levier-text">Type de bien (chalet / appartement) · Localisation (Chantemerle / Villeneuve / Le Monêtier) · Nombre de couchages · Déjà en location ? (Oui/Non) · Message libre · Email & téléphone</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-label">Newsletter</span>
+      <div class="levier-title">Angle éditorial : "La Lettre du Propriétaire Alpin"</div>
+      <p class="levier-text">Envoi mensuel avec : actualités de la vallée, conseils de valorisation saisonnière, bonnes pratiques de location courte durée et coulisses de Monts & Prestige.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-badge">08</span>
+  <h2 class="section-title">Direction Visuelle & Éditoriale</h2>
+  <div class="section-divider"></div>
+
+  <div class="card" style="margin-bottom:32px;">
+    <div class="card-title">Palette couleurs</div>
+    <p class="card-text" style="margin-bottom:24px;">Palette transmise par la cliente — inspirée des teintes naturelles de la montagne : or chaud, sable doux, vert sauge et blanc ivoire.</p>
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#CDB38B;"></div>
+        <div class="palette-name">Or Montagne</div>
+        <div class="palette-hex">#CDB38B</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#A68A64;"></div>
+        <div class="palette-name">Sable Profond</div>
+        <div class="palette-hex">#A68A64</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#F5F1EB; border:1px solid #e0d9d0;"></div>
+        <div class="palette-name">Blanc Ivoire</div>
+        <div class="palette-hex">#F5F1EB</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#6D7D6A;"></div>
+        <div class="palette-name">Vert Sauge Alpin</div>
+        <div class="palette-hex">#6D7D6A</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#2a2e2a;"></div>
+        <div class="palette-name">Forêt Profonde</div>
+        <div class="palette-hex">#2A2E2A</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">🖼️ Univers visuel recommandé</div>
+      <p class="card-text">
+        <strong>Photographie de montagne :</strong> chalets enneigés, feux de cheminée, panoramas alpins au crépuscule<br><br>
+        <strong>Intérieur haut de gamme :</strong> détails cosy (linge de lit blanc, carafe sur table en bois, bougie, kit d'accueil élégant)<br><br>
+        <strong>Portraits naturels de Lauren :</strong> présence terrain, atmosphère chaleureuse et professionnelle<br><br>
+        <strong>Textures naturelles :</strong> bois clair, pierre grise, laine, cuivre — cohérentes avec la palette<br><br>
+        <strong>Icônes épurées :</strong> style trait fin, cohérentes avec l'esthétique hôtelière premium
+      </p>
+    </div>
+    <div class="card">
+      <div class="card-title">✍️ Ligne éditoriale</div>
+      <p class="card-text">
+        Phrases courtes, images fortes, jamais de jargon technique<br><br>
+        Mettre en avant le bénéfice propriétaire avant la liste de services<br><br>
+        Toujours humaniser : parler de Lauren, de la relation, du terrain<br><br>
+        Utiliser des mots-clés du champ lexical alpin : chalet, vallée, sommet, authenticité, sérénité, prestige<br><br>
+        Titres en Playfair Display pour l'élégance, corps en Inter pour la lisibilité
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <span class="section-badge">09</span>
+  <h2 class="section-title">Articles Blog Recommandés</h2>
+  <div class="section-divider"></div>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <div class="blog-card-title">Comment rentabiliser son chalet à Serre-Chevalier sans s'en occuper ?</div>
+      <div class="blog-meta">🗂️ Conciergerie & Location · 🎯 Informationnelle transactionnelle</div>
+      <span class="badge-prioritaire">Prioritaire</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Conciergerie ou agence immobilière : quelle solution pour louer votre bien en montagne ?</div>
+      <div class="blog-meta">🗂️ Conciergerie & Location · 🎯 Comparaison / Décision</div>
+      <span class="badge-prioritaire">Prioritaire</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Serre-Chevalier : pourquoi la vallée attire de plus en plus de voyageurs en quête d'authenticité ?</div>
+      <div class="blog-meta">🗂️ SEO Local · 🎯 Informationnelle / Notoriété</div>
+      <span class="badge-prioritaire">Prioritaire</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">5 erreurs fréquentes des propriétaires qui gèrent seuls leur location courte durée</div>
+      <div class="blog-meta">🗂️ Conciergerie & Location · 🎯 Informationnelle / Réassurance</div>
+      <span class="badge-article-moyen">Moyen</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Le Monêtier-les-Bains, Chantemerle, Villeneuve : quel secteur de Serre-Chevalier pour quel profil de voyageur ?</div>
+      <div class="blog-meta">🗂️ SEO Local · 🎯 Informationnelle / Géolocalisée</div>
+      <span class="badge-article-moyen">Moyen</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Kit d'accueil en location saisonnière : pourquoi c'est le détail qui fait toute la différence ?</div>
+      <div class="blog-meta">🗂️ Expérience Voyageur · 🎯 Informationnelle / Preuve sociale</div>
+      <span class="badge-article-moyen">Moyen</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Haute saison ski vs été en montagne : comment adapter la stratégie de location de votre bien ?</div>
+      <div class="blog-meta">🗂️ Conciergerie & Location · 🎯 Informationnelle / Saisonnalité</div>
+      <span class="badge-article-faible">Faible</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Monts & Prestige</strong> — Blueprint Stratégique · Document confidentiel</p>
+  <p style="margin-top:6px;">Préparé par AR Digital · Reproduction interdite</p>
+</footer>
+
+</body>
+</html>
