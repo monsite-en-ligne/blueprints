@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Charlotte Sud Immo</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a2e;
+    background: #f8f8f6;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0a1f6b 0%, #1034A6 45%, #1a2a7a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .cover-logo-line {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .cover-subtitle {
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 56px;
+    position: relative;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    position: relative;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-item .label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .cover-meta-item .value {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+  .cover-divider {
+    width: 48px;
+    height: 1px;
+    background: rgba(255,255,255,0.25);
+    margin: 0 auto 48px;
+    position: relative;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 70px 60px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+  section:nth-child(odd) {
+    background: #f8f8f6;
+  }
+
+  .section-badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #1034A6;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #0a1f6b;
+    margin-bottom: 48px;
+    line-height: 1.2;
+  }
+
+  /* CARDS */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0a1f6b;
+    margin-bottom: 10px;
+  }
+  .card p, .card ul {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.7;
+  }
+  .card ul {
+    padding-left: 16px;
+  }
+  .card ul li {
+    margin-bottom: 4px;
+  }
+
+  /* GRIDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #0a1f6b, #1034A6);
+    border-radius: 16px;
+    padding: 36px 40px;
+    color: #ffffff;
+    margin-bottom: 48px;
+  }
+  .highlight-box .hl-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    display: block;
+    margin-bottom: 12px;
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #ffffff;
+  }
+
+  /* TONE TAGS */
+  .tone-tags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .tone-tag {
+    background: #eef1fb;
+    color: #1034A6;
+    border-radius: 30px;
+    padding: 6px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* TABLE */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 14px;
+  }
+  thead tr {
+    background: #0a1f6b;
+    color: #ffffff;
+  }
+  thead th {
+    padding: 14px 20px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+  }
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+  tbody td {
+    padding: 14px 20px;
+    color: #333;
+    vertical-align: top;
+  }
+  tbody tr:hover {
+    background: #f8f8f6;
+  }
+
+  /* BADGES SEO */
+  .badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .badge-fort { background: #d4edda; color: #155724; }
+  .badge-moyen { background: #fff3cd; color: #856404; }
+  .badge-faible { background: #f8d7da; color: #721c24; }
+
+  /* TUNNEL */
+  .tunnel-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+    position: relative;
+  }
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+    margin: 0 12px;
+  }
+  .tunnel-step:first-child { margin-left: 0; }
+  .tunnel-step:last-child { margin-right: 0; }
+  .step-number {
+    width: 36px;
+    height: 36px;
+    background: #1034A6;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .step-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1034A6;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0a1f6b;
+    margin-bottom: 12px;
+  }
+  .step-info {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 6px;
+  }
+  .step-cta {
+    display: inline-block;
+    margin-top: 12px;
+    background: #eef1fb;
+    color: #1034A6;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* MAILLAGE */
+  .maillage-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .maillage-item:last-child { border-bottom: none; }
+  .maillage-source {
+    background: #eef1fb;
+    color: #1034A6;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .maillage-arrow {
+    color: #1034A6;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .maillage-targets {
+    font-size: 13px;
+    color: #444;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.6;
+  }
+  .maillage-target-tag {
+    background: #f0f0f0;
+    color: #333;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+  }
+
+  /* COLORS PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 32px;
+  }
+  .color-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .color-square {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+    border: 1px solid rgba(0,0,0,0.07);
+  }
+  .color-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+  }
+  .color-hex {
+    font-size: 11px;
+    color: #aaa;
+    text-align: center;
+    font-family: monospace;
+  }
+
+  /* BLOG CARDS */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .blog-card .blog-cluster {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1034A6;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .blog-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0a1f6b;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .blog-card .blog-intent {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 14px;
+  }
+
+  /* OBJECTIVES */
+  .obj-list {
+    list-style: none;
+    padding: 0;
+  }
+  .obj-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    color: #333;
+  }
+  .obj-list li:last-child { border-bottom: none; }
+  .obj-rank {
+    width: 28px;
+    height: 28px;
+    background: #1034A6;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0a1f6b;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 32px 40px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  footer strong {
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* LEVIER CARDS */
+  .levier-icon {
+    width: 42px;
+    height: 42px;
+    background: #eef1fb;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 38px; }
+    .cover { padding: 50px 24px; }
+    .cover-meta { gap: 20px; }
+    section { padding: 48px 24px; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .tunnel-steps { grid-template-columns: 1fr; gap: 16px; }
+    .tunnel-step { margin: 0; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 18px; }
+    .maillage-item { flex-direction: column; gap: 8px; }
+    .maillage-targets { flex-wrap: wrap; }
+    table { font-size: 13px; }
+    .palette-grid { gap: 16px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <span class="cover-logo-line">AR Digital — Blueprint Stratégique</span>
+  <h1>Charlotte Sud Immo</h1>
+  <p class="cover-subtitle">Conciergerie de location courte durée haut de gamme — Var, Provence</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="label">Cliente</span>
+      <span class="value">Charlotte PICARD</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Secteur</span>
+      <span class="value">Conciergerie LCD</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Zone</span>
+      <span class="value">Saint-Maximin &amp; Var</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Positionnement &amp; Identité de marque</h2>
+
+  <div class="highlight-box">
+    <span class="hl-label">Promesse de valeur principale</span>
+    <p>Charlotte Sud Immo transforme votre maison en expérience d'exception — avec l'exigence d'un service hôtelier 5 étoiles et la chaleur d'un accompagnement humain, de la première visite au dernier sourire de vos voyageurs.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <h3>Ligne directrice de communication</h3>
+    <p>Excellence de proximité — un service haut de gamme porté par une femme de terrain, passionnée, disponible, qui connaît chaque maison comme si c'était la sienne.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 40px;">
+    <h3>Ton éditorial</h3>
+    <div class="tone-tags" style="margin-top: 12px;">
+      <span class="tone-tag">Élégant</span>
+      <span class="tone-tag">Chaleureux</span>
+      <span class="tone-tag">Rassurant</span>
+    </div>
+    <p>Un vocabulaire soigné, sans jargon technique, qui inspire confiance dès les premiers mots. On parle à un propriétaire qui veut déléguer sereinement — pas à un investisseur qui optimise des lignes comptables.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🏡 Sélection &amp; soin du détail</h3>
+      <p>Chaque bien est choisi, préparé et contrôlé avec une exigence de luxe. Rien n'est laissé au hasard, du linge de lit jusqu'à la lumière de la pièce de vie.</p>
+    </div>
+    <div class="card">
+      <h3>🤝 Contact humain au cœur du service</h3>
+      <p>Pas de chatbot, pas d'automatisation froide. Charlotte s'implique personnellement dans chaque relation propriétaire et voyageur.</p>
+    </div>
+    <div class="card">
+      <h3>📍 Expertise locale Var &amp; Provence</h3>
+      <p>Une connaissance intime du territoire, des saisons, des attentes des voyageurs qui choisissent le Sud. Un avantage que les plateformes nationales ne peuvent pas offrir.</p>
+    </div>
+    <div class="card">
+      <h3>📊 Transparence et reporting</h3>
+      <p>Le propriétaire est informé, rassuré et impliqué. Des bilans clairs, des données fiables, une communication fluide à chaque étape.</p>
+    </div>
+    <div class="card" style="grid-column: 1 / -1;">
+      <h3>✨ Parcours 5 étoiles de A à Z</h3>
+      <p>De l'audit initial jusqu'au départ du voyageur, chaque étape est orchestrée avec méthode et passion. Une seule interlocutrice, une vision globale, zéro friction.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client Cible</span>
+  <h2 class="section-title">Profil du propriétaire idéal</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Profil type</h3>
+      <ul>
+        <li>35 à 65 ans, propriétaire d'une résidence secondaire dans le Var</li>
+        <li>Actif ou retraité, peu disponible pour gérer lui-même</li>
+        <li>Profil CSP+ : cadre, chef d'entreprise, profession libérale</li>
+        <li>Attaché à son bien, soucieux de son image et de sa valorisation</li>
+        <li>Cherche à générer des revenus complémentaires sans contraintes</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Rentabiliser sa résidence secondaire sans y passer du temps</li>
+        <li>Confier son bien à quelqu'un de confiance, disponible et réactif</li>
+        <li>Valoriser son patrimoine avec des photos et une annonce premium</li>
+        <li>Avoir un interlocuteur unique, joignable, humain</li>
+        <li>Préserver l'état de son bien et sa réputation sur les plateformes</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Freins &amp; objections</h3>
+      <ul>
+        <li>« 25% de commission, c'est beaucoup… »</li>
+        <li>« Je ne connais pas cette conciergerie, elle vient de se créer »</li>
+        <li>« Que se passe-t-il si ma maison est abîmée ? »</li>
+        <li>« Vais-je vraiment être tenu informé de tout ? »</li>
+        <li>« Les locataires vont-ils respecter mon bien ? »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Transparence sur les prix, les commissions et les process</li>
+        <li>Preuves de sérieux : présentation, professionnalisme visuel</li>
+        <li>Proximité géographique et connaissance du terrain</li>
+        <li>Contact humain facilement accessible</li>
+        <li>Clarté des services inclus et des engagements</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du Site</span>
+  <h2 class="section-title">Priorités stratégiques du site web</h2>
+
+  <div class="card">
+    <ul class="obj-list">
+      <li>
+        <span class="obj-rank">1</span>
+        <div><strong>Génération de leads propriétaires</strong> — Capter des propriétaires dans le Var souhaitant déléguer leur location courte durée</div>
+      </li>
+      <li>
+        <span class="obj-rank">2</span>
+        <div><strong>Réassurance &amp; crédibilité</strong> — Compenser l'absence d'historique en affichant expertise, sérieux et parcours professionnel de Charlotte</div>
+      </li>
+      <li>
+        <span class="obj-rank">3</span>
+        <div><strong>Prise de rendez-vous</strong> — Faciliter le passage à l'action via un formulaire ou un agenda en ligne (audit offert)</div>
+      </li>
+      <li>
+        <span class="obj-rank">4</span>
+        <div><strong>SEO local</strong> — Être visible sur les requêtes « conciergerie location Saint-Maximin », « gestion Airbnb Var », etc.</div>
+      </li>
+      <li>
+        <span class="obj-rank">5</span>
+        <div><strong>Conversion voyageurs</strong> — Présenter les logements disponibles et orienter vers les plateformes de réservation</div>
+      </li>
+      <li>
+        <span class="obj-rank">6</span>
+        <div><strong>Notoriété locale</strong> — Positionner Charlotte Sud Immo comme la référence conciergerie premium du secteur Saint-Maximin / Var</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence du Site</span>
+  <h2 class="section-title">Structure des pages &amp; stratégie SEO</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Var</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Services Propriétaires</strong></td>
+          <td>PAS</td>
+          <td>conciergerie Airbnb Var propriétaire</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Logements</strong></td>
+          <td>AIDA</td>
+          <td>location vacances maison Var</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos</strong></td>
+          <td>BAB</td>
+          <td>conciergerie de confiance Var Charlotte</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Saint-Maximin-la-Sainte-Baume</strong></td>
+          <td>PAS</td>
+          <td>conciergerie location Saint-Maximin-la-Sainte-Baume</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Var &amp; Provence (zone élargie)</strong></td>
+          <td>PAS</td>
+          <td>conciergerie location vacances Var Provence</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils propriétaire location saisonnière</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact &amp; Audit offert</strong></td>
+          <td>AIDA</td>
+          <td>audit gratuit conciergerie location courte durée</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 COCON SEMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon Sémantique</span>
+  <h2 class="section-title">Clusters thématiques &amp; maillage interne</h2>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <h3>Cluster 1 — Conciergerie &amp; Services propriétaires</h3>
+      <p>Regroupe toutes les pages destinées aux propriétaires : services, pages locales, contact. C'est le cluster central, le plus stratégique pour la génération de leads et le référencement local.</p>
+      <p style="margin-top:10px; font-size:13px; color:#888;">Pages : Accueil · Services Propriétaires · Page locale Saint-Maximin · Page locale Var &amp; Provence · Contact</p>
+    </div>
+    <div class="card">
+      <h3>Cluster 2 — Confiance &amp; Expertise</h3>
+      <p>Regroupe les pages qui rassurent et humanisent la marque. Essentiel pour convertir un propriétaire hésitant ou qui découvre Charlotte Sud Immo pour la première fois.</p>
+      <p style="margin-top:10px; font-size:13px; color:#888;">Pages : À propos · Blog · Avis &amp; témoignages (à intégrer progressivement)</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Logique de maillage interne</h3>
+    <div class="maillage-item">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <div class="maillage-targets">
+        <span class="maillage-target-tag">Services Propriétaires</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target-tag">Contact &amp; Audit</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target-tag">Pages locales</span>
+      </div>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Blog</span>
+      <span class="maillage-arrow">→</span>
+      <div class="maillage-targets">
+        <span class="maillage-target-tag">Services Propriétaires</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target-tag">Contact &amp; Audit</span>
+      </div>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Pages locales</span>
+      <span class="maillage-arrow">→</span>
+      <div class="maillage-targets">
+        <span class="maillage-target-tag">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target-tag">Services Propriétaires</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target-tag">Contact &amp; Audit</span>
+      </div>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <div class="maillage-targets">
+        <span class="maillage-target-tag">Services Propriétaires</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target-tag">Contact &amp; Audit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de Conversion</span>
+  <h2 class="section-title">Du premier clic à la prise de contact</h2>
+
+  <div class="tunnel-steps">
+    <div class="tunnel-step">
+      <div class="step-number">1</div>
+      <span class="step-label">Découverte</span>
+      <div class="step-title">Le propriétaire me trouve</div>
+      <p class="step-info"><strong>Sources :</strong> Google (SEO local), bouche-à-oreille, réseaux sociaux</p>
+      <p class="step-info"><strong>Page :</strong> Accueil ou page locale Saint-Maximin</p>
+      <span class="step-cta">Accroche forte + promesse</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="step-number">2</div>
+      <span class="step-label">Intérêt</span>
+      <div class="step-title">Il explore mes services</div>
+      <p class="step-info"><strong>Sources :</strong> Navigation interne, blog</p>
+      <p class="step-info"><strong>Page :</strong> Services Propriétaires · À propos</p>
+      <span class="step-cta">En savoir plus → Audit offert</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="step-number">3</div>
+      <span class="step-label">Confiance</span>
+      <div class="step-title">Il se rassure</div>
+      <p class="step-info"><strong>Sources :</strong> Témoignages, page À propos, blog</p>
+      <p class="step-info"><strong>Page :</strong> À propos · Blog</p>
+      <span class="step-cta">Lire les avis · Découvrir Charlotte</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="step-number">4</div>
+      <span class="step-label">Conversion</span>
+      <div class="step-title">Il passe à l'action</div>
+      <p class="step-info"><strong>Sources :</strong> Formulaire, CTA flottant, agenda en ligne</p>
+      <p class="step-info"><strong>Page :</strong> Contact &amp; Audit offert</p>
+      <span class="step-cta">Demander mon audit gratuit →</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers Marketing</span>
+  <h2 class="section-title">Actions recommandées pour accélérer la croissance</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="levier-icon">🎁</div>
+      <h3>Lead Magnet</h3>
+      <p><strong>« Guide : Comment rentabiliser votre maison dans le Var sans contraintes »</strong> — Un PDF téléchargeable offert en échange d'un email. Cible directement les propriétaires en phase de réflexion. Contenu : potentiel de revenus, erreurs à éviter, check-list de préparation.</p>
+    </div>
+    <div class="card">
+      <div class="levier-icon">📅</div>
+      <h3>Prise de rendez-vous</h3>
+      <p><strong>Outil recommandé : Calendly (gratuit)</strong> — Intégrer un bouton de réservation d'un audit offert directement sur la page d'accueil et la page Services. Réduire le nombre d'étapes pour faciliter le passage à l'action.</p>
+    </div>
+    <div class="card">
+      <div class="levier-icon">⭐</div>
+      <h3>Preuve sociale</h3>
+      <p>Dès les premières missions : <strong>témoignages vidéo ou texte de propriétaires satisfaits</strong>, avis Google My Business, photos avant/après des biens préparés. Afficher les notes voyageurs Airbnb/Booking en temps réel sur la page d'accueil.</p>
+    </div>
+    <div class="card">
+      <div class="levier-icon">📋</div>
+      <h3>Formulaire qualifiant</h3>
+      <p>Champs recommandés : <strong>Prénom / Commune du bien / Type de bien (maison, villa, appartement) / Nombre de couchages / Déjà en location ? (oui/non) / Message libre</strong>. Permet de qualifier rapidement le prospect avant le premier échange.</p>
+    </div>
+    <div class="card">
+      <div class="levier-icon">📨</div>
+      <h3>Newsletter propriétaires</h3>
+      <p>Angle éditorial : <strong>« La Lettre du Propriétaire Serein »</strong> — 1 email par mois avec : une astuce pour valoriser son bien, une tendance du marché LCD en Provence, un retour d'expérience terrain. Outil : Mailchimp ou Brevo (gratuit au démarrage).</p>
+    </div>
+    <div class="card">
+      <div class="levier-icon">🏷️</div>
+      <h3>Nom de domaine recommandé</h3>
+      <p>Suggestions : <strong>charlottesudimmo.fr</strong> · <strong>charlotte-sud-immo.fr</strong> · <strong>conciergerie-var-premium.fr</strong>. Privilégier le .fr, court, mémorisable, avec le nom de marque ou une dimension géographique forte. Vérification disponibilité via OVH ou Namecheap.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction Visuelle &amp; Éditoriale</span>
+  <h2 class="section-title">Identité graphique &amp; univers de marque</h2>
+
+  <div class="grid-2" style="margin-bottom: 48px;">
+    <div class="card">
+      <h3>Univers visuel recommandé</h3>
+      <ul>
+        <li>Photos de maisons provençales lumineuses, intérieurs soignés, détails de décoration</li>
+        <li>Portraits chaleureux de Charlotte en situation (accueil, visite de bien)</li>
+        <li>Textures naturelles : lin, pierre, marbre léger — en accord avec l'authenticité du Sud</li>
+        <li>Compositions épurées avec beaucoup d'espace blanc entre les éléments</li>
+        <li>Typographie Playfair Display pour les titres, Inter pour les textes : élégance sans ostentation</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Orientation éditoriale</h3>
+      <ul>
+        <li>Phrases courtes, directes, chaleureuses — jamais de jargon immobilier</li>
+        <li>Le « vous » de confiance, jamais de tutoiement</li>
+        <li>Mise en avant systématique du bénéfice propriétaire avant le détail du service</li>
+        <li>Appels à l'action doux mais clairs : « Parlons de votre bien », « Demandez votre audit »</li>
+        <li>Sous-titres de section formulés comme des promesses, pas comme des catégories</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#0a1f6b; margin-bottom:8px; text-align:center;">Palette de couleurs</h3>
+  <p style="text-align:center; font-size:13px; color:#888; margin-bottom:0;">Définie par Charlotte, adaptée à un univers premium et méditerranéen</p>
+
+  <div class="palette-grid">
+    <div class="color-swatch">
+      <div class="color-square" style="background:#1034A6;"></div>
+      <span class="color-name">Bleu Marine</span>
+      <span class="color-hex">#1034A6</span>
+    </div>
+    <div class="color-swatch">
+      <div class="color-square" style="background:#0a1f6b;"></div>
+      <span class="color-name">Bleu Nuit</span>
+      <span class="color-hex">#0A1F6B</span>
+    </div>
+    <div class="color-swatch">
+      <div class="color-square" style="background:#ffffff; border:1.5px solid #e0e0e0;"></div>
+      <span class="color-name">Blanc Pur</span>
+      <span class="color-hex">#FFFFFF</span>
+    </div>
+    <div class="color-swatch">
+      <div class="color-square" style="background:#eef1fb;"></div>
+      <span class="color-name">Bleu Poudré</span>
+      <span class="color-hex">#EEF1FB</span>
+    </div>
+    <div class="color-swatch">
+      <div class="color-square" style="background:#c9a96e;"></div>
+      <span class="color-name">Or Provençal</span>
+      <span class="color-hex">#C9A96E</span>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles Blog Recommandés</span>
+  <h2 class="section-title">Stratégie de contenu &amp; référencement éditorial</h2>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <span class="blog-cluster">Cluster 1 — Services propriétaires</span>
+      <h3>Confier sa maison à une conciergerie dans le Var : guide complet pour propriétaires</h3>
+      <p class="blog-intent">Intention : informationnelle — propriétaires qui découvrent le concept</p>
+      <span class="badge badge-fort">Prioritaire</span>
+    </div>
+    <div class="blog-card">
+      <span class="blog-cluster">Cluster 1 — Services propriétaires</span>
+      <h3>Combien peut rapporter votre résidence secondaire en location saisonnière dans le Var ?</h3>
+      <p class="blog-intent">Intention : commerciale — propriétaires en phase de décision, sensibles au ROI</p>
+      <span class="badge badge-fort">Prioritaire</span>
+    </div>
+    <div class="blog-card">
+      <span class="blog-cluster">Cluster 1 — Services propriétaires</span>
+      <h3>5 erreurs à éviter quand on met sa maison sur Airbnb pour la première fois</h3>
+      <p class="blog-intent">Intention : informationnelle — propriétaires novices, fort potentiel de partage</p>
+      <span class="badge badge-fort">Prioritaire</span>
+    </div>
+    <div class="blog-card">
+      <span class="blog-cluster">Cluster 2 — Confiance &amp; expertise</span>
+      <h3>Pourquoi Saint-Maximin-la-Sainte-Baume est une destination montante pour la location courte durée</h3>
+      <p class="blog-intent">Intention : informationnelle + SEO local — attire propriétaires et voyageurs locaux</p>
+      <span class="badge badge-fort">Prioritaire</span>
+    </div>
+    <div class="blog-card">
+      <span class="blog-cluster">Cluster 2 — Confiance &amp; expertise</span>
+      <h3>Check-in autonome ou accueil personnalisé : quelle expérience pour vos voyageurs dans le Var ?</h3>
+      <p class="blog-intent">Intention : informationnelle — différencie Charlotte sur l'axe humain &amp; premium</p>
+      <span class="badge badge-moyen">Moyen</span>
+    </div>
+    <div class="blog-card">
+      <span class="blog-cluster">Cluster 1 — Services propriétaires</span>
+      <h3>Location saisonnière : comment préparer sa maison pour la haute saison en Provence ?</h3>
+      <p class="blog-intent">Intention : informationnelle saisonnière — fort trafic au printemps</p>
+      <span class="badge badge-moyen">Moyen</span>
+    </div>
+    <div class="blog-card">
+      <span class="blog-cluster">Cluster 2 — Confiance &amp; expertise</span>
+      <h3>Linge de maison hôtelier, ménage 5 étoiles : pourquoi les avis voyageurs font la différence ?</h3>
+      <p class="blog-intent">Intention : informationnelle — valorise les services différenciants de la conciergerie</p>
+      <span class="badge badge-faible">Faible</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Charlotte Sud Immo</strong> — Blueprint Stratégique · Confidentiel · AR Digital</p>
+  <p style="margin-top:8px;">Document établi pour Charlotte PICARD · Conciergerie de location courte durée · Var, Provence</p>
+</footer>
+
+</body>
+</html>
