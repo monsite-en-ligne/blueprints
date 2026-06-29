@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Bleu D'Ailleurs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a2e;
+    background: #f9f8f5;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Marcellus', serif;
+    letter-spacing: 0.02em;
+  }
+
+  /* ─── COUVERTURE ─── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0d1f4a 0%, #172e68 45%, #1a3575 70%, #0d1f4a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(217,164,65,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(217,164,65,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #d9a441;
+    border: 1px solid rgba(217,164,65,0.4);
+    padding: 7px 20px;
+    border-radius: 30px;
+    margin-bottom: 40px;
+  }
+
+  .cover h1 {
+    font-family: 'Marcellus', serif;
+    font-size: 72px;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: 0.03em;
+  }
+
+  .cover-subtitle {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    font-style: italic;
+    margin-bottom: 50px;
+    letter-spacing: 0.02em;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cover-meta-item {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.50);
+  }
+
+  .cover-meta-item span {
+    display: block;
+    color: rgba(255,255,255,0.88);
+    font-weight: 500;
+    margin-top: 4px;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d9a441, transparent);
+    margin: 40px auto 0;
+  }
+
+  /* ─── SECTIONS ─── */
+  .section {
+    padding: 80px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 48px;
+  }
+
+  .section-number {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: #172e68;
+    padding: 6px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .section h2 {
+    font-family: 'Marcellus', serif;
+    font-size: 34px;
+    color: #172e68;
+    letter-spacing: 0.02em;
+  }
+
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, #d9a441, rgba(217,164,65,0.1));
+    margin-bottom: 48px;
+  }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .card h3 {
+    font-family: 'Marcellus', serif;
+    font-size: 17px;
+    color: #172e68;
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  .card p, .card li {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.75;
+  }
+
+  .card ul {
+    padding-left: 18px;
+  }
+
+  .card ul li {
+    margin-bottom: 5px;
+  }
+
+  /* ─── GRILLES ─── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ─── HIGHLIGHT BOX ─── */
+  .highlight-box {
+    background: linear-gradient(135deg, #172e68 0%, #1a3a80 100%);
+    border-radius: 16px;
+    padding: 38px 40px;
+    margin-bottom: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-box::after {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(217,164,65,0.15) 0%, transparent 70%);
+  }
+
+  .highlight-box p {
+    font-family: 'Marcellus', serif;
+    font-size: 20px;
+    color: #ffffff;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+  }
+
+  .highlight-box .sub {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    font-style: italic;
+    margin-top: 12px;
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── SECTION ALTERNANCE BG ─── */
+  .section-bg-light {
+    background: #ffffff;
+  }
+
+  .section-wrapper {
+    background: #f9f8f5;
+  }
+
+  .section-wrapper-white {
+    background: #ffffff;
+  }
+
+  /* ─── TABLEAU ─── */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13.5px;
+  }
+
+  thead tr {
+    background: #172e68;
+  }
+
+  thead th {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #ffffff;
+    padding: 16px 20px;
+    text-align: left;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #f0ede8;
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody tr:hover {
+    background: #faf9f6;
+  }
+
+  tbody td {
+    padding: 16px 20px;
+    color: #333;
+    vertical-align: top;
+    line-height: 1.65;
+  }
+
+  tbody td:first-child {
+    font-family: 'Marcellus', serif;
+    font-size: 14px;
+    color: #172e68;
+    font-weight: normal;
+  }
+
+  /* ─── BADGES SEO ─── */
+  .badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  .badge-fort {
+    background: rgba(23,46,104,0.10);
+    color: #172e68;
+  }
+
+  .badge-moyen {
+    background: rgba(217,164,65,0.15);
+    color: #8a6010;
+  }
+
+  .badge-faible {
+    background: rgba(180,180,180,0.15);
+    color: #777;
+  }
+
+  .badge-prioritaire {
+    background: rgba(23,46,104,0.10);
+    color: #172e68;
+  }
+
+  /* ─── TUNNEL ─── */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 0;
+    padding: 28px 24px;
+    box-shadow: none;
+    border-right: 1px solid #f0ede8;
+    position: relative;
+  }
+
+  .tunnel-step:first-child {
+    border-radius: 14px 0 0 14px;
+  }
+
+  .tunnel-step:last-child {
+    border-right: none;
+    border-radius: 0 14px 14px 0;
+  }
+
+  .tunnel-container {
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .tunnel-step-number {
+    font-family: 'Marcellus', serif;
+    font-size: 36px;
+    color: rgba(217,164,65,0.25);
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  .tunnel-step h3 {
+    font-family: 'Marcellus', serif;
+    font-size: 15px;
+    color: #172e68;
+    margin-bottom: 14px;
+    letter-spacing: 0.04em;
+  }
+
+  .tunnel-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #d9a441;
+    margin-bottom: 5px;
+  }
+
+  .tunnel-step p {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+
+  /* ─── COCON ─── */
+  .cluster-block {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+  }
+
+  .cluster-title {
+    font-family: 'Marcellus', serif;
+    font-size: 17px;
+    color: #172e68;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cluster-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #d9a441;
+    flex-shrink: 0;
+  }
+
+  .maillage-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13.5px;
+    color: #444;
+    padding: 8px 0;
+    border-bottom: 1px solid #f5f3ef;
+    line-height: 1.6;
+  }
+
+  .maillage-item:last-child {
+    border-bottom: none;
+  }
+
+  .maillage-item strong {
+    color: #172e68;
+  }
+
+  .arrow {
+    color: #d9a441;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  /* ─── PALETTE COULEURS ─── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px;
+    margin-top: 20px;
+  }
+
+  .color-swatch-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .color-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+  }
+
+  .color-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+  }
+
+  .color-hex {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #aaa;
+    text-align: center;
+  }
+
+  /* ─── LEVIERS ─── */
+  .levier-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  /* ─── ARTICLES ─── */
+  .article-row {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 22px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .article-title {
+    font-family: 'Marcellus', serif;
+    font-size: 15px;
+    color: #172e68;
+    margin-bottom: 6px;
+  }
+
+  .article-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #999;
+    letter-spacing: 0.05em;
+  }
+
+  .article-meta span {
+    color: #d9a441;
+    font-weight: 500;
+  }
+
+  .article-badges {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  /* ─── OBJECTIFS ─── */
+  .objectif-rank {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #d9a441;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #0d1f4a;
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    padding: 36px 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+  }
+
+  footer strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  footer .footer-divider {
+    width: 40px;
+    height: 1px;
+    background: rgba(217,164,65,0.4);
+    margin: 12px auto;
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    .section, .cluster-block, .card, .article-row, .tunnel-container {
+      page-break-inside: avoid;
+    }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 40px; }
+    .cover-meta { gap: 20px; }
+
+    .section { padding: 48px 24px; }
+    .section h2 { font-size: 26px; }
+
+    .grid-2, .grid-3, .grid-4 {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-step {
+      border-right: none;
+      border-bottom: 1px solid #f0ede8;
+    }
+
+    .tunnel-step:first-child { border-radius: 14px 14px 0 0; }
+    .tunnel-step:last-child { border-radius: 0 0 14px 14px; border-bottom: none; }
+
+    .article-row {
+      grid-template-columns: 1fr;
+    }
+
+    .article-badges {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 17px; }
+
+    .table-wrapper { overflow-x: auto; }
+
+    .maillage-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════ COUVERTURE -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique</div>
+  <h1>Bleu D'Ailleurs</h1>
+  <p class="cover-subtitle">Document de cadrage stratégique — Confidentiel</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      Client
+      <span>Lucie Gaillard</span>
+    </div>
+    <div class="cover-meta-item">
+      Secteur
+      <span>Conciergerie courte durée</span>
+    </div>
+    <div class="cover-meta-item">
+      Zone
+      <span>Chantonnay · Vendée · Puy du Fou</span>
+    </div>
+  </div>
+  <div class="cover-divider"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ 01 — POSITIONNEMENT -->
+<div class="section-wrapper">
+<section id="bp-section-01" class="section">
+  <div class="section-header">
+    <span class="section-number">01</span>
+    <h2>Positionnement</h2>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="highlight-box">
+    <p>Une conciergerie vendéenne qui soigne chaque logement comme un lieu de vie, pour que chaque séjour devienne une expérience mémorable.</p>
+    <p class="sub">Ligne directrice : ancrage local authentique · accompagnement premium · expérience voyageur sans friction</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 24px;">
+    <h3>Ton éditorial</h3>
+    <p><strong>Raffiné · Rassurant · Chaleureux</strong></p>
+    <p style="margin-top: 8px;">Un discours élégant et humain, qui instille confiance dès les premiers mots : Bleu D'Ailleurs parle à des propriétaires exigeants avec la précision d'un professionnel et la sincérité d'un partenaire de terrain.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Ancrage local fort</h3>
+      <p>Basée à Chantonnay, au cœur de la Vendée et à proximité immédiate du Puy du Fou — un territoire à fort potentiel touristique que Bleu D'Ailleurs connaît intimement.</p>
+    </div>
+    <div class="card">
+      <h3>Expérience voyageuse authentique</h3>
+      <p>La fondatrice apporte une sensibilité de voyageuse : elle sait ce qui fait la différence entre un logement propre et un logement qui marque les esprits.</p>
+    </div>
+    <div class="card">
+      <h3>Préparation millimétrée</h3>
+      <p>Chaque détail est anticipé — arrivées autonomes fluides, ménage coordonné, consommables assurés — pour que le propriétaire n'ait rien à gérer.</p>
+    </div>
+    <div class="card">
+      <h3>Service complet, tarif transparent</h3>
+      <p>Une formule Essentielle claire, une offre de lancement attractive et des frais annexes explicitement détaillés — sans mauvaises surprises.</p>
+    </div>
+    <div class="card" style="grid-column: 1 / -1;">
+      <h3>Professionnalisme de terrain</h3>
+      <p>Outils professionnels de suivi, réactivité garantie, coordination des intervenants : Bleu D'Ailleurs fonctionne comme une vraie infrastructure opérationnelle, pas une simple prestation ponctuelle.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ═══════════════════════════════════════════════ 02 — CLIENT CIBLE -->
+<div class="section-wrapper-white">
+<section id="bp-section-02" class="section">
+  <div class="section-header">
+    <span class="section-number">02</span>
+    <h2>Client Cible</h2>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="card" style="margin-bottom: 24px;">
+    <h3>Profil type</h3>
+    <p>Propriétaire vendéen de 35 à 60 ans, actif professionnellement, possédant un ou plusieurs biens (maison, gîte, appartement) en location courte durée autour de Chantonnay ou du secteur Puy du Fou. Il ou elle souhaite monétiser son bien sérieusement sans y consacrer du temps quotidien. Souvent déjà présent sur Airbnb ou Abritel, il cherche un interlocuteur local de confiance.</p>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3>Motivations</h3>
+      <ul>
+        <li>Gagner du temps et déléguer</li>
+        <li>Améliorer la qualité des séjours</li>
+        <li>Obtenir de meilleures notes voyageurs</li>
+        <li>Sécuriser son bien à distance</li>
+        <li>Bénéficier d'un interlocuteur local réactif</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Freins & objections</h3>
+      <ul>
+        <li>Peur de perdre le contrôle sur son bien</li>
+        <li>Incertitude sur le coût réel du service</li>
+        <li>Mauvaise expérience passée avec un prestataire</li>
+        <li>Doute sur la fiabilité d'une jeune structure</li>
+        <li>Hésitation à s'engager contractuellement</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Ancrage local (proximité géographique)</li>
+        <li>Transparence des tarifs et prestations</li>
+        <li>Preuves de sérieux et de réactivité</li>
+        <li>Facilité de prise de contact</li>
+        <li>Qualité perçue dès la première impression visuelle</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ═══════════════════════════════════════════════ 03 — OBJECTIFS DU SITE -->
+<div class="section-wrapper">
+<section id="bp-section-03" class="section">
+  <div class="section-header">
+    <span class="section-number">03</span>
+    <h2>Objectifs du Site</h2>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="objectif-rank">Priorité 1</div>
+      <h3>Génération de leads</h3>
+      <p>Capter des propriétaires qualifiés dans la zone Chantonnay / Vendée / Puy du Fou via les formulaires et appels à l'action du site.</p>
+    </div>
+    <div class="card">
+      <div class="objectif-rank">Priorité 2</div>
+      <h3>Réassurance</h3>
+      <p>Convaincre un propriétaire sceptique par la qualité visuelle, la transparence des offres et les preuves sociales intégrées.</p>
+    </div>
+    <div class="card">
+      <div class="objectif-rank">Priorité 3</div>
+      <h3>Prise de RDV</h3>
+      <p>Faciliter le premier contact via un outil de réservation en ligne et un formulaire qualifiant, pour engager rapidement la conversation.</p>
+    </div>
+    <div class="card">
+      <div class="objectif-rank">Priorité 4</div>
+      <h3>SEO Local</h3>
+      <p>Positionner Bleu D'Ailleurs sur les requêtes locales autour de la conciergerie courte durée en Vendée et du Puy du Fou.</p>
+    </div>
+    <div class="card">
+      <div class="objectif-rank">Priorité 5</div>
+      <h3>Conversion</h3>
+      <p>Transformer les visiteurs en prospects via une offre claire, une tarification lisible et des CTA visibles à chaque étape du parcours.</p>
+    </div>
+    <div class="card">
+      <div class="objectif-rank">Priorité 6</div>
+      <h3>Notoriété locale</h3>
+      <p>Asseoir la légitimité de Bleu D'Ailleurs dans son territoire, notamment via le blog et le positionnement éditorial.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ═══════════════════════════════════════════════ 04 — ARBORESCENCE -->
+<div class="section-wrapper-white">
+<section id="bp-section-04" class="section">
+  <div class="section-header">
+    <span class="section-number">04</span>
+    <h2>Arborescence du Site</h2>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Accueil</td>
+          <td>AIDA</td>
+          <td>conciergerie courte durée Vendée</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Nos Services</td>
+          <td>PAS</td>
+          <td>conciergerie location courte durée propriétaire</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Offres & Tarifs</td>
+          <td>BAB</td>
+          <td>tarif conciergerie Airbnb Vendée</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>À Propos</td>
+          <td>AIDA</td>
+          <td>conciergerie Bleu D'Ailleurs Chantonnay</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Parrainage</td>
+          <td>AIDA</td>
+          <td>parrainage conciergerie propriétaire Vendée</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td>Blog</td>
+          <td>—</td>
+          <td>conseils location courte durée Vendée</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>SEO Local — Chantonnay & Puy du Fou</td>
+          <td>PAS</td>
+          <td>conciergerie Puy du Fou propriétaire</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>SEO Local — Vendée</td>
+          <td>PAS</td>
+          <td>conciergerie location courte durée Vendée</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Contact</td>
+          <td>AIDA</td>
+          <td>contacter conciergerie Vendée</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Mentions Légales</td>
+          <td>—</td>
+          <td>—</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td>CGV / CGVS</td>
+          <td>—</td>
+          <td>—</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+</div>
+
+<!-- ═══════════════════════════════════════════════ 05 — COCON SÉMANTIQUE -->
+<div class="section-wrapper">
+<section id="bp-section-05" class="section">
+  <div class="section-header">
+    <span class="section-number">05</span>
+    <h2>Cocon Sémantique</h2>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="cluster-block">
+    <div class="cluster-title"><span class="cluster-dot"></span>Cluster 1 — Conciergerie & Services propriétaires</div>
+    <div class="maillage-item">
+      <strong>Page Services</strong>
+      <span class="arrow">→</span>
+      <span>Offres & Tarifs, Contact, Accueil</span>
+    </div>
+    <div class="maillage-item">
+      <strong>Page Offres & Tarifs</strong>
+      <span class="arrow">→</span>
+      <span>Contact (CTA prise de RDV), Services (détail prestations)</span>
+    </div>
+    <div class="maillage-item">
+      <strong>Page Parrainage</strong>
+      <span class="arrow">→</span>
+      <span>Contact, Accueil, Offres & Tarifs</span>
+    </div>
+    <div class="maillage-item">
+      <strong>Articles blog (cluster 1)</strong>
+      <span class="arrow">→</span>
+      <span>Page Services, Offres & Tarifs, Contact</span>
+    </div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title"><span class="cluster-dot"></span>Cluster 2 — Territoire & SEO Local Vendée / Puy du Fou</div>
+    <div class="maillage-item">
+      <strong>Page SEO Chantonnay & Puy du Fou</strong>
+      <span class="arrow">→</span>
+      <span>Accueil, Services, Contact</span>
+    </div>
+    <div class="maillage-item">
+      <strong>Page SEO Vendée</strong>
+      <span class="arrow">→</span>
+      <span>Accueil, Services, Offres & Tarifs</span>
+    </div>
+    <div class="maillage-item">
+      <strong>Articles blog (cluster 2)</strong>
+      <span class="arrow">→</span>
+      <span>Pages SEO locales, Accueil, Services</span>
+    </div>
+    <div class="maillage-item">
+      <strong>Accueil</strong>
+      <span class="arrow">→</span>
+      <span>Services, Offres & Tarifs, Pages SEO locales, Contact</span>
+    </div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title"><span class="cluster-dot"></span>Cluster 3 — Confiance & Expérience voyageur</div>
+    <div class="maillage-item">
+      <strong>Page À Propos</strong>
+      <span class="arrow">→</span>
+      <span>Services, Contact, Offres & Tarifs</span>
+    </div>
+    <div class="maillage-item">
+      <strong>Articles blog (cluster 3)</strong>
+      <span class="arrow">→</span>
+      <span>À Propos, Services, Contact</span>
+    </div>
+    <div class="maillage-item">
+      <strong>Blog (hub)</strong>
+      <span class="arrow">→</span>
+      <span>Tous les clusters via maillage thématique</span>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ═══════════════════════════════════════════════ 06 — TUNNEL DE CONVERSION -->
+<div class="section-wrapper-white">
+<section id="bp-section-06" class="section">
+  <div class="section-header">
+    <span class="section-number">06</span>
+    <h2>Tunnel de Conversion</h2>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="tunnel-container">
+    <div class="tunnel-grid">
+      <div class="tunnel-step">
+        <div class="tunnel-step-number">01</div>
+        <h3>Découverte</h3>
+        <div class="tunnel-label">Source de trafic</div>
+        <p>Google (SEO local), bouche à oreille, réseaux sociaux, annuaires locaux.</p>
+        <div class="tunnel-label">Page concernée</div>
+        <p>Accueil · Pages SEO locales · Articles blog</p>
+        <div class="tunnel-label">CTA associé</div>
+        <p>"Découvrez nos services →"</p>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-step-number">02</div>
+        <h3>Intérêt</h3>
+        <div class="tunnel-label">Source de trafic</div>
+        <p>Navigation interne depuis l'accueil ou le blog.</p>
+        <div class="tunnel-label">Page concernée</div>
+        <p>Page Services · À Propos</p>
+        <div class="tunnel-label">CTA associé</div>
+        <p>"Voir nos offres et tarifs →"</p>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-step-number">03</div>
+        <h3>Confiance</h3>
+        <div class="tunnel-label">Source de trafic</div>
+        <p>Maillage interne depuis Services et À Propos.</p>
+        <div class="tunnel-label">Page concernée</div>
+        <p>Offres & Tarifs · Témoignages · À Propos</p>
+        <div class="tunnel-label">CTA associé</div>
+        <p>"Télécharger le guide offert →"</p>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-step-number">04</div>
+        <h3>Conversion</h3>
+        <div class="tunnel-label">Source de trafic</div>
+        <p>Clic sur CTA depuis Offres & Tarifs ou Services.</p>
+        <div class="tunnel-label">Page concernée</div>
+        <p>Contact · Formulaire qualifiant</p>
+        <div class="tunnel-label">CTA associé</div>
+        <p>"Prendre rendez-vous gratuitement →"</p>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ═══════════════════════════════════════════════ 07 — LEVIERS MARKETING -->
+<div class="section-wrapper">
+<section id="bp-section-07" class="section">
+  <div class="section-header">
+    <span class="section-number">07</span>
+    <h2>Leviers Marketing Recommandés</h2>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="levier-icon">🎁</span>
+      <h3>Lead Magnet</h3>
+      <p><strong>« Guide : 5 points essentiels pour préparer votre logement vendéen à la location courte durée »</strong> — PDF téléchargeable, axé sur la checklist de préparation, les arrivées autonomes et les attentes des voyageurs autour du Puy du Fou. Collecte d'email en échange du guide.</p>
+    </div>
+    <div class="card">
+      <span class="levier-icon">📅</span>
+      <h3>Prise de RDV</h3>
+      <p><strong>Calendly</strong> (ou outil équivalent intégré au site) pour un appel découverte de 20 minutes, sans engagement. À positionner en CTA principal sur les pages Offres & Tarifs et Contact. Label suggéré : "Échange découverte gratuit".</p>
+    </div>
+    <div class="card">
+      <span class="levier-icon">⭐</span>
+      <h3>Preuve Sociale</h3>
+      <p>Témoignages propriétaires (verbatim + prénom + ville), captures d'avis voyageurs issus des plateformes, photos avant/après de logements préparés. Privilégier les formats visuels et les citations courtes pour maximiser l'impact.</p>
+    </div>
+    <div class="card">
+      <span class="levier-icon">📋</span>
+      <h3>Formulaire Qualifiant</h3>
+      <p>Champs recommandés : Nom · Localisation du bien · Type de bien (appartement / maison / gîte) · Nombre de couchages · Actuellement sur une plateforme ? (Oui/Non) · Situation (déjà en location / nouveau projet) · Message libre.</p>
+    </div>
+    <div class="card" style="grid-column: 1 / -1;">
+      <span class="levier-icon">✉️</span>
+      <h3>Newsletter — Angle Éditorial</h3>
+      <p><strong>« La Lettre du Propriétaire Serein »</strong> — Envoi mensuel autour de 3 angles : conseils pratiques (préparer son logement, optimiser son annonce), actualités du territoire vendéen et Puy du Fou, et retours d'expérience voyageurs. Ton chaleureux, concis, orienté valeur.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ═══════════════════════════════════════════════ 08 — DIRECTION VISUELLE -->
+<div class="section-wrapper-white">
+<section id="bp-section-08" class="section">
+  <div class="section-header">
+    <span class="section-number">08</span>
+    <h2>Direction Visuelle & Éditoriale</h2>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="card" style="margin-bottom: 24px;">
+    <h3>Palette de couleurs</h3>
+    <div class="palette-grid">
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background: #172e68;"></div>
+        <div class="color-name">Bleu Nuit</div>
+        <div class="color-hex">#172e68</div>
+      </div>
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background: #d9a441;"></div>
+        <div class="color-name">Or Cuivré</div>
+        <div class="color-hex">#d9a441</div>
+      </div>
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background: #ffffff; border: 1px solid #e8e5e0;"></div>
+        <div class="color-name">Blanc Pur</div>
+        <div class="color-hex">#ffffff</div>
+      </div>
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background: #f9f8f5;"></div>
+        <div class="color-name">Blanc Crème</div>
+        <div class="color-hex">#f9f8f5</div>
+      </div>
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background: #0d1f4a;"></div>
+        <div class="color-name">Bleu Profond</div>
+        <div class="color-hex">#0d1f4a</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom: 24px;">
+    <h3>Typographies recommandées</h3>
+    <p><strong>Titres :</strong> Marcellus — élégance classique, serif aux formes généreuses, idéale pour les H1 et H2.</p>
+    <p style="margin-top: 8px;"><strong>Corps de texte :</strong> Libre Baskerville — lisibilité premium sur mobile et desktop, légèreté et raffinement.</p>
+    <p style="margin-top: 8px;"><strong>Interfaces & labels :</strong> Inter — clarté et modernité pour les boutons, badges, métadonnées.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Univers visuel recommandé</h3>
+      <ul>
+        <li>Photographies lumineuses de logements soignés (intérieurs chaleureux, linges blancs, détails d'accueil)</li>
+        <li>Paysages vendéens et atmosphères Puy du Fou en fond de sections</li>
+        <li>Icônes ligne fine en bleu nuit ou doré</li>
+        <li>Espacements généreux, mise en page aérée</li>
+        <li>Séparateurs dorés fins pour les transitions de section</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Ambiance & style graphique</h3>
+      <ul>
+        <li>Style éditorial premium, entre boutique hôtel et conciergerie de prestige</li>
+        <li>Jamais surchargé : textes courts, hiérarchie claire</li>
+        <li>Animations subtiles au scroll (fade-in)</li>
+        <li>Boutons CTA en bleu nuit avec bordure dorée ou fond doré sur hover</li>
+        <li>Fond crème (#f9f8f5) en alternance avec blanc pur pour les sections</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ═══════════════════════════════════════════════ 09 — ARTICLES BLOG -->
+<div class="section-wrapper">
+<section id="bp-section-09" class="section">
+  <div class="section-header">
+    <span class="section-number">09</span>
+    <h2>Articles Blog Recommandés</h2>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="article-row">
+    <div>
+      <div class="article-title">Louer son bien près du Puy du Fou : les 5 erreurs que font les propriétaires débutants</div>
+      <div class="article-meta">Cluster : <span>Territoire & SEO Local</span> · Intention : informationnelle / décisionnelle</div>
+    </div>
+    <div class="article-badges">
+      <span class="badge badge-prioritaire">Prioritaire</span>
+      <span class="badge badge-fort">Fort SEO</span>
+    </div>
+  </div>
+
+  <div class="article-row">
+    <div>
+      <div class="article-title">Conciergerie ou autogestion : que choisir pour votre logement en Vendée ?</div>
+      <div class="article-meta">Cluster : <span>Conciergerie & Services</span> · Intention : comparationnelle / décisionnelle</div>
+    </div>
+    <div class="article-badges">
+      <span class="badge badge-prioritaire">Prioritaire</span>
+      <span class="badge badge-fort">Fort SEO</span>
+    </div>
+  </div>
+
+  <div class="article-row">
+    <div>
+      <div class="article-title">Comment préparer une arrivée autonome réussie pour vos voyageurs ?</div>
+      <div class="article-meta">Cluster : <span>Expérience voyageur & Confiance</span> · Intention : informationnelle / pratique</div>
+    </div>
+    <div class="article-badges">
+      <span class="badge badge-prioritaire">Prioritaire</span>
+      <span class="badge badge-moyen">Moyen SEO</span>
+    </div>
+  </div>
+
+  <div class="article-row">
+    <div>
+      <div class="article-title">Location courte durée en Vendée : quel tarif de conciergerie pour quel service ?</div>
+      <div class="article-meta">Cluster : <span>Conciergerie & Services</span> · Intention : commerciale / comparationnelle</div>
+    </div>
+    <div class="article-badges">
+      <span class="badge badge-prioritaire">Prioritaire</span>
+      <span class="badge badge-fort">Fort SEO</span>
+    </div>
+  </div>
+
+  <div class="article-row">
+    <div>
+      <div class="article-title">Chantonnay et ses environs : pourquoi la courte durée explose dans ce secteur ?</div>
+      <div class="article-meta">Cluster : <span>Territoire & SEO Local</span> · Intention : informationnelle / notoriété locale</div>
+    </div>
+    <div class="article-badges">
+      <span class="badge badge-moyen">Moyen</span>
+      <span class="badge badge-fort">Fort SEO</span>
+    </div>
+  </div>
+
+  <div class="article-row">
+    <div>
+      <div class="article-title">Les détails qui font la différence : comment un logement soigné génère de meilleures notes voyageurs</div>
+      <div class="article-meta">Cluster : <span>Expérience voyageur & Confiance</span> · Intention : informationnelle / réassurance</div>
+    </div>
+    <div class="article-badges">
+      <span class="badge badge-moyen">Moyen</span>
+      <span class="badge badge-moyen">Moyen SEO</span>
+    </div>
+  </div>
+
+  <div class="article-row">
+    <div>
+      <div class="article-title">Checklist complète : préparer son logement vendéen avant la saison estivale</div>
+      <div class="article-meta">Cluster : <span>Conciergerie & Services</span> · Intention : pratique / saisonnière</div>
+    </div>
+    <div class="article-badges">
+      <span class="badge badge-moyen">Moyen</span>
+      <span class="badge badge-moyen">Moyen SEO</span>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ═══════════════════════════════════════════════ FOOTER -->
+<footer>
+  <div><strong>Bleu D'Ailleurs</strong> — Conciergerie courte durée · Chantonnay, Vendée</div>
+  <div class="footer-divider"></div>
+  <div>Document confidentiel · Blueprint Stratégique · AR Digital</div>
+  <div style="margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.35);">bleudailleurs.com · contact@bleudailleurs.com</div>
+</footer>
+
+</body>
+</html>
