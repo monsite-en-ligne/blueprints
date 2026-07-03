@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — LéOla Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --creme: #F5EDE4;
+    --or: #C8A96E;
+    --or-light: #E8D4A8;
+    --anthracite: #2E2B27;
+    --anthracite-light: #5A5550;
+    --white: #FFFFFF;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    --radius: 14px;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--anthracite);
+    background: var(--creme);
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #2E2B27 0%, #3E3830 40%, #1C1A17 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(200,169,110,0.12) 0%, transparent 70%);
+  }
+
+  .cover-ornament {
+    width: 48px;
+    height: 2px;
+    background: var(--or);
+    margin: 0 auto 32px;
+  }
+
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-title span {
+    color: var(--or);
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(245,237,228,0.6);
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-label {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--or);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-value {
+    font-size: 13px;
+    color: rgba(245,237,228,0.85);
+    font-weight: 300;
+  }
+
+  .cover-line {
+    width: 1px;
+    height: 40px;
+    background: rgba(200,169,110,0.3);
+    align-self: center;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 80px 80px;
+    background: var(--creme);
+  }
+
+  .section-alt {
+    background: #FAF5F0;
+  }
+
+  .section-header {
+    margin-bottom: 48px;
+  }
+
+  .section-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--or);
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--anthracite);
+    line-height: 1.2;
+  }
+
+  .section-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--or);
+    margin-top: 16px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--anthracite);
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    color: var(--anthracite-light);
+    line-height: 1.7;
+  }
+
+  /* GRIDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--anthracite) 0%, #3E3830 100%);
+    border-radius: var(--radius);
+    padding: 40px 48px;
+    margin-bottom: 40px;
+  }
+
+  .highlight-box-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--or);
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .highlight-box-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.6;
+  }
+
+  /* LIST STYLES */
+  .clean-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .clean-list li {
+    padding: 8px 0;
+    font-size: 14px;
+    color: var(--anthracite-light);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.6;
+  }
+
+  .clean-list li::before {
+    content: '—';
+    color: var(--or);
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+
+  .clean-list li:last-child { border-bottom: none; }
+
+  /* OBJECTIFS */
+  .objectif-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .objectif-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--or);
+    min-width: 40px;
+    line-height: 1;
+  }
+
+  .objectif-content {}
+
+  .objectif-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--anthracite);
+  }
+
+  .objectif-desc {
+    font-size: 13px;
+    color: var(--anthracite-light);
+  }
+
+  .objectifs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* TABLE */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    font-size: 14px;
+  }
+
+  thead tr {
+    background: var(--anthracite);
+  }
+
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--or);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  tbody tr:hover {
+    background: rgba(245,237,228,0.5);
+  }
+
+  tbody td {
+    padding: 16px 20px;
+    color: var(--anthracite-light);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  tbody td:first-child {
+    font-weight: 600;
+    color: var(--anthracite);
+  }
+
+  /* BADGES SEO */
+  .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-fort { background: #E8F4ED; color: #2D7A50; }
+  .badge-moyen { background: #FFF4E0; color: #B07D2A; }
+  .badge-faible { background: #F0F0F0; color: #888; }
+  .badge-prioritaire { background: #E8F4ED; color: #2D7A50; }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+    position: relative;
+  }
+
+  .tunnel-step {
+    background: var(--white);
+    border-radius: 0;
+    padding: 28px 24px;
+    box-shadow: none;
+    border-right: 1px solid rgba(0,0,0,0.06);
+    position: relative;
+  }
+
+  .tunnel-step:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+  .tunnel-step:last-child { border-radius: 0 var(--radius) var(--radius) 0; border-right: none; }
+
+  .tunnel-step-number {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 8px;
+  }
+
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--anthracite);
+    margin-bottom: 16px;
+  }
+
+  .tunnel-step-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--anthracite-light);
+    margin-bottom: 4px;
+    margin-top: 12px;
+  }
+
+  .tunnel-step-value {
+    font-size: 13px;
+    color: var(--anthracite-light);
+    line-height: 1.6;
+  }
+
+  .tunnel-cta {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, var(--or) 0%, #B8904A 100%);
+    color: var(--white);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* COCON */
+  .cluster-block {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--anthracite);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .cluster-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--or);
+    flex-shrink: 0;
+  }
+
+  .maillage-section {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px;
+  }
+
+  .maillage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 13px;
+  }
+
+  .maillage-row:last-child { border-bottom: none; }
+
+  .maillage-source {
+    font-weight: 600;
+    color: var(--anthracite);
+    background: rgba(200,169,110,0.15);
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+
+  .maillage-arrow {
+    color: var(--or);
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .maillage-dest {
+    color: var(--anthracite-light);
+    background: #F5F5F5;
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+
+  /* LEVIERS */
+  .levier-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px;
+  }
+
+  .levier-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .levier-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--anthracite);
+    margin-bottom: 8px;
+  }
+
+  .levier-text {
+    font-size: 13px;
+    color: var(--anthracite-light);
+    line-height: 1.7;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .color-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .color-box {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  }
+
+  .color-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--anthracite);
+    text-align: center;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: #AAA;
+    text-align: center;
+  }
+
+  /* BLOG */
+  .blog-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px;
+  }
+
+  .blog-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 8px;
+  }
+
+  .blog-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--anthracite);
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .blog-meta {
+    font-size: 12px;
+    color: var(--anthracite-light);
+    margin-bottom: 10px;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--anthracite);
+    padding: 40px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--white);
+  }
+
+  .footer-name span { color: var(--or); }
+
+  .footer-mention {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(245,237,228,0.4);
+  }
+
+  /* PRINT */
+  @media print {
+    .section, .cluster-block, .card, .blog-card, .levier-card { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 40px; }
+    .cover-meta { gap: 20px; }
+    .cover-line { display: none; }
+
+    .section { padding: 48px 24px; }
+    .section-title { font-size: 26px; }
+
+    .grid-2, .grid-3, .grid-4, .objectifs-grid { grid-template-columns: 1fr; }
+
+    .tunnel-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-step { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .tunnel-step:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+    .tunnel-step:last-child { border-radius: 0 0 var(--radius) var(--radius); border-bottom: none; }
+
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box-text { font-size: 18px; }
+
+    .footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+
+    .table-wrapper { overflow-x: auto; }
+
+    .maillage-row { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique — Document Confidentiel</div>
+  <div class="cover-ornament"></div>
+  <div class="cover-title">LéOla<br><span>Conciergerie</span></div>
+  <div class="cover-subtitle">L'art d'accueillir &nbsp;·&nbsp; La Vallée de l'Arve</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Client</span>
+      <span class="cover-meta-value">Émilie Desmazures</span>
+    </div>
+    <div class="cover-line"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie LCD</span>
+    </div>
+    <div class="cover-line"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Zone</span>
+      <span class="cover-meta-value">Vallée de l'Arve</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 01 — POSITIONNEMENT -->
+<section id="bp-section-01" class="section">
+  <div class="section-header">
+    <span class="section-badge">01</span>
+    <h2 class="section-title">Positionnement</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="highlight-box">
+    <span class="highlight-box-label">Promesse de valeur principale</span>
+    <div class="highlight-box-text">« LéOla prend en charge chaque détail de votre location courte durée dans la Vallée de l'Arve, pour que votre bien performe — sans que vous ayez à y penser. »</div>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <div class="card-title">Ligne directrice de communication</div>
+    <div class="card-text">Proximité terrain sincère · Excellence sans ostentation · Regard de propriétaire à propriétaire. LéOla ne vend pas un service externe : elle partage une expérience vécue et une exigence commune avec chaque propriétaire confiant.</div>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <div class="card-title">Ton éditorial</div>
+    <div class="card-text"><strong style="color: var(--or);">Sobre · Humain · Précis</strong><br>Un discours qui évite les superlatifs, préfère les faits concrets aux promesses creuses, et parle d'égal à égal — comme entre propriétaires qui se comprennent sans s'expliquer.</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">🗝 Ancrage local profond</div>
+      <div class="card-text">Implantés à Saint-Pierre-en-Faucigny par choix de cœur, Émilie et Christopher connaissent la Vallée de l'Arve de l'intérieur — sa géographie, ses saisons, ses voyageurs.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">🗝 Regard de propriétaire</div>
+      <div class="card-text">Propriétaires eux-mêmes depuis plusieurs années, ils traitent chaque bien confié avec le même soin qu'ils apportent au leur. Ce n'est pas une posture : c'est une réalité vécue.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">🗝 Aucune sous-traitance en cascade</div>
+      <div class="card-text">Ce sont Émilie et Christopher qui suivent votre bien du début à la fin. Pas d'intermédiaires invisibles. Un interlocuteur connu, joignable, responsable.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">🗝 Reporting clair et régulier</div>
+      <div class="card-text">Chaque propriétaire reçoit un suivi transparent de l'activité de son bien : réservations, avis, revenus. La sérénité passe aussi par l'information.</div>
+    </div>
+    <div class="card" style="grid-column: 1 / -1;">
+      <div class="card-title">🗝 Forfait Sérénité : l'essentiel, sans le superflu</div>
+      <div class="card-text">Une offre lisible, à 23 % TTC, qui couvre tout le cycle locatif — mise en valeur, réservations, accueil, entretien — et s'enrichit de prestations complémentaires au besoin, sans imposer de package surdimensionné.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 02 — CLIENT CIBLE -->
+<section id="bp-section-02" class="section section-alt">
+  <div class="section-header">
+    <span class="section-badge">02</span>
+    <h2 class="section-title">Client Cible</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Profil type</div>
+      <ul class="clean-list">
+        <li>Propriétaire 35–65 ans, CSP+ ou retraité actif</li>
+        <li>Bien situé en Vallée de l'Arve (Saint-Pierre-en-Faucigny, Bonneville, La Roche-sur-Foron, Cluses…)</li>
+        <li>Déjà en LCD ou en phase de démarrage</li>
+        <li>Souvent actif professionnellement ou non-résident permanent</li>
+        <li>Attachement fort à son bien, soucieux de sa valeur à long terme</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Motivations principales</div>
+      <ul class="clean-list">
+        <li>Générer des revenus locatifs sans gérer le quotidien</li>
+        <li>Maintenir son bien en parfait état entre les séjours</li>
+        <li>Offrir une expérience de qualité aux voyageurs</li>
+        <li>Avoir un interlocuteur local réactif et de confiance</li>
+        <li>Optimiser son taux d'occupation et ses revenus</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Freins & objections</div>
+      <ul class="clean-list">
+        <li>« 23 % c'est beaucoup — est-ce que ça en vaut vraiment la peine ? »</li>
+        <li>« Je ne sais pas si je peux faire confiance à quelqu'un avec mon bien »</li>
+        <li>« La conciergerie est encore jeune — manque de références »</li>
+        <li>« Et si mes voyageurs ne sont pas bien accueillis ? »</li>
+        <li>« Est-ce qu'ils connaissent vraiment mon secteur ? »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Critères de décision</div>
+      <ul class="clean-list">
+        <li>Proximité géographique et connaissance du terrain</li>
+        <li>Transparence sur les prestations et le reporting</li>
+        <li>Profil humain et expérience des fondateurs</li>
+        <li>Preuve sociale : avis, témoignages, biens référencés</li>
+        <li>Clarté de l'offre et lisibilité du contrat</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03" class="section">
+  <div class="section-header">
+    <span class="section-badge">03</span>
+    <h2 class="section-title">Objectifs du Site</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="objectifs-grid">
+    <div class="objectif-item">
+      <div class="objectif-number">01</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Génération de leads qualifiés</div>
+        <div class="objectif-desc">Capter les propriétaires en phase de recherche active d'une conciergerie LCD locale</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-number">02</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Réassurance & confiance</div>
+        <div class="objectif-desc">Convaincre un propriétaire hésitant grâce au profil humain des fondateurs et à la transparence</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-number">03</div>
+      <div class="objectif-content">
+        <div class="objectif-title">SEO local ciblé</div>
+        <div class="objectif-desc">Positionner LéOla sur les requêtes de propriétaires en Vallée de l'Arve (Bonneville, Saint-Pierre-en-Faucigny…)</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-number">04</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Prise de contact / RDV</div>
+        <div class="objectif-desc">Transformer la visite en demande de rendez-vous ou d'estimation via formulaire qualifiant</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-number">05</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Conversion</div>
+        <div class="objectif-desc">Accompagner le visiteur vers la signature du Forfait Sérénité grâce à une présentation claire de l'offre</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-number">06</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Notoriété locale</div>
+        <div class="objectif-desc">Construire la présence en ligne de LéOla comme référence conciergerie LCD sur la Vallée de l'Arve</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04 — ARBORESCENCE -->
+<section id="bp-section-04" class="section section-alt">
+  <div class="section-header">
+    <span class="section-badge">04</span>
+    <h2 class="section-title">Arborescence du Site</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Accueil</td>
+          <td>AIDA — Attirer, susciter l'intérêt, désir, action</td>
+          <td>conciergerie location courte durée Vallée de l'Arve</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Notre offre — Forfait Sérénité</td>
+          <td>BAB — Avant / Après / Bridge</td>
+          <td>conciergerie Airbnb Bonneville / Saint-Pierre-en-Faucigny</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>À propos</td>
+          <td>PAS — Problème / Agitation / Solution</td>
+          <td>conciergerie propriétaires Vallée de l'Arve</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Conciergerie LCD à Bonneville</td>
+          <td>AIDA local — ancrage Bonneville + Aravis</td>
+          <td>conciergerie location courte durée Bonneville</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Conciergerie LCD à La Roche-sur-Foron</td>
+          <td>AIDA local — ancrage La Roche-sur-Foron</td>
+          <td>conciergerie Airbnb La Roche-sur-Foron</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Blog</td>
+          <td>Contenu informatif — clusters thématiques</td>
+          <td>conseils propriétaires location courte durée</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Contact / Demande d'estimation</td>
+          <td>Conversion — formulaire qualifiant</td>
+          <td>estimation conciergerie LCD Haute-Savoie</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Mentions légales / CGU</td>
+          <td>—</td>
+          <td>—</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECTION 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05" class="section">
+  <div class="section-header">
+    <span class="section-badge">05</span>
+    <h2 class="section-title">Cocon Sémantique</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title"><span class="cluster-dot"></span>Cluster 1 — Conciergerie & accompagnement locatif</div>
+    <div class="card-text" style="margin-bottom: 12px;">Pages principales : Accueil · Notre offre · Pages locales SEO</div>
+    <ul class="clean-list">
+      <li>Mots-clés cœur : conciergerie LCD, gestion Airbnb, accompagnement propriétaire, Forfait Sérénité</li>
+      <li>Articles satellites : comment choisir sa conciergerie, combien coûte une conciergerie, qu'est-ce qu'un Forfait Sérénité…</li>
+    </ul>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title"><span class="cluster-dot"></span>Cluster 2 — Territoire & attractivité locale</div>
+    <div class="card-text" style="margin-bottom: 12px;">Pages principales : Pages locales SEO · Blog</div>
+    <ul class="clean-list">
+      <li>Mots-clés cœur : location courte durée Vallée de l'Arve, Bonneville, La Roche-sur-Foron, Aravis, Haute-Savoie</li>
+      <li>Articles satellites : louer son bien à Bonneville, pourquoi la Vallée de l'Arve attire les voyageurs…</li>
+    </ul>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title"><span class="cluster-dot"></span>Cluster 3 — Propriétaire & rentabilité</div>
+    <div class="card-text" style="margin-bottom: 12px;">Pages principales : Blog · À propos</div>
+    <ul class="clean-list">
+      <li>Mots-clés cœur : optimiser revenus locatifs, taux d'occupation Airbnb, avis voyageurs, rentabilité LCD</li>
+      <li>Articles satellites : comment maximiser ses réservations, importance des photos professionnelles, checklist propriétaire LCD…</li>
+    </ul>
+  </div>
+
+  <div class="maillage-section">
+    <div class="card-title" style="margin-bottom: 20px;">Logique de maillage interne</div>
+    <div class="maillage-row">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Pages locales SEO</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Articles Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Notre offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Pages locales SEO</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06" class="section section-alt">
+  <div class="section-header">
+    <span class="section-badge">06</span>
+    <h2 class="section-title">Tunnel de Conversion</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 01</div>
+      <div class="tunnel-step-title">Découverte</div>
+      <div class="tunnel-step-label">Source de trafic</div>
+      <div class="tunnel-step-value">Google (SEO local), réseaux sociaux, bouche-à-oreille Vallée de l'Arve</div>
+      <div class="tunnel-step-label">Page concernée</div>
+      <div class="tunnel-step-value">Accueil · Pages locales SEO</div>
+      <span class="tunnel-cta">Découvrir LéOla →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 02</div>
+      <div class="tunnel-step-title">Intérêt</div>
+      <div class="tunnel-step-label">Source de trafic</div>
+      <div class="tunnel-step-value">Navigation interne depuis l'accueil, articles blog</div>
+      <div class="tunnel-step-label">Page concernée</div>
+      <div class="tunnel-step-value">Notre offre · Blog</div>
+      <span class="tunnel-cta">Voir le Forfait →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 03</div>
+      <div class="tunnel-step-title">Confiance</div>
+      <div class="tunnel-step-label">Source de trafic</div>
+      <div class="tunnel-step-value">Page À propos, avis Google, témoignages propriétaires</div>
+      <div class="tunnel-step-label">Page concernée</div>
+      <div class="tunnel-step-value">À propos · Notre offre</div>
+      <span class="tunnel-cta">Notre histoire →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 04</div>
+      <div class="tunnel-step-title">Conversion</div>
+      <div class="tunnel-step-label">Source de trafic</div>
+      <div class="tunnel-step-value">CTA offre, lead magnet, formulaire qualifiant</div>
+      <div class="tunnel-step-label">Page concernée</div>
+      <div class="tunnel-step-value">Contact · Estimation gratuite</div>
+      <span class="tunnel-cta">Estimer mon bien →</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 07 — LEVIERS MARKETING -->
+<section id="bp-section-07" class="section">
+  <div class="section-header">
+    <span class="section-badge">07</span>
+    <h2 class="section-title">Leviers Marketing Recommandés</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <span class="levier-icon">📋</span>
+      <div class="levier-title">Lead Magnet</div>
+      <div class="levier-text">« Checklist propriétaire : 12 points pour préparer votre bien à la location courte durée en Vallée de l'Arve » — PDF sobre au format LéOla, téléchargeable en échange d'un email. Positionne LéOla comme experte terrain dès le premier contact.</div>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">📅</span>
+      <div class="levier-title">Prise de RDV</div>
+      <div class="levier-text">Outil recommandé : <strong>Calendly</strong> (gratuit, intégrable). CTA principal : « Demander une estimation gratuite » — 20 minutes en visio ou sur place. Réduire la friction : pas de formulaire long, juste un créneau à choisir.</div>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">⭐</span>
+      <div class="levier-title">Preuve Sociale</div>
+      <div class="levier-text">Témoignages propriétaires (texte + prénom + ville), captures d'avis voyageurs Airbnb/Booking, score moyen affiché. À collecter dès les premières collaborations. Une section « Ils nous confient leur bien » sur la page d'accueil.</div>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">📝</span>
+      <div class="levier-title">Formulaire Qualifiant</div>
+      <div class="levier-text">Champs recommandés : Prénom · Email · Téléphone · Commune du bien · Type de bien (appartement / chalet / maison) · Statut (déjà en LCD / en projet) · Message libre. Objectif : identifier le niveau de maturité et personnaliser la réponse.</div>
+    </div>
+    <div class="levier-card" style="grid-column: 1 / -1;">
+      <span class="levier-icon">✉️</span>
+      <div class="levier-title">Newsletter — Angle Éditorial</div>
+      <div class="levier-text">Fréquence mensuelle. Angle : « Le regard de LéOla » — une lettre courte mêlant conseil pratique (astuce propriétaire LCD), actualité locale (tourisme en Vallée de l'Arve), et coulisses de la conciergerie. Ton sobre, personnel, jamais commercial. Outil : Brevo (anciennement Sendinblue), gratuit jusqu'à 300 envois/jour.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08" class="section section-alt">
+  <div class="section-header">
+    <span class="section-badge">08</span>
+    <h2 class="section-title">Direction Visuelle & Éditoriale</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="card" style="margin-bottom: 40px; text-align: center;">
+    <div class="card-title" style="margin-bottom: 24px;">Palette Chromatique</div>
+    <div class="palette-grid">
+      <div class="color-swatch">
+        <div class="color-box" style="background: #F5EDE4;border: 1px solid rgba(0,0,0,0.08);"></div>
+        <div class="color-name">Fond Crème</div>
+        <div class="color-hex">#F5EDE4</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-box" style="background: #C8A96E;"></div>
+        <div class="color-name">Or Chaud</div>
+        <div class="color-hex">#C8A96E</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-box" style="background: #2E2B27;"></div>
+        <div class="color-name">Anthracite</div>
+        <div class="color-hex">#2E2B27</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-box" style="background: #E8D4A8;border: 1px solid rgba(0,0,0,0.06);"></div>
+        <div class="color-name">Or Pâle</div>
+        <div class="color-hex">#E8D4A8</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-box" style="background: #FFFFFF;border: 1px solid rgba(0,0,0,0.08);"></div>
+        <div class="color-name">Blanc Pur</div>
+        <div class="color-hex">#FFFFFF</div>
+      </div>
+    </div>
+    <div style="font-size: 13px; color: var(--anthracite-light); font-style: italic; max-width: 500px; margin: 0 auto;">Palette imposée par le logo LéOla. Trois tons principaux : crème, or chaud, anthracite. Jamais de noir pur. Toujours sobre.</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Univers Visuel Recommandé</div>
+      <ul class="clean-list">
+        <li>Photographie intérieure lumineuse, grand angle, ambiance chaleureuse</li>
+        <li>Portraits humains des fondateurs — authenticité, proximité</li>
+        <li>Paysages de la Vallée de l'Arve comme signature territoriale</li>
+        <li>Icônes fines de style outline ou linéaire (réutiliser la clé du logo)</li>
+        <li>Séparateurs discrets : trait fin doré, espacement généreux</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Typographie</div>
+      <ul class="clean-list">
+        <li><strong>Titres :</strong> Playfair Display — serif élégant, ancré, sérieux</li>
+        <li><strong>Corps :</strong> Inter — lisible, neutre, moderne</li>
+        <li><strong>Labels / badges :</strong> petites capitales espacées, jamais compact</li>
+        <li>Textes courts, factuels, sans emphase — les visuels portent le message</li>
+        <li>Espace blanc généreux — rien de massif, ligne fine et verticale</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 09 — ARTICLES BLOG -->
+<section id="bp-section-09" class="section">
+  <div class="section-header">
+    <span class="section-badge">09</span>
+    <h2 class="section-title">Articles Blog Recommandés</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <div class="blog-tag">Cluster 1 — Conciergerie & accompagnement</div>
+      <div class="blog-title">Comment choisir sa conciergerie en location courte durée : 7 critères clés pour les propriétaires</div>
+      <div class="blog-meta">Intention : informationnelle — décision d'achat</div>
+      <span class="badge badge-prioritaire">Prioritaire</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-tag">Cluster 1 — Conciergerie & accompagnement</div>
+      <div class="blog-title">Conciergerie Airbnb : combien ça coûte vraiment et ce que ça vous rapporte en Vallée de l'Arve</div>
+      <div class="blog-meta">Intention : informationnelle — comparaison / ROI</div>
+      <span class="badge badge-prioritaire">Prioritaire</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-tag">Cluster 2 — Territoire & attractivité</div>
+      <div class="blog-title">Pourquoi la Vallée de l'Arve attire de plus en plus de voyageurs en courte durée</div>
+      <div class="blog-meta">Intention : informationnelle — valorisation du territoire</div>
+      <span class="badge badge-prioritaire">Prioritaire</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-tag">Cluster 3 — Propriétaire & rentabilité</div>
+      <div class="blog-title">Photos professionnelles sur Airbnb : pourquoi c'est le premier levier de réservation</div>
+      <div class="blog-meta">Intention : informationnelle — valeur ajoutée visible</div>
+      <span class="badge badge-moyen">Moyen</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-tag">Cluster 3 — Propriétaire & rentabilité</div>
+      <div class="blog-title">Comment optimiser le taux d'occupation de son logement en LCD en Haute-Savoie</div>
+      <div class="blog-meta">Intention : transactionnelle — propriétaire actif cherchant à progresser</div>
+      <span class="badge badge-moyen">Moyen</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-tag">Cluster 2 — Territoire & attractivité</div>
+      <div class="blog-title">Louer son bien à Bonneville ou Saint-Pierre-en-Faucigny : opportunités et bonnes pratiques en 2025</div>
+      <div class="blog-meta">Intention : locale — SEO géographique ciblé</div>
+      <span class="badge badge-prioritaire">Prioritaire</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-tag">Cluster 1 — Conciergerie & accompagnement</div>
+      <div class="blog-title">Checklist : les 12 points à vérifier avant de confier son bien à une conciergerie LCD</div>
+      <div class="blog-meta">Intention : informationnelle — prolongement du lead magnet</div>
+      <span class="badge badge-moyen">Moyen</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-name">LéOla <span>Conciergerie</span></div>
+  <div class="footer-mention">Document confidentiel — AR Digital © 2025</div>
+</footer>
+
+</body>
+</html>
