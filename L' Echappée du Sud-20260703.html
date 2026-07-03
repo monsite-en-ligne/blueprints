@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blueprint Stratégique — L'Échappée du Sud</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #2c2c2c;
+      background: #f9f8f5;
+    }
+
+    /* ── COVER ── */
+    .cover {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #2d3a2e 0%, #4a5e3a 40%, #7a6e3a 75%, #3b2f1e 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(188,166,90,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cover-badge {
+      display: inline-block;
+      background: rgba(188,166,90,0.22);
+      border: 1px solid rgba(188,166,90,0.45);
+      color: #d4b86a;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 8px 22px;
+      border-radius: 30px;
+      margin-bottom: 38px;
+    }
+    .cover-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 68px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      letter-spacing: -1px;
+    }
+    .cover-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 52px;
+      letter-spacing: 1px;
+    }
+    .cover-meta {
+      display: flex;
+      gap: 36px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cover-meta-item {
+      text-align: center;
+    }
+    .cover-meta-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #d4b86a;
+      margin-bottom: 4px;
+    }
+    .cover-meta-value {
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 400;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 80px 80px;
+      page-break-inside: avoid;
+    }
+    section:nth-child(odd) { background: #f9f8f5; }
+    section:nth-child(even) { background: #ffffff; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 48px;
+    }
+    .section-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #8a7a4a;
+      background: rgba(188,166,90,0.12);
+      border: 1px solid rgba(188,166,90,0.3);
+      padding: 6px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    h2.section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 700;
+      color: #2d3a2e;
+      line-height: 1.2;
+    }
+    h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #2d3a2e;
+      margin-bottom: 10px;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .card p, .card li {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+    }
+    .card ul { padding-left: 18px; }
+    .card ul li { margin-bottom: 4px; }
+
+    /* ── GRIDS ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+    .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight-box {
+      background: linear-gradient(135deg, #2d3a2e 0%, #4a5e3a 100%);
+      border-radius: 16px;
+      padding: 36px 40px;
+      color: #fff;
+      margin-bottom: 40px;
+    }
+    .highlight-box .label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #d4b86a;
+      margin-bottom: 14px;
+    }
+    .highlight-box p {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: #fff;
+    }
+
+    /* ── TAGS ── */
+    .tag {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 3px 3px 3px 0;
+    }
+    .tag-olive { background: rgba(120,140,70,0.12); color: #5a7030; border: 1px solid rgba(120,140,70,0.3); }
+    .tag-gold  { background: rgba(188,166,90,0.12); color: #8a6a1a; border: 1px solid rgba(188,166,90,0.3); }
+
+    /* ── PRIORITY BADGES ── */
+    .badge-fort   { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+    .badge-moyen  { background: #fff8e1; color: #f57f17; border: 1px solid #ffe082; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+    .badge-faible { background: #fce4ec; color: #c62828; border: 1px solid #f48fb1; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+    .badge-prio   { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+
+    /* ── TABLE ── */
+    .table-wrap { overflow-x: auto; border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; }
+    thead tr { background: #2d3a2e; }
+    thead th { color: #d4b86a; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 16px 20px; text-align: left; }
+    tbody tr { border-bottom: 1px solid #f0ede6; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody td { padding: 16px 20px; font-size: 13px; color: #444; vertical-align: middle; }
+    tbody tr:hover { background: #faf9f6; }
+    td .kw { font-weight: 600; color: #2d3a2e; font-size: 12px; }
+
+    /* ── TUNNEL ── */
+    .tunnel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .tunnel-step {
+      background: #fff;
+      padding: 28px 24px;
+      border-right: 1px solid #eee;
+      position: relative;
+    }
+    .tunnel-step:last-child { border-right: none; }
+    .tunnel-step::after {
+      content: '→';
+      position: absolute;
+      right: -14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #d4b86a;
+      z-index: 2;
+    }
+    .tunnel-step:last-child::after { display: none; }
+    .tunnel-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #d4b86a;
+      margin-bottom: 10px;
+    }
+    .tunnel-step h3 { font-size: 16px; margin-bottom: 14px; }
+    .tunnel-step p, .tunnel-step li { font-size: 13px; color: #666; line-height: 1.6; }
+    .tunnel-step ul { padding-left: 16px; }
+    .tunnel-wrap { border-radius: 14px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+
+    /* ── COCON ── */
+    .cluster-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .cluster-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #2d3a2e;
+      margin-bottom: 14px;
+    }
+    .cluster-kw {
+      display: inline-block;
+      background: rgba(188,166,90,0.1);
+      color: #7a6020;
+      border-radius: 10px;
+      padding: 3px 10px;
+      font-size: 12px;
+      margin: 3px 3px 3px 0;
+    }
+    .maillage-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: #444;
+    }
+    .maillage-source {
+      background: #2d3a2e;
+      color: #d4b86a;
+      border-radius: 8px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .maillage-arrow {
+      color: #d4b86a;
+      font-size: 15px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .maillage-dest {
+      background: #f0ede6;
+      color: #2d3a2e;
+      border-radius: 8px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* ── PALETTE ── */
+    .palette-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+    .swatch-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .swatch {
+      width: 80px;
+      height: 80px;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .swatch-name { font-size: 12px; font-weight: 600; color: #2d3a2e; }
+    .swatch-hex  { font-size: 11px; color: #aaa; }
+
+    /* ── OBJECTIVES ── */
+    .obj-list { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .obj-list li {
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px 22px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 14px;
+      color: #2d3a2e;
+      font-weight: 500;
+    }
+    .obj-num {
+      background: linear-gradient(135deg, #4a5e3a, #7a6e3a);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      min-width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── LEVIERS ── */
+    .levier-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .levier-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    .levier-card h3 { font-size: 15px; margin-bottom: 8px; }
+    .levier-card p { font-size: 13px; color: #666; line-height: 1.6; }
+
+    /* ── BLOG ── */
+    .blog-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 24px 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+    .blog-num { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: #e0d9c8; line-height: 1; min-width: 40px; }
+    .blog-content h3 { font-size: 15px; margin-bottom: 6px; }
+    .blog-content p { font-size: 13px; color: #777; margin-bottom: 8px; }
+    .blog-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #2d3a2e;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 40px;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+    footer strong { color: #d4b86a; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      section { padding: 40px 24px; }
+      .cover-title { font-size: 38px; }
+      .cover-subtitle { font-size: 15px; }
+      .cover-meta { gap: 20px; }
+      h2.section-title { font-size: 26px; }
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .tunnel-grid { grid-template-columns: 1fr; }
+      .tunnel-step { border-right: none; border-bottom: 1px solid #eee; }
+      .tunnel-step::after { content: '↓'; right: auto; left: 50%; top: auto; bottom: -16px; transform: translateX(-50%); }
+      .tunnel-step:last-child::after { display: none; }
+      .obj-list { grid-template-columns: 1fr; }
+      .palette-grid { gap: 16px; }
+      .highlight-box { padding: 24px 20px; }
+      .highlight-box p { font-size: 17px; }
+      .blog-card { flex-direction: column; gap: 10px; }
+      .maillage-row { flex-wrap: wrap; }
+    }
+
+    @media print {
+      section { page-break-inside: avoid; }
+      .cover { min-height: auto; padding: 60px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════ COVER ══════════════════════ -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique · AR Digital</div>
+  <div class="cover-title">L'Échappée du Sud</div>
+  <div class="cover-subtitle">Votre feuille de route digitale, pensée pour la Provence</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Client</div>
+      <div class="cover-meta-value">Jennifer Mattio</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Secteur</div>
+      <div class="cover-meta-value">Conciergerie locative — Var / Provence</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Domaine</div>
+      <div class="cover-meta-value">lechappeedusud.com</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ 01 — POSITIONNEMENT ══════════════════════ -->
+<section id="bp-section-01">
+  <div class="section-header">
+    <span class="section-badge">01</span>
+    <h2 class="section-title">Positionnement</h2>
+  </div>
+
+  <div class="highlight-box">
+    <div class="label">Promesse de valeur principale</div>
+    <p>« Confiez votre bien provençal à une conciergerie de terrain, humaine et réactive — et profitez du Sud l'esprit libre. »</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 28px;">
+    <h3>Ligne directrice de communication</h3>
+    <p>Proximité locale authentique · Sérénité propriétaire · Excellence de service sans friction administrative</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 40px;">
+    <h3>Ton éditorial</h3>
+    <p><strong>Chaleureux · Rassurant · Provençal</strong> — Un ton qui parle d'égal à égal, ancré dans le territoire, qui inspire confiance sans jargon technique. Jennifer s'adresse à ses propriétaires comme à des partenaires, avec sincérité et enthousiasme.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🌿 Ancrage territorial profond</h3>
+      <p>Originaire du Var, Jennifer connaît intimement chaque village de son secteur — de Barjols à Lorgues en passant par Tourtour. Cette connaissance du terrain est irremplaçable et constitue un avantage concurrentiel fort.</p>
+    </div>
+    <div class="card">
+      <h3>🤝 Relation humaine et personnalisée</h3>
+      <p>Pas de plateforme anonyme : un interlocuteur unique, disponible 7j/7, qui suit chaque bien avec le même soin qu'un bien personnel. La conciergerie à visage humain.</p>
+    </div>
+    <div class="card">
+      <h3>✨ Prestation clé en main sans effort</h3>
+      <p>De la mise en place du logement au rapport mensuel de suivi, tout est pris en charge. Le propriétaire n'a qu'à percevoir ses revenus — L'Échappée du Sud s'occupe du reste.</p>
+    </div>
+    <div class="card">
+      <h3>📊 Transparence totale</h3>
+      <p>Commission claire affichée à 23 %, rapport mensuel de suivi, communication permanente : aucune mauvaise surprise. Le propriétaire sait toujours où en est son bien.</p>
+    </div>
+    <div class="card">
+      <h3>🏡 Valorisation de l'art de vivre provençal</h3>
+      <p>L'Échappée du Sud ne vend pas de la location saisonnière ; elle vend une expérience de la Provence — pour les voyageurs comme pour les propriétaires qui veulent sublimer leur bien dans cet écrin unique.</p>
+    </div>
+    <div class="card">
+      <h3>📸 Mise en valeur qualitative des biens</h3>
+      <p>Shooting photo offert, livret d'accueil personnalisé, conseils d'embellissement : chaque bien est présenté sous son meilleur jour pour maximiser l'attractivité et le taux d'occupation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ 02 — CLIENT CIBLE ══════════════════════ -->
+<section id="bp-section-02">
+  <div class="section-header">
+    <span class="section-badge">02</span>
+    <h2 class="section-title">Client Cible</h2>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <h3>Profil type — Propriétaire principal</h3>
+      <p><strong>40–65 ans</strong>, propriétaire d'une villa ou d'un appartement dans le Var intérieur (résidence secondaire ou investissement locatif). Actif ou retraité, il ne réside pas sur place à temps plein et souhaite déléguer entièrement la charge opérationnelle. Il valorise la tranquillité, la confiance et la rentabilité de son bien sans contrainte.</p>
+    </div>
+    <div class="card">
+      <h3>Profil type — Propriétaire secondaire</h3>
+      <p><strong>30–50 ans</strong>, primo-investisseur ou propriétaire d'un bien hérité en Provence. Il souhaite générer des revenus complémentaires sans se former aux plateformes de réservation. Il cherche un accompagnement de A à Z, rassurant et pédagogique.</p>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Générer des revenus locatifs sans s'impliquer au quotidien</li>
+        <li>Protéger son bien et en assurer l'entretien</li>
+        <li>Déléguer à quelqu'un de confiance et de proche</li>
+        <li>Profiter d'un service professionnel sans jargon</li>
+        <li>Valoriser leur bien dans un secteur touristique attractif</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Freins et objections</h3>
+      <ul>
+        <li>« Et si mon bien est mal entretenu ? »</li>
+        <li>« Les commissions sont-elles justifiées ? »</li>
+        <li>« Je ne connais pas cette conciergerie. »</li>
+        <li>« Je ne veux pas perdre la main sur mon bien. »</li>
+        <li>« Est-ce vraiment disponible 7j/7 ? »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Réputation locale et avis clients vérifiables</li>
+        <li>Transparence des tarifs et du fonctionnement</li>
+        <li>Réactivité et disponibilité réelle</li>
+        <li>Connaissance du secteur géographique</li>
+        <li>Qualité des visuels et de la présentation des biens</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ 03 — OBJECTIFS DU SITE ══════════════════════ -->
+<section id="bp-section-03">
+  <div class="section-header">
+    <span class="section-badge">03</span>
+    <h2 class="section-title">Objectifs du Site</h2>
+  </div>
+
+  <ul class="obj-list">
+    <li><span class="obj-num">1</span>Génération de leads propriétaires qualifiés</li>
+    <li><span class="obj-num">2</span>Réassurance et construction de confiance</li>
+    <li><span class="obj-num">3</span>SEO local (Barjols, Var intérieur, Provence)</li>
+    <li><span class="obj-num">4</span>Prise de contact / prise de RDV simplifiée</li>
+    <li><span class="obj-num">5</span>Conversion des visiteurs indécis</li>
+    <li><span class="obj-num">6</span>Notoriété locale et positionnement expert</li>
+  </ul>
+</section>
+
+<!-- ══════════════════════ 04 — ARBORESCENCE ══════════════════════ -->
+<section id="bp-section-04">
+  <div class="section-header">
+    <span class="section-badge">04</span>
+    <h2 class="section-title">Arborescence du Site</h2>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Nom de la page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td class="kw">conciergerie location saisonnière Var</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre Offre</strong><br><small style="color:#aaa;">(Mise en place + Offre Liberté)</small></td>
+          <td>PAS</td>
+          <td class="kw">conciergerie Airbnb Barjols Provence</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À Propos — Jennifer</strong></td>
+          <td>BAB</td>
+          <td class="kw">conciergerie humaine Provence propriétaires</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Biens</strong><br><small style="color:#aaa;">(Galerie des logements gérés)</small></td>
+          <td>AIDA</td>
+          <td class="kw">location vacances Var intérieur Provence</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Secteur local — Barjols &amp; Var Vert</strong></td>
+          <td>PAS</td>
+          <td class="kw">conciergerie Barjols Salernes Cotignac</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Secteur local — Lac du Verdon &amp; Haut-Var</strong></td>
+          <td>PAS</td>
+          <td class="kw">conciergerie Lac du Verdon Aups Tourtour</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td class="kw">conseils location saisonnière Provence</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / Devis gratuit</strong></td>
+          <td>AIDA</td>
+          <td class="kw">conciergerie Var devis gratuit propriétaire</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════ 05 — COCON SÉMANTIQUE ══════════════════════ -->
+<section id="bp-section-05">
+  <div class="section-header">
+    <span class="section-badge">05</span>
+    <h2 class="section-title">Cocon Sémantique</h2>
+  </div>
+
+  <div class="grid-3" style="margin-bottom: 40px;">
+    <div class="cluster-card">
+      <div class="cluster-title">🌿 Cluster 1 — Conciergerie &amp; Services</div>
+      <p style="font-size:13px; color:#666; margin-bottom: 12px;">Thématique principale, à fort potentiel de conversion et SEO local.</p>
+      <span class="cluster-kw">conciergerie Var</span>
+      <span class="cluster-kw">conciergerie Airbnb Provence</span>
+      <span class="cluster-kw">gestion locative Barjols</span>
+      <span class="cluster-kw">conciergerie location courte durée</span>
+      <span class="cluster-kw">ménage check-in check-out Var</span>
+    </div>
+    <div class="cluster-card">
+      <div class="cluster-title">📍 Cluster 2 — Territoire &amp; Local</div>
+      <p style="font-size:13px; color:#666; margin-bottom: 12px;">Pages locales SEO pour capter les recherches géolocalisées du Var intérieur.</p>
+      <span class="cluster-kw">Barjols Salernes Cotignac</span>
+      <span class="cluster-kw">Lac du Verdon Aups Tourtour</span>
+      <span class="cluster-kw">Var vert Provence intérieure</span>
+      <span class="cluster-kw">location saisonnière Haut-Var</span>
+      <span class="cluster-kw">villa Provence à louer</span>
+    </div>
+    <div class="cluster-card">
+      <div class="cluster-title">📝 Cluster 3 — Conseils Propriétaires</div>
+      <p style="font-size:13px; color:#666; margin-bottom: 12px;">Contenu blog à fort potentiel de trafic organique et de nurturing.</p>
+      <span class="cluster-kw">optimiser location saisonnière</span>
+      <span class="cluster-kw">tarification dynamique Airbnb</span>
+      <span class="cluster-kw">revenus locatifs Provence</span>
+      <span class="cluster-kw">préparer logement voyageurs</span>
+      <span class="cluster-kw">déléguer location courte durée</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-bottom: 20px;">Logique de maillage interne</h3>
+
+    <div class="maillage-row">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre Offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact / Devis</span>
+    </div>
+
+    <div class="maillage-row">
+      <span class="maillage-source">Notre Offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">À Propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact / Devis</span>
+    </div>
+
+    <div class="maillage-row">
+      <span class="maillage-source">Pages locales SEO</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre Offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact / Devis</span>
+    </div>
+
+    <div class="maillage-row">
+      <span class="maillage-source">Articles Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre Offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Pages locales SEO</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact / Devis</span>
+    </div>
+
+    <div class="maillage-row">
+      <span class="maillage-source">Nos Biens</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre Offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact / Devis</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ 06 — TUNNEL DE CONVERSION ══════════════════════ -->
+<section id="bp-section-06">
+  <div class="section-header">
+    <span class="section-badge">06</span>
+    <h2 class="section-title">Tunnel de Conversion</h2>
+  </div>
+
+  <div class="tunnel-wrap">
+    <div class="tunnel-grid">
+      <div class="tunnel-step">
+        <div class="tunnel-num">Étape 1</div>
+        <h3>🔍 Découverte</h3>
+        <ul>
+          <li><strong>Sources :</strong> Google, bouche-à-oreille, réseaux sociaux locaux</li>
+          <li><strong>Pages :</strong> Accueil, Pages locales SEO, Blog</li>
+          <li><strong>CTA :</strong> « Découvrez notre offre »</li>
+        </ul>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-num">Étape 2</div>
+        <h3>💡 Intérêt</h3>
+        <ul>
+          <li><strong>Sources :</strong> Navigation interne, articles blog</li>
+          <li><strong>Pages :</strong> Notre Offre, Nos Biens</li>
+          <li><strong>CTA :</strong> « Téléchargez notre guide propriétaire »</li>
+        </ul>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-num">Étape 3</div>
+        <h3>🤝 Confiance</h3>
+        <ul>
+          <li><strong>Sources :</strong> Avis clients, À Propos</li>
+          <li><strong>Pages :</strong> À Propos, Témoignages</li>
+          <li><strong>CTA :</strong> « Ils nous font confiance »</li>
+        </ul>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-num">Étape 4</div>
+        <h3>✅ Conversion</h3>
+        <ul>
+          <li><strong>Sources :</strong> CTA récurrents, formulaire</li>
+          <li><strong>Pages :</strong> Contact / Devis gratuit</li>
+          <li><strong>CTA :</strong> « Demandez votre devis gratuit »</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ 07 — LEVIERS MARKETING ══════════════════════ -->
+<section id="bp-section-07">
+  <div class="section-header">
+    <span class="section-badge">07</span>
+    <h2 class="section-title">Leviers Marketing Recommandés</h2>
+  </div>
+
+  <div class="grid-3">
+    <div class="levier-card">
+      <div class="levier-icon">📥</div>
+      <h3>Lead Magnet</h3>
+      <p>Guide PDF : <em>« Comment rentabiliser votre bien en Provence sans effort : le guide du propriétaire serein »</em> — téléchargeable en échange de l'email et du secteur du bien.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📅</div>
+      <h3>Prise de RDV</h3>
+      <p>Intégration de <strong>Calendly</strong> (ou Notion Calendar) pour proposer un appel découverte de 20 min offert, directement depuis la page Contact et la page Offre.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">⭐</div>
+      <h3>Preuve Sociale</h3>
+      <p>Avis Google visibles en page d'accueil et page Offre. Témoignages vidéo ou écrits de propriétaires satisfaits. Galerie avant/après des biens mis en valeur.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📋</div>
+      <h3>Formulaire Qualifiant</h3>
+      <p>Champs recommandés : Prénom · Email · Téléphone · Type de bien (villa/appartement) · Localisation · Situation actuelle (déjà en location / pas encore) · Message libre.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">💌</div>
+      <h3>Newsletter</h3>
+      <p>Angle éditorial : <em>« La Lettre du Propriétaire Provençal »</em> — actualités du marché locatif local, conseils saisonniers, astuces pour valoriser son bien, coulisses de la conciergerie.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📱</div>
+      <h3>Réseaux Sociaux</h3>
+      <p>Instagram et Facebook prioritaires : visuels des biens, coulisses des préparations de séjour, paysages provençaux, témoignages. Contenu court, chaleureux, incarné par Jennifer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ 08 — DIRECTION VISUELLE ══════════════════════ -->
+<section id="bp-section-08">
+  <div class="section-header">
+    <span class="section-badge">08</span>
+    <h2 class="section-title">Direction Visuelle &amp; Éditoriale</h2>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <h3>Palette de couleurs — L'Échappée du Sud</h3>
+    <p style="font-size:13px; color:#777; margin-bottom: 24px;">Inspirée du logo transmis par Jennifer : tons naturels provençaux, vert olive, or doux et terres chaudes. Les illustrations de lavande, d'olivier et de brin de Provence seront intégrées comme éléments graphiques récurrents.</p>
+    <div class="palette-grid">
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#2d3a2e;"></div>
+        <div class="swatch-name">Vert Forêt</div>
+        <div class="swatch-hex">#2d3a2e</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#7a8c46;"></div>
+        <div class="swatch-name">Vert Olive Claire</div>
+        <div class="swatch-hex">#7a8c46</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#d4b86a;"></div>
+        <div class="swatch-name">Or Provençal</div>
+        <div class="swatch-hex">#d4b86a</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#c2956b;"></div>
+        <div class="swatch-name">Terre de Siène</div>
+        <div class="swatch-hex">#c2956b</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#f9f8f5;"></div>
+        <div class="swatch" style="background:#f9f8f5; border: 1px solid #e0ddd6; display:none;"></div>
+        <div class="swatch-wrap" style="display:none;"></div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#f9f8f5; border: 1px solid #e0ddd6;"></div>
+        <div class="swatch-name">Crème Provence</div>
+        <div class="swatch-hex">#f9f8f5</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Univers visuel recommandé</h3>
+    <div class="grid-2" style="margin-top: 16px;">
+      <div>
+        <p><strong>🌿 Illustrations botaniques</strong><br>Brins de lavande, rameaux d'olivier, fleurs de romarin — utilisés en filigrane, en séparateurs de section ou en icônes décoratives. Style esquisse/aquarelle en cohérence avec les esquisses de Jennifer.</p>
+      </div>
+      <div>
+        <p><strong>📸 Photographie immersive</strong><br>Villas baignées de soleil, terrasses en pierre, intérieurs chaleureux avec lumière naturelle. Cohérence avec le shooting photo proposé dans l'offre. Photos grand format en header.</p>
+      </div>
+      <div>
+        <p><strong>🖋️ Typographie</strong><br>Titres en Playfair Display (serif élégant) — corps en Inter (lisibilité digitale). Cette combinaison marie l'authenticité provençale à la modernité professionnelle.</p>
+      </div>
+      <div>
+        <p><strong>🎨 Textures &amp; matières</strong><br>Fond crème légèrement texturé (papier), lignes fines dorées en décoration, filets en vert olive. Éviter le blanc pur trop froid — rester dans des tons chauds et naturels.</p>
+      </div>
+      <div>
+        <p><strong>🌅 Ambiance globale</strong><br>Sud de la France authentique, loin du luxe ostentatoire. Chaleur, lumière, authenticité. Un site qui donne envie de confier son bien et de vivre la Provence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ 09 — ARTICLES BLOG ══════════════════════ -->
+<section id="bp-section-09">
+  <div class="section-header">
+    <span class="section-badge">09</span>
+    <h2 class="section-title">Articles Blog Recommandés</h2>
+  </div>
+
+  <div style="display: grid; gap: 20px;">
+    <div class="blog-card">
+      <div class="blog-num">01</div>
+      <div class="blog-content">
+        <h3>Pourquoi confier votre villa provençale à une conciergerie locale plutôt qu'une grande plateforme nationale ?</h3>
+        <p>Cluster : Conciergerie &amp; Services · Intention : informationnelle / décisionnelle</p>
+        <div class="blog-meta">
+          <span class="badge-prio">Prioritaire</span>
+          <span class="tag tag-olive">Conciergerie &amp; Services</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-num">02</div>
+      <div class="blog-content">
+        <h3>Location saisonnière dans le Var intérieur : quelles sont les meilleures périodes pour maximiser vos revenus ?</h3>
+        <p>Cluster : Territoire &amp; Local · Intention : informationnelle</p>
+        <div class="blog-meta">
+          <span class="badge-prio">Prioritaire</span>
+          <span class="tag tag-gold">Territoire &amp; Local</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-num">03</div>
+      <div class="blog-content">
+        <h3>5 erreurs que font les propriétaires qui gèrent seuls leur location Airbnb en Provence</h3>
+        <p>Cluster : Conseils Propriétaires · Intention : informationnelle / conversion</p>
+        <div class="blog-meta">
+          <span class="badge-prio">Prioritaire</span>
+          <span class="tag tag-olive">Conseils Propriétaires</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-num">04</div>
+      <div class="blog-content">
+        <h3>Barjols, Salernes, Cotignac : pourquoi le Var Vert attire de plus en plus de voyageurs en quête d'authenticité ?</h3>
+        <p>Cluster : Territoire &amp; Local · Intention : informationnelle / notoriété locale</p>
+        <div class="blog-meta">
+          <span class="badge-moyen">Moyen</span>
+          <span class="tag tag-gold">Territoire &amp; Local</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-num">05</div>
+      <div class="blog-content">
+        <h3>Shooting photo, livret d'accueil, tarification dynamique : comment L'Échappée du Sud prépare votre bien pour la saison ?</h3>
+        <p>Cluster : Conciergerie &amp; Services · Intention : décisionnelle / conversion</p>
+        <div class="blog-meta">
+          <span class="badge-prio">Prioritaire</span>
+          <span class="tag tag-olive">Conciergerie &amp; Services</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-num">06</div>
+      <div class="blog-content">
+        <h3>Lac du Verdon, Aups, Tourtour : guide des trésors cachés du Haut-Var pour vos voyageurs</h3>
+        <p>Cluster : Territoire &amp; Local · Intention : informationnelle / image de marque</p>
+        <div class="blog-meta">
+          <span class="badge-moyen">Moyen</span>
+          <span class="tag tag-gold">Territoire &amp; Local</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-num">07</div>
+      <div class="blog-content">
+        <h3>Combien coûte réellement une conciergerie de location saisonnière dans le Var ? Ce que vous devez savoir avant de signer</h3>
+        <p>Cluster : Conseils Propriétaires · Intention : transactionnelle / décisionnelle</p>
+        <div class="blog-meta">
+          <span class="badge-prio">Prioritaire</span>
+          <span class="tag tag-olive">Conseils Propriétaires</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer>
+  <p><strong>L'Échappée du Sud</strong> · Blueprint Stratégique · Réalisé par AR Digital</p>
+  <p style="margin-top: 6px;">Document confidentiel — usage exclusif du client · Jennifer Mattio · lechappeedusud.com</p>
+</footer>
+
+</body>
+</html>
