@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Maisons & Histoires</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1F1F1F;
+    background: #F8F6F2;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1F1F1F 0%, #2e2a25 50%, #1a1714 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(200,169,106,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C8A96A;
+    margin-bottom: 32px;
+    opacity: 0.9;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: #D8CBB8;
+    margin-bottom: 56px;
+    letter-spacing: 1px;
+  }
+  .cover-divider {
+    width: 48px;
+    height: 1px;
+    background: #C8A96A;
+    margin: 0 auto 48px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8A8A8A;
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 13px;
+    font-weight: 400;
+    color: #F8F6F2;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: #FFFFFF;
+  }
+  section:nth-child(odd) {
+    background: #F8F6F2;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C8A96A;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: #1F1F1F;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .section-subtitle {
+    font-size: 15px;
+    color: #8A8A8A;
+    margin-bottom: 48px;
+    max-width: 560px;
+  }
+
+  /* CARDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .card {
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .card-dark {
+    background: #1F1F1F;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.14);
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1F1F1F;
+    margin-bottom: 10px;
+  }
+  .card-dark .card-title {
+    color: #F8F6F2;
+  }
+  .card-text {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+  }
+  .card-dark .card-text {
+    color: #D8CBB8;
+  }
+  .card-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #C8A96A;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #1F1F1F 0%, #2e2a25 100%);
+    border-radius: 16px;
+    padding: 40px 48px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-box::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: rgba(200,169,106,0.08);
+    pointer-events: none;
+  }
+  .highlight-box .promise-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C8A96A;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .highlight-box .promise-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #F8F6F2;
+    line-height: 1.5;
+  }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin: 3px 3px 3px 0;
+  }
+  .tag-gold {
+    background: rgba(200,169,106,0.15);
+    color: #9a7d47;
+  }
+  .tag-dark {
+    background: #1F1F1F;
+    color: #F8F6F2;
+  }
+  .tag-light {
+    background: #F0ECE4;
+    color: #555;
+  }
+
+  /* BADGES SEO */
+  .badge-seo {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.3px;
+  }
+  .badge-fort {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+  .badge-moyen {
+    background: #fff8e1;
+    color: #f57f17;
+  }
+  .badge-faible {
+    background: #f3f3f3;
+    color: #777;
+  }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #FFFFFF;
+    font-size: 14px;
+  }
+  thead tr {
+    background: #1F1F1F;
+  }
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #C8A96A;
+    white-space: nowrap;
+  }
+  tbody tr {
+    border-bottom: 1px solid #F0ECE4;
+  }
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+  tbody td {
+    padding: 16px 20px;
+    color: #333;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  tbody tr:hover {
+    background: #FAFAF8;
+  }
+  .td-page {
+    font-weight: 600;
+    color: #1F1F1F;
+    white-space: nowrap;
+  }
+  .td-framework {
+    font-size: 13px;
+    color: #8A8A8A;
+    font-style: italic;
+  }
+  .td-kw {
+    font-size: 13px;
+    color: #555;
+  }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .tunnel-step {
+    background: #FFFFFF;
+    padding: 28px 24px;
+    border-right: 1px solid #F0ECE4;
+    position: relative;
+  }
+  .tunnel-step:last-child {
+    border-right: none;
+  }
+  .tunnel-step-num {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #C8A96A;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1F1F1F;
+    margin-bottom: 14px;
+  }
+  .tunnel-step-item {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .tunnel-step-item strong {
+    color: #1F1F1F;
+    font-weight: 600;
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    margin-bottom: 2px;
+  }
+  .tunnel-cta {
+    display: inline-block;
+    margin-top: 16px;
+    background: #1F1F1F;
+    color: #C8A96A;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  /* MAILLAGE */
+  .maillage-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid #F0ECE4;
+    flex-wrap: wrap;
+  }
+  .maillage-item:last-child {
+    border-bottom: none;
+  }
+  .maillage-from {
+    font-weight: 600;
+    color: #1F1F1F;
+    font-size: 14px;
+    min-width: 160px;
+  }
+  .maillage-arrow {
+    color: #C8A96A;
+    font-size: 16px;
+    flex-shrink: 0;
+    line-height: 1.6;
+  }
+  .maillage-to {
+    font-size: 14px;
+    color: #555;
+    flex: 1;
+  }
+
+  /* PALETTE COLORS */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 32px 0;
+  }
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+  }
+  .palette-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #1F1F1F;
+    text-align: center;
+  }
+  .palette-hex {
+    font-size: 11px;
+    color: #8A8A8A;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* BLOG ARTICLES */
+  .article-card {
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .article-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C8A96A;
+  }
+  .article-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1F1F1F;
+    line-height: 1.4;
+  }
+  .article-meta {
+    font-size: 12px;
+    color: #8A8A8A;
+    line-height: 1.6;
+  }
+  .article-meta span {
+    display: block;
+  }
+
+  /* PRIORITÉ ARTICLE */
+  .badge-prior {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+  .badge-prioritaire {
+    background: #1F1F1F;
+    color: #C8A96A;
+  }
+  .badge-moyen-prior {
+    background: #F0ECE4;
+    color: #7a6a52;
+  }
+  .badge-faible-prior {
+    background: #f3f3f3;
+    color: #999;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1F1F1F;
+    padding: 40px 60px;
+    text-align: center;
+  }
+  footer .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #F8F6F2;
+    margin-bottom: 8px;
+  }
+  footer .footer-mention {
+    font-size: 12px;
+    color: #8A8A8A;
+    letter-spacing: 1px;
+  }
+  footer .footer-divider {
+    width: 32px;
+    height: 1px;
+    background: #C8A96A;
+    margin: 16px auto;
+  }
+
+  /* LIST STYLES */
+  ul.styled-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ul.styled-list li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.6;
+    border-bottom: 1px solid #F0ECE4;
+  }
+  ul.styled-list li:last-child {
+    border-bottom: none;
+  }
+  ul.styled-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #C8A96A;
+    font-size: 13px;
+  }
+
+  /* OBJECTIFS */
+  .obj-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .obj-item {
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .obj-rank {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #C8A96A;
+  }
+  .obj-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1F1F1F;
+  }
+  .obj-desc {
+    font-size: 13px;
+    color: #777;
+    line-height: 1.6;
+  }
+
+  /* SECTION DIVIDER */
+  .section-line {
+    width: 40px;
+    height: 2px;
+    background: #C8A96A;
+    margin-bottom: 24px;
+  }
+
+  /* CLUSTERS */
+  .cluster-card {
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1F1F1F;
+    margin-bottom: 6px;
+  }
+  .cluster-desc {
+    font-size: 13px;
+    color: #8A8A8A;
+    margin-bottom: 16px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    section { padding: 40px 24px; }
+    .cover-title { font-size: 38px; }
+    .cover-meta { gap: 24px; }
+    .grid-2, .grid-3, .grid-4, .obj-grid { grid-template-columns: 1fr; }
+    .tunnel-grid { grid-template-columns: 1fr; }
+    .tunnel-step { border-right: none; border-bottom: 1px solid #F0ECE4; }
+    .section-title { font-size: 26px; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box .promise-text { font-size: 18px; }
+    footer { padding: 32px 24px; }
+    .maillage-item { flex-wrap: wrap; }
+    .maillage-arrow { line-height: 1.4; }
+    .palette-grid { gap: 14px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 80px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <p class="cover-badge">Blueprint Stratégique — Document Confidentiel</p>
+  <h1 class="cover-title">Maisons &amp; Histoires</h1>
+  <p class="cover-subtitle">Conciergerie de charme — Revel &amp; environs</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <p class="cover-meta-label">Cliente</p>
+      <p class="cover-meta-value">Véronique Duclos</p>
+    </div>
+    <div class="cover-meta-item">
+      <p class="cover-meta-label">Secteur</p>
+      <p class="cover-meta-value">Conciergerie &amp; Intendance</p>
+    </div>
+    <div class="cover-meta-item">
+      <p class="cover-meta-label">Territoire</p>
+      <p class="cover-meta-value">Revel — 40 km</p>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Positionnement &amp; Identité de marque</h2>
+  <div class="section-line"></div>
+  <p class="section-subtitle">La fondation stratégique de Maisons &amp; Histoires sur son marché.</p>
+
+  <div class="highlight-box">
+    <span class="promise-label">Promesse de valeur principale</span>
+    <p class="promise-text">"Confiez votre maison à quelqu'un qui la traite comme la sienne — pour que chaque séjour devienne une histoire dont vos voyageurs se souviennent."</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <span class="card-label">Ligne directrice de communication</span>
+    <p class="card-text">Accompagnement de proximité haut de gamme : une seule interlocutrice de confiance, un regard de propriétaire sur chaque résidence, une exigence du détail qui transforme un logement en expérience.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 40px;">
+    <span class="card-label">Ton éditorial</span>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 12px;">
+      <span class="tag tag-dark">Élégant</span>
+      <span class="tag tag-dark">Chaleureux</span>
+      <span class="tag tag-dark">Fiable</span>
+    </div>
+    <p class="card-text">Un ton qui évoque les maisons de caractère plutôt que les tableaux Excel : écrire comme on parle à un propriétaire attaché à son bien, avec la précision du professionnel et la chaleur de la voisine de confiance.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-label">Pilier 01</span>
+      <p class="card-title">Expérience terrain authentique</p>
+      <p class="card-text">Plusieurs années en chambres d'hôtes et en immobilier : Véronique connaît l'envers du décor. Elle ne découvre pas le métier, elle le vit depuis des années.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Pilier 02</span>
+      <p class="card-title">Interlocutrice unique &amp; de proximité</p>
+      <p class="card-text">Pas de rotation de prestataires, pas de call-center. Une seule personne, sur le terrain, à moins de 40 km. Le propriétaire sait exactement à qui il s'adresse.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Pilier 03</span>
+      <p class="card-title">Approche sur mesure, jamais standardisée</p>
+      <p class="card-text">Chaque résidence a son histoire, ses particularités, ses attentes. Maisons &amp; Histoires construit une solution adaptée, pas un forfait générique.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Pilier 04</span>
+      <p class="card-title">Soin du détail &amp; sens de l'accueil</p>
+      <p class="card-text">Du livret d'accueil personnalisé au réapprovisionnement des consommables : chaque micro-détail est soigné pour que la première impression soit irréprochable.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Pilier 05</span>
+      <p class="card-title">Transparence &amp; tranquillité d'esprit</p>
+      <p class="card-text">Commission claire (20 % TTC), périmètre de service explicite, communication proactive. Le propriétaire profite de son temps sans avoir à "vérifier".</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client cible</span>
+  <h2 class="section-title">Portrait du propriétaire idéal</h2>
+  <div class="section-line"></div>
+  <p class="section-subtitle">Comprendre précisément à qui Maisons &amp; Histoires s'adresse pour parler juste.</p>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <span class="card-label">Profil type</span>
+      <p class="card-title">Le propriétaire distant &amp; attaché</p>
+      <p class="card-text">45–65 ans, résidence principale hors secteur (Toulouse, Paris, Lyon ou grande ville). Propriétaire d'une résidence secondaire ou d'un bien locatif dans le Lauragais ou le Tarn. Cadre supérieur, retraité aisé ou héritier d'une belle demeure familiale. Peu disponible mais très attaché à son bien.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Motivations principales</span>
+      <p class="card-title">Ce qu'il recherche</p>
+      <ul class="styled-list">
+        <li>Générer des revenus locatifs sans y consacrer du temps</li>
+        <li>Préserver l'état et la valeur de son patrimoine</li>
+        <li>Offrir une belle expérience à ses voyageurs</li>
+        <li>Avoir une référente de confiance sur place</li>
+        <li>Dormir sereinement entre deux séjours</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-label">Freins &amp; objections</span>
+      <p class="card-title">Ce qui le retient</p>
+      <ul class="styled-list">
+        <li>"Je ne veux pas perdre le contrôle sur ma maison"</li>
+        <li>"Les frais de conciergerie vont rogner mes revenus"</li>
+        <li>"Je ne connais pas cette personne, puis-je lui faire confiance ?"</li>
+        <li>"Et si quelque chose se passe mal avec un voyageur ?"</li>
+        <li>"Je gère déjà mes annonces, est-ce vraiment utile ?"</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-label">Critères de décision</span>
+      <p class="card-title">Ce qui le convainc</p>
+      <ul class="styled-list">
+        <li>Recommandation ou preuve sociale locale</li>
+        <li>Transparence totale sur les services inclus et le tarif</li>
+        <li>Sentiment de rencontrer une vraie professionnelle, pas une agence</li>
+        <li>Proximité géographique rassurante</li>
+        <li>Facilité de contact et réactivité perçue</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du site</span>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+  <div class="section-line"></div>
+  <p class="section-subtitle">Liste priorisée des missions du site web, du plus urgent au plus structurant.</p>
+
+  <div class="obj-grid">
+    <div class="obj-item">
+      <span class="obj-rank">Priorité 1</span>
+      <p class="obj-name">Réassurance &amp; confiance</p>
+      <p class="obj-desc">Convaincre un propriétaire inconnu de confier sa maison. C'est l'enjeu n°1 du site.</p>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">Priorité 2</span>
+      <p class="obj-name">Génération de leads</p>
+      <p class="obj-desc">Transformer les visiteurs en demandes de contact qualifiées via formulaire ou RDV.</p>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">Priorité 3</span>
+      <p class="obj-name">SEO local</p>
+      <p class="obj-desc">Apparaître sur les recherches "conciergerie Revel", "intendance résidence secondaire Lauragais".</p>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">Priorité 4</span>
+      <p class="obj-name">Prise de RDV</p>
+      <p class="obj-desc">Faciliter le passage à l'action avec un lien de réservation d'un appel découverte.</p>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">Priorité 5</span>
+      <p class="obj-name">Notoriété locale</p>
+      <p class="obj-desc">Ancrer Maisons &amp; Histoires comme la référence conciergerie sur le secteur de Revel.</p>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">Priorité 6</span>
+      <p class="obj-name">Nurturing</p>
+      <p class="obj-desc">Accompagner les propriétaires hésitants via le blog et une newsletter de valeur.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence du site</span>
+  <h2 class="section-title">Structure &amp; stratégie des pages</h2>
+  <div class="section-line"></div>
+  <p class="section-subtitle">Chaque page a un rôle précis dans le parcours du propriétaire. Les services sont détaillés à l'intérieur des pages d'offre globale.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-page">Accueil</td>
+          <td class="td-framework">AIDA</td>
+          <td class="td-kw">conciergerie Revel location courte durée</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">Nos services</td>
+          <td class="td-framework">PAS</td>
+          <td class="td-kw">conciergerie location courte durée propriétaire</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">Intendance résidence secondaire</td>
+          <td class="td-framework">BAB</td>
+          <td class="td-kw">intendance résidence secondaire Lauragais</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">À propos</td>
+          <td class="td-framework">Storytelling</td>
+          <td class="td-kw">conciergerie Revel Véronique Duclos</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">Blog</td>
+          <td class="td-framework">Éditorial SEO</td>
+          <td class="td-kw">conseils propriétaires location saisonnière</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">Page locale — Revel &amp; Lauragais</td>
+          <td class="td-framework">PAS</td>
+          <td class="td-kw">conciergerie Revel Lauragais location saisonnière</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">Page locale — Sorèze &amp; Montagne Noire</td>
+          <td class="td-framework">AIDA</td>
+          <td class="td-kw">conciergerie Sorèze Montagne Noire propriétaire</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">Contact &amp; RDV</td>
+          <td class="td-framework">CTA direct</td>
+          <td class="td-kw">contacter conciergerie Revel</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon sémantique</span>
+  <h2 class="section-title">Clusters thématiques &amp; maillage interne</h2>
+  <div class="section-line"></div>
+  <p class="section-subtitle">Organiser la sémantique du site pour renforcer l'autorité de chaque thème auprès de Google.</p>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="cluster-card">
+      <p class="cluster-title">Cluster 1 — Conciergerie &amp; Location courte durée</p>
+      <p class="cluster-desc">Page pilier : Nos services</p>
+      <ul class="styled-list">
+        <li>Article : Comment préparer son logement avant une location</li>
+        <li>Article : Checklist propriétaire pour une conciergerie réussie</li>
+        <li>Article : Pourquoi confier sa location à une conciergerie locale</li>
+        <li>Page locale Revel &amp; Lauragais</li>
+      </ul>
+    </div>
+    <div class="cluster-card">
+      <p class="cluster-title">Cluster 2 — Intendance &amp; Résidences secondaires</p>
+      <p class="cluster-desc">Page pilier : Intendance résidence secondaire</p>
+      <ul class="styled-list">
+        <li>Article : Propriétaire absent — comment surveiller sa résidence secondaire</li>
+        <li>Article : Intendance résidence secondaire : ce que ça couvre vraiment</li>
+        <li>Article : Valoriser une résidence secondaire pour la location</li>
+        <li>Page locale Sorèze &amp; Montagne Noire</li>
+      </ul>
+    </div>
+    <div class="cluster-card">
+      <p class="cluster-title">Cluster 3 — Confiance &amp; Identité locale</p>
+      <p class="cluster-desc">Page pilier : À propos</p>
+      <ul class="styled-list">
+        <li>Article : Art de vivre en Lauragais — pourquoi les voyageurs adorent la région</li>
+        <li>Témoignages propriétaires (section dédiée)</li>
+        <li>Accueil → renvoie vers À propos pour renforcer la réassurance</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-label">Logique de maillage interne</span>
+    <div class="maillage-item">
+      <span class="maillage-from">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Nos services / À propos / Contact &amp; RDV / Pages locales</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-from">Nos services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Intendance résidence secondaire / Contact &amp; RDV / Pages locales</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-from">Intendance résidence secondaire</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Nos services / Pages locales / Articles blog Cluster 2</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-from">Pages locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Nos services / Contact &amp; RDV / Articles blog pertinents</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-from">Articles blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Page pilier du cluster correspondant / Contact &amp; RDV</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-from">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Nos services / Contact &amp; RDV</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de conversion</span>
+  <h2 class="section-title">Du premier clic à la prise de contact</h2>
+  <div class="section-line"></div>
+  <p class="section-subtitle">Les 4 étapes du parcours d'un propriétaire, de la découverte à la décision.</p>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 01</span>
+      <p class="tunnel-step-title">Découverte</p>
+      <div class="tunnel-step-item"><strong>Source de trafic</strong>Google local, bouche-à-oreille, réseaux sociaux</div>
+      <div class="tunnel-step-item"><strong>Page concernée</strong>Accueil / Pages locales</div>
+      <div class="tunnel-step-item"><strong>Objectif</strong>Capter l'attention, créer une première impression premium</div>
+      <span class="tunnel-cta">→ Visuel immersif + accroche</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 02</span>
+      <p class="tunnel-step-title">Intérêt</p>
+      <div class="tunnel-step-item"><strong>Source de trafic</strong>Navigation interne depuis l'accueil</div>
+      <div class="tunnel-step-item"><strong>Page concernée</strong>Nos services / Intendance</div>
+      <div class="tunnel-step-item"><strong>Objectif</strong>Démontrer la valeur et la complétude de l'offre</div>
+      <span class="tunnel-cta">→ "Découvrir nos services"</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 03</span>
+      <p class="tunnel-step-title">Confiance</p>
+      <div class="tunnel-step-item"><strong>Source de trafic</strong>Navigation interne + blog</div>
+      <div class="tunnel-step-item"><strong>Page concernée</strong>À propos / Témoignages / Blog</div>
+      <div class="tunnel-step-item"><strong>Objectif</strong>Lever les doutes, humaniser la relation, rassurer</div>
+      <span class="tunnel-cta">→ "Qui suis-je ?"</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 04</span>
+      <p class="tunnel-step-title">Conversion</p>
+      <div class="tunnel-step-item"><strong>Source de trafic</strong>Toutes les pages (CTA persistant)</div>
+      <div class="tunnel-step-item"><strong>Page concernée</strong>Contact &amp; RDV</div>
+      <div class="tunnel-step-item"><strong>Objectif</strong>Déclencher un appel découverte ou un formulaire</div>
+      <span class="tunnel-cta">→ "Réserver un appel offert"</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers marketing recommandés</span>
+  <h2 class="section-title">Activer la croissance dès le lancement</h2>
+  <div class="section-line"></div>
+  <p class="section-subtitle">Des outils concrets pour transformer le site en machine à leads, adaptés à une activité humaine et locale.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-label">Lead Magnet</span>
+      <p class="card-title">"Le guide du propriétaire serein"</p>
+      <p class="card-text">PDF à télécharger : "10 choses à vérifier avant de confier sa résidence à une conciergerie". Simple, utile, rassurant — capte l'email en échange d'une vraie valeur.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Prise de RDV</span>
+      <p class="card-title">Outil recommandé : Calendly</p>
+      <p class="card-text">Intégrer un bouton "Réserver un appel découverte gratuit de 20 min" présent en haut et en bas de chaque page clé. Gratuit, élégant, sans friction.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Preuve sociale</span>
+      <p class="card-title">Témoignages &amp; avis propriétaires</p>
+      <p class="card-text">Collecter 3 à 5 témoignages écrits de propriétaires (ou de voyageurs satisfaits). Les afficher avec photo, prénom et localisation. Ajouter un encart Google My Business.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Formulaire qualifiant</span>
+      <p class="card-title">Champs recommandés</p>
+      <ul class="styled-list">
+        <li>Prénom &amp; nom</li>
+        <li>Email &amp; téléphone</li>
+        <li>Type de bien (maison / appartement / villa)</li>
+        <li>Commune du bien</li>
+        <li>Besoin principal (conciergerie / intendance / les deux)</li>
+        <li>Message libre</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-label">Newsletter</span>
+      <p class="card-title">Angle éditorial : "Saisons &amp; Maisons"</p>
+      <p class="card-text">Une newsletter saisonnière (4/an) avec conseils pour préparer sa résidence, tendances de la location courte durée dans le Lauragais, et actualités Maisons &amp; Histoires. Fidélise et crédibilise.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction visuelle &amp; éditoriale</span>
+  <h2 class="section-title">L'identité visuelle de Maisons &amp; Histoires</h2>
+  <div class="section-line"></div>
+  <p class="section-subtitle">Une esthétique inspirée des belles demeures de caractère, du lin, de la pierre et de l'art de vivre occitan.</p>
+
+  <div class="card" style="margin-bottom: 40px;">
+    <span class="card-label">Palette de couleurs</span>
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#1F1F1F; border: 1px solid #eee;"></div>
+        <span class="palette-name">Noir profond</span>
+        <span class="palette-hex">#1F1F1F</span>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#F8F6F2; border: 1px solid #e0dbd2;"></div>
+        <span class="palette-name">Blanc ivoire</span>
+        <span class="palette-hex">#F8F6F2</span>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#D8CBB8; border: 1px solid #ccc;"></div>
+        <span class="palette-name">Beige lin</span>
+        <span class="palette-hex">#D8CBB8</span>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#C8A96A; border: 1px solid #b89050;"></div>
+        <span class="palette-name">Or mat / Champagne</span>
+        <span class="palette-hex">#C8A96A</span>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#8A8A8A; border: 1px solid #ccc;"></div>
+        <span class="palette-name">Gris chaud</span>
+        <span class="palette-hex">#8A8A8A</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <span class="card-label">Univers visuel — 01</span>
+      <p class="card-title">Photographies immersives</p>
+      <p class="card-text">Grandes photos lumineuses de maisons, terrasses, intérieurs soignés, linge plié, clés posées sur une table en bois. Évite les photos de stock génériques.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Univers visuel — 02</span>
+      <p class="card-title">Typographie &amp; espace</p>
+      <p class="card-text">Playfair Display pour les titres (élégance intemporelle), Inter pour le corps. Beaucoup d'espace blanc. Aucune surcharge. Chaque mot mérite sa place.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Univers visuel — 03</span>
+      <p class="card-title">Matières &amp; textures</p>
+      <p class="card-text">Arrière-plans ivoire et beige lin. Textures de pierre, bois et lin suggérées visuellement. Aucune illustration cartoon. Aucune icône trop "tech".</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Univers visuel — 04</span>
+      <p class="card-title">Touches dorées stratégiques</p>
+      <p class="card-text">L'or mat (#C8A96A) souligne les éléments premium sans ostentation : séparateurs, badges, boutons secondaires, hover states. Jamais sur fond plein large.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Univers visuel — 05</span>
+      <p class="card-title">Animations discrètes</p>
+      <p class="card-text">Apparitions en fondu léger au scroll, hover subtil sur les boutons. Aucun effet tape-à-l'œil. L'animation sert la fluidité, pas le spectacle.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles blog recommandés</span>
+  <h2 class="section-title">Stratégie éditoriale &amp; contenu SEO</h2>
+  <div class="section-line"></div>
+  <p class="section-subtitle">7 sujets d'articles pour ancrer l'autorité de Maisons &amp; Histoires sur Google et nourrir la confiance des propriétaires.</p>
+
+  <div class="grid-2">
+    <div class="article-card">
+      <span class="article-num">Article 01</span>
+      <p class="article-title">Pourquoi confier sa location courte durée à une conciergerie locale plutôt qu'à une grande plateforme ?</p>
+      <div class="article-meta">
+        <span><strong>Cluster :</strong> Conciergerie &amp; LCD</span>
+        <span><strong>Intention :</strong> Informationnelle — propriétaire en phase de comparaison</span>
+      </div>
+      <span class="badge-prior badge-prioritaire">Prioritaire</span>
+    </div>
+    <div class="article-card">
+      <span class="article-num">Article 02</span>
+      <p class="article-title">Intendance résidence secondaire : ce que couvre vraiment un service professionnel</p>
+      <div class="article-meta">
+        <span><strong>Cluster :</strong> Intendance &amp; Résidences secondaires</span>
+        <span><strong>Intention :</strong> Informationnelle — découverte du service</span>
+      </div>
+      <span class="badge-prior badge-prioritaire">Prioritaire</span>
+    </div>
+    <div class="article-card">
+      <span class="article-num">Article 03</span>
+      <p class="article-title">Comment préparer son logement pour accueillir des voyageurs en location saisonnière</p>
+      <div class="article-meta">
+        <span><strong>Cluster :</strong> Conciergerie &amp; LCD</span>
+        <span><strong>Intention :</strong> Pratique — propriétaire qui démarre ou optimise</span>
+      </div>
+      <span class="badge-prior badge-prioritaire">Prioritaire</span>
+    </div>
+    <div class="article-card">
+      <span class="article-num">Article 04</span>
+      <p class="article-title">Propriétaire absent : comment veiller sur sa résidence secondaire à distance sereinement ?</p>
+      <div class="article-meta">
+        <span><strong>Cluster :</strong> Intendance &amp; Résidences secondaires</span>
+        <span><strong>Intention :</strong> Problème — propriétaire qui cherche une solution</span>
+      </div>
+      <span class="badge-prior badge-prioritaire">Prioritaire</span>
+    </div>
+    <div class="article-card">
+      <span class="article-num">Article 05</span>
+      <p class="article-title">Valoriser sa maison de caractère pour la location courte durée : 8 conseils concrets</p>
+      <div class="article-meta">
+        <span><strong>Cluster :</strong> Intendance &amp; Résidences secondaires</span>
+        <span><strong>Intention :</strong> Pratique — propriétaire souhaitant maximiser son rendement</span>
+      </div>
+      <span class="badge-prior badge-moyen-prior">Moyen</span>
+    </div>
+    <div class="article-card">
+      <span class="article-num">Article 06</span>
+      <p class="article-title">Location saisonnière en Lauragais : pourquoi la région séduit de plus en plus de voyageurs ?</p>
+      <div class="article-meta">
+        <span><strong>Cluster :</strong> Confiance &amp; Identité locale</span>
+        <span><strong>Intention :</strong> Informationnelle + SEO local — ancrage territorial</span>
+      </div>
+      <span class="badge-prior badge-moyen-prior">Moyen</span>
+    </div>
+    <div class="article-card">
+      <span class="article-num">Article 07</span>
+      <p class="article-title">Checklist : 15 points à vérifier avant chaque arrivée de voyageur pour un accueil irréprochable</p>
+      <div class="article-meta">
+        <span><strong>Cluster :</strong> Conciergerie &amp; LCD</span>
+        <span><strong>Intention :</strong> Pratique — contenu utile et partageable, lead magnet potentiel</span>
+      </div>
+      <span class="badge-prior badge-moyen-prior">Moyen</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-name">Maisons &amp; Histoires</p>
+  <div class="footer-divider"></div>
+  <p class="footer-mention">Document confidentiel — Préparé par AR Digital · Blueprint Stratégique 2025</p>
+  <p class="footer-mention" style="margin-top: 6px;">© Véronique Duclos — Tous droits réservés</p>
+</footer>
+
+</body>
+</html>
