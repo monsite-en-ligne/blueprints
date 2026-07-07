@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Rue de la Clé</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --sand: #D4C4A0;
+    --terracotta: #B87A5A;
+    --deep-taupe: #6B5B4E;
+    --charcoal: #2C2420;
+    --white: #FFFFFF;
+    --light-bg: #FAF8F5;
+    --border: #E8E0D4;
+    --text-main: #2C2420;
+    --text-muted: #8A7D74;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-main);
+    background: var(--light-bg);
+  }
+
+  /* ─── COUVERTURE ─── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(150deg, #2C2420 0%, #4A3728 40%, #6B5B4E 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(180, 122, 90, 0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cover-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 32px;
+    opacity: 0.85;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 18px;
+    letter-spacing: -1px;
+  }
+  .cover-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--sand);
+    margin-bottom: 52px;
+    opacity: 0.9;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-item .meta-label {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--sand);
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .cover-meta-item .meta-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .cover-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(212,196,160,0.3);
+  }
+  .cover-stamp {
+    position: absolute;
+    bottom: 36px;
+    right: 48px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: rgba(212,196,160,0.5);
+    text-transform: uppercase;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 70px 60px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: var(--white);
+  }
+  section:nth-child(odd) {
+    background: var(--light-bg);
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    background: rgba(184,122,90,0.10);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .section-intro {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 640px;
+    margin-bottom: 44px;
+    line-height: 1.7;
+  }
+  .section-header {
+    margin-bottom: 44px;
+  }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+    page-break-inside: avoid;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+  }
+  .card-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  /* ─── GRILLES ─── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ─── HIGHLIGHT BOX ─── */
+  .highlight-box {
+    background: linear-gradient(135deg, #4A3728 0%, #6B5B4E 100%);
+    border-radius: 16px;
+    padding: 36px 40px;
+    color: var(--white);
+    margin-bottom: 36px;
+  }
+  .highlight-box .hl-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sand);
+    opacity: 0.85;
+    margin-bottom: 12px;
+  }
+  .highlight-box .hl-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--white);
+  }
+
+  /* ─── LISTES ─── */
+  ul.styled-list {
+    list-style: none;
+    padding: 0;
+  }
+  ul.styled-list li {
+    padding: 7px 0 7px 22px;
+    position: relative;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    border-bottom: 1px solid var(--border);
+  }
+  ul.styled-list li:last-child { border-bottom: none; }
+  ul.styled-list li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--terracotta);
+    font-weight: 600;
+  }
+
+  /* ─── TABLEAU ─── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    font-size: 14px;
+  }
+  thead tr {
+    background: var(--charcoal);
+    color: var(--white);
+  }
+  thead th {
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--cream); }
+  tbody td {
+    padding: 13px 18px;
+    color: var(--text-main);
+    line-height: 1.6;
+    vertical-align: top;
+  }
+
+  /* ─── BADGES SEO ─── */
+  .badge {
+    display: inline-block;
+    padding: 3px 11px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+  .badge-fort { background: #E8F5E9; color: #2E7D32; }
+  .badge-moyen { background: #FFF8E1; color: #F57F17; }
+  .badge-faible { background: #FCECEA; color: #C62828; }
+
+  .badge-prio { background: #FDECEA; color: #C0392B; }
+  .badge-moyen-prio { background: #FFF3CD; color: #856404; }
+  .badge-faible-prio { background: #E9F5E9; color: #276221; }
+
+  /* ─── TUNNEL ─── */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .tunnel-step {
+    background: var(--white);
+    padding: 28px 22px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .tunnel-step:last-child { border-right: none; }
+  .tunnel-step-num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 8px;
+  }
+  .tunnel-step-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+  }
+  .tunnel-step ul {
+    list-style: none;
+    padding: 0;
+  }
+  .tunnel-step ul li {
+    font-size: 13px;
+    color: var(--text-muted);
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.6;
+  }
+  .tunnel-step ul li:last-child { border-bottom: none; }
+  .tunnel-step ul li strong {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--deep-taupe);
+    margin-bottom: 1px;
+  }
+
+  /* ─── COCON ─── */
+  .cluster-card {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+  }
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--terracotta);
+  }
+  .cluster-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .cluster-tag {
+    background: var(--cream);
+    color: var(--deep-taupe);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .maillage-block {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+    margin-top: 28px;
+  }
+  .maillage-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 18px;
+  }
+  .maillage-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  .maillage-row:last-child { border-bottom: none; }
+  .maillage-source {
+    font-weight: 600;
+    color: var(--charcoal);
+    min-width: 160px;
+    flex-shrink: 0;
+  }
+  .maillage-arrow {
+    color: var(--terracotta);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .maillage-targets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+  .maillage-target-tag {
+    background: var(--cream);
+    color: var(--deep-taupe);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+  }
+
+  /* ─── LEVIERS ─── */
+  .levier-card {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+  }
+  .levier-label {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .levier-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+  }
+  .levier-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ─── PALETTE ─── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 520px;
+  }
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+  }
+  .palette-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--charcoal);
+    text-align: center;
+  }
+  .palette-hex {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    font-family: monospace;
+  }
+
+  /* ─── BLOG ─── */
+  .blog-card {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+  }
+  .blog-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .blog-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--charcoal);
+    line-height: 1.4;
+    flex: 1;
+  }
+  .blog-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .blog-meta span {
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  /* ─── OBJECTIFS ─── */
+  .objectif-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 22px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 12px;
+  }
+  .objectif-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--terracotta);
+    opacity: 0.5;
+    min-width: 36px;
+    text-align: center;
+  }
+  .objectif-text {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--charcoal);
+  }
+  .objectif-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 32px 40px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  footer strong {
+    color: var(--sand);
+    font-weight: 500;
+  }
+
+  /* ─── TONALITÉ ─── */
+  .ton-adj {
+    display: inline-block;
+    background: var(--cream);
+    color: var(--deep-taupe);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 4px;
+    border: 1px solid var(--border);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    section { padding: 40px 24px; }
+    .section-title { font-size: 26px; }
+    .cover-title { font-size: 42px; }
+    .cover-subtitle { font-size: 17px; }
+    .cover-meta { gap: 20px; flex-direction: column; }
+    .cover-divider { display: none; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .tunnel-grid { grid-template-columns: 1fr; }
+    .tunnel-step { border-right: none; border-bottom: 1px solid var(--border); }
+    .tunnel-step:last-child { border-bottom: none; }
+    .cover-stamp { display: none; }
+    .maillage-row { flex-direction: column; gap: 6px; }
+    .maillage-source { min-width: unset; }
+    .palette-grid { gap: 16px; }
+    .palette-swatch { width: 68px; height: 68px; }
+    .highlight-box { padding: 24px; }
+    .highlight-box .hl-text { font-size: 17px; }
+    .objectif-item { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .blog-card-top { flex-direction: column; }
+    .maillage-targets { display: flex; flex-wrap: wrap; align-items: center; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- COUVERTURE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-label">Blueprint Stratégique — Confidentiel</div>
+  <h1 class="cover-title">Rue de la Clé</h1>
+  <p class="cover-subtitle">L'hospitalité comme art de vivre, à Strasbourg</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="meta-label">Cliente</span>
+      <span class="meta-value">Myriam Dubois</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="meta-label">Secteur</span>
+      <span class="meta-value">Conciergerie location courte durée</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="meta-label">Zone</span>
+      <span class="meta-value">Strasbourg & environs</span>
+    </div>
+  </div>
+  <div class="cover-stamp">Document confidentiel · AR Digital</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 01 — POSITIONNEMENT -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="bp-section-01">
+  <div class="section-header">
+    <span class="section-badge">01 — Positionnement</span>
+    <h2 class="section-title">Votre identité de marque</h2>
+    <p class="section-intro">Le socle stratégique sur lequel reposera l'ensemble de votre communication digitale.</p>
+  </div>
+
+  <div class="highlight-box">
+    <div class="hl-label">Promesse de valeur principale</div>
+    <div class="hl-text">Confier votre logement à Strasbourg avec une sérénité totale — grâce à une conciergerie où l'hospitalité, le soin du détail et la transparence ne sont pas des promesses, mais une façon d'être.</div>
+  </div>
+
+  <div class="card" style="margin-bottom: 36px;">
+    <div class="card-title">Ligne directrice de communication</div>
+    <div class="card-text">Accompagnement humain et sur-mesure, ancré dans une culture de l'hospitalité héritée du voyage de luxe — avec la rigueur d'une intendance professionnelle et la sensibilité d'une fondatrice qui comprend ce que représente un bien pour son propriétaire.</div>
+  </div>
+
+  <div class="card" style="margin-bottom: 36px;">
+    <div class="card-title">Ton éditorial</div>
+    <div style="margin-bottom: 14px;">
+      <span class="ton-adj">Chaleureux</span>
+      <span class="ton-adj">Rassurant</span>
+      <span class="ton-adj">Raffiné</span>
+    </div>
+    <div class="card-text">Un ton qui parle au propriétaire comme à un partenaire de confiance : jamais froid ni commercial, toujours attentionné et précis. La qualité de la langue reflète la qualité du service.</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🏛️</span>
+      <div class="card-title">Double expertise patrimoniale & hospitalière</div>
+      <div class="card-text">Une fondatrice formée à la gestion d'un patrimoine immobilier grand compte et à 15 ans de voyage sur mesure — une combinaison rare qui fait toute la différence dans la qualité du service rendu.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🎨</span>
+      <div class="card-title">Sensibilité décoration & mise en valeur</div>
+      <div class="card-text">Une formation en décoration d'intérieur qui permet de révéler le potentiel de chaque bien, d'optimiser son attractivité et de créer une expérience de séjour mémorable pour les voyageurs.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🤝</span>
+      <div class="card-title">Relation de confiance sur le long terme</div>
+      <div class="card-text">Rue de la Clé se positionne comme une "maison d'hospitalité" — pas une marketplace de services. La relation humaine, la transparence et la durabilité du partenariat sont au cœur de chaque engagement.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">✨</span>
+      <div class="card-title">Intendance globale clé en main</div>
+      <div class="card-text">Une offre unique et complète — du Trousseau Signature — qui couvre de l'optimisation de l'annonce jusqu'au suivi des avis voyageurs, sans que le propriétaire n'ait à intervenir.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 02 — CLIENT CIBLE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="bp-section-02">
+  <div class="section-header">
+    <span class="section-badge">02 — Client cible</span>
+    <h2 class="section-title">Portrait du propriétaire idéal</h2>
+    <p class="section-intro">Comprendre précisément à qui vous vous adressez pour construire un discours qui fait écho à ses préoccupations réelles.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <div class="card-title">Profil type</div>
+      <ul class="styled-list">
+        <li>35 – 60 ans, actif ou en cours de retraite</li>
+        <li>Propriétaire d'un appartement à Strasbourg ou en Alsace</li>
+        <li>Sensible à la qualité, attaché à son bien</li>
+        <li>Pas de temps à consacrer à la location au quotidien</li>
+        <li>Parfois primo-loueur, parfois déçu par une expérience antérieure</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Motivations principales</div>
+      <ul class="styled-list">
+        <li>Générer des revenus complémentaires sans contrainte opérationnelle</li>
+        <li>Confier son bien à quelqu'un de fiable, discret et attentionné</li>
+        <li>Valoriser son logement et ses hôtes à sa juste valeur</li>
+        <li>Avoir une communication transparente et un suivi régulier</li>
+        <li>Trouver un partenaire sur le long terme, pas un prestataire interchangeable</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Freins et objections</div>
+      <ul class="styled-list">
+        <li>25 % de commission perçu comme élevé a priori</li>
+        <li>Peur de perdre le contrôle sur son bien</li>
+        <li>Manque de confiance envers une conciergerie inconnue</li>
+        <li>Doute sur la qualité des intervenants (ménage, maintenance)</li>
+        <li>Crainte d'un manque de réactivité en cas de problème</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Critères de décision</div>
+      <ul class="styled-list">
+        <li>La réputation et la crédibilité perçue de la conciergerie</li>
+        <li>La clarté et la transparence de l'offre tarifaire</li>
+        <li>La qualité de la relation humaine au premier contact</li>
+        <li>Les avis et témoignages de propriétaires satisfaits</li>
+        <li>La spécialisation locale (Strasbourg & Alsace)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 03 — OBJECTIFS DU SITE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="bp-section-03">
+  <div class="section-header">
+    <span class="section-badge">03 — Objectifs du site</span>
+    <h2 class="section-title">Ce que votre site doit accomplir</h2>
+    <p class="section-intro">Liste priorisée des missions assignées à votre site web, du plus stratégique au plus tactique.</p>
+  </div>
+
+  <div class="objectif-item">
+    <div class="objectif-rank">1</div>
+    <div>
+      <div class="objectif-text">Génération de leads qualifiés</div>
+      <div class="objectif-desc">Attirer des propriétaires strasbourgeois prêts à confier leur bien — via des formulaires et une prise de contact simplifiée.</div>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">2</div>
+    <div>
+      <div class="objectif-text">Réassurance et crédibilité</div>
+      <div class="objectif-desc">Lever les freins liés à la confiance : parcours fondatrice, transparence de l'offre, témoignages, processus clair.</div>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">3</div>
+    <div>
+      <div class="objectif-text">SEO local Strasbourg</div>
+      <div class="objectif-desc">Apparaître en première position sur les recherches "conciergerie Airbnb Strasbourg", "gestion location courte durée Strasbourg" et variantes.</div>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">4</div>
+    <div>
+      <div class="objectif-text">Prise de rendez-vous</div>
+      <div class="objectif-desc">Faciliter le premier contact avec un outil de réservation de rendez-vous intégré directement dans le parcours propriétaire.</div>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">5</div>
+    <div>
+      <div class="objectif-text">Conversion sur l'offre</div>
+      <div class="objectif-desc">Présenter le Trousseau Signature de manière à ce que le propriétaire comprenne immédiatement la valeur et soit incité à agir.</div>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">6</div>
+    <div>
+      <div class="objectif-text">Notoriété & image de marque</div>
+      <div class="objectif-desc">Ancrer l'identité "maison d'hospitalité" dans l'esprit des visiteurs, même ceux qui ne sont pas encore prêts à confier leur bien.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 04 — ARBORESCENCE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="bp-section-04">
+  <div class="section-header">
+    <span class="section-badge">04 — Arborescence du site</span>
+    <h2 class="section-title">Structure et architecture SEO</h2>
+    <p class="section-intro">Chaque page est pensée pour répondre à une intention de recherche précise et guider le visiteur vers la prise de contact.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Strasbourg</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre offre — Le Trousseau Signature</strong></td>
+          <td>PAS</td>
+          <td>conciergerie location courte durée Strasbourg</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — Myriam & Rue de la Clé</strong></td>
+          <td>BAB</td>
+          <td>conciergerie Strasbourg de confiance</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Strasbourg</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Strasbourg centre ville</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Alsace & environs</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location saisonnière Alsace</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils location courte durée Strasbourg</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact & Prise de RDV</strong></td>
+          <td>—</td>
+          <td>confier son logement Strasbourg</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 05 — COCON SÉMANTIQUE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="bp-section-05">
+  <div class="section-header">
+    <span class="section-badge">05 — Cocon sémantique</span>
+    <h2 class="section-title">Architecture thématique & maillage</h2>
+    <p class="section-intro">Regrouper les contenus par thématique forte permet à Google de comprendre votre expertise et de vous positionner en autorité sur votre marché local.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 28px;">
+    <div class="cluster-card">
+      <div class="cluster-title">Cluster 1 — Intendance & conciergerie locale</div>
+      <div class="cluster-tags">
+        <span class="cluster-tag">Accueil</span>
+        <span class="cluster-tag">Offre Trousseau Signature</span>
+        <span class="cluster-tag">Page locale Strasbourg</span>
+        <span class="cluster-tag">Page locale Alsace</span>
+        <span class="cluster-tag">Blog : conseils propriétaires</span>
+      </div>
+      <div class="card-text">Ce cluster cible les propriétaires en phase de recherche active. Il couvre l'intention "je cherche une conciergerie à Strasbourg" et toutes ses variantes locales.</div>
+    </div>
+    <div class="cluster-card">
+      <div class="cluster-title">Cluster 2 — Confiance, hospitalité & marque</div>
+      <div class="cluster-tags">
+        <span class="cluster-tag">À propos</span>
+        <span class="cluster-tag">Blog : expérience voyageurs</span>
+        <span class="cluster-tag">Blog : avis & témoignages</span>
+        <span class="cluster-tag">Contact</span>
+      </div>
+      <div class="card-text">Ce cluster accompagne les visiteurs en phase de comparaison et de décision. Il répond à l'intention "à qui puis-je vraiment faire confiance pour mon bien ?"</div>
+    </div>
+  </div>
+
+  <div class="maillage-block">
+    <div class="maillage-title">Logique de maillage interne</div>
+    <div class="maillage-row">
+      <div class="maillage-source">Accueil</div>
+      <div class="maillage-arrow">→</div>
+      <div class="maillage-targets">
+        <span class="maillage-target-tag">Offre</span>
+        <span class="maillage-target-tag">À propos</span>
+        <span class="maillage-target-tag">Page locale Strasbourg</span>
+        <span class="maillage-target-tag">Contact</span>
+      </div>
+    </div>
+    <div class="maillage-row">
+      <div class="maillage-source">Offre Trousseau</div>
+      <div class="maillage-arrow">→</div>
+      <div class="maillage-targets">
+        <span class="maillage-target-tag">Contact & RDV</span>
+        <span class="maillage-target-tag">À propos</span>
+        <span class="maillage-target-tag">Page locale Strasbourg</span>
+      </div>
+    </div>
+    <div class="maillage-row">
+      <div class="maillage-source">Pages locales</div>
+      <div class="maillage-arrow">→</div>
+      <div class="maillage-targets">
+        <span class="maillage-target-tag">Offre Trousseau</span>
+        <span class="maillage-target-tag">Contact & RDV</span>
+        <span class="maillage-target-tag">Blog articles locaux</span>
+      </div>
+    </div>
+    <div class="maillage-row">
+      <div class="maillage-source">Articles Blog</div>
+      <div class="maillage-arrow">→</div>
+      <div class="maillage-targets">
+        <span class="maillage-target-tag">Offre Trousseau</span>
+        <span class="maillage-target-tag">Contact & RDV</span>
+        <span class="maillage-target-tag">Autres articles du même cluster</span>
+      </div>
+    </div>
+    <div class="maillage-row">
+      <div class="maillage-source">À propos</div>
+      <div class="maillage-arrow">→</div>
+      <div class="maillage-targets">
+        <span class="maillage-target-tag">Offre Trousseau</span>
+        <span class="maillage-target-tag">Contact & RDV</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 06 — TUNNEL DE CONVERSION -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="bp-section-06">
+  <div class="section-header">
+    <span class="section-badge">06 — Tunnel de conversion</span>
+    <h2 class="section-title">Du premier clic à la prise de contact</h2>
+    <p class="section-intro">Chaque étape du parcours propriétaire est pensée pour réduire les frictions et renforcer la confiance jusqu'à l'action finale.</p>
+  </div>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 01</div>
+      <div class="tunnel-step-label">Découverte</div>
+      <ul>
+        <li><strong>Source de trafic</strong>Google (SEO local), bouche-à-oreille, réseaux sociaux</li>
+        <li><strong>Page concernée</strong>Accueil, Pages locales, Blog</li>
+        <li><strong>CTA associé</strong>"Découvrir notre approche" → scroll vers l'offre</li>
+      </ul>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 02</div>
+      <div class="tunnel-step-label">Intérêt</div>
+      <ul>
+        <li><strong>Source de trafic</strong>Navigation interne depuis l'accueil ou le blog</li>
+        <li><strong>Page concernée</strong>Offre — Le Trousseau Signature</li>
+        <li><strong>CTA associé</strong>"Télécharger le guide propriétaire" (lead magnet)</li>
+      </ul>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 03</div>
+      <div class="tunnel-step-label">Confiance</div>
+      <ul>
+        <li><strong>Source de trafic</strong>Navigation interne depuis l'offre</li>
+        <li><strong>Page concernée</strong>À propos, témoignages propriétaires</li>
+        <li><strong>CTA associé</strong>"Parler à Myriam" → formulaire ou prise de RDV</li>
+      </ul>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 04</div>
+      <div class="tunnel-step-label">Conversion</div>
+      <ul>
+        <li><strong>Source de trafic</strong>Toutes les pages (CTA persistant)</li>
+        <li><strong>Page concernée</strong>Contact & Prise de RDV</li>
+        <li><strong>CTA associé</strong>"Prendre rendez-vous" via Calendly ou outil équivalent</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 07 — LEVIERS MARKETING -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="bp-section-07">
+  <div class="section-header">
+    <span class="section-badge">07 — Leviers marketing recommandés</span>
+    <h2 class="section-title">Activer la croissance</h2>
+    <p class="section-intro">Des outils concrets pour transformer les visiteurs en prospects qualifiés et les prospects en partenaires durables.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <div class="levier-label">Lead Magnet</div>
+      <div class="levier-title">Guide : "Confier son logement à Strasbourg — les 7 questions à se poser avant de choisir sa conciergerie"</div>
+      <div class="levier-text">Un PDF téléchargeable, sobre et bien conçu, qui positionne Rue de la Clé comme l'expert de confiance dès le premier contact. Permet de capturer l'email du propriétaire avant qu'il ne parte comparer.</div>
+    </div>
+    <div class="levier-card">
+      <div class="levier-label">Prise de rendez-vous</div>
+      <div class="levier-title">Calendly (ou Tidycal) — RDV "Échange découverte 30 min"</div>
+      <div class="levier-text">Intégré directement dans la page Contact et en sticky footer. Formulaire pré-RDV avec 2 à 3 questions qualifiantes (type de bien, localisation, disponibilité souhaitée) pour préparer l'échange.</div>
+    </div>
+    <div class="levier-card">
+      <div class="levier-label">Preuve sociale</div>
+      <div class="levier-title">Témoignages propriétaires + note voyageurs</div>
+      <div class="levier-text">Citations courtes de propriétaires avec prénom, ville et type de bien. En parallèle : affichage de la note moyenne voyageurs sur les plateformes. À placer en bas de page d'accueil et sur la page offre.</div>
+    </div>
+    <div class="levier-card">
+      <div class="levier-label">Formulaire qualifiant</div>
+      <div class="levier-title">Champs recommandés pour le formulaire de contact</div>
+      <div class="levier-text">Prénom + Nom — Email — Téléphone — Type de bien (studio, appartement, maison) — Localisation du bien — Situation actuelle (déjà en location / non encore) — Message libre.</div>
+    </div>
+    <div class="levier-card">
+      <div class="levier-label">Newsletter</div>
+      <div class="levier-title">Angle éditorial : "La Lettre des Clés"</div>
+      <div class="levier-text">Envoi mensuel pour les propriétaires abonnés : une actualité réglementaire locale, un conseil d'intendance ou de mise en valeur, et un regard sur la saison touristique à Strasbourg. Ton : chaleureux, expert, jamais commercial.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 08 — DIRECTION VISUELLE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="bp-section-08">
+  <div class="section-header">
+    <span class="section-badge">08 — Direction visuelle & éditoriale</span>
+    <h2 class="section-title">L'identité visuelle de Rue de la Clé</h2>
+    <p class="section-intro">Un univers visuel qui reflète l'hospitalité raffinée, la confiance et le soin — en cohérence avec Strasbourg et l'art de vivre alsacien.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 36px;">
+    <div class="card-title">Palette de couleurs suggérée</div>
+    <div style="margin-top: 24px;">
+      <div class="palette-grid">
+        <div class="palette-item">
+          <div class="palette-swatch" style="background: #2C2420;"></div>
+          <div class="palette-name">Charbon profond</div>
+          <div class="palette-hex">#2C2420</div>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background: #B87A5A;"></div>
+          <div class="palette-name">Terre de Sienne</div>
+          <div class="palette-hex">#B87A5A</div>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background: #D4C4A0;"></div>
+          <div class="palette-name">Sable alsacien</div>
+          <div class="palette-hex">#D4C4A0</div>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background: #F5F0E8;"></div>
+          <div class="palette-name">Crème ivoire</div>
+          <div class="palette-hex">#F5F0E8</div>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background: #6B5B4E;"></div>
+          <div class="palette-name">Bois brun chaud</div>
+          <div class="palette-hex">#6B5B4E</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 20px; font-size: 13px; color: var(--text-muted); text-align: center; font-style: italic;">Note : si vous transmettez vos références couleurs par mail, cette palette sera ajustée en conséquence.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Univers visuel recommandé</div>
+    <ul class="styled-list">
+      <li><strong>Photographies d'ambiance intérieure :</strong> lumière naturelle, matières chaleureuses (bois, lin, cuir), logements alsaciens authentiques ou rénovés avec goût.</li>
+      <li><strong>Iconographie clé & porte :</strong> revisitée sobrement — une clé ancienne stylisée peut devenir un élément signature de la marque.</li>
+      <li><strong>Typographie éditoriale :</strong> Playfair Display pour les titres (élégance littéraire), associée à une sans-serif légère comme Inter pour le corps de texte.</li>
+      <li><strong>Espaces blancs généreux :</strong> un design aéré qui traduit visuellement la promesse de sérénité et de clarté.</li>
+      <li><strong>Illustrations ou gravures fines :</strong> une touche de Strasbourg (cathédrale, maisons à colombages, cigogne stylisée) en arrière-plan très discret pour ancrer la dimension locale sans tomber dans le cliché touristique.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 09 — ARTICLES BLOG -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="bp-section-09">
+  <div class="section-header">
+    <span class="section-badge">09 — Articles blog recommandés</span>
+    <h2 class="section-title">Votre stratégie de contenu</h2>
+    <p class="section-intro">Des sujets pensés pour attirer un trafic qualifié, démontrer votre expertise et nourrir la confiance des propriétaires tout au long de leur parcours.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <div class="blog-card-title">Pourquoi confier son Airbnb à une conciergerie à Strasbourg plutôt que de tout gérer soi-même ?</div>
+        <span class="badge badge-prio">Prioritaire</span>
+      </div>
+      <div class="blog-meta">
+        <span>📁 Cluster 1 — Intendance locale</span>
+        <span>🎯 Intention : informationnelle / décisionnelle</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <div class="blog-card-title">Location courte durée à Strasbourg : ce que les propriétaires doivent savoir en 2025</div>
+        <span class="badge badge-prio">Prioritaire</span>
+      </div>
+      <div class="blog-meta">
+        <span>📁 Cluster 1 — Intendance locale</span>
+        <span>🎯 Intention : informationnelle / réglementaire</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <div class="blog-card-title">Comment valoriser son appartement alsacien pour la location saisonnière : nos conseils décoration</div>
+        <span class="badge badge-prio">Prioritaire</span>
+      </div>
+      <div class="blog-meta">
+        <span>📁 Cluster 1 — Intendance locale</span>
+        <span>🎯 Intention : informationnelle / pratique</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <div class="blog-card-title">Quels critères pour choisir sa conciergerie Airbnb à Strasbourg ? Le guide du propriétaire exigeant</div>
+        <span class="badge badge-moyen-prio">Moyen</span>
+      </div>
+      <div class="blog-meta">
+        <span>📁 Cluster 2 — Confiance & marque</span>
+        <span>🎯 Intention : comparaison / décision</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <div class="blog-card-title">Accueillir des voyageurs à Strasbourg : comment créer une expérience mémorable dès la première nuit</div>
+        <span class="badge badge-moyen-prio">Moyen</span>
+      </div>
+      <div class="blog-meta">
+        <span>📁 Cluster 2 — Confiance & marque</span>
+        <span>🎯 Intention : inspirationnelle / différenciation</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <div class="blog-card-title">Alsace & Route des Vins : pourquoi la location saisonnière y est une opportunité à saisir</div>
+        <span class="badge badge-faible-prio">Faible</span>
+      </div>
+      <div class="blog-meta">
+        <span>📁 Cluster 1 — Intendance locale</span>
+        <span>🎯 Intention : informationnelle / marché local</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <strong>Rue de la Clé</strong> &nbsp;·&nbsp; Blueprint Stratégique · Document confidentiel<br>
+  <span style="font-size: 11px; margin-top: 8px; display: block; opacity: 0.6;">Préparé par AR Digital · Tous droits réservés</span>
+</footer>
+
+</body>
+</html>
