@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Séjour & Sérénité</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2E3745;
+    background: #FAF8F5;
+  }
+
+  /* COUVERTURE */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #2E3745 0%, #3F5748 45%, #2E3745 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(200, 164, 106, 0.10);
+    pointer-events: none;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -60px;
+    width: 350px; height: 350px;
+    border-radius: 50%;
+    background: rgba(165, 175, 154, 0.08);
+    pointer-events: none;
+  }
+  .cover-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C8A46A;
+    border: 1px solid rgba(200,164,106,0.45);
+    border-radius: 30px;
+    padding: 7px 22px;
+    margin-bottom: 38px;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.12;
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+  }
+  .cover h1 span {
+    color: #C8A46A;
+  }
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.68);
+    margin-bottom: 52px;
+    letter-spacing: 0.5px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+  .cover-meta-sep {
+    width: 1px;
+    height: 36px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: #FFFFFF;
+  }
+  section:nth-child(odd) {
+    background: #FAF8F5;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #B8924E;
+    background: rgba(184,146,78,0.10);
+    border-radius: 20px;
+    padding: 5px 14px;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #2E3745;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .section-intro {
+    font-size: 15px;
+    color: #6F7A63;
+    margin-bottom: 44px;
+    max-width: 620px;
+    line-height: 1.7;
+  }
+
+  /* GRILLES */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* CARDS */
+  .card {
+    background: #FFFFFF;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+  }
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #2E3745;
+    margin-bottom: 8px;
+  }
+  .card-text {
+    font-size: 14px;
+    color: #5A6478;
+    line-height: 1.75;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #3F5748 0%, #2E3745 100%);
+    border-radius: 16px;
+    padding: 38px 44px;
+    margin-bottom: 44px;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-box::after {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(200,164,106,0.12);
+  }
+  .highlight-box .hl-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #C8A46A;
+    margin-bottom: 14px;
+  }
+  .highlight-box .hl-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 1.5;
+    max-width: 700px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* LISTE STYLÉE */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+  }
+  .styled-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(199,183,163,0.25);
+    font-size: 14px;
+    color: #3F5748;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.65;
+  }
+  .styled-list li::before {
+    content: '→';
+    color: #C8A46A;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .styled-list li:last-child {
+    border-bottom: none;
+  }
+
+  /* TABLEAU */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #FFFFFF;
+    font-size: 14px;
+  }
+  thead tr {
+    background: #2E3745;
+    color: #FFFFFF;
+  }
+  thead th {
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  tbody tr {
+    border-bottom: 1px solid rgba(199,183,163,0.2);
+  }
+  tbody tr:hover {
+    background: #FAF8F5;
+  }
+  tbody td {
+    padding: 14px 18px;
+    color: #3A4455;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  tbody td strong {
+    color: #2E3745;
+    font-weight: 600;
+  }
+
+  /* BADGE SEO */
+  .badge-seo {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .badge-fort { background: #D4EDDA; color: #1E6E35; }
+  .badge-moyen { background: #FFF3CD; color: #856404; }
+  .badge-faible { background: #F0F0F0; color: #6C757D; }
+
+  /* BADGE PRIORITÉ */
+  .badge-prio {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .badge-prioritaire { background: #2E3745; color: #C8A46A; }
+  .badge-moyen-p { background: rgba(63,87,72,0.12); color: #3F5748; }
+  .badge-faible-p { background: #F0F0F0; color: #6C757D; }
+
+  /* TUNNEL DE CONVERSION */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .tunnel-card {
+    background: #FFFFFF;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .tunnel-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+  .tunnel-card.t1::before { background: #C8A46A; }
+  .tunnel-card.t2::before { background: #A5AF9A; }
+  .tunnel-card.t3::before { background: #6F7A63; }
+  .tunnel-card.t4::before { background: #3F5748; }
+  .tunnel-step {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #B8924E;
+    margin-bottom: 10px;
+  }
+  .tunnel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2E3745;
+    margin-bottom: 16px;
+  }
+  .tunnel-item {
+    font-size: 13px;
+    color: #5A6478;
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+  .tunnel-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #A5AF9A;
+    margin-top: 12px;
+    margin-bottom: 4px;
+  }
+  .tunnel-cta {
+    display: inline-block;
+    margin-top: 14px;
+    background: #2E3745;
+    color: #C8A46A;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* COCON SÉMANTIQUE */
+  .cocon-cluster {
+    background: #FFFFFF;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+  .cocon-cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2E3745;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cocon-cluster-title .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #C8A46A;
+    flex-shrink: 0;
+  }
+  .cocon-pages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .cocon-page-tag {
+    background: #FAF8F5;
+    border: 1px solid rgba(199,183,163,0.4);
+    border-radius: 20px;
+    font-size: 13px;
+    padding: 4px 14px;
+    color: #3F5748;
+    font-weight: 500;
+  }
+  .maillage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(199,183,163,0.2);
+    font-size: 13px;
+    color: #5A6478;
+  }
+  .maillage-row:last-child { border-bottom: none; }
+  .maillage-source {
+    font-weight: 600;
+    color: #2E3745;
+    background: rgba(63,87,72,0.09);
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .maillage-arrow {
+    color: #C8A46A;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .maillage-dest {
+    background: rgba(200,164,106,0.12);
+    padding: 3px 10px;
+    border-radius: 20px;
+    color: #3F5748;
+  }
+
+  /* PALETTE COULEURS */
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 24px 28px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+  }
+  .palette-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2E3745;
+    text-align: center;
+  }
+  .palette-hex {
+    font-size: 11px;
+    color: #9A9A9A;
+    text-align: center;
+    font-family: 'Inter', monospace;
+  }
+
+  /* UNIVERS VISUEL */
+  .visual-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .visual-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: #3A4455;
+    line-height: 1.65;
+    padding: 14px 18px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .visual-list li .vi-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* BLOG CARDS */
+  .blog-table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  /* OBJECTIFS */
+  .obj-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .obj-card {
+    background: #FFFFFF;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 24px 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .obj-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: rgba(200,164,106,0.35);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .obj-content .obj-title {
+    font-weight: 600;
+    font-size: 15px;
+    color: #2E3745;
+    margin-bottom: 4px;
+  }
+  .obj-content .obj-desc {
+    font-size: 13px;
+    color: #6F7A63;
+    line-height: 1.6;
+  }
+
+  /* LEVIERS */
+  .levier-card {
+    background: #FFFFFF;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+  }
+  .levier-card .levier-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #B8924E;
+    margin-bottom: 8px;
+  }
+  .levier-card .levier-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #2E3745;
+    margin-bottom: 10px;
+  }
+  .levier-card .levier-text {
+    font-size: 13px;
+    color: #5A6478;
+    line-height: 1.7;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #2E3745;
+    text-align: center;
+    padding: 36px 40px;
+  }
+  footer .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #C8A46A;
+    margin-bottom: 8px;
+  }
+  footer .footer-conf {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    section { padding: 40px 24px; }
+    .cover { padding: 60px 24px; }
+    .cover h1 { font-size: 38px; }
+    .cover-subtitle { font-size: 15px; }
+    .cover-meta { gap: 20px; }
+    .cover-meta-sep { display: none; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4, .tunnel-grid, .obj-grid { grid-template-columns: 1fr; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box .hl-text { font-size: 18px; }
+    .palette-grid { grid-template-columns: repeat(2, auto); gap: 20px; }
+    .table-wrap, .blog-table-wrap { overflow-x: auto; }
+    .maillage-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .maillage-arrow { flex-shrink: 0; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique</div>
+  <h1>Séjour &amp; <span>Sérénité</span></h1>
+  <p class="cover-subtitle">Document de référence stratégique — Confidentiel</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Cliente</div>
+      <div class="cover-meta-value">Sophie Sallé</div>
+    </div>
+    <div class="cover-meta-sep"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Secteur</div>
+      <div class="cover-meta-value">Conciergerie courte durée</div>
+    </div>
+    <div class="cover-meta-sep"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Zone</div>
+      <div class="cover-meta-value">Val d'Oise · Oise</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Positionnement &amp; Identité de marque</h2>
+  <p class="section-intro">La promesse, le ton et les piliers qui fondent l'identité de Séjour &amp; Sérénité.</p>
+
+  <div class="highlight-box">
+    <div class="hl-label">Promesse de valeur principale</div>
+    <div class="hl-text">« Une conciergerie à taille humaine, portée par 30 ans d'exigence professionnelle, pour que votre bien soit géré comme si c'était le nôtre — avec soin, rigueur et une sérénité totale. »</div>
+  </div>
+
+  <div class="card" style="margin-bottom: 44px;">
+    <div class="card-title">Ligne directrice de communication</div>
+    <div class="card-text">Accompagnement local premium fondé sur la confiance humaine, l'implication personnelle et la précision du service — une conciergerie qui agit comme une partenaire, pas comme un prestataire anonyme.</div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 44px;">
+    <div class="card">
+      <div class="card-icon">🖋️</div>
+      <div class="card-title">Ton éditorial</div>
+      <div class="card-text"><strong>Chaleureux · Rassurant · Professionnel</strong><br><br>Un discours sincère et bienveillant qui inspire confiance dès les premiers mots, sans jargon technique ni froideur corporate — Sophie parle à ses propriétaires comme à des partenaires de confiance.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📸</div>
+      <div class="card-title">Argument visuel fort</div>
+      <div class="card-text">Photographies professionnelles des logements incluses dans la prestation — un différenciateur concret mis en avant dès la homepage pour valoriser l'offre et rassurer les propriétaires soucieux de leur image en ligne.</div>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <div class="card-title">Conciergerie à taille humaine</div>
+      <div class="card-text">Sophie est l'interlocutrice principale, disponible et impliquée. Chaque logement reçoit une attention personnalisée, sans délégation opaque ni processus industrialisé.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <div class="card-title">Approche sur-mesure &amp; à la carte</div>
+      <div class="card-text">Chaque propriétaire est unique. Des formules flexibles permettent de répondre à des besoins spécifiques, au-delà des offres packagées — une réponse adaptée à chaque situation.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🚐</div>
+      <div class="card-title">Services exclusifs haut de gamme</div>
+      <div class="card-text">Transfert en van avec chauffeur privé et photographies professionnelles des annonces : deux services différenciants qui positionnent la conciergerie dans le registre premium.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <div class="card-title">Expertise locale Val d'Oise / Oise</div>
+      <div class="card-text">Ancrage territorial fort sur Cergy, Roissy-en-France, Chantilly et Enghien-les-Bains — une connaissance terrain qui rassure les propriétaires de la région.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <div class="card-title">Confiance construite, pas décrétée</div>
+      <div class="card-text">Transparence sur les commissions (20 % HT), réactivité garantie et suivi rigoureux des avis voyageurs : une partenaire engagée sur la durée, pas seulement sur le contrat.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client Cible</span>
+  <h2 class="section-title">Portrait du propriétaire idéal</h2>
+  <p class="section-intro">Qui sont les propriétaires que Séjour &amp; Sérénité cherche à convaincre et convertir en clients.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">👤</div>
+      <div class="card-title">Profil type</div>
+      <ul class="styled-list" style="margin-top: 4px;">
+        <li>35 – 60 ans, propriétaire d'un logement secondaire ou d'un investissement locatif dans le Val d'Oise ou l'Oise</li>
+        <li>Actif ou proche de la retraite, peu disponible pour gérer lui-même les contraintes opérationnelles</li>
+        <li>Soucieux de la valorisation de son bien et de l'expérience proposée à ses voyageurs</li>
+        <li>Sensible à une relation humaine et personnalisée plutôt qu'à un service automatisé</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">💡</div>
+      <div class="card-title">Motivations principales</div>
+      <ul class="styled-list" style="margin-top: 4px;">
+        <li>Déléguer totalement sans perdre le contrôle de son bien</li>
+        <li>Maximiser ses revenus locatifs sans y consacrer son temps</li>
+        <li>Offrir une expérience de qualité à ses voyageurs pour obtenir de bons avis</li>
+        <li>Travailler avec quelqu'un de fiable, disponible et transparent</li>
+        <li>Bénéficier d'un accompagnement professionnel sur les photos et l'annonce</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <div class="card-title">Freins &amp; Objections</div>
+      <ul class="styled-list" style="margin-top: 4px;">
+        <li>Peur de confier son bien à quelqu'un qu'il ne connaît pas</li>
+        <li>Inquiétude sur la transparence des frais et commissions</li>
+        <li>Doute sur la réactivité en cas d'incident ou de dommage</li>
+        <li>Expérience négative passée avec une autre conciergerie ou plateforme</li>
+        <li>Questionnement sur la valeur ajoutée par rapport à une gestion en solo</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">✅</div>
+      <div class="card-title">Critères de décision</div>
+      <ul class="styled-list" style="margin-top: 4px;">
+        <li>Réputation locale et avis vérifiés de propriétaires satisfaits</li>
+        <li>Clarté et transparence sur la commission (20 % HT + forfait ménage à la charge du voyageur)</li>
+        <li>Proximité géographique et réactivité terrain</li>
+        <li>Qualité perçue du service (photos pro, services exclusifs)</li>
+        <li>Sentiment de confiance généré par le discours et la personnalité de Sophie</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du Site</span>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+  <p class="section-intro">Objectifs priorisés pour orienter chaque décision de conception et de rédaction.</p>
+
+  <div class="obj-grid">
+    <div class="obj-card">
+      <div class="obj-rank">01</div>
+      <div class="obj-content">
+        <div class="obj-title">Génération de leads qualifiés</div>
+        <div class="obj-desc">Inciter les propriétaires locaux à prendre contact via formulaire ou appel découverte.</div>
+      </div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">02</div>
+      <div class="obj-content">
+        <div class="obj-title">Réassurance &amp; confiance</div>
+        <div class="obj-desc">Convaincre un propriétaire hésitant grâce à la preuve sociale, la transparence et la personnalité de Sophie.</div>
+      </div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">03</div>
+      <div class="obj-content">
+        <div class="obj-title">SEO local</div>
+        <div class="obj-desc">Apparaître en tête des résultats Google sur Cergy, Roissy-en-France, Chantilly et Enghien-les-Bains.</div>
+      </div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">04</div>
+      <div class="obj-content">
+        <div class="obj-title">Prise de rendez-vous</div>
+        <div class="obj-desc">Faciliter le passage à l'action avec un CTA de prise de RDV découverte clair et accessible depuis toutes les pages.</div>
+      </div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">05</div>
+      <div class="obj-content">
+        <div class="obj-title">Notoriété &amp; positionnement premium</div>
+        <div class="obj-desc">Ancrer l'image d'une conciergerie haut de gamme, humaine et différente dans l'esprit des visiteurs.</div>
+      </div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">06</div>
+      <div class="obj-content">
+        <div class="obj-title">Conversion directe</div>
+        <div class="obj-desc">Transformer les visites en demandes concrètes grâce à un parcours utilisateur fluide et sans friction.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence</span>
+  <h2 class="section-title">Structure du site</h2>
+  <p class="section-intro">Architecture optimisée pour le SEO local et la conversion — une page d'offre globale, pas une page par service.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Objectif</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>Capter, réassurer, convertir</td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Val d'Oise</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Services</strong></td>
+          <td>Présenter l'offre complète (services inclus + à la carte) et la commission</td>
+          <td>PAS</td>
+          <td>services conciergerie Airbnb Cergy Roissy</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos</strong></td>
+          <td>Humaniser, créer la confiance, raconter l'histoire de Sophie</td>
+          <td>BAB</td>
+          <td>conciergerie humaine Val d'Oise Sophie Sallé</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Réalisations</strong></td>
+          <td>Prouver par l'exemple — photos pro, logements gérés, témoignages</td>
+          <td>AIDA</td>
+          <td>photos logement Airbnb professionnel Val d'Oise</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO Local — Cergy / Roissy-en-France</strong></td>
+          <td>Capter le trafic local sur les deux zones prioritaires</td>
+          <td>PAS</td>
+          <td>conciergerie Airbnb Cergy / Roissy-en-France</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO Local — Chantilly / Enghien-les-Bains</strong></td>
+          <td>Capter le trafic local sur les deux zones secondaires</td>
+          <td>PAS</td>
+          <td>conciergerie Airbnb Chantilly Enghien-les-Bains</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / RDV Découverte</strong></td>
+          <td>Convertir — formulaire qualifiant + prise de RDV directe</td>
+          <td>AIDA</td>
+          <td>confier logement conciergerie Val d'Oise</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>SEO de contenu, nurturing, positionnement expert</td>
+          <td>—</td>
+          <td>location courte durée conseils propriétaire</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top: 28px; background: rgba(63,87,72,0.06); box-shadow: none; border: 1px solid rgba(63,87,72,0.15);">
+    <div class="card-title" style="color: #3F5748;">📌 Note stratégique</div>
+    <div class="card-text">La page <strong>Nos Services</strong> regroupe tous les services en un seul endroit (annonce, check-in/check-out, ménage, blanchisserie, coordination artisans, suivi avis, photos pro, transfert chauffeur privé). Une section dédiée précise les <strong>formules à la carte</strong> pour les propriétaires aux besoins spécifiques. La commission de <strong>20 % HT</strong> (hors forfait ménage) est affichée clairement pour lever les objections dès la phase d'intérêt.</div>
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon Sémantique</span>
+  <h2 class="section-title">Architecture de contenu &amp; maillage interne</h2>
+  <p class="section-intro">Clusters thématiques pour maximiser l'autorité SEO et le parcours utilisateur.</p>
+
+  <div class="cocon-cluster">
+    <div class="cocon-cluster-title"><span class="dot"></span> Cluster 1 — Conciergerie &amp; Services</div>
+    <div class="cocon-pages">
+      <span class="cocon-page-tag">🏠 Accueil</span>
+      <span class="cocon-page-tag">📋 Nos Services</span>
+      <span class="cocon-page-tag">📷 Nos Réalisations</span>
+      <span class="cocon-page-tag">📩 Contact / RDV</span>
+    </div>
+    <div class="card-text" style="color: #5A6478; font-size: 13px;">Ce cluster couvre l'ensemble de l'offre de la conciergerie — de la découverte à la conversion. Il positionne Séjour &amp; Sérénité sur les requêtes intentionnelles des propriétaires cherchant à déléguer.</div>
+  </div>
+
+  <div class="cocon-cluster">
+    <div class="cocon-cluster-title"><span class="dot" style="background: #A5AF9A;"></span> Cluster 2 — SEO Local Val d'Oise / Oise</div>
+    <div class="cocon-pages">
+      <span class="cocon-page-tag">📍 SEO Cergy / Roissy</span>
+      <span class="cocon-page-tag">📍 SEO Chantilly / Enghien</span>
+      <span class="cocon-page-tag">🏠 Accueil</span>
+      <span class="cocon-page-tag">📋 Nos Services</span>
+    </div>
+    <div class="card-text" style="color: #5A6478; font-size: 13px;">Ce cluster cible les requêtes géolocalisées — propriétaires cherchant une conciergerie dans leur ville précise. Les pages locales alimentent le trafic qualifié vers la page Services et le Contact.</div>
+  </div>
+
+  <div class="cocon-cluster">
+    <div class="cocon-cluster-title"><span class="dot" style="background: #6F7A63;"></span> Cluster 3 — Confiance &amp; Expertise</div>
+    <div class="cocon-pages">
+      <span class="cocon-page-tag">👤 À propos</span>
+      <span class="cocon-page-tag">📝 Blog</span>
+      <span class="cocon-page-tag">📷 Nos Réalisations</span>
+    </div>
+    <div class="card-text" style="color: #5A6478; font-size: 13px;">Ce cluster construit l'autorité et la crédibilité de Sophie. Les articles de blog nourrissent le référencement longue traîne et renvoient vers les pages de conversion.</div>
+  </div>
+
+  <div class="card" style="margin-top: 28px;">
+    <div class="card-title">Logique de maillage interne</div>
+    <div style="margin-top: 16px;">
+      <div class="maillage-row">
+        <span class="maillage-source">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Services</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact / RDV</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Pages SEO Locales</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Services</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact / RDV</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Services</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">À propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact / RDV</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">À propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Réalisations</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact / RDV</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de Conversion</span>
+  <h2 class="section-title">Parcours du propriétaire vers la décision</h2>
+  <p class="section-intro">Quatre étapes clés pour transformer un inconnu en client confiant.</p>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-card t1">
+      <div class="tunnel-step">Étape 01</div>
+      <div class="tunnel-title">Découverte</div>
+      <div class="tunnel-label">Sources de trafic</div>
+      <div class="tunnel-item">🔍 Google (SEO local — Cergy, Roissy, Chantilly)</div>
+      <div class="tunnel-item">📱 Réseaux sociaux (bouche-à-oreille, partages)</div>
+      <div class="tunnel-item">📍 Google My Business</div>
+      <div class="tunnel-label">Page concernée</div>
+      <div class="tunnel-item">Accueil · Pages SEO locales</div>
+      <span class="tunnel-cta">Découvrir nos services →</span>
+    </div>
+    <div class="tunnel-card t2">
+      <div class="tunnel-step">Étape 02</div>
+      <div class="tunnel-title">Intérêt</div>
+      <div class="tunnel-label">Sources de trafic</div>
+      <div class="tunnel-item">🏠 Navigation interne depuis l'accueil</div>
+      <div class="tunnel-item">📝 Articles de blog (longue traîne)</div>
+      <div class="tunnel-label">Page concernée</div>
+      <div class="tunnel-item">Nos Services · Blog</div>
+      <span class="tunnel-cta">Télécharger le guide →</span>
+    </div>
+    <div class="tunnel-card t3">
+      <div class="tunnel-step">Étape 03</div>
+      <div class="tunnel-title">Confiance</div>
+      <div class="tunnel-label">Sources de trafic</div>
+      <div class="tunnel-item">👤 Page À propos (histoire de Sophie)</div>
+      <div class="tunnel-item">📷 Réalisations (photos pro, logements)</div>
+      <div class="tunnel-item">⭐ Avis propriétaires &amp; voyageurs</div>
+      <div class="tunnel-label">Page concernée</div>
+      <div class="tunnel-item">À propos · Nos Réalisations</div>
+      <span class="tunnel-cta">Voir nos réalisations →</span>
+    </div>
+    <div class="tunnel-card t4">
+      <div class="tunnel-step">Étape 04</div>
+      <div class="tunnel-title">Conversion</div>
+      <div class="tunnel-label">Sources de trafic</div>
+      <div class="tunnel-item">📩 CTA persistant sur toutes les pages</div>
+      <div class="tunnel-item">📅 Outil de prise de RDV intégré</div>
+      <div class="tunnel-item">📋 Formulaire qualifiant de contact</div>
+      <div class="tunnel-label">Page concernée</div>
+      <div class="tunnel-item">Contact / RDV Découverte</div>
+      <span class="tunnel-cta">Prendre un RDV gratuit →</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers Marketing</span>
+  <h2 class="section-title">Leviers de croissance recommandés</h2>
+  <p class="section-intro">Les outils et contenus pour attirer, convaincre et fidéliser les propriétaires.</p>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <div class="levier-label">Lead Magnet</div>
+      <div class="levier-title">Guide PDF — « 7 erreurs à éviter avant de confier son logement à une conciergerie »</div>
+      <div class="levier-text">Un guide pratique ciblant les propriétaires hésitants, téléchargeable en échange d'un email. Positionne Sophie comme experte de confiance et alimente une liste de prospects qualifiés pour le suivi.</div>
+    </div>
+    <div class="levier-card">
+      <div class="levier-label">Prise de RDV</div>
+      <div class="levier-title">Calendly ou Tidycal — RDV découverte 30 min offert</div>
+      <div class="levier-text">Intégré directement sur la page Contact et en CTA flottant sur tout le site. L'appel découverte gratuit de 30 minutes lève les dernières objections et crée un premier lien humain avec Sophie.</div>
+    </div>
+    <div class="levier-card">
+      <div class="levier-label">Preuve Sociale</div>
+      <div class="levier-title">Témoignages vidéo courts + avis Google vérifiés</div>
+      <div class="levier-text">Témoignages de propriétaires satisfaits (format texte + étoiles) mis en avant sur l'accueil et la page Services. Captures d'avis voyageurs Airbnb et Booking pour rassurer les deux cibles simultanément.</div>
+    </div>
+    <div class="levier-card">
+      <div class="levier-label">Formulaire Qualifiant</div>
+      <div class="levier-title">Champs recommandés pour le formulaire de contact</div>
+      <div class="levier-text">
+        Prénom · Localisation du bien · Type de logement (appartement / maison) · Nombre de couchages · Déjà sur Airbnb/Booking ? (oui/non) · Besoin principal (service complet / à la carte) · Message libre.
+      </div>
+    </div>
+    <div class="levier-card">
+      <div class="levier-label">Newsletter</div>
+      <div class="levier-title">Angle éditorial — « Bien louer, bien déléguer »</div>
+      <div class="levier-text">Envoi mensuel avec : 1 conseil pratique pour optimiser son annonce, 1 tendance du marché locatif local, 1 témoignage propriétaire, 1 mise en avant d'un service ou d'une nouveauté de la conciergerie.</div>
+    </div>
+    <div class="levier-card">
+      <div class="levier-label">Services Différenciants à Mettre en Avant</div>
+      <div class="levier-title">Photos pro + Transfert chauffeur privé en van</div>
+      <div class="levier-text">Ces deux services exclusifs doivent apparaître dès l'accueil, avec visuels à l'appui. Ils renforcent le positionnement premium et justifient la commission de 20 % HT aux yeux des propriétaires exigeants.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction Visuelle</span>
+  <h2 class="section-title">Identité visuelle &amp; éditoriale</h2>
+  <p class="section-intro">Palette couleurs et univers graphique pour un site élégant, chaleureux et premium — en cohérence avec les couleurs choisies par Sophie.</p>
+
+  <div class="card" style="margin-bottom: 44px; text-align: center;">
+    <div class="card-title" style="margin-bottom: 28px;">Palette de couleurs</div>
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #F5F0E8;"></div>
+        <div class="palette-name">Ivoire</div>
+        <div class="palette-hex">#F5F0E8</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #DDD2C2;"></div>
+        <div class="palette-name">Beige Sable</div>
+        <div class="palette-hex">#DDD2C2</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #C7B7A3;"></div>
+        <div class="palette-name">Lin Taupe</div>
+        <div class="palette-hex">#C7B7A3</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #C8A46A;"></div>
+        <div class="palette-name">Beige Doré</div>
+        <div class="palette-hex">#C8A46A</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #B8924E;"></div>
+        <div class="palette-name">Or Mat</div>
+        <div class="palette-hex">#B8924E</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #A5AF9A;"></div>
+        <div class="palette-name">Vert Sauge</div>
+        <div class="palette-hex">#A5AF9A</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #6F7A63;"></div>
+        <div class="palette-name">Vert Olive</div>
+        <div class="palette-hex">#6F7A63</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #3F5748;"></div>
+        <div class="palette-name">Vert Forêt</div>
+        <div class="palette-hex">#3F5748</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #2E3745;"></div>
+        <div class="palette-name">Bleu Nuit</div>
+        <div class="palette-hex">#2E3745</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="margin-bottom: 20px;">Univers visuel recommandé</div>
+    <ul class="visual-list">
+      <li><span class="vi-icon">📸</span><span><strong>Photographies professionnelles de logements</strong> — intérieurs chaleureux, détails de décoration, lumière naturelle. Les photos doivent refléter le soin apporté à chaque bien confié à Sophie.</span></li>
+      <li><span class="vi-icon">🌿</span><span><strong>Textures naturelles</strong> — lin, bois clair, céramique, végétaux — en harmonie avec la palette ivoire / vert sauge / or mat pour un rendu haut de gamme et organique.</span></li>
+      <li><span class="vi-icon">✦</span><span><strong>Typographie bipolaire</strong> — Playfair Display pour les titres (élégance, sérénité) et Inter pour les textes (clarté, modernité) — une combinaison qui incarne à la fois le luxe accessible et la rigueur professionnelle.</span></li>
+      <li><span class="vi-icon">👤</span><span><strong>Photo professionnelle de Sophie</strong> — un portrait authentique et soigné sur la page À propos pour humaniser la conciergerie et créer un lien immédiat de confiance avec le visiteur.</span></li>
+      <li><span class="vi-icon">🚐</span><span><strong>Visuel du service chauffeur privé</strong> — photo du van, mise en scène élégante du transfert — pour ancrer visuellement ce service différenciant dès la homepage.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles Blog</span>
+  <h2 class="section-title">Stratégie de contenu &amp; SEO éditorial</h2>
+  <p class="section-intro">7 sujets d'articles pour générer du trafic qualifié, nourrir la confiance et positionner Sophie comme référence locale.</p>
+
+  <div class="blog-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Conciergerie Airbnb à Cergy : comment déléguer sereinement sa location courte durée ?</strong></td>
+          <td>SEO Local</td>
+          <td>Propriétaire cherchant une conciergerie à Cergy</td>
+          <td><span class="badge-prio badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>5 raisons de faire photographier votre logement par un professionnel avant de le mettre en location</strong></td>
+          <td>Services &amp; Expertise</td>
+          <td>Propriétaire souhaitant améliorer son annonce</td>
+          <td><span class="badge-prio badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Louer son logement près de Roissy-Charles de Gaulle : opportunités et conseils pour maximiser ses revenus</strong></td>
+          <td>SEO Local</td>
+          <td>Propriétaire à Roissy cherchant à optimiser ses revenus locatifs</td>
+          <td><span class="badge-prio badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie à la carte vs. service complet : quelle formule choisir pour son logement ?</strong></td>
+          <td>Services &amp; Expertise</td>
+          <td>Propriétaire comparant ses options avant de déléguer</td>
+          <td><span class="badge-prio badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Check-in autonome sécurisé : comment ça fonctionne et pourquoi vos voyageurs adorent ça ?</strong></td>
+          <td>Services &amp; Expertise</td>
+          <td>Propriétaire curieux du fonctionnement d'une conciergerie moderne</td>
+          <td><span class="badge-prio badge-moyen-p">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Location saisonnière à Chantilly : pourquoi la demande explose et comment en profiter ?</strong></td>
+          <td>SEO Local</td>
+          <td>Propriétaire à Chantilly cherchant à se lancer en location courte durée</td>
+          <td><span class="badge-prio badge-moyen-p">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Comment répondre aux avis négatifs de vos voyageurs
