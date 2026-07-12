@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Maison Chloé</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2c2c2c;
+    background: #fafaf8;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1a1218 0%, #2d1a26 40%, #1e1010 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(247,37,133,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(224,181,9,0.13) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #e0b509;
+    margin-bottom: 32px;
+    opacity: 0.9;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-subtitle {
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    margin-bottom: 56px;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+  .cover-line {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, #f72585, #e0b509);
+    margin: 40px auto 40px;
+    border-radius: 2px;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 80px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+  section:nth-child(odd) {
+    background: #fafaf8;
+  }
+
+  .section-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: #f72585;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #1a1218;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .section-desc {
+    font-size: 15px;
+    color: #6b6b6b;
+    margin-bottom: 48px;
+    max-width: 640px;
+    line-height: 1.7;
+  }
+
+  /* CARDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1a1218;
+    margin-bottom: 10px;
+  }
+  .card p, .card li {
+    font-size: 14px;
+    color: #4a4a4a;
+    line-height: 1.75;
+  }
+  .card ul {
+    padding-left: 18px;
+  }
+  .card ul li {
+    margin-bottom: 4px;
+  }
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #1a1218 0%, #2d1a26 100%);
+    border-radius: 16px;
+    padding: 40px 48px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-box::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(247,37,133,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #ffffff;
+    line-height: 1.55;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+  .highlight-box span {
+    font-size: 13px;
+    color: #e0b509;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 1px;
+    display: block;
+    margin-top: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* TAG */
+  .tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .tag-rose { background: rgba(247,37,133,0.1); color: #f72585; }
+  .tag-gold { background: rgba(224,181,9,0.12); color: #b38b00; }
+  .tag-dark { background: rgba(26,18,24,0.08); color: #1a1218; }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    font-size: 14px;
+  }
+  thead tr {
+    background: #1a1218;
+    color: #ffffff;
+  }
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: background 0.2s;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #fafaf8; }
+  tbody td {
+    padding: 15px 20px;
+    color: #3a3a3a;
+    vertical-align: top;
+  }
+  .seo-badge {
+    display: inline-block;
+    padding: 3px 11px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .seo-fort { background: rgba(22,163,74,0.1); color: #16a34a; }
+  .seo-moyen { background: rgba(224,181,9,0.15); color: #b38b00; }
+  .seo-faible { background: rgba(107,114,128,0.1); color: #6b7280; }
+
+  /* TUNNEL */
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    position: relative;
+  }
+  .tunnel-step-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: rgba(247,37,133,0.1);
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    line-height: 1;
+  }
+  .tunnel-step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: #1a1218;
+    margin-bottom: 16px;
+  }
+  .tunnel-step .meta-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #f72585;
+    font-weight: 600;
+    margin-bottom: 3px;
+    display: block;
+  }
+  .tunnel-step .meta-value {
+    font-size: 13px;
+    color: #4a4a4a;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+  .cta-pill {
+    display: inline-block;
+    padding: 7px 16px;
+    background: linear-gradient(135deg, #f72585, #e0b509);
+    color: #ffffff;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+  /* MAILLAGE */
+  .maillage-item {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    margin-bottom: 16px;
+  }
+  .maillage-source {
+    font-weight: 600;
+    color: #1a1218;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .maillage-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .maillage-arrow {
+    color: #f72585;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .maillage-target {
+    font-size: 13px;
+    color: #4a4a4a;
+    background: #fafaf8;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(0,0,0,0.07);
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  .palette-item {
+    text-align: center;
+    width: 110px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    margin: 0 auto 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+  .palette-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1a1218;
+    margin-bottom: 2px;
+    display: block;
+  }
+  .palette-hex {
+    font-size: 11px;
+    color: #9ca3af;
+    font-family: monospace;
+  }
+
+  /* BLOG */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .blog-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #1a1218;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    align-items: center;
+  }
+  .blog-meta span {
+    font-size: 11px;
+    color: #6b7280;
+  }
+  .priority-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .priority-prioritaire { background: rgba(247,37,133,0.1); color: #f72585; }
+  .priority-moyen { background: rgba(224,181,9,0.15); color: #b38b00; }
+  .priority-faible { background: rgba(107,114,128,0.1); color: #6b7280; }
+
+  /* OBJECTIFS */
+  .objectif-item {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .objectif-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(247,37,133,0.2);
+    line-height: 1;
+    min-width: 32px;
+  }
+  .objectif-content h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1218;
+    margin-bottom: 4px;
+  }
+  .objectif-content p {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.6;
+  }
+
+  /* CLUSTER */
+  .cluster-block {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #1a1218;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(247,37,133,0.2);
+  }
+  .cluster-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .cluster-kw {
+    font-size: 12px;
+    padding: 4px 12px;
+    background: #fafaf8;
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 20px;
+    color: #4a4a4a;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1a1218;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 36px 40px;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  footer strong {
+    color: rgba(255,255,255,0.85);
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(90deg, #f72585, #e0b509);
+    border-radius: 2px;
+    margin-bottom: 40px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    section { padding: 48px 24px; }
+    .cover { padding: 60px 24px; }
+    .cover h1 { font-size: 42px; }
+    .cover-meta { gap: 24px; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 18px; }
+    .palette-grid { gap: 14px; }
+    .palette-item { width: 90px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique — Document Confidentiel</div>
+  <h1>Maison Chloé</h1>
+  <p class="cover-subtitle">Conciergerie haut de gamme · Côte des Vins · Bourgogne</p>
+  <div class="cover-line"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Cliente</div>
+      <div class="cover-meta-value">Chloé Lanternier</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Secteur</div>
+      <div class="cover-meta-value">Conciergerie locative</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Territoire</div>
+      <div class="cover-meta-value">Marsannay → Beaune</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Positionnement & identité de marque</h2>
+  <p class="section-desc">La promesse, le ton et les piliers qui distinguent Maison Chloé sur son territoire.</p>
+  <div class="section-divider"></div>
+
+  <div class="highlight-box">
+    <p>« Votre bien de caractère en Bourgogne, préservé, valorisé et géré avec l'exigence d'un professionnel de l'immobilier — pour que vous restiez propriétaire de votre tranquillité. »</p>
+    <span>Promesse de valeur principale — Maison Chloé</span>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <span class="card-icon">🧭</span>
+      <h3>Ligne directrice</h3>
+      <p>Expertise immobilière professionnelle au service de la location saisonnière haut de gamme, avec une présence terrain de proximité au cœur de la Côte des Vins.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✍️</span>
+      <h3>Ton éditorial</h3>
+      <div class="tag tag-rose" style="margin-right:6px;">Exigeant</div>
+      <div class="tag tag-gold" style="margin-right:6px;">Chaleureux</div>
+      <div class="tag tag-dark">Sincère</div>
+      <p style="margin-top:12px;">Un discours élégant, jamais pompeux — qui rassure par la compétence et séduit par la proximité humaine. La maîtrise sans la froideur.</p>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <span class="card-icon">⚖️</span>
+      <h3>Carte professionnelle Hoguet</h3>
+      <p>Cadre légal renforcé, compte séparé dédié, comptes-rendus mensuels : une gestion financière structurée, lisible et rassurante.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📍</span>
+      <h3>Ancrage territorial fort</h3>
+      <p>Installée sur la Côte des Vins, Chloé connaît les villages, les saisons, les événements et les attentes des voyageurs qui viennent en Bourgogne.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🏛️</span>
+      <h3>10 ans d'expertise immobilière</h3>
+      <p>Un socle professionnel solide qui va bien au-delà de la simple conciergerie : vision patrimoniale, rigueur administrative, suivi durable.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🎯</span>
+      <h3>Qualité plutôt que volume</h3>
+      <p>Pas de course aux réservations : une gestion soignée, cohérente avec l'image du bien et les attentes du propriétaire.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🤝</span>
+      <h3>Relation sur-mesure</h3>
+      <p>Chaque propriété est traitée individuellement : son histoire, son potentiel, son niveau de confort et les ambitions de ses propriétaires.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client Cible</span>
+  <h2 class="section-title">Profil du propriétaire idéal</h2>
+  <p class="section-desc">Le persona principal de Maison Chloé, ses motivations et les leviers de décision à activer.</p>
+  <div class="section-divider"></div>
+
+  <div class="grid-2" style="margin-bottom:24px;">
+    <div class="card">
+      <span class="card-icon">👤</span>
+      <h3>Profil type</h3>
+      <p>45–65 ans · Propriétaire d'une résidence secondaire ou d'un bien de caractère sur la Côte des Vins · Cadre supérieur, professionnel libéral ou retraité aisé · Vit souvent à distance de son bien (Paris, Lyon, Dijon) · Attaché à son patrimoine bourguignon.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">💡</span>
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Générer des revenus complémentaires sans effort quotidien</li>
+        <li>Préserver la valeur et l'image de son bien</li>
+        <li>Être serein à distance, en toute confiance</li>
+        <li>Trouver un interlocuteur professionnel et réactif</li>
+        <li>Valoriser un bien chargé d'histoire ou d'attachement</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🚧</span>
+      <h3>Freins & objections</h3>
+      <ul>
+        <li>Peur de perdre le contrôle de son bien</li>
+        <li>Méfiance envers les conciergeries peu encadrées</li>
+        <li>Doute sur la transparence financière</li>
+        <li>Inquiétude sur la qualité des voyageurs accueillis</li>
+        <li>Manque de visibilité sur les revenus réels générés</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">✅</span>
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Légitimité professionnelle et cadre réglementaire</li>
+        <li>Transparence financière et comptes-rendus réguliers</li>
+        <li>Proximité géographique et réactivité terrain</li>
+        <li>Références, témoignages et preuves de sérieux</li>
+        <li>Qualité visuelle et positionnement haut de gamme</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du Site</span>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+  <p class="section-desc">Liste priorisée des objectifs stratégiques du site maison-chloe.fr.</p>
+  <div class="section-divider"></div>
+
+  <div style="display:flex; flex-direction:column; gap:16px;">
+    <div class="objectif-item">
+      <div class="objectif-rank">1</div>
+      <div class="objectif-content">
+        <h4>Génération de leads propriétaires</h4>
+        <p>Transformer les visiteurs propriétaires en contacts qualifiés via formulaire ou prise de RDV Calendly.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">2</div>
+      <div class="objectif-content">
+        <h4>Réassurance & crédibilité</h4>
+        <p>Démontrer le sérieux, l'encadrement légal et l'expertise de Chloé pour lever les objections dès la première visite.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">3</div>
+      <div class="objectif-content">
+        <h4>SEO local — Côte des Vins / Bourgogne</h4>
+        <p>Capter les recherches de propriétaires sur la zone Marsannay–Beaune cherchant une conciergerie de confiance.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">4</div>
+      <div class="objectif-content">
+        <h4>Prise de rendez-vous directe</h4>
+        <p>Faciliter le passage à l'action avec un CTA Calendly accessible depuis toutes les pages clés.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">5</div>
+      <div class="objectif-content">
+        <h4>Notoriété & image de marque</h4>
+        <p>Installer Maison Chloé comme la référence haut de gamme de la conciergerie locative sur la Côte des Vins.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">6</div>
+      <div class="objectif-content">
+        <h4>Séduction des voyageurs</h4>
+        <p>Proposer une vitrine inspirante de l'art de vivre bourguignon pour valoriser les biens et renforcer l'attractivité.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence</span>
+  <h2 class="section-title">Structure du site maison-chloe.fr</h2>
+  <p class="section-desc">Pages recommandées avec leur framework rédactionnel, mot-clé cible et potentiel SEO.</p>
+  <div class="section-divider"></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location saisonnière Bourgogne</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Propriétaires</strong></td>
+          <td>PAS</td>
+          <td>confier son bien location courte durée Bourgogne</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Voyageurs</strong></td>
+          <td>BAB</td>
+          <td>location vacances Côte des Vins Bourgogne</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos services</strong></td>
+          <td>AIDA</td>
+          <td>services conciergerie immobilière location saisonnière</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre différence</strong></td>
+          <td>PAS</td>
+          <td>conciergerie professionnelle carte Hoguet Bourgogne</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>L'art de vivre en Bourgogne</strong></td>
+          <td>AIDA</td>
+          <td>séjour Côte des Vins villages viticoles Bourgogne</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — Chloé</strong></td>
+          <td>BAB</td>
+          <td>conciergerie Maison Chloé Bourgogne</td>
+          <td><span class="seo-badge seo-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale SEO — Marsannay / Dijon</strong></td>
+          <td>PAS</td>
+          <td>conciergerie location saisonnière Dijon Marsannay</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale SEO — Beaune / Nuits-Saint-Georges</strong></td>
+          <td>PAS</td>
+          <td>conciergerie location saisonnière Beaune Nuits-Saint-Georges</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conciergerie location courte durée conseils</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact</strong></td>
+          <td>—</td>
+          <td>contacter Maison Chloé conciergerie</td>
+          <td><span class="seo-badge seo-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon Sémantique</span>
+  <h2 class="section-title">Architecture de contenu & maillage interne</h2>
+  <p class="section-desc">Les clusters thématiques et la logique de circulation entre les pages pour maximiser l'autorité SEO.</p>
+  <div class="section-divider"></div>
+
+  <div class="grid-2" style="margin-bottom:32px;">
+    <div class="cluster-block">
+      <div class="cluster-title">🏠 Cluster 1 — Propriétaires & gestion</div>
+      <p style="font-size:14px; color:#4a4a4a;">Pages piliers : Accueil · Propriétaires · Nos services · Notre différence · Pages locales SEO</p>
+      <p style="font-size:14px; color:#4a4a4a; margin-top:8px;">Satellites blog : fiscalité LCD, déclaration meublé, optimisation revenus, carte Hoguet, mandats de gestion.</p>
+      <div class="cluster-keywords">
+        <span class="cluster-kw">conciergerie Bourgogne</span>
+        <span class="cluster-kw">location courte durée</span>
+        <span class="cluster-kw">mandat de gestion</span>
+        <span class="cluster-kw">revenus locatifs</span>
+        <span class="cluster-kw">carte professionnelle</span>
+      </div>
+    </div>
+    <div class="cluster-block">
+      <div class="cluster-title">🍷 Cluster 2 — Destination & art de vivre</div>
+      <p style="font-size:14px; color:#4a4a4a;">Pages piliers : L'art de vivre en Bourgogne · Voyageurs · Pages locales SEO</p>
+      <p style="font-size:14px; color:#4a4a4a; margin-top:8px;">Satellites blog : villages viticoles, gastronomie, agenda événements, guide Côte des Vins, que faire à Beaune.</p>
+      <div class="cluster-keywords">
+        <span class="cluster-kw">Côte des Vins</span>
+        <span class="cluster-kw">séjour Bourgogne</span>
+        <span class="cluster-kw">location vacances Beaune</span>
+        <span class="cluster-kw">tourisme Gevrey</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; margin-bottom:20px; color:#1a1218;">Logique de maillage interne</h3>
+
+  <div class="maillage-item">
+    <div class="maillage-source">📄 Accueil</div>
+    <div class="maillage-links">
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Propriétaires</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Nos services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Notre différence</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact</span>
+    </div>
+  </div>
+  <div class="maillage-item">
+    <div class="maillage-source">📄 Propriétaires</div>
+    <div class="maillage-links">
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Nos services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Notre différence</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact / Calendly</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Pages locales SEO</span>
+    </div>
+  </div>
+  <div class="maillage-item">
+    <div class="maillage-source">📄 Nos services</div>
+    <div class="maillage-links">
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Notre différence</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact</span>
+    </div>
+  </div>
+  <div class="maillage-item">
+    <div class="maillage-source">📄 L'art de vivre en Bourgogne</div>
+    <div class="maillage-links">
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Voyageurs</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Pages locales SEO</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Blog articles destination</span>
+    </div>
+  </div>
+  <div class="maillage-item">
+    <div class="maillage-source">📄 Articles Blog</div>
+    <div class="maillage-links">
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Page thématique correspondante</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact / Calendly</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Lead magnet</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de Conversion</span>
+  <h2 class="section-title">Du visiteur au propriétaire confiant</h2>
+  <p class="section-desc">Les 4 étapes du parcours de conversion d'un propriétaire hésitant vers un contact qualifié.</p>
+  <div class="section-divider"></div>
+
+  <div class="grid-2">
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">01</div>
+      <h3>🔍 Découverte</h3>
+      <span class="meta-label">Sources de trafic</span>
+      <div class="meta-value">Google SEO local · Instagram · Bouche-à-oreille · Recherche directe</div>
+      <span class="meta-label">Page concernée</span>
+      <div class="meta-value">Accueil · Pages locales SEO · Articles blog</div>
+      <span class="cta-pill">→ Découvrir nos services</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">02</div>
+      <h3>💡 Intérêt</h3>
+      <span class="meta-label">Sources de trafic</span>
+      <div class="meta-value">Navigation interne · Blog · Réseaux sociaux</div>
+      <span class="meta-label">Page concernée</span>
+      <div class="meta-value">Propriétaires · Nos services · Notre différence</div>
+      <span class="cta-pill">→ Télécharger le guide gratuit</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">03</div>
+      <h3>🤝 Confiance</h3>
+      <span class="meta-label">Sources de trafic</span>
+      <div class="meta-value">Navigation profonde · Retargeting · Email</div>
+      <span class="meta-label">Page concernée</span>
+      <div class="meta-value">À propos · Notre différence · Témoignages</div>
+      <span class="cta-pill">→ Voir les avis propriétaires</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">04</div>
+      <h3>🎯 Conversion</h3>
+      <span class="meta-label">Sources de trafic</span>
+      <div class="meta-value">CTA directs · Formulaire · Relance email</div>
+      <span class="meta-label">Page concernée</span>
+      <div class="meta-value">Contact · Calendly intégré</div>
+      <span class="cta-pill">→ Prendre rendez-vous</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers Marketing</span>
+  <h2 class="section-title">Outils & leviers de croissance recommandés</h2>
+  <p class="section-desc">Les actions marketing prioritaires pour générer des leads et installer la confiance.</p>
+  <div class="section-divider"></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🎁</span>
+      <h3>Lead Magnet</h3>
+      <p><strong>« Guide pratique : Confier sa résidence en Bourgogne — ce qu'il faut savoir avant de commencer »</strong><br>PDF téléchargeable couvrant fiscalité, cadre légal, checklist de mise en place et revenus potentiels. Capture l'email du propriétaire en phase de réflexion.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📅</span>
+      <h3>Prise de RDV</h3>
+      <p><strong>Calendly</strong> intégré directement sur la page Contact et en CTA flottant sur les pages Propriétaires et Nos services. Proposer un appel découverte de 30 min gratuit : "Échangeons sur votre bien".</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">⭐</span>
+      <h3>Preuve sociale</h3>
+      <p>Témoignages vidéo courts de propriétaires satisfaits (à venir) · Avis Google My Business · Captures d'écran d'échanges voyageurs anonymisés · Badge "Carte professionnelle Hoguet" visible en page d'accueil.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📋</span>
+      <h3>Formulaire qualifiant</h3>
+      <p>Champs recommandés : Prénom + Nom · Email · Téléphone · Localisation du bien · Type de bien (maison, appartement, corps de ferme…) · Situation actuelle (déjà loué / non loué) · Message libre.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📬</span>
+      <h3>Newsletter</h3>
+      <p>Angle éditorial : <strong>"La lettre des propriétaires Maison Chloé"</strong> — actualités LCD en Bourgogne, conseils d'optimisation, agenda des événements, retours de saison. Fréquence mensuelle recommandée.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction Visuelle & Éditoriale</span>
+  <h2 class="section-title">Univers graphique de Maison Chloé</h2>
+  <p class="section-desc">Palette de couleurs, tonalités visuelles et éléments graphiques recommandés pour le site.</p>
+  <div class="section-divider"></div>
+
+  <div class="palette-grid" style="margin-bottom:48px;">
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#f72585;"></div>
+      <span class="palette-name">Rose Signature</span>
+      <span class="palette-hex">#f72585</span>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#e0b509;"></div>
+      <span class="palette-name">Or Bourguignon</span>
+      <span class="palette-hex">#e0b509</span>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#1a1218;"></div>
+      <span class="palette-name">Nuit de Vigne</span>
+      <span class="palette-hex">#1a1218</span>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#f5f0eb;"></div>
+      <span class="palette-name">Lin Naturel</span>
+      <span class="palette-hex">#f5f0eb</span>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#ffffff; border:1px solid #e5e5e5;"></div>
+      <span class="palette-name">Blanc Calcaire</span>
+      <span class="palette-hex">#ffffff</span>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <span class="card-icon">📸</span>
+      <h3>Photographie</h3>
+      <p>Images lumineuses, naturelles, en lumière du jour. Vignes, pierres de Bourgogne, intérieurs soignés, détails d'accueil (plateau, linge, carnet). Ambiance chaleureuse sans surcharge.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🔤</span>
+      <h3>Typographie</h3>
+      <p>Playfair Display pour les titres (élégance et caractère). Inter pour le corps de texte (clarté et lisibilité). Contraste affirmé entre les deux registres.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🖼️</span>
+      <h3>Mise en page</h3>
+      <p>Grands espaces blancs, sections aérées. Alternance fond lin naturel / blanc pur. Touches de rose et d'or utilisées avec parcimonie pour les accents et les CTA.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✨</span>
+      <h3>Éléments d'ambiance</h3>
+      <p>Ligne dorée fine comme séparateur de section. Icônes simples et épurées. Aucun motif graphique surchargé. Élégance par la sobriété.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📱</span>
+      <h3>Références visuelles</h3>
+      <p>S'inspirer de : Conciergerie du Grand Est · La Conciergerie Lyonnaise · Les Suites Indivio — pour la sobriété, l'élégance et la clarté des sections.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles Blog Recommandés</span>
+  <h2 class="section-title">Stratégie de contenu — 6 premiers articles</h2>
+  <p class="section-desc">Sujets prioritaires pour alimenter le blog de Maison Chloé, capter le trafic SEO et nourrir la confiance des propriétaires.</p>
+  <div class="section-divider"></div>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <div class="tag tag-rose">Cluster Propriétaires</div>
+      <h3>Louer sa résidence secondaire en Bourgogne : par où commencer ?</h3>
+      <p style="font-size:13px; color:#6b7280;">Guide pratique étape par étape pour les propriétaires qui démarrent — déclaration, plateformes, fiscalité.</p>
+      <div class="blog-meta">
+        <span>Intention : informationnelle</span>
+        <span class="priority-badge priority-prioritaire">Prioritaire</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="tag tag-rose">Cluster Propriétaires</div>
+      <h3>Conciergerie avec carte professionnelle : pourquoi c'est important pour votre bien ?</h3>
+      <p style="font-size:13px; color:#6b7280;">Explication accessible des garanties apportées par la loi Hoguet et la carte G pour les propriétaires.</p>
+      <div class="blog-meta">
+        <span>Intention : informationnelle / réassurance</span>
+        <span class="priority-badge priority-prioritaire">Prioritaire</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="tag tag-rose">Cluster Propriétaires</div>
+      <h3>Combien peut rapporter une maison sur la Côte des Vins en location saisonnière ?</h3>
+      <p style="font-size:13px; color:#6b7280;">Article à fort potentiel de capture — chiffres, saisonnalité, variables, simulation indicative.</p>
+      <div class="blog-meta">
+        <span>Intention : commerciale / décision</span>
+        <span class="priority-badge priority-prioritaire">Prioritaire</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="tag tag-gold">Cluster Destination</div>
+      <h3>5 raisons de séjourner sur la Côte des Vins plutôt qu'à Dijon ou Beaune en hôtel</h3>
+      <p style="font-size:13px; color:#6b7280;">Article de destination attractif, utile pour les voyageurs et le SEO longue traîne.</p>
+      <div class="blog-meta">
+        <span>Intention : informationnelle / découverte</span>
+        <span class="priority-badge priority-moyen">Moyen</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="tag tag-rose">Cluster Propriétaires</div>
+      <h3>Location meublée courte durée en Bourgogne : ce qui change en 2025</h3>
+      <p style="font-size:13px; color:#6b7280;">Article actualité à mettre à jour annuellement — fort potentiel SEO et newsletter.</p>
+      <div class="blog-meta">
+        <span>Intention : informationnelle / actualité</span>
+        <span class="priority-badge priority-moyen">Moyen</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="tag tag-gold">Cluster Destination</div>
+      <h3>Gevrey-Chambertin, Vosne-Romanée, Nuits-Saint-Georges : quel village choisir pour son séjour en Bourgogne ?</h3>
+      <p style="font-size:13px; color:#6b7280;">Guide comparatif des villages de la Côte — excellent pour le SEO local et l'image de marque.</p>
+      <div class="blog-meta">
+        <span>Intention : comparaison / destination</span>
+        <span class="priority-badge priority-moyen">Moyen</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="tag tag-dark">Cluster Propriétaires</div>
+      <h3>Checklist : comment préparer son logement avant la première réservation ?</h3>
+      <p style="font-size:13px; color:#6b7280;">Contenu très pratique, idéal comme lead magnet ou article viral partagé sur Instagram.</p>
+      <div class="blog-meta">
+        <span>Intention : pratique / aide à la décision</span>
+        <span class="priority-badge priority-faible">Faible</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Maison Chloé</strong>
+  Conciergerie immobilière haut de gamme · Côte des Vins, Bourgogne<br>
+  contact@maison-chloe.fr · maison-chloe.fr<br><br>
+  <span style="font-size:11px; opacity:0.6;">Document confidentiel — Blueprint Stratégique réalisé par AR Digital · Reproduction interdite</span>
+</footer>
+
+</body>
+</html>
