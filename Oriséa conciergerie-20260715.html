@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Oriséa Conciergerie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold-primary: #B4811B;
+    --gold-secondary: #A88752;
+    --gold-light: #EDDAC3;
+    --white: #FFFFFF;
+    --text-dark: #1a1a1a;
+    --text-medium: #4a4a4a;
+    --text-light: #7a7a7a;
+    --bg-section: #FAFAF8;
+    --border-light: #f0e8d8;
+  }
+
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-dark);
+    background: #FFFFFF;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1a1208 0%, #2e1f06 40%, #3d2a08 70%, #1a1208 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(180,129,27,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .cover-ornament {
+    width: 60px;
+    height: 1px;
+    background: var(--gold-primary);
+    margin: 0 auto 32px;
+  }
+
+  .cover-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-secondary);
+    margin-bottom: 24px;
+  }
+
+  .cover-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 72px;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold-light);
+    margin-bottom: 48px;
+    opacity: 0.9;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-item .meta-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-secondary);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-item .meta-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+  }
+
+  .cover-sep {
+    width: 1px;
+    height: 32px;
+    background: rgba(180,129,27,0.4);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: var(--bg-section);
+  }
+
+  .section-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-primary);
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 48px;
+    line-height: 1.2;
+  }
+
+  .section-title span {
+    color: var(--gold-primary);
+  }
+
+  /* CARDS */
+  .cards-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .cards-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .cards-grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid var(--border-light);
+  }
+
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--gold-primary);
+    margin-bottom: 10px;
+    font-weight: 400;
+  }
+
+  .card-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--text-medium);
+    line-height: 1.7;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #2e1f06 0%, #3d2a08 100%);
+    border-radius: 18px;
+    padding: 44px 48px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(180,129,27,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-box::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(180,129,27,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .highlight-box .hl-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-secondary);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .highlight-box .hl-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: var(--white);
+    line-height: 1.4;
+    font-weight: 400;
+  }
+
+  .highlight-box .hl-title em {
+    color: var(--gold-light);
+    font-style: italic;
+  }
+
+  /* LISTS */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .styled-list li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--text-medium);
+    padding: 8px 0;
+    padding-left: 20px;
+    border-bottom: 1px solid var(--border-light);
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .styled-list li:last-child {
+    border-bottom: none;
+  }
+
+  .styled-list li::before {
+    content: '—';
+    color: var(--gold-primary);
+    position: absolute;
+    left: 0;
+    font-weight: 400;
+  }
+
+  /* OBJECTIFS */
+  .objectif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .objectif-item:last-child {
+    border-bottom: none;
+  }
+
+  .objectif-rank {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    color: var(--gold-light);
+    line-height: 1;
+    min-width: 36px;
+    font-weight: 400;
+  }
+
+  .objectif-content .obj-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px;
+    color: var(--gold-primary);
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+
+  .objectif-content .obj-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--text-medium);
+    line-height: 1.6;
+  }
+
+  /* TABLE */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid var(--border-light);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+  }
+
+  thead tr {
+    background: #2e1f06;
+  }
+
+  thead th {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    padding: 16px 20px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody tr:hover {
+    background: #fdf8f2;
+  }
+
+  tbody td {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--text-medium);
+    padding: 14px 20px;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  tbody td:first-child {
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  /* BADGES SEO */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-fort {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+
+  .badge-moyen {
+    background: #fff8e1;
+    color: #f57f17;
+  }
+
+  .badge-faible {
+    background: #f3f4f6;
+    color: #6b7280;
+  }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid var(--border-light);
+  }
+
+  .tunnel-step {
+    background: #fff;
+    padding: 28px 24px;
+    border-right: 1px solid var(--border-light);
+    position: relative;
+  }
+
+  .tunnel-step:last-child {
+    border-right: none;
+  }
+
+  .tunnel-step-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-secondary);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .tunnel-step-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+
+  .tunnel-step-info {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--text-medium);
+    line-height: 1.7;
+    margin-bottom: 6px;
+  }
+
+  .tunnel-step-info strong {
+    color: var(--gold-primary);
+    font-weight: 600;
+    display: block;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .tunnel-cta {
+    margin-top: 14px;
+    display: inline-block;
+    background: var(--gold-light);
+    color: var(--gold-primary);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* COCON */
+  .cluster-block {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid var(--border-light);
+    margin-bottom: 24px;
+  }
+
+  .cluster-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--gold-primary);
+    margin-bottom: 16px;
+    font-weight: 400;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .cluster-pages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .cluster-page-tag {
+    background: var(--gold-light);
+    color: var(--gold-primary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .maillage-block {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid var(--border-light);
+  }
+
+  .maillage-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+
+  .maillage-item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-light);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--text-medium);
+    line-height: 1.6;
+  }
+
+  .maillage-item:last-child {
+    border-bottom: none;
+  }
+
+  .maillage-source {
+    font-weight: 600;
+    color: var(--text-dark);
+    white-space: nowrap;
+  }
+
+  .maillage-arrow {
+    color: var(--gold-primary);
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .maillage-dest {
+    color: var(--gold-secondary);
+    white-space: nowrap;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 32px;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .palette-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+  }
+
+  .palette-hex {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--text-light);
+    text-align: center;
+  }
+
+  /* BLOG */
+  .blog-item {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid var(--border-light);
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+
+  .blog-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    color: var(--gold-light);
+    line-height: 1;
+    min-width: 40px;
+    font-weight: 400;
+  }
+
+  .blog-content .blog-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  .blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .blog-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: #f5ede0;
+    color: var(--gold-secondary);
+  }
+
+  .blog-intention {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--text-light);
+    padding: 3px 10px;
+    background: #f9f9f9;
+    border-radius: 20px;
+  }
+
+  /* LEVIERS */
+  .levier-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid var(--border-light);
+  }
+
+  .levier-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-secondary);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .levier-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 19px;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+
+  .levier-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--text-medium);
+    line-height: 1.7;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1a1208;
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--white);
+    font-weight: 400;
+  }
+
+  .footer-mention {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+  }
+
+  .footer-agency {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--gold-secondary);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    width: 48px;
+    height: 2px;
+    background: var(--gold-primary);
+    margin-bottom: 40px;
+  }
+
+  /* TON ÉDITORIAL */
+  .ton-grid {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .ton-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--gold-primary);
+    background: var(--gold-light);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-weight: 500;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 42px; }
+    .cover-meta { gap: 20px; }
+    .cover-sep { display: none; }
+
+    section { padding: 48px 24px; }
+
+    .section-title { font-size: 26px; margin-bottom: 32px; }
+
+    .cards-grid-2,
+    .cards-grid-3,
+    .cards-grid-4 {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-step {
+      border-right: none;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .tunnel-step:last-child {
+      border-bottom: none;
+    }
+
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box .hl-title { font-size: 20px; }
+
+    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+
+    .table-wrapper { border-radius: 10px; }
+
+    .blog-item { flex-direction: column; gap: 8px; }
+    .blog-num { font-size: 28px; }
+
+    .palette-grid { gap: 16px; }
+
+    .maillage-item {
+      flex-wrap: wrap;
+    }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-ornament"></div>
+  <div class="cover-label">Blueprint Stratégique</div>
+  <div class="cover-title">Oriséa</div>
+  <div class="cover-subtitle">Conciergerie</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="meta-label">Client</span>
+      <span class="meta-value">Perrine Serrecourt & Manon Le Roux</span>
+    </div>
+    <div class="cover-sep"></div>
+    <div class="cover-meta-item">
+      <span class="meta-label">Secteur</span>
+      <span class="meta-value">Conciergerie LCD — Occitanie</span>
+    </div>
+    <div class="cover-sep"></div>
+    <div class="cover-meta-item">
+      <span class="meta-label">Domaine</span>
+      <span class="meta-value">oriseaconciergerie.fr</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-badge">01 — Positionnement</div>
+  <h2 class="section-title">L'identité <span>Oriséa</span></h2>
+  <div class="section-divider"></div>
+
+  <div class="highlight-box">
+    <span class="hl-label">Promesse de valeur principale</span>
+    <div class="hl-title">Oriséa prend soin de votre bien comme s'il était le nôtre — <em>pour que chaque séjour soit une expérience mémorable et chaque propriétaire, pleinement serein.</em></div>
+  </div>
+
+  <div class="cards-grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <span class="card-icon">🎯</span>
+      <div class="card-title">Ligne directrice de communication</div>
+      <div class="card-text">Proximité humaine et exigence de qualité : deux amies passionnées qui traitent chaque bien avec soin, professionnalisme et bienveillance — comme elles le feraient pour leur propre maison.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">✍️</span>
+      <div class="card-title">Ton éditorial</div>
+      <div class="ton-grid">
+        <span class="ton-tag">Chaleureux</span>
+        <span class="ton-tag">Raffiné</span>
+        <span class="ton-tag">Rassurant</span>
+      </div>
+      <div class="card-text">Un langage élégant, sincère et précis — qui inspire confiance sans être froid, et incite à l'action sans être agressif.</div>
+    </div>
+  </div>
+
+  <div class="cards-grid-3">
+    <div class="card">
+      <span class="card-icon">🤝</span>
+      <div class="card-title">Duo fondateur ancré localement</div>
+      <div class="card-text">Deux co-fondatrices issues du Gers, installées à Toulouse — une conciergerie à visage humain, pas une franchise anonyme.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🏡</span>
+      <div class="card-title">Spécialisation haut de gamme & caractère</div>
+      <div class="card-text">Une expertise dédiée aux hébergements de caractère et aux biens haut de gamme, avec une valorisation sur-mesure de chaque propriété.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">✨</span>
+      <div class="card-title">Accompagnement de A à Z</div>
+      <div class="card-text">De la mise en service à l'optimisation tarifaire, en passant par l'accueil voyageurs et l'entretien — une offre clé en main sans friction pour le propriétaire.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">📊</span>
+      <div class="card-title">Transparence & reporting</div>
+      <div class="card-text">Un suivi régulier des revenus locatifs et une optimisation active des tarifs : le propriétaire garde la visibilité sans avoir à gérer.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🌟</span>
+      <div class="card-title">Offre de lancement privilégiée</div>
+      <div class="card-text">Une commission réduite à 23 % pour les premiers partenaires — un geste fort pour remercier ceux qui font confiance dès le départ.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-badge">02 — Client Cible</div>
+  <h2 class="section-title">Le profil du <span>propriétaire idéal</span></h2>
+  <div class="section-divider"></div>
+
+  <div class="cards-grid-2">
+    <div class="card">
+      <span class="card-icon">👤</span>
+      <div class="card-title">Profil type</div>
+      <ul class="styled-list">
+        <li>35 à 60 ans, actif ou investisseur patrimonial</li>
+        <li>Propriétaire d'un bien à Toulouse ou dans un rayon d'1h</li>
+        <li>Souvent primo-entrant en LCD ou déjà en activité mais épuisé par la gestion</li>
+        <li>Sensible au soin, à la qualité et à l'esthétique de son bien</li>
+        <li>Cherche à rentabiliser sans y consacrer son temps</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">💡</span>
+      <div class="card-title">Motivations principales</div>
+      <ul class="styled-list">
+        <li>Maximiser les revenus locatifs de son bien</li>
+        <li>Déléguer totalement sans perdre le contrôle</li>
+        <li>Être rassuré sur l'entretien et l'état du logement</li>
+        <li>Offrir une belle expérience aux voyageurs</li>
+        <li>Travailler avec des personnes de confiance, proches</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">🚧</span>
+      <div class="card-title">Freins & objections</div>
+      <ul class="styled-list">
+        <li>La commission de 25 % peut sembler élevée sans visibilité sur la valeur ajoutée</li>
+        <li>Peur de perdre le contrôle sur son bien</li>
+        <li>Doute sur la fiabilité d'une conciergerie jeune / en lancement</li>
+        <li>Hésitation face à l'engagement sans résultats prouvés</li>
+        <li>Comparaison facile avec d'autres acteurs locaux</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">✅</span>
+      <div class="card-title">Critères de décision</div>
+      <ul class="styled-list">
+        <li>Confiance dans les personnes derrière la conciergerie</li>
+        <li>Clarté de l'offre et transparence tarifaire</li>
+        <li>Qualité visuelle et professionnalisme du site</li>
+        <li>Avis, témoignages, preuves sociales</li>
+        <li>Réactivité et proximité géographique</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-badge">03 — Objectifs du Site</div>
+  <h2 class="section-title">Ce que le site doit <span>accomplir</span></h2>
+  <div class="section-divider"></div>
+
+  <div class="objectif-item">
+    <div class="objectif-rank">01</div>
+    <div class="objectif-content">
+      <div class="obj-title">Génération de leads qualifiés</div>
+      <div class="obj-desc">Capter des propriétaires de biens à Toulouse et dans la grande couronne via des formulaires de contact ciblés et un positionnement clair.</div>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">02</div>
+    <div class="objectif-content">
+      <div class="obj-title">Réassurance & création de confiance</div>
+      <div class="obj-desc">Valoriser le duo fondateur, l'histoire d'Oriséa et les engagements qualité pour rassurer face à une structure jeune.</div>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">03</div>
+    <div class="objectif-content">
+      <div class="obj-title">Prise de rendez-vous</div>
+      <div class="obj-desc">Inciter à un premier échange (appel découverte ou visio) via un CTA clair et récurrent sur toutes les pages stratégiques.</div>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">04</div>
+    <div class="objectif-content">
+      <div class="obj-title">SEO local — Toulouse & Occitanie</div>
+      <div class="obj-desc">Se positionner sur des requêtes à intention forte : "conciergerie Airbnb Toulouse", "gestion location saisonnière Toulouse", etc.</div>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">05</div>
+    <div class="objectif-content">
+      <div class="obj-title">Conversion de l'offre</div>
+      <div class="obj-desc">Présenter l'offre complète (25 % + mise en service 200 €) de façon claire, bénéfice-centrée et sans ambiguïté.</div>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">06</div>
+    <div class="objectif-content">
+      <div class="obj-title">Notoriété & positionnement haut de gamme</div>
+      <div class="obj-desc">Affirmer un positionnement premium sur les biens de caractère pour attirer des propriétaires de qualité et éviter le marché bas de gamme.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-badge">04 — Arborescence du Site</div>
+  <h2 class="section-title">Architecture <span>stratégique</span></h2>
+  <div class="section-divider"></div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Accueil</td>
+          <td>AIDA</td>
+          <td>Conciergerie location saisonnière Toulouse</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Notre offre</td>
+          <td>BAB</td>
+          <td>Conciergerie Airbnb Toulouse tarifs</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>À propos</td>
+          <td>PAS</td>
+          <td>Conciergerie Toulouse humaine locale</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Nos biens</td>
+          <td>AIDA</td>
+          <td>Logements gérés conciergerie Toulouse</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Blog</td>
+          <td>—</td>
+          <td>Location courte durée Toulouse conseils</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Contact / RDV</td>
+          <td>AIDA</td>
+          <td>Conciergerie Toulouse contact</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Page locale — Toulouse</td>
+          <td>PAS</td>
+          <td>Conciergerie Airbnb Toulouse</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Page locale — Occitanie / Grande Couronne</td>
+          <td>PAS</td>
+          <td>Conciergerie location courte durée Occitanie</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECTION 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-badge">05 — Cocon Sémantique</div>
+  <h2 class="section-title">Clusters thématiques & <span>maillage interne</span></h2>
+  <div class="section-divider"></div>
+
+  <div class="cluster-block">
+    <div class="cluster-title">🏠 Cluster 1 — Conciergerie & gestion LCD à Toulouse</div>
+    <div class="cluster-pages">
+      <span class="cluster-page-tag">Accueil</span>
+      <span class="cluster-page-tag">Notre offre</span>
+      <span class="cluster-page-tag">Page locale Toulouse</span>
+      <span class="cluster-page-tag">Page locale Occitanie</span>
+      <span class="cluster-page-tag">Contact / RDV</span>
+    </div>
+    <div class="card-text">Ce cluster cible les propriétaires en phase de décision active. Les pages locales renforcent la page d'offre et l'accueil via des mots-clés géolocalisés à forte intention.</div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title">✨ Cluster 2 — Expérience voyageur & valorisation du bien</div>
+    <div class="cluster-pages">
+      <span class="cluster-page-tag">Nos biens</span>
+      <span class="cluster-page-tag">À propos</span>
+      <span class="cluster-page-tag">Blog — articles expérience</span>
+    </div>
+    <div class="card-text">Ce cluster travaille la dimension qualitative et émotionnelle d'Oriséa. Il nourrit la confiance et se positionne sur des requêtes informatives secondaires.</div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title">📈 Cluster 3 — Rentabilité & optimisation LCD</div>
+    <div class="cluster-pages">
+      <span class="cluster-page-tag">Blog — articles rentabilité</span>
+      <span class="cluster-page-tag">Notre offre</span>
+      <span class="cluster-page-tag">Accueil</span>
+    </div>
+    <div class="card-text">Ce cluster attire des propriétaires en phase de recherche (TOFU) via des contenus blog sur la rentabilité LCD, qui renvoient ensuite vers la page d'offre.</div>
+  </div>
+
+  <div class="maillage-block">
+    <div class="maillage-title">Logique de maillage interne</div>
+    <div class="maillage-item">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre, À propos, Contact</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Notre offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact / RDV, Pages locales</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Pages locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre, Contact / RDV</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Articles Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre, Contact / RDV</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Nos biens</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre, À propos</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre, Contact / RDV</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-badge">06 — Tunnel de Conversion</div>
+  <h2 class="section-title">De la découverte à la <span>signature</span></h2>
+  <div class="section-divider"></div>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 01</span>
+      <div class="tunnel-step-title">Découverte</div>
+      <div class="tunnel-step-info"><strong>Source de trafic</strong>Google (SEO local), bouche à oreille, réseaux sociaux</div>
+      <div class="tunnel-step-info"><strong>Page concernée</strong>Accueil, Pages locales, Articles Blog</div>
+      <span class="tunnel-cta">Découvrir Oriséa →</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 02</span>
+      <div class="tunnel-step-title">Intérêt</div>
+      <div class="tunnel-step-info"><strong>Source de trafic</strong>Navigation interne, blog, ancrage SEO thématique</div>
+      <div class="tunnel-step-info"><strong>Page concernée</strong>Notre offre, Nos biens, À propos</div>
+      <span class="tunnel-cta">Voir notre offre →</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 03</span>
+      <div class="tunnel-step-title">Confiance</div>
+      <div class="tunnel-step-info"><strong>Source de trafic</strong>Navigation interne, lead magnet, réseaux sociaux</div>
+      <div class="tunnel-step-info"><strong>Page concernée</strong>À propos, Nos biens, témoignages</div>
+      <span class="tunnel-cta">Télécharger le guide →</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 04</span>
+      <div class="tunnel-step-title">Conversion</div>
+      <div class="tunnel-step-info"><strong>Source de trafic</strong>Toutes pages — CTA récurrents</div>
+      <div class="tunnel-step-info"><strong>Page concernée</strong>Contact / RDV, formulaire qualifiant</div>
+      <span class="tunnel-cta">Prendre rendez-vous →</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-badge">07 — Leviers Marketing Recommandés</div>
+  <h2 class="section-title">Activer la <span>croissance</span></h2>
+  <div class="section-divider"></div>
+
+  <div class="cards-grid-2">
+    <div class="levier-card">
+      <span class="levier-label">Lead Magnet</span>
+      <div class="levier-title">Guide PDF — "Louer son bien à Toulouse : les 7 clés pour maximiser ses revenus en 2025"</div>
+      <div class="levier-text">Un guide pratique et élégant à télécharger en échange d'un email. Il positionne Oriséa comme experte et capte des prospects en phase de réflexion (TOFU/MOFU). Format PDF soigné, dans la charte graphique Oriséa.</div>
+    </div>
+    <div class="levier-card">
+      <span class="levier-label">Prise de Rendez-vous</span>
+      <div class="levier-title">Calendly (ou Tidycal) — Appel découverte de 30 minutes</div>
+      <div class="levier-text">Intégrer un calendrier de prise de RDV directement sur la page Contact et dans le footer. L'appel est présenté comme un échange sans engagement, pour baisser la friction à l'entrée en contact.</div>
+    </div>
+    <div class="levier-card">
+      <span class="levier-label">Preuve Sociale</span>
+      <div class="levier-title">Témoignages propriétaires + Galeries des biens gérés</div>
+      <div class="levier-text">Dès les premières semaines : citations de propriétaires satisfaits (nom + ville + type de bien), photos avant/après des logements, et notes voyageurs Airbnb/Booking. À intégrer en page d'accueil et page offre.</div>
+    </div>
+    <div class="levier-card">
+      <span class="levier-label">Formulaire Qualifiant</span>
+      <div class="levier-title">Formulaire en 5 champs — Qualifier avant le premier appel</div>
+      <div class="levier-text">Champs recommandés : Prénom & Nom · Localisation du bien · Type de bien (appartement, maison, villa…) · Situation actuelle (déjà en LCD / pas encore) · Message libre. Objectif : arriver au RDV avec un contexte clair.</div>
+    </div>
+    <div class="levier-card" style="grid-column: 1 / -1;">
+      <span class="levier-label">Newsletter</span>
+      <div class="levier-title">Lettre mensuelle — "Le Carnet Oriséa"</div>
+      <div class="levier-text">Un envoi mensuel élégant destiné aux propriétaires : conseils pratiques sur la location courte durée, actualités réglementaires Toulouse/Occitanie, tendances voyageurs, coulisses d'Oriséa. Un outil de nurturing doux pour rester top of mind jusqu'à la décision.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-badge">08 — Direction Visuelle & Éditoriale</div>
+  <h2 class="section-title">L'univers <span>graphique</span> d'Oriséa</h2>
+  <div class="section-divider"></div>
+
+  <div class="cards-grid-2" style="margin-bottom: 48px;">
+    <div class="card">
+      <span class="card-icon">🔤</span>
+      <div class="card-title">Typographie — Titres</div>
+      <div class="card-text"><strong style="color: var(--gold-primary);">DM Serif Display</strong> — Une serif élégante à la fois douce et structurée. Elle confère à Oriséa une présence raffinée, entre hôtellerie haut de gamme et chaleur humaine. Parfaite pour les titres et accroches.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🔤</span>
+      <div class="card-title">Typographie — Corps de texte</div>
+      <div class="card-text"><strong style="color: var(--gold-primary);">Cormorant Garamond</strong> — Une Garamond moderne au rendu éditorial et literary. Elle donne aux textes d'Oriséa une allure de belle revue, cohérente avec le positionnement haut de gamme et le soin du détail.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🖼️</span>
+      <div class="card-title">Univers visuel</div>
+      <ul class="styled-list">
+        <li>Photographies d'intérieurs soignés, lumière naturelle dorée</li>
+        <li>Plans larges de Toulouse (Capitole, Garonne) pour ancrage local</li>
+        <li>Portraits humains du duo fondateur — sincères, chaleureux</li>
+        <li>Textures lin, bois clair, pierre — matières de caractère</li>
+        <li>Espaces blancs généreux, composition épurée, mise en page éditoriale</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">✨</span>
+      <div class="card-title">Inspirations visuelles retenues</div>
+      <ul class="styled-list">
+        <li>Nomads Co — sobriété premium et photography lifestyle</li>
+        <li>Les Sources de Caudalie — univers naturel et raffinement terroir</li>
+        <li>Hôtel 5 étoiles Bordeaux — élégance sans surcharge</li>
+        <li>Les Maisons de Campagne — chaleur, authenticité, caractère</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="palette-grid">
+    <div class="palette-item">
+      <div class="palette-swatch" style="background: #FFFFFF; border: 2px solid #e8e0d0;"></div>
+      <div class="palette-name">Blanc Pur</div>
+      <div class="palette-hex">#FFFFFF</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background: #B4811B;"></div>
+      <div class="palette-name">Or Principal</div>
+      <div class="palette-hex">#B4811B</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background: #A88752;"></div>
+      <div class="palette-name">Or Secondaire</div>
+      <div class="palette-hex">#A88752</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background: #EDDAC3;"></div>
+      <div class="palette-name">Crème Bandeau</div>
+      <div class="palette-hex">#EDDAC3</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background: #2e1f06;"></div>
+      <div class="palette-name">Brun Nuit</div>
+      <div class="palette-hex">#2E1F06</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-badge">09 — Articles Blog Recommandés</div>
+  <h2 class="section-title">Le contenu qui <span>attire & convainc</span></h2>
+  <div class="section-divider"></div>
+
+  <div class="blog-item">
+    <div class="blog-num">01</div>
+    <div class="blog-content">
+      <div class="blog-title">Louer son appartement sur Airbnb à Toulouse : par où commencer ?</div>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster — Conciergerie LCD Toulouse</span>
+        <span class="blog-intention">Intention informationnelle — débutant</span>
+        <span class="badge badge-fort">Prioritaire</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-item">
+    <div class="blog-num">02</div>
+    <div class="blog-content">
+      <div class="blog-title">Combien coûte une conciergerie Airbnb à Toulouse ? Comprendre les commissions</div>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster — Conciergerie LCD Toulouse</span>
+        <span class="blog-intention">Intention transactionnelle — décision</span>
+        <span class="badge badge-fort">Prioritaire</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-item">
+    <div class="blog-num">03</div>
+    <div class="blog-content">
+      <div class="blog-title">5 erreurs qui font baisser vos revenus Airbnb (et comment les éviter)</div>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster — Rentabilité & optimisation</span>
+        <span class="blog-intention">Intention informationnelle — propriétaire actif</span>
+        <span class="badge badge-fort">Prioritaire</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-item">
+    <div class="blog-num">04</div>
+    <div class="blog-content">
+      <div class="blog-title">Location saisonnière en Occitanie : quelles zones sont les plus rentables en 2025 ?</div>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster — Conciergerie LCD Toulouse</span>
+        <span class="blog-intention">Intention informationnelle — géolocalisée</span>
+        <span class="badge badge-moyen">Moyen</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-item">
+    <div class="blog-num">05</div>
+    <div class="blog-content">
+      <div class="blog-title">Hébergement de caractère : pourquoi les biens atypiques performent mieux sur Airbnb</div>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster — Expérience voyageur</span>
+        <span class="blog-intention">Intention informationnelle — positionnement haut de gamme</span>
+        <span class="badge badge-moyen">Moyen</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-item">
+    <div class="blog-num">06</div>
+    <div class="blog-content">
+      <div class="blog-title">Livret d'accueil Airbnb : pourquoi c'est essentiel et comment en créer un qui marque les esprits</div>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster — Expérience voyageur</span>
+        <span class="blog-intention">Intention informationnelle — bonnes pratiques</span>
+        <span class="badge badge-moyen">Moyen</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-item">
+    <div class="blog-num">07</div>
+    <div class="blog-content">
+      <div class="blog-title">Tarification dynamique en location courte durée : comment fonctionne l'optimisation des prix ?</div>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster — Rentabilité & optimisation</span>
+        <span class="blog-intention">Intention informationnelle — expert intermédiaire</span>
+        <span class="badge badge-faible">Faible</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Oriséa Conciergerie</div>
+  <div class="footer-mention">Document confidentiel — usage exclusif du client</div>
+  <div class="footer-agency">Blueprint par AR Digital</div>
+</footer>
+
+</body>
+</html>
