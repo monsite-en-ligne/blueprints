@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Maison Cléora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bleu-nuit: #17375E;
+    --ivoire: #F7F3EC;
+    --beige: #D9C4A3;
+    --cuivre: #B86542;
+    --dore: #C8A96A;
+    --blanc: #ffffff;
+    --texte: #2c2c2c;
+    --texte-doux: #6b6b6b;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--texte);
+    background-color: var(--blanc);
+  }
+
+  /* COUVERTURE */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #0d2540 0%, #17375E 50%, #1e4a7a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(200,169,106,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-ornament {
+    width: 40px;
+    height: 1px;
+    background: var(--dore);
+    margin: 0 auto 32px;
+  }
+
+  .cover-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--dore);
+    margin-bottom: 24px;
+  }
+
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 600;
+    color: var(--blanc);
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--beige);
+    margin-bottom: 48px;
+    opacity: 0.9;
+  }
+
+  .cover-ornament-bottom {
+    width: 40px;
+    height: 1px;
+    background: var(--dore);
+    margin: 0 auto 40px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dore);
+    display: block;
+    margin-bottom: 4px;
+    opacity: 0.8;
+  }
+
+  .cover-meta-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: rgba(247,243,236,0.85);
+    font-weight: 300;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 80px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-alt {
+    background-color: #faf8f5;
+  }
+
+  .section-alt-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 80px;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cuivre);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--bleu-nuit);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .section-divider {
+    width: 36px;
+    height: 1.5px;
+    background: var(--dore);
+    margin-bottom: 48px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--bleu-nuit);
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    color: var(--texte-doux);
+    line-height: 1.75;
+  }
+
+  /* GRILLES */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* PROMESSE */
+  .promesse-box {
+    background: linear-gradient(135deg, var(--bleu-nuit) 0%, #1e4a7a 100%);
+    border-radius: 14px;
+    padding: 48px;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .promesse-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dore);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .promesse-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-style: italic;
+    color: var(--blanc);
+    line-height: 1.5;
+  }
+
+  /* LISTE */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .styled-list li {
+    font-size: 14px;
+    color: var(--texte-doux);
+    line-height: 1.7;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(217,196,163,0.25);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .styled-list li:last-child {
+    border-bottom: none;
+  }
+
+  .styled-list li::before {
+    content: '—';
+    color: var(--dore);
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* TABLEAU */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--blanc);
+    font-size: 13.5px;
+  }
+
+  thead tr {
+    background: var(--bleu-nuit);
+  }
+
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    color: var(--blanc);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(217,196,163,0.2);
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody td {
+    padding: 16px 20px;
+    color: var(--texte);
+    vertical-align: middle;
+    line-height: 1.6;
+  }
+
+  tbody tr:hover {
+    background: #faf8f5;
+  }
+
+  /* BADGES SEO */
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-fort {
+    background: rgba(23,55,94,0.1);
+    color: var(--bleu-nuit);
+  }
+
+  .badge-moyen {
+    background: rgba(200,169,106,0.2);
+    color: #8a6d2a;
+  }
+
+  .badge-faible {
+    background: rgba(184,101,66,0.12);
+    color: var(--cuivre);
+  }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .tunnel-card {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-top: 3px solid var(--dore);
+  }
+
+  .tunnel-step {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dore);
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .tunnel-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--bleu-nuit);
+    margin-bottom: 16px;
+  }
+
+  .tunnel-row {
+    margin-bottom: 10px;
+  }
+
+  .tunnel-row-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--cuivre);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .tunnel-row-value {
+    font-size: 13.5px;
+    color: var(--texte-doux);
+    line-height: 1.6;
+  }
+
+  /* COCON SÉMANTIQUE */
+  .cluster-card {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .cluster-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--bleu-nuit);
+    margin-bottom: 6px;
+  }
+
+  .cluster-main {
+    font-size: 12px;
+    color: var(--cuivre);
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .cluster-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .cluster-tag {
+    background: var(--ivoire);
+    border: 1px solid var(--beige);
+    color: var(--texte);
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  /* MAILLAGE */
+  .maillage-box {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .maillage-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--bleu-nuit);
+    margin-bottom: 20px;
+  }
+
+  .maillage-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  .maillage-source {
+    font-weight: 600;
+    color: var(--bleu-nuit);
+    white-space: nowrap;
+  }
+
+  .maillage-arrow {
+    color: var(--dore);
+    font-size: 16px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .maillage-dest {
+    color: var(--texte-doux);
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* COULEURS */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 16px;
+  }
+
+  .palette-item {
+    text-align: center;
+    width: 90px;
+  }
+
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    margin: 0 auto 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .palette-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--texte);
+    margin-bottom: 2px;
+    line-height: 1.3;
+  }
+
+  .palette-hex {
+    font-size: 11px;
+    color: var(--texte-doux);
+    font-family: monospace;
+  }
+
+  /* LEVIERS */
+  .levier-card {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .levier-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .levier-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--bleu-nuit);
+    margin-bottom: 8px;
+  }
+
+  .levier-text {
+    font-size: 13.5px;
+    color: var(--texte-doux);
+    line-height: 1.75;
+  }
+
+  /* BLOG */
+  .blog-card {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .blog-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--bleu-nuit);
+    line-height: 1.4;
+  }
+
+  .blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .blog-tag {
+    font-size: 11px;
+    background: var(--ivoire);
+    border: 1px solid var(--beige);
+    color: var(--texte-doux);
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .blog-intent {
+    font-size: 12px;
+    color: var(--texte-doux);
+    font-style: italic;
+  }
+
+  /* OBJECTIFS */
+  .objectif-card {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .objectif-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--beige);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 40px;
+  }
+
+  .objectif-content {}
+
+  .objectif-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--bleu-nuit);
+    margin-bottom: 4px;
+  }
+
+  .objectif-text {
+    font-size: 13.5px;
+    color: var(--texte-doux);
+    line-height: 1.7;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--bleu-nuit);
+    color: rgba(247,243,236,0.6);
+    text-align: center;
+    padding: 40px 40px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  footer strong {
+    color: var(--blanc);
+    letter-spacing: 2px;
+    font-size: 13px;
+  }
+
+  .footer-dore {
+    color: var(--dore);
+    font-style: italic;
+    margin-top: 6px;
+    display: block;
+    font-size: 11px;
+  }
+
+  /* PRINT */
+  @media print {
+    .section, .section-alt-inner { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 42px; }
+    .cover-meta { gap: 28px; }
+    .section { padding: 48px 24px; }
+    .section-alt-inner { padding: 48px 24px; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4, .tunnel-grid { grid-template-columns: 1fr; }
+    .promesse-box { padding: 32px 24px; }
+    .promesse-text { font-size: 20px; }
+    .cover { padding: 48px 24px; }
+    .maillage-item { flex-wrap: wrap; }
+    .palette-grid { gap: 16px; }
+    .table-wrapper { overflow-x: auto; }
+    tbody td, thead th { padding: 12px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <div class="cover-ornament"></div>
+  <div class="cover-label">Blueprint Stratégique</div>
+  <h1 class="cover-title">Maison Cléora</h1>
+  <p class="cover-subtitle">L'art de recevoir avec élégance.</p>
+  <div class="cover-ornament-bottom"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Cliente</span>
+      <span class="cover-meta-value">Marie Laure Pasquet</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie courte durée</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Territoire</span>
+      <span class="cover-meta-value">Limoges & alentours</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+<div class="section">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Positionnement stratégique</h2>
+  <div class="section-divider"></div>
+
+  <div class="promesse-box">
+    <span class="promesse-label">Promesse de valeur principale</span>
+    <p class="promesse-text">« Confier votre logement à Maison Cléora, c'est la certitude que chaque détail sera soigné, chaque voyageur accueilli avec élégance, et chaque séjour transformé en expérience mémorable. »</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <div class="card-title">Ligne directrice de communication</div>
+      <p class="card-text">Hospitalité haut de gamme, relation de confiance authentique et excellence opérationnelle au service des propriétaires limougeauds.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Ton éditorial</div>
+      <p class="card-text"><strong style="color:var(--bleu-nuit);">Chaleureux · Élégant · Rassurant</strong><br><br>Un ton humain et sincère, inspiré des maisons de charme et de l'hôtellerie indépendante : on ne promet pas du luxe, on transmet une expérience.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--bleu-nuit); margin-bottom:24px; font-weight:600;">Piliers de différenciation</h3>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">L'art de recevoir comme vocation</div>
+      <p class="card-text">Derrière Maison Cléora, une histoire personnelle forte : une passion pour l'accueil née dès l'enfance, qui confère à l'offre une authenticité rare sur le marché local.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Une approche haut de gamme sans ostentation</div>
+      <p class="card-text">L'élégance se retrouve dans les détails, la communication et la qualité d'exécution — pas dans un positionnement luxe inaccessible.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Relation propriétaire fondée sur la confiance</div>
+      <p class="card-text">Écoute, transparence et disponibilité réelle : Maison Cléora traite chaque logement comme un lieu de vie confié avec confiance, pas comme un actif à optimiser.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Coordination complète clé en main</div>
+      <p class="card-text">De l'annonce à l'assistance voyageur, en passant par le linge, le ménage et les intervenants techniques : un seul interlocuteur pour tout.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Ancrage local fort à Limoges</div>
+      <p class="card-text">Connaissance du territoire, réactivité terrain et réseau de prestataires locaux : un avantage concret pour les propriétaires de la Haute-Vienne.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 02 — CLIENT CIBLE -->
+<div class="section-alt">
+<section id="bp-section-02">
+<div class="section-alt-inner">
+  <span class="section-badge">02 — Client cible</span>
+  <h2 class="section-title">Profil du propriétaire idéal</h2>
+  <div class="section-divider"></div>
+
+  <div class="grid-2" style="margin-bottom:24px;">
+    <div class="card">
+      <div class="card-title">Profil type</div>
+      <p class="card-text">Propriétaire de 35 à 60 ans, basé à Limoges ou dans un rayon de 30 km. Actif, peu disponible au quotidien. Possède un appartement, une maison de ville ou une résidence secondaire qu'il loue ou souhaite mettre en location saisonnière. Sensible à la qualité, à la discrétion et à la relation humaine.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Contexte de décision</div>
+      <p class="card-text">Il a déjà testé la gestion en autonomie et peine à suivre les impératifs opérationnels. Ou il découvre la location courte durée et veut bien faire dès le départ. Dans les deux cas, il cherche un partenaire de confiance, pas simplement un prestataire.</p>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">Motivations</div>
+      <ul class="styled-list">
+        <li>Déléguer sans se soucier des détails</li>
+        <li>Valoriser son bien correctement</li>
+        <li>Offrir un accueil de qualité aux voyageurs</li>
+        <li>Gagner du temps et de la sérénité</li>
+        <li>Travailler avec quelqu'un de fiable et réactif</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Freins & objections</div>
+      <ul class="styled-list">
+        <li>« La commission est-elle justifiée ? »</li>
+        <li>« Vais-je vraiment perdre le contrôle sur mon bien ? »</li>
+        <li>« Comment savoir si la qualité est au rendez-vous ? »</li>
+        <li>« Est-ce que ça vaut le coup pour un seul logement ? »</li>
+        <li>« La personne sera-t-elle toujours disponible ? »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Critères de décision</div>
+      <ul class="styled-list">
+        <li>Confiance immédiate dans la personne</li>
+        <li>Clarté de l'offre et de la tarification</li>
+        <li>Preuve de sérieux (témoignages, histoire)</li>
+        <li>Réactivité dans la communication</li>
+        <li>Sentiment d'être accompagné, pas juste suivi</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+</div>
+
+<!-- 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+<div class="section">
+  <span class="section-badge">03 — Objectifs du site</span>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+  <div class="section-divider"></div>
+
+  <div class="grid-2">
+    <div class="objectif-card">
+      <div class="objectif-number">1</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Générer des leads qualifiés</div>
+        <p class="objectif-text">Capter des propriétaires en recherche active via un formulaire de contact simple et une incitation claire à prendre contact.</p>
+      </div>
+    </div>
+    <div class="objectif-card">
+      <div class="objectif-number">2</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Réassurer et créer la confiance</div>
+        <p class="objectif-text">L'histoire personnelle, les valeurs et le ton chaleureux doivent lever les doutes avant même un premier échange.</p>
+      </div>
+    </div>
+    <div class="objectif-card">
+      <div class="objectif-number">3</div>
+      <div class="objectif-content">
+        <div class="objectif-title">SEO local à Limoges</div>
+        <p class="objectif-text">Positionner Maison Cléora sur les requêtes clés de propriétaires locaux cherchant une conciergerie Airbnb à Limoges.</p>
+      </div>
+    </div>
+    <div class="objectif-card">
+      <div class="objectif-number">4</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Prise de rendez-vous</div>
+        <p class="objectif-text">Faciliter le passage à l'action avec un CTA discret mais visible invitant à un premier appel ou échange découverte.</p>
+      </div>
+    </div>
+    <div class="objectif-card">
+      <div class="objectif-number">5</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Construire la notoriété locale</div>
+        <p class="objectif-text">Installer Maison Cléora comme la référence conciergerie haut de gamme sur Limoges grâce au positionnement éditorial et au blog.</p>
+      </div>
+    </div>
+    <div class="objectif-card">
+      <div class="objectif-number">6</div>
+      <div class="objectif-content">
+        <div class="objectif-title">Conversion par la narration</div>
+        <p class="objectif-text">La page À propos est un levier de conversion à part entière : l'histoire de Marie Laure transforme un visiteur curieux en prospect convaincu.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 04 — ARBORESCENCE -->
+<div class="section-alt">
+<section id="bp-section-04">
+<div class="section-alt-inner">
+  <span class="section-badge">04 — Arborescence du site</span>
+  <h2 class="section-title">Structure des pages</h2>
+  <div class="section-divider"></div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA — Attention, Intérêt, Désir, Action</td>
+          <td>conciergerie Airbnb Limoges</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos prestations</strong></td>
+          <td>BAB — Before, After, Bridge</td>
+          <td>conciergerie location courte durée Limoges</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos</strong></td>
+          <td>Storytelling narratif + PAS</td>
+          <td>conciergerie haut de gamme Limoges</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO Local — Limoges</strong></td>
+          <td>PAS — Problème, Agitation, Solution</td>
+          <td>conciergerie location saisonnière Limoges</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO Local — Haute-Vienne</strong></td>
+          <td>PAS — Problème, Agitation, Solution</td>
+          <td>conciergerie Airbnb Haute-Vienne</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact</strong></td>
+          <td>Direct — formulaire + éléments de réassurance</td>
+          <td>contacter conciergerie Limoges</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>Informatif — cluster SEO</td>
+          <td>location courte durée Limoges conseils</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:16px; font-size:12.5px; color:var(--texte-doux); font-style:italic;">Note : la page « Nos prestations » détaille l'ensemble des services (coordination réservations, ménage, linge, accueil voyageurs, conseils de valorisation…) sur une seule page structurée — pas une page par service.</p>
+</div>
+</section>
+</div>
+
+<!-- 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+<div class="section">
+  <span class="section-badge">05 — Cocon sémantique</span>
+  <h2 class="section-title">Architecture éditoriale & maillage</h2>
+  <div class="section-divider"></div>
+
+  <div class="grid-3" style="margin-bottom:40px;">
+    <div class="cluster-card">
+      <div class="cluster-title">Cluster 1</div>
+      <div class="cluster-main">Conciergerie & délégation</div>
+      <div class="cluster-tags">
+        <span class="cluster-tag">Accueil (pilier)</span>
+        <span class="cluster-tag">Nos prestations</span>
+        <span class="cluster-tag">SEO Limoges</span>
+        <span class="cluster-tag">Qu'est-ce qu'une conciergerie ?</span>
+        <span class="cluster-tag">Pourquoi déléguer ?</span>
+        <span class="cluster-tag">Commission conciergerie</span>
+      </div>
+    </div>
+    <div class="cluster-card">
+      <div class="cluster-title">Cluster 2</div>
+      <div class="cluster-main">Location courte durée & performance</div>
+      <div class="cluster-tags">
+        <span class="cluster-tag">Nos prestations (pilier)</span>
+        <span class="cluster-tag">Optimiser annonce Airbnb</span>
+        <span class="cluster-tag">Préparer logement voyageurs</span>
+        <span class="cluster-tag">Accueil voyageur qualité</span>
+        <span class="cluster-tag">SEO Haute-Vienne</span>
+      </div>
+    </div>
+    <div class="cluster-card">
+      <div class="cluster-title">Cluster 3</div>
+      <div class="cluster-main">Confiance & relation propriétaire</div>
+      <div class="cluster-tags">
+        <span class="cluster-tag">À propos (pilier)</span>
+        <span class="cluster-tag">Valeurs Maison Cléora</span>
+        <span class="cluster-tag">Témoignages propriétaires</span>
+        <span class="cluster-tag">Comment choisir sa conciergerie</span>
+        <span class="cluster-tag">Contact</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="maillage-box">
+    <div class="maillage-title">Logique de maillage interne</div>
+    <div class="maillage-item">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos prestations · À propos · Contact · SEO Limoges</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Nos prestations</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact · À propos · Articles blog (cluster 2)</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact · Nos prestations · Articles blog (cluster 3)</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">SEO Limoges / Haute-Vienne</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos prestations · Contact · Articles blog (cluster 1)</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Articles blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos prestations · Contact · Pages SEO locales</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 06 — TUNNEL DE CONVERSION -->
+<div class="section-alt">
+<section id="bp-section-06">
+<div class="section-alt-inner">
+  <span class="section-badge">06 — Tunnel de conversion</span>
+  <h2 class="section-title">Du premier clic à la prise de contact</h2>
+  <div class="section-divider"></div>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-card">
+      <span class="tunnel-step">Étape 01</span>
+      <div class="tunnel-title">Découverte</div>
+      <div class="tunnel-row">
+        <span class="tunnel-row-label">Source de trafic</span>
+        <span class="tunnel-row-value">Google (recherche organique), bouche à oreille local, réseaux sociaux (Instagram)</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-row-label">Page concernée</span>
+        <span class="tunnel-row-value">Page d'accueil · Pages SEO locales</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-row-label">CTA associé</span>
+        <span class="tunnel-row-value">« Découvrir nos prestations » · « En savoir plus »</span>
+      </div>
+    </div>
+    <div class="tunnel-card">
+      <span class="tunnel-step">Étape 02</span>
+      <div class="tunnel-title">Intérêt</div>
+      <div class="tunnel-row">
+        <span class="tunnel-row-label">Source de trafic</span>
+        <span class="tunnel-row-value">Navigation interne depuis l'accueil · Articles blog</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-row-label">Page concernée</span>
+        <span class="tunnel-row-value">Page Nos prestations · Blog</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-row-label">CTA associé</span>
+        <span class="tunnel-row-value">« Télécharger le guide propriétaire » · « Obtenir un devis »</span>
+      </div>
+    </div>
+    <div class="tunnel-card">
+      <span class="tunnel-step">Étape 03</span>
+      <div class="tunnel-title">Confiance</div>
+      <div class="tunnel-row">
+        <span class="tunnel-row-label">Source de trafic</span>
+        <span class="tunnel-row-value">Navigation interne depuis les prestations · Lead magnet</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-row-label">Page concernée</span>
+        <span class="tunnel-row-value">Page À propos · Témoignages propriétaires</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-row-label">CTA associé</span>
+        <span class="tunnel-row-value">« Prendre rendez-vous » · « Me contacter »</span>
+      </div>
+    </div>
+    <div class="tunnel-card">
+      <span class="tunnel-step">Étape 04</span>
+      <div class="tunnel-title">Conversion</div>
+      <div class="tunnel-row">
+        <span class="tunnel-row-label">Source de trafic</span>
+        <span class="tunnel-row-value">Navigation interne toutes pages · Email lead magnet</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-row-label">Page concernée</span>
+        <span class="tunnel-row-value">Page Contact · Lien prise de RDV</span>
+      </div>
+      <div class="tunnel-row">
+        <span class="tunnel-row-label">CTA associé</span>
+        <span class="tunnel-row-value">« Réserver un appel découverte gratuit » · Formulaire qualifiant</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+</div>
+
+<!-- 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+<div class="section">
+  <span class="section-badge">07 — Leviers marketing recommandés</span>
+  <h2 class="section-title">Outils de croissance & de conversion</h2>
+  <div class="section-divider"></div>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <span class="levier-icon">📘</span>
+      <div class="levier-title">Lead magnet</div>
+      <p class="levier-text">Guide PDF élégant : <em>« 7 détails qui font la différence pour accueillir vos voyageurs comme dans une maison de charme »</em>. Format court, illustré, signé Maison Cléora. Téléchargeable en échange d'un email. Positionne immédiatement l'expertise et la sensibilité haut de gamme.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">📅</span>
+      <div class="levier-title">Prise de rendez-vous</div>
+      <p class="levier-text">Outil recommandé : <strong>Calendly</strong> (version gratuite suffisante au démarrage). Intégrer un lien vers un créneau « Appel découverte gratuit 20 min » en CTA secondaire sur toutes les pages clés. Permet de qualifier sans friction et de personnaliser l'échange.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">⭐</span>
+      <div class="levier-title">Preuve sociale</div>
+      <p class="levier-text">Témoignages propriétaires sous forme de citations longues et nominatives (prénom + ville). Avis Google Business à mettre en avant. À terme : photos avant/après de logements préparés par Maison Cléora, avec l'accord des propriétaires.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">📋</span>
+      <div class="levier-title">Formulaire qualifiant</div>
+      <p class="levier-text">Champs recommandés : Prénom · Email · Téléphone · Type de bien (appartement / maison / autre) · Ville · Nombre de logements · Déjà en location ? (oui/non) · Message libre. Court, élégant, non intrusif.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">✉️</span>
+      <div class="levier-title">Newsletter</div>
+      <p class="levier-text">Angle éditorial : <em>« La Lettre de Maison Cléora »</em> — conseils bienveillants pour les propriétaires, inspiration déco et accueil, actualités locales de la location saisonnière à Limoges. Fréquence mensuelle, ton chaleureux et personnel.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 08 — DIRECTION VISUELLE -->
+<div class="section-alt">
+<section id="bp-section-08">
+<div class="section-alt-inner">
+  <span class="section-badge">08 — Direction visuelle & éditoriale</span>
+  <h2 class="section-title">Identité visuelle de Maison Cléora</h2>
+  <div class="section-divider"></div>
+
+  <h3 style="font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--bleu-nuit); margin-bottom:24px; font-weight:600;">Palette de couleurs</h3>
+  <div class="palette-grid">
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#17375E;"></div>
+      <div class="palette-name">Bleu Maison Cléora</div>
+      <div class="palette-hex">#17375E</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#F7F3EC; border: 1px solid #e8e2d8;"></div>
+      <div class="palette-name">Ivoire chaleureux</div>
+      <div class="palette-hex">#F7F3EC</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#D9C4A3;"></div>
+      <div class="palette-name">Beige sable</div>
+      <div class="palette-hex">#D9C4A3</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#B86542;"></div>
+      <div class="palette-name">Cuivre terracotta</div>
+      <div class="palette-hex">#B86542</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#C8A96A;"></div>
+      <div class="palette-name">Doré discret</div>
+      <div class="palette-hex">#C8A96A</div>
+    </div>
+  </div>
+
+  <div style="margin-top:48px;">
+    <h3 style="font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--bleu-nuit); margin-bottom:24px; font-weight:600;">Univers visuel recommandé</h3>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Typographie</div>
+        <p class="card-text"><strong>Titres :</strong> Cormorant Garamond — serif élégante, éditoriale, intemporelle.<br><strong>Corps :</strong> Montserrat ou Source Sans Pro — sans serif sobre et très lisible.<br><strong>Signature :</strong> Script élégante uniquement pour « L'art de recevoir avec élégance. »</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Photographies</div>
+        <p class="card-text">Lumière naturelle douce, intérieurs chaleureux, détails raffinés. À privilégier : lit soigneusement préparé, carnet d'accueil, bouquet de fleurs, clé en gros plan, tasse de café, linge plié avec soin. À éviter : villas extravagantes, piscines, effets HDR.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Mise en page & style</div>
+        <p class="card-text">Minimaliste, éditorial, aéré. Beaucoup d'espace blanc. Traits séparateurs très fins ou absents. Icônes fines en bleu ou cuivre, sans remplissage massif. Aucune animation aggressive. Le vide fait partie du design.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Illustrations & éléments décoratifs</div>
+        <p class="card-text">Feuillages à l'aquarelle discrets : olivier, eucalyptus, herbes fines. Touches végétales en fond ou en séparateur. Style organique, jamais géométrique ou technique. En harmonie avec les couleurs beige et doré.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Ambiance & émotion cible</div>
+        <p class="card-text">Chaleureuse, raffinée, authentique, rassurante. Le visiteur doit ressentir immédiatement : <em>« Ici, je vais être bien accueilli. »</em> L'univers s'inspire des maisons de charme, hôtels indépendants et domaines viticoles — jamais d'un marketplace commercial.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+</div>
+
+<!-- 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+<div class="section">
+  <span class="section-badge">09 — Articles de blog recommandés</span>
+  <h2 class="section-title">Stratégie de contenu SEO</h2>
+  <div class="section-divider"></div>
+
+  <div class="table-wrapper" style="margin-bottom:32px;">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Conciergerie Airbnb à Limoges : pourquoi déléguer la gestion de votre location courte durée ?</strong></td>
+          <td>Cluster 1 — Conciergerie & délégation</td>
+          <td>Informationnelle / Commerciale — propriétaire qui hésite à déléguer</td>
+          <td><span class="badge badge-fort">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>7 détails qui transforment un séjour ordinaire en expérience mémorable pour vos voyageurs</strong></td>
+          <td>Cluster 2 — Courte durée & performance</td>
+          <td>Informationnelle — propriétaire souhaitant améliorer son accueil</td>
+          <td><span class="badge badge-fort">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Comment préparer votre logement pour une location saisonnière à Limoges : guide pratique</strong></td>
+          <td>Cluster 2 — Courte durée & performance</td>
+          <td>Transactionnelle / Informationnelle — recherche de conseils opérationnels locaux</td>
+          <td><span class="badge badge-fort">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Choisir sa conciergerie à Limoges : 5 critères essentiels pour ne pas se tromper</strong></td>
+          <td>Cluster 3 — Confiance & relation propriétaire</td>
+          <td>Commerciale — comparaison et aide à la décision</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Location courte durée en Haute-Vienne : opportunités et conseils pour les propriétaires</strong></td>
+          <td>Cluster 1 — Conciergerie & délégation</td>
+          <td>Informationnelle — propriétaire local qui découvre la LCD</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Linge de maison, ménage, accueil : comment une conciergerie coordonne chaque séjour à votre place</strong></td>
+          <td>Cluster 2 — Courte durée & performance</td>
+          <td>Informationnelle — propriétaire curieux du fonctionnement concret</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Pourquoi la commission d'une conciergerie est souvent le meilleur investissement pour un propriétaire</strong></td>
+          <td>Cluster 3 — Confiance & relation propriétaire</td>
+          <td>Commerciale — objection prix, aide à la décision</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>MAISON CLÉORA</strong>
+  <span class="footer-dore">L'art de recevoir avec élégance.</span>
+  <p style="margin-top:16px; font-size:11px; letter-spacing:1.5px; opacity:0.5;">Document confidentiel — Blueprint Stratégique · AR Digital · Tous droits réservés</p>
+</footer>
+
+</body>
+</html>
