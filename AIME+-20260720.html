@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blueprint Stratégique — AIME PLUS VTC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #1a1a2e;
+      background: #f8f8f6;
+    }
+
+    /* ─── COUVERTURE ─── */
+    .cover {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #0d0d1a 0%, #1a1a3e 40%, #0f2044 75%, #0a1628 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 40px;
+      position: relative;
+    }
+    .cover-badge {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(200, 170, 100, 0.8);
+      margin-bottom: 32px;
+    }
+    .cover-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+    .cover-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 56px;
+    }
+    .cover-meta {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cover-meta-item {
+      text-align: center;
+    }
+    .cover-meta-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(200,170,100,0.7);
+      margin-bottom: 4px;
+    }
+    .cover-meta-value {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      font-weight: 400;
+    }
+    .cover-line {
+      width: 60px;
+      height: 1px;
+      background: rgba(200,170,100,0.4);
+      margin: 0 10px;
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      padding: 70px 60px;
+      page-break-inside: avoid;
+    }
+    section:nth-child(even) { background: #f8f8f6; }
+    section:nth-child(odd)  { background: #ffffff; }
+
+    .section-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c8a96e;
+      background: rgba(200,169,110,0.1);
+      border: 1px solid rgba(200,169,110,0.25);
+      border-radius: 4px;
+      padding: 4px 12px;
+      margin-bottom: 16px;
+    }
+    h2.section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 700;
+      color: #0f2044;
+      margin-bottom: 40px;
+      line-height: 1.2;
+    }
+
+    /* ─── CARDS ─── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+    .grid-4 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: #0f2044;
+      margin-bottom: 10px;
+    }
+    .card p, .card li {
+      font-size: 14px;
+      color: #4a4a6a;
+      line-height: 1.75;
+    }
+    .card ul { padding-left: 16px; }
+    .card ul li { margin-bottom: 4px; }
+
+    /* ─── HIGHLIGHT BOX ─── */
+    .highlight-box {
+      background: linear-gradient(135deg, #0f2044 0%, #1a3a6e 100%);
+      border-radius: 14px;
+      padding: 36px 40px;
+      color: #ffffff;
+      margin-bottom: 36px;
+    }
+    .highlight-box .label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c8a96e;
+      margin-bottom: 12px;
+    }
+    .highlight-box p {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: #ffffff;
+    }
+
+    /* ─── PILIERS ─── */
+    .pillar-icon {
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+
+    /* ─── TABLEAU ─── */
+    .table-wrapper { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    thead tr {
+      background: #0f2044;
+      color: #ffffff;
+    }
+    thead th {
+      padding: 14px 18px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+    tbody tr:nth-child(even) { background: #f4f4f8; }
+    tbody tr:nth-child(odd)  { background: #ffffff; }
+    tbody td {
+      padding: 13px 18px;
+      color: #2a2a4a;
+      vertical-align: top;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* ─── BADGES SEO ─── */
+    .badge-fort   { background: #d4edda; color: #1a6632; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+    .badge-moyen  { background: #fff3cd; color: #7a5c00; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+    .badge-faible { background: #f8d7da; color: #842029; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+
+    /* ─── TUNNEL ─── */
+    .tunnel-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; }
+    .tunnel-step {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-top: 4px solid #c8a96e;
+      position: relative;
+    }
+    .tunnel-step-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c8a96e;
+      margin-bottom: 8px;
+    }
+    .tunnel-step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f2044;
+      margin-bottom: 14px;
+    }
+    .tunnel-row { display: flex; flex-direction: column; gap: 8px; }
+    .tunnel-item { font-size: 13px; color: #4a4a6a; }
+    .tunnel-item strong { color: #0f2044; display: block; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 2px; }
+    .cta-tag {
+      display: inline-block;
+      margin-top: 12px;
+      background: rgba(200,169,110,0.12);
+      color: #a07820;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(200,169,110,0.3);
+    }
+
+    /* ─── PALETTE ─── */
+    .palette-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .color-swatch-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .color-swatch {
+      width: 80px;
+      height: 80px;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .color-name { font-size: 13px; font-weight: 500; color: #1a1a2e; text-align: center; }
+    .color-hex  { font-size: 11px; color: #999; text-align: center; }
+
+    /* ─── COCON ─── */
+    .cluster-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .cluster-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      color: #0f2044;
+      margin-bottom: 14px;
+    }
+    .cluster-card .pages-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .cluster-card .page-item {
+      font-size: 13px;
+      color: #4a4a6a;
+      padding: 6px 10px;
+      background: #f4f4f8;
+      border-radius: 6px;
+    }
+    .maillage-box {
+      background: #f4f4f8;
+      border-radius: 10px;
+      padding: 20px 24px;
+      font-size: 13px;
+      color: #2a2a4a;
+      line-height: 2;
+    }
+    .maillage-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .maillage-row:last-child { margin-bottom: 0; }
+    .maillage-source {
+      font-weight: 600;
+      color: #0f2044;
+      white-space: nowrap;
+    }
+    .maillage-arrow {
+      color: #c8a96e;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .maillage-target {
+      color: #4a4a6a;
+    }
+
+    /* ─── LEVIERS ─── */
+    .levier-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .levier-card .levier-icon {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .levier-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: #0f2044;
+      margin-bottom: 8px;
+    }
+    .levier-card p { font-size: 13px; color: #4a4a6a; line-height: 1.7; }
+
+    /* ─── ARTICLES BLOG ─── */
+    .article-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .article-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: #0f2044;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .article-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .article-tag { font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 600; }
+    .tag-cluster  { background: #e8eaf6; color: #3949ab; }
+    .tag-intention{ background: #e8f5e9; color: #2e7d32; }
+
+    /* ─── OBJECTIFS ─── */
+    .obj-list { display: flex; flex-direction: column; gap: 14px; }
+    .obj-item {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 18px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 14px;
+      color: #2a2a4a;
+    }
+    .obj-rank {
+      min-width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #0f2044;
+      color: #c8a96e;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #0d0d1a;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 32px 40px;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+    footer span { color: rgba(200,169,110,0.7); font-weight: 600; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .cover-title { font-size: 40px; }
+      .cover-meta  { gap: 20px; }
+      .cover-line  { display: none; }
+      section { padding: 40px 24px; }
+      h2.section-title { font-size: 26px; }
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .tunnel-grid { grid-template-columns: 1fr; }
+      .highlight-box { padding: 24px 22px; }
+      .highlight-box p { font-size: 18px; }
+      .table-wrapper { overflow-x: auto; }
+      table { min-width: 560px; }
+      .palette-grid { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════ COUVERTURE -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique · AR Digital</div>
+  <div class="cover-title">AIME PLUS VTC</div>
+  <div class="cover-subtitle">Document de positionnement &amp; stratégie web</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Client</div>
+      <div class="cover-meta-value">Mukoko Kubila</div>
+    </div>
+    <div class="cover-line"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Secteur</div>
+      <div class="cover-meta-value">Transport VTC</div>
+    </div>
+    <div class="cover-line"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Zone</div>
+      <div class="cover-meta-value">Paris &amp; Banlieue</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-badge">01 — Positionnement</div>
+  <h2 class="section-title">Positionnement &amp; identité de marque</h2>
+
+  <div class="highlight-box">
+    <div class="label">Promesse de valeur principale</div>
+    <p>AIME PLUS VTC vous transporte à Paris et en Île-de-France avec ponctualité, discrétion et élégance — que ce soit pour un vol, une réunion d'affaires ou une soirée d'exception.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:36px;">
+    <div class="card">
+      <h3>Ligne directrice de communication</h3>
+      <p>Transport premium sans friction : de la réservation à la dépose, chaque interaction reflète sérieux, fluidité et haut niveau de service. Le client ne gère rien — il fait confiance.</p>
+    </div>
+    <div class="card">
+      <h3>Ton éditorial</h3>
+      <p><strong>Rassurant · Élégant · Professionnel</strong></p>
+      <p>Un ton sobre et chaleureux, qui inspire confiance sans être distant — comme un chauffeur privé qui anticipe vos besoins sans jamais s'imposer.</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="pillar-icon">✈️</div>
+      <h3>Expertise aéroports &amp; gares</h3>
+      <p>Transferts CDG, Orly, Gare du Nord, Lyon… une maîtrise totale des flux parisiens pour des prises en charge impeccables, même aux heures de pointe.</p>
+    </div>
+    <div class="card">
+      <div class="pillar-icon">🚗</div>
+      <h3>Flotte 3 niveaux adaptée à chaque besoin</h3>
+      <p>Berline pour les déplacements affaires, SUV pour le confort grand format, VAN pour les groupes ou les événements — la bonne voiture pour chaque occasion.</p>
+    </div>
+    <div class="card">
+      <div class="pillar-icon">🏢</div>
+      <h3>Partenaire de confiance des entreprises</h3>
+      <p>Contrats entreprises, facturation adaptée, réactivité garantie : AIME PLUS VTC s'intègre naturellement dans les politiques de déplacement professionnelles.</p>
+    </div>
+    <div class="card">
+      <div class="pillar-icon">🎯</div>
+      <h3>Service événementiel &amp; city tour haut de gamme</h3>
+      <p>Mise à disposition à l'heure pour mariages, soirées VIP, visites de Paris — une expérience personnalisée bien au-delà du simple transport.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-badge">02 — Client cible</div>
+  <h2 class="section-title">Profil &amp; psychologie du client idéal</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Profil type</h3>
+      <ul>
+        <li>Cadre supérieur / dirigeant, 35–60 ans</li>
+        <li>Voyageur d'affaires régulier (vols fréquents)</li>
+        <li>Particulier premium exigeant sur la qualité</li>
+        <li>Organisateur d'événements (RH, wedding planner)</li>
+        <li>Touriste international souhaitant découvrir Paris</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Arriver à l'heure, sans stress ni mauvaise surprise</li>
+        <li>Profiter d'un trajet pour travailler ou se détendre</li>
+        <li>Offrir une image professionnelle à ses invités</li>
+        <li>Éviter les aléas des taxis ou transports en commun</li>
+        <li>Bénéficier d'un service mémorable pour un événement</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Freins &amp; objections</h3>
+      <ul>
+        <li>Prix perçu comme trop élevé vs taxi classique</li>
+        <li>Méfiance envers un prestataire inconnu</li>
+        <li>Peur d'un chauffeur en retard ou peu professionnel</li>
+        <li>Manque de visibilité sur la fiabilité du service</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Avis clients vérifiés et nombreux</li>
+        <li>Facilité &amp; rapidité de réservation</li>
+        <li>Clarté des tarifs (pas de surprise)</li>
+        <li>Qualité et propreté des véhicules</li>
+        <li>Réactivité et disponibilité du chauffeur</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-badge">03 — Objectifs du site</div>
+  <h2 class="section-title">Objectifs web priorisés</h2>
+
+  <div class="obj-list">
+    <div class="obj-item"><div class="obj-rank">1</div><strong>Génération de leads &amp; conversion</strong> — Transformer chaque visiteur en demande de devis ou réservation directe.</div>
+    <div class="obj-item"><div class="obj-rank">2</div><strong>Prise de RDV / réservation en ligne</strong> — Permettre une réservation fluide 24h/24 sans friction.</div>
+    <div class="obj-item"><div class="obj-rank">3</div><strong>SEO local</strong> — Être trouvé sur Google pour les recherches VTC à Paris, aéroports et services entreprises.</div>
+    <div class="obj-item"><div class="obj-rank">4</div><strong>Réassurance &amp; crédibilité</strong> — Démontrer le sérieux et la qualité du service pour lever les objections.</div>
+    <div class="obj-item"><div class="obj-rank">5</div><strong>Notoriété de la marque</strong> — Installer AIME PLUS VTC comme une référence premium en Île-de-France.</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-badge">04 — Arborescence du site</div>
+  <h2 class="section-title">Structure des pages &amp; stratégie SEO</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>VTC Paris</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos offres</strong> (Transferts, Mise à dispo, Entreprises, Événementiel, City Tour)</td>
+          <td>PAS</td>
+          <td>VTC Paris tarif service</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre flotte</strong> (Berline, SUV, VAN)</td>
+          <td>AIDA</td>
+          <td>VTC berline SUV VAN Paris</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos</strong></td>
+          <td>BAB</td>
+          <td>Chauffeur privé Paris fiable</td>
+          <td><span class="badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>VTC aéroports CDG &amp; Orly — Paris</strong> <em>(page SEO locale 1)</em></td>
+          <td>PAS</td>
+          <td>VTC aéroport CDG Orly Paris</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>VTC gares &amp; déplacements Île-de-France</strong> <em>(page SEO locale 2)</em></td>
+          <td>PAS</td>
+          <td>VTC gare Paris banlieue</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>Contenus longue traîne</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact &amp; Réservation</strong></td>
+          <td>AIDA</td>
+          <td>Réserver VTC Paris</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-badge">05 — Cocon sémantique</div>
+  <h2 class="section-title">Clusters thématiques &amp; maillage interne</h2>
+
+  <div class="grid-3" style="margin-bottom:36px;">
+    <div class="cluster-card">
+      <h3>🌐 Cluster 1 — Services &amp; offres</h3>
+      <div class="pages-list">
+        <div class="page-item">Page Accueil</div>
+        <div class="page-item">Page Nos offres</div>
+        <div class="page-item">Page Notre flotte</div>
+        <div class="page-item">Page Contact &amp; Réservation</div>
+      </div>
+    </div>
+    <div class="cluster-card">
+      <h3>📍 Cluster 2 — SEO local &amp; zones</h3>
+      <div class="pages-list">
+        <div class="page-item">VTC aéroports CDG &amp; Orly</div>
+        <div class="page-item">VTC gares &amp; Île-de-France</div>
+        <div class="page-item">Articles blog locaux</div>
+      </div>
+    </div>
+    <div class="cluster-card">
+      <h3>🏆 Cluster 3 — Confiance &amp; expertise</h3>
+      <div class="pages-list">
+        <div class="page-item">Page À propos</div>
+        <div class="page-item">Avis clients (section)</div>
+        <div class="page-item">Articles blog conseils</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:12px;"><strong>Logique de maillage interne</strong></div>
+  <div class="maillage-box">
+    <div class="maillage-row">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Nos offres · Notre flotte · Pages SEO locales · Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Nos offres</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Notre flotte · Contact &amp; Réservation · Pages SEO locales</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Pages SEO locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Nos offres · Contact · Articles blog thématiques</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Articles blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Nos offres · Notre flotte · Contact &amp; Réservation</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact · Nos offres</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-badge">06 — Tunnel de conversion</div>
+  <h2 class="section-title">Parcours client de la découverte à la réservation</h2>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 1</div>
+      <h3>Découverte</h3>
+      <div class="tunnel-row">
+        <div class="tunnel-item"><strong>Source de trafic</strong>Google Search, Google Maps, bouche-à-oreille</div>
+        <div class="tunnel-item"><strong>Page concernée</strong>Accueil · Pages SEO locales</div>
+      </div>
+      <span class="cta-tag">→ Découvrir nos offres</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 2</div>
+      <h3>Intérêt</h3>
+      <div class="tunnel-row">
+        <div class="tunnel-item"><strong>Source de trafic</strong>Navigation interne, Blog, Réseaux sociaux</div>
+        <div class="tunnel-item"><strong>Page concernée</strong>Nos offres · Notre flotte</div>
+      </div>
+      <span class="cta-tag">→ Voir notre flotte</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 3</div>
+      <h3>Confiance</h3>
+      <div class="tunnel-row">
+        <div class="tunnel-item"><strong>Source de trafic</strong>Navigation interne, Avis Google</div>
+        <div class="tunnel-item"><strong>Page concernée</strong>À propos · Avis clients</div>
+      </div>
+      <span class="cta-tag">→ Lire les avis clients</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 4</div>
+      <h3>Conversion</h3>
+      <div class="tunnel-row">
+        <div class="tunnel-item"><strong>Source de trafic</strong>CTA site, WhatsApp, Email</div>
+        <div class="tunnel-item"><strong>Page concernée</strong>Contact &amp; Réservation</div>
+      </div>
+      <span class="cta-tag">→ Réserver maintenant</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-badge">07 — Leviers marketing recommandés</div>
+  <h2 class="section-title">Outils &amp; actions pour accélérer la croissance</h2>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <div class="levier-icon">📅</div>
+      <h3>Prise de RDV en ligne</h3>
+      <p><strong>Outil recommandé : Calendly ou Reservio.</strong> Intégrer un widget de réservation rapide directement sur la page Contact et en haut de l'Accueil. Objectif : zéro friction entre l'intention et la réservation.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">⭐</div>
+      <h3>Preuve sociale</h3>
+      <p>Mettre en avant les avis Google vérifiés (widget Google Reviews), témoignages clients sous forme de citations courtes avec prénom et contexte (voyage d'affaires, mariage, aéroport…).</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📋</div>
+      <h3>Formulaire qualifiant</h3>
+      <p>Champs recommandés : Type de prestation · Date &amp; heure · Lieu de prise en charge · Destination · Nombre de passagers · Type de véhicule souhaité · Coordonnées.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📰</div>
+      <h3>Newsletter (angle éditorial)</h3>
+      <p>Fréquence mensuelle. Angle : conseils voyage à Paris, bons plans événements, actualités flotte, offres entreprises. Cible : clients récurrents et prospects entreprises.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-badge">08 — Direction visuelle &amp; éditoriale</div>
+  <h2 class="section-title">Identité graphique recommandée</h2>
+
+  <div style="margin-bottom:40px;">
+    <div style="font-family:'Playfair Display',serif;font-size:18px;color:#0f2044;margin-bottom:24px;font-weight:600;">Palette couleurs</div>
+    <div class="palette-grid">
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background:#0F2044;"></div>
+        <div class="color-name">Marine Profond</div>
+        <div class="color-hex">#0F2044</div>
+      </div>
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background:#C8A96E;"></div>
+        <div class="color-name">Or Élégant</div>
+        <div class="color-hex">#C8A96E</div>
+      </div>
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background:#1A1A2E;"></div>
+        <div class="color-name">Nuit Parisienne</div>
+        <div class="color-hex">#1A1A2E</div>
+      </div>
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background:#F8F8F6; border:1px solid #e0e0e0;"></div>
+        <div class="color-name">Blanc Ivoire</div>
+        <div class="color-hex">#F8F8F6</div>
+      </div>
+      <div class="color-swatch-wrap">
+        <div class="color-swatch" style="background:#4A4A6A;"></div>
+        <div class="color-name">Gris Ardoise</div>
+        <div class="color-hex">#4A4A6A</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div style="font-family:'Playfair Display',serif;font-size:18px;color:#0f2044;margin-bottom:24px;font-weight:600;">Univers visuel recommandé</div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>📸 Photographie</h3>
+        <p>Photos professionnelles des véhicules, intérieur cuir, vitres teintées, Paris la nuit — ambiance luxe urbain et sophistiqué.</p>
+      </div>
+      <div class="card">
+        <h3>✏️ Typographie</h3>
+        <p>Playfair Display pour les titres (élégance classique), Inter pour le corps de texte (lisibilité moderne). Contraste fort sur fonds sombres.</p>
+      </div>
+      <div class="card">
+        <h3>🎨 Graphisme</h3>
+        <p>Filets dorés fins comme éléments décoratifs, icônes minimalistes, espacements généreux — refus du chargement visuel inutile.</p>
+      </div>
+      <div class="card">
+        <h3>🌆 Ambiance générale</h3>
+        <p>Luxe discret à la parisienne : fonds nuit profonde, accents or, touches de blanc ivoire. L'image d'un chauffeur privé 5 étoiles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-badge">09 — Articles blog recommandés</div>
+  <h2 class="section-title">Stratégie de contenu &amp; longue traîne SEO</h2>
+
+  <div class="grid-2">
+    <div class="article-card">
+      <h3>Comment se rendre à CDG depuis Paris sans stress : VTC vs taxi vs RER</h3>
+      <div class="article-meta">
+        <span class="article-tag tag-cluster">SEO Local</span>
+        <span class="article-tag tag-intention">Informationnelle</span>
+        <span class="badge-fort">Prioritaire</span>
+      </div>
+    </div>
+    <div class="article-card">
+      <h3>VTC pour entreprises à Paris : comment optimiser vos déplacements professionnels</h3>
+      <div class="article-meta">
+        <span class="article-tag tag-cluster">Services entreprises</span>
+        <span class="article-tag tag-intention">Commerciale</span>
+        <span class="badge-fort">Prioritaire</span>
+      </div>
+    </div>
+    <div class="article-card">
+      <h3>Mariage, soirée VIP ou événement à Paris : pourquoi choisir un VTC haut de gamme ?</h3>
+      <div class="article-meta">
+        <span class="article-tag tag-cluster">Événementiel</span>
+        <span class="article-tag tag-intention">Commerciale</span>
+        <span class="badge-fort">Prioritaire</span>
+      </div>
+    </div>
+    <div class="article-card">
+      <h3>City tour de Paris en VAN privé : les 10 incontournables à découvrir autrement</h3>
+      <div class="article-meta">
+        <span class="article-tag tag-cluster">City Tour</span>
+        <span class="article-tag tag-intention">Informationnelle</span>
+        <span class="badge-moyen">Moyen</span>
+      </div>
+    </div>
+    <div class="article-card">
+      <h3>Berline, SUV ou VAN : quel véhicule VTC choisir selon votre trajet ?</h3>
+      <div class="article-meta">
+        <span class="article-tag tag-cluster">Flotte &amp; services</span>
+        <span class="article-tag tag-intention">Informationnelle</span>
+        <span class="badge-moyen">Moyen</span>
+      </div>
+    </div>
+    <div class="article-card">
+      <h3>VTC à la disposition : combien ça coûte et quand y avoir recours ?</h3>
+      <div class="article-meta">
+        <span class="article-tag tag-cluster">Services &amp; tarifs</span>
+        <span class="article-tag tag-intention">Transactionnelle</span>
+        <span class="badge-moyen">Moyen</span>
+      </div>
+    </div>
+    <div class="article-card">
+      <h3>5 raisons de réserver un chauffeur privé plutôt qu'un taxi à Paris</h3>
+      <div class="article-meta">
+        <span class="article-tag tag-cluster">Confiance &amp; expertise</span>
+        <span class="article-tag tag-intention">Commerciale</span>
+        <span class="badge-faible">Faible</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ FOOTER -->
+<footer>
+  <p>Blueprint Stratégique établi par <span>AR Digital</span> pour <span>AIME PLUS VTC</span> — Document confidentiel</p>
+  <p style="margin-top:6px;">Toute reproduction ou diffusion est strictement interdite sans autorisation.</p>
+</footer>
+
+</body>
+</html>
