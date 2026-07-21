@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Villa Monteau</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+
+:root{
+  --primary:#23201C;      /* Charbon profond */
+  --accent:#A9885B;       /* Bronze doré */
+  --sand:#EAE0D5;         /* Sable lin */
+  --stone:#C2B2A0;        /* Pierre taupe */
+  --slate:#58698B;        /* Bleu ardoise */
+  --bg:#f8f9fa;
+  --ink:#1a1a2e;
+  --ink-soft:#2d3748;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--ink-soft);font-family:'Inter',sans-serif;}
+
+h1{font-family:'Playfair Display',serif;font-size:40px;color:var(--primary);font-weight:700;line-height:1.2;}
+h2{font-family:'Playfair Display',serif;font-size:32px;color:var(--primary);font-weight:700;line-height:1.25;}
+h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--primary);font-weight:700;line-height:1.3;}
+p,td,li{font-family:'Inter',sans-serif;font-size:15px;line-height:1.8;}
+li{margin-bottom:6px;}
+ul{padding-left:20px;}
+
+section{padding:70px 60px;}
+.section-principale{page-break-before:always;break-before:page;}
+
+.eyebrow{font-family:'Inter';font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px;}
+.section-num{font-family:'Playfair Display';font-size:15px;color:var(--accent);font-weight:700;letter-spacing:2px;}
+.lead{font-size:16px;color:var(--ink-soft);max-width:760px;margin-top:14px;}
+.divider{width:56px;height:2px;background:var(--accent);margin:18px 0 30px;}
+
+/* ── CARDS ─────────────────────────────── */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:8px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px;}
+.card{background:#ffffff;box-shadow:0 2px 12px rgba(0,0,0,0.06);border-radius:14px;padding:28px;}
+.card h3{margin-bottom:10px;}
+.card .card-tag{font-family:'Inter';font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);font-weight:600;display:block;margin-bottom:8px;}
+.card p{font-size:14px;color:var(--ink-soft);}
+
+.block{background:#ffffff;box-shadow:0 2px 12px rgba(0,0,0,0.06);border-radius:14px;padding:28px;margin-top:24px;}
+.block h3{margin-bottom:8px;}
+.accent-bar{border-left:3px solid var(--accent);padding-left:20px;margin:24px 0;}
+.accent-bar .big{font-family:'Playfair Display';font-size:24px;color:var(--primary);line-height:1.4;font-weight:700;}
+
+/* ── BADGES ─────────────────────────────── */
+.badge{border-radius:20px;padding:3px 10px;font-size:12px;font-family:'Inter';font-weight:500;display:inline-block;white-space:nowrap;}
+.badge-fort{background:#d4edda;color:#155724;}
+.badge-moyen{background:#fff3cd;color:#856404;}
+.badge-faible{background:#f8d7da;color:#721c24;}
+.badge-prioritaire{background:#f8d7da;color:#721c24;}
+.badge-important{background:#ffe5d0;color:#c85000;}
+.badge-secondaire{background:#fff3cd;color:#856404;}
+.badge-nouvelle{background:#d4edda;color:#155724;}
+.badge-amelioree{background:#cce5ff;color:#004085;}
+.badge-retiree{background:#e2e3e5;color:#383d41;}
+
+/* ── TABLES ─────────────────────────────── */
+.table-wrapper{page-break-inside:avoid;break-inside:avoid;margin-top:24px;}
+table{border-collapse:collapse;width:100%;}
+th{background:rgba(35,32,28,0.10);padding:14px 16px;text-align:left;font-family:'Inter';font-size:13px;font-weight:600;color:var(--primary);}
+td{border:1px solid #e2e8f0;padding:14px 16px;font-size:14px;vertical-align:top;color:var(--ink-soft);}
+tr:nth-child(even) td{background:#fafafa;}
+td strong{color:var(--primary);}
+
+/* ── SWATCHES ───────────────────────────── */
+.swatch-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:24px;}
+.swatch-item{width:100px;}
+.swatch{width:80px;height:80px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin:0 auto;}
+.swatch-name{font-family:'Inter';font-size:13px;font-weight:600;margin-top:8px;text-align:center;color:var(--primary);}
+.swatch-hex{font-family:'Inter';font-size:12px;color:#6b7280;text-align:center;}
+
+/* ── COVER ──────────────────────────────── */
+.cover-page{
+  position:relative;
+  height:297mm;
+  background:linear-gradient(150deg,#3a352d 0%,#23201C 55%,#141210 100%);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:60px;
+  overflow:hidden;
+}
+.cover-logo{position:absolute;top:32px;left:40px;height:40px;}
+.cover-name{font-family:'Playfair Display';font-size:64px;font-weight:700;color:#ffffff;letter-spacing:2px;line-height:1.1;}
+.cover-rule{width:70px;height:2px;background:var(--accent);margin:26px auto;}
+.cover-sub{font-family:'Inter';font-size:18px;color:#ffffff;opacity:0.75;font-weight:400;letter-spacing:1px;}
+.cover-meta{position:absolute;bottom:60px;left:0;right:0;display:flex;justify-content:center;gap:40px;font-family:'Inter';font-size:13px;color:#ffffff;opacity:0.6;letter-spacing:1px;}
+
+/* ── FOOTER ─────────────────────────────── */
+footer{
+  background:rgba(35,32,28,0.05);
+  border-top:2px solid var(--primary);
+  padding:30px 60px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Inter';font-size:13px;color:#6b7280;
+}
+footer span{flex:1;}
+footer .center{text-align:center;}
+footer .right{text-align:right;}
+
+/* ── PRINT ──────────────────────────────── */
+@media print{
+  @page{size:A4;margin:15mm 15mm 20mm 15mm;}
+  .card{page-break-inside:avoid;break-inside:avoid;}
+  table{page-break-inside:avoid;break-inside:avoid;}
+  tr{page-break-inside:avoid;break-inside:avoid;}
+  .section-principale{page-break-before:always;break-before:page;}
+  h1,h2,h3{page-break-after:avoid;break-after:avoid;}
+  .grid,.grid-3{page-break-inside:avoid;break-inside:avoid;}
+  .no-print{display:none !important;}
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;color-adjust:exact !important;}
+  .card{box-shadow:0 1px 4px rgba(0,0,0,0.08) !important;}
+  .cover-page{height:267mm;page-break-after:always;break-after:page;}
+}
+
+@media screen and (max-width:768px){
+  .grid,.grid-3{grid-template-columns:1fr;}
+  section{padding:24px;}
+  h2{font-size:26px;}
+  .cover-name{font-size:44px;}
+  .table-wrapper{overflow-x:auto;display:block;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ PAGE DE COUVERTURE ══════════ -->
+<div class="cover-page">
+  <img class="cover-logo" src="https://i.imgur.com/72UqvFq.png" alt="Monsite-en-ligne">
+  <div class="cover-name">VILLA MONTEAU</div>
+  <div class="cover-rule"></div>
+  <div class="cover-sub">Blueprint Stratégique — Location de villa de luxe · Villeneuve-lès-Avignon</div>
+  <div class="cover-meta">
+    <span>Juillet 2026</span>
+    <span>Villa de luxe · Provence</span>
+    <span>AR Digital</span>
+  </div>
+</div>
+
+<!-- ══════════ 01 — POSITIONNEMENT ══════════ -->
+<section class="section-principale">
+  <div class="section-num">01</div>
+  <div class="eyebrow">Positionnement</div>
+  <h2>L'art de vivre provençal, en toute exclusivité</h2>
+  <div class="divider"></div>
+
+  <div class="accent-bar">
+    <div class="big">« Villa Monteau — une demeure d'exception face au Palais des Papes, réservée en direct pour vivre la Provence sans compromis. »</div>
+  </div>
+
+  <p class="lead">Votre villa possède un atout rare que peu d'hébergements peuvent revendiquer : une vue panoramique sur un joyau du patrimoine mondial, à quelques minutes à pied d'Avignon. Tout l'enjeu du site est de traduire immédiatement cette promesse d'exclusivité et de sérénité, et de guider vos futurs hôtes vers une réservation en direct, sans intermédiaire.</p>
+
+  <div class="block">
+    <h3>Ligne directrice de communication</h3>
+    <p>Mettre en scène une expérience — pas seulement un logement. Chaque page raconte le privilège d'un séjour confidentiel au cœur de la Provence : le calme, la vue, la piscine, le raffinement des prestations, et la liberté de réserver directement auprès de la propriétaire.</p>
+  </div>
+
+  <div class="block">
+    <h3>Ton éditorial</h3>
+    <p style="margin-bottom:12px;"><strong style="color:var(--accent);">Élégant · Chaleureux · Épuré</strong></p>
+    <p>Un ton feutré et raffiné, à la hauteur d'une clientèle internationale exigeante, mais toujours accueillant et humain. On ne « vend » pas une location : on invite à vivre un moment d'exception. La sobriété du verbe fait toute la valeur perçue.</p>
+  </div>
+
+  <h3 style="margin-top:36px;margin-bottom:6px;">Vos piliers de différenciation</h3>
+  <div class="grid">
+    <div class="card">
+      <span class="card-tag">Réservation en direct</span>
+      <h3>Sans intermédiaire, sans commission</h3>
+      <p>Une relation privilégiée et un contact direct avec la propriétaire, gage de confiance et de flexibilité — un argument fort face aux plateformes.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Un panorama unique</span>
+      <h3>Vue sur le Palais des Papes</h3>
+      <p>Une vue panoramique sur un site classé au patrimoine mondial UNESCO : un cadre que rien ne peut égaler et qui justifie pleinement le positionnement haut de gamme.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Excellence reconnue</span>
+      <h3>Classement 5 étoiles</h3>
+      <p>Le classement 5 étoiles en meublé de tourisme est une preuve officielle de qualité, précieuse pour rassurer une clientèle internationale.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Espace &amp; convivialité</span>
+      <h3>11 couchages &amp; piscine</h3>
+      <p>Idéale pour les grandes familles et les groupes d'amis célébrant un moment ensemble, avec piscine privée et prestations dignes d'un séjour d'exception.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Emplacement rare</span>
+      <h3>Avignon à 25 min à pied</h3>
+      <p>La tranquillité de Villeneuve-lès-Avignon et l'effervescence culturelle d'Avignon — dont le célèbre Festival — accessibles à pied, sans voiture.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 02 — CLIENT CIBLE ══════════ -->
+<section class="section-principale">
+  <div class="section-num">02</div>
+  <div class="eyebrow">Client cible</div>
+  <h2>À qui s'adresse Villa Monteau</h2>
+  <div class="divider"></div>
+  <p class="lead">Comprendre finement vos hôtes idéaux permet de choisir chaque mot, chaque photo et chaque argument de réassurance. Voici le portrait de la clientèle que votre site doit séduire et convertir.</p>
+
+  <div class="grid">
+    <div class="card">
+      <span class="card-tag">Profil type</span>
+      <h3>Une clientèle internationale aisée</h3>
+      <p>Familles et groupes d'amis de 35 à 65 ans, CSP+, souvent venus de Suisse, du Royaume-Uni, d'Europe du Nord ou des États-Unis. Ils voyagent pour des retrouvailles familiales, une célébration, ou un séjour culturel autour du Festival d'Avignon et du patrimoine provençal.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Motivations</span>
+      <h3>Ce qui les attire</h3>
+      <p>L'intimité et l'exclusivité d'une villa privée plutôt qu'un hôtel, le confort haut de gamme, la piscine, le cadre patrimonial d'exception, et la promesse d'un séjour fluide, reposant et sans mauvaise surprise.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Hésitations habituelles</span>
+      <h3>Leurs questions avant de réserver</h3>
+      <p>« La réservation en direct est-elle aussi sûre qu'une plateforme ? » « Les prestations correspondent-elles vraiment aux photos ? » « Quelles sont les disponibilités et le tarif à ma période ? » « Le paiement est-il sécurisé ? » « Est-ce vraiment proche d'Avignon ? »</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Critères de choix</span>
+      <h3>Ce qui les décide</h3>
+      <p>Des photos immersives et lumineuses, des avis authentiques, le classement 5 étoiles affiché, un contact humain rassurant, un site multilingue élégant, et un parcours de réservation clair et sans friction.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 03 — OBJECTIFS DU SITE ══════════ -->
+<section class="section-principale">
+  <div class="section-num">03</div>
+  <div class="eyebrow">Objectifs du site</div>
+  <h2>Ce que votre site doit accomplir</h2>
+  <div class="divider"></div>
+  <p class="lead">Vos objectifs sont clairs : maximiser les réservations directes tout en offrant une expérience irréprochable. Voici les priorités qui guideront chaque décision de conception, classées par ordre d'importance.</p>
+
+  <div class="grid">
+    <div class="card">
+      <span class="card-tag">Priorité n°1</span>
+      <h3>La réservation directe</h3>
+      <p>Convertir le visiteur en réservation sans intermédiaire, grâce à un parcours fluide, un calendrier en temps réel et un paiement sécurisé.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Priorité n°2</span>
+      <h3>Inspirer la confiance</h3>
+      <p>Réassurer une clientèle exigeante par la preuve sociale, le classement 5 étoiles, la transparence des prestations et un contact humain.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Priorité n°3</span>
+      <h3>La visibilité locale (SEO)</h3>
+      <p>Être trouvé sur les recherches « villa de luxe Avignon », « location villa piscine Villeneuve-lès-Avignon » et durant la période du Festival.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Priorité n°4</span>
+      <h3>La notoriété &amp; le nurturing</h3>
+      <p>Construire une image de marque désirable et entretenir le lien (newsletter, offres hors-saison) pour fidéliser et générer du bouche-à-oreille.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 04 — ARBORESCENCE ══════════ -->
+<section class="section-principale">
+  <div class="section-num">04</div>
+  <div class="eyebrow">Arborescence</div>
+  <h2>La structure de votre site</h2>
+  <div class="divider"></div>
+  <p class="lead">Une architecture volontairement épurée : chaque page a un rôle précis dans le parcours du visiteur, avec un mot-clé cible et un cadre de rédaction (framework) adapté. La simplicité sert directement la conversion.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+          <th>Statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong><br>Vitrine émotionnelle &amp; promesse</td>
+          <td>AIDA</td>
+          <td>location villa de luxe Avignon</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+          <td><span class="badge badge-nouvelle">Nouvelle</span></td>
+        </tr>
+        <tr>
+          <td><strong>La Villa</strong><br>Prestations, galerie, capacité</td>
+          <td>BAB</td>
+          <td>villa 5 étoiles Villeneuve-lès-Avignon</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+          <td><span class="badge badge-nouvelle">Nouvelle</span></td>
+        </tr>
+        <tr>
+          <td><strong>Disponibilités &amp; Réservation</strong><br>Calendrier, tarifs, paiement</td>
+          <td>PAS</td>
+          <td>réserver villa avec piscine Avignon</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+          <td><span class="badge badge-nouvelle">Nouvelle</span></td>
+        </tr>
+        <tr>
+          <td><strong>L'Art de vivre en Provence</strong><br>Expériences &amp; découvertes autour de la villa</td>
+          <td>PAS</td>
+          <td>séjour de luxe en Provence</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+          <td><span class="badge badge-nouvelle">Nouvelle</span></td>
+        </tr>
+        <tr>
+          <td><strong>Villa de luxe près d'Avignon</strong><br>Page locale SEO</td>
+          <td>PAS</td>
+          <td>villa piscine près d'Avignon</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+          <td><span class="badge badge-nouvelle">Nouvelle</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact</strong><br>Formulaire &amp; coordonnées directes</td>
+          <td>AIDA</td>
+          <td>contact location villa Avignon</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+          <td><span class="badge badge-nouvelle">Nouvelle</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════ 05 — COCON SÉMANTIQUE ══════════ -->
+<section class="section-principale">
+  <div class="section-num">05</div>
+  <div class="eyebrow">Cocon sémantique</div>
+  <h2>Comment vos pages se renforcent entre elles</h2>
+  <div class="divider"></div>
+  <p class="lead">Le cocon sémantique organise vos contenus en univers thématiques cohérents. Chaque page « pilier » attire les recherches, puis redirige naturellement le visiteur vers la villa et la réservation — c'est ainsi que Google comprend votre expertise et que vos hôtes progressent vers l'action.</p>
+
+  <div class="grid-3">
+    <div class="card">
+      <span class="card-tag">Cluster 1</span>
+      <h3>La villa de luxe</h3>
+      <p>Pilier : <strong>La Villa</strong>. Gravite autour : prestations haut de gamme, piscine, capacité 11 couchages, classement 5 étoiles. Cœur de la valeur perçue.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Cluster 2</span>
+      <h3>Séjour &amp; Provence</h3>
+      <p>Pilier : <strong>L'Art de vivre en Provence</strong>. Gravite autour : Palais des Papes, Festival d'Avignon, œnotourisme, gastronomie, Pont du Gard.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Cluster 3</span>
+      <h3>Réserver en direct</h3>
+      <p>Pilier : <strong>Disponibilités &amp; Réservation</strong>. Gravite autour : avantages du direct, sécurité du paiement, conditions et flexibilité.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>La logique de maillage interne</h3>
+    <p>Les pages de découverte (Art de vivre, articles de blog sur la région) captent l'attention en amont et renvoient systématiquement vers <em>La Villa</em>. La page <em>La Villa</em>, elle, pousse vers <em>Disponibilités &amp; Réservation</em>. Chaque lien interne rapproche donc le visiteur de l'action, tout en signalant à Google la cohérence et la richesse de votre site. Un maillage simple, mais redoutablement efficace.</p>
+  </div>
+</section>
+
+<!-- ══════════ 06 — TUNNEL DE CONVERSION ══════════ -->
+<section class="section-principale">
+  <div class="section-num">06</div>
+  <div class="eyebrow">Tunnel de conversion</div>
+  <h2>Du premier regard à la réservation</h2>
+  <div class="divider"></div>
+  <p class="lead">Voici le chemin que parcourt votre futur hôte, étape par étape. À chaque phase correspond une page, une source de trafic et un appel à l'action (CTA) pensé pour faire avancer sans jamais forcer.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Étape</th>
+          <th>Source de trafic</th>
+          <th>Page concernée</th>
+          <th>CTA associé</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Découverte</strong></td>
+          <td>SEO local, Instagram, bouche-à-oreille, recherches « villa Avignon »</td>
+          <td>Accueil</td>
+          <td>« Découvrir la villa »</td>
+        </tr>
+        <tr>
+          <td><strong>2. Intérêt</strong></td>
+          <td>Navigation interne, galerie photos, page Art de vivre</td>
+          <td>La Villa</td>
+          <td>« Voir les disponibilités »</td>
+        </tr>
+        <tr>
+          <td><strong>3. Confiance</strong></td>
+          <td>Avis clients, classement 5★, FAQ, contact direct</td>
+          <td>La Villa / Contact</td>
+          <td>« Poser une question » / « Vérifier une date »</td>
+        </tr>
+        <tr>
+          <td><strong>4. Action</strong></td>
+          <td>Calendrier en temps réel (Channel Manager), paiement sécurisé</td>
+          <td>Disponibilités &amp; Réservation</td>
+          <td>« Réserver en direct »</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════ 07 — LEVIERS DE CROISSANCE ══════════ -->
+<section class="section-principale">
+  <div class="section-num">07</div>
+  <div class="eyebrow">Leviers de croissance</div>
+  <h2>Pour aller plus loin que la simple vitrine</h2>
+  <div class="divider"></div>
+  <p class="lead">Au-delà d'un beau site, ces leviers transforment un visiteur en hôte, puis un hôte en ambassadeur. Chacun est pensé pour le rythme saisonnier et la clientèle exigeante de Villa Monteau.</p>
+
+  <div class="grid">
+    <div class="card">
+      <span class="card-tag">Lead magnet</span>
+      <h3>Le carnet d'expériences</h3>
+      <p>Un guide élégant à télécharger — « Vivre la Provence autour de Villa Monteau » : adresses gastronomiques, vignobles, agenda culturel, itinéraires. Offert contre l'e-mail, il alimente votre base de prospects qualifiés.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Prise de rendez-vous</span>
+      <h3>Réservation &amp; devis fluides</h3>
+      <p>Calendrier en temps réel synchronisé via Channel Manager, avec demande de devis pour les longs séjours et une visite en visio possible pour les hôtes internationaux souhaitant se projeter.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Preuve sociale</span>
+      <h3>La confiance affichée</h3>
+      <p>Avis vérifiés (idéalement multilingues), badge du classement 5 étoiles, photos authentiques de séjours, et éventuellement une courte présentation de la propriétaire pour humaniser la relation.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Formulaire qualifiant</span>
+      <h3>Mieux connaître la demande</h3>
+      <p>Champs adaptés : dates souhaitées, nombre de voyageurs, motif du séjour (famille, célébration, culturel), langue préférée. De quoi personnaliser chaque réponse et gagner en pertinence.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Newsletter</span>
+      <h3>Les saisons de Villa Monteau</h3>
+      <p>Un rendez-vous éditorial autour des disponibilités, des offres de dernière minute hors-saison et de l'agenda culturel provençal, pour rester présent à l'esprit toute l'année.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Séquence e-mail</span>
+      <h3>Un accompagnement automatisé</h3>
+      <p>Une séquence adaptée au cycle de réservation : demande → devis → confirmation → e-mail de bienvenue avant l'arrivée → message de remerciement et invitation à laisser un avis après le séjour.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 08 — DIRECTION VISUELLE ══════════ -->
+<section class="section-principale">
+  <div class="section-num">08</div>
+  <div class="eyebrow">Direction visuelle</div>
+  <h2>L'univers esthétique de Villa Monteau</h2>
+  <div class="divider"></div>
+  <p class="lead">La palette est directement issue de votre inspiration visuelle : des tons naturels et lumineux, ponctués d'un bronze doré précieux et d'un charbon profond qui apporte la profondeur du luxe. Un univers chaleureux, confidentiel et intemporel, fidèle à l'esprit provençal.</p>
+
+  <div class="block">
+    <h3>Palette de couleurs</h3>
+    <div class="swatch-grid">
+      <div class="swatch-item">
+        <div class="swatch" style="background:#EAE0D5;"></div>
+        <div class="swatch-name">Sable Lin</div>
+        <div class="swatch-hex">#EAE0D5</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#C2B2A0;"></div>
+        <div class="swatch-name">Pierre Taupe</div>
+        <div class="swatch-hex">#C2B2A0</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#A9885B;"></div>
+        <div class="swatch-name">Bronze Doré</div>
+        <div class="swatch-hex">#A9885B</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#23201C;"></div>
+        <div class="swatch-name">Charbon Profond</div>
+        <div class="swatch-hex">#23201C</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch" style="background:#58698B;"></div>
+        <div class="swatch-name">Bleu Ardoise</div>
+        <div class="swatch-hex">#58698B</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:36px;margin-bottom:6px;">L'univers visuel</h3>
+  <div class="grid">
+    <div class="card">
+      <span class="card-tag">Photographie</span>
+      <h3>Grands formats lumineux</h3>
+      <p>Vos photos en pleine largeur, baignées de lumière naturelle : la piscine, la vue sur le Palais des Papes, les intérieurs raffinés. L'image est reine — elle porte à elle seule 80 % de la promesse.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Respiration</span>
+      <h3>Beaucoup d'espace</h3>
+      <p>Des marges généreuses et des fonds lin ou blanc cassé pour laisser respirer le contenu. Le vide est un signe de luxe : il valorise chaque élément mis en avant.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Détails précieux</span>
+      <h3>Filets &amp; touches dorées</h3>
+      <p>De fins filets bronze doré, à l'image de votre logo, pour souligner les titres et structurer les pages avec délicatesse — sans jamais surcharger.</p>
+    </div>
+    <div class="card">
+      <span class="card-tag">Typographie</span>
+      <h3>Élégance intemporelle</h3>
+      <p>Une serif raffinée pour les titres et une sans-serif épurée pour la lecture : un contraste sobre qui évoque à la fois la tradition provençale et la modernité du haut de gamme.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 09 — IDÉES DE CONTENUS BLOG ══════════ -->
+<section class="section-principale">
+  <div class="section-num">09</div>
+  <div class="eyebrow">Idées de contenus blog</div>
+  <h2>Attirer, inspirer, convertir par le contenu</h2>
+  <div class="divider"></div>
+  <p class="lead">Ces sujets répondent aux vraies questions de vos futurs hôtes et renforcent votre visibilité locale. Chacun nourrit le cocon sémantique et ramène naturellement vers la villa et la réservation.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Thématique</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Que faire autour de Villeneuve-lès-Avignon en une semaine ?</td>
+          <td>Tourisme local</td>
+          <td>Informationnelle</td>
+          <td><span class="badge badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td>Assister au Festival d'Avignon : où loger pour en profiter pleinement</td>
+          <td>Événementiel &amp; local</td>
+          <td>Transactionnelle</td>
+          <td><span class="badge badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td>Villa de luxe ou hôtel : les avantages d'une location privée en famille</td>
+          <td>Comparatif</td>
+          <td>Considération</td>
+          <td><span class="badge badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td>Réserver en direct : pourquoi c'est plus avantageux et plus rassurant</td>
+          <td>Réassurance</td>
+          <td>Considération</td>
+          <td><span class="badge badge-important">Utile</span></td>
+        </tr>
+        <tr>
+          <td>Vignobles et adresses gastronomiques à découvrir autour d'Avignon</td>
+          <td>Art de vivre</td>
+          <td>Informationnelle</td>
+          <td><span class="badge badge-important">Utile</span></td>
+        </tr>
+        <tr>
+          <td>Villa avec piscine en Provence : nos expériences pour un été d'exception</td>
+          <td>Saisonnier</td>
+          <td>Informationnelle</td>
+          <td><span class="badge badge-secondaire">Bonus</span></td>
+        </tr>
+        <tr>
+          <td>Le Palais des Papes vu depuis Villeneuve : histoire d'un panorama rare</td>
+          <td>Patrimoine &amp; storytelling</td>
+          <td>Informationnelle</td>
+          <td><span class="badge badge-secondaire">Bonus</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <span>Villa Monteau</span>
+  <span class="center">Location de villa de luxe · Villeneuve-lès-Avignon</span>
+  <span class="right">Confidentiel — AR Digital</span>
+</footer>
+
+</body>
+</html>
