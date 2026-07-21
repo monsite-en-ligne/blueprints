@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Maison M Dermonutrition</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --primary: #3D3530;      /* Peat Profond */
+  --accent: #B08C7A;       /* Or Rosé */
+  --ivory: #FAF7F4;        /* Ivoire Pur */
+  --sand: #E8DDD0;         /* Sable Chaud */
+  --stone: #C9B89A;        /* Pierre Ocre */
+  --text: #2d3748;
+  --text-dark: #1a1a2e;
+  --primary-10: rgba(61,53,48,0.10);
+  --primary-05: rgba(61,53,48,0.05);
+  --accent-10: rgba(176,140,122,0.12);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--primary); line-height: 1.2; }
+h2 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--primary); line-height: 1.25; }
+h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--primary); line-height: 1.3; }
+p, td, li { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: var(--text); }
+
+/* ── COUVERTURE ─────────────────────────────── */
+.cover-page {
+  height: 297mm;
+  position: relative;
+  background: linear-gradient(135deg, #2C2420 0%, #3D3530 55%, #4a4038 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.cover-logo {
+  position: absolute;
+  top: 32px;
+  left: 40px;
+  height: 40px;
+}
+.cover-accent-line {
+  width: 60px;
+  height: 3px;
+  background: var(--accent);
+  margin: 0 auto 32px;
+}
+.cover-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 28px;
+}
+.cover-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 2px;
+  max-width: 720px;
+  line-height: 1.1;
+}
+.cover-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  opacity: 0.75;
+  margin-top: 22px;
+  font-weight: 400;
+}
+.cover-meta {
+  position: absolute;
+  bottom: 60px;
+  display: flex;
+  gap: 40px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  opacity: 0.7;
+  letter-spacing: 1px;
+}
+
+/* ── SECTIONS ───────────────────────────────── */
+section {
+  padding: 70px 60px;
+  background: #ffffff;
+}
+section:nth-of-type(even) { background: var(--ivory); }
+
+.section-principale { page-break-before: always; break-before: page; }
+
+.section-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.section-header { margin-bottom: 36px; }
+.section-intro { max-width: 760px; margin-bottom: 32px; color: #4a5568; }
+
+/* ── CARDS ──────────────────────────────────── */
+.card {
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border-radius: 14px;
+  padding: 28px;
+}
+.card h3 { margin-bottom: 12px; }
+.card p { color: #4a5568; }
+.card .card-tag {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.grid { display: grid; gap: 24px; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+/* ── LISTES ─────────────────────────────────── */
+.clean-list { list-style: none; }
+.clean-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+  color: #4a5568;
+}
+.clean-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 12px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.lead-statement {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-style: italic;
+  color: var(--primary);
+  line-height: 1.5;
+  border-left: 4px solid var(--accent);
+  padding: 8px 0 8px 24px;
+  margin: 8px 0 32px;
+  max-width: 780px;
+}
+
+/* ── TABLEAUX ───────────────────────────────── */
+.table-wrapper { width: 100%; margin-top: 8px; }
+table { border-collapse: collapse; width: 100%; }
+th {
+  background: var(--primary-10);
+  padding: 14px 16px;
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+}
+td {
+  border: 1px solid #e2e8f0;
+  padding: 14px 16px;
+  font-size: 14px;
+  vertical-align: top;
+  color: #4a5568;
+}
+tr:nth-child(even) td { background: #fafafa; }
+
+/* ── BADGES ─────────────────────────────────── */
+.badge {
+  display: inline-block;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.badge-fort   { background: #d4edda; color: #155724; }
+.badge-moyen  { background: #fff3cd; color: #856404; }
+.badge-faible { background: #f8d7da; color: #721c24; }
+.badge-nouvelle  { background: #d4edda; color: #155724; }
+.badge-amelioree { background: #cce5ff; color: #004085; }
+.badge-prioritaire { background: #f8d7da; color: #721c24; }
+.badge-utile       { background: #ffe5d0; color: #c85000; }
+.badge-bonus       { background: #fff3cd; color: #856404; }
+
+/* ── PALETTE ────────────────────────────────── */
+.swatch-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin: 12px 0 8px; }
+.swatch-item { width: 120px; }
+.swatch { width: 80px; height: 80px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin: 0 auto; }
+.swatch-name { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; margin-top: 8px; text-align: center; color: var(--primary); }
+.swatch-hex  { font-family: 'Inter', sans-serif; font-size: 12px; color: #6b7280; text-align: center; }
+.swatch-role { font-family: 'Inter', sans-serif; font-size: 11px; color: #9ca3af; text-align: center; margin-top: 2px; line-height: 1.4; }
+
+/* ── FUNNEL ─────────────────────────────────── */
+.funnel-step {
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border-radius: 14px;
+  padding: 28px;
+  border-top: 4px solid var(--accent);
+}
+.funnel-step .step-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.funnel-step .step-title { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--primary); margin: 8px 0 14px; }
+.funnel-meta { font-size: 13px; color: #4a5568; margin-top: 10px; }
+.funnel-meta strong { color: var(--primary); font-weight: 600; }
+
+/* ── FOOTER ─────────────────────────────────── */
+footer {
+  background: var(--primary-05);
+  border-top: 2px solid var(--primary);
+  padding: 30px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #6b7280;
+}
+footer span { flex: 1; }
+footer .foot-center { text-align: center; }
+footer .foot-right { text-align: right; }
+
+/* ── PRINT ──────────────────────────────────── */
+@media print {
+  @page { size: A4; margin: 15mm 15mm 20mm 15mm; }
+
+  .card { page-break-inside: avoid; break-inside: avoid; box-shadow: 0 1px 4px rgba(0,0,0,0.08) !important; }
+  .funnel-step { page-break-inside: avoid; break-inside: avoid; }
+  table { page-break-inside: avoid; break-inside: avoid; }
+  tr { page-break-inside: avoid; break-inside: avoid; }
+  .table-wrapper { page-break-inside: avoid; break-inside: avoid; }
+  .grid { page-break-inside: avoid; break-inside: avoid; }
+  .swatch-item { page-break-inside: avoid; break-inside: avoid; }
+
+  .section-principale { page-break-before: always; break-before: page; }
+  h1, h2, h3 { page-break-after: avoid; break-after: avoid; }
+
+  .no-print { display: none !important; }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  .cover-page {
+    height: 267mm;
+    page-break-after: always;
+    break-after: page;
+  }
+  section:nth-of-type(even) { background: var(--ivory) !important; }
+}
+
+/* ── RESPONSIVE ─────────────────────────────── */
+@media screen and (max-width: 768px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  section { padding: 24px; }
+  h2 { font-size: 26px; }
+  .cover-title { font-size: 40px; }
+  .table-wrapper { overflow-x: auto; display: block; }
+  footer { flex-direction: column; gap: 8px; text-align: center; }
+  footer .foot-right, footer .foot-center { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ COUVERTURE ═══════════════ -->
+<div class="cover-page">
+  <img src="https://i.imgur.com/72UqvFq.png" alt="Monsite-en-ligne" class="cover-logo">
+  <div class="cover-accent-line"></div>
+  <div class="cover-eyebrow">Blueprint Stratégique</div>
+  <div class="cover-title">Maison M<br>Dermonutrition</div>
+  <div class="cover-subtitle">La feuille de route de votre landing page — pensée pour convertir avec justesse</div>
+  <div class="cover-meta">
+    <span>21 juillet 2026</span>
+    <span>maisonm-dermonutrition.ch</span>
+    <span>AR Digital</span>
+  </div>
+</div>
+
+<!-- ═══════════════ 01 — POSITIONNEMENT ═══════════════ -->
+<section class="section-principale">
+  <div class="section-header">
+    <div class="section-number">01 — Positionnement</div>
+    <h2>Ce qui rend Maison M unique, en une phrase</h2>
+  </div>
+
+  <p class="lead-statement">« On ne corrige pas une peau qui change : on la nourrit. Maison M relie votre assiette, vos marqueurs biologiques et vos gestes de soin pour révéler, à 50 ans, un éclat qui n'a pas besoin d'être inventé — il est déjà là. »</p>
+
+  <div class="card" style="margin-bottom:24px;">
+    <span class="card-tag">Ligne directrice de communication</span>
+    <p>Une prise de parole incarnée, portée par une fondatrice qui est elle-même la démonstration de sa méthode. On ne promet pas de rajeunir : on transmet la compréhension de son propre corps, d'égal à égal, avec la précision de la haute couture appliquée au soin de soi. Le fil rouge de chaque message : <strong style="color:var(--primary)">la clarté, c'est déjà commencer.</strong></p>
+  </div>
+
+  <div class="card" style="margin-bottom:32px;">
+    <span class="card-tag">Ton éditorial</span>
+    <h3 style="font-size:20px; margin-bottom:8px;">Incarné · Précis · Généreux</h3>
+    <p>Un ton chaleureux qui parle vrai, sans jargon médical ni promesse marketing. On explique le « pourquoi » avant le « quoi », on rassure sans infantiliser, et l'on s'adresse à une femme intelligente qui veut comprendre avant d'agir.</p>
+  </div>
+
+  <h3 style="margin-bottom:20px;">Les piliers de différenciation</h3>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>La preuve vivante</h3>
+      <p>Magalie n'enseigne pas ce qu'elle a lu, mais ce qu'elle a vécu sur son propre corps après 21 ans d'acné. À 50 ans, elle est la démonstration de ce qu'elle propose.</p>
+    </div>
+    <div class="card">
+      <h3>Le lien, pas l'information</h3>
+      <p>Ce qui manque à vos clientes n'est pas plus d'information — c'est le lien entre toutes. Maison M relie assiette, énergie, hormones et peau dans une logique cohérente.</p>
+    </div>
+    <div class="card">
+      <h3>La haute couture du soin</h3>
+      <p>Chaque protocole est dessiné pour une femme précise, jamais pour une « cliente type ». Rien de générique, rien de copié d'un modèle standard.</p>
+    </div>
+    <div class="card">
+      <h3>Nutrition <em>et</em> skincare réunis</h3>
+      <p>La dermo-nutrition scientifique et le skincare expert dans un même accompagnement premium — une combinaison que personne ne propose en Suisse romande.</p>
+    </div>
+    <div class="card">
+      <h3>En complémentarité médicale</h3>
+      <p>Un conseil en optimisation nutritionnelle qui complète le suivi du médecin traitant, jamais ne le remplace. Toute valeur hors norme est explicitement signalée.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 02 — CLIENT CIBLE ═══════════════ -->
+<section class="section-principale">
+  <div class="section-header">
+    <div class="section-number">02 — Client cible</div>
+    <h2>À qui parle votre landing page</h2>
+  </div>
+
+  <div class="card" style="margin-bottom:24px;">
+    <span class="card-tag">Profil type</span>
+    <p>Femmes actives de <strong style="color:var(--primary)">45 à 60 ans</strong>, basées en Suisse romande (Morges, Vaud, Genève) et, en marché secondaire, en France. Curieuses et exigeantes, elles ont longtemps fait passer les autres avant elles et décident enfin que « maintenant, c'est leur moment ». Elles disposent des moyens d'investir dans ce qui en vaut la peine et sont lassées d'avoir gaspillé de l'argent dans des produits inutiles.</p>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Ce qui les motive</h3>
+      <ul class="clean-list">
+        <li>Comprendre comment leur corps et leur peau fonctionnent, avant d'agir.</li>
+        <li>Obtenir des résultats visibles sans se perdre dans la complexité.</li>
+        <li>Se réapproprier une vitalité qu'elles pressentent encore possible.</li>
+        <li>Être accompagnées par quelqu'un de fiable, incarné, humain.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Leurs hésitations habituelles</h3>
+      <ul class="clean-list">
+        <li>« Est-ce encore possible de voir des résultats à mon âge ? »</li>
+        <li>« Encore une méthode de plus ? En quoi celle-ci est différente ? »</li>
+        <li>« Rétinol ou vitamine C, jeûne ou protéines… par où commencer ? »</li>
+        <li>« Est-ce que ça remplace mon médecin ? » (non, cela le complète).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:24px;">
+    <span class="card-tag">Ce qui les fait choisir Maison M</span>
+    <p>La sensation, dès la première lecture, d'enfin « savoir quoi faire » — le soulagement d'une clarté actionnable. Elles choisissent une personne, pas une marque anonyme : la preuve vivante rassure là où le marketing a déçu. Le format sur-mesure et la posture de complémentarité médicale lèvent la dernière barrière de confiance.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ 03 — OBJECTIFS DU SITE ═══════════════ -->
+<section class="section-principale">
+  <div class="section-header">
+    <div class="section-number">03 — Objectifs du site</div>
+    <h2>Ce que votre landing page doit accomplir</h2>
+  </div>
+  <p class="section-intro">Une landing page a un rôle : concentrer l'attention vers <strong>une action prioritaire</strong>. Ici, tout converge vers l'Appel Découverte gratuit — la porte d'entrée douce vers vos offres premium.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th style="width:8%">Priorité</th><th>Objectif</th><th>Traduction concrète sur la page</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>1</strong></td><td>Prise de rendez-vous</td><td>Bouton « Réserver mon Appel Découverte » (Calendly) répété aux moments clés, sans friction.</td></tr>
+        <tr><td><strong>2</strong></td><td>Génération de leads</td><td>Capter les visiteuses pas encore prêtes via un lead magnet et la newsletter.</td></tr>
+        <tr><td><strong>3</strong></td><td>Réassurance & crédibilité</td><td>Portrait de Magalie, témoignages, cadre de complémentarité médicale, transparence des tarifs.</td></tr>
+        <tr><td><strong>4</strong></td><td>Visibilité SEO locale</td><td>Se positionner sur « dermo-nutrition Suisse romande / Morges » pour capter la recherche qualifiée.</td></tr>
+        <tr><td><strong>5</strong></td><td>Notoriété & nurturing</td><td>Nourrir la relation dans le temps (cycle de vente long, ticket élevé) via contenu et emails.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════ 04 — ARBORESCENCE ═══════════════ -->
+<section class="section-principale">
+  <div class="section-header">
+    <div class="section-number">04 — Arborescence</div>
+    <h2>La structure de votre landing page, section par section</h2>
+  </div>
+  <p class="section-intro">S'agissant d'une page unique, l'« arborescence » se lit comme une <strong>séquence de sections ancrées</strong> qui déroule un récit de conversion, de l'accroche jusqu'à l'action. Chaque section porte un cadre de copywriting et un mot-clé porteur.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Section (ancre)</th><th>Framework</th><th>Mot-clé principal</th><th>Potentiel SEO</th><th>Statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Hero</strong> — promesse + Appel Découverte</td><td>AIDA</td><td>dermo-nutrition Suisse romande</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+        <tr><td><strong>Le constat</strong> — les 3 douleurs</td><td>PAS</td><td>nutrition peau 50 ans</td><td><span class="badge badge-moyen">Moyen</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+        <tr><td><strong>La méthode</strong> — les 3 piliers</td><td>BAB</td><td>beauté qui commence à table</td><td><span class="badge badge-moyen">Moyen</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+        <tr><td><strong>Magalie</strong> — la preuve vivante</td><td>Storytelling</td><td>conseil dermo-nutrition Morges</td><td><span class="badge badge-moyen">Moyen</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+        <tr><td><strong>L'accompagnement</strong> — l'offre & tarifs</td><td>AIDA</td><td>accompagnement dermo-nutrition</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+        <tr><td><strong>Témoignages</strong> — preuve sociale</td><td>Preuve</td><td>—</td><td><span class="badge badge-faible">Faible</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+        <tr><td><strong>FAQ & cadre médical</strong></td><td>Objection</td><td>dermo-nutrition c'est quoi</td><td><span class="badge badge-moyen">Moyen</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+        <tr><td><strong>CTA final</strong> — Appel Découverte + newsletter</td><td>Action</td><td>—</td><td><span class="badge badge-fort">Fort</span></td><td><span class="badge badge-nouvelle">Nouvelle</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:24px;">
+    <span class="card-tag">Note d'évolution</span>
+    <p>Cette page unique peut se doter, dans un second temps, d'une <strong>page locale SEO</strong> dédiée (ex. « Dermo-nutrition à Morges & Genève ») pour renforcer l'ancrage géographique — sans jamais dépasser deux pages locales, afin de préserver la lisibilité du parcours.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ 05 — COCON SÉMANTIQUE ═══════════════ -->
+<section class="section-principale">
+  <div class="section-header">
+    <div class="section-number">05 — Cocon sémantique</div>
+    <h2>Les univers de sens qui installent votre expertise</h2>
+  </div>
+  <p class="section-intro">Une landing page ne vit pas seule pour le référencement : l'idée est de l'entourer d'un contenu satellite (blog) organisé autour de <strong>trois clusters thématiques</strong>, qui renvoient tous vers l'Appel Découverte.</p>
+
+  <div class="grid grid-3">
+    <div class="card">
+      <h3>Cluster 1<br>La peau se nourrit</h3>
+      <p>Axe intestin-peau, glycémie & éclat, oméga-3 & inflammation, collagène endogène, microbiote et barrière cutanée. Le cœur de la dermo-nutrition.</p>
+    </div>
+    <div class="card">
+      <h3>Cluster 2<br>Beauté & vitalité à 50 ans</h3>
+      <p>Ménopause, énergie, sommeil, cortisol et stress. L'âge comme transition à accompagner, pas comme déclin à subir.</p>
+    </div>
+    <div class="card">
+      <h3>Cluster 3<br>Le skincare qui a du sens</h3>
+      <p>Actifs cliniques (rétinaldéhyde, vitamine C, niacinamide), layering, routines personnalisées. La peau comme terrain à nourrir, pas à corriger.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:24px;">
+    <span class="card-tag">Logique de maillage interne</span>
+    <p>Chaque article de blog répond à une vraie question de vos clientes, puis renvoie naturellement vers la section correspondante de la landing page (ancre) et vers le CTA Appel Découverte. Les trois clusters se renforcent mutuellement : un article « glycémie & peau » cite l'article « inflammation & oméga-3 », qui lui-même pointe vers « routine skincare ». Ce tissage indique aux moteurs de recherche que Maison M est une <strong>autorité cohérente</strong> sur la dermo-nutrition.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ 06 — TUNNEL DE CONVERSION ═══════════════ -->
+<section class="section-principale">
+  <div class="section-header">
+    <div class="section-number">06 — Tunnel de conversion</div>
+    <h2>Le chemin, de la première visite à l'Appel Découverte</h2>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="funnel-step">
+      <div class="step-label">Étape 1 · Découverte</div>
+      <div class="step-title">Elle vous trouve</div>
+      <p>La visiteuse arrive depuis Instagram (création de désir) ou une recherche locale.</p>
+      <div class="funnel-meta"><strong>Section :</strong> Hero — promesse forte + visuel incarné.</div>
+      <div class="funnel-meta"><strong>CTA :</strong> « Découvrir la méthode ».</div>
+    </div>
+    <div class="funnel-step">
+      <div class="step-label">Étape 2 · Intérêt</div>
+      <div class="step-title">Elle se reconnaît</div>
+      <p>Elle lit les 3 douleurs et les 3 piliers : « c'est exactement moi ».</p>
+      <div class="funnel-meta"><strong>Section :</strong> Le constat + La méthode.</div>
+      <div class="funnel-meta"><strong>CTA :</strong> lead magnet — « Recevoir le guide gratuit ».</div>
+    </div>
+    <div class="funnel-step">
+      <div class="step-label">Étape 3 · Confiance</div>
+      <div class="step-title">Elle est rassurée</div>
+      <p>Le parcours de Magalie, les témoignages et le cadre médical lèvent les doutes.</p>
+      <div class="funnel-meta"><strong>Section :</strong> Magalie + Témoignages + FAQ.</div>
+      <div class="funnel-meta"><strong>CTA :</strong> « Voir l'accompagnement ».</div>
+    </div>
+    <div class="funnel-step">
+      <div class="step-label">Étape 4 · Action</div>
+      <div class="step-title">Elle passe le pas</div>
+      <p>L'offre et les tarifs sont clairs ; l'Appel Découverte gratuit rend l'engagement sans risque.</p>
+      <div class="funnel-meta"><strong>Section :</strong> L'accompagnement + CTA final.</div>
+      <div class="funnel-meta"><strong>CTA :</strong> « Réserver mon Appel Découverte » (Calendly).</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 07 — LEVIERS DE CROISSANCE ═══════════════ -->
+<section class="section-principale">
+  <div class="section-header">
+    <div class="section-number">07 — Leviers de croissance</div>
+    <h2>Les dispositifs qui feront grandir Maison M</h2>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Lead magnet</h3>
+      <p>Un guide court et actionnable : <strong>« Les 5 signaux que votre peau réclame d'être nourrie autrement (après 45 ans) »</strong>. Aligné sur la promesse « la clarté, c'est déjà commencer », il capte les visiteuses pas encore prêtes à réserver.</p>
+    </div>
+    <div class="card">
+      <h3>Prise de rendez-vous</h3>
+      <p>Intégration <strong>Calendly</strong> pour l'Appel Découverte gratuit de 20–30 min. Un seul type de RDV visible sur la page, pour éviter toute hésitation. Confirmation et rappel automatiques.</p>
+    </div>
+    <div class="card">
+      <h3>Preuve sociale</h3>
+      <p>Témoignages écrits de clientes (idéalement avec prénom + tranche d'âge), verbatim « soulagement de savoir enfin quoi faire », et éléments de crédibilité : formation SIIN, parcours, complémentarité médicale.</p>
+    </div>
+    <div class="card">
+      <h3>Formulaire qualifiant</h3>
+      <p>Quelques champs ciblés avant l'appel : tranche d'âge, préoccupation principale (peau / énergie / les deux), disposez-vous d'un bilan sanguin récent, objectif à 6 mois. Il qualifie les prospects et prépare un appel plus dense.</p>
+    </div>
+    <div class="card">
+      <h3>Newsletter</h3>
+      <p>Angle éditorial : <strong>« La beauté commence à table »</strong>. Une lettre mensuelle qui transmet un art de prendre soin, entretient le lien sur un cycle de décision long et positionne Maison M comme référence.</p>
+    </div>
+    <div class="card">
+      <h3>Séquence email automatisée</h3>
+      <p>Après le lead magnet : une séquence de 4–5 emails qui déroule les 3 piliers, présente Magalie, partage un témoignage, puis invite à l'Appel Découverte. Rythme adapté à un achat premium mûrement réfléchi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 08 — DIRECTION VISUELLE ═══════════════ -->
+<section class="section-principale">
+  <div class="section-header">
+    <div class="section-number">08 — Direction visuelle</div>
+    <h2>L'univers qui traduit la haute couture du soin</h2>
+  </div>
+  <p class="section-intro">La palette est reprise <strong>intégralement de votre charte validée</strong> (7 teintes extraites de vos images de référence). En direction web, <strong>Peat Profond</strong> et <strong>Or Rosé</strong> structurent l'ensemble ; les inspirations Ohmycream / Westman Atelier confirment le parti pris : beauté premium, épurée, chaleureuse.</p>
+
+  <h3 style="margin-bottom:16px;">Palette de couleurs</h3>
+  <div class="swatch-grid">
+    <div class="swatch-item"><div class="swatch" style="background:#3D3530"></div><div class="swatch-name">Peat Profond</div><div class="swatch-hex">#3D3530</div><div class="swatch-role">Titres, ancrage</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#B08C7A"></div><div class="swatch-name">Or Rosé</div><div class="swatch-hex">#B08C7A</div><div class="swatch-role">Accent, labels</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#FAF7F4; border:1px solid #eee"></div><div class="swatch-name">Ivoire Pur</div><div class="swatch-hex">#FAF7F4</div><div class="swatch-role">Fond, respiration</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#E8DDD0"></div><div class="swatch-name">Sable Chaud</div><div class="swatch-hex">#E8DDD0</div><div class="swatch-role">Blocs accent</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#C9B89A"></div><div class="swatch-name">Pierre Ocre</div><div class="swatch-hex">#C9B89A</div><div class="swatch-role">Filets, naturalité</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#D4A99A"></div><div class="swatch-name">Blush Nude</div><div class="swatch-hex">#D4A99A</div><div class="swatch-role">Touches féminines</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#A8B4A0"></div><div class="swatch-name">Sauge Brumeuse</div><div class="swatch-hex">#A8B4A0</div><div class="swatch-role">Nature scientifique</div></div>
+    <div class="swatch-item"><div class="swatch" style="background:#2C2420"></div><div class="swatch-name">Charbon</div><div class="swatch-hex">#2C2420</div><div class="swatch-role">Corps de texte</div></div>
+  </div>
+
+  <div class="card" style="margin-top:28px;">
+    <span class="card-tag">Univers visuel</span>
+    <ul class="clean-list">
+      <li><strong>Typographies :</strong> Cormorant Garamond (empattements fins, contraste fort) pour la marque et l'émotion en ligne ; Arial pour l'information et le corps de texte — fidèle à votre brief graphiste.</li>
+      <li><strong>La barre Or Rosé</strong> comme unique signature graphique permanente, en bord gauche des encadrés.</li>
+      <li><strong>Photographie incarnée :</strong> lumière naturelle, peaux vivantes, matières organiques (figues, flacons ambrés, botaniques) — jamais de retouche lissante.</li>
+      <li><strong>Beaucoup de blanc / ivoire</strong> et de respiration : le luxe silencieux, à la manière des inspirations premium retenues.</li>
+      <li><strong>Interdits absolus respectés :</strong> pas de gras lourd, pas de couleurs vives, ni or brillant, ni violet, ni texte blanc sur fond coloré.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════ 09 — IDÉES DE CONTENUS BLOG ═══════════════ -->
+<section class="section-principale">
+  <div class="section-header">
+    <div class="section-number">09 — Idées de contenus blog</div>
+    <h2>Des sujets qui répondent aux vraies questions de vos clientes</h2>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>Titre accrocheur</th><th>Thématique</th><th>Intention de recherche</th><th>Priorité</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Pourquoi votre peau change après 50 ans (et ce que votre assiette y peut vraiment)</td><td>Peau se nourrit</td><td>Informationnelle</td><td><span class="badge badge-prioritaire">Prioritaire</span></td></tr>
+        <tr><td>Glycémie et éclat : le lien que personne ne vous a expliqué</td><td>Peau se nourrit</td><td>Informationnelle</td><td><span class="badge badge-prioritaire">Prioritaire</span></td></tr>
+        <tr><td>Rétinol, vitamine C, niacinamide : par où commencer sans se tromper</td><td>Skincare</td><td>Commerciale / comparaison</td><td><span class="badge badge-prioritaire">Prioritaire</span></td></tr>
+        <tr><td>Ménopause : nourrir sa vitalité plutôt que subir le déclin</td><td>Beauté 50 ans</td><td>Informationnelle</td><td><span class="badge badge-utile">Utile</span></td></tr>
+        <tr><td>Axe intestin-peau : comment votre microbiote se voit sur votre visage</td><td>Peau se nourrit</td><td>Informationnelle</td><td><span class="badge badge-utile">Utile</span></td></tr>
+        <tr><td>Dermo-nutrition : ce que c'est, ce que ce n'est pas (et pourquoi ça complète votre médecin)</td><td>Cadre & confiance</td><td>Informationnelle / réassurance</td><td><span class="badge badge-utile">Utile</span></td></tr>
+        <tr><td>À 50 ans, on m'en donne 10 de moins : l'histoire d'un chemin, pas d'un miracle</td><td>Preuve vivante</td><td>Notoriété / marque</td><td><span class="badge badge-bonus">Bonus</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <span>Maison M Dermonutrition</span>
+  <span class="foot-center">Conseil en dermo-nutrition · Suisse romande</span>
+  <span class="foot-right">Confidentiel — AR Digital</span>
+</footer>
+
+</body>
+</html>
