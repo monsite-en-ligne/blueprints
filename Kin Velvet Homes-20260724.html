@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Kin Velvet Homes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --terracotta: #B46D4A;
+    --terracotta-light: #C8845E;
+    --anthracite: #5F5F5F;
+    --blanc: #FFFFFF;
+    --beige: #EFE6D8;
+    --beige-dark: #D9CCBA;
+    --beige-medium: #E8DDD0;
+    --or: #C8A96E;
+    --text-dark: #2C2C2C;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-dark);
+    background: var(--blanc);
+  }
+
+  /* ===== COUVERTURE ===== */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1a1008 0%, #2d1a0e 40%, #3d2410 70%, #1a0e06 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(180,109,74,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 32px;
+    opacity: 0.85;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 56px;
+    letter-spacing: 1px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-value {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .cover-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* ===== SECTIONS ===== */
+  .section {
+    padding: 80px 80px;
+  }
+
+  .section-beige {
+    background: var(--beige);
+  }
+
+  .section-white {
+    background: var(--blanc);
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    background: rgba(180,109,74,0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .section-subtitle {
+    font-size: 15px;
+    color: var(--anthracite);
+    margin-bottom: 48px;
+    max-width: 560px;
+  }
+
+  /* ===== CARDS ===== */
+  .card {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .card-beige {
+    background: var(--beige);
+    border-radius: 14px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+
+  .card p, .card li {
+    font-size: 14px;
+    color: var(--anthracite);
+    line-height: 1.7;
+  }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card ul li {
+    padding: 4px 0;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .card ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--terracotta);
+    font-weight: 600;
+  }
+
+  /* ===== GRILLES ===== */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ===== HIGHLIGHT BOX ===== */
+  .highlight-box {
+    background: linear-gradient(135deg, #2d1a0e 0%, #3d2410 100%);
+    border-radius: 16px;
+    padding: 40px 48px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-box::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(180,109,74,0.2) 0%, transparent 70%);
+  }
+
+  .highlight-box .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 16px;
+  }
+
+  .highlight-box .main-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 1.5;
+    max-width: 680px;
+  }
+
+  /* ===== PILLAR CARD ===== */
+  .pillar-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  /* ===== TABLEAU ===== */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--blanc);
+    font-size: 14px;
+  }
+
+  thead {
+    background: #2d1a0e;
+  }
+
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: background 0.2s;
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody tr:hover {
+    background: rgba(239,230,216,0.3);
+  }
+
+  tbody td {
+    padding: 16px 20px;
+    color: var(--anthracite);
+    vertical-align: middle;
+  }
+
+  tbody td:first-child {
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  .badge-seo {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .seo-fort { background: #d4edda; color: #1a6b33; }
+  .seo-moyen { background: #fff3cd; color: #856404; }
+  .seo-faible { background: #f8d7da; color: #842029; }
+
+  .badge-framework {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    background: rgba(180,109,74,0.12);
+    color: var(--terracotta);
+    letter-spacing: 1px;
+  }
+
+  /* ===== TUNNEL ===== */
+  .tunnel-step {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+  }
+
+  .tunnel-number {
+    width: 36px;
+    height: 36px;
+    background: var(--terracotta);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .tunnel-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 6px;
+  }
+
+  .tunnel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+  }
+
+  .tunnel-meta {
+    font-size: 13px;
+    color: var(--anthracite);
+    margin-bottom: 6px;
+  }
+
+  .tunnel-meta strong {
+    color: var(--text-dark);
+    font-weight: 600;
+  }
+
+  .cta-pill {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 8px 18px;
+    background: rgba(180,109,74,0.1);
+    border: 1px solid rgba(180,109,74,0.25);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--terracotta);
+  }
+
+  /* ===== OBJECTIFS ===== */
+  .obj-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .obj-item:last-child {
+    border-bottom: none;
+  }
+
+  .obj-rank {
+    min-width: 28px;
+    height: 28px;
+    background: var(--terracotta);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+
+  .obj-text strong {
+    display: block;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-dark);
+  }
+
+  .obj-text span {
+    font-size: 13px;
+    color: var(--anthracite);
+  }
+
+  /* ===== COCON ===== */
+  .cluster-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .cluster-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--terracotta);
+  }
+
+  .cluster-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  .maillage-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 14px;
+    color: var(--anthracite);
+    flex-wrap: wrap;
+  }
+
+  .maillage-row:last-child { border-bottom: none; }
+
+  .page-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    background: rgba(180,109,74,0.1);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--terracotta);
+    white-space: nowrap;
+  }
+
+  .arrow {
+    color: var(--or);
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  /* ===== LEVIERS ===== */
+  .levier-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 8px;
+  }
+
+  /* ===== PALETTE ===== */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 48px;
+  }
+
+  .color-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .color-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+
+  .color-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: var(--anthracite);
+    opacity: 0.7;
+  }
+
+  /* ===== BLOG ===== */
+  .blog-card {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .blog-priority {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .priority-prioritaire { background: #d4edda; color: #1a6b33; }
+  .priority-moyen { background: #fff3cd; color: #856404; }
+  .priority-faible { background: #f8d7da; color: #842029; }
+
+  .blog-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .blog-meta {
+    font-size: 12px;
+    color: var(--anthracite);
+    margin-top: 4px;
+  }
+
+  .blog-meta span {
+    display: inline-block;
+    margin-right: 8px;
+  }
+
+  .cluster-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    background: rgba(180,109,74,0.1);
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--terracotta);
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: #1a1008;
+    padding: 40px 80px;
+    text-align: center;
+  }
+
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+  }
+
+  .footer-mention {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+  }
+
+  .footer-agency {
+    margin-top: 12px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .section { padding: 48px 24px; }
+    .cover { padding: 60px 24px; }
+    .cover-title { font-size: 42px; }
+    .cover-meta { flex-direction: column; gap: 20px; }
+    .cover-divider { display: none; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box .main-text { font-size: 18px; }
+    .footer { padding: 32px 24px; }
+    .palette-grid { justify-content: center; }
+    .maillage-row { flex-wrap: wrap; }
+  }
+
+  @media print {
+    .section { page-break-inside: avoid; }
+    .card { page-break-inside: avoid; }
+    .tunnel-step { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== COUVERTURE ===== -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique — Document Confidentiel</div>
+  <div class="cover-title">Kin Velvet Homes</div>
+  <div class="cover-subtitle">Conciergerie de séjours d'exception · Hauts-de-France &amp; Île Maurice</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Cliente</div>
+      <div class="cover-meta-value">Kinsy Dufour</div>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Secteur</div>
+      <div class="cover-meta-value">Conciergerie locative</div>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Domaine</div>
+      <div class="cover-meta-value">kinvelvethomes.fr</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 01 — POSITIONNEMENT ===== -->
+<section id="bp-section-01" class="section section-white">
+  <div class="section-badge">01 — Positionnement</div>
+  <h2 class="section-title">Positionnement &amp; Différenciation</h2>
+  <p class="section-subtitle">La boussole éditoriale de Kin Velvet Homes pour chaque prise de parole.</p>
+
+  <div class="highlight-box" style="margin-bottom: 40px;">
+    <div class="label">Promesse de valeur principale</div>
+    <div class="main-text">«&nbsp;Kin Velvet Homes prend soin de votre bien, de vos voyageurs et de chaque détail — pour que vous touchiez plus, sans y penser davantage.&nbsp;»</div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <h3>Ligne directrice de communication</h3>
+      <p>Hospitalité d'exception transmise avec rigueur locale et âme mauricienne — une conciergerie qui transforme chaque logement en séjour mémorable, sans que le propriétaire ait à intervenir.</p>
+    </div>
+    <div class="card">
+      <h3>Ton éditorial</h3>
+      <p><strong style="color:var(--terracotta);">Chaleureux · Raffiné · Rassurant</strong></p>
+      <p style="margin-top:10px;">Un ton qui combine la douceur de l'accueil mauricien avec le professionnalisme attendu dans le secteur premium : jamais froid, jamais désinvolte, toujours sincère et élégant.</p>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="pillar-icon">🌿</div>
+      <h3>Hospitalité à l'ADN mauricien</h3>
+      <p>Une culture de l'accueil profonde et authentique, héritée de l'île Maurice, qui imprègne chaque interaction avec les voyageurs et chaque soin apporté aux biens.</p>
+    </div>
+    <div class="card">
+      <div class="pillar-icon">🔎</div>
+      <h3>Le sens du détail comme promesse</h3>
+      <p>Bienvenue book digitale, attention de bienvenue, réassort des consommables : chaque petite attention est pensée, traçable et soignée.</p>
+    </div>
+    <div class="card">
+      <div class="pillar-icon">📊</div>
+      <h3>Tarification dynamique pilotée</h3>
+      <p>Les prix sont ajustés en continu pour maximiser les revenus du propriétaire sans surcharge de gestion de sa part — performance et sérénité garanties.</p>
+    </div>
+    <div class="card">
+      <div class="pillar-icon">🤝</div>
+      <h3>Accompagnement propriétaire transparent</h3>
+      <p>Un suivi personnalisé, des comptes-rendus clairs et une communication proactive : le propriétaire est toujours informé, jamais surpris.</p>
+    </div>
+    <div class="card">
+      <div class="pillar-icon">🌍</div>
+      <h3>Vision bicontinent &amp; ambition internationale</h3>
+      <p>Un ancrage solide dans les Hauts-de-France avec une expansion prévue à l'île Maurice : une conciergerie qui grandit avec ses propriétaires.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02 — CLIENT CIBLE ===== -->
+<section id="bp-section-02" class="section section-beige">
+  <div class="section-badge">02 — Client Cible</div>
+  <h2 class="section-title">Portrait du propriétaire idéal</h2>
+  <p class="section-subtitle">Comprendre ses attentes pour mieux lui parler.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Profil type</h3>
+      <ul>
+        <li>Propriétaire d'un ou plusieurs biens dans le Nord/Pas-de-Calais (maison, appartement, loft)</li>
+        <li>35–60 ans, actif ou retraité, peu disponible au quotidien</li>
+        <li>Loue déjà ou souhaite mettre en location saisonnière un bien sous-exploité</li>
+        <li>Profil prudent : il cherche un partenaire fiable avant un prestataire</li>
+        <li>Parfois expatrié ou second propriétaire à distance</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Générer des revenus complémentaires sans charge mentale</li>
+        <li>Valoriser un bien vide ou sous-loué sur les plateformes</li>
+        <li>Déléguer entièrement la relation voyageurs et la logistique</li>
+        <li>Être rassuré par un interlocuteur unique réactif et professionnel</li>
+        <li>Avoir un suivi transparent et des résultats mesurables</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Freins &amp; Objections</h3>
+      <ul>
+        <li>« 23 % c'est peut-être trop cher pour moi »</li>
+        <li>« Je ne connais pas encore cette conciergerie »</li>
+        <li>« Que se passe-t-il si mon bien est abîmé ? »</li>
+        <li>« Comment puis-je vérifier ce qui est fait ? »</li>
+        <li>« Je veux garder la main sur mon bien »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Sérieux et professionnalisme perçus dès le site</li>
+        <li>Transparence sur les tarifs et les services inclus</li>
+        <li>Preuve sociale : avis, témoignages, exemples concrets</li>
+        <li>Facilité de prise de contact et réactivité</li>
+        <li>Simulation de revenus potentiels convaincante</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 — OBJECTIFS DU SITE ===== -->
+<section id="bp-section-03" class="section section-white">
+  <div class="section-badge">03 — Objectifs du site</div>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+  <p class="section-subtitle">Liste priorisée des missions assignées à kinvelvethomes.fr</p>
+
+  <div class="card" style="max-width: 760px; margin: 0 auto;">
+    <div class="obj-item">
+      <div class="obj-rank">1</div>
+      <div class="obj-text">
+        <strong>Génération de leads propriétaires</strong>
+        <span>Convertir les visiteurs en prospects qualifiés via formulaire de contact et simulateur de revenus.</span>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">2</div>
+      <div class="obj-text">
+        <strong>Réassurance &amp; crédibilité</strong>
+        <span>Lever les objections dès la première lecture grâce à la transparence sur les services, la tarification et l'identité de la fondatrice.</span>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">3</div>
+      <div class="obj-text">
+        <strong>Conversion — Prise de RDV</strong>
+        <span>Proposer un appel découverte simple et accessible depuis toutes les pages clés du site.</span>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">4</div>
+      <div class="obj-text">
+        <strong>SEO local — Hauts-de-France</strong>
+        <span>Être trouvé sur les requêtes « conciergerie Airbnb Nord », « gestion locative saisonnière Hauts-de-France ».</span>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">5</div>
+      <div class="obj-text">
+        <strong>Notoriété &amp; positionnement premium</strong>
+        <span>Installer une image de marque haut de gamme qui distingue Kin Velvet Homes de la concurrence locale.</span>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">6</div>
+      <div class="obj-text">
+        <strong>Nurturing éditorial</strong>
+        <span>Alimenter la confiance des prospects hésitants via le blog et les ressources utiles pour les propriétaires.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 — ARBORESCENCE ===== -->
+<section id="bp-section-04" class="section section-beige">
+  <div class="section-badge">04 — Arborescence</div>
+  <h2 class="section-title">Structure du site web</h2>
+  <p class="section-subtitle">Pages recommandées, framework rédactionnel et potentiel SEO de chaque page.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🏠 Accueil</td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td>Conciergerie location courte durée Hauts-de-France</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>✨ Notre offre propriétaires</td>
+          <td><span class="badge-framework">PAS</span></td>
+          <td>Conciergerie Airbnb Nord-Pas-de-Calais</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>💰 Simulateur de revenus</td>
+          <td><span class="badge-framework">BAB</span></td>
+          <td>Simulateur revenus location saisonnière</td>
+          <td><span class="badge-seo seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>👤 À propos — Kinsy &amp; Kin Velvet</td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td>Conciergerie premium Nord fondatrice</td>
+          <td><span class="badge-seo seo-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td>📍 Conciergerie Lille &amp; Hauts-de-France</td>
+          <td><span class="badge-framework">PAS</span></td>
+          <td>Conciergerie Airbnb Lille</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>📍 Conciergerie Côte d'Opale</td>
+          <td><span class="badge-framework">PAS</span></td>
+          <td>Conciergerie location saisonnière Côte d'Opale</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>📝 Blog propriétaires</td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td>Conseils location saisonnière Nord</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>📞 Contact &amp; Appel découverte</td>
+          <td><span class="badge-framework">BAB</span></td>
+          <td>Confier son logement conciergerie</td>
+          <td><span class="badge-seo seo-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top: 24px; background: rgba(180,109,74,0.07); border: 1px solid rgba(180,109,74,0.15);">
+    <p style="font-size:13px; color: var(--anthracite);"><strong style="color:var(--terracotta);">Note structurelle :</strong> La page « Notre offre propriétaires » regroupe tous les services en une seule page (photos, annonces, tarification dynamique, coordination, welcome book, suivi…). Aucune page de service individuel n'est créée. Les 2 pages locales SEO (Lille et Côte d'Opale) couvrent le territoire Nord/Pas-de-Calais sans duplication.</p>
+  </div>
+</section>
+
+<!-- ===== 05 — COCON SÉMANTIQUE ===== -->
+<section id="bp-section-05" class="section section-white">
+  <div class="section-badge">05 — Cocon Sémantique</div>
+  <h2 class="section-title">Architecture de contenu &amp; maillage interne</h2>
+  <p class="section-subtitle">2 clusters thématiques pour dominer les requêtes SEO prioritaires.</p>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <div class="cluster-header">
+        <div class="cluster-dot"></div>
+        <div class="cluster-name">Cluster 1 — Conciergerie &amp; Services propriétaires</div>
+      </div>
+      <p style="font-size:13px; color:var(--anthracite); margin-bottom:16px;">Toutes les pages liées à l'offre, la tarification et la zone d'intervention.</p>
+      <div class="maillage-row">
+        <span class="page-tag">Accueil</span>
+        <span class="arrow">→</span>
+        <span style="font-size:13px;">Notre offre propriétaires, Pages locales SEO</span>
+      </div>
+      <div class="maillage-row">
+        <span class="page-tag">Offre propriétaires</span>
+        <span class="arrow">→</span>
+        <span style="font-size:13px;">Simulateur de revenus, Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="page-tag">Page Lille</span>
+        <span class="arrow">→</span>
+        <span style="font-size:13px;">Offre propriétaires, Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="page-tag">Page Côte d'Opale</span>
+        <span class="arrow">→</span>
+        <span style="font-size:13px;">Offre propriétaires, Contact</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="cluster-header">
+        <div class="cluster-dot" style="background: var(--or);"></div>
+        <div class="cluster-name">Cluster 2 — Éditorial &amp; Conseil propriétaires</div>
+      </div>
+      <p style="font-size:13px; color:var(--anthracite); margin-bottom:16px;">Le blog alimente l'autorité SEO et nourrit les prospects hésitants.</p>
+      <div class="maillage-row">
+        <span class="page-tag">Blog</span>
+        <span class="arrow">→</span>
+        <span style="font-size:13px;">Articles thématiques, Offre propriétaires</span>
+      </div>
+      <div class="maillage-row">
+        <span class="page-tag">Articles blog</span>
+        <span class="arrow">→</span>
+        <span style="font-size:13px;">Simulateur de revenus, Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="page-tag">À propos</span>
+        <span class="arrow">→</span>
+        <span style="font-size:13px;">Offre propriétaires, Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="page-tag">Simulateur</span>
+        <span class="arrow">→</span>
+        <span style="font-size:13px;">Contact, Offre propriétaires</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="background: rgba(180,109,74,0.07); border: 1px solid rgba(180,109,74,0.15);">
+    <h3 style="margin-bottom:10px;">Logique de maillage résumée</h3>
+    <p style="font-size:13px; color:var(--anthracite);">L'<strong>Accueil</strong> est le hub central qui oriente vers toutes les pages. L'<strong>Offre propriétaires</strong> est la page de conversion principale — toutes les pages y renvoient. Le <strong>Simulateur de revenus</strong> agit comme page de capture : il transforme la curiosité en lead qualifié et renvoie vers <strong>Contact</strong>. Les <strong>articles de blog</strong> capturent le trafic informatif long tail et redirigent vers les pages de conversion.</p>
+  </div>
+</section>
+
+<!-- ===== 06 — TUNNEL DE CONVERSION ===== -->
+<section id="bp-section-06" class="section section-beige">
+  <div class="section-badge">06 — Tunnel de Conversion</div>
+  <h2 class="section-title">Du premier clic à la signature</h2>
+  <p class="section-subtitle">4 étapes pour transformer un inconnu en propriétaire partenaire.</p>
+
+  <div class="grid-2">
+    <div class="tunnel-step">
+      <div class="tunnel-number">1</div>
+      <div class="tunnel-label">Découverte</div>
+      <div class="tunnel-title">Le propriétaire vous trouve</div>
+      <div class="tunnel-meta"><strong>Sources :</strong> Google SEO local, bouche-à-oreille, réseaux sociaux (Instagram)</div>
+      <div class="tunnel-meta"><strong>Page :</strong> Accueil, Pages locales SEO, Articles blog</div>
+      <div class="cta-pill">→ Découvrez nos services</div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">2</div>
+      <div class="tunnel-label">Intérêt</div>
+      <div class="tunnel-title">Il évalue votre offre</div>
+      <div class="tunnel-meta"><strong>Sources :</strong> Navigation interne, simulateur de revenus</div>
+      <div class="tunnel-meta"><strong>Page :</strong> Notre offre propriétaires, Simulateur de revenus</div>
+      <div class="cta-pill">→ Estimez vos revenus potentiels</div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">3</div>
+      <div class="tunnel-label">Confiance</div>
+      <div class="tunnel-title">Il se projette &amp; se rassure</div>
+      <div class="tunnel-meta"><strong>Sources :</strong> Page À propos, avis clients, blog</div>
+      <div class="tunnel-meta"><strong>Page :</strong> À propos, témoignages propriétaires</div>
+      <div class="cta-pill">→ Découvrir notre histoire</div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">4</div>
+      <div class="tunnel-label">Conversion</div>
+      <div class="tunnel-title">Il prend rendez-vous</div>
+      <div class="tunnel-meta"><strong>Sources :</strong> CTA présents sur toutes les pages</div>
+      <div class="tunnel-meta"><strong>Page :</strong> Contact &amp; Appel découverte</div>
+      <div class="cta-pill">→ Réserver mon appel gratuit</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 07 — LEVIERS MARKETING ===== -->
+<section id="bp-section-07" class="section section-white">
+  <div class="section-badge">07 — Leviers Marketing</div>
+  <h2 class="section-title">Les outils pour accélérer la croissance</h2>
+  <p class="section-subtitle">Recommandations concrètes pour générer et convertir des leads propriétaires.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="levier-label">Lead Magnet</div>
+      <h3>Guide PDF — « Combien peut rapporter votre bien dans le Nord ? »</h3>
+      <p>Un document téléchargeable gratuit présentant les revenus moyens selon le type de bien et la zone (Lille, Côte d'Opale, etc.). Capte l'email et positionne Kin Velvet Homes comme expert local. À coupler avec le simulateur de revenus.</p>
+    </div>
+    <div class="card">
+      <div class="levier-label">Prise de RDV</div>
+      <h3>Outil recommandé — Calendly</h3>
+      <p>Intégrer un bouton Calendly sur toutes les pages clés (offre, simulateur, contact). Permet au propriétaire de réserver un appel découverte de 30 minutes sans friction, 24h/24. Simple, professionnel et rassurant.</p>
+    </div>
+    <div class="card">
+      <div class="levier-label">Preuve Sociale</div>
+      <h3>Témoignages vidéo &amp; avis écrits</h3>
+      <p>Recueillir des témoignages authentiques des premiers propriétaires partenaires (texte + photo minimum, vidéo idéalement). Afficher les notes Google. Mettre en avant les chiffres : revenus générés, taux d'occupation, temps gagné.</p>
+    </div>
+    <div class="card">
+      <div class="levier-label">Formulaire Qualifiant</div>
+      <h3>Champs recommandés pour le formulaire de contact</h3>
+      <ul>
+        <li>Prénom &amp; Nom</li>
+        <li>Email + Téléphone</li>
+        <li>Type de bien (appartement / maison / studio)</li>
+        <li>Localisation du bien</li>
+        <li>Situation actuelle (déjà loué / jamais loué)</li>
+        <li>Message libre</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="levier-label">Simulateur de Revenus</div>
+      <h3>Outil interactif de projection financière</h3>
+      <p>Un calculateur intégré au site permettant au propriétaire d'estimer ses revenus potentiels selon sa localisation, son type de bien et sa disponibilité. Puissant outil de conversion — il transforme la curiosité en engagement concret et capte les coordonnées du prospect avant d'afficher le résultat.</p>
+    </div>
+    <div class="card">
+      <div class="levier-label">Newsletter</div>
+      <h3>Angle éditorial — « L'Essentiel Kin Velvet »</h3>
+      <p>Une newsletter mensuelle destinée aux propriétaires et prospects : conseils pratiques pour optimiser sa location, tendances du marché dans le Nord, actualités de la conciergerie et témoignages. Nourrit la relation entre les prises de contact.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 08 — DIRECTION VISUELLE ===== -->
+<section id="bp-section-08" class="section section-beige">
+  <div class="section-badge">08 — Direction Visuelle &amp; Éditoriale</div>
+  <h2 class="section-title">L'identité visuelle de Kin Velvet Homes</h2>
+  <p class="section-subtitle">Une palette chaleureuse et premium, inspirée de l'univers sensoriel de l'hospitalité mauricienne.</p>
+
+  <div class="palette-grid">
+    <div class="color-item">
+      <div class="color-swatch" style="background:#B46D4A;"></div>
+      <div class="color-name">Terracotta / Cuivre</div>
+      <div class="color-hex">#B46D4A</div>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background:#C8A96E;"></div>
+      <div class="color-name">Or doux</div>
+      <div class="color-hex">#C8A96E</div>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background:#EFE6D8;"></div>
+      <div class="color-name">Beige clair</div>
+      <div class="color-hex">#EFE6D8</div>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background:#5F5F5F;"></div>
+      <div class="color-name">Gris anthracite</div>
+      <div class="color-hex">#5F5F5F</div>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background:#FFFFFF; border: 1px solid #E0D8CE;"></div>
+      <div class="color-name">Blanc pur</div>
+      <div class="color-hex">#FFFFFF</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Univers visuel recommandé</h3>
+      <ul>
+        <li>Photographies lumineuses et épurées des biens (lumière naturelle, ambiances chaleureuses)</li>
+        <li>Portraits authentiques de Kinsy pour humaniser la marque et installer la confiance</li>
+        <li>Détails texturés : linge de lit blanc, fleurs locales, welcome gifts soignés</li>
+        <li>Typographie mixte élégante : Playfair Display pour les titres, Inter pour le corps</li>
+        <li>Espaces blancs généreux — jamais de pages surchargées</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Références visuelles</h3>
+      <ul>
+        <li><strong>Peligoni Club</strong> — niveau de finition et cohérence photographique</li>
+        <li><strong>Plum Guide</strong> — élégance éditoriale et sobriété des espaces</li>
+        <li>Ambiances : velours, matières nobles, tons chauds et naturels</li>
+        <li>Iconographie discrète, jamais colorée — traits fins en terracotta ou or</li>
+        <li>Sections alternées blanc / beige pour rythmer la lecture sans bruit visuel</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 09 — ARTICLES BLOG ===== -->
+<section id="bp-section-09" class="section section-white">
+  <div class="section-badge">09 — Articles Blog Recommandés</div>
+  <h2 class="section-title">Stratégie de contenu éditorial</h2>
+  <p class="section-subtitle">7 sujets d'articles pour attirer, informer et convertir les propriétaires dans les Hauts-de-France.</p>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <div class="blog-priority priority-prioritaire">Prioritaire</div>
+      <div class="blog-title">Combien peut rapporter votre appartement à Lille en location saisonnière ?</div>
+      <div class="blog-meta">
+        <span class="cluster-tag">Cluster 1</span>
+        <span>Intention : informationnelle / transactionnelle</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-priority priority-prioritaire">Prioritaire</div>
+      <div class="blog-title">Conciergerie Airbnb : 7 critères pour bien choisir son prestataire dans le Nord</div>
+      <div class="blog-meta">
+        <span class="cluster-tag">Cluster 1</span>
+        <span>Intention : transactionnelle / décisionnelle</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-priority priority-prioritaire">Prioritaire</div>
+      <div class="blog-title">Location saisonnière vs location longue durée : que choisir en Hauts-de-France ?</div>
+      <div class="blog-meta">
+        <span class="cluster-tag">Cluster 2</span>
+        <span>Intention : informationnelle / comparative</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-priority priority-moyen">Moyen</div>
+      <div class="blog-title">Comment optimiser son annonce Airbnb pour la Côte d'Opale en 2025 ?</div>
+      <div class="blog-meta">
+        <span class="cluster-tag">Cluster 1</span>
+        <span>Intention : informationnelle / SEO local</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-priority priority-moyen">Moyen</div>
+      <div class="blog-title">Tarification dynamique en location courte durée : comment maximiser ses revenus sans s'y perdre ?</div>
+      <div class="blog-meta">
+        <span class="cluster-tag">Cluster 2</span>
+        <span>Intention : informationnelle / pédagogique</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-priority priority-moyen">Moyen</div>
+      <div class="blog-title">Welcome book digital : pourquoi c'est devenu indispensable pour vos voyageurs ?</div>
+      <div class="blog-meta">
+        <span class="cluster-tag">Cluster 2</span>
+        <span>Intention : informationnelle / valeur ajoutée</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-priority priority-faible">Faible</div>
+      <div class="blog-title">L'art de l'hospitalité mauricienne appliqué à la location courte durée en France</div>
+      <div class="blog-meta">
+        <span class="cluster-tag">Cluster 2</span>
+        <span>Intention : notoriété / storytelling de marque</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-name">Kin Velvet Homes</div>
+  <div class="footer-mention">Document confidentiel — Blueprint Stratégique · Réservé à l'usage exclusif de Kinsy Dufour</div>
+  <div class="footer-agency">Produit par AR Digital · agence web spécialisée conciergeries de location courte durée</div>
+</footer>
+
+</body>
+</html>
