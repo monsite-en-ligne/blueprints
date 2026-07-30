@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Instant Home Tarn</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2c2c2c;
+    background: #f9f7f3;
+  }
+
+  /* COUVERTURE */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1a2e1a 0%, #2d4a1e 35%, #4a6741 60%, #7a6020 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(184,148,40,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    background: rgba(184,148,40,0.25);
+    border: 1px solid rgba(184,148,40,0.5);
+    color: #d4b54a;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 7px 20px;
+    border-radius: 30px;
+    margin-bottom: 36px;
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    letter-spacing: -1px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 52px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-item .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-item .value {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  .cover-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 70px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: #f9f7f3;
+  }
+
+  section:nth-child(odd) {
+    background: #ffffff;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #7a6020;
+    background: rgba(122,96,32,0.08);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #1a2e1a;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: #666;
+    max-width: 620px;
+    margin-bottom: 44px;
+    line-height: 1.7;
+  }
+
+  /* CARDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1a2e1a;
+    margin-bottom: 10px;
+  }
+
+  .card p, .card li {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card ul li {
+    padding: 4px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .card ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #b89428;
+    font-weight: 600;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #2d4a1e, #1a2e1a);
+    border-radius: 16px;
+    padding: 40px 44px;
+    color: #fff;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-box::after {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle, rgba(184,148,40,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .highlight-box .highlight-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #d4b54a;
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    line-height: 1.5;
+    color: #fff;
+    font-style: italic;
+  }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 4px;
+  }
+
+  .tag-green { background: rgba(45,74,30,0.1); color: #2d4a1e; }
+  .tag-gold  { background: rgba(184,148,40,0.12); color: #7a6020; }
+  .tag-grey  { background: rgba(0,0,0,0.06); color: #555; }
+
+  /* TABLEAU */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 14px;
+  }
+
+  thead {
+    background: #1a2e1a;
+    color: #fff;
+  }
+
+  thead th {
+    padding: 14px 18px;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: left;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody td {
+    padding: 14px 18px;
+    color: #444;
+    vertical-align: top;
+  }
+
+  tbody tr:hover { background: #faf9f5; }
+
+  .badge-fort   { background: rgba(45,74,30,0.12); color: #2d4a1e; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .badge-moyen  { background: rgba(184,148,40,0.15); color: #7a6020; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .badge-faible { background: rgba(0,0,0,0.07); color: #777; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+
+  .badge-prio-1 { background: rgba(45,74,30,0.12); color: #2d4a1e; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+  .badge-prio-2 { background: rgba(184,148,40,0.15); color: #7a6020; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+  .badge-prio-3 { background: rgba(0,0,0,0.07); color: #777; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+
+  /* MAILLAGE */
+  .maillage-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    font-size: 14px;
+    color: #444;
+  }
+
+  .maillage-item:last-child { border-bottom: none; }
+
+  .maillage-source {
+    font-weight: 600;
+    color: #1a2e1a;
+    background: rgba(45,74,30,0.08);
+    padding: 3px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .maillage-arrow {
+    color: #b89428;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .maillage-dest {
+    color: #555;
+    white-space: nowrap;
+  }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .tunnel-step {
+    background: #fff;
+    padding: 28px 22px;
+    border-right: 1px solid rgba(0,0,0,0.06);
+    position: relative;
+  }
+
+  .tunnel-step:last-child { border-right: none; }
+
+  .tunnel-step-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #b89428;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .tunnel-step h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #1a2e1a;
+    margin-bottom: 14px;
+  }
+
+  .tunnel-step p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  .tunnel-cta {
+    display: inline-block;
+    margin-top: 10px;
+    background: rgba(122,96,32,0.1);
+    color: #7a6020;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 13px;
+    border-radius: 20px;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .color-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+
+  .color-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: #aaa;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* CLUSTER */
+  .cluster-block {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+  }
+
+  .cluster-block h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: #1a2e1a;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(184,148,40,0.3);
+  }
+
+  .cluster-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+
+  /* PRIORITÉS OBJECTIFS */
+  .objectif-list { list-style: none; padding: 0; }
+  .objectif-list li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    background: #fff;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    font-size: 14px;
+    color: #333;
+  }
+  .objectif-num {
+    min-width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #1a2e1a;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* LEVIERS */
+  .levier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .levier-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #b89428;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .levier-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #1a2e1a;
+    margin-bottom: 10px;
+  }
+
+  .levier-card p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.65;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1a2e1a;
+    padding: 36px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  footer .footer-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 4px;
+  }
+
+  footer .footer-right {
+    text-align: right;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 38px; }
+    .cover { padding: 50px 24px; }
+    .cover-meta { gap: 20px; }
+    .cover-divider { display: none; }
+
+    section { padding: 48px 24px; }
+    h2 { font-size: 26px; }
+
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .tunnel-grid { grid-template-columns: 1fr; }
+    .tunnel-step { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.06); }
+
+    .table-wrap { overflow-x: auto; }
+    table { min-width: 600px; }
+
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 17px; }
+
+    footer { padding: 28px 24px; flex-direction: column; text-align: center; }
+    footer .footer-right { text-align: center; }
+
+    .palette-grid { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <span class="cover-badge">Blueprint Stratégique</span>
+  <h1>Instant Home Tarn</h1>
+  <p class="cover-subtitle">Document confidentiel — Stratégie digitale & positionnement web</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="label">Cliente</span>
+      <span class="value">Marie Gallego Dijou</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="label">Secteur</span>
+      <span class="value">Conciergerie LCD</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="label">Zone</span>
+      <span class="value">Gaillac · Albi · Lavaur</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2>Positionnement</h2>
+  <p class="section-intro">Le socle identitaire d'Instant Home Tarn : ce que vous représentez, comment vous parlez, et pourquoi vous vous démarquez dans le Tarn.</p>
+
+  <div class="highlight-box">
+    <span class="highlight-label">Promesse de valeur principale</span>
+    <p>« Votre logement dans le Tarn, entre vignes et bastides — valorisé, optimisé et accueilli avec soin, sans que vous n'ayez à lever le petit doigt. »</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <span class="card-icon">🧭</span>
+      <h3>Ligne directrice de communication</h3>
+      <p>Accompagnement local de proximité, ancré dans l'identité du Tarn, avec un niveau de service haut de gamme et un suivi personnalisé qui inspire confiance dès le premier contact.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✍️</span>
+      <h3>Ton éditorial</h3>
+      <p><strong>Chaleureux · Rigoureux · Authentique</strong><br>Un discours qui allie la douceur de vivre du Tarn à la sérieuse expertise d'une professionnelle engagée — accessible sans jamais être banal.</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">📍</span>
+      <h3>Ancrage local fort</h3>
+      <p>Conciergerie implantée entre Gaillac, Albi et Lavaur, avec une connaissance intime du territoire, de ses propriétaires et de ses voyageurs.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🍇</span>
+      <h3>Univers identitaire différenciant</h3>
+      <p>Une identité visuelle et éditoriale ancrée dans l'authenticité tarnaise — vignobles, bastides, art de vivre — qui séduit autant les propriétaires que les voyageurs.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🤝</span>
+      <h3>Relation personnalisée & disponibilité 7j/7</h3>
+      <p>Suivi propriétaire individuel et assistance voyageur continue. Pas de plateforme froide : une vraie personne, réactive et attentionnée à chaque étape.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📈</span>
+      <h3>Optimisation active de l'annonce</h3>
+      <p>Valorisation professionnelle des annonces, amélioration des avis voyageurs et suivi continu pour maximiser le taux d'occupation et les revenus.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client Cible</span>
+  <h2>Client Cible</h2>
+  <p class="section-intro">Portrait du propriétaire idéal qu'Instant Home Tarn cherche à convaincre et accompagner sur le long terme.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">👤</span>
+      <h3>Profil type</h3>
+      <ul>
+        <li>35 – 65 ans, propriétaire d'une maison, gîte ou mas dans le Tarn</li>
+        <li>Actif ou semi-retraité, peu de temps disponible</li>
+        <li>Propriété déjà sur Airbnb/Booking ou en cours de mise en location</li>
+        <li>Habite à proximité ou parfois à distance du bien</li>
+        <li>Sensible à la qualité de vie tarnaise et à la valorisation de son patrimoine</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">💡</span>
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Générer des revenus complémentaires sans contrainte</li>
+        <li>Déléguer entièrement la logistique et l'accueil</li>
+        <li>Améliorer ses avis et son classement sur les plateformes</li>
+        <li>Protéger et valoriser son bien immobilier</li>
+        <li>Bénéficier d'un interlocuteur de confiance, réactif et local</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">🚧</span>
+      <h3>Freins & objections</h3>
+      <ul>
+        <li>« La commission à 22% me semble élevée »</li>
+        <li>« Je ne sais pas si je peux vraiment faire confiance à quelqu'un pour mon logement »</li>
+        <li>« J'ai peur de perdre le contrôle sur mes réservations »</li>
+        <li>« Je ne sais pas si ça vaut le coup dans le Tarn »</li>
+        <li>« Et si les voyageurs ne sont pas bien accueillis ? »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">✅</span>
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Proximité géographique et disponibilité réelle</li>
+        <li>Transparence sur les prestations incluses dans la commission</li>
+        <li>Preuves de résultats (avis, biens gérés, retours propriétaires)</li>
+        <li>Facilité à prendre contact et rapidité de réponse</li>
+        <li>Sentiment d'être accompagné, pas juste "géré"</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du Site</span>
+  <h2>Objectifs du Site</h2>
+  <p class="section-intro">Ce que le site web d'Instant Home Tarn doit accomplir, classé par ordre de priorité stratégique.</p>
+
+  <ul class="objectif-list">
+    <li>
+      <span class="objectif-num">1</span>
+      <div><strong>Génération de leads propriétaires</strong> — Capturer des contacts qualifiés de propriétaires souhaitant confier leur bien dans le Tarn.</div>
+    </li>
+    <li>
+      <span class="objectif-num">2</span>
+      <div><strong>Réassurance & confiance</strong> — Démontrer le sérieux, la proximité et le professionnalisme d'Instant Home Tarn pour lever les objections.</div>
+    </li>
+    <li>
+      <span class="objectif-num">3</span>
+      <div><strong>SEO local</strong> — Se positionner sur les recherches de conciergerie à Gaillac, Albi et Lavaur pour capter une audience organique qualifiée.</div>
+    </li>
+    <li>
+      <span class="objectif-num">4</span>
+      <div><strong>Prise de contact / RDV</strong> — Faciliter le passage à l'action via un formulaire qualifiant et un lien de prise de RDV.</div>
+    </li>
+    <li>
+      <span class="objectif-num">5</span>
+      <div><strong>Notoriété locale</strong> — Asseoir la présence d'Instant Home Tarn comme référence de la conciergerie LCD dans le triangle Gaillac–Albi–Lavaur.</div>
+    </li>
+  </ul>
+</section>
+
+<!-- 04 — ARBORESCENCE DU SITE -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence du Site</span>
+  <h2>Arborescence du Site</h2>
+  <p class="section-intro">Structure des pages recommandées pour instanthometarn.fr, avec le framework rédactionnel et le potentiel SEO associé à chaque page.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Tarn</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Services (propriétaires)</strong></td>
+          <td>PAS</td>
+          <td>services conciergerie Airbnb Tarn</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À Propos</strong></td>
+          <td>BAB</td>
+          <td>conciergerie locale Gaillac Albi Lavaur</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Logements</strong></td>
+          <td>AIDA</td>
+          <td>location courte durée Tarn séjour</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils location saisonnière Tarn</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / Devis gratuit</strong></td>
+          <td>PAS</td>
+          <td>confier son logement conciergerie Tarn</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO Local — Gaillac & Albi</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Gaillac / Albi</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon Sémantique</span>
+  <h2>Cocon Sémantique</h2>
+  <p class="section-intro">Organisation thématique du contenu pour maximiser l'autorité SEO et guider le visiteur vers la conversion.</p>
+
+  <div class="cluster-block">
+    <h4>🏡 Cluster 1 — Conciergerie & Services propriétaires</h4>
+    <div class="cluster-tags">
+      <span class="tag tag-green">Page Services</span>
+      <span class="tag tag-green">Accueil</span>
+      <span class="tag tag-green">À Propos</span>
+      <span class="tag tag-green">Contact</span>
+      <span class="tag tag-gold">Articles blog : services, commission, délégation</span>
+    </div>
+    <p style="font-size:14px;color:#555;">Pilier central du site. Les pages Services et Accueil se renforcent mutuellement. Les articles de blog viennent alimenter ce cluster avec des requêtes longue traîne et renvoient vers la page Services et le formulaire de contact.</p>
+  </div>
+
+  <div class="cluster-block">
+    <h4>📍 Cluster 2 — SEO Local Tarn (Gaillac · Albi · Lavaur)</h4>
+    <div class="cluster-tags">
+      <span class="tag tag-green">Page SEO Locale (Gaillac & Albi)</span>
+      <span class="tag tag-green">À Propos</span>
+      <span class="tag tag-gold">Articles blog : tourisme Tarn, vignoble, bastides</span>
+    </div>
+    <p style="font-size:14px;color:#555;">Les pages locales ciblent des requêtes géolocalisées précises. Elles renvoient vers la page Services et le formulaire de contact pour transformer le trafic local en leads.</p>
+  </div>
+
+  <div class="cluster-block">
+    <h4>✨ Maillage interne recommandé</h4>
+    <div class="maillage-item">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Page Services · À Propos · Contact</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Page Services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact / Devis · À Propos · Articles Blog</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Articles Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Page Services · Contact · Page SEO Locale</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Pages SEO Locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Page Services · Contact · Accueil</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Nos Logements</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">À Propos · Contact · Accueil</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de Conversion</span>
+  <h2>Tunnel de Conversion</h2>
+  <p class="section-intro">Les 4 étapes qui guident un propriétaire inconnu jusqu'à la prise de contact avec Instant Home Tarn.</p>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 01</span>
+      <h4>Découverte</h4>
+      <p><strong>Source :</strong> Google (SEO local), bouche-à-oreille, réseaux sociaux</p>
+      <p><strong>Page :</strong> Accueil ou page SEO locale</p>
+      <span class="tunnel-cta">Découvrir nos services →</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 02</span>
+      <h4>Intérêt</h4>
+      <p><strong>Source :</strong> Navigation interne, blog</p>
+      <p><strong>Page :</strong> Page Services propriétaires</p>
+      <span class="tunnel-cta">Télécharger le guide →</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 03</span>
+      <h4>Confiance</h4>
+      <p><strong>Source :</strong> Page À Propos, avis clients, logements référencés</p>
+      <p><strong>Page :</strong> À Propos / Logements</p>
+      <span class="tunnel-cta">Lire les avis →</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 04</span>
+      <h4>Conversion</h4>
+      <p><strong>Source :</strong> CTA présents sur toutes les pages</p>
+      <p><strong>Page :</strong> Contact / Devis gratuit</p>
+      <span class="tunnel-cta">Demander un devis →</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers Marketing</span>
+  <h2>Leviers Marketing Recommandés</h2>
+  <p class="section-intro">Les outils et dispositifs concrets pour attirer, convaincre et convertir les propriétaires du Tarn.</p>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <span class="levier-label">Lead Magnet</span>
+      <h4>Guide PDF : "Louer son bien dans le Tarn — 7 erreurs à éviter sur Airbnb"</h4>
+      <p>Un guide pratique téléchargeable qui apporte de la valeur immédiate au propriétaire, positionne Instant Home Tarn comme expert et permet de capturer un email qualifié.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-label">Prise de RDV</span>
+      <h4>Outil Calendly ou Cal.com</h4>
+      <p>Un lien de prise de RDV téléphonique intégré directement dans la page Services et la page Contact. Simple, rapide, sans friction pour le propriétaire.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-label">Preuve Sociale</span>
+      <h4>Avis Google + témoignages propriétaires</h4>
+      <p>Afficher des avis Google vérifiés et des témoignages courts de propriétaires satisfaits. Idéalement avec photo et prénom pour humaniser la relation.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-label">Formulaire Qualifiant</span>
+      <h4>Champs recommandés</h4>
+      <p>Prénom & Nom · Email · Téléphone · Commune du bien · Type de logement (maison / appartement / gîte) · Déjà sur une plateforme ? (oui/non) · Message libre</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-label">Newsletter</span>
+      <h4>Angle éditorial : "Louer sereinement dans le Tarn"</h4>
+      <p>Conseils saisonniers, bonnes pratiques Airbnb, actualités du marché LCD dans le Tarn — 1 email mensuel pour rester en haut de l'esprit des propriétaires non encore convertis.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction Visuelle & Éditoriale</span>
+  <h2>Direction Visuelle & Éditoriale</h2>
+  <p class="section-intro">L'identité graphique et éditoriale recommandée pour Instant Home Tarn, inspirée de l'univers campagne tarnaise, vignobles et bastides médiévales.</p>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <h3>Palette de couleurs</h3>
+    <p style="font-size:14px;color:#888;margin-bottom:28px;">Inspirée de l'univers vert & or de la campagne tarnaise — vignes, terres dorées, pierre ancienne.</p>
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="color-swatch" style="background:#2d4a1e;"></div>
+        <span class="color-name">Vert Vigne</span>
+        <span class="color-hex">#2D4A1E</span>
+      </div>
+      <div class="palette-item">
+        <div class="color-swatch" style="background:#b89428;"></div>
+        <span class="color-name">Or Tarnais</span>
+        <span class="color-hex">#B89428</span>
+      </div>
+      <div class="palette-item">
+        <div class="color-swatch" style="background:#e8dfc0;"></div>
+        <span class="color-name">Sable Bastide</span>
+        <span class="color-hex">#E8DFC0</span>
+      </div>
+      <div class="palette-item">
+        <div class="color-swatch" style="background:#1a2e1a;"></div>
+        <span class="color-name">Vert Nuit</span>
+        <span class="color-hex">#1A2E1A</span>
+      </div>
+      <div class="palette-item">
+        <div class="color-swatch" style="background:#f9f7f3;"></div>
+        <span class="color-name">Blanc Calcaire</span>
+        <span class="color-hex">#F9F7F3</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🖼️</span>
+      <h3>Univers visuel recommandé</h3>
+      <ul>
+        <li>Photos de vignobles et bastides du Tarn en lumière dorée</li>
+        <li>Intérieurs chaleureux de gîtes et maisons de caractère</li>
+        <li>Portraits humains et authentiques (accueil, soin du détail)</li>
+        <li>Textures naturelles : pierre, bois, lin, terre cuite</li>
+        <li>Typographies serif élégantes associées à un corps sans-serif sobre</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">💬</span>
+      <h3>Références visuelles</h3>
+      <ul>
+        <li>Site apprécié par la cliente : lesclesdalfred.fr — style sobre, élégant, humain</li>
+        <li>Éditorial ancré dans l'identité locale et le récit de territoire</li>
+        <li>Photos professionnelles fortement recommandées dès le lancement</li>
+        <li>Iconographie minimaliste et raffinée, jamais générique</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles Blog Recommandés</span>
+  <h2>Articles Blog Recommandés</h2>
+  <p class="section-intro">Sujets d'articles stratégiques pour développer le trafic organique d'Instant Home Tarn et asseoir son expertise locale.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Louer son bien à Gaillac : guide complet pour propriétaires</strong></td>
+          <td>SEO Local</td>
+          <td>Informationnelle — propriétaire débutant</td>
+          <td><span class="badge-prio-1">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Pourquoi confier son Airbnb à une conciergerie dans le Tarn ?</strong></td>
+          <td>Services</td>
+          <td>Commerciale — comparaison faire soi-même vs déléguer</td>
+          <td><span class="badge-prio-1">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Commission de conciergerie : combien ça coûte et qu'est-ce que ça inclut ?</strong></td>
+          <td>Services</td>
+          <td>Transactionnelle — objection prix</td>
+          <td><span class="badge-prio-1">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Les 5 atouts du Tarn pour attirer des voyageurs toute l'année</strong></td>
+          <td>SEO Local</td>
+          <td>Informationnelle — valorisation du territoire</td>
+          <td><span class="badge-prio-2">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Comment améliorer ses avis Airbnb et Booking rapidement ?</strong></td>
+          <td>Services</td>
+          <td>Informationnelle — propriétaire déjà actif</td>
+          <td><span class="badge-prio-2">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Haute saison dans le vignoble tarnais : comment préparer son logement ?</strong></td>
+          <td>SEO Local</td>
+          <td>Saisonnière — intention de préparation</td>
+          <td><span class="badge-prio-2">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Checklist ménage et linge : les standards d'une conciergerie professionnelle</strong></td>
+          <td>Services</td>
+          <td>Informationnelle — réassurance & qualité</td>
+          <td><span class="badge-prio-3">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-name">Instant Home Tarn</div>
+    <div class="footer-sub">Marie Gallego Dijou · mariegallego31@gmail.com · instanthometarn.fr</div>
+  </div>
+  <div class="footer-right">
+    Document confidentiel<br>
+    Produit par AR Digital · Blueprint Stratégique
+  </div>
+</footer>
+
+</body>
+</html>
