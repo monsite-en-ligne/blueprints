@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Casoria Novaé</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #0D1B2A;
+    background: #F4F9F6;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(155deg, #0D1B2A 0%, #1a2f47 55%, #0D1B2A 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(181,138,75,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cover-badge {
+    display: inline-block;
+    border: 1px solid rgba(181,138,75,0.5);
+    color: #B58A4B;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 22px;
+    border-radius: 50px;
+    margin-bottom: 42px;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(244,249,246,0.65);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(181,138,75,0.8);
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(244,249,246,0.85);
+  }
+  .cover-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(181,138,75,0.3);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: #F5F1E8;
+  }
+  section:nth-child(odd) {
+    background: #F4F9F6;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #B58A4B;
+    border: 1px solid rgba(181,138,75,0.4);
+    border-radius: 50px;
+    padding: 5px 16px;
+    margin-bottom: 16px;
+  }
+
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: #0D1B2A;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: #4a5568;
+    max-width: 680px;
+    margin-bottom: 48px;
+    line-height: 1.8;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, #0D1B2A 0%, #1a2f47 100%);
+    border-radius: 18px;
+    padding: 42px 48px;
+    color: #fff;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-box::after {
+    content: '';
+    position: absolute;
+    right: -30px; bottom: -30px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(181,138,75,0.1);
+    pointer-events: none;
+  }
+  .highlight-box .hb-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #B58A4B;
+    margin-bottom: 14px;
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #F4F9F6;
+    font-style: italic;
+  }
+
+  /* ── CARDS ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(181,138,75,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 18px;
+  }
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0D1B2A;
+    margin-bottom: 10px;
+    line-height: 1.35;
+  }
+  .card p, .card li {
+    font-size: 14px;
+    color: #4a5568;
+    line-height: 1.75;
+  }
+  .card ul {
+    padding-left: 16px;
+    margin-top: 6px;
+  }
+  .card ul li {
+    margin-bottom: 4px;
+  }
+
+  .tone-tags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .tone-tag {
+    background: rgba(13,27,42,0.07);
+    color: #0D1B2A;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: 50px;
+    padding: 6px 18px;
+  }
+
+  /* ── OBJECTIFS ── */
+  .objectifs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .obj-item {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .obj-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(181,138,75,0.35);
+    min-width: 44px;
+    line-height: 1;
+  }
+  .obj-content h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0D1B2A;
+    margin-bottom: 3px;
+  }
+  .obj-content p {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.6;
+  }
+
+  /* ── TABLE ── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  thead {
+    background: #0D1B2A;
+    color: #fff;
+  }
+  thead th {
+    padding: 16px 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+  }
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+  tbody td {
+    padding: 16px 20px;
+    font-size: 14px;
+    color: #2d3748;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  tbody tr:nth-child(even) td {
+    background: #fafafa;
+  }
+  .badge-seo {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-radius: 50px;
+    padding: 4px 14px;
+    text-transform: uppercase;
+  }
+  .badge-fort { background: #d1fae5; color: #065f46; }
+  .badge-moyen { background: #fef9c3; color: #854d0e; }
+  .badge-faible { background: #f1f5f9; color: #475569; }
+
+  /* ── COCON ── */
+  .cluster-block {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 32px 36px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+  }
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0D1B2A;
+    margin-bottom: 6px;
+  }
+  .cluster-pages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .cluster-page-tag {
+    background: rgba(13,27,42,0.06);
+    color: #0D1B2A;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 5px 16px;
+    border-radius: 50px;
+  }
+  .maillage-block {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-top: 32px;
+  }
+  .maillage-block h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0D1B2A;
+    margin-bottom: 16px;
+  }
+  .maillage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #2d3748;
+  }
+  .maillage-row:last-child { margin-bottom: 0; }
+  .maillage-from {
+    background: #0D1B2A;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 50px;
+    white-space: nowrap;
+  }
+  .maillage-arrow {
+    color: #B58A4B;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .maillage-to {
+    background: rgba(181,138,75,0.12);
+    color: #0D1B2A;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 50px;
+    white-space: nowrap;
+  }
+
+  /* ── TUNNEL ── */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .tunnel-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+  .tunnel-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: #B58A4B;
+    border-radius: 4px 0 0 4px;
+  }
+  .tunnel-step {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #B58A4B;
+    margin-bottom: 8px;
+  }
+  .tunnel-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0D1B2A;
+    margin-bottom: 14px;
+  }
+  .tunnel-card .t-row {
+    margin-bottom: 8px;
+  }
+  .tunnel-card .t-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #9ca3af;
+    margin-bottom: 2px;
+  }
+  .tunnel-card .t-val {
+    font-size: 14px;
+    color: #2d3748;
+    line-height: 1.6;
+  }
+  .cta-pill {
+    display: inline-block;
+    margin-top: 14px;
+    background: rgba(181,138,75,0.12);
+    color: #0D1B2A;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 18px;
+    border-radius: 50px;
+    border: 1px solid rgba(181,138,75,0.3);
+  }
+
+  /* ── LEVIERS ── */
+  .levier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .levier-card .l-cat {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #B58A4B;
+    margin-bottom: 8px;
+  }
+  .levier-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0D1B2A;
+    margin-bottom: 10px;
+  }
+  .levier-card p {
+    font-size: 14px;
+    color: #4a5568;
+    line-height: 1.75;
+  }
+
+  /* ── PALETTE ── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+    margin-top: 36px;
+    margin-bottom: 48px;
+  }
+  .color-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .color-square {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  }
+  .color-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #0D1B2A;
+    text-align: center;
+  }
+  .color-hex {
+    font-size: 11px;
+    color: #9ca3af;
+    text-align: center;
+  }
+
+  /* ── BLOG ── */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .blog-card .b-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .blog-cluster {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #B58A4B;
+    background: rgba(181,138,75,0.1);
+    padding: 3px 12px;
+    border-radius: 50px;
+  }
+  .blog-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0D1B2A;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .blog-card .b-meta {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.6;
+  }
+
+  .badge-prioritaire { background: #d1fae5; color: #065f46; font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 50px; }
+  .badge-moyen-p { background: #fef9c3; color: #854d0e; font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 50px; }
+  .badge-faible-p { background: #f1f5f9; color: #475569; font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 50px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0D1B2A;
+    color: rgba(244,249,246,0.5);
+    text-align: center;
+    padding: 36px 40px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  footer span {
+    color: #B58A4B;
+    font-weight: 600;
+  }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, #B58A4B, transparent);
+    border-radius: 2px;
+    margin-bottom: 40px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 42px; }
+    .cover-meta { gap: 20px; }
+    .cover-divider { display: none; }
+    section { padding: 50px 24px; }
+    h2.section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4, .tunnel-grid { grid-template-columns: 1fr; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 18px; }
+    .obj-rank { font-size: 22px; min-width: 32px; }
+    .table-wrap { overflow-x: auto; }
+    .palette-grid { gap: 20px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique</div>
+  <h1>Casoria Novaé</h1>
+  <p class="cover-subtitle">Conciergerie de location courte durée en Occitanie</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Cliente</div>
+      <div class="cover-meta-value">Claire Berland</div>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Secteur</div>
+      <div class="cover-meta-value">Conciergerie LCD</div>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Territoire</div>
+      <div class="cover-meta-value">Toulouse · Tarn-et-Garonne · Tarn · Lauragais</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-inner">
+    <div class="section-badge">01 — Positionnement</div>
+    <h2 class="section-title">Qui est Casoria Novaé ?</h2>
+    <div class="section-divider"></div>
+
+    <div class="highlight-box">
+      <div class="hb-label">Promesse de valeur principale</div>
+      <p>Une conciergerie d'exception en Occitanie qui prend soin de votre lieu comme s'il était le sien — pour que chaque propriétaire retrouve la sérénité et chaque voyageur l'envie de revenir.</p>
+    </div>
+
+    <div class="card" style="margin-bottom: 48px;">
+      <div class="card-icon">✦</div>
+      <h3>Ligne directrice de communication</h3>
+      <p>Accompagnement local de caractère, soin du détail et relation de confiance durable — portés par une fondatrice engagée, attentive aux lieux qui ont une âme.</p>
+    </div>
+
+    <div class="tone-tags">
+      <span class="tone-tag">Élégant</span>
+      <span class="tone-tag">Sensible</span>
+      <span class="tone-tag">Rassurant</span>
+    </div>
+    <p style="font-size:14px; color:#4a5568; margin-bottom:48px; max-width:640px;">Le ton de Casoria Novaé est celui d'une professionnelle qui inspire confiance par la précision de ses mots autant que par la douceur de sa présence — sobre, authentique, jamais commercial.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-icon">🏡</div>
+        <h3>Des lieux de cœur, choisis avec discernement</h3>
+        <p>Casoria Novaé ne prend en charge que des propriétés à l'atmosphère singulière — non pas par quantité, mais par affinité et exigence de qualité.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <h3>Une interlocutrice unique, toujours disponible</h3>
+        <p>Claire connaît chaque bien qu'elle accompagne. Le propriétaire n'est jamais transféré, jamais perdu — il parle toujours à la même personne.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌿</div>
+        <h3>Ancrage local fort en Occitanie</h3>
+        <p>Présence terrain réelle sur un territoire délimité : Toulouse, Tarn-et-Garonne, Tarn et Lauragais. La proximité n'est pas un argument — c'est un mode de fonctionnement.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">✨</div>
+        <h3>Un portefeuille limité pour un soin maximal</h3>
+        <p>Le choix assumé d'accompagner peu de propriétés garantit une attention réelle, une réactivité constante et une qualité non négociée sur chaque séjour.</p>
+      </div>
+      <div class="card" style="grid-column: 1 / -1;">
+        <div class="card-icon">🎯</div>
+        <h3>Une approche fondée sur la confiance et la transparence</h3>
+        <p>Chaque accompagnement commence par un échange humain et une proposition personnalisée. Pas de grille tarifaire générique — une relation construite sur mesure, dans la clarté.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-inner">
+    <div class="section-badge">02 — Client Cible</div>
+    <h2 class="section-title">À qui s'adresse Casoria Novaé ?</h2>
+    <div class="section-divider"></div>
+
+    <div class="grid-2" style="margin-bottom:24px;">
+      <div class="card">
+        <div class="card-icon">👤</div>
+        <h3>Profil type du propriétaire idéal</h3>
+        <p>35–60 ans, propriétaire d'un bien avec caractère (maison de famille, corps de ferme, maison de village, propriété atypique) situé entre Toulouse et les territoires ruraux voisins. Actif, peu disponible au quotidien, attaché à son bien et soucieux de l'expérience offerte à ses locataires.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💭</div>
+        <h3>Motivations principales</h3>
+        <ul>
+          <li>Générer des revenus locatifs sans y consacrer du temps</li>
+          <li>Confier son bien à quelqu'un de confiance et de rigoureux</li>
+          <li>Valoriser un lieu auquel il est attaché émotionnellement</li>
+          <li>Offrir une belle expérience aux voyageurs</li>
+          <li>Bénéficier d'une communication claire et régulière</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <h3>Freins et objections fréquents</h3>
+        <ul>
+          <li>Peur de perdre le contrôle de son bien</li>
+          <li>Doute sur la commission par rapport à la valeur ajoutée réelle</li>
+          <li>Mauvaise expérience passée avec une autre conciergerie</li>
+          <li>Crainte que son bien ne soit "traité comme les autres"</li>
+          <li>Hésitation entre gestion autonome et délégation</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <h3>Critères de décision</h3>
+        <ul>
+          <li>Sentiment de confiance avec l'interlocutrice</li>
+          <li>Connaissance réelle du terrain local</li>
+          <li>Transparence sur les prestations et les frais</li>
+          <li>Preuves de qualité (avis voyageurs, exemples concrets)</li>
+          <li>Approche personnalisée et non standardisée</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-inner">
+    <div class="section-badge">03 — Objectifs du Site</div>
+    <h2 class="section-title">Ce que le site doit accomplir</h2>
+    <div class="section-divider"></div>
+    <div class="objectifs-list">
+      <div class="obj-item">
+        <div class="obj-rank">01</div>
+        <div class="obj-content">
+          <h4>Génération de leads qualifiés</h4>
+          <p>Inciter les propriétaires de biens avec caractère à prendre contact via un formulaire ou une prise de RDV directe.</p>
+        </div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-rank">02</div>
+        <div class="obj-content">
+          <h4>Réassurance et instauration de confiance</h4>
+          <p>Convaincre un propriétaire sceptique ou peu familier de la conciergerie LCD que Casoria Novaé est un partenaire sérieux, humain et compétent.</p>
+        </div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-rank">03</div>
+        <div class="obj-content">
+          <h4>SEO local — visibilité organique</h4>
+          <p>Apparaître sur les recherches géolocalisées liées à la conciergerie Airbnb, location saisonnière et gestion locative sur le territoire couvert.</p>
+        </div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-rank">04</div>
+        <div class="obj-content">
+          <h4>Prise de rendez-vous</h4>
+          <p>Faciliter la prise de contact avec un call ou une visite initiale du bien — étape décisive dans le processus de décision du propriétaire.</p>
+        </div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-rank">05</div>
+        <div class="obj-content">
+          <h4>Notoriété et positionnement de marque</h4>
+          <p>Imposer Casoria Novaé comme la référence conciergerie haut de gamme sur son territoire, distincte des plateformes et des acteurs généralistes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-inner">
+    <div class="section-badge">04 — Arborescence du Site</div>
+    <h2 class="section-title">Structure et architecture des pages</h2>
+    <div class="section-divider"></div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>Framework</th>
+            <th>Mot-clé principal</th>
+            <th>Potentiel SEO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Accueil</strong></td>
+            <td>AIDA</td>
+            <td>conciergerie location courte durée Toulouse</td>
+            <td><span class="badge-seo badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Notre accompagnement</strong><br><small style="color:#9ca3af;">Offre propriétaires (valorisation, gestion opérationnelle, relation voyageurs, suivi & transparence)</small></td>
+            <td>PAS</td>
+            <td>conciergerie Airbnb propriétaire Occitanie</td>
+            <td><span class="badge-seo badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Notre histoire</strong><br><small style="color:#9ca3af;">À propos — Claire & la naissance de Casoria Novaé</small></td>
+            <td>BAB</td>
+            <td>conciergerie location saisonnière humaine locale</td>
+            <td><span class="badge-seo badge-faible">Faible</span></td>
+          </tr>
+          <tr>
+            <td><strong>Nos lieux</strong><br><small style="color:#9ca3af;">Vitrine des propriétés accompagnées (galerie)</small></td>
+            <td>AIDA</td>
+            <td>location courte durée Tarn-et-Garonne caractère</td>
+            <td><span class="badge-seo badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td><strong>Conciergerie Toulouse &amp; Lauragais</strong><br><small style="color:#9ca3af;">Page locale SEO #1</small></td>
+            <td>PAS</td>
+            <td>conciergerie location courte durée Toulouse Lauragais</td>
+            <td><span class="badge-seo badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Conciergerie Tarn &amp; Tarn-et-Garonne</strong><br><small style="color:#9ca3af;">Page locale SEO #2</small></td>
+            <td>PAS</td>
+            <td>conciergerie Airbnb Tarn Tarn-et-Garonne</td>
+            <td><span class="badge-seo badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Contact / Parlons de votre lieu</strong></td>
+            <td>AIDA</td>
+            <td>confier ma location à une conciergerie</td>
+            <td><span class="badge-seo badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td><strong>Blog</strong></td>
+            <td>—</td>
+            <td>conseils propriétaire location saisonnière</td>
+            <td><span class="badge-seo badge-fort">Fort</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-inner">
+    <div class="section-badge">05 — Cocon Sémantique</div>
+    <h2 class="section-title">Clusters thématiques et maillage interne</h2>
+    <div class="section-divider"></div>
+
+    <div class="cluster-block">
+      <div class="cluster-title">Cluster 1 — Conciergerie & accompagnement propriétaires</div>
+      <p style="font-size:14px; color:#4a5568;">Pages centrées sur l'offre de service, la promesse, le processus d'accompagnement et la relation humaine avec le propriétaire.</p>
+      <div class="cluster-pages">
+        <span class="cluster-page-tag">Accueil</span>
+        <span class="cluster-page-tag">Notre accompagnement</span>
+        <span class="cluster-page-tag">Notre histoire</span>
+        <span class="cluster-page-tag">Contact</span>
+        <span class="cluster-page-tag">Articles — conseils propriétaires</span>
+      </div>
+    </div>
+
+    <div class="cluster-block">
+      <div class="cluster-title">Cluster 2 — SEO local & territoire Occitanie</div>
+      <p style="font-size:14px; color:#4a5568;">Pages ancrées géographiquement pour capter les recherches locales sur le territoire couvert par Casoria Novaé.</p>
+      <div class="cluster-pages">
+        <span class="cluster-page-tag">Conciergerie Toulouse & Lauragais</span>
+        <span class="cluster-page-tag">Conciergerie Tarn & Tarn-et-Garonne</span>
+        <span class="cluster-page-tag">Articles — marché locatif local</span>
+        <span class="cluster-page-tag">Nos lieux</span>
+      </div>
+    </div>
+
+    <div class="maillage-block">
+      <h4>Logique de maillage interne</h4>
+      <div class="maillage-row">
+        <span class="maillage-from">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Notre accompagnement</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-from">Pages locales</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Notre accompagnement</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-from">Blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Notre accompagnement</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Pages locales</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-from">Notre histoire</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Nos lieux</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-to">Contact</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-inner">
+    <div class="section-badge">06 — Tunnel de Conversion</div>
+    <h2 class="section-title">Du visiteur au propriétaire partenaire</h2>
+    <div class="section-divider"></div>
+    <div class="tunnel-grid">
+      <div class="tunnel-card">
+        <div class="tunnel-step">Étape 1</div>
+        <h3>Découverte</h3>
+        <div class="t-row">
+          <div class="t-label">Source de trafic</div>
+          <div class="t-val">Google SEO local · Bouche-à-oreille · Réseaux sociaux</div>
+        </div>
+        <div class="t-row">
+          <div class="t-label">Page concernée</div>
+          <div class="t-val">Accueil · Pages locales SEO</div>
+        </div>
+        <span class="cta-pill">→ Découvrir notre approche</span>
+      </div>
+      <div class="tunnel-card">
+        <div class="tunnel-step">Étape 2</div>
+        <h3>Intérêt</h3>
+        <div class="t-row">
+          <div class="t-label">Source de trafic</div>
+          <div class="t-val">Navigation interne · Blog · Pages de service</div>
+        </div>
+        <div class="t-row">
+          <div class="t-label">Page concernée</div>
+          <div class="t-val">Notre accompagnement · Nos lieux</div>
+        </div>
+        <span class="cta-pill">→ Télécharger le guide propriétaire</span>
+      </div>
+      <div class="tunnel-card">
+        <div class="tunnel-step">Étape 3</div>
+        <h3>Confiance</h3>
+        <div class="t-row">
+          <div class="t-label">Source de trafic</div>
+          <div class="t-val">Relecture du site · Avis · Page À propos</div>
+        </div>
+        <div class="t-row">
+          <div class="t-label">Page concernée</div>
+          <div class="t-val">Notre histoire · Témoignages propriétaires</div>
+        </div>
+        <span class="cta-pill">→ Lire les témoignages</span>
+      </div>
+      <div class="tunnel-card">
+        <div class="tunnel-step">Étape 4</div>
+        <h3>Conversion</h3>
+        <div class="t-row">
+          <div class="t-label">Source de trafic</div>
+          <div class="t-val">CTA site · Email · Appel direct</div>
+        </div>
+        <div class="t-row">
+          <div class="t-label">Page concernée</div>
+          <div class="t-val">Contact — Parlons de votre lieu</div>
+        </div>
+        <span class="cta-pill">→ Parlons de votre lieu</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-inner">
+    <div class="section-badge">07 — Leviers Marketing Recommandés</div>
+    <h2 class="section-title">Activer et convertir votre audience</h2>
+    <div class="section-divider"></div>
+    <div class="grid-2">
+      <div class="levier-card">
+        <div class="l-cat">Lead Magnet</div>
+        <h3>Guide — "Confier son bien sereinement"</h3>
+        <p>Un PDF élégant de 6 à 8 pages répondant aux 5 questions que se pose tout propriétaire avant de déléguer : à quoi ressemble un vrai accompagnement, comment évaluer son bien, ce que gagne réellement un propriétaire qui délègue.</p>
+      </div>
+      <div class="levier-card">
+        <div class="l-cat">Prise de RDV</div>
+        <h3>Calendly ou Koalendar intégré</h3>
+        <p>Un bouton "Parlons de votre lieu" déclenche un calendrier de prise de RDV (appel 30 min ou visite terrain). Simple, sans friction, rassurant — l'outil doit être sobre et cohérent avec l'univers visuel du site.</p>
+      </div>
+      <div class="levier-card">
+        <div class="l-cat">Preuve Sociale</div>
+        <h3>Témoignages propriétaires + notes voyageurs</h3>
+        <p>Privilégier des verbatims complets de propriétaires (nom, localisation, type de bien) et des extraits d'avis Airbnb intégrés visuellement. Une ou deux citations fortes suffisent — la qualité prime sur la quantité.</p>
+      </div>
+      <div class="levier-card">
+        <div class="l-cat">Formulaire Qualifiant</div>
+        <h3>Champs recommandés pour le contact</h3>
+        <p>Prénom · Commune du bien · Type de bien (maison, gîte, appartement…) · Situation actuelle (déjà en location / nouveau projet) · Message libre. Ce formulaire qualifie d'emblée le prospect et personnalise la réponse de Claire.</p>
+      </div>
+      <div class="levier-card" style="grid-column: 1 / -1;">
+        <div class="l-cat">Newsletter</div>
+        <h3>Angle éditorial — "La Lettre du Lieu"</h3>
+        <p>Une newsletter trimestrielle sobre et soignée : actualités du marché locatif local, conseils pratiques pour les propriétaires, mise en valeur d'un lieu accompagné, regard de Claire sur l'hospitalité. Ton intime, jamais commercial.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-inner">
+    <div class="section-badge">08 — Direction Visuelle &amp; Éditoriale</div>
+    <h2 class="section-title">L'identité visuelle de Casoria Novaé</h2>
+    <div class="section-divider"></div>
+
+    <div class="palette-grid">
+      <div class="color-swatch">
+        <div class="color-square" style="background:#F4F9F6; border: 1px solid #e0e0e0;"></div>
+        <div class="color-name">Blanc cassé lumineux</div>
+        <div class="color-hex">#F4F9F6</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-square" style="background:#0D1B2A;"></div>
+        <div class="color-name">Bleu nuit</div>
+        <div class="color-hex">#0D1B2A</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-square" style="background:#F5F1E8; border: 1px solid #e8e0d0;"></div>
+        <div class="color-name">Crème chaleureux</div>
+        <div class="color-hex">#F5F1E8</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-square" style="background:#B58A4B;"></div>
+        <div class="color-name">Bronze accent</div>
+        <div class="color-hex">#B58A4B</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-square" style="background:#4a5568;"></div>
+        <div class="color-name">Gris texte</div>
+        <div class="color-hex">#4A5568</div>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon">📸</div>
+        <h3>Photographie des lieux</h3>
+        <p>Photos lumineuses de biens avec caractère : lumière naturelle douce, matières naturelles, espaces aérés. Priorité aux ambiances plutôt qu'aux inventaires de pièces.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">✍️</div>
+        <h3>Typographie Playfair + Inter</h3>
+        <p>Titres en Playfair Display (serif élégant, intemporel) et corps de texte en Inter (lisible, moderne, sobre). Contraste fort entre les deux pour créer du rythme éditorial.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">〰️</div>
+        <h3>Filets fins &amp; espaces blancs généreux</h3>
+        <p>Utilisation de traits fins en bronze pour souligner les éléments clés. Beaucoup d'espace blanc pour respirer — cohérent avec l'ambiance "lieu de détente" de la marque.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🗺️</div>
+        <h3>Iconographie artisanale discrète</h3>
+        <p>Pictogrammes au trait fin, style dessiné à la main, cohérents avec l'univers artisanal et local. Jamais de clipart générique ni d'icônes trop corporate.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📽️</div>
+        <h3>Animations sobres et fluides</h3>
+        <p>Apparitions au scroll en fondu léger (fade-in). Transitions de pages douces. Aucune animation spectaculaire — le mouvement accompagne, il ne distrait pas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-inner">
+    <div class="section-badge">09 — Articles Blog Recommandés</div>
+    <h2 class="section-title">Stratégie de contenu SEO</h2>
+    <div class="section-divider"></div>
+    <div class="grid-2">
+
+      <div class="blog-card">
+        <div class="b-top">
+          <span class="blog-cluster">Accompagnement propriétaires</span>
+          <span class="badge-prioritaire">Prioritaire</span>
+        </div>
+        <h3>5 questions à poser avant de confier son bien à une conciergerie</h3>
+        <div class="b-meta">
+          <strong>Intention :</strong> informationnelle · décisionnelle<br>
+          <strong>Cible :</strong> propriétaire hésitant entre autonomie et délégation
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="b-top">
+          <span class="blog-cluster">SEO local</span>
+          <span class="badge-prioritaire">Prioritaire</span>
+        </div>
+        <h3>Louer sa maison dans le Tarn-et-Garonne : ce que les propriétaires doivent savoir</h3>
+        <div class="b-meta">
+          <strong>Intention :</strong> informationnelle · locale<br>
+          <strong>Cible :</strong> propriétaire rural cherchant à optimiser son bien
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="b-top">
+          <span class="blog-cluster">Accompagnement propriétaires</span>
+          <span class="badge-prioritaire">Prioritaire</span>
+        </div>
+        <h3>Pourquoi l'annonce de votre bien mérite bien plus qu'une description générique</h3>
+        <div class="b-meta">
+          <strong>Intention :</strong> informationnelle · persuasive<br>
+          <strong>Cible :</strong> propriétaire insatisfait de ses performances locatives actuelles
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="b-top">
+          <span class="blog-cluster">SEO local</span>
+          <span class="badge-moyen-p">Moyen</span>
+        </div>
+        <h3>Location saisonnière en Lauragais : un marché en plein essor pour les propriétaires</h3>
+        <div class="b-meta">
+          <strong>Intention :</strong> informationnelle · locale<br>
+          <strong>Cible :</strong> propriétaire de la zone Lauragais envisageant la LCD
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="b-top">
+          <span class="blog-cluster">Accompagnement propriétaires</span>
+          <span class="badge-moyen-p">Moyen</span>
+        </div>
+        <h3>Ce que les voyageurs retiennent vraiment d'un séjour réussi (et comment y contribuer)</h3>
+        <div class="b-meta">
+          <strong>Intention :</strong> inspirationnelle · émotionnelle<br>
+          <strong>Cible :</strong> propriétaire soucieux de la qualité de l'expérience voyageur
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="b-top">
+          <span class="blog-cluster">Accompagnement propriétaires</span>
+          <span class="badge-moyen-p">Moyen</span>
+        </div>
+        <h3>Tarification dynamique : comment ne pas laisser de revenus sur la table</h3>
+        <div class="b-meta">
+          <strong>Intention :</strong> informationnelle · transactionnelle<br>
+          <strong>Cible :</strong> propriétaire qui gère seul et cherche à maximiser ses revenus
+        </div>
+      </div>
+
+      <div class="blog-card" style="grid-column: 1 / -1;">
+        <div class="b-top">
+          <span class="blog-cluster">SEO local</span>
+          <span class="badge-faible-p">Faible</span>
+        </div>
+        <h3>Les plus beaux villages du Tarn et Tarn-et-Garonne : pourquoi les voyageurs y reviennent</h3>
+        <div class="b-meta">
+          <strong>Intention :</strong> inspirationnelle · éditoriale<br>
+          <strong>Cible :</strong> voyageurs et propriétaires sensibles à l'identité territoriale occitane
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><span>Casoria Novaé</span> — Blueprint Stratégique · Document confidentiel</p>
+  <p style="margin-top:8px;">Produit par AR Digital · Tous droits réservés</p>
+</footer>
+
+</body>
+</html>
