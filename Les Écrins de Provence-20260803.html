@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Les Écrins de Provence</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2c2c2c;
+    background: #f9f7f4;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(150deg, #1a2e1a 0%, #2d4a2d 35%, #3b3020 70%, #1e1a14 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(196,160,100,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 70%, rgba(107,142,80,0.10) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .cover-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(196,160,100,0.85);
+    margin-bottom: 32px;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 1px;
+    margin-bottom: 56px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .cover-meta-item span:first-child {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(196,160,100,0.7);
+  }
+
+  .cover-meta-item span:last-child {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .cover-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 70px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: #f9f7f4;
+  }
+
+  section:nth-child(odd) {
+    background: #ffffff;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #7a6340;
+    background: rgba(196,160,100,0.12);
+    border: 1px solid rgba(196,160,100,0.25);
+    border-radius: 20px;
+    padding: 5px 14px;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #1e2d1e;
+    margin-bottom: 40px;
+    line-height: 1.2;
+  }
+
+  /* CARDS */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1e2d1e;
+    margin-bottom: 10px;
+  }
+
+  .card p, .card li {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #4a4a4a;
+  }
+
+  .card ul {
+    padding-left: 18px;
+  }
+
+  .card ul li {
+    margin-bottom: 4px;
+  }
+
+  /* GRIDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 100%);
+    border-radius: 14px;
+    padding: 36px 40px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-box::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: rgba(196,160,100,0.08);
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+  }
+
+  .highlight-box .highlight-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(196,160,100,0.8);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  /* TONE TAGS */
+  .tone-tags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .tone-tag {
+    background: rgba(196,160,100,0.12);
+    border: 1px solid rgba(196,160,100,0.3);
+    color: #7a6340;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* TABLE */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    font-size: 14px;
+  }
+
+  thead tr {
+    background: #1e2d1e;
+  }
+
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #f0ece6;
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody td {
+    padding: 14px 20px;
+    color: #3a3a3a;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  tbody tr:hover {
+    background: #faf8f5;
+  }
+
+  /* SEO BADGES */
+  .badge-fort {
+    display: inline-block;
+    background: #d4edda;
+    color: #276539;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-moyen {
+    display: inline-block;
+    background: #fff3cd;
+    color: #856404;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-faible {
+    display: inline-block;
+    background: #f0ece6;
+    color: #7a6340;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  /* PRIORITY BADGES */
+  .badge-prioritaire {
+    display: inline-block;
+    background: #1e2d1e;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  .badge-moyen-prio {
+    display: inline-block;
+    background: rgba(196,160,100,0.2);
+    color: #7a6340;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  .badge-faible-prio {
+    display: inline-block;
+    background: #f0ece6;
+    color: #9a8a7a;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .tunnel-step {
+    background: #ffffff;
+    padding: 28px;
+    border-right: 1px solid #f0ece6;
+    position: relative;
+  }
+
+  .tunnel-step:last-child {
+    border-right: none;
+  }
+
+  .tunnel-step:first-child {
+    border-radius: 14px 0 0 14px;
+  }
+
+  .tunnel-step:last-child {
+    border-radius: 0 14px 14px 0;
+  }
+
+  .tunnel-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: rgba(196,160,100,0.2);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .tunnel-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #7a6340;
+    margin-bottom: 16px;
+  }
+
+  .tunnel-step h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e2d1e;
+    margin-bottom: 10px;
+  }
+
+  .tunnel-step p, .tunnel-step li {
+    font-size: 13px;
+    color: #5a5a5a;
+    line-height: 1.65;
+  }
+
+  .tunnel-step ul {
+    padding-left: 16px;
+    margin-top: 6px;
+  }
+
+  .tunnel-cta {
+    margin-top: 14px;
+    background: rgba(196,160,100,0.12);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #7a6340;
+  }
+
+  /* COLOR SWATCHES */
+  .swatches-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin: 32px 0;
+  }
+
+  .swatch-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+
+  .swatch-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2c2c2c;
+    text-align: center;
+  }
+
+  .swatch-hex {
+    font-size: 11px;
+    color: #aaaaaa;
+    font-family: 'Inter', monospace;
+    text-align: center;
+  }
+
+  /* MAILLAGE */
+  .maillage-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f0ece6;
+    font-size: 14px;
+    color: #3a3a3a;
+  }
+
+  .maillage-item:last-child {
+    border-bottom: none;
+  }
+
+  .maillage-arrow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .maillage-source {
+    font-weight: 600;
+    color: #1e2d1e;
+    white-space: nowrap;
+  }
+
+  .arrow-icon {
+    color: #c4a064;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .maillage-target {
+    color: #5a5a5a;
+  }
+
+  /* OBJECTIFS */
+  .objectif-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0ece6;
+  }
+
+  .objectif-item:last-child {
+    border-bottom: none;
+  }
+
+  .objectif-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(196,160,100,0.35);
+    min-width: 36px;
+  }
+
+  .objectif-text {
+    font-size: 15px;
+    color: #2c2c2c;
+    font-weight: 500;
+  }
+
+  .objectif-desc {
+    font-size: 13px;
+    color: #7a7a7a;
+    margin-top: 2px;
+  }
+
+  /* CLUSTER */
+  .cluster-header {
+    background: #1e2d1e;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 10px 10px 0 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .cluster-body {
+    background: #ffffff;
+    border: 1px solid #e8e2d8;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    padding: 20px;
+    margin-bottom: 28px;
+  }
+
+  .cluster-body li {
+    font-size: 14px;
+    color: #4a4a4a;
+    padding: 4px 0;
+    border-bottom: 1px solid #f5f0ea;
+  }
+
+  .cluster-body li:last-child {
+    border-bottom: none;
+  }
+
+  .cluster-body ul {
+    padding-left: 18px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1e2d1e;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 30px 40px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  footer strong {
+    color: rgba(255,255,255,0.8);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 40px; }
+    .cover-meta { gap: 20px; }
+    .cover-divider { display: none; }
+
+    section { padding: 40px 24px; }
+
+    h2 { font-size: 26px; margin-bottom: 28px; }
+
+    .grid-2, .grid-3, .grid-4 {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-step {
+      border-right: none;
+      border-bottom: 1px solid #f0ece6;
+      border-radius: 0;
+    }
+
+    .tunnel-step:first-child { border-radius: 14px 14px 0 0; }
+    .tunnel-step:last-child { border-radius: 0 0 14px 14px; border-bottom: none; }
+
+    .highlight-box { padding: 24px; }
+    .highlight-box p { font-size: 18px; }
+
+    .swatches-grid {
+      gap: 16px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-label">Blueprint Stratégique</div>
+  <h1 class="cover-title">Les Écrins<br>de Provence</h1>
+  <p class="cover-subtitle">Document de cadrage stratégique — Confidentiel</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span>Cliente</span>
+      <span>Muriel Ferrat</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span>Secteur</span>
+      <span>Conciergerie locative</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span>Territoire</span>
+      <span>Saint-Cyr-sur-Mer · Bandol · Le Castellet</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-badge">01</div>
+  <h2>Positionnement</h2>
+
+  <div class="highlight-box">
+    <span class="highlight-label">Promesse de valeur principale</span>
+    <p>Une conciergerie à visage humain, au cœur de la Provence méditerranéenne : Les Écrins de Provence libère votre temps et valorise votre bien avec soin, présence et authenticité.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 24px;">
+    <h3>Ligne directrice de communication</h3>
+    <p>Accompagnement humain et local · Sérénité propriétaire · Art de vivre provençal premium</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <h3>Ton éditorial</h3>
+    <div class="tone-tags">
+      <span class="tone-tag">Chaleureux</span>
+      <span class="tone-tag">Élégant</span>
+      <span class="tone-tag">Sincère</span>
+    </div>
+    <p>Un discours qui parle de personne à personne, sans jargon technique : Muriel s'exprime avec douceur et professionnalisme, comme une hôte de confiance qui connaît chaque détail du territoire et traite chaque bien comme s'il était le sien.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🌿 Ancrage territorial authentique</h3>
+      <p>Une connaissance intime de Saint-Cyr-sur-Mer, Bandol, La Cadière d'Azur et Le Castellet. Pas une agence distante : une présence locale réelle, de terrain.</p>
+    </div>
+    <div class="card">
+      <h3>🤝 Relation humaine avant tout</h3>
+      <p>Un contact direct avec Muriel à chaque étape. La confiance se construit dans la durée, pas dans les automatismes.</p>
+    </div>
+    <div class="card">
+      <h3>✨ Soin du détail à chaque séjour</h3>
+      <p>Chaque logement est traité avec attention : annonce, accueil, ménage, suivi. Rien n'est laissé au hasard entre deux voyageurs.</p>
+    </div>
+    <div class="card">
+      <h3>📊 Transparence et reporting régulier</h3>
+      <p>Les propriétaires sont informés : reporting clair, réponses aux avis, conseils d'optimisation. Un accompagnement qui respecte leur investissement.</p>
+    </div>
+    <div class="card">
+      <h3>🌅 L'art de vivre provençal sublimé</h3>
+      <p>Plus qu'une prestation, une expérience. Voyageurs et propriétaires partagent l'essence du Sud : lumière, douceur, authenticité.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-badge">02</div>
+  <h2>Client Cible</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Profil type</h3>
+      <ul>
+        <li>Propriétaire, 40–65 ans</li>
+        <li>Résidence secondaire ou bien locatif sur le littoral varois</li>
+        <li>Actif, peu disponible pour gérer les aléas quotidiens</li>
+        <li>Sensible à la qualité, à l'image de son bien et à la relation de confiance</li>
+        <li>Parfois primo-découvreur de la location courte durée</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Rentabiliser son bien sans y consacrer du temps</li>
+        <li>Confier son logement à quelqu'un de fiable et de présent</li>
+        <li>Valoriser son bien et en prendre soin</li>
+        <li>Recevoir des voyageurs de qualité</li>
+        <li>Avoir une visibilité claire sur les performances</li>
+        <li>Vivre l'expérience sans les contraintes</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Freins et objections</h3>
+      <ul>
+        <li>Peur de perdre le contrôle sur son bien</li>
+        <li>Doute sur la fiabilité d'une structure de taille humaine</li>
+        <li>Commission perçue comme trop élevée (20%)</li>
+        <li>Mauvaise expérience passée avec une autre conciergerie</li>
+        <li>Manque de clarté sur ce qui est inclus dans la prestation</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Proximité et disponibilité réelle du prestataire</li>
+        <li>Clarté de l'offre et transparence tarifaire</li>
+        <li>Preuves sociales (avis, témoignages, exemples de biens)</li>
+        <li>Professionnalisme ressenti dès les premières secondes sur le site</li>
+        <li>Sentiment d'être compris dans ses attentes spécifiques</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-badge">03</div>
+  <h2>Objectifs du Site</h2>
+
+  <div class="card">
+    <div class="objectif-item">
+      <div class="objectif-rank">1</div>
+      <div>
+        <div class="objectif-text">Génération de leads qualifiés</div>
+        <div class="objectif-desc">Inciter les propriétaires à prendre contact ou à demander un audit de leur bien</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">2</div>
+      <div>
+        <div class="objectif-text">Réassurance et confiance</div>
+        <div class="objectif-desc">Convaincre un propriétaire hésitant grâce aux preuves sociales, à la clarté de l'offre et au positionnement humain</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">3</div>
+      <div>
+        <div class="objectif-text">SEO local</div>
+        <div class="objectif-desc">Être visible sur les requêtes "conciergerie Airbnb Bandol", "conciergerie location courte durée Saint-Cyr-sur-Mer", etc.</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">4</div>
+      <div>
+        <div class="objectif-text">Prise de rendez-vous</div>
+        <div class="objectif-desc">Proposer un premier échange simple et sans friction pour transformer la curiosité en action</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">5</div>
+      <div>
+        <div class="objectif-text">Notoriété et positionnement premium</div>
+        <div class="objectif-desc">Ancrer l'image d'une conciergerie de qualité, différente des agences standardisées, dans l'esprit des propriétaires locaux</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-badge">04</div>
+  <h2>Arborescence du Site</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>Conciergerie location courte durée Bandol</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre offre propriétaires</strong><br><small style="color:#9a9a9a;">Inclut : annonce, accueil, ménage, communication, optimisation tarifaire, reporting, coordination prestataires</small></td>
+          <td>PAS</td>
+          <td>Conciergerie Airbnb Saint-Cyr-sur-Mer</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — Muriel & Les Écrins</strong></td>
+          <td>BAB</td>
+          <td>Conciergerie Provence bord de mer</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Territoire — Bandol & Saint-Cyr-sur-Mer</strong><br><small style="color:#9a9a9a;">Page locale SEO #1 — couvre Bandol, Saint-Cyr, La Cadière</small></td>
+          <td>AIDA</td>
+          <td>Conciergerie Bandol Saint-Cyr-sur-Mer</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Territoire — Le Castellet & arrière-pays varois</strong><br><small style="color:#9a9a9a;">Page locale SEO #2 — couvre Le Castellet, La Cadière d'Azur, villages perchés</small></td>
+          <td>AIDA</td>
+          <td>Conciergerie location saisonnière Le Castellet</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>Conciergerie location vacances Var</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / Demande d'audit</strong></td>
+          <td>PAS</td>
+          <td>Confier son logement à une conciergerie Bandol</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Mentions légales / CGV</strong></td>
+          <td>—</td>
+          <td>—</td>
+          <td><span class="badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-badge">05</div>
+  <h2>Cocon Sémantique</h2>
+
+  <div class="cluster-header">Cluster 1 — Conciergerie & services aux propriétaires</div>
+  <div class="cluster-body">
+    <ul>
+      <li>Accueil → Notre offre propriétaires</li>
+      <li>Notre offre propriétaires → Contact / Demande d'audit</li>
+      <li>Notre offre propriétaires → Articles blog (optimisation, revenus, conseils)</li>
+      <li>À propos → Notre offre propriétaires</li>
+    </ul>
+  </div>
+
+  <div class="cluster-header">Cluster 2 — SEO local & territoire provençal</div>
+  <div class="cluster-body">
+    <ul>
+      <li>Accueil → Pages locales (Bandol & Saint-Cyr / Le Castellet)</li>
+      <li>Pages locales → Notre offre propriétaires</li>
+      <li>Pages locales → Contact</li>
+      <li>Articles blog locaux → Pages locales</li>
+    </ul>
+  </div>
+
+  <div class="cluster-header">Cluster 3 — Confiance & éditorial</div>
+  <div class="cluster-body">
+    <ul>
+      <li>À propos → Accueil</li>
+      <li>Blog → À propos</li>
+      <li>Blog → Notre offre propriétaires</li>
+      <li>Blog → Contact</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top: 24px;">
+    <h3>Logique de maillage interne</h3>
+    <div class="maillage-item">
+      <div class="maillage-arrow">
+        <span class="maillage-source">Accueil</span>
+        <span class="arrow-icon">→</span>
+        <span class="maillage-target">Notre offre (CTA principal) + Pages locales (ancrage territoire) + Contact</span>
+      </div>
+    </div>
+    <div class="maillage-item">
+      <div class="maillage-arrow">
+        <span class="maillage-source">Notre offre</span>
+        <span class="arrow-icon">→</span>
+        <span class="maillage-target">Contact / Audit + À propos (réassurance) + Articles blog pertinents</span>
+      </div>
+    </div>
+    <div class="maillage-item">
+      <div class="maillage-arrow">
+        <span class="maillage-source">Pages locales</span>
+        <span class="arrow-icon">→</span>
+        <span class="maillage-target">Notre offre + Contact (CTA local fort)</span>
+      </div>
+    </div>
+    <div class="maillage-item">
+      <div class="maillage-arrow">
+        <span class="maillage-source">Blog</span>
+        <span class="arrow-icon">→</span>
+        <span class="maillage-target">Notre offre + Contact + Page locale concernée</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-badge">06</div>
+  <h2>Tunnel de Conversion</h2>
+
+  <div class="table-wrapper">
+    <div class="tunnel-grid">
+      <div class="tunnel-step">
+        <div class="tunnel-number">01</div>
+        <div class="tunnel-label">Découverte</div>
+        <h4>Le propriétaire vous trouve</h4>
+        <ul>
+          <li>Recherche Google locale</li>
+          <li>Bouche-à-oreille</li>
+          <li>Réseaux sociaux</li>
+        </ul>
+        <div class="tunnel-cta">→ Page : Accueil ou Page locale</div>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-number">02</div>
+        <div class="tunnel-label">Intérêt</div>
+        <h4>Il comprend l'offre</h4>
+        <ul>
+          <li>Navigation fluide</li>
+          <li>Lecture de l'offre complète</li>
+          <li>Consultation du blog</li>
+        </ul>
+        <div class="tunnel-cta">→ Page : Notre offre propriétaires</div>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-number">03</div>
+        <div class="tunnel-label">Confiance</div>
+        <h4>Il vous fait confiance</h4>
+        <ul>
+          <li>Lecture de la page À propos</li>
+          <li>Avis et témoignages</li>
+          <li>Lead magnet téléchargé</li>
+        </ul>
+        <div class="tunnel-cta">→ Page : À propos + preuves sociales</div>
+      </div>
+      <div class="tunnel-step">
+        <div class="tunnel-number">04</div>
+        <div class="tunnel-label">Conversion</div>
+        <h4>Il prend contact</h4>
+        <ul>
+          <li>Formulaire d'audit</li>
+          <li>Prise de RDV Calendly</li>
+          <li>Appel direct</li>
+        </ul>
+        <div class="tunnel-cta">→ Page : Contact / Demande d'audit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-badge">07</div>
+  <h2>Leviers Marketing Recommandés</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🎁 Lead Magnet</h3>
+      <p><strong>Guide PDF gratuit :</strong> « Les 7 points essentiels pour bien préparer votre logement à la location saisonnière dans le Var »<br><br>Léger, actionnable, directement utile pour un propriétaire débutant ou hésitant. Collecte l'email et nourrit la relation.</p>
+    </div>
+    <div class="card">
+      <h3>📅 Prise de Rendez-vous</h3>
+      <p><strong>Outil recommandé : Calendly</strong><br><br>Intégré directement sur la page Contact et en bas de la page Offre. Proposer un premier échange de 20 minutes sans engagement, intitulé : « Parlons de votre bien ».</p>
+    </div>
+    <div class="card">
+      <h3>⭐ Preuve Sociale</h3>
+      <p><strong>Formats recommandés :</strong><br>— Témoignages propriétaires (photo + prénom + ville + type de bien)<br>— Avis Google intégrés<br>— Indicateurs clés : nb de séjours coordonnés, note moyenne voyageurs, taux d'occupation</p>
+    </div>
+    <div class="card">
+      <h3>📝 Formulaire Qualifiant</h3>
+      <p><strong>Champs recommandés :</strong><br>— Prénom / Nom<br>— Téléphone<br>— Ville du bien<br>— Type de bien (maison, appartement, villa…)<br>— Nombre de couchages<br>— Situation actuelle (déjà en location / pas encore)<br>— Message libre</p>
+    </div>
+    <div class="card">
+      <h3>📬 Newsletter</h3>
+      <p><strong>Angle éditorial :</strong> « La Lettre des Écrins »<br><br>Envoi mensuel léger : un conseil pour valoriser son bien, une tendance de la saison, un regard sur le territoire, une astuce pratique. Ton doux, intimiste, fidèle à l'identité de la conciergerie.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-badge">08</div>
+  <h2>Direction Visuelle & Éditoriale</h2>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#1e2d1e; margin-bottom:24px; font-weight:600;">Palette de Couleurs</h3>
+
+  <div class="swatches-grid">
+    <div class="swatch-item">
+      <div class="swatch" style="background:#1e3320;"></div>
+      <div class="swatch-name">Sous-bois</div>
+      <div class="swatch-hex">#1E3320</div>
+    </div>
+    <div class="swatch-item">
+      <div class="swatch" style="background:#4a7c59;"></div>
+      <div class="swatch-name">Figuier</div>
+      <div class="swatch-hex">#4A7C59</div>
+    </div>
+    <div class="swatch-item">
+      <div class="swatch" style="background:#c4a064;"></div>
+      <div class="swatch-name">Sable doré</div>
+      <div class="swatch-hex">#C4A064</div>
+    </div>
+    <div class="swatch-item">
+      <div class="swatch" style="background:#f0e8d8;"></div>
+      <div class="swatch-name">Écru chaud</div>
+      <div class="swatch-hex">#F0E8D8</div>
+    </div>
+    <div class="swatch-item">
+      <div class="swatch" style="background:#c0705a; border: 1px solid rgba(0,0,0,0.06);"></div>
+      <div class="swatch-name">Terracotta</div>
+      <div class="swatch-hex">#C0705A</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:8px;">
+    <h3>Note d'intention chromatique</h3>
+    <p>Le <strong>Sous-bois</strong> et le <strong>Figuier</strong> évoquent l'ombre fraîche des platanes et de la pinède méditerranéenne, ancrant le premium et l'élégance. Le <strong>Sable doré</strong> rappelle la chaleur de la pierre et la lumière du littoral varois. L'<strong>Écru chaud</strong> apporte l'espace et la respiration. La touche de <strong>Terracotta</strong> est utilisée avec parcimonie pour évoquer les mas et la terre cuite provençale sans surcharger.</p>
+  </div>
+
+  <div class="grid-2" style="margin-top:24px;">
+    <div class="card">
+      <h3>Univers visuel recommandé</h3>
+      <ul>
+        <li>Photographies en lumière naturelle dorée (heure de la sieste, contre-jour doux)</li>
+        <li>Végétation méditerranéenne : oliviers, figuiers, lavande, pins parasols</li>
+        <li>Intérieurs lumineux avec matières naturelles (lin, bois clair, céramique)</li>
+        <li>Vues sur mer discrètes, cadrages intimistes plutôt que grands angles touristiques</li>
+        <li>Portraits chaleureux de Muriel en situation réelle (accueil, terrain)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Direction typographique</h3>
+      <p><strong>Titres :</strong> Playfair Display — élégant, classique, évocateur du patrimoine provençal<br><br><strong>Corps de texte :</strong> Inter — lisible, sobre, contemporain<br><br><strong>Mise en page :</strong> Aérée, généreuse en espaces blancs. Jamais surchargée. Le silence visuel est une valeur éditoriale, comme l'ombre fraîche après le soleil.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-badge">09</div>
+  <h2>Articles Blog Recommandés</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Pourquoi confier son logement à une conciergerie plutôt que de tout gérer seul sur Airbnb ?</strong></td>
+          <td>Services & propriétaires</td>
+          <td>Informationnelle — arbitrage faire soi-même vs déléguer</td>
+          <td><span class="badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Location saisonnière à Bandol : ce que les propriétaires doivent savoir avant de se lancer</strong></td>
+          <td>SEO local</td>
+          <td>Informationnelle — primo-découvreurs de la LCD dans le Var</td>
+          <td><span class="badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Comment optimiser l'annonce de son logement pour attirer plus de voyageurs de qualité ?</strong></td>
+          <td>Services & propriétaires</td>
+          <td>Informationnelle — propriétaires déjà actifs souhaitant progresser</td>
+          <td><span class="badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Location courte durée autour du Castellet et de La Cadière d'Azur : un marché à ne pas négliger</strong></td>
+          <td>SEO local</td>
+          <td>Informationnelle/locale — propriétaires de l'arrière-pays varois</td>
+          <td><span class="badge-moyen-prio">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Ménage, linge, check-in : comment une conciergerie professionnelle prépare un logement entre deux séjours ?</strong></td>
+          <td>Services & propriétaires</td>
+          <td>Informationnelle — réassurance sur la qualité opérationnelle</td>
+          <td><span class="badge-moyen-prio">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Les 5 erreurs à éviter quand on loue sa résidence secondaire dans le Var</strong></td>
+          <td>Confiance & éditorial</td>
+          <td>Informationnelle — propriétaires hésitants ou mal accompagnés</td>
+          <td><span class="badge-moyen-prio">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Art de vivre provençal : pourquoi les voyageurs choisissent Bandol et Saint-Cyr-sur-Mer pour leurs vacances ?</strong></td>
+          <td>Confiance & éditorial</td>
+          <td>Inspirationnelle — contenu de marque, partage d'univers</td>
+          <td><span class="badge-faible-prio">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Les Écrins de Provence</strong> — Blueprint Stratégique · Document confidentiel réservé à Muriel Ferrat</p>
+  <p style="margin-top:6px;">Produit par AR Digital · Tous droits réservés</p>
+</footer>
+
+</body>
+</html>
