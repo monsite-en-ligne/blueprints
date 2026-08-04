@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Las Llaves de Aitana</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy-dark: #071A3D;
+    --navy-bg: #080F20;
+    --navy-mid: #0D2350;
+    --gold: #C9A84C;
+    --gold-light: #D4AF37;
+    --white: #FFFFFF;
+    --text-light: #A8B4C8;
+    --text-gray: #6B7280;
+    --radius: 14px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    background: #F9F9F9;
+    color: #1A1A2E;
+  }
+
+  h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+  /* COUVERTURE */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #080F20 0%, #071A3D 50%, #0D2350 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: -80px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.07);
+    pointer-events: none;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.05);
+    pointer-events: none;
+  }
+
+  .cover-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  .cover h1 {
+    font-size: 68px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+
+  .cover-sub {
+    font-size: 17px;
+    color: var(--text-light);
+    margin-bottom: 48px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-item .meta-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-item .meta-value {
+    font-size: 14px;
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 40px auto 0;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 70px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: #FFFFFF;
+  }
+
+  section:nth-child(odd) {
+    background: #F4F6F9;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(201,168,76,0.10);
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 5px 14px;
+    border-radius: 30px;
+    margin-bottom: 14px;
+  }
+
+  section h2 {
+    font-size: 34px;
+    color: var(--navy-dark);
+    margin-bottom: 36px;
+    font-weight: 700;
+  }
+
+  /* CARDS */
+  .card {
+    background: #FFFFFF;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .card h3 {
+    font-size: 17px;
+    color: var(--navy-dark);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .card p, .card li {
+    font-size: 14px;
+    color: var(--text-gray);
+    line-height: 1.75;
+  }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card ul li::before {
+    content: '—';
+    color: var(--gold);
+    margin-right: 8px;
+    font-weight: 700;
+  }
+
+  /* GRILLES */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-mid) 100%);
+    border-radius: var(--radius);
+    padding: 36px 40px;
+    margin-bottom: 36px;
+    border-left: 4px solid var(--gold);
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    color: var(--white);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* TABLEAU */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #FFFFFF;
+    border-radius: var(--radius);
+    overflow: hidden;
+    font-size: 14px;
+  }
+
+  thead {
+    background: var(--navy-dark);
+    color: var(--white);
+  }
+
+  thead th {
+    padding: 14px 18px;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #F0F0F0;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody td {
+    padding: 14px 18px;
+    color: var(--text-gray);
+    vertical-align: top;
+  }
+
+  tbody td:first-child {
+    font-weight: 600;
+    color: var(--navy-dark);
+  }
+
+  /* BADGES SEO */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-fort { background: #D1FAE5; color: #065F46; }
+  .badge-moyen { background: #FEF3C7; color: #92400E; }
+  .badge-faible { background: #F3F4F6; color: #374151; }
+
+  /* TUNNEL */
+  .tunnel-step {
+    background: #FFFFFF;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px;
+    position: relative;
+    border-top: 3px solid var(--gold);
+  }
+
+  .tunnel-step .step-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .tunnel-step h3 {
+    font-size: 18px;
+    color: var(--navy-dark);
+    margin-bottom: 16px;
+  }
+
+  .tunnel-step .step-row {
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: var(--text-gray);
+  }
+
+  .tunnel-step .step-row strong {
+    color: var(--navy-dark);
+    font-weight: 600;
+  }
+
+  .cta-pill {
+    display: inline-block;
+    margin-top: 12px;
+    background: var(--gold);
+    color: var(--navy-dark);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* COCON */
+  .cluster-block {
+    background: #FFFFFF;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+
+  .cluster-block h3 {
+    font-size: 17px;
+    color: var(--navy-dark);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(201,168,76,0.3);
+  }
+
+  .tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.10);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--navy-dark);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 4px 4px 4px 0;
+  }
+
+  .maillage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: var(--text-gray);
+  }
+
+  .maillage-row strong {
+    color: var(--navy-dark);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .arrow-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 20px;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .swatch-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--navy-dark);
+    text-align: center;
+  }
+
+  .swatch-hex {
+    font-size: 11px;
+    color: var(--text-gray);
+    text-align: center;
+  }
+
+  /* ARTICLES */
+  .article-card {
+    background: #FFFFFF;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px;
+    border-left: 3px solid transparent;
+  }
+
+  .article-card.prioritaire { border-left-color: #C9A84C; }
+  .article-card.moyen { border-left-color: #6B7280; }
+  .article-card.faible { border-left-color: #D1D5DB; }
+
+  .article-card h3 {
+    font-size: 15px;
+    color: var(--navy-dark);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .article-meta {
+    font-size: 12px;
+    color: var(--text-gray);
+    margin-bottom: 4px;
+  }
+
+  .article-meta span {
+    font-weight: 600;
+    color: var(--navy-dark);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy-bg);
+    color: var(--text-light);
+    text-align: center;
+    padding: 36px 60px;
+    font-size: 13px;
+  }
+
+  footer .footer-name {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  /* OBJECTIFS */
+  .objectif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: #FFFFFF;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px 24px;
+  }
+
+  .objectif-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--gold);
+    font-weight: 700;
+    line-height: 1;
+    min-width: 32px;
+  }
+
+  .objectif-content h3 {
+    font-size: 15px;
+    color: var(--navy-dark);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+
+  .objectif-content p {
+    font-size: 13px;
+    color: var(--text-gray);
+    line-height: 1.6;
+  }
+
+  .objectif-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* LEVIERS */
+  .levier-card {
+    background: #FFFFFF;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px;
+  }
+
+  .levier-card .levier-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .levier-card h3 {
+    font-size: 15px;
+    color: var(--navy-dark);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .levier-card p {
+    font-size: 13px;
+    color: var(--text-gray);
+    line-height: 1.7;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 36px; }
+    .cover-meta { flex-direction: column; gap: 20px; }
+
+    section { padding: 40px 24px; }
+    section h2 { font-size: 26px; }
+
+    .grid-2,
+    .grid-3,
+    .grid-4 { grid-template-columns: 1fr; }
+
+    .palette-grid { gap: 16px; }
+
+    footer { padding: 28px 24px; }
+
+    .highlight-box { padding: 24px; }
+    .highlight-box p { font-size: 17px; }
+
+    .table-wrap { overflow-x: auto; }
+
+    .maillage-row { flex-wrap: wrap; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <span class="cover-label">Blueprint Stratégique</span>
+  <h1>Las Llaves de Aitana</h1>
+  <p class="cover-sub">Conciergerie de location courte durée — Costa del Sol, Andalousie</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="meta-label">Client</span>
+      <span class="meta-value">David Mauffrey</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="meta-label">Secteur</span>
+      <span class="meta-value">Conciergerie LCD</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="meta-label">Zone</span>
+      <span class="meta-value">Torre del Mar · Nerja · Costa del Sol</span>
+    </div>
+  </div>
+  <div class="cover-divider"></div>
+</div>
+
+<!-- 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-badge">01</span>
+  <h2>Positionnement</h2>
+
+  <div class="highlight-box">
+    <p>« Une présence locale authentique au cœur de l'Andalousie — pour que vos séjours et vos biens soient entre des mains qui connaissent, aiment et vivent la Costa del Sol. »</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 24px;">
+    <h3>Ligne directrice de communication</h3>
+    <p>Ancrage local sincère · Présence terrain irremplaçable · Service humain et premium sans les défauts des grandes agences.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 24px;">
+    <h3>Ton éditorial</h3>
+    <p><strong>Chaleureux · Rassurant · Professionnel</strong><br>Un ton qui parle d'abord au cœur (histoire vraie, famille, racines), puis à la raison (transparence, réactivité, reporting), sans jamais tomber dans le jargon impersonnel des agences classiques.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🏡 Enracinement local véritable</h3>
+      <p>David et Esther vivent à Torre del Mar à l'année. Pas de gestion à distance : une équipe qui habite la région, en connaît chaque quartier et y investit son avenir familial.</p>
+    </div>
+    <div class="card">
+      <h3>🔑 L'histoire comme preuve</h3>
+      <p>Anciens propriétaires insatisfaits devenus prestataires : ils ont vécu les mêmes frustrations que leurs clients et ont créé le service qu'ils auraient voulu trouver.</p>
+    </div>
+    <div class="card">
+      <h3>📊 Transparence totale</h3>
+      <p>Rapport mensuel détaillé, photos après chaque intervention, aucun frais caché. La confiance se construit avec des preuves, pas des promesses.</p>
+    </div>
+    <div class="card">
+      <h3>🌍 Trilingue &amp; multiculturel</h3>
+      <p>Service assuré en français, anglais et espagnol — un avantage décisif pour les propriétaires non-résidents et les voyageurs internationaux.</p>
+    </div>
+    <div class="card">
+      <h3>✨ Commission claire, sans engagement forcé</h3>
+      <p>23 % sur CA généré, pas de frais cachés, pas d'engagement contraignant. Une offre lisible qui lève les freins dès le premier contact.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-badge">02</span>
+  <h2>Client Cible</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Profil type — Propriétaire non-résident</h3>
+      <ul>
+        <li>40–65 ans, France / Belgique / UK</li>
+        <li>A acquis un bien en Andalousie pour investir ou pour les vacances</li>
+        <li>Gère à distance avec stress et manque de visibilité</li>
+        <li>A déjà confié son bien à une agence et a été déçu</li>
+        <li>Cherche quelqu'un de fiable, présent, qui lui rende des comptes</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Profil type — Propriétaire local</h3>
+      <ul>
+        <li>35–55 ans, résident Costa del Sol</li>
+        <li>Possède un bien qu'il loue ponctuellement</li>
+        <li>Manque de temps ou de compétences pour optimiser</li>
+        <li>Veut déléguer sans perdre le contrôle</li>
+        <li>Sensible au prix mais davantage à la confiance</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-3" style="margin-top: 24px;">
+    <div class="card">
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Déléguer sans se soucier</li>
+        <li>Maximiser le taux d'occupation</li>
+        <li>Avoir un interlocuteur joignable et fiable</li>
+        <li>Transparence sur les revenus et les séjours</li>
+        <li>Valoriser leur bien pour les voyageurs</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Freins &amp; objections</h3>
+      <ul>
+        <li>« Une agence locale de plus… »</li>
+        <li>« Les commissions grignotent mes revenus »</li>
+        <li>« Qui me prouve qu'ils sont vraiment là ? »</li>
+        <li>« J'ai déjà eu de mauvaises expériences »</li>
+        <li>« Je ne comprends pas les obligations légales »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Présence physique locale vérifiable</li>
+        <li>Transparence tarifaire et reportings</li>
+        <li>Réactivité et disponibilité 7j/7</li>
+        <li>Multilingue (FR / EN / ES)</li>
+        <li>Preuve sociale (avis, témoignages)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <span class="section-badge">03</span>
+  <h2>Objectifs du Site</h2>
+
+  <div class="objectif-list">
+    <div class="objectif-item">
+      <span class="objectif-num">01</span>
+      <div class="objectif-content">
+        <h3>Génération de leads propriétaires</h3>
+        <p>Objectif principal : convaincre des propriétaires non-résidents et locaux de contacter David &amp; Esther pour confier leur bien.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-num">02</span>
+      <div class="objectif-content">
+        <h3>Réassurance &amp; crédibilité</h3>
+        <p>Construire la confiance dès la première visite grâce à l'histoire authentique, aux preuves terrain et aux témoignages.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-num">03</span>
+      <div class="objectif-content">
+        <h3>SEO local — Référencement naturel</h3>
+        <p>Apparaître sur les recherches « conciergerie Torre del Mar », « gestion Airbnb Nerja », « location courte durée Costa del Sol ».</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-num">04</span>
+      <div class="objectif-content">
+        <h3>Prise de rendez-vous &amp; conversion</h3>
+        <p>Faciliter le passage à l'action via un formulaire qualifiant et un accès direct à la prise de RDV en ligne.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-num">05</span>
+      <div class="objectif-content">
+        <h3>Notoriété locale &amp; ancrage de marque</h3>
+        <p>Affirmer Las Llaves de Aitana comme la référence de confiance de la conciergerie entre Torre del Mar et Nerja.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <span class="section-badge">04</span>
+  <h2>Arborescence du Site</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Accueil</td>
+          <td>AIDA</td>
+          <td>Conciergerie Costa del Sol</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Notre offre propriétaires</td>
+          <td>PAS</td>
+          <td>Gestion location courte durée Andalousie</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Expérience voyageurs</td>
+          <td>AIDA</td>
+          <td>Location saisonnière Torre del Mar</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>À propos — Notre histoire</td>
+          <td>BAB</td>
+          <td>Conciergerie familiale Costa del Sol</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>SEO local — Torre del Mar &amp; Vélez-Málaga</td>
+          <td>PAS</td>
+          <td>Conciergerie Torre del Mar location Airbnb</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>SEO local — Nerja &amp; La Caleta de Vélez</td>
+          <td>PAS</td>
+          <td>Conciergerie Nerja gestion Airbnb</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Blog</td>
+          <td>—</td>
+          <td>Conseils propriétaires location Andalousie</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Contact &amp; RDV</td>
+          <td>—</td>
+          <td>Contacter conciergerie Costa del Sol</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-badge">05</span>
+  <h2>Cocon Sémantique</h2>
+
+  <div class="cluster-block">
+    <h3>🏠 Cluster 1 — Propriétaires &amp; Optimisation</h3>
+    <div style="margin-bottom: 14px;">
+      <span class="tag">Conciergerie Costa del Sol</span>
+      <span class="tag">Location courte durée Andalousie</span>
+      <span class="tag">Gestion Airbnb Torre del Mar</span>
+      <span class="tag">Taux d'occupation LCD</span>
+      <span class="tag">Obligations SES Espagne</span>
+      <span class="tag">Revenus locatifs non-résident</span>
+    </div>
+    <p style="font-size: 13px; color: var(--text-gray);">Pages cœur : Accueil → Notre offre propriétaires → Pages locales SEO → Blog</p>
+  </div>
+
+  <div class="cluster-block">
+    <h3>✈️ Cluster 2 — Voyageurs &amp; Expérience de séjour</h3>
+    <div style="margin-bottom: 14px;">
+      <span class="tag">Location saisonnière Torre del Mar</span>
+      <span class="tag">Séjour Nerja Andalousie</span>
+      <span class="tag">Expérience locale authentique</span>
+      <span class="tag">Services voyageurs Costa del Sol</span>
+      <span class="tag">Check-in flexible Espagne</span>
+    </div>
+    <p style="font-size: 13px; color: var(--text-gray);">Pages cœur : Expérience voyageurs → À propos → Contact</p>
+  </div>
+
+  <div class="card" style="margin-top: 24px;">
+    <h3>Logique de maillage interne</h3>
+    <div class="maillage-row">
+      <strong>Accueil</strong>
+      <span class="arrow-link">→ Notre offre propriétaires</span>
+      <span class="arrow-link">→ Pages locales SEO</span>
+      <span class="arrow-link">→ Contact RDV</span>
+    </div>
+    <div class="maillage-row">
+      <strong>Notre offre propriétaires</strong>
+      <span class="arrow-link">→ À propos</span>
+      <span class="arrow-link">→ Contact RDV</span>
+      <span class="arrow-link">→ Blog</span>
+    </div>
+    <div class="maillage-row">
+      <strong>Pages locales SEO</strong>
+      <span class="arrow-link">→ Notre offre propriétaires</span>
+      <span class="arrow-link">→ Contact RDV</span>
+    </div>
+    <div class="maillage-row">
+      <strong>Blog</strong>
+      <span class="arrow-link">→ Notre offre propriétaires</span>
+      <span class="arrow-link">→ Contact RDV</span>
+      <span class="arrow-link">→ Pages locales SEO</span>
+    </div>
+    <div class="maillage-row">
+      <strong>À propos</strong>
+      <span class="arrow-link">→ Notre offre propriétaires</span>
+      <span class="arrow-link">→ Expérience voyageurs</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-badge">06</span>
+  <h2>Tunnel de Conversion</h2>
+
+  <div class="grid-2">
+    <div class="tunnel-step">
+      <span class="step-num">Étape 01 — Découverte</span>
+      <h3>Le prospect vous trouve</h3>
+      <div class="step-row"><strong>Source :</strong> Google (SEO local), bouche-à-oreille, réseaux sociaux</div>
+      <div class="step-row"><strong>Page :</strong> Accueil ou Page locale SEO</div>
+      <div class="step-row"><strong>Objectif :</strong> Capter l'attention avec l'ancrage local et l'histoire authentique</div>
+      <span class="cta-pill">→ Découvrez notre offre</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="step-num">Étape 02 — Intérêt</span>
+      <h3>Le prospect explore</h3>
+      <div class="step-row"><strong>Source :</strong> Navigation interne</div>
+      <div class="step-row"><strong>Page :</strong> Notre offre propriétaires + À propos</div>
+      <div class="step-row"><strong>Objectif :</strong> Lever les objections, montrer la transparence et la différence humaine</div>
+      <span class="cta-pill">→ Téléchargez le guide gratuit</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="step-num">Étape 03 — Confiance</span>
+      <h3>Le prospect se rassure</h3>
+      <div class="step-row"><strong>Source :</strong> Blog, témoignages, avis Google</div>
+      <div class="step-row"><strong>Page :</strong> Blog + À propos + Avis intégrés</div>
+      <div class="step-row"><strong>Objectif :</strong> Consolider la crédibilité via la preuve sociale et l'expertise locale</div>
+      <span class="cta-pill">→ Lire les témoignages</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="step-num">Étape 04 — Conversion</span>
+      <h3>Le prospect passe à l'action</h3>
+      <div class="step-row"><strong>Source :</strong> CTA omniprésents</div>
+      <div class="step-row"><strong>Page :</strong> Contact &amp; RDV</div>
+      <div class="step-row"><strong>Objectif :</strong> Obtenir un rendez-vous téléphonique ou une demande de devis qualifiée</div>
+      <span class="cta-pill">→ Prendre rendez-vous</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-badge">07</span>
+  <h2>Leviers Marketing Recommandés</h2>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <div class="levier-icon">📥</div>
+      <h3>Lead Magnet</h3>
+      <p><strong>« Guide gratuit : 7 étapes pour rentabiliser votre bien en Andalousie sans stress »</strong> — PDF téléchargeable. Couvre les obligations légales espagnoles (SES), les plateformes à prioriser, les erreurs à éviter. Idéal pour les propriétaires non-résidents.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📅</div>
+      <h3>Prise de RDV</h3>
+      <p>Intégration de <strong>Calendly</strong> (ou équivalent) directement sur la page Contact et en CTA flottant sur les pages clés. RDV de 20 min « Diagnostic gratuit de votre bien » — sans engagement, sans jargon.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">⭐</div>
+      <h3>Preuve Sociale</h3>
+      <p>Avis Google intégrés en temps réel. Témoignages vidéo courts de propriétaires satisfaits. Carrousel de photos avant/après des logements pris en charge. Section dédiée dès la page d'accueil.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📋</div>
+      <h3>Formulaire Qualifiant</h3>
+      <p>Champs recommandés : Type de bien (appartement / villa / autre) · Localisation · Nombre de couchages · Actuellement sur plateforme ? · Objectif (revenus / tranquillité) · Message libre · Langue préférée.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">✉️</div>
+      <h3>Newsletter</h3>
+      <p>Angle éditorial : <strong>« La Lettre des Propriétaires Andalous »</strong> — actualités réglementation espagnole LCD, conseils d'optimisation saisonnière, bons plans locaux, témoignages. Envoi mensuel, ton chaleureux et utile.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-icon">📣</div>
+      <h3>Réseaux Sociaux</h3>
+      <p>Instagram et Facebook avec contenus bilingues (FR/ES) : coulisses de l'équipe, portraits de la région, conseils pratiques propriétaires. L'authenticité familiale est l'atout différenciant principal à mettre en avant.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-badge">08</span>
+  <h2>Direction Visuelle &amp; Éditoriale</h2>
+
+  <div class="card" style="margin-bottom: 24px;">
+    <h3>Palette de couleurs</h3>
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="swatch" style="background:#071A3D;"></div>
+        <span class="swatch-name">Navy Profond</span>
+        <span class="swatch-hex">#071A3D</span>
+      </div>
+      <div class="palette-item">
+        <div class="swatch" style="background:#0D2350;"></div>
+        <span class="swatch-name">Navy Intermédiaire</span>
+        <span class="swatch-hex">#0D2350</span>
+      </div>
+      <div class="palette-item">
+        <div class="swatch" style="background:#C9A84C;"></div>
+        <span class="swatch-name">Or Principal</span>
+        <span class="swatch-hex">#C9A84C</span>
+      </div>
+      <div class="palette-item">
+        <div class="swatch" style="background:#D4AF37; border: 1px solid #ddd;"></div>
+        <span class="swatch-name">Or Clair / Hover</span>
+        <span class="swatch-hex">#D4AF37</span>
+      </div>
+      <div class="palette-item">
+        <div class="swatch" style="background:#FFFFFF; border: 1px solid #E5E7EB;"></div>
+        <span class="swatch-name">Blanc</span>
+        <span class="swatch-hex">#FFFFFF</span>
+      </div>
+      <div class="palette-item">
+        <div class="swatch" style="background:#A8B4C8;"></div>
+        <span class="swatch-name">Texte Clair</span>
+        <span class="swatch-hex">#A8B4C8</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Univers visuel recommandé</h3>
+    <ul>
+      <li>Photos authentiques de la Costa del Sol : mer turquoise, ruelles blanches, terrasses fleuries — ambiance chaleureuse et solaire, pas de stock photos</li>
+      <li>Portraits de David, Esther et l'équipe en situation réelle (check-in, visite de bien, vie locale) pour ancrer l'humain</li>
+      <li>Typographie Playfair Display (titres élégants) + Inter (corps lisible) — duo raffiné sans excès</li>
+      <li>Accents dorés sur fond navy pour une identité premium et méditerranéenne distinctive</li>
+      <li>Icônes sobres ligne fine style « outline » en or — pas d'illustrations cartoon</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <span class="section-badge">09</span>
+  <h2>Articles Blog Recommandés</h2>
+
+  <div class="grid-2">
+    <div class="article-card prioritaire">
+      <div class="article-meta">Cluster : <span>Propriétaires &amp; Optimisation</span></div>
+      <h3>Louer votre appartement sur la Costa del Sol : les obligations légales à connaître en 2025</h3>
+      <div class="article-meta">Intention : <span>Informationnelle / sécurisante</span></div>
+      <div class="article-meta">Priorité : <span class="badge badge-fort">Prioritaire</span></div>
+    </div>
+    <div class="article-card prioritaire">
+      <div class="article-meta">Cluster : <span>Propriétaires &amp; Optimisation</span></div>
+      <h3>Pourquoi confier votre bien à une conciergerie locale plutôt qu'à une grande agence ?</h3>
+      <div class="article-meta">Intention : <span>Comparaison / conviction</span></div>
+      <div class="article-meta">Priorité : <span class="badge badge-fort">Prioritaire</span></div>
+    </div>
+    <div class="article-card prioritaire">
+      <div class="article-meta">Cluster : <span>Propriétaires &amp; Optimisation</span></div>
+      <h3>Comment maximiser le taux d'occupation de votre location à Torre del Mar ou Nerja ?</h3>
+      <div class="article-meta">Intention : <span>Conseils pratiques / SEO local</span></div>
+      <div class="article-meta">Priorité : <span class="badge badge-fort">Prioritaire</span></div>
+    </div>
+    <div class="article-card moyen">
+      <div class="article-meta">Cluster : <span>Propriétaires &amp; Optimisation</span></div>
+      <h3>Propriétaire non-résident en Espagne : comment déclarer vos revenus locatifs simplement ?</h3>
+      <div class="article-meta">Intention : <span>Informationnelle / rassurante</span></div>
+      <div class="article-meta">Priorité : <span class="badge badge-moyen">Moyen</span></div>
+    </div>
+    <div class="article-card moyen">
+      <div class="article-meta">Cluster : <span>Voyageurs &amp; Expérience de séjour</span></div>
+      <h3>5 raisons de choisir Torre del Mar plutôt que Málaga pour vos vacances en Andalousie</h3>
+      <div class="article-meta">Intention : <span>Découverte / inspirationnelle</span></div>
+      <div class="article-meta">Priorité : <span class="badge badge-moyen">Moyen</span></div>
+    </div>
+    <div class="article-card moyen">
+      <div class="article-meta">Cluster : <span>Voyageurs &amp; Expérience de séjour</span></div>
+      <h3>Que faire à Nerja en dehors des sentiers battus ? Notre guide local exclusif</h3>
+      <div class="article-meta">Intention : <span>Inspirationnelle / engagement voyageurs</span></div>
+      <div class="article-meta">Priorité : <span class="badge badge-moyen">Moyen</span></div>
+    </div>
+    <div class="article-card faible">
+      <div class="article-meta">Cluster : <span>Propriétaires &amp; Optimisation</span></div>
+      <h3>Décoration &amp; aménagement : comment préparer votre logement pour attirer plus de réservations ?</h3>
+      <div class="article-meta">Intention : <span>Conseil pratique / longue traîne</span></div>
+      <div class="article-meta">Priorité : <span class="badge badge-faible">Faible</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Las Llaves de Aitana</div>
+  <p>Blueprint Stratégique — Document confidentiel préparé par AR Digital</p>
+  <p style="margin-top: 6px; color: rgba(168,180,200,0.5); font-size: 11px;">Ce document est destiné exclusivement à David Mauffrey · Toute reproduction est interdite</p>
+</footer>
+
+</body>
+</html>
