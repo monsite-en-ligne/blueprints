@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Nydéal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2c2417;
+    background: #faf8f5;
+  }
+
+  /* COUVERTURE */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #2c1f0e 0%, #4a3220 40%, #3a2a1a 70%, #1e1408 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(196,160,90,0.15) 0%, transparent 70%);
+  }
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c4a05a;
+    margin-bottom: 36px;
+    position: relative;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 1px;
+    margin-bottom: 56px;
+    position: relative;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c4a05a;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 400;
+  }
+  .cover-meta-sep {
+    width: 1px;
+    height: 36px;
+    background: rgba(196,160,90,0.3);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 80px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+  section:nth-child(odd) {
+    background: #faf8f5;
+  }
+
+  .section-badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c4a05a;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: #2c1f0e;
+    margin-bottom: 48px;
+    line-height: 1.25;
+  }
+
+  /* CARDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(196,160,90,0.1);
+  }
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #2c1f0e;
+    margin-bottom: 10px;
+  }
+  .card p {
+    font-size: 14px;
+    color: #6b5b45;
+    line-height: 1.7;
+  }
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .card ul li {
+    font-size: 14px;
+    color: #6b5b45;
+    line-height: 1.7;
+    padding-left: 16px;
+    position: relative;
+  }
+  .card ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #c4a05a;
+    font-size: 12px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #2c1f0e 0%, #4a3220 100%);
+    border-radius: 16px;
+    padding: 40px 48px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-box::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(196,160,90,0.12);
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #ffffff;
+    line-height: 1.5;
+    font-style: italic;
+    position: relative;
+  }
+  .highlight-box span {
+    display: block;
+    margin-top: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #c4a05a;
+    font-style: normal;
+    letter-spacing: 1px;
+  }
+
+  /* TABLEAU */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  thead tr {
+    background: #2c1f0e;
+  }
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c4a05a;
+  }
+  tbody tr {
+    border-bottom: 1px solid rgba(196,160,90,0.1);
+  }
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+  tbody td {
+    padding: 16px 20px;
+    font-size: 14px;
+    color: #2c1f0e;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  tbody tr:hover {
+    background: #faf8f5;
+  }
+
+  /* BADGES SEO */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .badge-fort { background: #e8f5e9; color: #2e7d32; }
+  .badge-moyen { background: #fff8e1; color: #f57f17; }
+  .badge-faible { background: #f3e5f5; color: #7b1fa2; }
+
+  /* TUNNEL */
+  .tunnel-step {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+    margin-bottom: 24px;
+  }
+  .tunnel-number {
+    background: #2c1f0e;
+    color: #c4a05a;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    width: 64px;
+    min-width: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px 0 0 14px;
+  }
+  .tunnel-content {
+    background: #ffffff;
+    flex: 1;
+    padding: 24px 28px;
+    border-radius: 0 14px 14px 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(196,160,90,0.1);
+    border-left: none;
+  }
+  .tunnel-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c1f0e;
+    margin-bottom: 8px;
+  }
+  .tunnel-meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .tunnel-meta-item {
+    font-size: 13px;
+    color: #6b5b45;
+  }
+  .tunnel-meta-item strong {
+    color: #c4a05a;
+    font-weight: 500;
+  }
+
+  /* PALETTE COULEURS */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  }
+  .palette-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #2c1f0e;
+  }
+  .palette-hex {
+    font-size: 11px;
+    color: #a89070;
+  }
+
+  /* COCON SÉMANTIQUE */
+  .cluster-box {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(196,160,90,0.1);
+    margin-bottom: 24px;
+  }
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c1f0e;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cluster-tag {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: rgba(196,160,90,0.15);
+    color: #8a6a30;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .cluster-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .kw-tag {
+    background: #faf8f5;
+    border: 1px solid rgba(196,160,90,0.25);
+    color: #6b5b45;
+    font-size: 13px;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+  .maillage-list {
+    list-style: none;
+    padding: 0;
+  }
+  .maillage-list li {
+    font-size: 14px;
+    color: #6b5b45;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(196,160,90,0.08);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+  .maillage-list li:last-child {
+    border-bottom: none;
+  }
+  .maillage-from {
+    font-weight: 500;
+    color: #2c1f0e;
+  }
+  .maillage-arrow {
+    color: #c4a05a;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .maillage-to {
+    color: #6b5b45;
+  }
+
+  /* BLOG */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(196,160,90,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .blog-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c1f0e;
+    line-height: 1.4;
+  }
+  .blog-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .blog-cluster {
+    font-size: 11px;
+    background: rgba(196,160,90,0.12);
+    color: #8a6a30;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .blog-intent {
+    font-size: 13px;
+    color: #a89070;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #2c1f0e;
+    padding: 40px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #ffffff;
+  }
+  footer .footer-info {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    text-align: right;
+  }
+  footer .footer-badge {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c4a05a;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 42px; }
+    .cover-meta { flex-direction: column; gap: 20px; }
+    .cover-meta-sep { width: 40px; height: 1px; }
+    section { padding: 48px 24px; }
+    .section-title { font-size: 26px; margin-bottom: 28px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 18px; }
+    .tunnel-step { flex-direction: column; }
+    .tunnel-number { width: 100%; min-width: unset; height: 48px; border-radius: 14px 14px 0 0; font-size: 20px; }
+    .tunnel-content { border-radius: 0 0 14px 14px; border-left: 1px solid rgba(196,160,90,0.1); border-top: none; }
+    .tunnel-meta { flex-direction: column; gap: 8px; }
+    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+    footer .footer-info { text-align: center; }
+    .palette-grid { gap: 16px; }
+    .maillage-list li { flex-wrap: wrap; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <span class="cover-badge">Blueprint Stratégique · AR Digital</span>
+  <h1>Nydéal</h1>
+  <p class="cover-subtitle">Conciergerie de location courte durée · Alsace</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Cliente</span>
+      <span class="cover-meta-value">Laura LE GUEN</span>
+    </div>
+    <div class="cover-meta-sep"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie LCD · Bas-Rhin</span>
+    </div>
+    <div class="cover-meta-sep"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Domaine visé</span>
+      <span class="cover-meta-value">nydeal.fr</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Qui est Nydéal et comment elle se distingue</h2>
+
+  <div class="highlight-box">
+    <p>« Votre logement en Alsace, toujours prêt à accueillir — vos revenus optimisés, votre temps retrouvé. »</p>
+    <span>Promesse de valeur principale</span>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <div class="card-icon">🧭</div>
+      <h3>Ligne directrice</h3>
+      <p>Proximité terrain, excellence opérationnelle et tranquillité d'esprit pour le propriétaire alsacien exigeant.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✍️</div>
+      <h3>Ton éditorial</h3>
+      <p><strong>Rassurant · Élégant · Concret.</strong> Un discours chaleureux qui inspire confiance, sans jargon, ancré dans le quotidien du propriétaire et la réalité du terrain alsacien.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#2c1f0e; margin-bottom:20px;">Piliers de différenciation</h3>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <h3>Ancrage local Bas-Rhin</h3>
+      <p>Nydéal opère dans un rayon de 45 min autour de Hindisheim — une connaissance terrain que les plateformes nationales ne peuvent offrir.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔑</div>
+      <h3>Offre tout compris, zéro surprise</h3>
+      <p>Une commission de 22 % TTC couvre tout : annonce, ménage, linge, voyageurs, maintenance et consommables.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📈</div>
+      <h3>Tarification dynamique incluse</h3>
+      <p>Les revenus du propriétaire sont activement optimisés grâce à une veille tarifaire en continu, sans frais supplémentaires.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <h3>Interlocutrice unique et réactive</h3>
+      <p>Un seul point de contact humain pour toutes les demandes, du planning à la maintenance — moins de friction, plus de sérénité.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✨</div>
+      <h3>Positionnement premium & intemporel</h3>
+      <p>Une identité soignée, minimaliste et élégante qui valorise l'image du logement et rassure les propriétaires les plus exigeants.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client Cible</span>
+  <h2 class="section-title">Portrait du propriétaire idéal de Nydéal</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">👤</div>
+      <h3>Profil type</h3>
+      <ul>
+        <li>35–60 ans, actif ou proche de la retraite</li>
+        <li>Propriétaire d'un bien en Alsace (appartement, maison, gîte)</li>
+        <li>Déjà sur Airbnb ou en réflexion de passage en LCD</li>
+        <li>Peu disponible ou peu à l'aise avec la gestion quotidienne</li>
+        <li>Sensible à la qualité de service et à la transparence</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">💡</div>
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Maximiser les revenus locatifs sans y consacrer du temps</li>
+        <li>Déléguer les contraintes opérationnelles (ménage, voyageurs, urgences)</li>
+        <li>Sécuriser la qualité de l'accueil et l'état du logement</li>
+        <li>Avoir un interlocuteur de confiance proche géographiquement</li>
+        <li>Profiter d'un service professionnel au tarif lisible</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚠️</div>
+      <h3>Freins & objections</h3>
+      <ul>
+        <li>« La commission est-elle vraiment justifiée ? »</li>
+        <li>« Puis-je faire confiance à quelqu'un dans mon logement ? »</li>
+        <li>« Et si j'avais une urgence, qui intervient ? »</li>
+        <li>« Je ne connais pas cette conciergerie, elle est nouvelle »</li>
+        <li>« Vais-je perdre le contrôle sur mon bien ? »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">✅</div>
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Transparence totale sur les services inclus</li>
+        <li>Proximité géographique et réactivité prouvée</li>
+        <li>Clarté du tarif (commission unique tout compris)</li>
+        <li>Preuve sociale : avis, témoignages, exemples concrets</li>
+        <li>Facilité de prise de contact et d'engagement</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du site</span>
+  <h2 class="section-title">Ce que le site doit accomplir, par ordre de priorité</h2>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <h3>1 · Génération de leads</h3>
+      <p>Capter les coordonnées de propriétaires intéressés via formulaire qualifiant ou prise de RDV directe.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔍</div>
+      <h3>2 · SEO local</h3>
+      <p>Apparaître en premier sur Google pour les recherches de conciergerie Airbnb dans le Bas-Rhin et autour de Hindisheim.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🛡️</div>
+      <h3>3 · Réassurance</h3>
+      <p>Démontrer le sérieux, la proximité et la fiabilité de Nydéal pour lever les freins à la délégation.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📅</div>
+      <h3>4 · Prise de RDV</h3>
+      <p>Faciliter le passage à l'action avec un outil de réservation directe en ligne, sans friction.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💬</div>
+      <h3>5 · Conversion</h3>
+      <p>Transformer chaque visiteur qualifié en prospect via une page offre claire, des CTA précis et une proposition de valeur limpide.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📣</div>
+      <h3>6 · Notoriété</h3>
+      <p>Installer Nydéal comme la référence conciergerie de confiance sur le territoire alsacien, dès le lancement.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence du site</span>
+  <h2 class="section-title">Structure des pages recommandées</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA — Attention, Intérêt, Désir, Action</td>
+          <td>conciergerie Airbnb Alsace</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre offre</strong><br><em style="font-size:12px;color:#a89070;">(services détaillés à l'intérieur)</em></td>
+          <td>PAS — Problème, Agitation, Solution</td>
+          <td>conciergerie location courte durée Bas-Rhin</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos</strong></td>
+          <td>BAB — Before, After, Bridge</td>
+          <td>conciergerie Hindisheim Laura</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>Zone d'intervention — Strasbourg & environs</strong><br><em style="font-size:12px;color:#a89070;">(page locale SEO #1)</em></td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Strasbourg</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Zone d'intervention — Bas-Rhin</strong><br><em style="font-size:12px;color:#a89070;">(page locale SEO #2)</em></td>
+          <td>PAS</td>
+          <td>conciergerie location courte durée Bas-Rhin</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>Contenu informatif — intention informationnelle</td>
+          <td>gestion location courte durée Alsace</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact & RDV</strong></td>
+          <td>CTA direct — minimaliste</td>
+          <td>conciergerie Airbnb contact Alsace</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon sémantique</span>
+  <h2 class="section-title">Architecture des thématiques et maillage interne</h2>
+
+  <div class="cluster-box">
+    <div class="cluster-title">
+      🏡 Cluster 1 — Services & Délégation
+      <span class="cluster-tag">Commercial</span>
+    </div>
+    <div class="cluster-keywords">
+      <span class="kw-tag">conciergerie Airbnb Alsace</span>
+      <span class="kw-tag">déléguer sa location courte durée</span>
+      <span class="kw-tag">gestion linge ménage Bas-Rhin</span>
+      <span class="kw-tag">commission conciergerie tout compris</span>
+      <span class="kw-tag">check-in check-out propriétaire</span>
+      <span class="kw-tag">tarification dynamique Airbnb</span>
+    </div>
+    <p style="font-size:13px;color:#6b5b45;">Pages concernées : Accueil, Notre offre, Contact & RDV, pages locales SEO</p>
+  </div>
+
+  <div class="cluster-box">
+    <div class="cluster-title">
+      📍 Cluster 2 — SEO Local Alsace
+      <span class="cluster-tag">Territorial</span>
+    </div>
+    <div class="cluster-keywords">
+      <span class="kw-tag">conciergerie Airbnb Strasbourg</span>
+      <span class="kw-tag">conciergerie location courte durée Bas-Rhin</span>
+      <span class="kw-tag">gestion Airbnb Hindisheim</span>
+      <span class="kw-tag">conciergerie Airbnb Alsace</span>
+      <span class="kw-tag">location saisonnière Bas-Rhin professionnelle</span>
+    </div>
+    <p style="font-size:13px;color:#6b5b45;">Pages concernées : pages locales SEO #1 et #2, articles de blog à ancrage géographique</p>
+  </div>
+
+  <div class="cluster-box">
+    <div class="cluster-title">
+      💡 Cluster 3 — Éducation & Réassurance propriétaire
+      <span class="cluster-tag">Blog / Contenu</span>
+    </div>
+    <div class="cluster-keywords">
+      <span class="kw-tag">rentabilité location courte durée Alsace</span>
+      <span class="kw-tag">optimiser son annonce Airbnb</span>
+      <span class="kw-tag">pourquoi confier son logement à une conciergerie</span>
+      <span class="kw-tag">fiscalité location meublée tourisme</span>
+      <span class="kw-tag">choisir sa conciergerie Airbnb</span>
+    </div>
+    <p style="font-size:13px;color:#6b5b45;">Pages concernées : Blog, À propos, Notre offre</p>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#2c1f0e; margin-bottom:20px;">Logique de maillage interne</h3>
+    <div class="cluster-box">
+      <ul class="maillage-list">
+        <li>
+          <span class="maillage-from">Accueil</span>
+          <span class="maillage-arrow">→</span>
+          <span class="maillage-to">Notre offre, Contact & RDV, pages locales SEO</span>
+        </li>
+        <li>
+          <span class="maillage-from">Notre offre</span>
+          <span class="maillage-arrow">→</span>
+          <span class="maillage-to">Contact & RDV, À propos, articles blog (réassurance)</span>
+        </li>
+        <li>
+          <span class="maillage-from">Pages locales SEO</span>
+          <span class="maillage-arrow">→</span>
+          <span class="maillage-to">Notre offre, Contact & RDV</span>
+        </li>
+        <li>
+          <span class="maillage-from">Articles blog</span>
+          <span class="maillage-arrow">→</span>
+          <span class="maillage-to">Notre offre, Contact & RDV, autres articles du même cluster</span>
+        </li>
+        <li>
+          <span class="maillage-from">À propos</span>
+          <span class="maillage-arrow">→</span>
+          <span class="maillage-to">Notre offre, Contact & RDV</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de conversion</span>
+  <h2 class="section-title">Du premier clic à la prise de contact</h2>
+
+  <div class="tunnel-step">
+    <div class="tunnel-number">1</div>
+    <div class="tunnel-content">
+      <h3>Découverte</h3>
+      <div class="tunnel-meta">
+        <div class="tunnel-meta-item"><strong>Source :</strong> Google organique, bouche-à-oreille local, réseaux sociaux</div>
+        <div class="tunnel-meta-item"><strong>Page :</strong> Accueil ou page locale SEO</div>
+        <div class="tunnel-meta-item"><strong>CTA :</strong> « Découvrez comment ça fonctionne » → Notre offre</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tunnel-step">
+    <div class="tunnel-number">2</div>
+    <div class="tunnel-content">
+      <h3>Intérêt</h3>
+      <div class="tunnel-meta">
+        <div class="tunnel-meta-item"><strong>Source :</strong> Navigation interne, article de blog</div>
+        <div class="tunnel-meta-item"><strong>Page :</strong> Notre offre, Blog</div>
+        <div class="tunnel-meta-item"><strong>CTA :</strong> « Estimez votre potentiel locatif » → Lead magnet ou formulaire</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tunnel-step">
+    <div class="tunnel-number">3</div>
+    <div class="tunnel-content">
+      <h3>Confiance</h3>
+      <div class="tunnel-meta">
+        <div class="tunnel-meta-item"><strong>Source :</strong> À propos, avis, témoignages propriétaires</div>
+        <div class="tunnel-meta-item"><strong>Page :</strong> À propos, Notre offre (section preuves sociales)</div>
+        <div class="tunnel-meta-item"><strong>CTA :</strong> « Parlons de votre logement » → Contact / RDV</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tunnel-step">
+    <div class="tunnel-number">4</div>
+    <div class="tunnel-content">
+      <h3>Conversion</h3>
+      <div class="tunnel-meta">
+        <div class="tunnel-meta-item"><strong>Source :</strong> Formulaire qualifiant, outil de prise de RDV</div>
+        <div class="tunnel-meta-item"><strong>Page :</strong> Contact & RDV</div>
+        <div class="tunnel-meta-item"><strong>CTA :</strong> « Réserver un appel découverte gratuit »</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers marketing recommandés</span>
+  <h2 class="section-title">Les outils pour attirer, convaincre et convertir</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">🎁</div>
+      <h3>Lead Magnet</h3>
+      <p>« Guide gratuit : 7 erreurs à éviter quand on gère seul sa location Airbnb en Alsace » — un PDF téléchargeable qui capte les emails et préqualifie les propriétaires intéressés par la délégation.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📅</div>
+      <h3>Prise de RDV</h3>
+      <p>Intégration de <strong>Calendly</strong> (version gratuite suffisante au démarrage) pour un appel découverte de 20 min directement depuis le site, sans échange d'emails préalable.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⭐</div>
+      <h3>Preuve sociale</h3>
+      <p>Témoignages de premiers propriétaires partenaires (format citation + prénom + ville), avis Google My Business intégrés au site, et photos réelles des logements accompagnés par Nydéal.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <h3>Formulaire qualifiant</h3>
+      <p>Champs recommandés : Prénom / Ville du bien / Type de logement / Nombre de nuits gérées par mois actuellement / Principal frein à la délégation / Mode de contact préféré.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✉️</div>
+      <h3>Newsletter (optionnel)</h3>
+      <p>Angle éditorial : « Le Brief du Propriétaire Alsacien » — conseils LCD, actualités réglementaires, astuces pour maximiser ses revenus en Alsace. Fréquence : 1 fois par mois.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction visuelle & éditoriale</span>
+  <h2 class="section-title">L'identité esthétique de Nydéal en ligne</h2>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#2c1f0e; margin-bottom:28px;">Palette de couleurs</h3>
+  <div class="palette-grid" style="margin-bottom: 48px;">
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#2c1f0e;"></div>
+      <span class="palette-name">Brun Profond</span>
+      <span class="palette-hex">#2C1F0E</span>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#c4a05a;"></div>
+      <span class="palette-name">Doré Alsace</span>
+      <span class="palette-hex">#C4A05A</span>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#e8d9b8;"></div>
+      <span class="palette-name">Beige Chaud</span>
+      <span class="palette-hex">#E8D9B8</span>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#6b5b45; border: 1px solid #e8d9b8;"></div>
+      <span class="palette-name">Marron Doux</span>
+      <span class="palette-hex">#6B5B45</span>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#faf8f5; border: 1px solid #e8d9b8;"></div>
+      <span class="palette-name">Blanc Ivoire</span>
+      <span class="palette-hex">#FAF8F5</span>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#2c1f0e; margin-bottom:20px;">Univers visuel recommandé</h3>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-icon">🏡</div>
+      <h3>Photographie d'intérieur chaleureuse</h3>
+      <p>Logements bien éclairés, ambiance cosy et soignée, reflet du standard Nydéal. Éviter les photos génériques de banque d'images.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <h3>Matières naturelles & textures</h3>
+      <p>Lin, bois clair, pierre — des visuels qui évoquent l'authenticité alsacienne et renforcent l'univers minimaliste intemporel.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔡</div>
+      <h3>Typographie Playfair + Inter</h3>
+      <p>Serif élégant pour les titres, sans-serif moderne pour le corps — alliance de prestige et de lisibilité, cohérente avec le positionnement premium.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⬜</div>
+      <h3>Espaces blancs généreux</h3>
+      <p>Un design aéré, jamais surchargé. La sobriété visuelle est un message en soi : Nydéal gère, organise, simplifie.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <h3>Iconographie fine & sobre</h3>
+      <p>Icônes en trait fin (stroke), pas de pictogrammes colorés. Les accents dorés remplacent les couleurs vives pour ponctuer le design.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles blog recommandés</span>
+  <h2 class="section-title">Contenus pour attirer, éduquer et convertir</h2>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <h3>Pourquoi confier son Airbnb à une conciergerie en Alsace plutôt que de tout gérer seul ?</h3>
+      <div class="blog-card-meta">
+        <span class="blog-cluster">Éducation & Réassurance</span>
+        <span class="badge badge-fort">Prioritaire</span>
+      </div>
+      <p class="blog-intent" style="font-size:13px;color:#a89070;">Intention : informationnelle — propriétaire en réflexion</p>
+    </div>
+
+    <div class="blog-card">
+      <h3>Location courte durée en Bas-Rhin : combien peut-on vraiment gagner avec Airbnb en 2024 ?</h3>
+      <div class="blog-card-meta">
+        <span class="blog-cluster">SEO Local Alsace</span>
+        <span class="badge badge-fort">Prioritaire</span>
+      </div>
+      <p class="blog-intent" style="font-size:13px;color:#a89070;">Intention : informationnelle — propriétaire motivé par la rentabilité</p>
+    </div>
+
+    <div class="blog-card">
+      <h3>Les 5 critères pour choisir sa conciergerie Airbnb en Alsace (et ne pas se tromper)</h3>
+      <div class="blog-card-meta">
+        <span class="blog-cluster">Éducation & Réassurance</span>
+        <span class="badge badge-fort">Prioritaire</span>
+      </div>
+      <p class="blog-intent" style="font-size:13px;color:#a89070;">Intention : comparaison — propriétaire en phase de décision</p>
+    </div>
+
+    <div class="blog-card">
+      <h3>Tarification dynamique Airbnb : comment fonctionne-t-elle et pourquoi ça change tout ?</h3>
+      <div class="blog-card-meta">
+        <span class="blog-cluster">Services & Délégation</span>
+        <span class="badge badge-moyen">Moyen</span>
+      </div>
+      <p class="blog-intent" style="font-size:13px;color:#a89070;">Intention : informationnelle — propriétaire cherchant à optimiser</p>
+    </div>
+
+    <div class="blog-card">
+      <h3>Réglementation location meublée touristique en Alsace : ce que tout propriétaire doit savoir</h3>
+      <div class="blog-card-meta">
+        <span class="blog-cluster">Éducation & Réassurance</span>
+        <span class="badge badge-moyen">Moyen</span>
+      </div>
+      <p class="blog-intent" style="font-size:13px;color:#a89070;">Intention : informationnelle — propriétaire cherchant à se conformer</p>
+    </div>
+
+    <div class="blog-card">
+      <h3>Ménage, linge, consommables : les coulisses d'une remise en état parfaite entre deux voyageurs</h3>
+      <div class="blog-card-meta">
+        <span class="blog-cluster">Services & Délégation</span>
+        <span class="badge badge-moyen">Moyen</span>
+      </div>
+      <p class="blog-intent" style="font-size:13px;color:#a89070;">Intention : informationnelle — propriétaire soucieux de la qualité</p>
+    </div>
+
+    <div class="blog-card">
+      <h3>Strasbourg et ses environs : pourquoi la location courte durée y est particulièrement rentable ?</h3>
+      <div class="blog-card-meta">
+        <span class="blog-cluster">SEO Local Alsace</span>
+        <span class="badge badge-faible">Faible</span>
+      </div>
+      <p class="blog-intent" style="font-size:13px;color:#a89070;">Intention : informationnelle — ancrage territorial et SEO local</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Nydéal</div>
+    <div class="footer-badge">Conciergerie · Bas-Rhin · Alsace</div>
+  </div>
+  <div class="footer-info">
+    Document confidentiel — Usage exclusif de Laura LE GUEN<br>
+    Produit par AR Digital · Blueprint Stratégique
+  </div>
+</footer>
+
+</body>
+</html>
