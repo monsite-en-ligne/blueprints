@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — La Baie des Hôtes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2c2c2c;
+    background: #f7f5f1;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0d2e47 0%, #1f5f8b 55%, #164e75 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    right: -60px;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: rgba(200, 169, 106, 0.08);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: -80px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .cover-logo-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #c8a96a;
+    margin-bottom: 32px;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 56px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-item span {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c8a96a;
+    margin-bottom: 4px;
+  }
+  .cover-meta-item strong {
+    font-size: 13px;
+    color: rgba(255,255,255,0.9);
+    font-weight: 400;
+  }
+  .cover-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(200,169,106,0.4);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 80px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(odd) {
+    background: #f7f5f1;
+  }
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #c8a96a;
+    background: rgba(200,169,106,0.1);
+    border: 1px solid rgba(200,169,106,0.3);
+    padding: 6px 14px;
+    border-radius: 40px;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #0d2e47;
+    margin-bottom: 10px;
+  }
+  .section-intro {
+    font-size: 15px;
+    color: #6b7280;
+    margin-bottom: 48px;
+    max-width: 580px;
+  }
+
+  /* CARDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0d2e47;
+    margin-bottom: 8px;
+  }
+  .card-text {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.7;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #1f5f8b 0%, #0d2e47 100%);
+    border-radius: 16px;
+    padding: 40px 48px;
+    margin-bottom: 48px;
+    color: #fff;
+  }
+  .highlight-box .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c8a96a;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.95);
+  }
+
+  /* LISTE */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+  }
+  .styled-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 14px;
+    color: #374151;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before {
+    content: '—';
+    color: #c8a96a;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* TABLE */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 14px;
+  }
+  thead tr {
+    background: #0d2e47;
+    color: #ffffff;
+  }
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  tbody tr {
+    border-bottom: 1px solid #f0ede8;
+  }
+  tbody tr:hover {
+    background: #faf9f7;
+  }
+  tbody td {
+    padding: 16px 20px;
+    color: #374151;
+    vertical-align: top;
+  }
+  .badge-seo {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .badge-fort { background: #dcfce7; color: #166534; }
+  .badge-moyen { background: #fef9c3; color: #854d0e; }
+  .badge-faible { background: #f3f4f6; color: #6b7280; }
+  .badge-prioritaire { background: #dbeafe; color: #1e40af; }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+  }
+  .tunnel-step {
+    background: #ffffff;
+    padding: 28px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+  }
+  .tunnel-step:first-child { border-radius: 14px 0 0 14px; }
+  .tunnel-step:last-child { border-radius: 0 14px 14px 0; }
+  .tunnel-step + .tunnel-step {
+    border-left: 1px solid #f0ede8;
+  }
+  .tunnel-number {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c8a96a;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .tunnel-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0d2e47;
+    margin-bottom: 16px;
+  }
+  .tunnel-detail {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.6;
+  }
+  .tunnel-detail strong {
+    display: block;
+    color: #374151;
+    font-weight: 600;
+    margin-top: 8px;
+    margin-bottom: 2px;
+  }
+  .tunnel-cta {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #1f5f8b;
+    background: rgba(31,95,139,0.08);
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+
+  /* COCON SÉMANTIQUE */
+  .cluster-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .cluster-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0d2e47;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #c8a96a;
+  }
+  .cluster-pages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .cluster-tag {
+    background: rgba(31,95,139,0.08);
+    color: #1f5f8b;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .maillage-box {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .maillage-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #0d2e47;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .maillage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0ede8;
+    font-size: 13px;
+    color: #374151;
+  }
+  .maillage-row:last-child { border-bottom: none; }
+  .maillage-source {
+    font-weight: 600;
+    color: #0d2e47;
+    white-space: nowrap;
+  }
+  .maillage-arrow {
+    color: #c8a96a;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .maillage-target {
+    background: #f0ede8;
+    border-radius: 10px;
+    padding: 2px 10px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 16px;
+  }
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  .palette-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+    text-align: center;
+  }
+  .palette-hex {
+    font-size: 11px;
+    color: #9ca3af;
+    text-align: center;
+  }
+
+  /* BLOG TABLE */
+  .blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .blog-item {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: center;
+  }
+  .blog-title-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0d2e47;
+    margin-bottom: 4px;
+  }
+  .blog-meta {
+    font-size: 12px;
+    color: #9ca3af;
+  }
+  .blog-meta span {
+    margin-right: 12px;
+  }
+
+  /* OBJECTIFS */
+  .objectifs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .obj-item {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .obj-rank {
+    font-size: 28px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #e8e0d4;
+    flex-shrink: 0;
+    width: 36px;
+  }
+  .obj-content strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0d2e47;
+    margin-bottom: 2px;
+  }
+  .obj-content span {
+    font-size: 13px;
+    color: #6b7280;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0d2e47;
+    padding: 40px 80px;
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  footer strong {
+    display: block;
+    color: rgba(255,255,255,0.8);
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 38px; }
+    .cover-meta { gap: 24px; }
+    .cover-divider { display: none; }
+    section { padding: 48px 24px; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .cluster-wrap { grid-template-columns: 1fr; }
+    .tunnel-grid { grid-template-columns: 1fr; }
+    .tunnel-step:first-child { border-radius: 14px 14px 0 0; }
+    .tunnel-step:last-child { border-radius: 0 0 14px 14px; }
+    .tunnel-step + .tunnel-step { border-left: none; border-top: 1px solid #f0ede8; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 17px; }
+    table { font-size: 13px; }
+    thead th { padding: 12px 14px; }
+    tbody td { padding: 12px 14px; }
+    .blog-item { grid-template-columns: 1fr; }
+    footer { padding: 32px 24px; }
+    .palette-grid { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <p class="cover-logo-label">Blueprint Stratégique — AR Digital</p>
+  <h1>La Baie des Hôtes</h1>
+  <p class="cover-subtitle">Conciergerie de location saisonnière — Nice & Côte d'Azur</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span>Cliente</span>
+      <strong>Maëva Toesca</strong>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span>Secteur</span>
+      <strong>Conciergerie saisonnière</strong>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span>Zone</span>
+      <strong>Nice & Côte d'Azur</strong>
+    </div>
+  </div>
+</div>
+
+<!-- 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-badge">01</div>
+  <h2 class="section-title">Positionnement</h2>
+  <p class="section-intro">La promesse, le ton et les piliers de différenciation de La Baie des Hôtes.</p>
+
+  <div class="highlight-box">
+    <div class="label">Promesse de valeur principale</div>
+    <p>Confier votre logement à La Baie des Hôtes, c'est choisir une intendante de proximité sur la Côte d'Azur qui prend soin de votre bien comme du sien — pour que chaque voyageur s'y sente véritablement bienvenu, et vous, pleinement serein.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:40px;">
+    <div class="card">
+      <div class="card-title">Ligne directrice de communication</div>
+      <p class="card-text">Accompagnement humain de proximité sur la Côte d'Azur — une interlocutrice unique, disponible, impliquée, pour un portefeuille volontairement limité de propriétés soigneusement sélectionnées.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Ton éditorial</div>
+      <p class="card-text"><strong style="color:#0d2e47;">Élégant · Chaleureux · Rassurant</strong><br>Un registre qui inspire confiance dès les premières lignes, sans jamais verser dans le commercial ou le prétentieux — comme une lettre d'une amie experte de la Côte d'Azur.</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <div class="card-title">Interlocutrice unique & sur-mesure</div>
+      <p class="card-text">Maëva suit chaque propriété de A à Z. Pas de rotation d'équipe, pas de standardisation : chaque bien est connu, compris et accompagné dans sa singularité.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏖️</div>
+      <div class="card-title">Expertise terrain Côte d'Azur</div>
+      <p class="card-text">Une connaissance fine de Nice, Cagnes-sur-Mer, Èze et l'arrière-pays : les codes locaux, la clientèle, les prestataires de confiance et les standards d'exigence hôtelière.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✨</div>
+      <div class="card-title">Qualité hôtelière sans compromis</div>
+      <p class="card-text">Ménage, blanchisserie, kit de bienvenue, contrôle qualité systématique : chaque rotation respecte une charte d'excellence pensée pour l'expérience voyageur.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <div class="card-title">Transparence & suivi en temps réel</div>
+      <p class="card-text">Un espace propriétaire dédié et sécurisé pour consulter réservations, revenus, journal de bord et factures — disponible 24h/24, sans attendre un compte rendu mensuel.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <div class="card-title">Portefeuille volontairement limité</div>
+      <p class="card-text">La Baie des Hôtes refuse l'industrialisation. Un nombre de logements maîtrisé garantit la disponibilité, la réactivité et la qualité de chaque accompagnement.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-badge">02</div>
+  <h2 class="section-title">Client Cible</h2>
+  <p class="section-intro">Portrait du propriétaire idéal pour orienter chaque prise de parole sur le site.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Profil type</div>
+      <ul class="styled-list">
+        <li>35 – 65 ans, actif ou retraité aisé</li>
+        <li>Propriétaire d'un bien à Nice ou sur la Côte d'Azur (résidence principale, secondaire ou investissement)</li>
+        <li>Peu disponible, éloigné géographiquement ou simplement dépassé par la complexité opérationnelle</li>
+        <li>Profil cadre, profession libérale, entrepreneur ou investisseur immobilier</li>
+        <li>Sensible à la qualité, à la relation humaine et à la discrétion</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Motivations principales</div>
+      <ul class="styled-list">
+        <li>Générer des revenus locatifs sans y consacrer du temps</li>
+        <li>Protéger et valoriser son patrimoine immobilier</li>
+        <li>Offrir une expérience de qualité aux voyageurs</li>
+        <li>Trouver une personne de confiance, pas une structure anonyme</li>
+        <li>Avoir de la visibilité en temps réel sur son bien</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Freins & objections</div>
+      <ul class="styled-list">
+        <li>« Et si quelque chose se passe mal en mon absence ? »</li>
+        <li>« Comment savoir si mon bien est bien entretenu ? »</li>
+        <li>« Je ne connais pas cette conciergerie, puis-je lui faire confiance ? »</li>
+        <li>« Les commissions sont-elles justifiées ? »</li>
+        <li>« Ma propriété est-elle assez grande / rentable pour ce service ? »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Critères de décision</div>
+      <ul class="styled-list">
+        <li>Proximité géographique et réactivité de l'interlocuteur</li>
+        <li>Transparence sur les prestations et les coûts</li>
+        <li>Qualité perçue du service (photos, avis, présentation)</li>
+        <li>Relation humaine et personnalisation de l'accompagnement</li>
+        <li>Références, témoignages et preuves sociales locales</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-badge">03</div>
+  <h2 class="section-title">Objectifs du Site</h2>
+  <p class="section-intro">Hiérarchie claire des missions confiées au site web de La Baie des Hôtes.</p>
+
+  <div class="objectifs-list">
+    <div class="obj-item">
+      <div class="obj-rank">1</div>
+      <div class="obj-content">
+        <strong>Génération de leads qualifiés</strong>
+        <span>Inciter les propriétaires à prendre contact pour un premier échange ou un audit du logement.</span>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">2</div>
+      <div class="obj-content">
+        <strong>Réassurance & confiance</strong>
+        <span>Démontrer le sérieux, la proximité et l'implication personnelle de Maëva dès la première visite.</span>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">3</div>
+      <div class="obj-content">
+        <strong>Prise de rendez-vous</strong>
+        <span>Faciliter la demande d'audit ou de rendez-vous via un formulaire simple et rassurant.</span>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">4</div>
+      <div class="obj-content">
+        <strong>SEO local</strong>
+        <span>Être trouvé par les propriétaires cherchant une conciergerie à Nice et sur la Côte d'Azur.</span>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">5</div>
+      <div class="obj-content">
+        <strong>Conversion & positionnement premium</strong>
+        <span>Valoriser le positionnement haut de gamme et convaincre un propriétaire exigeant de choisir La Baie des Hôtes plutôt qu'un concurrent.</span>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">6</div>
+      <div class="obj-content">
+        <strong>Notoriété locale</strong>
+        <span>Ancrer La Baie des Hôtes comme la référence conciergerie de proximité sur Nice et la Côte d'Azur.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-badge">04</div>
+  <h2 class="section-title">Arborescence du Site</h2>
+  <p class="section-intro">Structure recommandée avec framework rédactionnel, mot-clé principal et potentiel SEO.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location saisonnière Nice</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre accompagnement</strong><br><small style="color:#9ca3af;">Mise en valeur · Annonce · Qualité hôtelière · Communication · Suivi propriétaire</small></td>
+          <td>PAS</td>
+          <td>accompagnement conciergerie Airbnb Nice</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — Maëva & La Baie des Hôtes</strong></td>
+          <td>BAB</td>
+          <td>conciergerie locale Nice propriétaire</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos propriétés</strong><br><small style="color:#9ca3af;">(Vitrine des biens accompagnés — à activer dès disponibilité des références)</small></td>
+          <td>AIDA</td>
+          <td>location courte durée Nice Côte d'Azur</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie à Nice</strong><br><small style="color:#9ca3af;">Page locale SEO #1</small></td>
+          <td>PAS</td>
+          <td>conciergerie Airbnb Nice</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie Côte d'Azur</strong><br><small style="color:#9ca3af;">Page locale SEO #2 — Cagnes-sur-Mer, Èze, arrière-pays</small></td>
+          <td>PAS</td>
+          <td>conciergerie location saisonnière Côte d'Azur</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils location saisonnière Nice</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact & Demande d'audit</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie Nice contact propriétaire</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-badge">05</div>
+  <h2 class="section-title">Cocon Sémantique</h2>
+  <p class="section-intro">Organisation thématique du contenu et logique de maillage interne.</p>
+
+  <div class="cluster-wrap" style="margin-bottom: 32px;">
+    <div class="cluster-card">
+      <div class="cluster-title">Cluster 1 — Conciergerie & Accompagnement</div>
+      <p class="card-text" style="font-size:13px;">Regroupe toutes les pages qui expliquent le cœur du service : ce que fait La Baie des Hôtes, comment, pour qui et avec quelle exigence.</p>
+      <div class="cluster-pages">
+        <span class="cluster-tag">Accueil</span>
+        <span class="cluster-tag">Notre accompagnement</span>
+        <span class="cluster-tag">À propos</span>
+        <span class="cluster-tag">Contact & Audit</span>
+      </div>
+    </div>
+    <div class="cluster-card">
+      <div class="cluster-title">Cluster 2 — SEO Local Côte d'Azur</div>
+      <p class="card-text" style="font-size:13px;">Ancrage géographique fort pour capter les recherches locales des propriétaires. Les articles de blog alimentent ces pages et renforcent leur autorité.</p>
+      <div class="cluster-pages">
+        <span class="cluster-tag">Conciergerie à Nice</span>
+        <span class="cluster-tag">Conciergerie Côte d'Azur</span>
+        <span class="cluster-tag">Blog (articles locaux)</span>
+        <span class="cluster-tag">Nos propriétés</span>
+      </div>
+    </div>
+    <div class="cluster-card">
+      <div class="cluster-title">Cluster 3 — Confiance & Preuve sociale</div>
+      <p class="card-text" style="font-size:13px;">Ensemble des signaux de réassurance : histoire fondatrice, témoignages propriétaires, galerie des biens. Alimente directement le tunnel de conversion.</p>
+      <div class="cluster-pages">
+        <span class="cluster-tag">À propos — Maëva</span>
+        <span class="cluster-tag">Nos propriétés</span>
+        <span class="cluster-tag">Blog (guides propriétaires)</span>
+        <span class="cluster-tag">Contact & Audit</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="maillage-box">
+    <div class="maillage-title">Logique de maillage interne</div>
+    <div class="maillage-row">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Notre accompagnement</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact & Audit</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">À propos</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Notre accompagnement</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Nos propriétés</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact & Audit</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Conciergerie à Nice</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Notre accompagnement</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Conciergerie Côte d'Azur</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact & Audit</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Articles Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Conciergerie à Nice</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Notre accompagnement</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact & Audit</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Notre accompagnement</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact & Audit</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-badge">06</div>
+  <h2 class="section-title">Tunnel de Conversion</h2>
+  <p class="section-intro">Le parcours du propriétaire idéal, de la découverte à la prise de contact.</p>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-number">Étape 1</div>
+      <div class="tunnel-label">Découverte</div>
+      <div class="tunnel-detail">
+        <strong>Source de trafic</strong>
+        Google (SEO local), bouche-à-oreille, réseaux sociaux (Instagram)
+        <strong>Page concernée</strong>
+        Accueil / Pages locales SEO / Articles Blog
+      </div>
+      <span class="tunnel-cta">Lecture de la promesse de valeur</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">Étape 2</div>
+      <div class="tunnel-label">Intérêt</div>
+      <div class="tunnel-detail">
+        <strong>Source de trafic</strong>
+        Navigation interne depuis l'accueil ou un article
+        <strong>Page concernée</strong>
+        Notre accompagnement / À propos — Maëva
+      </div>
+      <span class="tunnel-cta">Télécharger le guide propriétaire</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">Étape 3</div>
+      <div class="tunnel-label">Confiance</div>
+      <div class="tunnel-detail">
+        <strong>Source de trafic</strong>
+        Maillage interne, retour sur le site via email / relance
+        <strong>Page concernée</strong>
+        Nos propriétés / Témoignages / À propos
+      </div>
+      <span class="tunnel-cta">Lire les témoignages propriétaires</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">Étape 4</div>
+      <div class="tunnel-label">Conversion</div>
+      <div class="tunnel-detail">
+        <strong>Source de trafic</strong>
+        CTA présents sur toutes les pages
+        <strong>Page concernée</strong>
+        Contact & Demande d'audit
+      </div>
+      <span class="tunnel-cta">Demander un audit gratuit</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-badge">07</div>
+  <h2 class="section-title">Leviers Marketing Recommandés</h2>
+  <p class="section-intro">Les outils et dispositifs pour capter, rassurer et convertir les propriétaires.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">🎁</div>
+      <div class="card-title">Lead Magnet</div>
+      <p class="card-text">Guide PDF : <em>« Propriétaire sur la Côte d'Azur : les 7 clés pour réussir votre location saisonnière »</em> — document élégant, signé Maëva, téléchargeable en échange d'un email. Crée de la valeur avant tout engagement.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📅</div>
+      <div class="card-title">Prise de Rendez-vous</div>
+      <p class="card-text">Intégration de <strong>Calendly</strong> sur la page Contact, proposant un premier appel de 20 minutes ou un audit du logement. Friction minimale, disponibilité visible en temps réel.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⭐</div>
+      <div class="card-title">Preuve Sociale</div>
+      <p class="card-text">Témoignages propriétaires authentiques (photo + prénom + ville + type de bien), notes Airbnb / Booking des propriétés accompagnées, et capture des scores voyageurs. Intégrés sur l'accueil et la page accompagnement.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <div class="card-title">Formulaire Qualifiant</div>
+      <p class="card-text">Champs recommandés : Prénom · Email · Téléphone · Ville du logement · Type de bien · Situation actuelle (déjà en location / pas encore) · Message libre. Sobre et rassurant, jamais intrusif.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✉️</div>
+      <div class="card-title">Newsletter Propriétaires</div>
+      <p class="card-text">Angle éditorial : <em>« La Lettre de la Baie »</em> — une fois par mois, conseils pratiques pour optimiser sa location, actualités du marché à Nice, anecdotes terrain de Maëva. Ton éditorial chaleureux et expert.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-badge">08</div>
+  <h2 class="section-title">Direction Visuelle & Éditoriale</h2>
+  <p class="section-intro">L'identité sensorielle du site, inspirée de la Côte d'Azur et de l'élégance hôtelière méditerranéenne.</p>
+
+  <div class="highlight-box" style="margin-bottom: 40px;">
+    <div class="label">Note typographique</div>
+    <p style="font-size: 16px; font-family: 'Inter', sans-serif;">Maëva a choisi <strong style="color:#c8a96a;">Cormorant Garamond</strong> pour les grands titres et <strong style="color:#c8a96a;">Avenir</strong> pour les textes courants. Ces choix typographiques seront intégrés tel quels dans le développement du site — ils incarnent parfaitement l'élégance méditerranéenne souhaitée.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 40px; text-align: center;">
+    <div class="card-title" style="margin-bottom: 24px;">Palette Couleurs — La Baie des Hôtes</div>
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#1f5f8b;"></div>
+        <div class="palette-name">Bleu Riviera</div>
+        <div class="palette-hex">#1f5f8b</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#0d2e47;"></div>
+        <div class="palette-name">Bleu Profond</div>
+        <div class="palette-hex">#0d2e47</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#c8a96a;"></div>
+        <div class="palette-name">Doré Champagne</div>
+        <div class="palette-hex">#c8a96a</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#f7f5f1; border: 1px solid #e8e0d4;"></div>
+        <div class="palette-name">Blanc Cassé</div>
+        <div class="palette-hex">#f7f5f1</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#2c2c2c;"></div>
+        <div class="palette-name">Anthracite Doux</div>
+        <div class="palette-hex">#2c2c2c</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Univers Visuel Recommandé</div>
+      <ul class="styled-list">
+        <li>Photographies lumineuses de Nice et de la Côte d'Azur (mer, ruelles colorées, vues panoramiques)</li>
+        <li>Intérieurs de logements épurés et chaleureux, lumière naturelle méditerranéenne</li>
+        <li>Éléments botaniques discrets : olivier, bougainvillier, citronnier — en détail photographique</li>
+        <li>Portrait authentique de Maëva, chaleureux et professionnel, en extérieur ou dans un logement</li>
+        <li>Textures naturelles : lin, céramique, pierre blanche — évoquant la Dolce Vita azuréenne</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Atmosphère & Posture Visuelle</div>
+      <ul class="styled-list">
+        <li>Élégance méditerranéenne sans ostentation — premium accessible, pas luxe inaccessible</li>
+        <li>Espaces blancs généreux, compositions épurées, jamais surchargées</li>
+        <li>Visuels réalistes et lumineux (éviter le trop lisse, le trop corporate)</li>
+        <li>Iconographie sobre : filets dorés discrets, séparateurs minimalistes</li>
+        <li>Inspiration visuelle : villahelioscapri.com, hotelfontmourier.com, la-confidence.com</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-badge">09</div>
+  <h2 class="section-title">Articles Blog Recommandés</h2>
+  <p class="section-intro">7 sujets stratégiques pour attirer les propriétaires via Google et renforcer l'autorité de La Baie des Hôtes.</p>
+
+  <div class="blog-list">
+    <div class="blog-item">
+      <div>
+        <div class="blog-title-text">Pourquoi confier son logement à une conciergerie locale à Nice plutôt qu'à une plateforme nationale ?</div>
+        <div class="blog-meta">
+          <span>🏷️ Conciergerie & Accompagnement</span>
+          <span>🎯 Informationnelle / Comparaison</span>
+        </div>
+      </div>
+      <span class="badge-seo badge-prioritaire">Prioritaire</span>
+    </div>
+    <div class="blog-item">
+      <div>
+        <div class="blog-title-text">Location saisonnière à Nice : ce qu'il faut savoir avant de se lancer en 2025</div>
+        <div class="blog-meta">
+          <span>🏷️ SEO Local Côte d'Azur</span>
+          <span>🎯 Informationnelle / Intention débutant</span>
+        </div>
+      </div>
+      <span class="badge-seo badge-prioritaire">Prioritaire</span>
+    </div>
+    <div class="blog-item">
+      <div>
+        <div class="blog-title-text">Home staging & mise en valeur : comment préparer son appartement pour la location courte durée sur la Côte d'Azur</div>
+        <div class="blog-meta">
+          <span>🏷️ Conciergerie & Accompagnement</span>
+          <span>🎯 Informationnelle / Intention pratico-pratique</span>
+        </div>
+      </div>
+      <span class="badge-seo badge-prioritaire">Prioritaire</span>
+    </div>
+    <div class="blog-item">
+      <div>
+        <div class="blog-title-text">Tarification dynamique à Nice : comment maximiser vos revenus locatifs selon la saison et les événements</div>
+        <div class="blog-meta">
+          <span>🏷️ SEO Local Côte d'Azur</span>
+          <span>🎯 Informationnelle / Intention optimisation</span>
+        </div>
+      </div>
+      <span class="badge-seo badge-moyen">Moyen</span>
+    </div>
+    <div class="blog-item">
+      <div>
+        <div class="blog-title-text">Propriétaire éloigné ou non-résident : comment confier sereinement votre bien sur la Côte d'Azur ?</div>
+        <div class="blog-meta">
+          <span>🏷️ Confiance & Preuve sociale</span>
+          <span>🎯 Informationnelle / Intention délégation</span>
+        </div>
+      </div>
+      <span class="badge-seo badge-moyen">Moyen</span>
+    </div>
+    <div class="blog-item">
+      <div>
+        <div class="blog-title-text">Ménage hôtelier, kit de bienvenue, check-in : les standards d'accueil qui font la différence sur Airbnb</div>
+        <div class="blog-meta">
+          <span>🏷️ Conciergerie & Accompagnement</span>
+          <span>🎯 Informationnelle / Intention qualité</span>
+        </div>
+      </div>
+      <span class="badge-seo badge-moyen">Moyen</span>
+    </div>
+    <div class="blog-item">
+      <div>
+        <div class="blog-title-text">Cagnes-sur-Mer, Èze, arrière-pays niçois : les opportunités de location saisonnière hors des sentiers battus</div>
+        <div class="blog-meta">
+          <span>🏷️ SEO Local Côte d'Azur</span>
+          <span>🎯 Informationnelle / Intention découverte géographique</span>
+        </div>
+      </div>
+      <span class="badge-seo badge-faible">Faible</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>La Baie des Hôtes — Maëva Toesca</strong>
+  Blueprint Stratégique — Document confidentiel réservé à l'usage exclusif de la cliente · Produit par AR Digital
+</footer>
+
+</body>
+</html>
