@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — La P'tite Conciergerie des 3 Frontières</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --orange: #C8621A;
+    --orange-light: #E07A30;
+    --orange-pale: #F5E6D8;
+    --marron: #4A2C1A;
+    --marron-light: #7A4A2E;
+    --blanc: #FFFFFF;
+    --gris-clair: #F7F4F1;
+    --gris-texte: #5A4A3A;
+    --gris-meta: #9A8070;
+    --ombre: 0 2px 12px rgba(74,44,26,0.08);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--marron);
+    background: var(--blanc);
+  }
+
+  /* ── COUVERTURE ── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1C0D05 0%, #3A1A08 40%, #5C2E10 70%, #C8621A 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(200,98,26,0.15);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange-light);
+    margin-bottom: 36px;
+    opacity: 0.9;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    max-width: 800px;
+  }
+  .cover-title em {
+    font-style: italic;
+    color: var(--orange-light);
+  }
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    margin-bottom: 56px;
+    letter-spacing: 0.5px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+  .cover-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 70px 60px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: var(--gris-clair);
+  }
+  section:nth-child(odd) {
+    background: var(--blanc);
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--marron);
+    margin-bottom: 40px;
+    line-height: 1.25;
+  }
+
+  /* ── CARDS ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--ombre);
+    border: 1px solid rgba(200,98,26,0.08);
+  }
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--marron);
+    margin-bottom: 10px;
+  }
+  .card-text {
+    font-size: 14px;
+    color: var(--gris-texte);
+    line-height: 1.7;
+  }
+
+  /* ── HIGHLIGHT ── */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--marron) 0%, var(--orange) 100%);
+    border-radius: 14px;
+    padding: 36px 40px;
+    margin-bottom: 40px;
+    color: white;
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 1.6;
+    color: white;
+  }
+  .highlight-box .hl-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 14px;
+    display: block;
+    font-style: normal;
+  }
+
+  /* ── LISTES ── */
+  ul.styled-list {
+    list-style: none;
+    padding: 0;
+  }
+  ul.styled-list li {
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    font-size: 14px;
+    color: var(--gris-texte);
+    border-bottom: 1px solid rgba(200,98,26,0.07);
+  }
+  ul.styled-list li:last-child { border-bottom: none; }
+  ul.styled-list li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--orange);
+    font-weight: 700;
+  }
+
+  /* ── OBJECTIFS ── */
+  .objectif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px 24px;
+    background: var(--blanc);
+    border-radius: 14px;
+    box-shadow: var(--ombre);
+    border: 1px solid rgba(200,98,26,0.08);
+    margin-bottom: 14px;
+  }
+  .objectif-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--orange);
+    min-width: 36px;
+    line-height: 1;
+    margin-top: 2px;
+  }
+  .objectif-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--marron);
+  }
+  .objectif-desc {
+    font-size: 13px;
+    color: var(--gris-texte);
+    margin-top: 2px;
+  }
+
+  /* ── TABLE ── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: var(--ombre);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--blanc);
+    font-size: 14px;
+  }
+  table thead th {
+    background: var(--marron);
+    color: white;
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  table tbody tr {
+    border-bottom: 1px solid rgba(200,98,26,0.07);
+  }
+  table tbody tr:last-child { border-bottom: none; }
+  table tbody td {
+    padding: 14px 18px;
+    color: var(--gris-texte);
+    vertical-align: top;
+  }
+  table tbody tr:hover { background: var(--orange-pale); }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-fort { background: #1A4A1A; color: #7ED17E; }
+  .badge-moyen { background: #3A2A00; color: #F0C040; }
+  .badge-faible { background: #2A0A00; color: #E08060; }
+  .page-name { font-weight: 600; color: var(--marron); }
+  .kw-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    background: var(--orange-pale);
+    color: var(--orange);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+
+  /* ── COCON ── */
+  .cluster-block {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--ombre);
+    border-left: 4px solid var(--orange);
+    margin-bottom: 20px;
+  }
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--marron);
+    margin-bottom: 12px;
+  }
+  .cluster-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .cluster-tag {
+    background: var(--orange-pale);
+    color: var(--orange);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .maillage-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(200,98,26,0.07);
+    font-size: 14px;
+    color: var(--gris-texte);
+  }
+  .maillage-item:last-child { border-bottom: none; }
+  .maillage-source {
+    font-weight: 600;
+    color: var(--marron);
+    white-space: nowrap;
+  }
+  .maillage-arrow {
+    color: var(--orange);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .maillage-dest {
+    white-space: nowrap;
+  }
+
+  /* ── TUNNEL ── */
+  .tunnel-step {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--ombre);
+    border: 1px solid rgba(200,98,26,0.08);
+    position: relative;
+  }
+  .tunnel-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--orange-pale);
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    line-height: 1;
+  }
+  .tunnel-step-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--marron);
+    margin-bottom: 14px;
+  }
+  .tunnel-detail {
+    font-size: 13px;
+    color: var(--gris-texte);
+    margin-bottom: 6px;
+  }
+  .tunnel-detail strong {
+    color: var(--marron);
+  }
+  .tunnel-cta {
+    margin-top: 14px;
+    display: inline-block;
+    background: var(--orange-pale);
+    color: var(--orange);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+
+  /* ── LEVIERS ── */
+  .levier-card {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--ombre);
+    border: 1px solid rgba(200,98,26,0.08);
+  }
+  .levier-icon {
+    font-size: 26px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .levier-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--marron);
+    margin-bottom: 10px;
+  }
+  .levier-text {
+    font-size: 13px;
+    color: var(--gris-texte);
+    line-height: 1.7;
+  }
+
+  /* ── COULEURS ── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 16px;
+  }
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .palette-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--marron);
+    text-align: center;
+  }
+  .palette-hex {
+    font-size: 11px;
+    color: var(--gris-meta);
+    text-align: center;
+  }
+
+  /* ── BLOG ── */
+  .blog-card {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--ombre);
+    border: 1px solid rgba(200,98,26,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .blog-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--marron);
+    line-height: 1.4;
+  }
+  .blog-meta {
+    font-size: 12px;
+    color: var(--gris-texte);
+  }
+  .blog-meta span {
+    display: inline-block;
+    margin-right: 12px;
+  }
+  .blog-intent {
+    font-size: 12px;
+    color: var(--gris-texte);
+    font-style: italic;
+  }
+
+  /* ── VISUEL ── */
+  .visuel-item {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--ombre);
+    border: 1px solid rgba(200,98,26,0.08);
+  }
+  .visuel-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .visuel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--marron);
+    margin-bottom: 8px;
+  }
+  .visuel-text {
+    font-size: 13px;
+    color: var(--gris-texte);
+    line-height: 1.7;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--marron);
+    padding: 36px 60px;
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  .footer strong {
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* ── SECTION DARK ── */
+  .section-dark {
+    background: var(--marron) !important;
+  }
+  .section-dark h2.section-title,
+  .section-dark .section-badge {
+    color: var(--orange-light);
+  }
+  .section-dark .card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .section-dark .card-title {
+    color: white;
+  }
+  .section-dark .card-text {
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    section { padding: 40px 24px; }
+    .cover { padding: 60px 24px; }
+    .cover-title { font-size: 36px; }
+    .cover-divider { display: none; }
+    .cover-meta { gap: 20px; }
+    h2.section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .highlight-box { padding: 24px; }
+    .highlight-box p { font-size: 18px; }
+    .table-wrap { overflow-x: auto; }
+    .footer { padding: 28px 24px; }
+    .palette-grid { gap: 16px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 80px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════ COUVERTURE -->
+<div class="cover">
+  <span class="cover-badge">Blueprint Stratégique — AR Digital</span>
+  <h1 class="cover-title">La P'tite Conciergerie<br><em>des 3 Frontières</em></h1>
+  <p class="cover-subtitle">Document de positionnement & stratégie digitale — confidentiel</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Cliente</span>
+      <span class="cover-meta-value">Hélène Delpérier</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie LCD</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Zone</span>
+      <span class="cover-meta-value">Metz · Thionville · Grand Est & 3 Frontières</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-inner">
+    <span class="section-badge">01 — Positionnement</span>
+    <h2 class="section-title">Votre identité de marque</h2>
+
+    <div class="highlight-box">
+      <span class="hl-label">Promesse de valeur principale</span>
+      <p>Une conciergerie humaine et haut de gamme qui transforme votre bien en expérience mémorable — pour vous, la sérénité ; pour vos voyageurs, l'excellence.</p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom: 32px;">
+      <div class="card">
+        <span class="card-icon">🎯</span>
+        <div class="card-title">Ligne directrice de communication</div>
+        <div class="card-text">Accompagnement local premium, attention portée aux détails, relation humaine authentique dans un territoire à fort potentiel transfrontalier.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">✍️</span>
+        <div class="card-title">Ton éditorial</div>
+        <div class="card-text"><strong>Chaleureux · Élégant · Rassurant</strong><br>Un ton qui allie la proximité d'une conciergerie humaine à l'exigence du luxe vécu chez Hermès — jamais froid, jamais générique.</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif; font-size:22px; color:var(--marron); margin-bottom:24px;">Piliers de différenciation</h3>
+    <div class="grid-2">
+      <div class="card">
+        <span class="card-icon">🏆</span>
+        <div class="card-title">L'ADN du luxe au service du LCD</div>
+        <div class="card-text">Un parcours chez Hermès et 15 ans en Finance luxembourgeoise forment une combinaison rare : rigueur de haut niveau et culture du détail soigné.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🗺️</span>
+        <div class="card-title">Expertise transfrontalière unique</div>
+        <div class="card-text">Connaissance terrain du marché Metz–Thionville–Longwy, du Pays-Haut, du Luxembourg et de la Belgique du Sud — une rareté dans la région.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🤝</span>
+        <div class="card-title">Relation sur-mesure et humaine</div>
+        <div class="card-text">Pas de formule standard : chaque propriétaire, chaque bien, chaque voyageur bénéficie d'un suivi personnalisé et d'une attention spécifique.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">✨</span>
+        <div class="card-title">Spécialiste des biens de charme & atypiques</div>
+        <div class="card-text">Un positionnement volontairement orienté vers les logements qui sortent du lot : décoration, home staging, livret d'accueil premium, première impression irréprochable.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">📱</span>
+        <div class="card-title">Assistance 7j/7, sans interruption</div>
+        <div class="card-text">Les voyageurs sont accompagnés avant, pendant et après leur séjour. Le propriétaire n'intervient jamais dans l'urgence — tout est absorbé et géré.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-inner">
+    <span class="section-badge">02 — Client Cible</span>
+    <h2 class="section-title">Portrait du propriétaire idéal</h2>
+
+    <div class="grid-2">
+      <div class="card">
+        <span class="card-icon">👤</span>
+        <div class="card-title">Profil type</div>
+        <div class="card-text">35–60 ans, propriétaire d'un bien de caractère, atypique ou premium dans la zone 3 Frontières. Souvent actif professionnellement (cadre, entrepreneur, frontalier Luxembourg/Belgique), peu disponible, exigeant sur la qualité et les revenus locatifs.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">💡</span>
+        <div class="card-title">Motivations principales</div>
+        <ul class="styled-list" style="margin-top:4px;">
+          <li>Optimiser les revenus locatifs sans y consacrer de temps</li>
+          <li>Valoriser un bien de caractère à son juste niveau</li>
+          <li>Avoir un interlocuteur de confiance, rigoureux</li>
+          <li>Offrir une expérience voyageur soignée</li>
+          <li>Déléguer l'intégralité ou une partie de l'opérationnel</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="card-icon">🚧</span>
+        <div class="card-title">Freins et objections</div>
+        <ul class="styled-list" style="margin-top:4px;">
+          <li>"Je ne sais pas si ça vaut vraiment le coût"</li>
+          <li>"Comment je sais que mon bien sera bien traité ?"</li>
+          <li>"J'ai peur de perdre le contrôle de mes revenus"</li>
+          <li>"Je ne connais pas cette conciergerie, elle est récente ?"</li>
+          <li>"23% c'est beaucoup" (sans comprendre la valeur réelle)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="card-icon">✅</span>
+        <div class="card-title">Critères de décision</div>
+        <ul class="styled-list" style="margin-top:4px;">
+          <li>Transparence sur la commission et ce qu'elle inclut</li>
+          <li>Profil et crédibilité du fondateur</li>
+          <li>Avis voyageurs et références propriétaires</li>
+          <li>Couverture géographique précise (zone 3 Frontières)</li>
+          <li>Réactivité et disponibilité ressenties dès le 1er contact</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 03 — OBJECTIFS -->
+<section id="bp-section-03">
+  <div class="section-inner">
+    <span class="section-badge">03 — Objectifs du site</span>
+    <h2 class="section-title">Ce que votre site doit accomplir</h2>
+
+    <div class="objectif-item">
+      <span class="objectif-rank">1</span>
+      <div>
+        <div class="objectif-label">Génération de leads qualifiés</div>
+        <div class="objectif-desc">Convertir les propriétaires de biens premium en contacts entrants via formulaire ou prise de RDV.</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-rank">2</span>
+      <div>
+        <div class="objectif-label">Réassurance & crédibilité</div>
+        <div class="objectif-desc">Mettre en valeur le parcours d'Hélène (Hermès, Finance Lux) pour asseoir la confiance dès la première visite.</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-rank">3</span>
+      <div>
+        <div class="objectif-label">SEO local — Zone 3 Frontières</div>
+        <div class="objectif-desc">Être visible sur Google pour les requêtes "conciergerie Airbnb Metz", "conciergerie LCD Thionville", "Longwy" et mots-clés transfrontaliers.</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-rank">4</span>
+      <div>
+        <div class="objectif-label">Prise de RDV</div>
+        <div class="objectif-desc">Faciliter la prise de contact avec un outil de réservation intégré (Calendly ou équivalent) pour réduire les frictions.</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-rank">5</span>
+      <div>
+        <div class="objectif-label">Notoriété & positionnement premium</div>
+        <div class="objectif-desc">Installer l'image d'une conciergerie haut de gamme et atypique, distincte des acteurs généralistes de la région.</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-rank">6</span>
+      <div>
+        <div class="objectif-label">Nurturing via blog</div>
+        <div class="objectif-desc">Maintenir l'intérêt des visiteurs non encore prêts à signer, via des articles de valeur sur la LCD et la zone 3 Frontières.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-inner">
+    <span class="section-badge">04 — Arborescence du site</span>
+    <h2 class="section-title">Structure des pages</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>Framework</th>
+            <th>Mot-clé principal</th>
+            <th>Potentiel SEO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="page-name">🏠 Accueil</span></td>
+            <td>AIDA</td>
+            <td><span class="kw-tag">conciergerie location courte durée 3 Frontières</span></td>
+            <td><span class="badge badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><span class="page-name">🎁 Nos Formules</span><br><small style="color:var(--gris-meta);">Complète & Admin-Digital — détaillées sur une page unique</small></td>
+            <td>PAS</td>
+            <td><span class="kw-tag">formule conciergerie Airbnb Metz</span></td>
+            <td><span class="badge badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><span class="page-name">👩 À propos — Hélène</span></td>
+            <td>BAB</td>
+            <td><span class="kw-tag">conciergerie haut de gamme Lorraine</span></td>
+            <td><span class="badge badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td><span class="page-name">📍 Conciergerie Metz & Thionville</span><br><small style="color:var(--gris-meta);">Page locale SEO — couvre Metz, Thionville, Pays-Haut</small></td>
+            <td>AIDA</td>
+            <td><span class="kw-tag">conciergerie Airbnb Metz Thionville</span></td>
+            <td><span class="badge badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><span class="page-name">📍 Conciergerie Longwy & 3 Frontières</span><br><small style="color:var(--gris-meta);">Page locale SEO — couvre Longwy, Belgique Sud, Luxembourg</small></td>
+            <td>AIDA</td>
+            <td><span class="kw-tag">conciergerie Longwy Luxembourg location saisonnière</span></td>
+            <td><span class="badge badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><span class="page-name">✉️ Contact & RDV</span></td>
+            <td>PAS</td>
+            <td><span class="kw-tag">confier son logement Airbnb Lorraine</span></td>
+            <td><span class="badge badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td><span class="page-name">📝 Blog</span></td>
+            <td>—</td>
+            <td><span class="kw-tag">location courte durée Lorraine conseils</span></td>
+            <td><span class="badge badge-fort">Fort</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-inner">
+    <span class="section-badge">05 — Cocon Sémantique</span>
+    <h2 class="section-title">Architecture de contenu & maillage</h2>
+
+    <div class="cluster-block">
+      <div class="cluster-title">🏡 Cluster 1 — Conciergerie & Services LCD</div>
+      <div class="card-text">Pages centrales : Accueil + Nos Formules. Ce cluster capture les propriétaires en phase de recherche active d'une conciergerie sur la zone.</div>
+      <div class="cluster-tags">
+        <span class="cluster-tag">conciergerie Airbnb</span>
+        <span class="cluster-tag">déléguer location courte durée</span>
+        <span class="cluster-tag">conciergerie haut de gamme</span>
+        <span class="cluster-tag">formule complète vs administrative</span>
+        <span class="cluster-tag">tarification dynamique</span>
+      </div>
+    </div>
+
+    <div class="cluster-block">
+      <div class="cluster-title">📍 Cluster 2 — SEO Local 3 Frontières</div>
+      <div class="card-text">Pages locales + articles de blog géolocalisés. Ce cluster capte les recherches par ville ou territoire et améliore le positionnement local sur Google.</div>
+      <div class="cluster-tags">
+        <span class="cluster-tag">conciergerie Metz</span>
+        <span class="cluster-tag">conciergerie Thionville</span>
+        <span class="cluster-tag">location saisonnière Longwy</span>
+        <span class="cluster-tag">Airbnb Luxembourg frontaliers</span>
+        <span class="cluster-tag">Pays-Haut Lorraine LCD</span>
+      </div>
+    </div>
+
+    <div class="cluster-block">
+      <div class="cluster-title">✍️ Cluster 3 — Contenu Expertise & Confiance</div>
+      <div class="card-text">Page À propos + blog. Ce cluster renforce la crédibilité d'Hélène et nourrit les propriétaires hésitants avec du contenu utile avant conversion.</div>
+      <div class="cluster-tags">
+        <span class="cluster-tag">parcours Hermès</span>
+        <span class="cluster-tag">home staging LCD</span>
+        <span class="cluster-tag">augmenter revenus Airbnb</span>
+        <span class="cluster-tag">accueil voyageurs premium</span>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:var(--marron); margin: 32px 0 16px;">Logique de maillage interne</h3>
+    <div class="card">
+      <div class="maillage-item">
+        <span class="maillage-source">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Formules / Pages locales / À propos / Contact</span>
+      </div>
+      <div class="maillage-item">
+        <span class="maillage-source">Nos Formules</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact & RDV / Pages locales (ancres géo)</span>
+      </div>
+      <div class="maillage-item">
+        <span class="maillage-source">Pages locales SEO</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Formules / Contact / Articles blog locaux</span>
+      </div>
+      <div class="maillage-item">
+        <span class="maillage-source">À propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Formules / Contact & RDV</span>
+      </div>
+      <div class="maillage-item">
+        <span class="maillage-source">Articles Blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Formules / Pages locales / Contact</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 06 — TUNNEL -->
+<section id="bp-section-06">
+  <div class="section-inner">
+    <span class="section-badge">06 — Tunnel de Conversion</span>
+    <h2 class="section-title">Du visiteur au propriétaire partenaire</h2>
+    <div class="grid-2">
+      <div class="tunnel-step">
+        <span class="tunnel-num">01</span>
+        <span class="tunnel-step-label">Étape 1</span>
+        <div class="tunnel-step-title">Découverte</div>
+        <div class="tunnel-detail"><strong>Source :</strong> Google (SEO local), bouche-à-oreille, réseaux sociaux</div>
+        <div class="tunnel-detail"><strong>Page :</strong> Accueil / Articles blog / Pages locales SEO</div>
+        <div class="tunnel-detail"><strong>Objectif :</strong> Capter l'attention et créer une première impression premium</div>
+        <span class="tunnel-cta">CTA → "Découvrir nos formules"</span>
+      </div>
+      <div class="tunnel-step">
+        <span class="tunnel-num">02</span>
+        <span class="tunnel-step-label">Étape 2</span>
+        <div class="tunnel-step-title">Intérêt</div>
+        <div class="tunnel-detail"><strong>Source :</strong> Navigation interne depuis l'accueil</div>
+        <div class="tunnel-detail"><strong>Page :</strong> Nos Formules (Complète & Administrative)</div>
+        <div class="tunnel-detail"><strong>Objectif :</strong> Clarifier l'offre, lever les objections sur le coût</div>
+        <span class="tunnel-cta">CTA → "Estimer mon potentiel de revenus"</span>
+      </div>
+      <div class="tunnel-step">
+        <span class="tunnel-num">03</span>
+        <span class="tunnel-step-label">Étape 3</span>
+        <div class="tunnel-step-title">Confiance</div>
+        <div class="tunnel-detail"><strong>Source :</strong> Lien depuis Nos Formules ou menu</div>
+        <div class="tunnel-detail"><strong>Page :</strong> À propos — Hélène / Avis et témoignages</div>
+        <div class="tunnel-detail"><strong>Objectif :</strong> Humaniser la relation, valider la crédibilité du profil</div>
+        <span class="tunnel-cta">CTA → "Parlons de votre bien"</span>
+      </div>
+      <div class="tunnel-step">
+        <span class="tunnel-num">04</span>
+        <span class="tunnel-step-label">Étape 4</span>
+        <div class="tunnel-step-title">Conversion</div>
+        <div class="tunnel-detail"><strong>Source :</strong> Formulaire qualifiant ou Calendly</div>
+        <div class="tunnel-detail"><strong>Page :</strong> Contact & Prise de RDV</div>
+        <div class="tunnel-detail"><strong>Objectif :</strong> Déclencher un appel découverte ou une visite du bien</div>
+        <span class="tunnel-cta">CTA → "Réserver un appel gratuit"</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 07 — LEVIERS -->
+<section id="bp-section-07">
+  <div class="section-inner">
+    <span class="section-badge">07 — Leviers Marketing Recommandés</span>
+    <h2 class="section-title">Accélérer la conversion</h2>
+    <div class="grid-2">
+      <div class="levier-card">
+        <span class="levier-icon">🎁</span>
+        <div class="levier-title">Lead Magnet</div>
+        <div class="levier-text"><strong>"Guide du propriétaire serein : 7 étapes pour louer votre bien de charme sans stress dans la zone 3 Frontières"</strong> — PDF téléchargeable, positionné en bas de page Accueil et sur le blog. Capte l'email et amorce la relation.</div>
+      </div>
+      <div class="levier-card">
+        <span class="levier-icon">📅</span>
+        <div class="levier-title">Prise de RDV</div>
+        <div class="levier-text"><strong>Calendly</strong> (intégration native, gratuit) pour un appel découverte de 20 min. Bouton visible sur toutes les pages principales. Message de confirmation personnalisé avec le ton d'Hélène.</div>
+      </div>
+      <div class="levier-card">
+        <span class="levier-icon">⭐</span>
+        <div class="levier-title">Preuve Sociale</div>
+        <div class="levier-text">Avis Google intégrés, témoignages propriétaires avec photo et ville, captures d'avis Airbnb voyageurs. Section dédiée en page Accueil et Nos Formules pour maximiser la réassurance.</div>
+      </div>
+      <div class="levier-card">
+        <span class="levier-icon">📋</span>
+        <div class="levier-title">Formulaire Qualifiant</div>
+        <div class="levier-text">Champs recommandés : Prénom / Email / Téléphone / Ville du bien / Type de bien (appartement, maison, atypique) / Déjà en location ? (oui/non) / Message libre. Objectif : pré-qualifier avant l'appel.</div>
+      </div>
+      <div class="levier-card">
+        <span class="levier-icon">✉️</span>
+        <div class="levier-title">Newsletter</div>
+        <div class="levier-text">Angle éditorial : <em>"Les coulisses de la P'tite Conciergerie"</em> — conseils LCD, actualités du marché 3 Frontières, anecdotes terrain d'Hélène, nouvelles réglementations. Rythme mensuel, ton chaleureux.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-inner">
+    <span class="section-badge">08 — Direction Visuelle & Éditoriale</span>
+    <h2 class="section-title">L'identité visuelle du site</h2>
+
+    <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:var(--marron); margin-bottom:24px;">Palette de couleurs</h3>
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#C8621A;"></div>
+        <div class="palette-name">Orange Brûlé</div>
+        <div class="palette-hex">#C8621A</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#4A2C1A;"></div>
+        <div class="palette-name">Marron Profond</div>
+        <div class="palette-hex">#4A2C1A</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#FFFFFF; border: 1px solid #E0D0C4;"></div>
+        <div class="palette-name">Blanc Pur</div>
+        <div class="palette-hex">#FFFFFF</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#F5E6D8;"></div>
+        <div class="palette-name">Crème Ivoire</div>
+        <div class="palette-hex">#F5E6D8</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#7A4A2E;"></div>
+        <div class="palette-name">Terracotta Doux</div>
+        <div class="palette-hex">#7A4A2E</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:var(--marron); margin: 40px 0 24px;">Univers visuel recommandé</h3>
+    <div class="grid-3">
+      <div class="visuel-item">
+        <span class="visuel-icon">📸</span>
+        <div class="visuel-title">Photographie éditoriale</div>
+        <div class="visuel-text">Photos de logements de charme avec lumière naturelle chaude, détails soignés (linge, plantes, art de la table). Style magazine intérieur premium, inspiré de Maisons du Monde ou Côté Maison.</div>
+      </div>
+      <div class="visuel-item">
+        <span class="visuel-icon">🖋️</span>
+        <div class="visuel-title">Typographie signature</div>
+        <div class="visuel-text">Jimmy Script pour les titres signature / accroche, The Seasons ou Playfair Display pour les H2, Inter pour le corps de texte. Hiérarchie claire, élégante, jamais surchargée.</div>
+      </div>
+      <div class="visuel-item">
+        <span class="visuel-icon">🌿</span>
+        <div class="visuel-title">Textures & matières</div>
+        <div class="visuel-text">Arrière-plans crème légèrement texturés (lin, papier), séparateurs fins, icônes fines style trait — un univers qui évoque la chaleur artisanale sans être rustique.</div>
+      </div>
+      <div class="visuel-item">
+        <span class="visuel-icon">🗺️</span>
+        <div class="visuel-title">Cartographie illustrée</div>
+        <div class="visuel-text">Une carte stylisée de la zone 3 Frontières (Metz–Thionville–Longwy–Luxembourg) placée en section de couverture géographique pour visualiser l'ancrage local.</div>
+      </div>
+      <div class="visuel-item">
+        <span class="visuel-icon">💫</span>
+        <div class="visuel-title">Micro-animations sobres</div>
+        <div class="visuel-text">Apparitions douces au scroll (fade-in), hover léger sur les cards, transition de CTA. Inspiration Hermès : aucune animation tape-à-l'œil, tout est discret et intentionnel.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-inner">
+    <span class="section-badge">09 — Articles Blog Recommandés</span>
+    <h2 class="section-title">Stratégie de contenu</h2>
+    <div class="grid-2">
+      <div class="blog-card">
+        <div class="blog-title">Pourquoi confier son logement Airbnb à une conciergerie à Metz ? Le guide 2025</div>
+        <div class="blog-meta">
+          <span>📂 Cluster : Services LCD</span>
+          <span class="badge badge-fort">Prioritaire</span>
+        </div>
+        <div class="blog-intent">🔍 Intention : informationnelle / décisionnelle — "conciergerie Airbnb Metz"</div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-title">Location courte durée à Thionville : opportunité ou contrainte ? Ce que les chiffres disent en 2025</div>
+        <div class="blog-meta">
+          <span>📂 Cluster : SEO Local</span>
+          <span class="badge badge-fort">Prioritaire</span>
+        </div>
+        <div class="blog-intent">🔍 Intention : informationnelle — "location saisonnière Thionville rentabilité"</div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-title">Airbnb dans la zone 3 Frontières : quel potentiel pour les propriétaires de Longwy, Belgique et Luxembourg ?</div>
+        <div class="blog-meta">
+          <span>📂 Cluster : SEO Local</span>
+          <span class="badge badge-fort">Prioritaire</span>
+        </div>
+        <div class="blog-intent">🔍 Intention : informationnelle — "location courte durée Longwy Luxembourg"</div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-title">Formule complète vs gestion partielle : quelle option choisir pour votre logement de charme ?</div>
+        <div class="blog-meta">
+          <span>📂 Cluster : Services LCD</span>
+          <span class="badge badge-moyen">Moyen</span>
+        </div>
+        <div class="blog-intent">🔍 Intention : comparaison / décisionnelle — "conciergerie complète ou partielle Airbnb"</div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-title">Home staging pour la location courte durée : 8 astuces pour séduire les voyageurs dès la première photo</div>
+        <div class="blog-meta">
+          <span>📂 Cluster : Expertise & Confiance</span>
+          <span class="badge badge-moyen">Moyen</span>
+        </div>
+        <div class="blog-intent">🔍 Intention : informationnelle — "home staging location saisonnière"</div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-title">Réglementation Airbnb 2025 en Lorraine : ce que tout propriétaire doit savoir avant de se lancer</div>
+        <div class="blog-meta">
+          <span>📂 Cluster : Expertise & Confiance</span>
+          <span class="badge badge-moyen">Moyen</span>
+        </div>
+        <div class="blog-intent">🔍 Intention : informationnelle / urgente — "réglementation location courte durée Metz 2025"</div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-title">Comment augmenter ses revenus Airbnb grâce à la tarification dynamique ? Nos conseils terrain</div>
+        <div class="blog-meta">
+          <span>📂 Cluster : Services LCD</span>
+          <span class="badge badge-faible">Faible</span>
+        </div>
+        <div class="blog-intent">🔍 Intention : informationnelle — "tarification dynamique Airbnb fonctionnement"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ FOOTER -->
+<footer class="footer">
+  <p><strong>La P'tite Conciergerie des 3 Frontières</strong> — Blueprint Stratégique</p>
+  <p style="margin-top:6px;">Document confidentiel préparé par AR Digital · Tous droits réservés · Ne pas diffuser</p>
+</footer>
+
+</body>
+</html>
