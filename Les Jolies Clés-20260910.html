@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Les Jolies Clés</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --terracotta: #C1693A;
+    --dore: #C4963A;
+    --creme: #FAF6F0;
+    --texte: #4A3728;
+    --bois: #6B3A2A;
+    --brun: #2C1A0E;
+    --blanc: #ffffff;
+    --ombre: 0 2px 12px rgba(0,0,0,0.07);
+  }
+
+  body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--texte);
+    background: var(--creme);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #2C1A0E 0%, #6B3A2A 50%, #C1693A 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(196,150,58,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 32px;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 48px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(196,150,58,0.8), transparent);
+    margin: 32px auto;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: var(--blanc);
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    margin-bottom: 12px;
+    border-left: 3px solid var(--terracotta);
+    padding-left: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: var(--bois);
+    margin-bottom: 40px;
+    line-height: 1.25;
+  }
+
+  /* ── GRILLES ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--ombre);
+  }
+
+  section:nth-child(even) .card {
+    background: var(--creme);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  .card-icon {
+    font-size: 26px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--bois);
+    margin-bottom: 10px;
+  }
+
+  .card p, .card li {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--texte);
+  }
+
+  .card ul {
+    padding-left: 16px;
+  }
+
+  .card ul li {
+    margin-bottom: 4px;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--bois) 0%, var(--terracotta) 100%);
+    border-radius: 16px;
+    padding: 40px 48px;
+    color: var(--blanc);
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-box::after {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .highlight-box .label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 12px;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--blanc);
+  }
+
+  /* ── TABLEAU ── */
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  thead tr {
+    background: var(--bois);
+    color: var(--blanc);
+  }
+
+  thead th {
+    padding: 14px 18px;
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(74,55,40,0.1);
+  }
+
+  tbody tr:nth-child(even) {
+    background: rgba(250,246,240,0.6);
+  }
+
+  tbody td {
+    padding: 14px 18px;
+    vertical-align: top;
+    color: var(--texte);
+  }
+
+  /* ── BADGES SEO ── */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 0.3px;
+  }
+
+  .badge-fort { background: #e8f5e9; color: #2e7d32; }
+  .badge-moyen { background: #fff8e1; color: #f57f17; }
+  .badge-faible { background: #f3f0f0; color: #6b4c3b; }
+
+  /* ── TUNNEL STEPS ── */
+  .tunnel-step {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--ombre);
+    border-top: 4px solid var(--terracotta);
+    position: relative;
+  }
+
+  .tunnel-step .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: rgba(193,105,58,0.15);
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    font-weight: 700;
+  }
+
+  .tunnel-step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--bois);
+    margin-bottom: 14px;
+  }
+
+  .tunnel-step .tag {
+    display: inline-block;
+    background: rgba(193,105,58,0.1);
+    color: var(--terracotta);
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .tunnel-step p {
+    font-size: 14px;
+    color: var(--texte);
+    line-height: 1.7;
+    margin-bottom: 6px;
+  }
+
+  .tunnel-step .cta-label {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--terracotta);
+    font-weight: 600;
+  }
+
+  /* ── COCON ── */
+  .cluster {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--ombre);
+    margin-bottom: 24px;
+  }
+
+  section:nth-child(even) .cluster {
+    background: var(--creme);
+  }
+
+  .cluster h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--bois);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(107,58,42,0.15);
+  }
+
+  .cluster-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .kw-pill {
+    background: rgba(193,105,58,0.1);
+    color: var(--terracotta);
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  /* ── MAILLAGE ── */
+  .maillage-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(74,55,40,0.08);
+    font-size: 14px;
+    color: var(--texte);
+  }
+
+  .maillage-item:last-child { border-bottom: none; }
+
+  .maillage-from {
+    font-weight: 600;
+    color: var(--bois);
+    flex-shrink: 0;
+  }
+
+  .maillage-arrow {
+    color: var(--terracotta);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .maillage-to {
+    color: var(--texte);
+    flex: 1 1 auto;
+  }
+
+  /* ── PALETTE COULEURS ── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  .color-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .color-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .color-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--bois);
+    text-align: center;
+  }
+
+  .color-hex {
+    font-size: 12px;
+    color: #999;
+    font-family: monospace;
+  }
+
+  /* ── BLOG TABLE ── */
+  .priority-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .priority-p { background: #fce8df; color: #a63b0d; }
+  .priority-m { background: #fff3e0; color: #bf7000; }
+  .priority-f { background: #f0ece9; color: #6b4c3b; }
+
+  /* ── OBJECTIFS ── */
+  .objectif-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .objectif-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(74,55,40,0.08);
+    font-size: 15px;
+    color: var(--texte);
+  }
+
+  .objectif-list li:last-child { border-bottom: none; }
+
+  .objectif-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    color: var(--blanc);
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--brun);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 36px 40px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+
+  footer strong {
+    color: rgba(255,255,255,0.9);
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 40px; }
+    .cover-meta { gap: 24px; }
+
+    section { padding: 50px 24px; }
+
+    .section-title { font-size: 26px; }
+
+    .grid-2, .grid-3, .grid-4 {
+      grid-template-columns: 1fr;
+    }
+
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 18px; }
+
+    .table-wrapper { overflow-x: auto; }
+
+    .maillage-item { flex-wrap: wrap; }
+    .maillage-to { flex: 1 1 100%; }
+
+    .palette-grid { gap: 16px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-logo">Blueprint Stratégique · AR Digital</div>
+  <h1 class="cover-title">Les Jolies Clés</h1>
+  <p class="cover-subtitle">Conciergerie de location courte durée · Gard</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Cliente</div>
+      <div class="cover-meta-value">Coralie Bardi de Fourtou</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Secteur</div>
+      <div class="cover-meta-value">Conciergerie LCD · Pays de Sommières</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Domaine</div>
+      <div class="cover-meta-value">lesjoliesclesconciergerie.fr</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-badge">01 — Positionnement</div>
+  <h2 class="section-title">L'identité stratégique des Jolies Clés</h2>
+
+  <div class="highlight-box">
+    <div class="label">Promesse de valeur principale</div>
+    <p>« Nous révélons ce qui rend votre bien unique, optimisons vos revenus et veillons sur votre location avec la rigueur d'une ancienne directrice de projets et la sensibilité d'une passionnée d'hospitalité. »</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:32px;">
+    <div class="card">
+      <span class="card-icon">🧭</span>
+      <h3>Ligne directrice de communication</h3>
+      <p>Authenticité locale, exigence professionnelle et proximité humaine. Chaque message incarne le regard aiguisé d'une experte de terrain qui connaît son territoire et sait ce qui transforme une location correcte en séjour mémorable.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✍️</span>
+      <h3>Ton éditorial</h3>
+      <p><strong>Chaleureux · Rigoureux · Singulier</strong><br>Un ton qui rassure sans être froid, qui inspire confiance sans être technique — celui d'une experte qui parle propriétaire à propriétaire, avec franchise et enthousiasme.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:22px; color:var(--bois); margin-bottom:20px;">Piliers de différenciation</h3>
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🔑</span>
+      <h3>L'œil de la propriétaire</h3>
+      <p>Coralie est elle-même hôte Airbnb. Elle sait exactement ce qui fait la différence entre une location qu'on oublie et un séjour dont on se souvient. Ce vécu nourrit chaque décision.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">⚙️</span>
+      <h3>La rigueur d'une directrice de projets</h3>
+      <p>10 ans en direction de projets financiers et IT : des standards élevés, des processus maîtrisés, un suivi rigoureux. La performance locative n'est pas un hasard, c'est un métier.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📍</span>
+      <h3>Une ancre territoriale authentique</h3>
+      <p>Basée à Junas, au cœur de la Vaunage et du Pays de Sommières. Les Jolies Clés connaissent les adresses, les prestataires, les saisons et les voyageurs de ce territoire mieux que personne.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🌍</span>
+      <h3>Un accueil bilingue, ouvert sur le monde</h3>
+      <p>Coralie est bilingue français-anglais. Les voyageurs internationaux sont accueillis avec la même chaleur et les mêmes conseils, sans barrière linguistique.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✨</span>
+      <h3>Une expérience voyageur soignée</h3>
+      <p>Livret d'accueil personnalisé, cadeau de bienvenue local, carnet d'adresses local, mise en relation avec des prestataires de qualité : l'hospitalité est au cœur de chaque séjour.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-badge">02 — Client cible</div>
+  <h2 class="section-title">À qui s'adressent Les Jolies Clés ?</h2>
+
+  <div class="grid-2" style="margin-bottom:24px;">
+    <div class="card">
+      <span class="card-icon">👤</span>
+      <h3>Profil type</h3>
+      <p><strong>35 – 60 ans</strong>, propriétaire d'une maison de caractère ou d'un mas dans le Gard (Sommières, Junas, Calvisson, Villevieille…). Résidence secondaire ou bien locatif. Actif, peu disponible, soucieux de bien faire mais débordé. Parfois déjà sur Airbnb mais déçu des résultats ou de la charge de travail.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">💡</span>
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Générer des revenus complémentaires sans y consacrer du temps</li>
+        <li>Valoriser un bien qu'ils aiment et dont ils sont fiers</li>
+        <li>Être rassurés que leur maison est entre de bonnes mains</li>
+        <li>Avoir un interlocuteur unique, réactif et de confiance</li>
+        <li>Toucher une clientèle qualifiée, française et internationale</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">⚠️</span>
+      <h3>Freins et objections</h3>
+      <ul>
+        <li>« 23% c'est beaucoup » → peur d'une commission trop élevée</li>
+        <li>« Comment puis-je vous faire confiance ? » → besoin de réassurance forte</li>
+        <li>« Je ne veux pas de dégâts ni de mauvais locataires »</li>
+        <li>« Je gère déjà moi-même, pourquoi déléguer ? »</li>
+        <li>Méconnaissance du potentiel locatif réel de leur bien</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">🎯</span>
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Connaissance du territoire et du secteur</li>
+        <li>Transparence totale sur les services inclus et les coûts</li>
+        <li>Profil humain et expérience de la fondatrice</li>
+        <li>Qualité des photos et de la mise en valeur du bien</li>
+        <li>Avis et témoignages d'autres propriétaires locaux</li>
+        <li>Facilité à prendre contact et clarté de l'offre</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-badge">03 — Objectifs du site</div>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+
+  <ul class="objectif-list">
+    <li>
+      <div class="objectif-num">1</div>
+      <div><strong>Génération de leads qualifiés</strong> — Inciter les propriétaires à prendre rendez-vous pour un premier échange offert et sans engagement, via un formulaire ou un bouton Calendly visible à chaque étape clé du site.</div>
+    </li>
+    <li>
+      <div class="objectif-num">2</div>
+      <div><strong>Réassurance et confiance</strong> — Démontrer l'expertise, la rigueur et la proximité humaine de Coralie. Le site doit inspirer confiance dès les premières secondes pour lever les objections du propriétaire hésitant.</div>
+    </li>
+    <li>
+      <div class="objectif-num">3</div>
+      <div><strong>SEO local</strong> — Positionner Les Jolies Clés sur les recherches des propriétaires du Gard, du Pays de Sommières et des communes environnantes (CP 30250). Être visible quand un propriétaire cherche une conciergerie localement.</div>
+    </li>
+    <li>
+      <div class="objectif-num">4</div>
+      <div><strong>Conversion sur l'offre unique</strong> — Présenter l'Accompagnement Complet de manière claire, structurée et désirable, avec une transparence totale sur les services inclus pour accélérer la décision.</div>
+    </li>
+    <li>
+      <div class="objectif-num">5</div>
+      <div><strong>Notoriété locale</strong> — Asseoir la réputation des Jolies Clés comme la référence conciergerie du Pays de Sommières, en cohérence avec le positionnement premium et authentique de la marque.</div>
+    </li>
+    <li>
+      <div class="objectif-num">6</div>
+      <div><strong>Prise de RDV</strong> — Faciliter la prise de contact avec un outil de réservation intégré (Calendly ou équivalent) pour supprimer tout friction entre l'intérêt et le premier échange.</div>
+    </li>
+  </ul>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-badge">04 — Arborescence du site</div>
+  <h2 class="section-title">Structure et logique de navigation</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA — Attention, Intérêt, Désir, Action</td>
+          <td>conciergerie location courte durée Sommières</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>La Fondatrice</strong></td>
+          <td>BAB — Before, After, Bridge</td>
+          <td>conciergerie Gard propriétaire</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre Offre</strong></td>
+          <td>PAS — Problem, Agitate, Solution</td>
+          <td>conciergerie Airbnb Pays de Sommières</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact</strong></td>
+          <td>AIDA — focus Conversion</td>
+          <td>conciergerie location vacances Gard contact</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale SEO — Sommières & 30250</strong></td>
+          <td>PAS — ancrage géographique fort</td>
+          <td>conciergerie Sommières location vacances 30250</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale SEO — Vaunage & Junas</strong></td>
+          <td>PAS — ancrage géographique</td>
+          <td>conciergerie Vaunage Junas location saisonnière</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>Contenu éditorial — clusters thématiques</td>
+          <td>conseils location courte durée propriétaire Gard</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size:13px; color:#999; margin-top:16px; font-style:italic;">Note : les services détaillés (ménage, tarification dynamique, livret d'accueil…) sont intégrés à l'intérieur de la page "Notre Offre", sans page individuelle par service.</p>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-badge">05 — Cocon sémantique</div>
+  <h2 class="section-title">Organisation thématique et maillage interne</h2>
+
+  <div class="cluster">
+    <h3>🏡 Cluster 1 — Conciergerie & Délégation locative</h3>
+    <div class="cluster-keywords">
+      <span class="kw-pill">conciergerie Airbnb Gard</span>
+      <span class="kw-pill">déléguer sa location courte durée</span>
+      <span class="kw-pill">gestion locative saisonnière Sommières</span>
+      <span class="kw-pill">conciergerie Pays de Sommières</span>
+      <span class="kw-pill">accompagnement propriétaire location vacances</span>
+    </div>
+    <p style="font-size:14px; color:var(--texte);">Pages concernées : <strong>Accueil, Notre Offre, Pages locales SEO</strong>. Ce cluster capte les propriétaires en phase de recherche active d'une conciergerie sur leur territoire.</p>
+  </div>
+
+  <div class="cluster">
+    <h3>💡 Cluster 2 — Optimisation & Performance locative</h3>
+    <div class="cluster-keywords">
+      <span class="kw-pill">tarification dynamique Airbnb</span>
+      <span class="kw-pill">optimiser revenus location saisonnière</span>
+      <span class="kw-pill">shooting photo location Airbnb</span>
+      <span class="kw-pill">annonce Airbnb optimisée</span>
+      <span class="kw-pill">taux d'occupation location vacances</span>
+    </div>
+    <p style="font-size:14px; color:var(--texte);">Pages concernées : <strong>Blog, Notre Offre</strong>. Ce cluster capte les propriétaires déjà actifs sur les plateformes mais qui cherchent à améliorer leurs performances.</p>
+  </div>
+
+  <div class="cluster">
+    <h3>🌿 Cluster 3 — Destination & Territoire</h3>
+    <div class="cluster-keywords">
+      <span class="kw-pill">location vacances Sommières</span>
+      <span class="kw-pill">location saisonnière Vaunage</span>
+      <span class="kw-pill">que faire à Sommières</span>
+      <span class="kw-pill">location Gard propriétaire</span>
+      <span class="kw-pill">hébergement Pays de Sommières</span>
+    </div>
+    <p style="font-size:14px; color:var(--texte);">Pages concernées : <strong>Pages locales SEO, Blog</strong>. Ce cluster renforce l'ancrage territorial et capte un trafic informationnel lié à la destination.</p>
+  </div>
+
+  <div class="card" style="margin-top:24px;">
+    <h3>Logique de maillage interne</h3>
+    <div class="maillage-item">
+      <span class="maillage-from">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Notre Offre · La Fondatrice · Contact · Pages locales</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-from">Notre Offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Contact (prise de RDV) · Blog (articles optimisation)</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-from">La Fondatrice</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Notre Offre · Contact</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-from">Pages locales SEO</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Notre Offre · Contact · Accueil</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-from">Articles Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Notre Offre · Pages locales · Contact</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-badge">06 — Tunnel de conversion</div>
+  <h2 class="section-title">Du premier clic à la prise de contact</h2>
+
+  <div class="grid-2">
+    <div class="tunnel-step">
+      <span class="step-num">01</span>
+      <div class="tag">Découverte</div>
+      <h3>Le propriétaire découvre Les Jolies Clés</h3>
+      <p><strong>Sources :</strong> Google (SEO local), bouche-à-oreille, réseaux sociaux.</p>
+      <p><strong>Pages :</strong> Accueil, Pages locales SEO, Blog.</p>
+      <div class="cta-label">→ CTA : « Découvrir notre accompagnement »</div>
+    </div>
+    <div class="tunnel-step">
+      <span class="step-num">02</span>
+      <div class="tag">Intérêt</div>
+      <h3>Il explore l'offre et la fondatrice</h3>
+      <p><strong>Sources :</strong> Navigation interne depuis l'accueil ou le blog.</p>
+      <p><strong>Pages :</strong> Notre Offre, La Fondatrice.</p>
+      <div class="cta-label">→ CTA : « Télécharger la brochure » / « En savoir plus »</div>
+    </div>
+    <div class="tunnel-step">
+      <span class="step-num">03</span>
+      <div class="tag">Confiance</div>
+      <h3>Il est convaincu, il cherche à se rassurer</h3>
+      <p><strong>Sources :</strong> Témoignages, FAQ, pages locales, parcours de Coralie.</p>
+      <p><strong>Pages :</strong> Notre Offre (section avis), La Fondatrice, FAQ sur Contact.</p>
+      <div class="cta-label">→ CTA : « Premier échange offert, sans engagement »</div>
+    </div>
+    <div class="tunnel-step">
+      <span class="step-num">04</span>
+      <div class="tag">Conversion</div>
+      <h3>Il prend rendez-vous ou envoie sa demande</h3>
+      <p><strong>Sources :</strong> Tous les CTA du site convergent ici.</p>
+      <p><strong>Pages :</strong> Contact, formulaire qualifiant ou Calendly intégré.</p>
+      <div class="cta-label">→ CTA : « Réserver mon appel découverte »</div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-badge">07 — Leviers marketing recommandés</div>
+  <h2 class="section-title">Accélérer la croissance des Jolies Clés</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🎁</span>
+      <h3>Lead Magnet</h3>
+      <p><strong>« Guide : 7 erreurs qui coûtent des revenus à votre location dans le Gard »</strong><br>Un PDF sobre et élégant aux couleurs des Jolies Clés, téléchargeable en échange d'un email. Positionne Coralie comme experte dès le premier contact et alimente une liste email qualifiée.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📅</span>
+      <h3>Prise de RDV</h3>
+      <p><strong>Outil recommandé : Calendly</strong><br>Intégré directement sur la page Contact et en pop-up ou bouton sticky sur mobile. Permettre au propriétaire de réserver un appel découverte de 30 min en quelques secondes, sans friction.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">⭐</span>
+      <h3>Preuve sociale</h3>
+      <p><strong>Témoignages propriétaires vidéo ou texte</strong> collectés localement, accompagnés du prénom, de la commune et du type de bien. Affichés sur l'Accueil et la page Offre. Avis Google My Business synchronisés et mis en avant.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📋</span>
+      <h3>Formulaire qualifiant</h3>
+      <p>Champs recommandés :<br>
+      — Prénom · Nom<br>
+      — Email · Téléphone<br>
+      — Commune du bien<br>
+      — Type de bien (maison, mas, appartement…)<br>
+      — Déjà sur une plateforme ? (Oui / Non)<br>
+      — Message libre</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✉️</span>
+      <h3>Newsletter</h3>
+      <p><strong>Angle éditorial : « Le carnet des Jolies Clés »</strong><br>Email mensuel avec : actualités du marché locatif local, conseil du mois pour améliorer son taux d'occupation, recommandation d'adresse ou de prestataire du territoire.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-badge">08 — Direction visuelle & éditoriale</div>
+  <h2 class="section-title">L'univers graphique des Jolies Clés</h2>
+
+  <div class="card" style="margin-bottom:32px;">
+    <h3>Palette de couleurs officielle</h3>
+    <p style="font-size:14px; margin-bottom:4px; color:var(--texte);">Telle que définie par la cliente — terracotta, doré, crème et bois foncé. Un univers chaleureux, authentique et premium, ancré dans les teintes du sud de la France.</p>
+    <div class="palette-grid">
+      <div class="color-item">
+        <div class="color-swatch" style="background:#C1693A;"></div>
+        <div class="color-name">Terracotta</div>
+        <div class="color-hex">#C1693A</div>
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background:#C4963A;"></div>
+        <div class="color-name">Doré Bronze</div>
+        <div class="color-hex">#C4963A</div>
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background:#FAF6F0; border:1px solid #e0d8cc;"></div>
+        <div class="color-name">Crème Ivoire</div>
+        <div class="color-hex">#FAF6F0</div>
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background:#4A3728;"></div>
+        <div class="color-name">Gris Brun</div>
+        <div class="color-hex">#4A3728</div>
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background:#6B3A2A;"></div>
+        <div class="color-name">Bois Foncé</div>
+        <div class="color-hex">#6B3A2A</div>
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background:#2C1A0E;"></div>
+        <div class="color-name">Brun Profond</div>
+        <div class="color-hex">#2C1A0E</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:32px;">
+    <h3>Typographie</h3>
+    <p style="font-size:14px;"><strong>Playfair Display</strong> (Google Fonts) — Titres, sous-titres, citations. Apporte élégance et caractère.<br><strong>Raleway</strong> (Google Fonts) — Corps de texte, boutons, navigation. Lisible, moderne et aéré.</p>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:22px; color:var(--bois); margin-bottom:20px;">Univers visuel recommandé</h3>
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">📸</span>
+      <h3>Photographie principale</h3>
+      <p>Biens photographiés avec lumière naturelle dorée, décors authentiques du Gard. Aucun filtre froid ou trop saturé. Privilégier les ambiances terrasse, mas, garrigue, et les détails d'hospitalité (cadeau de bienvenue, table dressée).</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🌿</span>
+      <h3>Éléments graphiques</h3>
+      <p>Traits fins dorés comme séparateurs, icônes en outline, texture légère papier sur certains fonds. Éviter le surchargé. Laisser respirer les espaces blancs (crème).</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🖼️</span>
+      <h3>Portrait de Coralie</h3>
+      <p>Photo professionnelle chaleureuse (photo écharpe bleue retenue). Fond neutre ou intérieur de mas, regard direct, sourire naturel. Ce portrait est un élément central de réassurance — il doit être visible dès l'accueil.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🏷️</span>
+      <h3>Bandeau plateformes</h3>
+      <p>Fond bois foncé <strong>#6B3A2A</strong>, texte et logos en crème <strong>#FAF6F0</strong>. Logos Airbnb, Booking, Abritel présentés en rangée horizontale. Élément sobre et professionnel qui crédibilise la diffusion multi-plateformes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-badge">09 — Articles blog recommandés</div>
+  <h2 class="section-title">Stratégie de contenu éditorial</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Mettre sa maison en location à Sommières : par où commencer ?</strong></td>
+          <td>Conciergerie & Délégation</td>
+          <td>Informationnelle — propriétaire débutant</td>
+          <td><span class="priority-badge priority-p">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Pourquoi déléguer à une conciergerie locale dans le Gard plutôt que gérer soi-même ?</strong></td>
+          <td>Conciergerie & Délégation</td>
+          <td>Comparaison — propriétaire hésitant</td>
+          <td><span class="priority-badge priority-p">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Tarification dynamique Airbnb : comment maximiser vos revenus dans le Pays de Sommières ?</strong></td>
+          <td>Optimisation & Performance</td>
+          <td>Informationnelle — propriétaire actif</td>
+          <td><span class="priority-badge priority-p">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Shooting photo Airbnb : pourquoi c'est le premier investissement à faire pour votre location</strong></td>
+          <td>Optimisation & Performance</td>
+          <td>Informationnelle — propriétaire conscient</td>
+          <td><span class="priority-badge priority-m">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>5 idées de cadeaux de bienvenue locaux pour enchanter vos voyageurs dans le Gard</strong></td>
+          <td>Destination & Territoire</td>
+          <td>Informationnelle — hôte curieux</td>
+          <td><span class="priority-badge priority-m">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Que faire à Sommières et dans la Vaunage ? Le guide de l'hôte local</strong></td>
+          <td>Destination & Territoire</td>
+          <td>Informationnelle — voyageur et propriétaire</td>
+          <td><span class="priority-badge priority-m">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Propriétaire sur Airbnb : les 7 erreurs qui font baisser votre note et vos revenus</strong></td>
+          <td>Optimisation & Performance</td>
+          <td>Problème à résoudre — propriétaire frustré</td>
+          <td><span class="priority-badge priority-f">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:6px;"><strong>Les Jolies Clés</strong> — Blueprint Stratégique · Confidentiel</p>
+  <p>Document préparé par <strong>AR Digital</strong> · Toute reproduction interdite sans autorisation</p>
+</footer>
+
+</body>
+</html>
