@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Elcora Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2c2c2c;
+    background: #faf9f7;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1a1008 0%, #3b2308 40%, #5c3a1e 70%, #7a4f2a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(212,175,55,0.12) 0%, transparent 70%);
+  }
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c9a84c;
+    margin-bottom: 32px;
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 8px 20px;
+    border-radius: 50px;
+    position: relative;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .cover h1 span {
+    color: #c9a84c;
+  }
+  .cover-subtitle {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    margin-bottom: 56px;
+    letter-spacing: 1px;
+    position: relative;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    position: relative;
+  }
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .cover-meta-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+  .cover-meta-value {
+    font-size: 13px;
+    font-weight: 500;
+    color: #c9a84c;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 80px 80px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+  section:nth-child(odd) {
+    background: #faf9f7;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c9a84c;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #1a1008;
+    margin-bottom: 48px;
+    line-height: 1.2;
+  }
+  .section-title span {
+    color: #c9a84c;
+  }
+
+  /* ── CARDS ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .card-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1a1008;
+    margin-bottom: 8px;
+  }
+  .card-text {
+    font-size: 14px;
+    color: #5a5a5a;
+    line-height: 1.7;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, #3b2308 0%, #5c3a1e 100%);
+    border-radius: 14px;
+    padding: 40px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-box::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.15);
+  }
+  .highlight-box-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c9a84c;
+    margin-bottom: 12px;
+  }
+  .highlight-box-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #ffffff;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ── TONE BADGES ── */
+  .tone-badges {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .tone-badge {
+    background: rgba(201,168,76,0.12);
+    color: #7a4f2a;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50px;
+    padding: 6px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── TAGS ── */
+  .tag-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .tag-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: #3a3a3a;
+  }
+  .tag-list li::before {
+    content: '→';
+    color: #c9a84c;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── OBJECTIFS ── */
+  .obj-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .obj-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .obj-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #c9a84c;
+    width: 32px;
+    flex-shrink: 0;
+  }
+  .obj-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #1a1008;
+    flex: 1;
+  }
+  .obj-desc {
+    font-size: 13px;
+    color: #7a7a7a;
+  }
+
+  /* ── TABLE ── */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    font-size: 14px;
+  }
+  thead {
+    background: linear-gradient(135deg, #3b2308, #5c3a1e);
+  }
+  thead th {
+    color: #c9a84c;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 600;
+  }
+  tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+  tbody td {
+    padding: 16px 20px;
+    color: #3a3a3a;
+    vertical-align: top;
+  }
+  tbody tr:hover {
+    background: rgba(201,168,76,0.04);
+  }
+
+  /* ── SEO BADGES ── */
+  .seo-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .seo-fort { background: #e8f5e9; color: #2e7d32; }
+  .seo-moyen { background: #fff8e1; color: #f57f17; }
+  .seo-faible { background: #f3f3f3; color: #757575; }
+
+  /* ── MAILLAGE ── */
+  .maillage-item {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .maillage-source {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1008;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+  }
+  .maillage-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .maillage-links li {
+    font-size: 13px;
+    color: #5a5a5a;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .maillage-links li .arrow {
+    color: #c9a84c;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .maillage-links li .dest {
+    color: #7a4f2a;
+    font-weight: 500;
+  }
+
+  /* ── TUNNEL ── */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+    position: relative;
+  }
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    position: relative;
+    margin: 0 8px;
+  }
+  .tunnel-step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: rgba(201,168,76,0.2);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .tunnel-step-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c9a84c;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1a1008;
+    margin-bottom: 12px;
+  }
+  .tunnel-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .tunnel-meta-item {
+    font-size: 12px;
+    color: #5a5a5a;
+  }
+  .tunnel-meta-item strong {
+    color: #1a1008;
+    display: block;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+    color: #7a4f2a;
+  }
+  .tunnel-cta {
+    display: inline-block;
+    margin-top: 14px;
+    background: rgba(201,168,76,0.12);
+    color: #7a4f2a;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* ── LEVIERS ── */
+  .levier-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .levier-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(201,168,76,0.1);
+    border-radius: 12px;
+  }
+  .levier-body {}
+  .levier-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1008;
+    margin-bottom: 6px;
+  }
+  .levier-text {
+    font-size: 13px;
+    color: #5a5a5a;
+    line-height: 1.7;
+  }
+
+  /* ── PALETTE ── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .palette-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1a1008;
+    text-align: center;
+  }
+  .palette-hex {
+    font-size: 11px;
+    color: #aaaaaa;
+    font-family: monospace;
+  }
+
+  /* ── VISUEL ITEMS ── */
+  .visuel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 0;
+  }
+
+  /* ── BLOG ── */
+  .blog-item {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .blog-prio {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 50px;
+    align-self: flex-start;
+  }
+  .prio-p { background: #fff0d9; color: #b05a00; }
+  .prio-m { background: #e8f0ff; color: #1a3a8f; }
+  .prio-f { background: #f3f3f3; color: #757575; }
+  .blog-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1008;
+    line-height: 1.4;
+  }
+  .blog-cluster {
+    font-size: 11px;
+    color: #c9a84c;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .blog-intention {
+    font-size: 13px;
+    color: #7a7a7a;
+    line-height: 1.6;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #1a1008;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 40px 40px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  footer strong {
+    color: #c9a84c;
+  }
+
+  /* ── DIVIDER ── */
+  .gold-line {
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(90deg, #c9a84c, rgba(201,168,76,0.2));
+    border-radius: 2px;
+    margin-bottom: 32px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 40px; }
+    .cover-meta { flex-direction: column; gap: 20px; }
+    section { padding: 48px 24px; }
+    .section-title { font-size: 26px; margin-bottom: 28px; }
+    .grid-2, .grid-3, .grid-4, .tunnel-grid, .visuel-grid {
+      grid-template-columns: 1fr;
+    }
+    .tunnel-step { margin: 0; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box-text { font-size: 17px; }
+    .palette-grid { gap: 16px; }
+    .palette-swatch { width: 64px; height: 64px; }
+    .maillage-links li { flex-wrap: wrap; }
+    body { font-size: 15px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique — Document Confidentiel</div>
+  <h1>Elcora<br><span>Conciergerie</span></h1>
+  <div class="cover-subtitle">Stratégie digitale & positionnement web</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Cliente</span>
+      <span class="cover-meta-value">Carole Norbert</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie locative</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Zone</span>
+      <span class="cover-meta-value">Aix-en-Provence & environs</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Votre <span>identité</span> de marque</h2>
+  <div class="gold-line"></div>
+
+  <div class="highlight-box">
+    <div class="highlight-box-label">Promesse de valeur principale</div>
+    <div class="highlight-box-text">« Elcora Conciergerie optimise chaque réservation de votre bien immobilier autour d'Aix-en-Provence, avec la rigueur et la chaleur d'une experte de terrain qui prend soin de votre propriété comme de la sienne. »</div>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <div class="card-title">Ligne directrice de communication</div>
+    <div class="card-text">Excellence locale & relation humaine — Elcora se positionne comme une experte de proximité, reconnue par le bouche-à-oreille, qui traite chaque bien comme un bien unique, qu'il s'agisse d'un studio en centre-ville ou d'un domaine de standing.</div>
+  </div>
+
+  <div class="card" style="margin-bottom: 40px;">
+    <div class="card-title" style="margin-bottom: 14px;">Ton éditorial</div>
+    <div class="tone-badges">
+      <span class="tone-badge">Chaleureux</span>
+      <span class="tone-badge">Rassurant</span>
+      <span class="tone-badge">Premium</span>
+    </div>
+    <div class="card-text">Un discours qui inspire confiance dès les premiers mots : ni trop formel, ni trop familier. La proximité d'une experte qui vous connaît, l'exigence d'un service haut de gamme.</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">🏡</div>
+      <div class="card-title">Expertise terrain née du terrain</div>
+      <div class="card-text">5 ans d'expérience construite sur le terrain, née d'un premier domaine confié par un ami. Une légitimité authentique, pas théorique.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">✨</div>
+      <div class="card-title">Polyvalence standard & standing</div>
+      <div class="card-text">Rare capacité à valoriser aussi bien un appartement que un grand domaine provençal. Une seule conciergerie, tous les profils de biens.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📲</div>
+      <div class="card-title">Réactivité & lien direct</div>
+      <div class="card-text">Groupe WhatsApp dédié pour chaque propriétaire : des échanges fluides, une transparence totale, une réactivité immédiate.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <div class="card-title">Soin & attention personnalisée</div>
+      <div class="card-text">Chaque bien est traité avec le soin qu'on réserve à ce qu'on a de plus précieux. Attentions voyageurs personnalisées, coordination impeccable.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client Cible</span>
+  <h2 class="section-title">À qui vous <span>parlez</span></h2>
+  <div class="gold-line"></div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <div class="card-title">Profil type</div>
+    <div class="card-text">Propriétaire de 38 à 65 ans, résidant dans ou autour d'Aix-en-Provence. Possède un bien immobilier qu'il loue ou souhaite mettre en location courte durée — studio de centre-ville, appartement avec cachet, villa ou domaine en Provence. Actif ou semi-retraité, peu disponible pour gérer seul les contraintes opérationnelles. A entendu parler de la conciergerie par recommandation ou cherche sur Google une solution locale fiable.</div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title" style="margin-bottom: 14px;">Motivations</div>
+      <ul class="tag-list">
+        <li>Maximiser les revenus de son bien</li>
+        <li>Déléguer sans perdre le contrôle</li>
+        <li>Offrir une expérience de qualité à ses hôtes</li>
+        <li>Gagner en sérénité et en temps</li>
+        <li>Travailler avec quelqu'un de confiance</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title" style="margin-bottom: 14px;">Freins & objections</div>
+      <ul class="tag-list">
+        <li>Peur de perdre le contrôle sur son bien</li>
+        <li>Interrogation sur la commission (25%)</li>
+        <li>Doute sur la rigueur et le suivi</li>
+        <li>Mauvaise expérience passée</li>
+        <li>Hésitation entre standard et standing</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title" style="margin-bottom: 14px;">Critères de décision</div>
+      <ul class="tag-list">
+        <li>Réputation locale & recommandations</li>
+        <li>Transparence sur les prestations</li>
+        <li>Réactivité de la conciergière</li>
+        <li>Preuves concrètes de résultats</li>
+        <li>Feeling humain lors du premier contact</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du Site</span>
+  <h2 class="section-title">Ce que votre site <span>doit accomplir</span></h2>
+  <div class="gold-line"></div>
+
+  <ul class="obj-list">
+    <div class="obj-item">
+      <span class="obj-rank">01</span>
+      <span class="obj-label">Génération de leads qualifiés</span>
+      <span class="obj-desc">Transformer les visiteurs en propriétaires contactant Carole</span>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">02</span>
+      <span class="obj-label">Réassurance & confiance</span>
+      <span class="obj-desc">Incarner l'expertise, le soin et la rigueur d'Elcora</span>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">03</span>
+      <span class="obj-label">Prise de contact / RDV</span>
+      <span class="obj-desc">Faciliter le premier échange avec un formulaire ou agenda</span>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">04</span>
+      <span class="obj-label">SEO local</span>
+      <span class="obj-desc">Être trouvé sur Google par des propriétaires d'Aix-en-Provence</span>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">05</span>
+      <span class="obj-label">Notoriété & crédibilité</span>
+      <span class="obj-desc">Affirmer la légitimité d'Elcora face aux acteurs nationaux</span>
+    </div>
+    <div class="obj-item">
+      <span class="obj-rank">06</span>
+      <span class="obj-label">Conversion visiteur → propriétaire actif</span>
+      <span class="obj-desc">Guider chaque visiteur vers une action concrète</span>
+    </div>
+  </ul>
+</section>
+
+<!-- 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence du Site</span>
+  <h2 class="section-title">La structure <span>recommandée</span></h2>
+  <div class="gold-line"></div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie Aix-en-Provence</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos services</strong><br><small style="color:#999;">Diffusion annonce, optimisation tarifaire, coordination, attentions voyageurs — tout sur une seule page</small></td>
+          <td>PAS</td>
+          <td>services conciergerie location courte durée Aix</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — Carole & Elcora</strong></td>
+          <td>BAB</td>
+          <td>conciergerie location saisonnière Aix-en-Provence</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Réalisations / Biens gérés</strong></td>
+          <td>AIDA</td>
+          <td>exemples biens conciergerie Provence</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact & Estimation gratuite</strong></td>
+          <td>PAS</td>
+          <td>confier son bien à une conciergerie Aix</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Aix-en-Provence</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Aix-en-Provence</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Pays d'Aix & Luberon</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Pays d'Aix</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils propriétaire location saisonnière</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon Sémantique</span>
+  <h2 class="section-title">Votre territoire <span>de mots-clés</span></h2>
+  <div class="gold-line"></div>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <div class="card-title">Cluster 1 — Conciergerie & délégation</div>
+      <ul class="tag-list" style="margin-top: 12px;">
+        <li>conciergerie Aix-en-Provence</li>
+        <li>confier son bien à une conciergerie</li>
+        <li>services conciergerie location saisonnière</li>
+        <li>optimisation réservations Airbnb Provence</li>
+        <li>coordination voyageurs prestataires</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Cluster 2 — Rentabilité propriétaire</div>
+      <ul class="tag-list" style="margin-top: 12px;">
+        <li>maximiser revenus location courte durée</li>
+        <li>optimisation tarifaire Airbnb</li>
+        <li>comment bien louer son appartement en Provence</li>
+        <li>conseils propriétaire location saisonnière</li>
+        <li>rentabilité meublé touristique Aix</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom: 0;">
+    <div class="card-title" style="margin-bottom: 20px;">Logique de maillage interne</div>
+    <div class="grid-2">
+      <div class="maillage-item">
+        <div class="maillage-source">🏠 Accueil</div>
+        <ul class="maillage-links">
+          <li><span class="arrow">→</span> <span class="dest">Nos Services</span></li>
+          <li><span class="arrow">→</span> <span class="dest">Page locale Aix-en-Provence</span></li>
+          <li><span class="arrow">→</span> <span class="dest">Contact & Estimation</span></li>
+        </ul>
+      </div>
+      <div class="maillage-item">
+        <div class="maillage-source">⚙️ Nos Services</div>
+        <ul class="maillage-links">
+          <li><span class="arrow">→</span> <span class="dest">Contact & Estimation</span></li>
+          <li><span class="arrow">→</span> <span class="dest">À propos</span></li>
+          <li><span class="arrow">→</span> <span class="dest">Blog (articles liés)</span></li>
+        </ul>
+      </div>
+      <div class="maillage-item">
+        <div class="maillage-source">📍 Pages locales</div>
+        <ul class="maillage-links">
+          <li><span class="arrow">→</span> <span class="dest">Nos Services</span></li>
+          <li><span class="arrow">→</span> <span class="dest">Contact & Estimation</span></li>
+          <li><span class="arrow">→</span> <span class="dest">Réalisations</span></li>
+        </ul>
+      </div>
+      <div class="maillage-item">
+        <div class="maillage-source">📝 Blog</div>
+        <ul class="maillage-links">
+          <li><span class="arrow">→</span> <span class="dest">Page locale concernée</span></li>
+          <li><span class="arrow">→</span> <span class="dest">Nos Services</span></li>
+          <li><span class="arrow">→</span> <span class="dest">Contact & Estimation</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de Conversion</span>
+  <h2 class="section-title">Le parcours de votre <span>futur client</span></h2>
+  <div class="gold-line"></div>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">01</div>
+      <div class="tunnel-step-label">Découverte</div>
+      <div class="tunnel-step-title">Il vous trouve</div>
+      <div class="tunnel-meta">
+        <div class="tunnel-meta-item"><strong>Source de trafic</strong>Google, bouche-à-oreille, réseaux sociaux</div>
+        <div class="tunnel-meta-item"><strong>Page concernée</strong>Accueil / Pages locales</div>
+      </div>
+      <span class="tunnel-cta">Découvrir Elcora →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">02</div>
+      <div class="tunnel-step-label">Intérêt</div>
+      <div class="tunnel-step-title">Il comprend votre valeur</div>
+      <div class="tunnel-meta">
+        <div class="tunnel-meta-item"><strong>Source de trafic</strong>Navigation interne, blog</div>
+        <div class="tunnel-meta-item"><strong>Page concernée</strong>Nos Services / À propos</div>
+      </div>
+      <span class="tunnel-cta">Voir nos services →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">03</div>
+      <div class="tunnel-step-label">Confiance</div>
+      <div class="tunnel-step-title">Il se projette</div>
+      <div class="tunnel-meta">
+        <div class="tunnel-meta-item"><strong>Source de trafic</strong>Réassurance, avis, réalisations</div>
+        <div class="tunnel-meta-item"><strong>Page concernée</strong>Réalisations / Avis clients</div>
+      </div>
+      <span class="tunnel-cta">Voir les réalisations →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">04</div>
+      <div class="tunnel-step-label">Conversion</div>
+      <div class="tunnel-step-title">Il vous contacte</div>
+      <div class="tunnel-meta">
+        <div class="tunnel-meta-item"><strong>Source de trafic</strong>CTA, formulaire, agenda</div>
+        <div class="tunnel-meta-item"><strong>Page concernée</strong>Contact & Estimation gratuite</div>
+      </div>
+      <span class="tunnel-cta">Obtenir mon estimation →</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers Marketing Recommandés</span>
+  <h2 class="section-title">Vos outils de <span>croissance</span></h2>
+  <div class="gold-line"></div>
+
+  <div class="grid-2">
+    <div class="levier-item">
+      <div class="levier-icon">🎁</div>
+      <div class="levier-body">
+        <div class="levier-title">Lead Magnet</div>
+        <div class="levier-text">« Guide gratuit : 5 étapes pour maximiser les revenus de votre bien autour d'Aix-en-Provence » — PDF downloadable, capturant l'email du propriétaire intéressé avant qu'il parte.</div>
+      </div>
+    </div>
+    <div class="levier-item">
+      <div class="levier-icon">📅</div>
+      <div class="levier-body">
+        <div class="levier-title">Prise de RDV</div>
+        <div class="levier-text">Outil recommandé : <strong>Calendly</strong> (gratuit, simple). Un bouton « Réserver un appel découverte » bien visible sur la page Contact et en bas de chaque page de service.</div>
+      </div>
+    </div>
+    <div class="levier-item">
+      <div class="levier-icon">⭐</div>
+      <div class="levier-body">
+        <div class="levier-title">Preuve Sociale</div>
+        <div class="levier-text">Témoignages propriétaires (texte + prénom + type de bien), avis Google My Business, et courte galerie de biens gérés avec résultats clés (taux d'occupation, satisfaction hôtes).</div>
+      </div>
+    </div>
+    <div class="levier-item">
+      <div class="levier-icon">📋</div>
+      <div class="levier-body">
+        <div class="levier-title">Formulaire Qualifiant</div>
+        <div class="levier-text">Champs recommandés : type de bien / localisation / disponibilité approximative / objectif principal (revenus / sérénité / qualité des hôtes) / numéro de téléphone.</div>
+      </div>
+    </div>
+    <div class="levier-item">
+      <div class="levier-icon">✉️</div>
+      <div class="levier-body">
+        <div class="levier-title">Newsletter</div>
+        <div class="levier-text">Angle éditorial : « Les Actualités Elcora » — conseils saisonniers, tendances marché locationnel en Provence, astuces pour mieux louer, et coulisses de la vie de la conciergerie.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction Visuelle & Éditoriale</span>
+  <h2 class="section-title">L'identité <span>visuelle</span> recommandée</h2>
+  <div class="gold-line"></div>
+
+  <div class="card" style="margin-bottom: 40px; text-align: center;">
+    <div class="card-title" style="margin-bottom: 32px;">Palette de couleurs</div>
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #C9A84C;"></div>
+        <div class="palette-name">Or Elcora</div>
+        <div class="palette-hex">#C9A84C</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #3B2308;"></div>
+        <div class="palette-name">Chocolat Profond</div>
+        <div class="palette-hex">#3B2308</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #C4A882;"></div>
+        <div class="palette-name">Beige Sablé</div>
+        <div class="palette-hex">#C4A882</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #F5F0E8;"></div>
+        <div class="palette-name">Ivoire Doux</div>
+        <div class="palette-hex">#F5F0E8</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #1A1008;"></div>
+        <div class="palette-name">Nuit Provençale</div>
+        <div class="palette-hex">#1A1008</div>
+      </div>
+    </div>
+    <div style="margin-top: 24px; font-size: 13px; color: #999; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.7;">Cette palette respecte votre logo doré et vos flyers chocolat-beige, tout en créant une identité cohérente premium adaptée aussi bien aux biens standard qu'aux propriétés de standing.</div>
+  </div>
+
+  <div class="visuel-grid">
+    <div class="card">
+      <div class="card-icon">🌄</div>
+      <div class="card-title">Photographie Provençale</div>
+      <div class="card-text">Photos lumineuses d'intérieurs soignés, de terrasses ombragées, de lavandes et paysages du Pays d'Aix. Lumière chaude, filtre doux.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">✍️</div>
+      <div class="card-title">Typographie élégante</div>
+      <div class="card-text">Playfair Display pour les titres (caractère raffiné, serif) et Inter pour le corps de texte (lisibilité, modernité). Contraste net entre les deux.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📐</div>
+      <div class="card-title">Mise en page aérée</div>
+      <div class="card-text">Grands espaces blancs, sections bien délimitées, iconographie discrète. Un site qui respire et inspire confiance au premier regard.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏛️</div>
+      <div class="card-title">Codes visuels premium</div>
+      <div class="card-text">Filets dorés fins, arrondis doux, ombres légères. L'élégance discrète d'une conciergerie qui allie standing et chaleur humaine.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📱</div>
+      <div class="card-title">Design mobile-first</div>
+      <div class="card-text">La majorité des propriétaires consultent sur mobile. Chaque section, bouton et formulaire est pensé pour une expérience fluide sur téléphone.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles Blog Recommandés</span>
+  <h2 class="section-title">Votre stratégie de <span>contenu</span></h2>
+  <div class="gold-line"></div>
+
+  <div class="grid-2">
+    <div class="blog-item">
+      <span class="blog-prio prio-p">Prioritaire</span>
+      <div class="blog-cluster">Cluster — Conciergerie & délégation</div>
+      <div class="blog-title">Pourquoi confier son bien à une conciergerie à Aix-en-Provence plutôt que de gérer seul ?</div>
+      <div class="blog-intention">Intention informationnelle + comparaison. Cible les propriétaires hésitants qui évaluent leurs options.</div>
+    </div>
+    <div class="blog-item">
+      <span class="blog-prio prio-p">Prioritaire</span>
+      <div class="blog-cluster">Cluster — Rentabilité propriétaire</div>
+      <div class="blog-title">Location saisonnière à Aix-en-Provence : quelles saisons sont les plus rentables pour votre bien ?</div>
+      <div class="blog-intention">Intention informationnelle locale. Attire les propriétaires motivés par la performance financière.</div>
+    </div>
+    <div class="blog-item">
+      <span class="blog-prio prio-p">Prioritaire</span>
+      <div class="blog-cluster">Cluster — Rentabilité propriétaire</div>
+      <div class="blog-title">Comment optimiser le prix de nuit de votre location Airbnb en Provence sans brader votre bien ?</div>
+      <div class="blog-intention">Intention transactionnelle. Cible les propriétaires déjà sur les plateformes qui veulent mieux faire.</div>
+    </div>
+    <div class="blog-item">
+      <span class="blog-prio prio-m">Moyen</span>
+      <div class="blog-cluster">Cluster — Conciergerie & délégation</div>
+      <div class="blog-title">5 erreurs que font les propriétaires qui gèrent leur location courte durée sans conciergerie</div>
+      <div class="blog-intention">Intention informationnelle + réassurance. Crée de l'empathie et valorise la délégation.</div>
+    </div>
+    <div class="blog-item">
+      <span class="blog-prio prio-m">Moyen</span>
+      <div class="blog-cluster">Cluster — Conciergerie & délégation</div>
+      <div class="blog-title">Louer un domaine ou une villa en Provence : les spécificités à connaître avant de se lancer</div>
+      <div class="blog-intention">Intention informationnelle. Cible les propriétaires de biens haut de gamme, segment standing.</div>
+    </div>
+    <div class="blog-item">
+      <span class="blog-prio prio-m">Moyen</span>
+      <div class="blog-cluster">Cluster — Rentabilité propriétaire</div>
+      <div class="blog-title">Attentions voyageurs : comment les petits gestes font la différence entre une note 4 et une note 5 étoiles</div>
+      <div class="blog-intention">Intention informationnelle + brand awareness. Met en avant l'expertise d'Elcora sur l'expérience hôte.</div>
+    </div>
+    <div class="blog-item">
+      <span class="blog-prio prio-f">Faible</span>
+      <div class="blog-cluster">Cluster — Conciergerie & délégation</div>
+      <div class="blog-title">Elcora Conciergerie : comment tout a commencé autour d'un domaine provençal</div>
+      <div class="blog-intention">Intention de marque / storytelling. Renforce l'authenticité et la confiance en Carole.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom: 8px;"><strong>Elcora Conciergerie</strong> — Blueprint Stratégique</p>
+  <p>Document confidentiel préparé par AR Digital · Réservé à Carole Norbert</p>
+</footer>
+
+</body>
+</html>
