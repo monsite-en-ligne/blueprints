@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Halatte Conciergerie & Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sage-deep: #66755B;
+    --sage-soft: #868B77;
+    --linen: #EEE7DD;
+    --ivory: #F8F5F0;
+    --gold: #C09969;
+    --white: #ffffff;
+    --text-dark: #2C2C2C;
+    --text-mid: #555555;
+    --text-light: #888888;
+    --card-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    --radius: 14px;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-dark);
+    background: var(--ivory);
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #2e3529 0%, #3e4a35 40%, #4a5840 70%, #2a3226 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(192,153,105,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .cover-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0.9;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-item .meta-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-item .meta-value {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 500;
+  }
+
+  .cover-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: var(--white);
+  }
+
+  section:nth-child(odd) {
+    background: var(--ivory);
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--sage-soft);
+    background: rgba(102,117,91,0.1);
+    padding: 6px 14px;
+    border-radius: 40px;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 48px;
+    line-height: 1.2;
+  }
+
+  .section-title span {
+    color: var(--gold);
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--card-shadow);
+    padding: 32px;
+  }
+
+  .card-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  /* GRIDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--sage-deep) 0%, #4a5840 100%);
+    border-radius: var(--radius);
+    padding: 40px 48px;
+    color: white;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-box::after {
+    content: '';
+    position: absolute;
+    right: -30px; top: -30px;
+    width: 180px; height: 180px;
+    background: rgba(192,153,105,0.15);
+    border-radius: 50%;
+  }
+
+  .highlight-box .hb-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .highlight-box .hb-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: white;
+    position: relative;
+    z-index: 1;
+  }
+
+  .highlight-box .hb-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 40px;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 4px;
+  }
+
+  .tag-sage { background: rgba(102,117,91,0.12); color: var(--sage-deep); }
+  .tag-gold { background: rgba(192,153,105,0.15); color: #9a7640; }
+  .tag-linen { background: var(--linen); color: var(--text-mid); }
+
+  /* LISTS */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .styled-list li {
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    font-size: 14px;
+    color: var(--text-mid);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .styled-list li:last-child { border-bottom: none; }
+
+  .styled-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--card-shadow);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    font-size: 14px;
+  }
+
+  thead tr {
+    background: var(--sage-deep);
+    color: white;
+  }
+
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: background 0.2s;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--ivory); }
+
+  tbody td {
+    padding: 16px 20px;
+    color: var(--text-mid);
+    vertical-align: top;
+  }
+
+  tbody td:first-child {
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  /* SEO BADGES */
+  .badge-fort {
+    display: inline-block;
+    background: rgba(102,117,91,0.15);
+    color: #466040;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 40px;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-moyen {
+    display: inline-block;
+    background: rgba(192,153,105,0.2);
+    color: #8a6a30;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 40px;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-faible {
+    display: inline-block;
+    background: rgba(0,0,0,0.06);
+    color: var(--text-mid);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 40px;
+    letter-spacing: 0.5px;
+  }
+
+  /* TUNNEL */
+  .tunnel-step {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--card-shadow);
+    padding: 32px;
+    position: relative;
+  }
+
+  .tunnel-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--linen);
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    line-height: 1;
+  }
+
+  .tunnel-step-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+  }
+
+  .tunnel-detail {
+    font-size: 13px;
+    color: var(--text-mid);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .tunnel-detail strong {
+    color: var(--text-dark);
+    font-weight: 600;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  .cta-pill {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 8px 18px;
+    background: var(--sage-deep);
+    color: white;
+    border-radius: 40px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 16px;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .color-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+
+  .color-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: var(--text-light);
+    font-family: 'Inter', monospace;
+  }
+
+  /* MAILLAGE */
+  .maillage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 14px;
+  }
+
+  .maillage-row:last-child { border-bottom: none; }
+
+  .maillage-source {
+    font-weight: 600;
+    color: var(--sage-deep);
+    background: rgba(102,117,91,0.1);
+    padding: 4px 12px;
+    border-radius: 40px;
+    white-space: nowrap;
+  }
+
+  .maillage-arrow {
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .maillage-target {
+    color: var(--text-mid);
+    font-size: 13px;
+  }
+
+  /* PRIORITY */
+  .prio-prioritaire {
+    display: inline-block;
+    background: rgba(102,117,91,0.15);
+    color: #466040;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 40px;
+  }
+
+  .prio-moyen {
+    display: inline-block;
+    background: rgba(192,153,105,0.2);
+    color: #8a6a30;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 40px;
+  }
+
+  .prio-faible {
+    display: inline-block;
+    background: rgba(0,0,0,0.06);
+    color: var(--text-mid);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 40px;
+  }
+
+  /* OBJECTIFS */
+  .obj-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--card-shadow);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .obj-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--linen);
+    line-height: 1;
+  }
+
+  .obj-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  .obj-desc {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  /* VISUAL */
+  .visual-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--card-shadow);
+    padding: 32px;
+  }
+
+  /* BLOG */
+  .blog-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--card-shadow);
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .blog-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.4;
+  }
+
+  .blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .blog-cluster {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--sage-soft);
+  }
+
+  .blog-intention {
+    font-size: 13px;
+    color: var(--text-mid);
+    font-style: italic;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #2e3529;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 40px 60px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  footer strong {
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 36px; }
+    .cover-meta { gap: 24px; }
+    .cover-divider { display: none; }
+
+    section { padding: 48px 24px; }
+
+    .section-title { font-size: 26px; margin-bottom: 32px; }
+
+    .grid-2, .grid-3, .grid-4 {
+      grid-template-columns: 1fr;
+    }
+
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box .hb-text { font-size: 18px; }
+
+    .tunnel-number { font-size: 36px; }
+
+    .table-wrap { overflow-x: auto; }
+
+    footer { padding: 32px 24px; }
+
+    .maillage-row {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-label">Blueprint Stratégique — AR Digital</div>
+  <h1 class="cover-title">Halatte<br>Conciergerie</h1>
+  <p class="cover-subtitle">&amp; Services</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="meta-label">Client</span>
+      <span class="meta-value">Bastien Rozeaux &amp; Isabelle Nicoleau</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="meta-label">Secteur</span>
+      <span class="meta-value">Conciergerie LCD — Sud Oise</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="meta-label">Domaine</span>
+      <span class="meta-value">halatteconciergerie.fr</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Qui êtes-vous,<br><span>et pourquoi vous choisir ?</span></h2>
+
+  <div class="highlight-box">
+    <div class="hb-label">Promesse de valeur principale</div>
+    <div class="hb-text">« Un duo de proximité qui prend soin de votre logement comme du sien — pour vous offrir des revenus sereins, sans les contraintes. »</div>
+    <div class="hb-sub">Ligne directrice : accompagnement humain de terrain, rigueur locale, tranquillité d'esprit durable.</div>
+  </div>
+
+  <div style="margin-bottom: 32px;">
+    <span class="tag tag-sage">Humain</span>
+    <span class="tag tag-sage">Rigoureux</span>
+    <span class="tag tag-gold">Rassurant</span>
+    <p style="margin-top: 16px; font-size: 14px; color: var(--text-mid);">Un ton chaleureux et professionnel, qui inspire confiance dès la première lecture. On parle en « nous », on montre l'investissement personnel, on ancre chaque mot dans la réalité du terrain.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">📍</span>
+      <div class="card-title">Ancrage territorial fort</div>
+      <p class="card-text">Basés à Pont-Sainte-Maxence, Bastien et Isabelle opèrent exclusivement dans le sud Oise — un territoire qu'ils connaissent intimement, des acteurs locaux aux spécificités de chaque commune.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🤝</span>
+      <div class="card-title">Duo humain &amp; disponible</div>
+      <p class="card-text">Deux personnes identifiées, accessibles, joignables — pas un call center anonyme. Le propriétaire sait exactement à qui il confie son bien et peut compter sur une relation directe et durable.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🔑</span>
+      <div class="card-title">Gestion soignée comme si c'était le leur</div>
+      <p class="card-text">Chaque logement est traité avec le même soin que s'il leur appartenait. Cette posture de gestionnaire-propriétaire est le cœur de leur engagement différenciant.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✨</span>
+      <div class="card-title">Deux formules claires, sans surprises</div>
+      <p class="card-text">Essentielle à 18 % ou Sérénité à 24 % : des offres lisibles, honnêtes, adaptées au niveau d'implication du propriétaire — sans jargon ni commission cachée.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🌿</span>
+      <div class="card-title">Image premium locale</div>
+      <p class="card-text">Un positionnement visuel soigné (identité sauge &amp; doré, nom ancré dans la forêt d'Halatte) qui reflète un service haut de gamme à échelle humaine — loin des plateformes industrielles.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client cible</span>
+  <h2 class="section-title">À qui<br><span>s'adresse Halatte ?</span></h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">👤</span>
+      <div class="card-title">Profil type</div>
+      <ul class="styled-list">
+        <li>35 à 60 ans, propriétaire dans le sud Oise</li>
+        <li>Actif ou semi-retraité, peu disponible au quotidien</li>
+        <li>Possède un bien secondaire, un appartement vacant ou investi</li>
+        <li>Déjà sur Airbnb ou Booking, mais dépassé par la charge opérationnelle</li>
+        <li>Cherche à optimiser ses revenus locatifs sans y consacrer du temps</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">💡</span>
+      <div class="card-title">Motivations principales</div>
+      <ul class="styled-list">
+        <li>Générer des revenus complémentaires passifs</li>
+        <li>Déléguer sans perdre le contrôle</li>
+        <li>Être rassuré sur l'entretien et la sécurité du logement</li>
+        <li>Avoir un interlocuteur local, joignable et réactif</li>
+        <li>Valoriser un patrimoine immobilier souvent sous-exploité</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">⚠️</span>
+      <div class="card-title">Freins &amp; objections</div>
+      <ul class="styled-list">
+        <li>Peur de perdre le contrôle sur son bien</li>
+        <li>Méfiance envers les commissions jugées élevées</li>
+        <li>Doute sur la qualité du ménage et du linge</li>
+        <li>Incertitude sur la fiabilité d'une petite structure</li>
+        <li>Mauvaise expérience antérieure avec une autre conciergerie</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">✅</span>
+      <div class="card-title">Critères de décision</div>
+      <ul class="styled-list">
+        <li>Proximité géographique réelle de l'équipe</li>
+        <li>Transparence sur les tarifs et les services inclus</li>
+        <li>Témoignages de propriétaires locaux</li>
+        <li>Clarté de la communication et réactivité</li>
+        <li>Sentiment de confiance humaine dès le premier contact</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du site</span>
+  <h2 class="section-title">Ce que votre site<br><span>doit accomplir</span></h2>
+
+  <div class="grid-3">
+    <div class="obj-card">
+      <div class="obj-rank">01</div>
+      <div class="obj-title">Génération de leads qualifiés</div>
+      <div class="obj-desc">Capter les propriétaires du sud Oise qui cherchent une conciergerie de confiance, via formulaire ou prise de contact directe.</div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">02</div>
+      <div class="obj-title">Réassurance &amp; confiance</div>
+      <div class="obj-desc">Lever les doutes grâce à la présentation du duo, aux avis clients, et à la transparence des formules.</div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">03</div>
+      <div class="obj-title">SEO local ciblé</div>
+      <div class="obj-desc">Apparaître sur les recherches type "conciergerie Airbnb Senlis", "gestion LCD Compiègne", "conciergerie Chantilly".</div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">04</div>
+      <div class="obj-title">Prise de rendez-vous</div>
+      <div class="obj-desc">Faciliter le passage à l'action avec un CTA unique et une prise de RDV fluide sans friction inutile.</div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">05</div>
+      <div class="obj-title">Notoriété locale</div>
+      <div class="obj-desc">Installer Halatte comme la référence conciergerie premium du sud Oise dans l'esprit des propriétaires.</div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">06</div>
+      <div class="obj-title">Conversion</div>
+      <div class="obj-desc">Transformer les visiteurs en prospects via une page offre claire, des preuves sociales et un parcours guidé.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence du site</span>
+  <h2 class="section-title">La structure<br><span>de votre site web</span></h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Accueil</td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée sud Oise</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Nos Formules (Essentielle &amp; Sérénité)</td>
+          <td>PAS</td>
+          <td>conciergerie Airbnb Oise tarifs formules</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>À propos — Bastien &amp; Isabelle</td>
+          <td>BAB</td>
+          <td>conciergerie locale de confiance Oise</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Secteur — Pont-Sainte-Maxence &amp; Senlis</td>
+          <td>AIDA</td>
+          <td>conciergerie Pont-Sainte-Maxence Senlis</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Secteur — Compiègne &amp; Chantilly</td>
+          <td>AIDA</td>
+          <td>conciergerie Compiègne Chantilly location</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Blog</td>
+          <td>—</td>
+          <td>conseils propriétaires location courte durée</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Contact &amp; Estimation gratuite</td>
+          <td>PAS</td>
+          <td>estimer revenus location courte durée Oise</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin-top: 20px; font-size: 13px; color: var(--text-light); font-style: italic;">
+    ⚠️ La page "Nos Formules" regroupe à la fois la Formule Essentielle et la Formule Sérénité sur une seule page structurée — pas deux pages séparées. Les 2 pages locales couvrent stratégiquement les 5 zones du secteur géographique.
+  </p>
+</section>
+
+<!-- SECTION 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon sémantique</span>
+  <h2 class="section-title">Votre architecture<br><span>de contenu</span></h2>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <div class="card-title">🌿 Cluster 1 — Conciergerie &amp; Délégation LCD</div>
+      <p class="card-text" style="margin-bottom: 12px;">Pages pilier : Accueil, Nos Formules, Contact</p>
+      <div>
+        <span class="tag tag-sage">location courte durée Oise</span>
+        <span class="tag tag-sage">conciergerie Airbnb</span>
+        <span class="tag tag-sage">gestion locative</span>
+        <span class="tag tag-linen">déléguer Airbnb</span>
+        <span class="tag tag-linen">formules conciergerie</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">📍 Cluster 2 — Ancrage Local Sud Oise</div>
+      <p class="card-text" style="margin-bottom: 12px;">Pages pilier : Secteur Pont-Sainte-Maxence/Senlis, Secteur Compiègne/Chantilly</p>
+      <div>
+        <span class="tag tag-gold">Chantilly tourisme</span>
+        <span class="tag tag-gold">Compiègne location</span>
+        <span class="tag tag-gold">Senlis Airbnb</span>
+        <span class="tag tag-linen">propriétaire Oise</span>
+        <span class="tag tag-linen">revenus locatifs Oise</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">📝 Cluster 3 — Éducation &amp; Conseils Propriétaires</div>
+      <p class="card-text" style="margin-bottom: 12px;">Page pilier : Blog — alimentation régulière d'articles conseils</p>
+      <div>
+        <span class="tag tag-linen">optimiser annonce Airbnb</span>
+        <span class="tag tag-linen">fiscalité LCD</span>
+        <span class="tag tag-linen">rentabilité location</span>
+        <span class="tag tag-sage">conseils propriétaires</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">🔗 Logique de maillage interne</div>
+      <div class="maillage-row">
+        <span class="maillage-source">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target">Nos Formules, Pages locales, Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Nos Formules</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target">Contact, À propos, Pages locales</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Pages locales</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target">Nos Formules, Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target">Nos Formules, Contact, Pages locales</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">À propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-target">Contact, Nos Formules</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de conversion</span>
+  <h2 class="section-title">Comment transformer<br><span>un visiteur en client</span></h2>
+
+  <div class="grid-2">
+    <div class="tunnel-step">
+      <div class="tunnel-number">01</div>
+      <div class="tunnel-step-label">Étape 1</div>
+      <div class="tunnel-step-title">Découverte</div>
+      <div class="tunnel-detail"><strong>Source</strong> Google organique (SEO local), bouche-à-oreille, réseaux sociaux</div>
+      <div class="tunnel-detail"><strong>Page</strong> Accueil, Pages locales SEO, Articles Blog</div>
+      <div class="tunnel-detail"><strong>Objectif</strong> Capter l'attention d'un propriétaire qui cherche une solution locale</div>
+      <div><span class="cta-pill">→ Découvrir nos formules</span></div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">02</div>
+      <div class="tunnel-step-label">Étape 2</div>
+      <div class="tunnel-step-title">Intérêt</div>
+      <div class="tunnel-detail"><strong>Source</strong> Navigation interne, retargeting</div>
+      <div class="tunnel-detail"><strong>Page</strong> Nos Formules (Essentielle &amp; Sérénité)</div>
+      <div class="tunnel-detail"><strong>Objectif</strong> Faire comprendre la valeur, lever les doutes sur le prix</div>
+      <div><span class="cta-pill">→ Obtenir une estimation gratuite</span></div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">03</div>
+      <div class="tunnel-step-label">Étape 3</div>
+      <div class="tunnel-step-title">Confiance</div>
+      <div class="tunnel-detail"><strong>Source</strong> Navigation interne</div>
+      <div class="tunnel-detail"><strong>Page</strong> À propos — Bastien &amp; Isabelle, témoignages clients</div>
+      <div class="tunnel-detail"><strong>Objectif</strong> Humaniser la relation, rassurer sur la fiabilité du duo</div>
+      <div><span class="cta-pill">→ Prendre rendez-vous</span></div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">04</div>
+      <div class="tunnel-step-label">Étape 4</div>
+      <div class="tunnel-step-title">Conversion</div>
+      <div class="tunnel-detail"><strong>Source</strong> CTA pages Formules &amp; À propos</div>
+      <div class="tunnel-detail"><strong>Page</strong> Contact &amp; Estimation gratuite</div>
+      <div class="tunnel-detail"><strong>Objectif</strong> Déclencher la prise de contact qualifiée, premier échange téléphonique ou RDV</div>
+      <div><span class="cta-pill">→ Je confie mon bien à Halatte</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers marketing recommandés</span>
+  <h2 class="section-title">Les outils pour<br><span>accélérer votre croissance</span></h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🎁</span>
+      <div class="card-title">Lead Magnet</div>
+      <p class="card-text">Un simulateur ou guide PDF téléchargeable : <em>"Combien peut rapporter votre logement en location courte durée dans le sud Oise ?"</em> — simple, local, immédiatement utile pour un propriétaire hésitant.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📅</span>
+      <div class="card-title">Prise de rendez-vous</div>
+      <p class="card-text">Intégration de <strong>Calendly</strong> (gratuit, simple) pour un premier appel de 20 min sans engagement. Le bouton "Réserver un appel découverte" doit apparaître dans le header et en fin de page Formules.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">⭐</span>
+      <div class="card-title">Preuve sociale</div>
+      <p class="card-text">Témoignages écrits de propriétaires locaux (prénom, ville, type de bien), captures d'avis Google, et statistiques de performance si disponibles (taux d'occupation, revenus générés).</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📋</span>
+      <div class="card-title">Formulaire qualifiant</div>
+      <p class="card-text">Champs recommandés : Type de bien / Commune / Nb de couchages / Situation actuelle (déjà en LCD ? Jamais loué ?) / Disponibilité pour un appel. Maximum 5 champs pour ne pas décourager.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📧</span>
+      <div class="card-title">Newsletter (angle éditorial)</div>
+      <p class="card-text">Angle : <em>"Le courrier du propriétaire serein"</em> — conseils pratiques LCD, actualités fiscales, bons plans locaux, retours d'expérience terrain. 1 envoi mensuel, ton humain et concret.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction visuelle &amp; éditoriale</span>
+  <h2 class="section-title">L'identité visuelle<br><span>de votre site</span></h2>
+
+  <div class="card" style="margin-bottom: 40px; text-align: center;">
+    <div class="card-title" style="margin-bottom: 24px;">Palette de couleurs Halatte</div>
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="color-swatch" style="background: #66755B;"></div>
+        <div class="color-name">Vert Sauge Profond</div>
+        <div class="color-hex">#66755B</div>
+      </div>
+      <div class="palette-item">
+        <div class="color-swatch" style="background: #868B77;"></div>
+        <div class="color-name">Vert Sauge Doux</div>
+        <div class="color-hex">#868B77</div>
+      </div>
+      <div class="palette-item">
+        <div class="color-swatch" style="background: #EEE7DD;"></div>
+        <div class="color-name">Beige Lin</div>
+        <div class="color-hex">#EEE7DD</div>
+      </div>
+      <div class="palette-item">
+        <div class="color-swatch" style="background: #F8F5F0; border: 1px solid #e0dbd4;"></div>
+        <div class="color-name">Ivoire Chaud</div>
+        <div class="color-hex">#F8F5F0</div>
+      </div>
+      <div class="palette-item">
+        <div class="color-swatch" style="background: #C09969;"></div>
+        <div class="color-name">Champagne Doré Mat</div>
+        <div class="color-hex">#C09969</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="visual-card">
+      <div class="card-title">🖼️ Univers visuel recommandé</div>
+      <ul class="styled-list" style="margin-top: 12px;">
+        <li>Photographies lumineuses d'intérieurs chaleureux et soignés (appartements, maisons du territoire)</li>
+        <li>Portraits authentiques du duo Bastien &amp; Isabelle sur le terrain</li>
+        <li>Textures naturelles : lin, bois clair, pierre ancienne — en écho au nom Halatte</li>
+        <li>Iconographie fine et élégante (trait léger, pas de pictogrammes génériques)</li>
+        <li>Mise en page épurée avec de grands espaces blancs inspirés de l'univers hostnfly.com</li>
+      </ul>
+    </div>
+    <div class="visual-card">
+      <div class="card-title">✍️ Direction éditoriale</div>
+      <ul class="styled-list" style="margin-top: 12px;">
+        <li>Typographie : Playfair Display pour les titres (élégance), Inter pour le corps (clarté)</li>
+        <li>Ton : première personne du pluriel "nous", chaleureux sans être familier</li>
+        <li>Phrases courtes, bénéfices propriétaire mis en avant dès la première ligne</li>
+        <li>Vocabulaire du soin, de la sérénité, de la confiance — sans jargon technique</li>
+        <li>Référence aux lieux (forêt d'Halatte, Chantilly, Compiègne) pour ancrer localement</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles blog recommandés</span>
+  <h2 class="section-title">Votre stratégie<br><span>de contenu éditorial</span></h2>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <div class="blog-title">Combien peut rapporter votre logement en location courte durée dans le sud Oise ?</div>
+      <div class="blog-meta">
+        <span class="blog-cluster">Cluster 1 — LCD &amp; Délégation</span>
+        <span class="prio-prioritaire">Prioritaire</span>
+      </div>
+      <div class="blog-intention">Intention : informationnelle / transactionnelle — propriétaire en phase de réflexion</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-title">Pourquoi confier son Airbnb à une conciergerie locale plutôt que de tout gérer soi-même ?</div>
+      <div class="blog-meta">
+        <span class="blog-cluster">Cluster 1 — LCD &amp; Délégation</span>
+        <span class="prio-prioritaire">Prioritaire</span>
+      </div>
+      <div class="blog-intention">Intention : informationnelle — propriétaire qui hésite à déléguer</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-title">Location courte durée à Chantilly et Senlis : un marché porteur pour les propriétaires</div>
+      <div class="blog-meta">
+        <span class="blog-cluster">Cluster 2 — Ancrage Local</span>
+        <span class="prio-prioritaire">Prioritaire</span>
+      </div>
+      <div class="blog-intention">Intention : informationnelle + SEO local — propriétaire du secteur Chantilly/Senlis</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-title">Checklist : les 10 points à vérifier avant de mettre son logement sur Airbnb dans l'Oise</div>
+      <div class="blog-meta">
+        <span class="blog-cluster">Cluster 3 — Éducation Propriétaires</span>
+        <span class="prio-moyen">Moyen</span>
+      </div>
+      <div class="blog-intention">Intention : informationnelle — primo-accédant à la LCD, besoin de cadre rassurant</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-title">Fiscalité de la location meublée courte durée : ce que tout propriétaire doit savoir en 2025</div>
+      <div class="blog-meta">
+        <span class="blog-cluster">Cluster 3 — Éducation Propriétaires</span>
+        <span class="prio-moyen">Moyen</span>
+      </div>
+      <div class="blog-intention">Intention : informationnelle — propriétaire souhaitant comprendre le cadre légal et fiscal</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-title">Comment optimiser son annonce Airbnb pour attirer plus de voyageurs dans le nord de l'Île-de-France ?</div>
+      <div class="blog-meta">
+        <span class="blog-cluster">Cluster 1 — LCD &amp; Délégation</span>
+        <span class="prio-moyen">Moyen</span>
+      </div>
+      <div class="blog-intention">Intention : informationnelle — propriétaire déjà en LCD souhaitant améliorer ses performances</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-title">Gîte ou location courte durée à Compiègne : quelle formule est la plus rentable pour un propriétaire ?</div>
+      <div class="blog-meta">
+        <span class="blog-cluster">Cluster 2 — Ancrage Local</span>
+        <span class="prio-faible">Faible</span>
+      </div>
+      <div class="blog-intention">Intention : informationnelle — propriétaire du secteur Compiègne en phase de comparaison</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom: 8px;"><strong>Halatte Conciergerie &amp; Services</strong> — Blueprint Stratégique</p>
+  <p>Document confidentiel préparé par AR Digital · Réservé à Bastien Rozeaux &amp; Isabelle Nicoleau</p>
+  <p style="margin-top: 8px; font-size: 11px; opacity: 0.5;">halatteconciergerie.fr · Sud Oise · 2025</p>
+</footer>
+
+</body>
+</html>
