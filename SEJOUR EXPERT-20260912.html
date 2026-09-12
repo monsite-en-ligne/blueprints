@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Séjour Expert</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a1a;
+    background: #fafaf8;
+  }
+
+  /* ── COUVERTURE ── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0e0c09 0%, #1c1507 40%, #2a1d05 70%, #3b2508 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(197,155,60,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cover-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #c59b3c;
+    margin-bottom: 36px;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    max-width: 800px;
+  }
+  .cover-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    margin-bottom: 56px;
+    letter-spacing: 0.5px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-item span {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(197,155,60,0.7);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .cover-meta-item strong {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 500;
+  }
+  .cover-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(197,155,60,0.3);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 80px 80px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+  section:nth-child(odd) {
+    background: #fafaf8;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: #c59b3c;
+    background: rgba(197,155,60,0.1);
+    border: 1px solid rgba(197,155,60,0.25);
+    border-radius: 20px;
+    padding: 5px 14px;
+    margin-bottom: 18px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #0e0c09;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .section-intro {
+    font-size: 15px;
+    color: #666;
+    max-width: 680px;
+    margin-bottom: 44px;
+    line-height: 1.7;
+  }
+
+  /* ── GRILLES ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0e0c09;
+    margin-bottom: 10px;
+  }
+  .card p, .card li {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.75;
+  }
+  .card ul {
+    padding-left: 16px;
+  }
+  .card ul li {
+    margin-bottom: 4px;
+  }
+  .card-icon {
+    font-size: 26px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, #1c1507 0%, #2a1d05 100%);
+    border-radius: 16px;
+    padding: 40px 48px;
+    margin-bottom: 48px;
+    border-left: 4px solid #c59b3c;
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #ffffff;
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .highlight-box span {
+    display: block;
+    margin-top: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: rgba(197,155,60,0.8);
+    font-style: normal;
+    letter-spacing: 1px;
+  }
+
+  /* ── TAG PILLS ── */
+  .tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    padding: 4px 13px;
+    margin: 3px;
+  }
+  .tag-gold { background: rgba(197,155,60,0.12); color: #a07a1e; border: 1px solid rgba(197,155,60,0.3); }
+  .tag-dark { background: #f0ede8; color: #3b2508; border: 1px solid #d9d2c7; }
+  .tag-accent { background: rgba(32,120,90,0.1); color: #1a6b4a; border: 1px solid rgba(32,120,90,0.25); }
+
+  /* ── TABLEAU ── */
+  .table-wrap { overflow-x: auto; border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  th {
+    background: #1c1507;
+    color: #c59b3c;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 20px;
+    text-align: left;
+  }
+  td {
+    padding: 16px 20px;
+    font-size: 14px;
+    color: #444;
+    border-bottom: 1px solid #f0ede8;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #fdf9f3; }
+
+  /* ── BADGES SEO ── */
+  .badge-seo {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 3px 12px;
+    letter-spacing: 0.5px;
+  }
+  .seo-fort { background: rgba(32,120,90,0.12); color: #1a6b4a; border: 1px solid rgba(32,120,90,0.25); }
+  .seo-moyen { background: rgba(197,155,60,0.15); color: #a07a1e; border: 1px solid rgba(197,155,60,0.3); }
+  .seo-faible { background: rgba(150,150,150,0.12); color: #666; border: 1px solid rgba(150,150,150,0.25); }
+
+  /* ── TUNNEL ── */
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    position: relative;
+  }
+  .tunnel-step-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c59b3c;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .tunnel-step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #0e0c09;
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+  .tunnel-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    align-items: flex-start;
+  }
+  .tunnel-label {
+    font-weight: 600;
+    color: #3b2508;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+  .tunnel-val { color: #555; }
+  .cta-pill {
+    display: inline-block;
+    background: linear-gradient(135deg, #c59b3c, #a07a1e);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 5px 14px;
+    margin-top: 10px;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── COCON ── */
+  .cluster-block {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .cluster-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #0e0c09;
+    margin-bottom: 14px;
+  }
+  .cluster-block ul {
+    padding-left: 18px;
+  }
+  .cluster-block li {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+  }
+
+  .maillage-block {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .maillage-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #444;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0ede8;
+  }
+  .maillage-item:last-child { border-bottom: none; }
+  .maillage-source {
+    font-weight: 600;
+    color: #0e0c09;
+    flex-shrink: 0;
+  }
+  .maillage-arrow {
+    color: #c59b3c;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .maillage-dest {
+    color: #555;
+  }
+
+  /* ── PALETTE ── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 8px;
+  }
+  .swatch-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .swatch-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+  }
+  .swatch-hex {
+    font-size: 11px;
+    color: #999;
+    text-align: center;
+  }
+
+  /* ── BLOG TABLE ── */
+  .priority-high { background: rgba(32,120,90,0.1); color: #1a6b4a; border: 1px solid rgba(32,120,90,0.25); }
+  .priority-mid { background: rgba(197,155,60,0.12); color: #a07a1e; border: 1px solid rgba(197,155,60,0.3); }
+  .priority-low { background: rgba(150,150,150,0.1); color: #666; border: 1px solid rgba(150,150,150,0.25); }
+  .priority-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 3px 12px;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0e0c09;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    padding: 36px 40px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  footer strong { color: rgba(197,155,60,0.8); }
+
+  /* ── OBJECTIFS ── */
+  .objectif-item {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .objectif-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: rgba(197,155,60,0.25);
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 36px;
+  }
+  .objectif-content h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0e0c09;
+    margin-bottom: 4px;
+  }
+  .objectif-content p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* ── LEVIER ── */
+  .levier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .levier-card h3 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c59b3c;
+    margin-bottom: 10px;
+  }
+  .levier-card p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    section { padding: 48px 24px; }
+    h2 { font-size: 26px; }
+    .cover-title { font-size: 40px; }
+    .cover-meta { gap: 24px; }
+    .cover-divider { display: none; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 17px; }
+    .tunnel-step { margin-bottom: 16px; }
+    .palette-grid { gap: 16px; }
+    .maillage-item { flex-direction: row; flex-wrap: wrap; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ COUVERTURE ══════════ -->
+<div class="cover">
+  <p class="cover-label">Blueprint Stratégique · AR Digital</p>
+  <h1 class="cover-title">Séjour Expert</h1>
+  <p class="cover-sub">Document stratégique confidentiel — Création de site web</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span>Cliente</span>
+      <strong>Agnès Drevet</strong>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span>Secteur</span>
+      <strong>Conciergerie LCD</strong>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span>Zone</span>
+      <strong>Ouest Lyonnais</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 01 — POSITIONNEMENT ══════════ -->
+<section id="bp-section-01">
+  <div class="section-badge">01 — Positionnement</div>
+  <h2>Positionnement stratégique</h2>
+  <p class="section-intro">Les fondations de votre communication et de votre identité de marque.</p>
+
+  <div class="highlight-box">
+    <p>« Vous profitez pleinement de votre investissement — Séjour Expert s'occupe de tout, avec la rigueur d'une professionnelle et le soin d'une voisine de confiance. »</p>
+    <span>Promesse de valeur principale</span>
+  </div>
+
+  <div style="margin-bottom: 32px;">
+    <p style="font-size:14px; color:#555; margin-bottom:8px;"><strong style="color:#0e0c09;">Ligne directrice de communication :</strong> Accompagnement local de proximité, professionnalisme terrain, tranquillité d'esprit sans compromis.</p>
+    <p style="font-size:14px; color:#555;"><strong style="color:#0e0c09;">Ton éditorial :</strong> <span class="tag tag-gold">Chaleureux</span> <span class="tag tag-gold">Rigoureux</span> <span class="tag tag-gold">Rassurant</span> — Un ton direct et humain qui inspire confiance, sans jargon technique ni froideur corporate. Agnès parle aux propriétaires comme une experte de terrain qui connaît leur bien et leur quartier.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🏡</span>
+      <h3>Ancrage local fort</h3>
+      <p>Séjour Expert est profondément enracinée dans l'ouest lyonnais. Cette connaissance fine du territoire est un avantage concurrentiel réel face aux grandes plateformes nationales.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🤝</span>
+      <h3>Relation humaine et transparente</h3>
+      <p>Pas de gestion anonyme : un interlocuteur unique, disponible, qui communique clairement et rend des comptes via un rapport de gestion régulier.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✨</span>
+      <h3>Soin du détail, niveau premium</h3>
+      <p>Linge de maison, kit de bienvenue, photos professionnelles, sélection des voyageurs : chaque prestation reflète une exigence qualitative qui valorise le bien.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📊</span>
+      <h3>Optimisation des revenus locatifs</h3>
+      <p>Tarification dynamique et diffusion multi-plateformes pour maximiser le taux d'occupation et le revenu net du propriétaire, sans effort de sa part.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🔒</span>
+      <h3>Confiance comme fondement</h3>
+      <p>Le propriétaire confie une clé, une histoire, un patrimoine. Séjour Expert répond à cette confiance par une éthique de travail irréprochable et une communication proactive.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 02 — CLIENT CIBLE ══════════ -->
+<section id="bp-section-02">
+  <div class="section-badge">02 — Client Cible</div>
+  <h2>Portrait du propriétaire idéal</h2>
+  <p class="section-intro">Comprendre votre interlocuteur pour lui parler juste.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>👤 Profil type</h3>
+      <ul>
+        <li>Propriétaire bailleur, 35–65 ans</li>
+        <li>Résidant dans l'ouest lyonnais ou Rhône-Alpes</li>
+        <li>CSP+ : cadre, professionnel libéral, investisseur</li>
+        <li>Possède un bien secondaire, un studio, ou un appartement en ville</li>
+        <li>Peu ou pas de temps à consacrer à la location</li>
+        <li>Déjà exposé à Airbnb / Booking ou curieux de s'y lancer</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>💡 Motivations principales</h3>
+      <ul>
+        <li>Générer des revenus locatifs sans contrainte quotidienne</li>
+        <li>Rentabiliser un bien sous-utilisé (résidence secondaire, logement vacant)</li>
+        <li>Déléguer la charge mentale liée à la location</li>
+        <li>S'appuyer sur une experte locale de confiance</li>
+        <li>Bénéficier d'une prestation clé en main et transparente</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🚧 Freins et objections</h3>
+      <ul>
+        <li>« Et si mon bien est mal entretenu ? »</li>
+        <li>« Je ne sais pas à qui faire confiance. »</li>
+        <li>« La commission de 15%, est-ce rentable ? »</li>
+        <li>« J'ai peur des mauvais voyageurs. »</li>
+        <li>« Je veux garder le contrôle de mon bien. »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>✅ Critères de décision</h3>
+      <ul>
+        <li>Proximité géographique et disponibilité réelle</li>
+        <li>Transparence des tarifs et des reportings</li>
+        <li>Références et avis de propriétaires locaux</li>
+        <li>Qualité perçue du service (photos, linge, accueil)</li>
+        <li>Clarté de la promesse et facilité de démarrage</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 03 — OBJECTIFS DU SITE ══════════ -->
+<section id="bp-section-03">
+  <div class="section-badge">03 — Objectifs du Site</div>
+  <h2>Ce que le site doit accomplir</h2>
+  <p class="section-intro">Objectifs priorisés du site web de Séjour Expert, du plus stratégique au plus complémentaire.</p>
+
+  <div style="display: flex; flex-direction: column; gap: 16px;">
+    <div class="objectif-item">
+      <div class="objectif-rank">1</div>
+      <div class="objectif-content">
+        <h3>Génération de leads propriétaires</h3>
+        <p>Capturer les coordonnées de propriétaires intéressés via formulaire de contact qualifiant et prise de RDV directe.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">2</div>
+      <div class="objectif-content">
+        <h3>Réassurance et confiance</h3>
+        <p>Démontrer le sérieux, la proximité et l'expertise d'Agnès pour lever les freins liés à la délégation d'un bien immobilier.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">3</div>
+      <div class="objectif-content">
+        <h3>SEO local — Ouest Lyonnais</h3>
+        <p>Se positionner sur les requêtes de propriétaires recherchant une conciergerie dans le secteur (Tassin, Écully, Francheville, Craponne…).</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">4</div>
+      <div class="objectif-content">
+        <h3>Prise de rendez-vous</h3>
+        <p>Faciliter le passage à l'action avec un outil de réservation de créneau simple, intégré au site, sans friction.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">5</div>
+      <div class="objectif-content">
+        <h3>Notoriété locale et positionnement de marque</h3>
+        <p>Installer Séjour Expert comme la référence conciergerie premium de l'ouest lyonnais dans l'esprit des propriétaires locaux.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">6</div>
+      <div class="objectif-content">
+        <h3>Nurturing par le contenu</h3>
+        <p>Accompagner les prospects hésitants via des articles de blog qui répondent à leurs questions et renforcent l'autorité d'Agnès.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 04 — ARBORESCENCE ══════════ -->
+<section id="bp-section-04">
+  <div class="section-badge">04 — Arborescence du Site</div>
+  <h2>Structure des pages</h2>
+  <p class="section-intro">Architecture SEO optimisée — une page par offre globale, deux pages locales maximum.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>Conciergerie location courte durée ouest lyonnais</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos prestations</strong><br><em style="font-size:12px; color:#888;">(ménage, tarification, photos, linge, accueil voyageurs, rapport de gestion…)</em></td>
+          <td>PAS</td>
+          <td>Conciergerie Airbnb propriétaire lyon ouest</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — Agnès Drevet</strong></td>
+          <td>BAB</td>
+          <td>Conciergerie de confiance location saisonnière</td>
+          <td><span class="badge-seo seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Tassin-la-Demi-Lune / Écully</strong></td>
+          <td>AIDA</td>
+          <td>Conciergerie Airbnb Tassin Écully</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Francheville / Craponne / St-Genis</strong></td>
+          <td>AIDA</td>
+          <td>Conciergerie location courte durée Francheville Craponne</td>
+          <td><span class="badge-seo seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog / Ressources propriétaires</strong></td>
+          <td>—</td>
+          <td>Location courte durée conseils propriétaire</td>
+          <td><span class="badge-seo seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / Prise de RDV</strong></td>
+          <td>—</td>
+          <td>—</td>
+          <td><span class="badge-seo seo-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════ 05 — COCON SÉMANTIQUE ══════════ -->
+<section id="bp-section-05">
+  <div class="section-badge">05 — Cocon Sémantique</div>
+  <h2>Architecture thématique et maillage interne</h2>
+  <p class="section-intro">Trois clusters pour dominer les requêtes des propriétaires sur le secteur.</p>
+
+  <div class="grid-3" style="margin-bottom: 36px;">
+    <div class="cluster-block">
+      <h3>🏠 Cluster 1 — Conciergerie & délégation</h3>
+      <ul>
+        <li>Que fait une conciergerie Airbnb ?</li>
+        <li>Pourquoi déléguer sa location courte durée ?</li>
+        <li>Conciergerie vs gestion en direct : que choisir ?</li>
+        <li>Ce qu'inclut une prestation clé en main</li>
+      </ul>
+    </div>
+    <div class="cluster-block">
+      <h3>📈 Cluster 2 — Rentabilité & optimisation</h3>
+      <ul>
+        <li>Comment maximiser ses revenus Airbnb ?</li>
+        <li>Tarification dynamique : comment ça fonctionne ?</li>
+        <li>Taux d'occupation : les bons indicateurs</li>
+        <li>Est-ce rentable de louer en courte durée en 2025 ?</li>
+      </ul>
+    </div>
+    <div class="cluster-block">
+      <h3>📍 Cluster 3 — Local Ouest Lyonnais</h3>
+      <ul>
+        <li>Location saisonnière à Tassin-la-Demi-Lune</li>
+        <li>Airbnb à Francheville : guide propriétaire</li>
+        <li>Location courte durée : réglementation à Lyon ouest</li>
+        <li>Vivre et investir dans l'ouest lyonnais</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="maillage-block">
+    <h3 style="font-family:'Playfair Display',serif; font-size:18px; color:#0e0c09; margin-bottom:18px;">Logique de maillage interne</h3>
+    <div class="maillage-item">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos prestations · Pages locales · Contact</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Nos prestations</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">À propos · Contact · Articles blog (Cluster 1)</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Pages locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos prestations · Contact · Articles blog (Cluster 3)</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Articles blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos prestations · Contact (CTA en fin d'article)</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos prestations · Contact</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 06 — TUNNEL DE CONVERSION ══════════ -->
+<section id="bp-section-06">
+  <div class="section-badge">06 — Tunnel de Conversion</div>
+  <h2>Du premier contact à la signature</h2>
+  <p class="section-intro">Quatre étapes clés pour transformer un visiteur inconnu en propriétaire partenaire.</p>
+
+  <div class="grid-2">
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 1 · Découverte</span>
+      <h3>Le propriétaire vous trouve</h3>
+      <div class="tunnel-row"><span class="tunnel-label">Source</span><span class="tunnel-val">Google (SEO local), bouche-à-oreille, réseaux sociaux</span></div>
+      <div class="tunnel-row"><span class="tunnel-label">Page</span><span class="tunnel-val">Accueil · Pages locales · Articles blog</span></div>
+      <span class="cta-pill">Découvrir Séjour Expert</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 2 · Intérêt</span>
+      <h3>Il comprend l'offre</h3>
+      <div class="tunnel-row"><span class="tunnel-label">Source</span><span class="tunnel-val">Navigation interne, lecture des articles</span></div>
+      <div class="tunnel-row"><span class="tunnel-label">Page</span><span class="tunnel-val">Nos prestations · À propos · Blog</span></div>
+      <span class="cta-pill">Voir les prestations</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 3 · Confiance</span>
+      <h3>Il est convaincu par la preuve</h3>
+      <div class="tunnel-row"><span class="tunnel-label">Source</span><span class="tunnel-val">Avis propriétaires, page À propos, photos de biens</span></div>
+      <div class="tunnel-row"><span class="tunnel-label">Page</span><span class="tunnel-val">À propos · Nos prestations (section témoignages)</span></div>
+      <span class="cta-pill">Lire les avis</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 4 · Conversion</span>
+      <h3>Il passe à l'action</h3>
+      <div class="tunnel-row"><span class="tunnel-label">Source</span><span class="tunnel-val">CTA omniprésents, lead magnet, formulaire</span></div>
+      <div class="tunnel-row"><span class="tunnel-label">Page</span><span class="tunnel-val">Contact · Formulaire qualifiant · RDV</span></div>
+      <span class="cta-pill">Prendre rendez-vous gratuitement</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 07 — LEVIERS MARKETING ══════════ -->
+<section id="bp-section-07">
+  <div class="section-badge">07 — Leviers Marketing Recommandés</div>
+  <h2>Activer la croissance dès le lancement</h2>
+  <p class="section-intro">Des outils concrets pour capter, qualifier et convertir vos prospects.</p>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <h3>🎁 Lead Magnet</h3>
+      <p><strong>« Guide : Combien peut rapporter votre bien dans l'ouest lyonnais ? »</strong><br>Un PDF téléchargeable avec une simulation de revenus estimés, les points forts du marché local et 5 critères pour bien choisir sa conciergerie. Échange contre email propriétaire.</p>
+    </div>
+    <div class="levier-card">
+      <h3>📅 Prise de RDV</h3>
+      <p>Outil recommandé : <strong>Calendly</strong> (version gratuite suffisante au démarrage). Intégrer un bouton de réservation de créneau directement dans la page Contact et en sticky sur mobile. Créneaux : visite du bien / appel découverte 30 min.</p>
+    </div>
+    <div class="levier-card">
+      <h3>⭐ Preuve Sociale</h3>
+      <p>Collecter des <strong>avis Google Business Profile</strong> dès les premiers clients propriétaires. Créer une section témoignages avec photo du bien (anonymisée si besoin) + résultat chiffré (ex : « +40% de revenus vs location classique »).</p>
+    </div>
+    <div class="levier-card">
+      <h3>📋 Formulaire Qualifiant</h3>
+      <p>Champs recommandés : <strong>Prénom · Ville du bien · Type de bien · Disponibilité actuelle du bien · Objectif principal (revenus / facilité / les deux) · Message libre.</strong> Objectif : pré-qualifier avant le premier échange pour gagner du temps.</p>
+    </div>
+    <div class="levier-card">
+      <h3>📬 Newsletter Propriétaire</h3>
+      <p>Angle éditorial : <strong>« Le rendez-vous du propriétaire serein »</strong> — une fois par mois, des conseils pratiques sur la location courte durée, les tendances du marché lyonnais et les retours terrain d'Agnès. Outil recommandé : Brevo (gratuit jusqu'à 300 emails/jour).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 08 — DIRECTION VISUELLE ══════════ -->
+<section id="bp-section-08">
+  <div class="section-badge">08 — Direction Visuelle et Éditoriale</div>
+  <h2>L'identité visuelle de Séjour Expert</h2>
+  <p class="section-intro">Une palette chaleureuse et premium, ancrée dans l'univers du doré et du noir, avec une touche contemporaine.</p>
+
+  <div class="palette-grid" style="margin-bottom: 52px;">
+    <div class="swatch-item">
+      <div class="swatch" style="background:#C59B3C;"></div>
+      <div class="swatch-name">Or Chaleureux</div>
+      <div class="swatch-hex">#C59B3C</div>
+    </div>
+    <div class="swatch-item">
+      <div class="swatch" style="background:#0E0C09;"></div>
+      <div class="swatch-name">Noir Velours</div>
+      <div class="swatch-hex">#0E0C09</div>
+    </div>
+    <div class="swatch-item">
+      <div class="swatch" style="background:#F5EDD8;"></div>
+      <div class="swatch-name">Ivoire Doux</div>
+      <div class="swatch-hex">#F5EDD8</div>
+    </div>
+    <div class="swatch-item">
+      <div class="swatch" style="background:#2E7D6B;"></div>
+      <div class="swatch-name">Vert Jade (accent peps)</div>
+      <div class="swatch-hex">#2E7D6B</div>
+    </div>
+    <div class="swatch-item">
+      <div class="swatch" style="background:#C0412A;"></div>
+      <div class="swatch-name">Terracotta Vif (accent peps)</div>
+      <div class="swatch-hex">#C0412A</div>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <span class="card-icon">🖼️</span>
+      <h3>Photographie d'ambiance</h3>
+      <p>Intérieurs lumineux et chaleureux, détails soignés (linge blanc, kit de bienvenue), vues de l'ouest lyonnais. Ton photographique : lumière naturelle dorée, profondeur, authenticité.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✍️</span>
+      <h3>Typographie</h3>
+      <p>Titres en <strong>Playfair Display</strong> (sérieux, élégance) — Corps en <strong>Inter</strong> (lisibilité, modernité). Contraste fort entre les deux pour une hiérarchie visuelle claire.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🧱</span>
+      <h3>Mise en page aérée</h3>
+      <p>Grands espaces blancs, sections alternées claire/sombre, sections "pavés" à l'image du site La Logerie d'Aquitaine pour la page À propos. Aucune surcharge visuelle.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🔶</span>
+      <h3>Icônes & illustrations</h3>
+      <p>Illustrations vectorielles minimalistes style trait fin (inspirées de gite-et-bien.fr), pictos dorés pour les services. Pas de stock photos génériques.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">💫</span>
+      <h3>Micro-animations</h3>
+      <p>Apparition douce des éléments au scroll (fade-in), survol des boutons avec effet lumineux doré. Animations légères qui renforcent le sentiment de premium sans alourdir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 09 — ARTICLES BLOG ══════════ -->
+<section id="bp-section-09">
+  <div class="section-badge">09 — Articles Blog Recommandés</div>
+  <h2>Stratégie de contenu — Plan éditorial</h2>
+  <p class="section-intro">7 articles pour attirer des propriétaires qualifiés via Google et renforcer l'autorité d'Agnès Drevet sur son secteur.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Conciergerie Airbnb dans l'ouest lyonnais : comment ça fonctionne ?</strong></td>
+          <td>Conciergerie & délégation</td>
+          <td>Informationnelle — comprendre le service</td>
+          <td><span class="priority-badge priority-high">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Combien peut rapporter votre bien à Tassin ou Écully en location courte durée ?</strong></td>
+          <td>Local Ouest Lyonnais</td>
+          <td>Transactionnelle — estimer ses revenus</td>
+          <td><span class="priority-badge priority-high">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Louer son appartement en courte durée à Lyon : ce que dit la loi en 2025</strong></td>
+          <td>Local Ouest Lyonnais</td>
+          <td>Informationnelle — réglementation</td>
+          <td><span class="priority-badge priority-high">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Gérer soi-même ou déléguer à une conciergerie : le vrai comparatif</strong></td>
+          <td>Conciergerie & délégation</td>
+          <td>Comparaison — aide à la décision</td>
+          <td><span class="priority-badge priority-high">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Tarification dynamique Airbnb : comment maximiser vos revenus sans baisser vos standards</strong></td>
+          <td>Rentabilité & optimisation</td>
+          <td>Informationnelle — améliorer ses revenus</td>
+          <td><span class="priority-badge priority-mid">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>5 erreurs que font les propriétaires qui gèrent leur location saisonnière seuls</strong></td>
+          <td>Conciergerie & délégation</td>
+          <td>Informationnelle — éviter les pièges</td>
+          <td><span class="priority-badge priority-mid">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Location courte durée à Francheville, Craponne et Saint-Genis : le marché en 2025</strong></td>
+          <td>Local Ouest Lyonnais</td>
+          <td>Informationnelle — marché local</td>
+          <td><span class="priority-badge priority-low">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <p><strong>Séjour Expert — Agnès Drevet</strong> · Blueprint Stratégique établi par AR Digital</p>
+  <p style="margin-top:8px;">Document confidentiel — à usage exclusif du client · Tous droits réservés AR Digital</p>
+</footer>
+
+</body>
+</html>
