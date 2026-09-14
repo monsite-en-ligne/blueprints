@@ -1,0 +1,1103 @@
+replace(<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Urban Helper Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a1a;
+    background: #f9f9f9;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0d0d0d 0%, #1c1c1c 40%, #2b2b2b 70%, #111 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(255,255,255,0.04) 0%, transparent 70%);
+  }
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 36px;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 1px;
+    margin-bottom: 56px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+  }
+  .cover-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 70px 60px;
+    background: #f9f9f9;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 40px;
+    line-height: 1.2;
+  }
+
+  /* CARDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 8px;
+  }
+  .card-text {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: #111;
+    color: #fff;
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 40px;
+  }
+  .highlight-box .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 12px;
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #fff;
+  }
+
+  /* TONE TAGS */
+  .tone-tags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .tone-tag {
+    background: #f0f0f0;
+    border-radius: 100px;
+    padding: 6px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #222;
+  }
+
+  /* INLINE LIST */
+  .inline-list {
+    list-style: none;
+    padding: 0;
+  }
+  .inline-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    color: #444;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .inline-list li:last-child { border-bottom: none; }
+  .inline-list li::before {
+    content: '—';
+    color: #999;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* OBJECTIVES */
+  .obj-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .obj-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .obj-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ddd;
+    min-width: 32px;
+  }
+  .obj-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #111;
+  }
+  .obj-desc {
+    font-size: 13px;
+    color: #888;
+    margin-left: auto;
+    text-align: right;
+  }
+
+  /* TABLE */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 14px;
+  }
+  thead tr {
+    background: #111;
+    color: #fff;
+  }
+  thead th {
+    padding: 14px 20px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  tbody tr {
+    border-bottom: 1px solid #f5f5f5;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td {
+    padding: 14px 20px;
+    color: #444;
+    vertical-align: top;
+  }
+  .badge-fort {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 3px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .badge-moyen {
+    background: #555;
+    color: #fff;
+    padding: 3px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .badge-faible {
+    background: #e0e0e0;
+    color: #666;
+    padding: 3px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .fw-label {
+    display: inline-block;
+    background: #f5f5f5;
+    color: #333;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* COCON */
+  .cluster-block {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+  }
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cluster-badge {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: #f0f0f0;
+    color: #666;
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+  .maillage-block {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .maillage-title {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #999;
+    margin-bottom: 20px;
+  }
+  .maillage-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f5f5f5;
+    font-size: 13px;
+    color: #444;
+  }
+  .maillage-row:last-child { border-bottom: none; }
+  .maillage-source {
+    font-weight: 600;
+    color: #111;
+    background: #f5f5f5;
+    padding: 3px 12px;
+    border-radius: 6px;
+  }
+  .maillage-arrow {
+    color: #bbb;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .maillage-dest {
+    color: #555;
+  }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .tunnel-step {
+    background: #fff;
+    padding: 28px 24px;
+    border-right: 1px solid #f0f0f0;
+  }
+  .tunnel-step:last-child { border-right: none; }
+  .tunnel-step-num {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #bbb;
+    margin-bottom: 8px;
+  }
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 16px;
+  }
+  .tunnel-meta {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #aaa;
+    margin-bottom: 4px;
+    margin-top: 12px;
+  }
+  .tunnel-val {
+    font-size: 13px;
+    color: #444;
+  }
+  .tunnel-cta {
+    display: inline-block;
+    margin-top: 14px;
+    background: #111;
+    color: #fff;
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-weight: 500;
+  }
+
+  /* LEVIERS */
+  .levier-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .levier-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 8px;
+  }
+  .levier-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 8px;
+  }
+  .levier-text {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.7;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 48px;
+  }
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  .palette-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+  }
+  .palette-hex {
+    font-size: 11px;
+    color: #aaa;
+    text-align: center;
+  }
+
+  /* VISUEL */
+  .visuel-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .visuel-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    font-size: 14px;
+    color: #444;
+  }
+  .visuel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #111;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* BLOG */
+  .blog-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .blog-cluster {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 8px;
+  }
+  .blog-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .blog-intention {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 12px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0d0d0d;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 32px 40px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  footer span {
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 38px; }
+    .cover-meta { gap: 20px; }
+    .cover-divider { display: none; }
+    section { padding: 48px 24px; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .tunnel-grid { grid-template-columns: 1fr; }
+    .tunnel-step { border-right: none; border-bottom: 1px solid #f0f0f0; }
+    .tunnel-step:last-child { border-bottom: none; }
+    .obj-desc { display: none; }
+    .highlight-box { padding: 24px; }
+    .highlight-box p { font-size: 17px; }
+    .maillage-row { flex-wrap: wrap; }
+    .palette-grid { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique · AR Digital</div>
+  <h1 class="cover-title">Urban Helper<br>Services</h1>
+  <p class="cover-subtitle">Document de stratégie digitale — Confidentiel</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Client</div>
+      <div class="cover-meta-value">Marc Lefebvre</div>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Secteur</div>
+      <div class="cover-meta-value">Conciergerie locative</div>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Zone</div>
+      <div class="cover-meta-value">Comtés ruraux — Denver</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-badge">01</div>
+  <h2 class="section-title">Positionnement</h2>
+
+  <div class="highlight-box">
+    <div class="label">Promesse de valeur principale</div>
+    <p>Urban Helper Services prend en charge la gestion complète de vos biens locatifs dans les comtés ruraux autour de Denver, pour que vous encaissiez vos revenus sans vous soucier de quoi que ce soit.</p>
+  </div>
+
+  <div style="margin-bottom: 32px;">
+    <div class="section-badge" style="margin-bottom:8px;">Ligne directrice de communication</div>
+    <div class="card">
+      <p class="card-text">Expertise de terrain locale · Gestion sans friction · Accompagnement propriétaire premium — une promesse d'efficacité sobre et rassurante, adaptée aux propriétaires ruraux qui cherchent un partenaire fiable sur le long terme.</p>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 40px;">
+    <div class="section-badge" style="margin-bottom:12px;">Ton éditorial</div>
+    <div class="tone-tags">
+      <span class="tone-tag">Professionnel</span>
+      <span class="tone-tag">Direct</span>
+      <span class="tone-tag">Rassurant</span>
+    </div>
+    <div class="card">
+      <p class="card-text">Un ton factuel et sans fioritures, qui parle le langage du propriétaire pragmatique : chiffres clairs, processus transparents, engagement concret. Pas de jargon, pas de promesses creuses.</p>
+    </div>
+  </div>
+
+  <div class="section-badge" style="margin-bottom:16px;">Piliers de différenciation</div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <div class="card-title">Ancrage rural Denver</div>
+      <p class="card-text">Une présence et une connaissance fine des comtés ruraux autour de Denver, là où peu de conciergeries opèrent vraiment.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔑</div>
+      <div class="card-title">Gestion clé en main avec carte G</div>
+      <p class="card-text">Mandataire légalement habilité, capable de gérer mandat, encaissement et coordination locative en toute conformité.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🛠️</div>
+      <div class="card-title">Services complets 360°</div>
+      <p class="card-text">Maintenance, coordination locataire, encaissement, urgences : un interlocuteur unique pour toutes les situations.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💲</div>
+      <div class="card-title">Commission transparente à 8%</div>
+      <p class="card-text">Un taux clair, affiché, sans frais cachés. Une tarification qui inspire confiance et facilite la décision.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📞</div>
+      <div class="card-title">Réactivité et disponibilité terrain</div>
+      <p class="card-text">Astreinte urgences et réponse rapide sur le terrain — une promesse de présence concrète, pas seulement digitale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-badge">02</div>
+  <h2 class="section-title">Client Cible</h2>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">👤</div>
+      <div class="card-title">Profil type</div>
+      <ul class="inline-list">
+        <li>Propriétaire de 1 à 5 biens en zone rurale Denver</li>
+        <li>35 – 65 ans, actif ou préretraité</li>
+        <li>Réside parfois loin de ses biens (ville, autre état)</li>
+        <li>Investisseur patrimonial ou héritage familial</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">💡</div>
+      <div class="card-title">Motivations principales</div>
+      <ul class="inline-list">
+        <li>Déléguer entièrement la gestion sans perdre le contrôle</li>
+        <li>Sécuriser les revenus locatifs (encaissement fiable)</li>
+        <li>Éviter les tensions et problèmes locataires</li>
+        <li>Avoir un interlocuteur local réactif sur le terrain</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚠️</div>
+      <div class="card-title">Freins & objections</div>
+      <ul class="inline-list">
+        <li>"Je ne veux pas perdre la main sur mon bien"</li>
+        <li>"Est-ce que 8% c'est vraiment tout ce que je paierai ?"</li>
+        <li>"Comment savoir si votre équipe est vraiment disponible ?"</li>
+        <li>"J'ai déjà eu une mauvaise expérience avec une agence"</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">✅</div>
+      <div class="card-title">Critères de décision</div>
+      <ul class="inline-list">
+        <li>Transparence tarifaire (commission claire)</li>
+        <li>Preuves sociales et références locales</li>
+        <li>Réactivité terrain démontrée</li>
+        <li>Habilitation légale (carte G) et sérieux professionnel</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-badge">03</div>
+  <h2 class="section-title">Objectifs du Site</h2>
+  <div class="obj-list">
+    <div class="obj-item">
+      <div class="obj-rank">01</div>
+      <div class="obj-label">Génération de leads qualifiés</div>
+      <div class="obj-desc">Priorité absolue</div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">02</div>
+      <div class="obj-label">Réassurance et crédibilité</div>
+      <div class="obj-desc">Lever les doutes, afficher l'habilitation légale</div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">03</div>
+      <div class="obj-label">SEO local (comtés Denver)</div>
+      <div class="obj-desc">Capter la demande organique sur la zone</div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">04</div>
+      <div class="obj-label">Prise de rendez-vous directe</div>
+      <div class="obj-desc">Réduire le friction entre découverte et contact</div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">05</div>
+      <div class="obj-label">Conversion (devis / estimation)</div>
+      <div class="obj-desc">Transformer les visiteurs en prospects chauds</div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">06</div>
+      <div class="obj-label">Notoriété locale</div>
+      <div class="obj-desc">Asseoir la marque sur le territoire rural Denver</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-badge">04</div>
+  <h2 class="section-title">Arborescence du Site</h2>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td><span class="fw-label">AIDA</span></td>
+          <td>Conciergerie locative comtés Denver</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Services</strong><br><span style="font-size:12px;color:#aaa;">Maintenance · Coordination · Encaissement · Urgences</span></td>
+          <td><span class="fw-label">PAS</span></td>
+          <td>Gestion locative complète Colorado rural</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Pourquoi Nous</strong></td>
+          <td><span class="fw-label">BAB</span></td>
+          <td>Conciergerie immobilière fiable Denver</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Tarifs</strong></td>
+          <td><span class="fw-label">AIDA</span></td>
+          <td>Commission gestion locative 8% Colorado</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>À Propos</strong></td>
+          <td><span class="fw-label">BAB</span></td>
+          <td>Agence gestion locative rurale Denver</td>
+          <td><span class="badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / Estimation</strong></td>
+          <td><span class="fw-label">AIDA</span></td>
+          <td>Confier son bien gestion locative Denver</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page SEO locale — Comtés ruraux nord Denver</strong></td>
+          <td><span class="fw-label">PAS</span></td>
+          <td>Gestion locative comté Weld / Larimer</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page SEO locale — Comtés ruraux sud Denver</strong></td>
+          <td><span class="fw-label">PAS</span></td>
+          <td>Gestion locative comté Douglas / Elbert</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td><span class="fw-label">AIDA</span></td>
+          <td>Conseils propriétaires bailleurs Colorado</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-badge">05</div>
+  <h2 class="section-title">Cocon Sémantique</h2>
+
+  <div class="cluster-block">
+    <div class="cluster-title">
+      Cluster 1 — Gestion locative & Services
+      <span class="cluster-badge">Pilier principal</span>
+    </div>
+    <ul class="inline-list">
+      <li>Page pilier : Nos Services (gestion complète)</li>
+      <li>Pages satellites : Tarifs · Pages SEO locales · Contact/Estimation</li>
+      <li>Articles blog : maintenance préventive, comment choisir sa conciergerie, urgences locatives</li>
+    </ul>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title">
+      Cluster 2 — Confiance & Expertise locale
+      <span class="cluster-badge">Pilier secondaire</span>
+    </div>
+    <ul class="inline-list">
+      <li>Page pilier : Pourquoi Nous / À Propos</li>
+      <li>Pages satellites : Pages SEO locales · Blog (témoignages, cas pratiques)</li>
+      <li>Articles blog : avantages de la délégation, réglementation CO, conseils bailleurs</li>
+    </ul>
+  </div>
+
+  <div style="margin-top:32px;">
+    <div class="maillage-block">
+      <div class="maillage-title">Logique de maillage interne</div>
+      <div class="maillage-row">
+        <span class="maillage-source">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Services · Pourquoi Nous · Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Nos Services</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Tarifs · Contact · Pages SEO locales</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Pages SEO locales</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Services · Contact · Articles blog</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Articles Blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Services · Contact · Pourquoi Nous</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Tarifs</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact · Nos Services · Pourquoi Nous</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-badge">06</div>
+  <h2 class="section-title">Tunnel de Conversion</h2>
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 01</div>
+      <div class="tunnel-step-title">Découverte</div>
+      <div class="tunnel-meta">Source</div>
+      <div class="tunnel-val">Google Search / SEO local / bouche à oreille</div>
+      <div class="tunnel-meta">Page</div>
+      <div class="tunnel-val">Accueil · Pages SEO locales · Articles blog</div>
+      <span class="tunnel-cta">Lire la promesse</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 02</div>
+      <div class="tunnel-step-title">Intérêt</div>
+      <div class="tunnel-meta">Source</div>
+      <div class="tunnel-val">Navigation interne · Blog · SEO</div>
+      <div class="tunnel-meta">Page</div>
+      <div class="tunnel-val">Nos Services · Tarifs</div>
+      <span class="tunnel-cta">Voir nos services</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 03</div>
+      <div class="tunnel-step-title">Confiance</div>
+      <div class="tunnel-meta">Source</div>
+      <div class="tunnel-val">Retargeting · Avis · Réseaux sociaux</div>
+      <div class="tunnel-meta">Page</div>
+      <div class="tunnel-val">Pourquoi Nous · À Propos</div>
+      <span class="tunnel-cta">Découvrir l'équipe</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 04</div>
+      <div class="tunnel-step-title">Conversion</div>
+      <div class="tunnel-meta">Source</div>
+      <div class="tunnel-val">CTA pages · Lead magnet · RDV direct</div>
+      <div class="tunnel-meta">Page</div>
+      <div class="tunnel-val">Contact / Estimation gratuite</div>
+      <span class="tunnel-cta">Obtenir une estimation</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-badge">07</div>
+  <h2 class="section-title">Leviers Marketing Recommandés</h2>
+  <div class="grid-2">
+    <div class="levier-card">
+      <div class="levier-label">Lead Magnet</div>
+      <div class="levier-title">Guide : "Propriétaire bailleur en zone rurale Colorado — 7 erreurs à éviter"</div>
+      <p class="levier-text">PDF téléchargeable, axé sur les problèmes concrets des propriétaires en zone rurale Denver. Capture d'email en échange du guide.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-label">Prise de RDV</div>
+      <div class="levier-title">Calendly (ou equivalent)</div>
+      <p class="levier-text">Intégration directe sur la page Contact et dans le footer. CTA principal : "Planifier un appel découverte gratuit de 20 min".</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-label">Preuve Sociale</div>
+      <div class="levier-title">Témoignages vidéo + chiffres clés</div>
+      <p class="levier-text">Avis Google visibles sur le site, témoignages de propriétaires locaux, et indicateurs : nombre de biens gérés, taux de vacance moyen, délai d'intervention.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-label">Formulaire Qualifiant</div>
+      <div class="levier-title">Champs clés recommandés</div>
+      <p class="levier-text">Type de bien / Localisation / Nombre de biens / Situation actuelle (géré seul, par agence) / Urgence du projet / Coordonnées.</p>
+    </div>
+    <div class="levier-card">
+      <div class="levier-label">Newsletter</div>
+      <div class="levier-title">Angle éditorial : "Le Bailleur Serein"</div>
+      <p class="levier-text">Fréquence mensuelle. Contenu : actualité réglementaire CO, conseils pratiques, retours terrain, et offres ponctuelles de consultation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-badge">08</div>
+  <h2 class="section-title">Direction Visuelle & Éditoriale</h2>
+
+  <div class="section-badge" style="margin-bottom:24px;">Palette de couleurs</div>
+  <div class="palette-grid">
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#0D0D0D;"></div>
+      <div class="palette-name">Noir Absolu</div>
+      <div class="palette-hex">#0D0D0D</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#FFFFFF; border: 1px solid #e5e5e5;"></div>
+      <div class="palette-name">Blanc Pur</div>
+      <div class="palette-hex">#FFFFFF</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#2C2C2C;"></div>
+      <div class="palette-name">Anthracite</div>
+      <div class="palette-hex">#2C2C2C</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#888888;"></div>
+      <div class="palette-name">Gris Moyen</div>
+      <div class="palette-hex">#888888</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#F2F2F2; border: 1px solid #e5e5e5;"></div>
+      <div class="palette-name">Gris Clair</div>
+      <div class="palette-hex">#F2F2F2</div>
+    </div>
+  </div>
+
+  <div class="section-badge" style="margin-bottom:16px;">Univers visuel</div>
+  <div class="visuel-list">
+    <div class="visuel-item">
+      <div class="visuel-dot"></div>
+      Photographie minimaliste et haute résolution : paysages ruraux Colorado, intérieurs de biens épurés, architectures locales.
+    </div>
+    <div class="visuel-item">
+      <div class="visuel-dot"></div>
+      Typographie contrastée : titres serif (Playfair Display) sur fond noir ou blanc immaculé — pas d'ornements inutiles.
+    </div>
+    <div class="visuel-item">
+      <div class="visuel-dot"></div>
+      Espaces blancs généreux, mises en page aérées dans l'esprit minimaliste Google — aucune surcharge visuelle.
+    </div>
+    <div class="visuel-item">
+      <div class="visuel-dot"></div>
+      Iconographie sobre : pictogrammes linéaires noir sur fond blanc, sans couleur d'accent parasite.
+    </div>
+    <div class="visuel-item">
+      <div class="visuel-dot"></div>
+      Animations discrètes au scroll (fade-in, apparition progressive) pour rythmer la lecture sans distraire.
+    </div>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-badge">09</div>
+  <h2 class="section-title">Articles Blog Recommandés</h2>
+  <div class="grid-2">
+    <div class="blog-card">
+      <div class="blog-cluster">Cluster 1 — Gestion locative</div>
+      <div class="blog-title">Propriétaire bailleur en zone rurale : pourquoi la gestion à distance devient risquée</div>
+      <div class="blog-intention">Intention informationnelle · Cible : propriétaire non-résident</div>
+      <span class="badge-fort">Prioritaire</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-cluster">Cluster 1 — Gestion locative</div>
+      <div class="blog-title">Maintenance préventive : comment éviter les urgences coûteuses dans vos biens ruraux</div>
+      <div class="blog-intention">Intention informationnelle · Cible : propriétaire multi-biens</div>
+      <span class="badge-fort">Prioritaire</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-cluster">Cluster 2 — Confiance & expertise</div>
+      <div class="blog-title">Gestion locative : comment choisir le bon prestataire dans les comtés ruraux de Denver</div>
+      <div class="blog-intention">Intention comparationnelle · Cible : prospect en phase décision</div>
+      <span class="badge-fort">Prioritaire</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-cluster">Cluster 1 — Gestion locative</div>
+      <div class="blog-title">Encaissement des loyers : les pratiques qui protègent vraiment le propriétaire bailleur</div>
+      <div class="blog-intention">Intention informationnelle · Cible : propriétaire soucieux de sécurité financière</div>
+      <span class="badge-moyen">Moyen</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-cluster">Cluster 2 — Confiance & expertise</div>
+      <div class="blog-title">Réglementation locative au Colorado : ce que tout propriétaire doit savoir en 2025</div>
+      <div class="blog-intention">Intention réglementaire · Cible : propriétaire prudent</div>
+      <span class="badge-moyen">Moyen</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-cluster">Cluster 1 — Gestion locative</div>
+      <div class="blog-title">Urgence locative : qui prévenir, quoi faire, et pourquoi un prestataire local change tout</div>
+      <div class="blog-intention">Intention transactionnelle · Cible : propriétaire stressé</div>
+      <span class="badge-moyen">Moyen</span>
+    </div>
+    <div class="blog-card">
+      <div class="blog-cluster">Cluster 2 — Confiance & expertise</div>
+      <div class="blog-title">Déléguer la gestion de son bien : les 5 questions à poser avant de signer un mandat</div>
+      <div class="blog-intention">Intention comparationnelle · Cible : prospect en phase réflexion</div>
+      <span class="badge-faible">Faible</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><span>Urban Helper Services</span> — Blueprint Stratégique · Produit par AR Digital · Document confidentiel réservé au client</p>
+</footer>
+
+</body>
+</html>;
+"</body>";<style>
+.bp-validation-box {
+  margin: 35px 0 10px;
+  padding: 24px;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  background: #fafafa;
+}
+</style>
+
+<div id="validation-test">
+  TEST VALIDATION WRAPPER
+</div>
+</body></body>)
