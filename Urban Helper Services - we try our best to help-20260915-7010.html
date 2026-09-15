@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blueprint Stratégique — Urban Helper Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a1a;
+    background: #f7f7f5;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #111111 0%, #2a2a2a 50%, #1a1a1a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.65);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 40px;
+    margin-bottom: 40px;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    max-width: 900px;
+  }
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.05em;
+    margin-bottom: 56px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .cover-meta-label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    font-weight: 500;
+  }
+  .cover-meta-value {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 80px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+  section:nth-child(odd) {
+    background: #f7f7f5;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #888;
+    background: rgba(0,0,0,0.05);
+    padding: 6px 14px;
+    border-radius: 30px;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 40px;
+    line-height: 1.25;
+  }
+
+  /* CARDS */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px 32px;
+    page-break-inside: avoid;
+  }
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 10px;
+  }
+  .card p, .card ul {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.75;
+  }
+  .card ul {
+    padding-left: 18px;
+  }
+  .card ul li {
+    margin-bottom: 5px;
+  }
+
+  /* GRIDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: #111;
+    color: #fff;
+    border-radius: 14px;
+    padding: 36px 40px;
+    margin-bottom: 40px;
+  }
+  .highlight-box .label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 12px;
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.5;
+  }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 14px;
+  }
+  thead tr {
+    background: #111;
+    color: #fff;
+  }
+  thead th {
+    padding: 14px 20px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+  }
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+  tbody td {
+    padding: 14px 20px;
+    color: #333;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  tbody tr:hover {
+    background: #fafafa;
+  }
+
+  /* BADGES SEO */
+  .badge-seo {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .badge-fort { background: #1a1a1a; color: #fff; }
+  .badge-moyen { background: #666; color: #fff; }
+  .badge-faible { background: #ccc; color: #444; }
+
+  /* TUNNEL */
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px 32px;
+    position: relative;
+  }
+  .tunnel-step .step-num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 10px;
+  }
+  .tunnel-step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 16px;
+  }
+  .tunnel-step .meta-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 13px;
+    color: #555;
+  }
+  .tunnel-step .meta-row span {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .tunnel-step .meta-label {
+    font-weight: 600;
+    color: #111;
+    min-width: 90px;
+    flex-shrink: 0;
+  }
+  .cta-pill {
+    display: inline-block;
+    background: #111;
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 14px;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    border: 1px solid rgba(0,0,0,0.07);
+  }
+  .palette-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #222;
+    text-align: center;
+  }
+  .palette-hex {
+    font-size: 11px;
+    color: #aaa;
+    text-align: center;
+  }
+
+  /* MAILLAGE */
+  .maillage-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  .maillage-source {
+    font-weight: 600;
+    color: #111;
+    background: #f0f0f0;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+  }
+  .maillage-arrow {
+    color: #999;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .maillage-dest {
+    font-size: 13px;
+    color: #555;
+    background: #fafafa;
+    border: 1px solid #e8e8e8;
+    padding: 3px 10px;
+    border-radius: 16px;
+  }
+
+  /* BLOG */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px 32px;
+    page-break-inside: avoid;
+  }
+  .blog-card .blog-meta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .cluster-tag {
+    display: inline-block;
+    background: #f0f0f0;
+    color: #555;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+  .blog-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .blog-card .blog-intent {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 12px;
+  }
+
+  /* PRIORITY BADGES */
+  .priority-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .priority-prioritaire { background: #1a1a1a; color: #fff; }
+  .priority-moyen { background: #666; color: #fff; }
+  .priority-faible { background: #ddd; color: #555; }
+
+  /* FOOTER */
+  footer {
+    background: #111;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    padding: 32px 40px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+  footer strong {
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: #e8e8e8;
+    margin: 32px 0;
+  }
+
+  /* OBJECTIFS LIST */
+  .obj-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .obj-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    padding: 16px 22px;
+  }
+  .obj-rank {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #111;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .obj-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #222;
+    line-height: 1.5;
+  }
+  .obj-sub {
+    font-size: 12px;
+    color: #888;
+    font-weight: 400;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 38px; }
+    .cover-meta { gap: 24px; }
+    section { padding: 48px 24px; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 18px; }
+    table { font-size: 13px; }
+    thead th, tbody td { padding: 10px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique · Document Confidentiel</div>
+  <h1 class="cover-title">Urban Helper Services</h1>
+  <p class="cover-subtitle">Stratégie digitale · Conciergerie Immobilière Premium</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Client</span>
+      <span class="cover-meta-value">Marc Lefebvre</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie Locative</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Zone</span>
+      <span class="cover-meta-value">Rural Counties — Denver</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Votre ancrage stratégique</h2>
+
+  <div class="highlight-box">
+    <div class="label">Promesse de valeur principale</div>
+    <p>Urban Helper Services : le partenaire de confiance des propriétaires ruraux autour de Denver qui veulent déléguer sereinement la gestion de leur bien, de la maintenance au recouvrement des loyers, sans jamais perdre le contrôle.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <h3>Ligne directrice de communication</h3>
+    <p>Expertise terrain locale · Gestion sans friction · Accompagnement humain et réactif</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <h3>Ton éditorial</h3>
+    <p><strong>Sobre · Rassurant · Professionnel</strong> — Un discours direct, sans superflu, qui inspire confiance dès le premier contact. Chaque mot est là pour réduire les doutes du propriétaire et affirmer votre sérieux.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🏡 Présence terrain locale</h3>
+      <p>Une connaissance fine des comtés ruraux autour de Denver que les agences généralistes ne peuvent pas offrir.</p>
+    </div>
+    <div class="card">
+      <h3>🔧 Service global clé en main</h3>
+      <p>Maintenance, coordination locataires, encaissement des loyers et gestion des urgences : tout est pris en charge.</p>
+    </div>
+    <div class="card">
+      <h3>📊 Commission transparente</h3>
+      <p>8 % tout compris — un tarif lisible, sans frais cachés, qui facilite la décision des propriétaires.</p>
+    </div>
+    <div class="card">
+      <h3>📞 Réactivité 24h/24</h3>
+      <p>Une ligne d'urgence opérationnelle pour intervenir vite, protéger le bien et rassurer le propriétaire.</p>
+    </div>
+    <div class="card">
+      <h3>📋 Avec mandat de gestion</h3>
+      <p>Titulaire de la carte professionnelle, Urban Helper opère dans un cadre réglementé, gage de sérieux et de protection juridique.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client Cible</span>
+  <h2 class="section-title">À qui vous parlez</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Profil type</h3>
+      <ul>
+        <li>Propriétaire bailleur, 40–65 ans</li>
+        <li>Possède 1 à 5 biens dans les comtés ruraux autour de Denver</li>
+        <li>Travaille à temps plein ou à la retraite active</li>
+        <li>N'habite pas forcément à proximité de son bien</li>
+        <li>Cherche à déléguer sans perdre la visibilité</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Gagner du temps et éviter le stress locatif</li>
+        <li>Sécuriser ses revenus locatifs mensuels</li>
+        <li>Avoir un interlocuteur réactif en cas d'urgence</li>
+        <li>Professionnaliser la relation avec ses locataires</li>
+        <li>Protéger son patrimoine sur le long terme</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Freins & Objections</h3>
+      <ul>
+        <li>Peur de perdre le contrôle de son bien</li>
+        <li>Coût perçu comme trop élevé</li>
+        <li>Mauvaise expérience avec une agence précédente</li>
+        <li>Doute sur la réactivité et la proximité réelle</li>
+        <li>Méfiance vis-à-vis des structures inconnues</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Transparence des honoraires</li>
+        <li>Preuves concrètes d'expérience terrain</li>
+        <li>Couverture géographique effective</li>
+        <li>Réactivité annoncée et démontrée</li>
+        <li>Clarté du contrat et des engagements</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du Site</span>
+  <h2 class="section-title">Ce que votre site doit accomplir</h2>
+
+  <div class="obj-list">
+    <div class="obj-item">
+      <div class="obj-rank">1</div>
+      <div>
+        <div class="obj-text">Génération de leads qualifiés</div>
+        <div class="obj-sub">Capter des propriétaires en recherche active d'un gestionnaire de confiance</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">2</div>
+      <div>
+        <div class="obj-text">Réassurance & crédibilité</div>
+        <div class="obj-sub">Lever les doutes grâce à la transparence des offres, la carte G et les preuves sociales</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">3</div>
+      <div>
+        <div class="obj-text">Prise de rendez-vous</div>
+        <div class="obj-sub">Faciliter le premier contact via un formulaire qualifiant et un outil de calendrier en ligne</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">4</div>
+      <div>
+        <div class="obj-text">SEO local</div>
+        <div class="obj-sub">Apparaître sur les recherches propriétaires dans les comtés ruraux autour de Denver</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">5</div>
+      <div>
+        <div class="obj-text">Notoriété & positionnement</div>
+        <div class="obj-sub">Ancrer Urban Helper comme la référence conciergerie immobilière de la zone</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">6</div>
+      <div>
+        <div class="obj-text">Nurturing par contenu</div>
+        <div class="obj-sub">Entretenir la relation avec les prospects via blog et newsletter</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence du Site</span>
+  <h2 class="section-title">Structure des pages</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>property management concierge Denver rural</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Services</strong></td>
+          <td>PAS</td>
+          <td>gestion locative complète propriétaire Denver</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À Propos</strong></td>
+          <td>BAB</td>
+          <td>conciergerie immobilière locale Denver</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Tarifs</strong></td>
+          <td>AIDA</td>
+          <td>commission gestion locative Denver</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Témoignages</strong></td>
+          <td>PAS</td>
+          <td>avis conciergerie propriétaire Denver</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO Local — Comtés Ruraux Denver</strong></td>
+          <td>AIDA</td>
+          <td>property management rural counties Denver</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO Local — Gestion Locative Zone Sud Denver</strong></td>
+          <td>AIDA</td>
+          <td>rental property management south Denver suburbs</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils propriétaire bailleur Denver</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / Devis</strong></td>
+          <td>AIDA</td>
+          <td>demande devis gestion locative Denver</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon Sémantique</span>
+  <h2 class="section-title">Architecture de contenu & maillage</h2>
+
+  <div class="grid-2" style="margin-bottom: 36px;">
+    <div class="card">
+      <h3>Cluster 1 — Gestion Locative</h3>
+      <p>Regroupe tout ce qui concerne les services proposés aux propriétaires : maintenance, coordination locataires, encaissements, urgences. Page Services en tête de cluster.</p>
+    </div>
+    <div class="card">
+      <h3>Cluster 2 — Ancrage Local Denver</h3>
+      <p>Regroupe les pages SEO locales et les articles ciblant les propriétaires des comtés ruraux autour de Denver. Renforce l'autorité géographique du site.</p>
+    </div>
+    <div class="card">
+      <h3>Cluster 3 — Confiance & Réassurance</h3>
+      <p>Regroupe la page À Propos, Témoignages et les articles de blog portant sur les garanties, la transparence et la réglementation (carte G).</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Logique de maillage interne</h3>
+    <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 14px;">
+      <div class="maillage-row">
+        <span class="maillage-source">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Services</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Tarifs</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Pages SEO Locales</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Services</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Articles Blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Services</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Témoignages</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">À Propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Témoignages</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Témoignages</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Services</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Tarifs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de Conversion</span>
+  <h2 class="section-title">Du visiteur au client</h2>
+
+  <div class="grid-2">
+    <div class="tunnel-step">
+      <div class="step-num">Étape 1 — Découverte</div>
+      <h3>Le propriétaire vous trouve</h3>
+      <div class="meta-row">
+        <span><span class="meta-label">Source :</span> Google Search, bouche-à-oreille, réseaux sociaux</span>
+        <span><span class="meta-label">Page :</span> Accueil, Pages SEO locales, Articles de blog</span>
+      </div>
+      <span class="cta-pill">En savoir plus sur nos services →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="step-num">Étape 2 — Intérêt</div>
+      <h3>Il explore votre offre</h3>
+      <div class="meta-row">
+        <span><span class="meta-label">Source :</span> Navigation interne, maillage sémantique</span>
+        <span><span class="meta-label">Page :</span> Nos Services, Tarifs</span>
+      </div>
+      <span class="cta-pill">Télécharger notre guide gratuit →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="step-num">Étape 3 — Confiance</div>
+      <h3>Il se rassure</h3>
+      <div class="meta-row">
+        <span><span class="meta-label">Source :</span> Maillage interne, email nurturing</span>
+        <span><span class="meta-label">Page :</span> À Propos, Témoignages</span>
+      </div>
+      <span class="cta-pill">Lire les avis propriétaires →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="step-num">Étape 4 — Conversion</div>
+      <h3>Il prend contact</h3>
+      <div class="meta-row">
+        <span><span class="meta-label">Source :</span> CTA omniprésent, formulaire qualifiant</span>
+        <span><span class="meta-label">Page :</span> Contact / Devis</span>
+      </div>
+      <span class="cta-pill">Obtenir mon estimation gratuite →</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers Marketing Recommandés</span>
+  <h2 class="section-title">Vos accélérateurs de croissance</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🎁 Lead Magnet</h3>
+      <p><strong>"Guide du propriétaire bailleur — 7 erreurs à éviter dans la gestion de votre bien locatif"</strong><br/>PDF téléchargeable, 100 % utile, positionne Urban Helper comme expert de référence dès le premier contact.</p>
+    </div>
+    <div class="card">
+      <h3>📅 Prise de Rendez-vous</h3>
+      <p>Intégration de <strong>Calendly</strong> ou <strong>Google Calendar</strong> pour une prise de RDV directe, sans friction. Proposer un appel découverte de 20 min comme première étape.</p>
+    </div>
+    <div class="card">
+      <h3>⭐ Preuve Sociale</h3>
+      <p>Témoignages vidéo ou citations courtes de propriétaires satisfaits, accompagnés du type de bien géré et de la zone géographique. Widgets Google Reviews intégrés.</p>
+    </div>
+    <div class="card">
+      <h3>📝 Formulaire Qualifiant</h3>
+      <p>Champs recommandés : Nom · Email · Téléphone · Nombre de biens · Type de bien · Zone géographique · Principal besoin (maintenance / loyers / urgences / tout). Évite les leads non pertinents.</p>
+    </div>
+    <div class="card">
+      <h3>📧 Newsletter</h3>
+      <p>Angle éditorial : <strong>"Le Carnet du Propriétaire"</strong> — conseils mensuels sur la gestion locative, actualités réglementaires locales et partages d'expériences terrain autour de Denver.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction Visuelle & Éditoriale</span>
+  <h2 class="section-title">Identité visuelle recommandée</h2>
+
+  <div class="card" style="margin-bottom: 36px;">
+    <h3>Palette de couleurs</h3>
+    <p style="font-size: 13px; color: #888; margin-bottom: 20px;">Conformément à votre souhait d'une identité sobre noir et blanc, complétée de nuances pour la lisibilité et la chaleur éditoriale.</p>
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #111111;"></div>
+        <div class="palette-name">Noir Profond</div>
+        <div class="palette-hex">#111111</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #3a3a3a;"></div>
+        <div class="palette-name">Anthracite</div>
+        <div class="palette-hex">#3A3A3A</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #888888;"></div>
+        <div class="palette-name">Gris Moyen</div>
+        <div class="palette-hex">#888888</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #e8e8e8; border: 1px solid #ddd;"></div>
+        <div class="palette-name">Gris Clair</div>
+        <div class="palette-hex">#E8E8E8</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #ffffff; border: 1px solid #ddd;"></div>
+        <div class="palette-name">Blanc Pur</div>
+        <div class="palette-hex">#FFFFFF</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Univers visuel recommandé</h3>
+      <ul>
+        <li>Photographies grand format de paysages ruraux autour de Denver (champs, propriétés, montagnes en arrière-plan)</li>
+        <li>Intérieurs soignés de biens locatifs, lumineux et épurés</li>
+        <li>Mise en page minimaliste inspirée de Google — beaucoup d'espace blanc, pas de surcharge</li>
+        <li>Typographie sobre et lisible : Inter pour le corps, Playfair Display pour les titres</li>
+        <li>Icônes linéaires noires sur fond blanc — cohérence avec l'identité monochrome</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Références visuelles mentionnées</h3>
+      <ul>
+        <li><strong>Google Homepage</strong> — minimalisme, clarté, absence de bruit visuel</li>
+        <li><strong>National Geographic</strong> — photographies immersives, impactantes, storytelling visuel</li>
+        <li>Objectif : combiner la sobriété fonctionnelle de l'un avec la puissance émotionnelle des visuels de l'autre</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 09 BLOG -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles Blog Recommandés</span>
+  <h2 class="section-title">Stratégie de contenu organique</h2>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <div class="blog-meta">
+        <span class="cluster-tag">Gestion Locative</span>
+        <span class="priority-badge priority-prioritaire">Prioritaire</span>
+      </div>
+      <h3>5 raisons de confier votre bien à un gestionnaire local plutôt qu'à une grande agence</h3>
+      <div class="blog-intent">Intention : Informationnelle · Propriétaires hésitants entre solutions</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-meta">
+        <span class="cluster-tag">Ancrage Local Denver</span>
+        <span class="priority-badge priority-prioritaire">Prioritaire</span>
+      </div>
+      <h3>Louer un bien dans les comtés ruraux autour de Denver : ce que vous devez savoir</h3>
+      <div class="blog-intent">Intention : Informationnelle · SEO local fort</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-meta">
+        <span class="cluster-tag">Gestion Locative</span>
+        <span class="priority-badge priority-prioritaire">Prioritaire</span>
+      </div>
+      <h3>Maintenance préventive : comment éviter les mauvaises surprises sur vos biens locatifs</h3>
+      <div class="blog-intent">Intention : Informationnelle · Propriétaires actifs</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-meta">
+        <span class="cluster-tag">Confiance & Réassurance</span>
+        <span class="priority-badge priority-moyen">Moyen</span>
+      </div>
+      <h3>Commission de gestion locative : comment lire et comparer les offres du marché</h3>
+      <div class="blog-intent">Intention : Commerciale · Comparaison de prix</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-meta">
+        <span class="cluster-tag">Confiance & Réassurance</span>
+        <span class="priority-badge priority-moyen">Moyen</span>
+      </div>
+      <h3>Urgences locatives : quels scénarios un bon gestionnaire doit-il anticiper ?</h3>
+      <div class="blog-intent">Intention : Informationnelle · Propriétaires soucieux de sécurité</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-meta">
+        <span class="cluster-tag">Ancrage Local Denver</span>
+        <span class="priority-badge priority-moyen">Moyen</span>
+      </div>
+      <h3>Le marché locatif rural autour de Denver en 2025 : tendances et opportunités</h3>
+      <div class="blog-intent">Intention : Informationnelle · Notoriété expert local</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-meta">
+        <span class="cluster-tag">Gestion Locative</span>
+        <span class="priority-badge priority-faible">Faible</span>
+      </div>
+      <h3>Propriétaire bailleur : 7 erreurs qui vous coûtent de l'argent sans que vous le sachiez</h3>
+      <div class="blog-intent">Intention : Informationnelle · Lead magnet complémentaire</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Urban Helper Services</strong> · Blueprint Stratégique · Document strictement confidentiel</p>
+  <p style="margin-top: 8px;">Préparé par AR Digital · Tous droits réservés</p>
+</footer>
+
+</body>
+</html>
