@@ -1,0 +1,2020 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Urban Helper Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a1a;
+    background: #f9f9f9;
+  }
+
+  /* COUVERTURE */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0d0d0d 0%, #1c1c1c 40%, #2a2a2a 70%, #111 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, transparent 70%);
+  }
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 36px;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .cover-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    margin-bottom: 56px;
+    letter-spacing: 0.5px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 500;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(odd) { background: #ffffff; }
+  section:nth-child(even) { background: #f4f4f4; }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 12px;
+  }
+  .section-num {
+    display: inline-block;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-right: 10px;
+  }
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 40px;
+    line-height: 1.2;
+  }
+
+  /* CARDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 10px;
+  }
+  .card p, .card li {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.7;
+  }
+  .card ul {
+    padding-left: 16px;
+  }
+  .card ul li {
+    margin-bottom: 4px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 14px;
+    padding: 36px 40px;
+    margin-bottom: 40px;
+  }
+  .highlight-box p {
+    font-size: 20px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #fff;
+  }
+  .highlight-box span {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 12px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* TABLEAUX */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 14px;
+  }
+  thead tr {
+    background: #1a1a1a;
+    color: #fff;
+  }
+  thead th {
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td {
+    padding: 14px 18px;
+    color: #333;
+    vertical-align: top;
+  }
+  tbody tr:hover { background: #fafafa; }
+
+  /* BADGES SEO */
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .badge-fort { background: #e8f5e9; color: #2e7d32; }
+  .badge-moyen { background: #fff8e1; color: #f57c00; }
+  .badge-faible { background: #fce4ec; color: #c62828; }
+  .badge-prio { background: #1a1a1a; color: #fff; }
+  .badge-med { background: #e0e0e0; color: #444; }
+  .badge-low { background: #f5f5f5; color: #888; }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .tunnel-step {
+    background: #fff;
+    padding: 28px 22px;
+    border-right: 1px solid #f0f0f0;
+    position: relative;
+  }
+  .tunnel-step:last-child { border-right: none; }
+  .tunnel-step-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #bbb;
+    margin-bottom: 8px;
+  }
+  .tunnel-step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 14px;
+  }
+  .tunnel-step p {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 6px;
+  }
+  .tunnel-step .cta-badge {
+    display: inline-block;
+    margin-top: 12px;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  /* COULEURS PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .palette-item {
+    text-align: center;
+    width: 80px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .palette-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+  }
+  .palette-hex {
+    font-size: 11px;
+    color: #aaa;
+  }
+
+  /* MAILLAGE */
+  .maillage-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #333;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .maillage-item:last-child { border-bottom: none; }
+  .maillage-source {
+    font-weight: 600;
+    color: #111;
+  }
+  .maillage-arrow {
+    color: #888;
+    font-size: 16px;
+  }
+  .maillage-dest {
+    color: #555;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0d0d0d;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 32px 40px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 38px; }
+    .cover-meta { gap: 24px; }
+    section { padding: 48px 24px; }
+    h2.section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .tunnel-grid { grid-template-columns: 1fr; }
+    .tunnel-step { border-right: none; border-bottom: 1px solid #f0f0f0; }
+    .tunnel-step:last-child { border-bottom: none; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 17px; }
+    .palette-grid { gap: 16px; }
+    .maillage-item { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique — Document Confidentiel</div>
+  <h1 class="cover-title">Urban Helper<br>Services</h1>
+  <p class="cover-sub">Stratégie digitale & positionnement web — Conciergerie locative</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Client</div>
+      <div class="cover-meta-value">Marc Lefebvre</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Secteur</div>
+      <div class="cover-meta-value">Conciergerie & Gestion Locative</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Zone</div>
+      <div class="cover-meta-value">Comtés ruraux — Denver Area</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-label"><span class="section-num">01</span>Positionnement</div>
+  <h2 class="section-title">Positionnement stratégique</h2>
+
+  <div class="highlight-box">
+    <span>Promesse de valeur principale</span>
+    <p>Urban Helper Services prend en charge l'intégralité de votre location courte durée dans les comtés ruraux de Denver — pour que vous encaissiez, sans vous en occuper.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <h3>Ligne directrice de communication</h3>
+      <p>Expertise terrain dans les zones rurales péri-urbaines de Denver, accompagnement complet et sans friction, fiabilité opérationnelle au quotidien.</p>
+    </div>
+    <div class="card">
+      <h3>Ton éditorial</h3>
+      <p><strong>Rassurant · Concret · Professionnel</strong><br>Un ton direct et honnête, ancré dans la réalité du terrain, qui inspire confiance sans jargon marketing superflu.</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🏡 Expertise locale rurale</h3>
+      <p>Urban Helper Services opère dans les comtés ruraux autour de Denver, un marché de niche où peu d'agences proposent un service complet et réactif.</p>
+    </div>
+    <div class="card">
+      <h3>🔑 Service tout-en-un</h3>
+      <p>De la maintenance au recouvrement des loyers en passant par la coordination des locataires, une seule interlocutrice gère tout à 8 % de commission.</p>
+    </div>
+    <div class="card">
+      <h3>🚨 Réactivité d'urgence</h3>
+      <p>Intervention rapide en cas de problème — un différenciateur fort dans des zones éloignées où la réactivité est rare et précieuse.</p>
+    </div>
+    <div class="card">
+      <h3>📋 Carte Professionnelle G</h3>
+      <p>Activité encadrée légalement, garantie d'une gestion locative conforme et transparente pour les propriétaires.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-label"><span class="section-num">02</span>Client cible</div>
+  <h2 class="section-title">Profil du propriétaire idéal</h2>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <h3>Profil type</h3>
+      <p>Propriétaire de 40 à 65 ans, possédant un ou plusieurs biens en zone rurale proche de Denver. Il peut être investisseur distant, expatrié ou simplement débordé par les contraintes opérationnelles. Il souhaite générer des revenus locatifs sans y consacrer de temps.</p>
+    </div>
+    <div class="card">
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Maximiser les revenus locatifs sans effort</li>
+        <li>Déléguer entièrement la gestion quotidienne</li>
+        <li>Sécuriser son bien avec un interlocuteur fiable</li>
+        <li>Profiter d'un taux de commission compétitif</li>
+        <li>Accéder à un service rare en milieu rural</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Freins & objections</h3>
+      <ul>
+        <li>« Je ne connais pas cette conciergerie »</li>
+        <li>« Est-ce fiable pour une zone rurale ? »</li>
+        <li>« 8 % c'est trop ou pas assez ? »</li>
+        <li>« Et si quelque chose tourne mal ? »</li>
+        <li>« Je préfère gérer moi-même »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Transparence sur les services inclus</li>
+        <li>Réactivité et disponibilité prouvées</li>
+        <li>Avis et témoignages de propriétaires</li>
+        <li>Clarté du taux de commission</li>
+        <li>Légitimité (Carte G, expérience terrain)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-label"><span class="section-num">03</span>Objectifs du site</div>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3>① Génération de leads</h3>
+      <p>Objectif principal : capter des propriétaires bailleurs qualifiés via des formulaires et CTA stratégiquement placés.</p>
+    </div>
+    <div class="card">
+      <h3>② Réassurance & confiance</h3>
+      <p>Lever les doutes grâce aux preuves sociales, à la mise en avant de la Carte G et à la transparence des services.</p>
+    </div>
+    <div class="card">
+      <h3>③ SEO local</h3>
+      <p>Positionner Urban Helper Services sur les requêtes de propriétaires en zone rurale autour de Denver.</p>
+    </div>
+    <div class="card">
+      <h3>④ Prise de rendez-vous</h3>
+      <p>Faciliter le premier contact avec un système de réservation en ligne simple et rapide.</p>
+    </div>
+    <div class="card">
+      <h3>⑤ Conversion</h3>
+      <p>Transformer les visiteurs en prospects qualifiés grâce à un tunnel de conversion clair et sans friction.</p>
+    </div>
+    <div class="card">
+      <h3>⑥ Notoriété locale</h3>
+      <p>Affirmer l'expertise d'Urban Helper Services comme la référence conciergerie dans les comtés ruraux de Denver.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-label"><span class="section-num">04</span>Arborescence du site</div>
+  <h2 class="section-title">Structure et stratégie SEO des pages</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Denver</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Services</strong></td>
+          <td>PAS</td>
+          <td>gestion locative complète comtés ruraux Denver</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos</strong></td>
+          <td>BAB</td>
+          <td>conciergerie de confiance zone rurale Denver</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Tarifs</strong></td>
+          <td>AIDA</td>
+          <td>commission conciergerie location Denver</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO Local — Jefferson County</strong></td>
+          <td>PAS</td>
+          <td>conciergerie locative Jefferson County Colorado</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO Local — Douglas County</strong></td>
+          <td>PAS</td>
+          <td>conciergerie locative Douglas County Colorado</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils propriétaires location courte durée Colorado</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / Devis</strong></td>
+          <td>AIDA</td>
+          <td>devis conciergerie location Denver</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-label"><span class="section-num">05</span>Cocon sémantique</div>
+  <h2 class="section-title">Clusters thématiques & maillage interne</h2>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <h3>Cluster 1 — Gestion locative & services</h3>
+      <p>Regroupe toutes les pages liées à l'offre : Nos Services, Tarifs, pages SEO locales. Ce cluster cible les propriétaires en phase de comparaison active.</p>
+    </div>
+    <div class="card">
+      <h3>Cluster 2 — Confiance & expertise locale</h3>
+      <p>Regroupe À propos, Blog et témoignages. Ce cluster cible les propriétaires hésitants qui cherchent à se rassurer avant de prendre contact.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom: 0;">
+    <h3 style="margin-bottom: 20px;">Logique de maillage interne</h3>
+    <div class="maillage-item">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services, À propos, Contact</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Nos Services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Tarifs, Pages SEO locales, Contact</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Pages SEO locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services, Contact, Articles Blog</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Articles Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services, Contact / Devis</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services, Contact</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Tarifs</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact / Devis, Nos Services</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-label"><span class="section-num">06</span>Tunnel de conversion</div>
+  <h2 class="section-title">Du premier clic à la prise de contact</h2>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 01</div>
+      <h3>Découverte</h3>
+      <p><strong>Source :</strong> Recherche Google, SEO local, bouche-à-oreille</p>
+      <p><strong>Page :</strong> Accueil ou page SEO locale</p>
+      <span class="cta-badge">Découvrir nos services →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 02</div>
+      <h3>Intérêt</h3>
+      <p><strong>Source :</strong> Navigation interne, Blog</p>
+      <p><strong>Page :</strong> Nos Services, Tarifs</p>
+      <span class="cta-badge">Télécharger le guide gratuit →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 03</div>
+      <h3>Confiance</h3>
+      <p><strong>Source :</strong> Témoignages, À propos, Blog</p>
+      <p><strong>Page :</strong> À propos, Articles Blog</p>
+      <span class="cta-badge">Voir les avis clients →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 04</div>
+      <h3>Conversion</h3>
+      <p><strong>Source :</strong> CTA récurrents sur toutes les pages</p>
+      <p><strong>Page :</strong> Contact / Devis, prise de RDV</p>
+      <span class="cta-badge">Obtenir mon devis gratuit →</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-label"><span class="section-num">07</span>Leviers marketing recommandés</div>
+  <h2 class="section-title">Outils pour générer et convertir des leads</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🎁 Lead Magnet</h3>
+      <p><strong>« Guide du propriétaire rural »</strong> — Un PDF pratique : comment rentabiliser un bien en zone rurale autour de Denver, checklist d'entretien, erreurs à éviter. Téléchargeable en échange d'un email.</p>
+    </div>
+    <div class="card">
+      <h3>📅 Prise de rendez-vous</h3>
+      <p>Intégration de <strong>Calendly</strong> pour une prise de RDV téléphonique en 2 clics. Slot de 20 min libellé "Évaluation gratuite de votre bien".</p>
+    </div>
+    <div class="card">
+      <h3>⭐ Preuve sociale</h3>
+      <p>Témoignages de propriétaires (format texte + photo), nombre de biens gérés, durée d'expérience. Widget Google Reviews intégré. Cas pratique : "Avant / Après Urban Helper".</p>
+    </div>
+    <div class="card">
+      <h3>📋 Formulaire qualifiant</h3>
+      <p>Champs recommandés : Prénom & Nom · Email · Téléphone · Localisation du bien · Type de bien (maison, appartement…) · Nombre de biens · Message libre.</p>
+    </div>
+    <div class="card">
+      <h3>📧 Newsletter</h3>
+      <p>Angle éditorial : <strong>"Le fil du propriétaire"</strong> — conseils saisonniers, actualités du marché locatif Colorado, retours d'expérience terrain, astuces de rentabilité. Fréquence mensuelle.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-label"><span class="section-num">08</span>Direction visuelle & éditoriale</div>
+  <h2 class="section-title">Identité graphique recommandée</h2>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <h3 style="margin-bottom: 24px;">Palette de couleurs</h3>
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #0d0d0d;"></div>
+        <div class="palette-name">Noir Profond</div>
+        <div class="palette-hex">#0D0D0D</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #ffffff; border: 1px solid #e0e0e0;"></div>
+        <div class="palette-name">Blanc Pur</div>
+        <div class="palette-hex">#FFFFFF</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #2c2c2c;"></div>
+        <div class="palette-name">Anthracite</div>
+        <div class="palette-hex">#2C2C2C</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #888888;"></div>
+        <div class="palette-name">Gris Moyen</div>
+        <div class="palette-hex">#888888</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #f2f2f2; border: 1px solid #e0e0e0;"></div>
+        <div class="palette-name">Gris Clair</div>
+        <div class="palette-hex">#F2F2F2</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-bottom: 16px;">Univers visuel recommandé</h3>
+    <ul style="padding-left: 16px;">
+      <li style="margin-bottom: 8px; font-size: 14px; color: #444;"><strong>Photographies minimalistes</strong> de biens ruraux Colorado : grands espaces, maisons isolées, paysages montagneux en noir et blanc ou désaturés.</li>
+      <li style="margin-bottom: 8px; font-size: 14px; color: #444;"><strong>Typographie sobre et élégante</strong> : Playfair Display pour les titres, Inter pour les textes — contraste fort fond sombre / texte blanc.</li>
+      <li style="margin-bottom: 8px; font-size: 14px; color: #444;"><strong>Mise en page épurée</strong> façon Google / éditoriale premium : grands blancs, peu d'éléments, contenu respirant.</li>
+      <li style="margin-bottom: 8px; font-size: 14px; color: #444;"><strong>Icônes linéaires fines</strong> en noir sur fond blanc — pas de couleurs vives ni d'effets décoratifs.</li>
+      <li style="font-size: 14px; color: #444;"><strong>Sections en alternance</strong> fond blanc / fond gris très clair pour structurer sans surcharger.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-label"><span class="section-num">09</span>Articles blog recommandés</div>
+  <h2 class="section-title">Stratégie de contenu — 6 sujets prioritaires</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Pourquoi confier son bien rural près de Denver à une conciergerie plutôt qu'un particulier ?</strong></td>
+          <td>Confiance & expertise</td>
+          <td>Informationnelle — propriétaire hésitant</td>
+          <td><span class="badge badge-prio">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Gestion locative en comté rural Colorado : les 5 erreurs que font les propriétaires seuls</strong></td>
+          <td>Gestion locative</td>
+          <td>Informationnelle — propriétaire autonome</td>
+          <td><span class="badge badge-prio">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Jefferson County : opportunités et défis de la location courte durée en 2025</strong></td>
+          <td>SEO local</td>
+          <td>Informationnelle — investisseur local</td>
+          <td><span class="badge badge-prio">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Combien coûte vraiment une conciergerie locative ? Tout comprendre sur les commissions</strong></td>
+          <td>Gestion locative</td>
+          <td>Transactionnelle — comparaison de prix</td>
+          <td><span class="badge badge-med">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Checklist saisonnière : préparer son bien rural pour l'hiver au Colorado</strong></td>
+          <td>Confiance & expertise</td>
+          <td>Informationnelle — propriétaire en recherche de conseils</td>
+          <td><span class="badge badge-med">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Location courte durée vs longue durée en zone rurale Denver : que choisir en 2025 ?</strong></td>
+          <td>Gestion locative</td>
+          <td>Informationnelle — propriétaire indécis</td>
+          <td><span class="badge badge-low">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <p style="margin-bottom: 6px; font-weight: 600; color: rgba(255,255,255,0.6); letter-spacing: 1px;">URBAN HELPER SERVICES</p>
+  <p>Document confidentiel — Réalisé par AR Digital · Tous droits réservés</p>
+</footer>
+
+<style>
+  .bp-validation-box {
+    position: relative;
+    margin: 40px 0 18px;
+    padding: 26px 28px;
+    background: #ffffff;
+    border: 2px solid #E63329;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.25s ease;
+  }
+
+  .bp-validation-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: #E63329;
+    transition: background 0.25s ease;
+  }
+
+  .bp-validation-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 5px 10px;
+    background: #E63329;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .bp-validation-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 7px;
+  }
+
+  .bp-validation-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555555;
+    margin-bottom: 20px;
+  }
+
+  .bp-validation-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .bp-validation-btn {
+    padding: 13px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .bp-validation-approve {
+    background: #1a1a1a;
+    color: #ffffff;
+    border: 2px solid #1a1a1a;
+  }
+
+  .bp-validation-approve:hover {
+    background: #333333;
+    border-color: #333333;
+    transform: translateY(-1px);
+  }
+
+  .bp-validation-comment {
+    background: #ffffff;
+    color: #1a1a1a;
+    border: 2px solid #d8d8d8;
+  }
+
+  .bp-validation-comment:hover {
+    border-color: #E63329;
+    color: #E63329;
+    background: #fff8f7;
+    transform: translateY(-1px);
+  }
+
+  .bp-comment-area {
+    display: none;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .bp-comment-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .bp-comment-help {
+    margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #666666;
+  }
+
+  .bp-comment-textarea {
+    width: 100%;
+    min-height: 120px;
+    box-sizing: border-box;
+    padding: 14px;
+    border: 2px solid #d8d8d8;
+    border-radius: 8px;
+    resize: vertical;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    outline: none;
+  }
+
+  .bp-comment-textarea:focus {
+    border-color: #E63329;
+  }
+
+  .bp-comment-error {
+    display: none;
+    margin-top: 7px;
+    color: #E63329;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .bp-save-comment {
+    margin-top: 12px;
+    background: #1a1a1a;
+    color: #ffffff;
+    border: 2px solid #1a1a1a;
+  }
+
+  .bp-save-comment:hover {
+    background: #333333;
+    border-color: #333333;
+  }
+
+  .bp-validation-result {
+    display: none;
+  }
+
+  .bp-result-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .bp-result-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    border-radius: 50%;
+    background: #198754;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .bp-result-title {
+    color: #146c43;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .bp-result-comment {
+    display: none;
+    margin: 14px 0;
+    padding: 14px 16px;
+    background: #ffffff;
+    border: 1px solid #b7dfc9;
+    border-radius: 8px;
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+  }
+
+  .bp-edit-choice {
+    margin-top: 8px;
+    padding: 9px 13px;
+    background: transparent;
+    color: #555555;
+    border: 1px solid #b7c9be;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .bp-edit-choice:hover {
+    background: #ffffff;
+    color: #1a1a1a;
+  }
+
+  .bp-validation-box.bp-completed {
+    background: #f2fbf6;
+    border-color: #198754;
+    box-shadow: 0 6px 20px rgba(25, 135, 84, 0.10);
+  }
+
+  .bp-validation-box.bp-completed::before {
+    background: #198754;
+  }
+
+  .bp-validation-box.bp-completed .bp-validation-label {
+    background: #198754;
+  }
+
+
+  /* ============================= */
+  /* VALIDATION FINALE             */
+  /* ============================= */
+
+  .bp-final-validation {
+    margin: 60px 0 30px;
+    padding: 32px;
+    background: #f7f7f7;
+    border: 2px solid #d8d8d8;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
+  }
+
+  .bp-final-validation.bp-final-ready {
+    background: #f2fbf6;
+    border-color: #198754;
+  }
+
+  .bp-final-label {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 6px 11px;
+    background: #1a1a1a;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .bp-final-ready .bp-final-label {
+    background: #198754;
+  }
+
+  .bp-final-title {
+    margin: 0 0 8px;
+    color: #1a1a1a;
+    font-size: 26px;
+    line-height: 1.25;
+    font-weight: 800;
+  }
+
+  .bp-final-intro {
+    margin: 0 0 24px;
+    color: #555555;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .bp-final-progress {
+    margin-bottom: 25px;
+  }
+
+  .bp-final-progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 9px;
+  }
+
+  .bp-final-progress-text {
+    color: #1a1a1a;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .bp-final-progress-count {
+    color: #E63329;
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .bp-final-ready .bp-final-progress-count {
+    color: #198754;
+  }
+
+  .bp-final-progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #e1e1e1;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .bp-final-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #E63329;
+    border-radius: 20px;
+    transition: width 0.3s ease, background 0.3s ease;
+  }
+
+  .bp-final-ready .bp-final-progress-fill {
+    background: #198754;
+  }
+
+  .bp-final-list {
+    margin: 0 0 26px;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  .bp-final-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .bp-final-item:last-child {
+    border-bottom: 0;
+  }
+
+  .bp-final-item-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .bp-final-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    border-radius: 50%;
+    background: #eeeeee;
+    color: #777777;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .bp-final-item.bp-item-completed .bp-final-icon {
+    background: #198754;
+    color: #ffffff;
+  }
+
+  .bp-final-section-name {
+    color: #333333;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .bp-final-status {
+    flex: 0 0 auto;
+    color: #888888;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .bp-final-item.bp-item-completed .bp-final-status {
+    color: #198754;
+  }
+
+  .bp-final-warning {
+    margin-bottom: 22px;
+    padding: 14px 16px;
+    background: #fff3f2;
+    border: 1px solid #f3c1bd;
+    border-radius: 8px;
+    color: #9c2e27;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  .bp-final-success-message {
+    display: none;
+    margin-bottom: 22px;
+    padding: 14px 16px;
+    background: #eaf7ef;
+    border: 1px solid #b7dfc9;
+    border-radius: 8px;
+    color: #146c43;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 700;
+  }
+
+  .bp-final-confirmation {
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    opacity: 0.5;
+    pointer-events: none;
+    transition: all 0.25s ease;
+  }
+
+  .bp-final-confirmation.bp-confirmation-enabled {
+    opacity: 1;
+    pointer-events: auto;
+    border-color: #b7dfc9;
+  }
+
+  .bp-final-checkbox-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+  }
+
+  .bp-final-checkbox {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    margin-top: 2px;
+    accent-color: #198754;
+    cursor: pointer;
+  }
+
+  .bp-final-checkbox-text {
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .bp-final-reference-note {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #eeeeee;
+    color: #666666;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .bp-final-submit {
+    width: 100%;
+    margin-top: 18px;
+    padding: 16px 20px;
+    background: #cccccc;
+    color: #777777;
+    border: 0;
+    border-radius: 9px;
+    cursor: not-allowed;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    transition: all 0.2s ease;
+  }
+
+  .bp-final-submit.bp-submit-enabled {
+    background: #198754;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .bp-final-submit.bp-submit-enabled:hover {
+    background: #146c43;
+    transform: translateY(-1px);
+  }
+
+
+  @media (max-width: 600px) {
+
+    .bp-validation-box {
+      padding: 22px 20px;
+    }
+
+    .bp-validation-actions {
+      flex-direction: column;
+    }
+
+    .bp-validation-btn {
+      width: 100%;
+    }
+
+    .bp-final-validation {
+      padding: 24px 18px;
+    }
+
+    .bp-final-title {
+      font-size: 22px;
+    }
+
+    .bp-final-item {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .bp-final-status {
+      padding-left: 34px;
+      text-align: left;
+    }
+
+  }
+</style>
+
+
+<div id="bp-validation-template" style="display:none;">
+
+  <div class="bp-validation-box">
+
+    <div class="bp-validation-pending">
+
+      <div class="bp-validation-label">
+        Action requise
+      </div>
+
+      <div class="bp-validation-title">
+        Validez cette section
+      </div>
+
+      <div class="bp-validation-text">
+        Vérifiez attentivement les informations ci-dessus avant de poursuivre.
+        Validez cette section si elle vous convient, ou indiquez les modifications
+        que vous souhaitez apporter.
+      </div>
+
+      <div class="bp-validation-actions">
+
+        <button
+          type="button"
+          class="bp-validation-btn bp-validation-approve"
+        >
+          ✓ Je valide cette section
+        </button>
+
+        <button
+          type="button"
+          class="bp-validation-btn bp-validation-comment"
+        >
+          ✏️ J'ai une modification ou un commentaire
+        </button>
+
+      </div>
+
+
+      <div class="bp-comment-area">
+
+        <label class="bp-comment-label">
+          Votre demande de modification
+        </label>
+
+        <div class="bp-comment-help">
+          Décrivez précisément ce que vous souhaitez modifier, ajouter ou supprimer
+          dans cette section.
+        </div>
+
+        <textarea
+          class="bp-comment-textarea"
+          placeholder="Écrivez votre commentaire ou votre demande de modification ici..."
+        ></textarea>
+
+        <div class="bp-comment-error">
+          Merci d'indiquer votre demande avant de l'enregistrer.
+        </div>
+
+        <button
+          type="button"
+          class="bp-validation-btn bp-save-comment"
+        >
+          ✓ Enregistrer ma modification
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="bp-validation-result">
+
+      <div class="bp-validation-label">
+        Section complétée
+      </div>
+
+      <div class="bp-result-header">
+
+        <div class="bp-result-check">
+          ✓
+        </div>
+
+        <div class="bp-result-title">
+          Section validée
+        </div>
+
+      </div>
+
+      <div class="bp-result-comment"></div>
+
+      <button
+        type="button"
+        class="bp-edit-choice"
+      >
+        Modifier mon choix
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div id="bp-final-validation-template" style="display:none;">
+
+  <div class="bp-final-validation">
+
+    <div class="bp-final-label">
+      Validation finale
+    </div>
+
+    <h2 class="bp-final-title">
+      Validez définitivement votre retour
+    </h2>
+
+    <p class="bp-final-intro">
+      Avant de transmettre votre Blueprint à notre équipe, vous devez avoir
+      validé ou commenté chacune des 9 sections ci-dessus.
+    </p>
+
+
+    <div class="bp-final-progress">
+
+      <div class="bp-final-progress-top">
+
+        <div class="bp-final-progress-text">
+          Progression de votre validation
+        </div>
+
+        <div class="bp-final-progress-count">
+          0 / 9
+        </div>
+
+      </div>
+
+      <div class="bp-final-progress-bar">
+        <div class="bp-final-progress-fill"></div>
+      </div>
+
+    </div>
+
+
+    <ul class="bp-final-list">
+
+      <li class="bp-final-item" data-summary-section="bp-section-01">
+        <div class="bp-final-item-left">
+          <span class="bp-final-icon">○</span>
+          <span class="bp-final-section-name">Positionnement</span>
+        </div>
+        <span class="bp-final-status">À valider</span>
+      </li>
+
+      <li class="bp-final-item" data-summary-section="bp-section-02">
+        <div class="bp-final-item-left">
+          <span class="bp-final-icon">○</span>
+          <span class="bp-final-section-name">Client cible</span>
+        </div>
+        <span class="bp-final-status">À valider</span>
+      </li>
+
+      <li class="bp-final-item" data-summary-section="bp-section-03">
+        <div class="bp-final-item-left">
+          <span class="bp-final-icon">○</span>
+          <span class="bp-final-section-name">Objectifs du site</span>
+        </div>
+        <span class="bp-final-status">À valider</span>
+      </li>
+
+      <li class="bp-final-item" data-summary-section="bp-section-04">
+        <div class="bp-final-item-left">
+          <span class="bp-final-icon">○</span>
+          <span class="bp-final-section-name">Arborescence</span>
+        </div>
+        <span class="bp-final-status">À valider</span>
+      </li>
+
+      <li class="bp-final-item" data-summary-section="bp-section-05">
+        <div class="bp-final-item-left">
+          <span class="bp-final-icon">○</span>
+          <span class="bp-final-section-name">Cocon sémantique</span>
+        </div>
+        <span class="bp-final-status">À valider</span>
+      </li>
+
+      <li class="bp-final-item" data-summary-section="bp-section-06">
+        <div class="bp-final-item-left">
+          <span class="bp-final-icon">○</span>
+          <span class="bp-final-section-name">Tunnel de conversion</span>
+        </div>
+        <span class="bp-final-status">À valider</span>
+      </li>
+
+      <li class="bp-final-item" data-summary-section="bp-section-07">
+        <div class="bp-final-item-left">
+          <span class="bp-final-icon">○</span>
+          <span class="bp-final-section-name">Leviers de croissance</span>
+        </div>
+        <span class="bp-final-status">À valider</span>
+      </li>
+
+      <li class="bp-final-item" data-summary-section="bp-section-08">
+        <div class="bp-final-item-left">
+          <span class="bp-final-icon">○</span>
+          <span class="bp-final-section-name">Direction visuelle</span>
+        </div>
+        <span class="bp-final-status">À valider</span>
+      </li>
+
+      <li class="bp-final-item" data-summary-section="bp-section-09">
+        <div class="bp-final-item-left">
+          <span class="bp-final-icon">○</span>
+          <span class="bp-final-section-name">Articles de blog</span>
+        </div>
+        <span class="bp-final-status">À valider</span>
+      </li>
+
+    </ul>
+
+
+    <div class="bp-final-warning">
+      Il reste 9 sections à valider avant de pouvoir transmettre votre retour.
+    </div>
+
+    <div class="bp-final-success-message">
+      ✓ Toutes les sections ont été complétées. Vous pouvez maintenant confirmer
+      et transmettre votre retour.
+    </div>
+
+
+    <div class="bp-final-confirmation">
+
+      <label class="bp-final-checkbox-row">
+
+        <input
+          type="checkbox"
+          class="bp-final-checkbox"
+          disabled
+        >
+
+        <span class="bp-final-checkbox-text">
+          Je confirme avoir relu l'intégralité du Blueprint ainsi que mes
+          éventuels commentaires et demandes de modification. Je confirme que
+          le Blueprint et les retours formulés ci-dessus constituent les
+          instructions de référence à prendre en compte pour la conception
+          de mon site.
+        </span>
+
+      </label>
+
+      <div class="bp-final-reference-note">
+        La conception de votre site sera réalisée sur la base du Blueprint
+        et des demandes de modification que vous validez ici. Toute demande
+        majeure formulée après cette validation et nécessitant de revenir sur
+        un travail déjà réalisé pourra entraîner une facturation complémentaire.
+      </div>
+
+      <button
+        type="button"
+        class="bp-final-submit"
+        disabled
+      >
+        VALIDER ET TRANSMETTRE MON RETOUR
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const BLUEPRINT_ID = "6aaad1df62f9691e8ac07366";
+  const CLIENT_EMAIL = "";
+
+  const sections = document.querySelectorAll('[id^="bp-section-"]');
+  const template = document.querySelector("#bp-validation-template");
+  const finalTemplate = document.querySelector("#bp-final-validation-template");
+
+  const blueprintResponses = {};
+
+  const sectionNames = {
+    "bp-section-01": "Positionnement",
+    "bp-section-02": "Client cible",
+    "bp-section-03": "Objectifs du site",
+    "bp-section-04": "Arborescence",
+    "bp-section-05": "Cocon sémantique",
+    "bp-section-06": "Tunnel de conversion",
+    "bp-section-07": "Leviers de croissance",
+    "bp-section-08": "Direction visuelle",
+    "bp-section-09": "Articles de blog"
+  };
+
+
+  console.log("Blueprint ID :", BLUEPRINT_ID);
+  console.log("Client email :", CLIENT_EMAIL);
+  console.log("Sections Blueprint détectées :", sections.length);
+
+
+  if (!template || !finalTemplate) {
+    console.log("Template de validation introuvable");
+    return;
+  }
+
+
+  const finalValidation =
+    finalTemplate.firstElementChild.cloneNode(true);
+
+  document.body.appendChild(finalValidation);
+
+
+  const progressCount =
+    finalValidation.querySelector(".bp-final-progress-count");
+
+  const progressFill =
+    finalValidation.querySelector(".bp-final-progress-fill");
+
+  const finalWarning =
+    finalValidation.querySelector(".bp-final-warning");
+
+  const finalSuccessMessage =
+    finalValidation.querySelector(".bp-final-success-message");
+
+  const finalConfirmation =
+    finalValidation.querySelector(".bp-final-confirmation");
+
+  const finalCheckbox =
+    finalValidation.querySelector(".bp-final-checkbox");
+
+  const finalSubmit =
+    finalValidation.querySelector(".bp-final-submit");
+
+
+  function updateFinalValidation() {
+
+    let completedCount = 0;
+
+
+    Object.keys(sectionNames).forEach(function (sectionId) {
+
+      const summaryItem =
+        finalValidation.querySelector(
+          '[data-summary-section="' + sectionId + '"]'
+        );
+
+      if (!summaryItem) {
+        return;
+      }
+
+      const icon =
+        summaryItem.querySelector(".bp-final-icon");
+
+      const status =
+        summaryItem.querySelector(".bp-final-status");
+
+      const response =
+        blueprintResponses[sectionId];
+
+
+      if (response) {
+
+        completedCount++;
+
+        summaryItem.classList.add("bp-item-completed");
+
+        icon.textContent = "✓";
+
+        if (response.status === "comment") {
+          status.textContent = "Modification enregistrée";
+        } else {
+          status.textContent = "Validé";
+        }
+
+      } else {
+
+        summaryItem.classList.remove("bp-item-completed");
+
+        icon.textContent = "○";
+        status.textContent = "À valider";
+
+      }
+
+    });
+
+
+    progressCount.textContent =
+      completedCount + " / 9";
+
+    const percentage =
+      (completedCount / 9) * 100;
+
+    progressFill.style.width =
+      percentage + "%";
+
+
+    if (completedCount === 9) {
+
+      finalValidation.classList.add("bp-final-ready");
+
+      finalWarning.style.display = "none";
+      finalSuccessMessage.style.display = "block";
+
+      finalConfirmation.classList.add(
+        "bp-confirmation-enabled"
+      );
+
+      finalCheckbox.disabled = false;
+
+    } else {
+
+      finalValidation.classList.remove("bp-final-ready");
+
+      finalSuccessMessage.style.display = "none";
+      finalWarning.style.display = "block";
+
+      const remaining =
+        9 - completedCount;
+
+      if (remaining === 1) {
+
+        finalWarning.textContent =
+          "Il reste 1 section à valider avant de pouvoir transmettre votre retour.";
+
+      } else {
+
+        finalWarning.textContent =
+          "Il reste " +
+          remaining +
+          " sections à valider avant de pouvoir transmettre votre retour.";
+
+      }
+
+      finalConfirmation.classList.remove(
+        "bp-confirmation-enabled"
+      );
+
+      finalCheckbox.checked = false;
+      finalCheckbox.disabled = true;
+
+      finalSubmit.disabled = true;
+      finalSubmit.classList.remove(
+        "bp-submit-enabled"
+      );
+
+    }
+
+  }
+
+
+  finalCheckbox.addEventListener("change", function () {
+
+    if (
+      Object.keys(blueprintResponses).length === 9 &&
+      finalCheckbox.checked
+    ) {
+
+      finalSubmit.disabled = false;
+      finalSubmit.classList.add(
+        "bp-submit-enabled"
+      );
+
+    } else {
+
+      finalSubmit.disabled = true;
+      finalSubmit.classList.remove(
+        "bp-submit-enabled"
+      );
+
+    }
+
+  });
+
+
+  finalSubmit.addEventListener("click", function () {
+
+    if (
+      finalSubmit.disabled ||
+      Object.keys(blueprintResponses).length !== 9 ||
+      !finalCheckbox.checked
+    ) {
+      return;
+    }
+
+    console.log(
+      "Validation finale prête à être envoyée :",
+      {
+        blueprint_id: BLUEPRINT_ID,
+        email_client: CLIENT_EMAIL,
+        sections: blueprintResponses
+      }
+    );
+
+    alert(
+      "Test réussi : votre retour complet est prêt à être transmis."
+    );
+
+  });
+
+
+  sections.forEach(function (section) {
+
+    const validationBox =
+      template.firstElementChild.cloneNode(true);
+
+    const sectionId =
+      section.id;
+
+    validationBox.setAttribute(
+      "data-section-id",
+      sectionId
+    );
+
+    section.appendChild(validationBox);
+
+
+    const pendingArea =
+      validationBox.querySelector(".bp-validation-pending");
+
+    const resultArea =
+      validationBox.querySelector(".bp-validation-result");
+
+    const approveButton =
+      validationBox.querySelector(".bp-validation-approve");
+
+    const commentButton =
+      validationBox.querySelector(".bp-validation-comment");
+
+    const commentArea =
+      validationBox.querySelector(".bp-comment-area");
+
+    const textarea =
+      validationBox.querySelector(".bp-comment-textarea");
+
+    const commentError =
+      validationBox.querySelector(".bp-comment-error");
+
+    const saveCommentButton =
+      validationBox.querySelector(".bp-save-comment");
+
+    const resultTitle =
+      validationBox.querySelector(".bp-result-title");
+
+    const resultComment =
+      validationBox.querySelector(".bp-result-comment");
+
+    const editButton =
+      validationBox.querySelector(".bp-edit-choice");
+
+
+    approveButton.addEventListener("click", function () {
+
+      blueprintResponses[sectionId] = {
+        section_id: sectionId,
+        section_name: sectionNames[sectionId] || sectionId,
+        status: "validated",
+        comment: ""
+      };
+
+      validationBox.classList.add("bp-completed");
+
+      pendingArea.style.display = "none";
+      resultArea.style.display = "block";
+
+      resultTitle.textContent =
+        "Section validée";
+
+      resultComment.textContent = "";
+      resultComment.style.display = "none";
+
+      updateFinalValidation();
+
+    });
+
+
+    commentButton.addEventListener("click", function () {
+
+      commentArea.style.display = "block";
+      commentError.style.display = "none";
+
+      textarea.focus();
+
+    });
+
+
+    saveCommentButton.addEventListener("click", function () {
+
+      const comment =
+        textarea.value.trim();
+
+      if (comment === "") {
+
+        commentError.style.display = "block";
+        textarea.focus();
+
+        return;
+
+      }
+
+      commentError.style.display = "none";
+
+      blueprintResponses[sectionId] = {
+        section_id: sectionId,
+        section_name: sectionNames[sectionId] || sectionId,
+        status: "comment",
+        comment: comment
+      };
+
+      validationBox.classList.add("bp-completed");
+
+      pendingArea.style.display = "none";
+      resultArea.style.display = "block";
+
+      resultTitle.textContent =
+        "Modification enregistrée";
+
+      resultComment.textContent =
+        comment;
+
+      resultComment.style.display =
+        "block";
+
+      updateFinalValidation();
+
+    });
+
+
+    editButton.addEventListener("click", function () {
+
+      const previousResponse =
+        blueprintResponses[sectionId];
+
+      validationBox.classList.remove(
+        "bp-completed"
+      );
+
+      resultArea.style.display =
+        "none";
+
+      pendingArea.style.display =
+        "block";
+
+      commentError.style.display =
+        "none";
+
+
+      if (
+        previousResponse &&
+        previousResponse.status === "comment"
+      ) {
+
+        textarea.value =
+          previousResponse.comment || "";
+
+        commentArea.style.display =
+          "block";
+
+      } else {
+
+        textarea.value = "";
+        commentArea.style.display =
+          "none";
+
+      }
+
+
+      delete blueprintResponses[sectionId];
+
+      updateFinalValidation();
+
+    });
+
+  });
+
+
+  updateFinalValidation();
+
+});
+</script>
+
+</body>
+</html>
