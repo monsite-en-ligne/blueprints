@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blueprint Stratégique — Christelle Conciergerie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blanc: #FFFFFF;
+      --ecru: #F5F0E8;
+      --ecru-light: #FAF7F2;
+      --noir: #1A1A1A;
+      --dore: #C9A84C;
+      --dore-light: #E8D5A3;
+      --dore-pale: #F7EFD8;
+      --gris: #6B6B6B;
+      --gris-light: #E8E8E8;
+      --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--noir);
+      background: var(--blanc);
+    }
+
+    /* ========== COVER ========== */
+    .cover {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1A1A1A 0%, #2C2620 40%, #3A3020 70%, #1A1A1A 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cover-badge {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--dore);
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+
+    .cover-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 68px;
+      font-weight: 700;
+      color: var(--blanc);
+      line-height: 1.15;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .cover-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--dore-light);
+      letter-spacing: 1px;
+      margin-bottom: 60px;
+    }
+
+    .cover-meta {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cover-meta-item {
+      text-align: center;
+    }
+
+    .cover-meta-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--dore);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .cover-meta-value {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      font-weight: 300;
+    }
+
+    .cover-line {
+      width: 60px;
+      height: 1px;
+      background: var(--dore);
+      opacity: 0.4;
+    }
+
+    /* ========== SECTIONS ========== */
+    section {
+      padding: 80px 60px;
+      page-break-inside: avoid;
+    }
+
+    section:nth-child(even) {
+      background: var(--ecru-light);
+    }
+
+    section:nth-child(odd):not(.cover) {
+      background: var(--blanc);
+    }
+
+    .section-badge {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--dore);
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--noir);
+      margin-bottom: 10px;
+    }
+
+    .section-intro {
+      font-size: 15px;
+      color: var(--gris);
+      margin-bottom: 48px;
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    .section-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--dore);
+      margin-bottom: 48px;
+    }
+
+    /* ========== CARDS ========== */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--blanc);
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(201,168,76,0.08);
+    }
+
+    .card-icon {
+      font-size: 22px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--noir);
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      font-size: 14px;
+      color: var(--gris);
+      line-height: 1.7;
+    }
+
+    /* ========== HIGHLIGHT ========== */
+    .highlight-box {
+      background: linear-gradient(135deg, #1A1A1A 0%, #2C2620 100%);
+      border-radius: 16px;
+      padding: 40px 48px;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight-box::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 200px; height: 200px;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .highlight-box .promesse {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--blanc);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .highlight-box .promesse-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--dore);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    /* ========== LISTS ========== */
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      background: var(--dore-pale);
+      border: 1px solid var(--dore-light);
+      color: var(--noir);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .tag-dark {
+      background: var(--noir);
+      color: var(--blanc);
+      border: 1px solid var(--noir);
+    }
+
+    /* ========== TABLE ========== */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--gris-light);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: var(--blanc);
+    }
+
+    thead tr {
+      background: var(--noir);
+    }
+
+    thead th {
+      color: var(--blanc);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 16px 20px;
+      text-align: left;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--ecru);
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody td {
+      padding: 16px 20px;
+      color: var(--noir);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+
+    tbody tr:hover {
+      background: var(--ecru-light);
+    }
+
+    /* ========== SEO BADGES ========== */
+    .badge-seo {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .badge-fort {
+      background: #E8F5E9;
+      color: #2E7D32;
+      border: 1px solid #A5D6A7;
+    }
+
+    .badge-moyen {
+      background: #FFF8E1;
+      color: #F57F17;
+      border: 1px solid #FFE082;
+    }
+
+    .badge-faible {
+      background: #FAFAFA;
+      color: #757575;
+      border: 1px solid #E0E0E0;
+    }
+
+    /* ========== PRIORITY BADGES ========== */
+    .badge-prioritaire {
+      background: #1A1A1A;
+      color: var(--blanc);
+      display: inline-block;
+      padding: 3px 11px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .badge-moyen-p {
+      background: var(--dore-pale);
+      color: var(--noir);
+      border: 1px solid var(--dore-light);
+      display: inline-block;
+      padding: 3px 11px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .badge-faible-p {
+      background: #FAFAFA;
+      color: #757575;
+      border: 1px solid #E0E0E0;
+      display: inline-block;
+      padding: 3px 11px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* ========== PALETTE ========== */
+    .palette-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
+    .palette-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .palette-swatch {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .palette-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--noir);
+      text-align: center;
+    }
+
+    .palette-hex {
+      font-size: 11px;
+      color: var(--gris);
+      text-align: center;
+    }
+
+    /* ========== TUNNEL ========== */
+    .tunnel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .tunnel-step {
+      background: var(--blanc);
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(201,168,76,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tunnel-step::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--dore);
+    }
+
+    .tunnel-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--dore-light);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .tunnel-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--dore);
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .tunnel-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--noir);
+      margin-bottom: 14px;
+    }
+
+    .tunnel-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .tunnel-meta {
+      font-size: 13px;
+      color: var(--gris);
+      line-height: 1.5;
+    }
+
+    .tunnel-meta strong {
+      color: var(--noir);
+      font-weight: 600;
+    }
+
+    /* ========== MAILLAGE ========== */
+    .maillage-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--ecru);
+    }
+
+    .maillage-item:last-child {
+      border-bottom: none;
+    }
+
+    .maillage-source {
+      font-weight: 600;
+      color: var(--noir);
+    }
+
+    .maillage-arrow {
+      color: var(--dore);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .maillage-target {
+      color: var(--gris);
+    }
+
+    /* ========== LEVIER CARDS ========== */
+    .levier-card {
+      background: var(--blanc);
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(201,168,76,0.08);
+    }
+
+    .levier-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--dore);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .levier-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--noir);
+      margin-bottom: 10px;
+    }
+
+    .levier-text {
+      font-size: 14px;
+      color: var(--gris);
+      line-height: 1.7;
+    }
+
+    /* ========== OBJECTIF LIST ========== */
+    .objectif-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .objectif-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--blanc);
+      border-radius: 14px;
+      padding: 20px 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(201,168,76,0.08);
+    }
+
+    .objectif-rank {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--dore-light);
+      min-width: 36px;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .objectif-content {}
+
+    .objectif-name {
+      font-weight: 600;
+      color: var(--noir);
+      font-size: 15px;
+    }
+
+    .objectif-desc {
+      font-size: 13px;
+      color: var(--gris);
+      margin-top: 2px;
+    }
+
+    /* ========== BLOG ========== */
+    .blog-card {
+      background: var(--blanc);
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(201,168,76,0.08);
+    }
+
+    .blog-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .blog-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--noir);
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .blog-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .blog-meta-item {
+      font-size: 12px;
+      color: var(--gris);
+      line-height: 1.4;
+    }
+
+    .blog-meta-item strong {
+      color: var(--noir);
+      font-weight: 600;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--noir);
+      padding: 40px 60px;
+      text-align: center;
+    }
+
+    .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--blanc);
+      margin-bottom: 8px;
+    }
+
+    .footer-gold {
+      color: var(--dore);
+    }
+
+    .footer-meta {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 1px;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .cover-title { font-size: 36px; }
+      .cover-meta { gap: 24px; }
+      section { padding: 48px 24px; }
+      .section-title { font-size: 26px; }
+      .grid-2, .grid-3, .grid-4, .tunnel-grid { grid-template-columns: 1fr; }
+      .highlight-box { padding: 28px 24px; }
+      .highlight-box .promesse { font-size: 18px; }
+      footer { padding: 32px 24px; }
+      .maillage-item { flex-wrap: wrap; }
+      .maillage-arrow { flex-shrink: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== COVER ========== -->
+<div class="cover">
+  <span class="cover-badge">Blueprint Stratégique — AR Digital</span>
+  <h1 class="cover-title">Christelle<br>Conciergerie</h1>
+  <p class="cover-subtitle">Document de stratégie web confidentiel</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Cliente</span>
+      <span class="cover-meta-value">Christelle Lelièvre</span>
+    </div>
+    <div class="cover-line"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Location courte durée</span>
+    </div>
+    <div class="cover-line"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Zone</span>
+      <span class="cover-meta-value">Vire Normandie</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 01 POSITIONNEMENT ========== -->
+<section id="bp-section-01">
+  <span class="section-badge">01</span>
+  <h2 class="section-title">Positionnement</h2>
+  <div class="section-divider"></div>
+
+  <div class="highlight-box">
+    <span class="promesse-label">Promesse de valeur principale</span>
+    <p class="promesse">Confier votre logement à Christelle, c'est choisir une alliée de confiance qui prend soin de votre bien comme si c'était le sien — pour que vous retrouviez la sérénité, et vos voyageurs, le bonheur d'un séjour réussi.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <span class="card-icon">✦</span>
+      <h3 class="card-title">Ligne directrice</h3>
+      <p class="card-text">Un accompagnement humain, local et sur mesure — où la relation de confiance prime sur la performance froide. Christelle Conciergerie ne gère pas des logements, elle prend soin des propriétaires et de leurs voyageurs.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✦</span>
+      <h3 class="card-title">Ton éditorial</h3>
+      <p class="card-text"><strong>Chaleureux · Rassurant · Authentique</strong><br/>Un ton proche et sincère, qui parle directement au propriétaire avec bienveillance, sans jargon technique ni promesse exagérée — comme une conversation entre gens de confiance.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; margin-bottom:20px; color:var(--noir);">Piliers de différenciation</h3>
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🤝</span>
+      <h3 class="card-title">Un interlocuteur unique</h3>
+      <p class="card-text">Christelle est l'unique référente du propriétaire du début à la fin. Pas de turn-over, pas d'intermédiaires — une relation directe et personnelle.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🏡</span>
+      <h3 class="card-title">L'œil d'une décoratrice attentive</h3>
+      <p class="card-text">Au-delà des prestations classiques, Christelle propose des conseils déco et d'ambiance pour valoriser le bien et le rendre plus attractif aux yeux des voyageurs.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📍</span>
+      <h3 class="card-title">Ancrage local fort</h3>
+      <p class="card-text">Basée à Vire Normandie, elle connaît le territoire, les attentes des voyageurs locaux et la saisonnalité du marché — un avantage que les plateformes nationales ne peuvent pas offrir.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✨</span>
+      <h3 class="card-title">Esprit cocooning & familial</h3>
+      <p class="card-text">Ni luxe ostentatoire, ni prestations standardisées — une approche douce, chaleureuse et sincère qui séduit les familles et les voyageurs en quête de vraie détente.</p>
+    </div>
+    <div class="card" style="grid-column: 1 / -1;">
+      <span class="card-icon">⚙️</span>
+      <h3 class="card-title">Technologie au service de la sérénité</h3>
+      <p class="card-text">Channel manager, tarification dynamique, accueil par boîte à clé connectée : les outils performants sont intégrés discrètement pour optimiser les revenus sans alourdir la relation humaine.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 02 CLIENT CIBLE ========== -->
+<section id="bp-section-02">
+  <span class="section-badge">02</span>
+  <h2 class="section-title">Client Cible</h2>
+  <div class="section-divider"></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">👤</span>
+      <h3 class="card-title">Profil type</h3>
+      <p class="card-text">Propriétaire de 38 à 60 ans, résidant dans ou autour de Vire Normandie. Il possède un bien secondaire, un héritage familial ou un logement vacant qu'il souhaite rentabiliser en location courte durée. Il travaille, a une vie bien remplie et manque de temps pour s'occuper des détails opérationnels.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">💡</span>
+      <h3 class="card-title">Motivations principales</h3>
+      <p class="card-text">Générer un complément de revenus sans effort quotidien. Déléguer en toute confiance à quelqu'un de local et de fiable. Valoriser son bien avec des conseils adaptés. Offrir une belle expérience à ses voyageurs sans s'en occuper lui-même.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">⚠️</span>
+      <h3 class="card-title">Freins & objections</h3>
+      <p class="card-text">« Est-ce que je peux vraiment faire confiance à quelqu'un pour entrer chez moi ? » « Et si mon bien est mal entretenu ? » « Les commissions sont-elles justifiées ? » « Je ne sais pas si ma zone géographique attire des voyageurs. »</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✅</span>
+      <h3 class="card-title">Critères de décision</h3>
+      <p class="card-text">La proximité géographique et la disponibilité de la conciergerie. La transparence sur les commissions et les services inclus. Les preuves de sérieux (avis, témoignages, photos). La sensation de traiter avec une vraie personne de confiance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 03 OBJECTIFS DU SITE ========== -->
+<section id="bp-section-03">
+  <span class="section-badge">03</span>
+  <h2 class="section-title">Objectifs du Site</h2>
+  <div class="section-divider"></div>
+
+  <div class="objectif-list">
+    <div class="objectif-item">
+      <span class="objectif-rank">1</span>
+      <div class="objectif-content">
+        <div class="objectif-name">Génération de leads propriétaires</div>
+        <div class="objectif-desc">Convertir les propriétaires en prospects qualifiés via un formulaire de contact ou une prise de RDV.</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-rank">2</span>
+      <div class="objectif-content">
+        <div class="objectif-name">Réassurance & confiance</div>
+        <div class="objectif-desc">Lever les freins grâce à la présentation de Christelle, ses valeurs, ses services et des témoignages clients.</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-rank">3</span>
+      <div class="objectif-content">
+        <div class="objectif-name">SEO local (Vire Normandie)</div>
+        <div class="objectif-desc">Apparaître dans les recherches de propriétaires cherchant une conciergerie de location dans la région.</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-rank">4</span>
+      <div class="objectif-content">
+        <div class="objectif-name">Expérience voyageur</div>
+        <div class="objectif-desc">Orienter les voyageurs vers les biens disponibles (via channel manager) et les lieux à découvrir en Normandie.</div>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <span class="objectif-rank">5</span>
+      <div class="objectif-content">
+        <div class="objectif-name">Notoriété & ancrage local</div>
+        <div class="objectif-desc">Construire une présence digitale cohérente avec les réseaux sociaux (Instagram, Facebook) pour renforcer la confiance.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 04 ARBORESCENCE ========== -->
+<section id="bp-section-04">
+  <span class="section-badge">04</span>
+  <h2 class="section-title">Arborescence du Site</h2>
+  <p class="section-intro">Structure pensée pour deux audiences distinctes : les propriétaires (conversion) et les voyageurs (expérience & découverte).</p>
+  <div class="section-divider"></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Audience</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>Tous</td>
+          <td>AIDA</td>
+          <td>conciergerie location saisonnière Vire Normandie</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Services propriétaires</strong></td>
+          <td>Propriétaires</td>
+          <td>PAS</td>
+          <td>services conciergerie Airbnb Vire Normandie</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — Christelle</strong></td>
+          <td>Propriétaires</td>
+          <td>BAB</td>
+          <td>conciergerie locale Normandie propriétaire</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Espace voyageurs</strong></td>
+          <td>Voyageurs</td>
+          <td>AIDA</td>
+          <td>location saisonnière Vire Normandie</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Découvrir la région</strong></td>
+          <td>Voyageurs</td>
+          <td>AIDA</td>
+          <td>que faire à Vire Normandie tourisme</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale SEO — Vire Normandie</strong></td>
+          <td>Propriétaires</td>
+          <td>PAS</td>
+          <td>conciergerie Vire Normandie location courte durée</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale SEO — Calvados / Manche</strong></td>
+          <td>Propriétaires</td>
+          <td>PAS</td>
+          <td>conciergerie location saisonnière Calvados</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>Tous</td>
+          <td>—</td>
+          <td>conseils location saisonnière Normandie</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / Prise de RDV</strong></td>
+          <td>Propriétaires</td>
+          <td>—</td>
+          <td>estimer revenus location saisonnière</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ========== 05 COCON SÉMANTIQUE ========== -->
+<section id="bp-section-05">
+  <span class="section-badge">05</span>
+  <h2 class="section-title">Cocon Sémantique</h2>
+  <div class="section-divider"></div>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <span class="card-icon">🏠</span>
+      <h3 class="card-title">Cluster 1 — Propriétaires</h3>
+      <p class="card-text">Thèmes : déléguer sa location, rentabiliser son bien, confiance & sérénité, services conciergerie.<br/><strong>Pages clés :</strong> Accueil · Services propriétaires · À propos · Pages locales SEO · Contact</p>
+      <div class="tag-list" style="margin-top:14px;">
+        <span class="tag">conciergerie Airbnb</span>
+        <span class="tag">déléguer location</span>
+        <span class="tag">revenus locatifs</span>
+        <span class="tag">gestion locative LCD</span>
+      </div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🧳</span>
+      <h3 class="card-title">Cluster 2 — Voyageurs & territoire</h3>
+      <p class="card-text">Thèmes : séjour en Normandie, lieux à visiter, hébergements disponibles, expérience locale.<br/><strong>Pages clés :</strong> Espace voyageurs · Découvrir la région · Blog (articles tourisme)</p>
+      <div class="tag-list" style="margin-top:14px;">
+        <span class="tag">location Vire</span>
+        <span class="tag">que faire en Normandie</span>
+        <span class="tag">séjour famille</span>
+        <span class="tag">tourisme Calvados</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="card-title" style="margin-bottom: 20px;">🔗 Logique de maillage interne</h3>
+    <div class="maillage-item">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Services propriétaires, Espace voyageurs, À propos, Contact</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Services propriétaires</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">À propos (crédibilité), Contact (conversion), Articles blog (éducation)</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Pages locales SEO</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Services propriétaires, Contact (lead direct)</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Espace voyageurs</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Découvrir la région, Channel manager (biens dispo)</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Services propriétaires, Pages locales SEO, Contact</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Contact, Services propriétaires</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 06 TUNNEL DE CONVERSION ========== -->
+<section id="bp-section-06">
+  <span class="section-badge">06</span>
+  <h2 class="section-title">Tunnel de Conversion</h2>
+  <div class="section-divider"></div>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-number">01</div>
+      <span class="tunnel-label">Découverte</span>
+      <div class="tunnel-title">Le propriétaire me trouve</div>
+      <div class="tunnel-row">
+        <div class="tunnel-meta"><strong>Source :</strong> Google (SEO local), réseaux sociaux, bouche-à-oreille</div>
+        <div class="tunnel-meta"><strong>Page :</strong> Page d'accueil ou Page locale SEO</div>
+        <div class="tunnel-meta"><strong>CTA :</strong> « Découvrez mes services » / « Qui est Christelle ? »</div>
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">02</div>
+      <span class="tunnel-label">Intérêt</span>
+      <div class="tunnel-title">Il comprend la valeur</div>
+      <div class="tunnel-row">
+        <div class="tunnel-meta"><strong>Source :</strong> Navigation interne depuis l'accueil</div>
+        <div class="tunnel-meta"><strong>Page :</strong> Services propriétaires + À propos</div>
+        <div class="tunnel-meta"><strong>CTA :</strong> « Téléchargez le guide gratuit » / « Simulez vos revenus »</div>
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">03</div>
+      <span class="tunnel-label">Confiance</span>
+      <div class="tunnel-title">Il est rassuré, il me croit</div>
+      <div class="tunnel-row">
+        <div class="tunnel-meta"><strong>Source :</strong> Témoignages, blog, réseaux sociaux</div>
+        <div class="tunnel-meta"><strong>Page :</strong> À propos · Blog · Avis Google intégrés</div>
+        <div class="tunnel-meta"><strong>CTA :</strong> « Lire les témoignages » / « Voir les photos des logements »</div>
+      </div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">04</div>
+      <span class="tunnel-label">Conversion</span>
+      <div class="tunnel-title">Il passe à l'action</div>
+      <div class="tunnel-row">
+        <div class="tunnel-meta"><strong>Source :</strong> Formulaire de contact ou calendrier RDV</div>
+        <div class="tunnel-meta"><strong>Page :</strong> Page Contact / Prise de RDV</div>
+        <div class="tunnel-meta"><strong>CTA :</strong> « Prenons rendez-vous » / « Confiez-moi votre bien »</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 07 LEVIERS MARKETING ========== -->
+<section id="bp-section-07">
+  <span class="section-badge">07</span>
+  <h2 class="section-title">Leviers Marketing Recommandés</h2>
+  <div class="section-divider"></div>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <span class="levier-label">Lead Magnet</span>
+      <div class="levier-title">« Le guide du propriétaire serein »</div>
+      <p class="levier-text">Un PDF téléchargeable : « 5 erreurs à éviter pour louer son bien en courte durée en Normandie ». Gratuit en échange d'un email — idéal pour capter des propriétaires en phase de réflexion.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-label">Prise de RDV</span>
+      <div class="levier-title">Calendly ou Cal.com</div>
+      <p class="levier-text">Intégrer un outil de réservation en ligne pour permettre aux propriétaires de planifier un appel découverte avec Christelle, sans friction, directement depuis la page Contact ou Services.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-label">Preuve Sociale</span>
+      <div class="levier-title">Témoignages + photos de biens</div>
+      <p class="levier-text">Citations courtes de propriétaires satisfaits (format carte), photos avant/après des logements valorisés, intégration des avis Google. Partager aussi les retours de voyageurs pour rassurer les deux audiences.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-label">Formulaire Qualifiant</span>
+      <div class="levier-title">Champs recommandés</div>
+      <p class="levier-text">Prénom · Commune du bien · Type de logement (maison / appartement / chalet) · Nombre de couchages · Situation actuelle (déjà en location / pas encore) · Message libre. Ces champs permettent de prioriser les relances.</p>
+    </div>
+    <div class="levier-card" style="grid-column: 1 / -1;">
+      <span class="levier-label">Newsletter</span>
+      <div class="levier-title">Angle éditorial : « La Lettre du Propriétaire »</div>
+      <p class="levier-text">Envoi mensuel avec : 1 conseil pratique pour optimiser son bien, 1 actualité tourisme en Normandie, 1 bonne pratique de la saison. Ton chaleureux et court — fidélise les propriétaires hésitants et entretient la relation dans la durée.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 08 DIRECTION VISUELLE ========== -->
+<section id="bp-section-08">
+  <span class="section-badge">08</span>
+  <h2 class="section-title">Direction Visuelle & Éditoriale</h2>
+  <div class="section-divider"></div>
+
+  <div class="palette-grid">
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#FFFFFF; border: 2px solid #E8E8E8;"></div>
+      <div class="palette-name">Blanc pur</div>
+      <div class="palette-hex">#FFFFFF</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#F5F0E8;"></div>
+      <div class="palette-name">Écru doux</div>
+      <div class="palette-hex">#F5F0E8</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#C9A84C;"></div>
+      <div class="palette-name">Doré chaleureux</div>
+      <div class="palette-hex">#C9A84C</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#E8D5A3;"></div>
+      <div class="palette-name">Doré pâle</div>
+      <div class="palette-hex">#E8D5A3</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#1A1A1A;"></div>
+      <div class="palette-name">Noir profond</div>
+      <div class="palette-hex">#1A1A1A</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 48px;">
+    <h3 style="font-family:'Playfair Display',serif; font-size:20px; margin-bottom:20px; color:var(--noir);">Univers visuel recommandé</h3>
+    <div class="grid-3">
+      <div class="card">
+        <span class="card-icon">📸</span>
+        <h3 class="card-title">Photographie chaleureuse</h3>
+        <p class="card-text">Intérieurs lumineux, linge blanc impeccable, bougies, détails cosy. Ambiance maison normande revisitée. Lumière naturelle, tons chauds, sans sur-stylisation.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🔑</span>
+        <h3 class="card-title">Motif clé — signature visuelle</h3>
+        <p class="card-text">S'appuyer sur le logo existant (les deux clés formant les « ll » de Christelle) comme élément graphique récurrent : séparateurs, icônes, watermarks discrets.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌿</span>
+        <h3 class="card-title">Végétal & nature normande</h3>
+        <p class="card-text">Photos de paysages locaux (bocage, pommeraies, falaises côtières), utilisées en fond de sections ou dans l'espace voyageurs. Renforce l'ancrage territorial.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🖋️</span>
+        <h3 class="card-title">Typographie Playfair + Inter</h3>
+        <p class="card-text">Titres en Playfair Display (élégance serif), corps de texte en Inter (lisibilité). Contraste maîtrisé entre douceur décorative et clarté fonctionnelle.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🪵</span>
+        <h3 class="card-title">Matières & textures</h3>
+        <p class="card-text">Lin, bois clair, céramique blanche — en photographie ou en arrière-plan subtil. Renforce l'esprit « cocooning familial » sans tomber dans le luxe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 09 ARTICLES BLOG ========== -->
+<section id="bp-section-09">
+  <span class="section-badge">09</span>
+  <h2 class="section-title">Articles Blog Recommandés</h2>
+  <div class="section-divider"></div>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <div class="blog-card-title">Pourquoi confier sa location saisonnière à une conciergerie locale plutôt qu'une grande plateforme ?</div>
+        <span class="badge-prioritaire">Prioritaire</span>
+      </div>
+      <div class="blog-meta">
+        <div class="blog-meta-item"><strong>Cluster :</strong> Propriétaires</div>
+        <div class="blog-meta-item"><strong>Intention :</strong> Informationnelle — comparaison</div>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <div class="blog-card-title">5 astuces pour rendre votre logement irrésistible sur Airbnb à Vire Normandie</div>
+        <span class="badge-prioritaire">Prioritaire</span>
+      </div>
+      <div class="blog-meta">
+        <div class="blog-meta-item"><strong>Cluster :</strong> Propriétaires</div>
+        <div class="blog-meta-item"><strong>Intention :</strong> Informationnelle — conseils pratiques</div>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <div class="blog-card-title">Combien peut rapporter une location saisonnière à Vire Normandie ?</div>
+        <span class="badge-prioritaire">Prioritaire</span>
+      </div>
+      <div class="blog-meta">
+        <div class="blog-meta-item"><strong>Cluster :</strong> Propriétaires</div>
+        <div class="blog-meta-item"><strong>Intention :</strong> Informationnelle — estimation revenus</div>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <div class="blog-card-title">Que faire à Vire Normandie en famille ? Nos 10 incontournables</div>
+        <span class="badge-moyen-p">Moyen</span>
+      </div>
+      <div class="blog-meta">
+        <div class="blog-meta-item"><strong>Cluster :</strong> Voyageurs & territoire</div>
+        <div class="blog-meta-item"><strong>Intention :</strong> Informationnelle — tourisme local</div>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <div class="blog-card-title">Tarification dynamique en location courte durée : comment ça fonctionne concrètement ?</div>
+        <span class="badge-moyen-p">Moyen</span>
+      </div>
+      <div class="blog-meta">
+        <div class="blog-meta-item"><strong>Cluster :</strong> Propriétaires</div>
+        <div class="blog-meta-item"><strong>Intention :</strong> Informationnelle — pédagogie outil</div>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <div class="blog-card-title">Les plus beaux marchés et villages de Normandie à découvrir le week-end</div>
+        <span class="badge-moyen-p">Moyen</span>
+      </div>
+      <div class="blog-meta">
+        <div class="blog-meta-item"><strong>Cluster :</strong> Voyageurs & territoire</div>
+        <div class="blog-meta-item"><strong>Intention :</strong> Informationnelle — inspiration voyage</div>
+      </div>
+    </div>
+
+    <div class="blog-card" style="grid-column: 1 / -1;">
+      <div class="blog-card-top">
+        <div class="blog-card-title">Check-list complète pour préparer votre logement avant la saison estivale en Normandie</div>
+        <span class="badge-faible-p">Secondaire</span>
+      </div>
+      <div class="blog-meta">
+        <div class="blog-meta-item"><strong>Cluster :</strong> Propriétaires</div>
+        <div class="blog-meta-item"><strong>Intention :</strong> Informationnelle — préparation saisonnière</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="footer-name">Christelle Conciergerie <span class="footer-gold">✦</span> Blueprint Stratégique</div>
+  <p class="footer-meta">Document confidentiel établi par AR Digital — Réservé à l'usage exclusif de Christelle Lelièvre</p>
+</footer>
+
+</body>
+</html>
