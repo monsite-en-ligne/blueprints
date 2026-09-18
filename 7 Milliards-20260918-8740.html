@@ -1,0 +1,2452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blueprint Stratégique — 7 Milliards</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --noir:       #1A1A1A;
+      --anthracite: #2E2E2E;
+      --craie:      #F7F5F2;
+      --sable:      #D6CFC4;
+      --terracotta: #B05B3B;
+      --blanc:      #FFFFFF;
+      --gris-texte: #555555;
+      --gris-clair: #AAAAAA;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--noir);
+      background: var(--craie);
+    }
+
+    /* ── COUVERTURE ── */
+    .cover {
+      min-height: 100vh;
+      background: linear-gradient(150deg, #1A1A1A 0%, #2E2E2E 50%, #4a3328 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 60%, rgba(176,91,59,0.18) 0%, transparent 60%),
+                  radial-gradient(ellipse at 75% 30%, rgba(176,91,59,0.10) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .cover-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .cover h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(48px, 9vw, 88px);
+      font-weight: 700;
+      color: var(--blanc);
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .cover-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.04em;
+      margin-bottom: 56px;
+      position: relative;
+    }
+
+    .cover-meta {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+    }
+
+    .cover-meta-item {
+      text-align: center;
+    }
+
+    .cover-meta-item .meta-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 4px;
+    }
+
+    .cover-meta-item .meta-value {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 80px 60px;
+      page-break-inside: avoid;
+    }
+
+    section:nth-child(even) {
+      background: var(--blanc);
+    }
+
+    .section-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 10px;
+    }
+
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--noir);
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+
+    .section-intro {
+      font-size: 15px;
+      color: var(--gris-texte);
+      max-width: 640px;
+      margin-bottom: 48px;
+      line-height: 1.8;
+    }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight-box {
+      background: linear-gradient(135deg, #1A1A1A 0%, #4a3328 100%);
+      border-radius: 16px;
+      padding: 40px 48px;
+      margin-bottom: 48px;
+      color: var(--blanc);
+      page-break-inside: avoid;
+    }
+
+    .highlight-box .hb-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 14px;
+    }
+
+    .highlight-box p {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.92);
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--blanc);
+      border-radius: 14px;
+      padding: 28px 32px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      page-break-inside: avoid;
+    }
+
+    section:nth-child(even) .card {
+      background: var(--craie);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--noir);
+      margin-bottom: 10px;
+    }
+
+    .card p, .card li {
+      font-size: 14px;
+      color: var(--gris-texte);
+      line-height: 1.75;
+    }
+
+    .card ul {
+      padding-left: 18px;
+    }
+
+    .card ul li {
+      margin-bottom: 6px;
+    }
+
+    /* ── GRIDS ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    /* ── TABLE ── */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--blanc);
+      font-size: 14px;
+    }
+
+    thead tr {
+      background: var(--noir);
+      color: var(--blanc);
+    }
+
+    thead th {
+      padding: 16px 20px;
+      text-align: left;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #EEECE9;
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody td {
+      padding: 16px 20px;
+      color: var(--gris-texte);
+      vertical-align: top;
+    }
+
+    tbody td:first-child {
+      font-weight: 600;
+      color: var(--noir);
+    }
+
+    /* ── SEO BADGES ── */
+    .badge {
+      display: inline-block;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 12px;
+      white-space: nowrap;
+    }
+
+    .badge-fort     { background: #D1F5E0; color: #1A6B3C; }
+    .badge-moyen    { background: #FEF3C7; color: #92610A; }
+    .badge-faible   { background: #F3F3F3; color: #666; }
+    .badge-prio     { background: #1A1A1A; color: #fff; }
+    .badge-prio-m   { background: #D6CFC4; color: #2E2E2E; }
+    .badge-prio-f   { background: #F3F3F3; color: #888; }
+
+    /* ── TUNNEL ── */
+    .tunnel-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .tunnel-step {
+      background: var(--blanc);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      padding: 28px 24px;
+      position: relative;
+      page-break-inside: avoid;
+    }
+
+    .tunnel-step:first-child { border-radius: 14px 0 0 14px; }
+    .tunnel-step:last-child  { border-radius: 0 14px 14px 0; }
+
+    .tunnel-step::after {
+      content: '→';
+      position: absolute;
+      right: -14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: var(--terracotta);
+      z-index: 2;
+      font-weight: 600;
+    }
+
+    .tunnel-step:last-child::after { display: none; }
+
+    .tunnel-num {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 10px;
+    }
+
+    .tunnel-step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--noir);
+    }
+
+    .tunnel-step p {
+      font-size: 13px;
+      color: var(--gris-texte);
+      line-height: 1.7;
+    }
+
+    .tunnel-cta {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--terracotta);
+      color: var(--blanc);
+      border-radius: 20px;
+      padding: 5px 14px;
+    }
+
+    /* ── COULEURS PALETTE ── */
+    .palette-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
+    .color-swatch {
+      text-align: center;
+      width: 100px;
+    }
+
+    .color-box {
+      width: 80px;
+      height: 80px;
+      border-radius: 14px;
+      margin: 0 auto 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    }
+
+    .color-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--noir);
+      display: block;
+    }
+
+    .color-hex {
+      font-size: 11px;
+      color: var(--gris-clair);
+      display: block;
+    }
+
+    /* ── MAILLAGE ── */
+    .maillage-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .maillage-tag {
+      background: var(--craie);
+      border: 1px solid #DDD9D4;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--noir);
+      padding: 6px 14px;
+    }
+
+    .maillage-arrow {
+      font-size: 16px;
+      color: var(--terracotta);
+      font-weight: 700;
+    }
+
+    /* ── BLOG TABLE ── */
+    .blog-table-wrap {
+      overflow-x: auto;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--noir);
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 36px 40px;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+    }
+
+    footer strong {
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      section { page-break-inside: avoid; }
+      .card   { page-break-inside: avoid; }
+      table   { page-break-inside: avoid; }
+      .cover  { min-height: auto; }
+      .tunnel-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      section { padding: 48px 24px; }
+
+      section h2 { font-size: 26px; }
+
+      .cover h1 { font-size: 44px; }
+
+      .cover { padding: 60px 28px; }
+
+      .cover-meta { gap: 24px; }
+
+      .grid-2,
+      .grid-3 { grid-template-columns: 1fr !important; }
+
+      .tunnel-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px;
+      }
+
+      .tunnel-step { border-radius: 14px !important; }
+
+      .tunnel-step::after {
+        right: auto;
+        top: auto;
+        bottom: -18px;
+        left: 50%;
+        transform: translateX(-50%) rotate(90deg);
+      }
+
+      .tunnel-step:last-child::after { display: none; }
+
+      .table-wrap, .blog-table-wrap { overflow-x: auto; }
+
+      .highlight-box { padding: 28px 24px; }
+
+      .highlight-box p { font-size: 18px; }
+
+      .maillage-row { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════ COUVERTURE -->
+<div class="cover">
+  <span class="cover-eyebrow">Blueprint Stratégique</span>
+  <h1>7 Milliards</h1>
+  <p class="cover-subtitle">Des visages, des Figures.</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="meta-label">Client</span>
+      <span class="meta-value">Olivier Dufour</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="meta-label">Secteur</span>
+      <span class="meta-value">Association — Portraits humains</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="meta-label">Territoire</span>
+      <span class="meta-value">Hauts-de-France</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2>Positionnement</h2>
+  <p class="section-intro">La singularité de 7 Milliards réside dans sa capacité à rendre visible l'invisible : les habitants ordinaires des Hauts-de-France et leurs histoires extraordinaires.</p>
+
+  <div class="highlight-box">
+    <p class="hb-label">Promesse de valeur</p>
+    <p>7 Milliards donne un visage, une voix et une histoire à chaque habitant des Hauts-de-France — parce que chaque vie mérite d'être racontée.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 24px;">
+    <h3>Ligne directrice de communication</h3>
+    <p>Le projet repose sur une posture de <strong>témoin bienveillant et attentif</strong> : 7 Milliards ne parle pas des gens, il leur donne la parole. La communication évite le spectaculaire et la surenchère éditoriale. Elle mise sur la profondeur du regard, la sobriété du cadre et la puissance du récit humain. Chaque portrait, chaque récit est traité avec la même dignité, qu'il s'agisse d'un agriculteur de la Somme, d'un soignant du Nord ou d'un artiste de Lille.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 40px;">
+    <h3>Ton éditorial</h3>
+    <p><strong>Contemplatif · Humain · Épuré</strong></p>
+    <p style="margin-top: 10px;">Un ton qui laisse respirer les mots et les images. Les textes sont courts, précis, sans fioritures. L'émotion naît du portrait lui-même, pas de l'adjectif qui l'accompagne. 7 Milliards ne commente pas, il révèle.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🧭 Ancrage territorial fort</h3>
+      <p>Un projet né dans les Hauts-de-France, pour les Hauts-de-France. 7 Milliards ne documente pas une région abstraite : il s'immerge dans ses villages, ses quartiers, ses métiers et ses visages.</p>
+    </div>
+    <div class="card">
+      <h3>📷 Le portrait comme matière première</h3>
+      <p>À contre-courant des médias de masse, 7 Milliards place l'image du visage au centre de tout. La photographie n'illustre pas le récit — elle en est le point de départ.</p>
+    </div>
+    <div class="card">
+      <h3>✍️ Des récits courts et authentiques</h3>
+      <p>Pas de grand reportage. Pas d'article de fond. Des fragments de vie distillés en quelques phrases, à la manière de Humans of New York : l'essentiel, rien que l'essentiel.</p>
+    </div>
+    <div class="card">
+      <h3>🤝 Une démarche associative et participative</h3>
+      <p>La forme associative ancre le projet dans une logique de bien commun. 7 Milliards n'est pas un média commercial : c'est un espace de mémoire collective, ouvert et bienveillant.</p>
+    </div>
+    <div class="card">
+      <h3>🌍 Un nom universel, un regard local</h3>
+      <p>Le nom « 7 Milliards » rappelle que chaque habitant de la planète est une histoire unique. Appliqué aux Hauts-de-France, ce regard universel transforme le quotidien régional en récit d'humanité.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client Cible</span>
+  <h2>Audiences du projet</h2>
+  <p class="section-intro">7 Milliards s'adresse à plusieurs cercles d'audiences, chacun entrant en contact avec le projet de façon différente.</p>
+
+  <div class="grid-2">
+
+    <div class="card">
+      <h3>👁️ Le lecteur curieux des Hauts-de-France</h3>
+      <p><strong>Profil :</strong> Habitant de la région, toutes générations confondues, sensible à son territoire et aux histoires humaines.</p>
+      <br/>
+      <p><strong>Motivations :</strong></p>
+      <ul>
+        <li>Se reconnaître dans les portraits</li>
+        <li>Découvrir des vies proches mais inconnues</li>
+        <li>Ressentir un lien avec sa région</li>
+      </ul>
+      <br/>
+      <p><strong>Freins :</strong> Méfiance envers les médias, manque de temps, pas l'habitude de consulter ce type de contenu.</p>
+      <br/>
+      <p><strong>Critères de décision :</strong> La qualité visuelle, l'authenticité des portraits, la fluidité de navigation.</p>
+    </div>
+
+    <div class="card">
+      <h3>📸 Le sujet potentiel (participant)</h3>
+      <p><strong>Profil :</strong> Toute personne habitant les Hauts-de-France susceptible d'accepter de partager son histoire et son visage.</p>
+      <br/>
+      <p><strong>Motivations :</strong></p>
+      <ul>
+        <li>Être reconnu dans sa singularité</li>
+        <li>Contribuer à un projet collectif</li>
+        <li>Laisser une trace</li>
+      </ul>
+      <br/>
+      <p><strong>Freins :</strong> Timidité, sentiment de n'avoir "rien d'extraordinaire à raconter", peur du jugement.</p>
+      <br/>
+      <p><strong>Critères de décision :</strong> La bienveillance du projet, la lisibilité de la démarche, la confiance inspirée par le site.</p>
+    </div>
+
+    <div class="card">
+      <h3>🏛️ Le partenaire institutionnel ou culturel</h3>
+      <p><strong>Profil :</strong> Collectivité, fondation, association culturelle, média régional, acteur de l'éducation ou de la cohésion sociale.</p>
+      <br/>
+      <p><strong>Motivations :</strong></p>
+      <ul>
+        <li>Soutenir un projet à valeur sociale et culturelle</li>
+        <li>S'associer à une initiative visible et fédératrice</li>
+      </ul>
+      <br/>
+      <p><strong>Freins :</strong> Besoin de légitimité, de preuves de sérieux, de vision claire du projet.</p>
+      <br/>
+      <p><strong>Critères de décision :</strong> La clarté de la mission, la qualité éditoriale et visuelle, l'identité forte du projet.</p>
+    </div>
+
+    <div class="card">
+      <h3>🎨 Le passionné de photographie documentaire</h3>
+      <p><strong>Profil :</strong> Photographe, journaliste, étudiant en arts, amateur éclairé de photographie humaniste, en France ou au-delà.</p>
+      <br/>
+      <p><strong>Motivations :</strong></p>
+      <ul>
+        <li>Suivre un projet photographique cohérent</li>
+        <li>S'inspirer d'une démarche documentaire</li>
+        <li>Partager ou relayer le projet</li>
+      </ul>
+      <br/>
+      <p><strong>Freins :</strong> Exigence élevée sur la qualité des images et de la mise en scène.</p>
+      <br/>
+      <p><strong>Critères de décision :</strong> La direction artistique, la cohérence visuelle, la profondeur des portraits.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 03 OBJECTIFS -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du Site</span>
+  <h2>Objectifs du site</h2>
+  <p class="section-intro">Le site de 7 Milliards n'est pas un site de vente ni de lead generation. C'est avant tout un espace éditorial, une vitrine d'humanité et un point de ralliement pour le projet.</p>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3>01 — Présenter le projet</h3>
+      <p>Donner à comprendre immédiatement la mission de 7 Milliards : qui, pourquoi, comment. Créer une adhésion émotionnelle dès la première visite.</p>
+    </div>
+    <div class="card">
+      <h3>02 — Diffuser les portraits</h3>
+      <p>Offrir un écrin numérique de qualité aux portraits photographiques et aux récits collectés dans les Hauts-de-France.</p>
+    </div>
+    <div class="card">
+      <h3>03 — Susciter la participation</h3>
+      <p>Encourager les habitants à prendre contact pour partager leur histoire et potentiellement devenir un portrait 7 Milliards.</p>
+    </div>
+    <div class="card">
+      <h3>04 — Crédibiliser le projet</h3>
+      <p>Inspirer confiance auprès des partenaires institutionnels, culturels et médiatiques en affichant un niveau d'exigence professionnel.</p>
+    </div>
+    <div class="card">
+      <h3>05 — SEO local et notoriété régionale</h3>
+      <p>Être trouvé par des personnes cherchant des projets photographiques ou associatifs dans les Hauts-de-France.</p>
+    </div>
+    <div class="card">
+      <h3>06 — Fédérer une communauté</h3>
+      <p>Poser les bases d'une audience fidèle qui revient régulièrement consulter les nouveaux portraits publiés.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence du Site</span>
+  <h2>Arborescence du site</h2>
+  <p class="section-intro">Une architecture sobre, pensée pour la découverte et l'immersion. Chaque page a un rôle éditorial clair.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Rôle</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Accueil</td>
+          <td>Immersion immédiate : patchwork de visages, phrase signature, entrée dans l'univers. Incitation à explorer les portraits.</td>
+          <td>AIDA — Attention émotionnelle, désir de découverte</td>
+          <td>portraits habitants Hauts-de-France</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Les Portraits</td>
+          <td>Galerie principale des portraits photographiques et récits. Cœur éditorial du site. Navigation fluide par parution.</td>
+          <td>Narration pure — chaque portrait est une micro-histoire</td>
+          <td>portraits humains Hauts-de-France</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Page Portrait (modèle)</td>
+          <td>Page individuelle générée pour chaque portrait : photo plein écran, prénom, récit court. Template répété.</td>
+          <td>Narration — focus visuel + texte épuré</td>
+          <td>[prénom] portrait Hauts-de-France</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Le Projet</td>
+          <td>Présentation de la mission associative de 7 Milliards, de la démarche photographique et des valeurs du projet.</td>
+          <td>BAB — Avant / Après / Pont (pourquoi ce projet existe)</td>
+          <td>association portraits humains Nord</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Participer</td>
+          <td>Invitation à devenir un sujet : explication de la démarche, conditions, formulaire de contact.</td>
+          <td>PAS — Problème / Agitation / Solution</td>
+          <td>partager son histoire portrait photo</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Nous soutenir</td>
+          <td>Présentation des formes de soutien possibles (partenariats, mécénat, relais médiatiques). Page destinée aux partenaires institutionnels.</td>
+          <td>AIDA — valorisation de la mission, appel à l'engagement</td>
+          <td>soutenir projet associatif Hauts-de-France</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td>Contact</td>
+          <td>Formulaire de contact simple. Point d'entrée pour les participants, partenaires et médias.</td>
+          <td>Direct — sobre et rassurant</td>
+          <td>contact association 7 Milliards</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td>SEO Local — Lille</td>
+          <td>Page d'ancrage géographique autour de Lille et sa métropole. Portraits et histoires d'habitants lillois.</td>
+          <td>AIDA — ancrage local fort</td>
+          <td>portraits habitants Lille Métropole</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>SEO Local — Nord / Pas-de-Calais</td>
+          <td>Page d'ancrage élargi sur le territoire historique Nord–Pas-de-Calais. Capter les recherches liées à la région.</td>
+          <td>AIDA — storytelling territorial</td>
+          <td>portraits Nord-Pas-de-Calais histoires habitants</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon Sémantique</span>
+  <h2>Cocon sémantique</h2>
+  <p class="section-intro">Trois axes thématiques naturels structurent la stratégie éditoriale et de référencement de 7 Milliards.</p>
+
+  <div class="grid-3" style="margin-bottom: 40px;">
+    <div class="card">
+      <h3>Cluster 1 — Le portrait humain</h3>
+      <p><strong>Thématique :</strong> Photographie documentaire, portrait humain, histoires de vie, témoignages.</p>
+      <br/>
+      <p><strong>Logique SEO :</strong> Capter les intentions liées à la photographie humaniste, aux projets type "Humans of" et aux portraits documentaires. Ce cluster est le cœur du site.</p>
+      <br/>
+      <p><strong>Pages concernées :</strong> Les Portraits, pages Portrait individuelles, articles de blog.</p>
+    </div>
+    <div class="card">
+      <h3>Cluster 2 — Le territoire des Hauts-de-France</h3>
+      <p><strong>Thématique :</strong> Habitants, culture locale, vie quotidienne, mémoire des territoires dans les Hauts-de-France.</p>
+      <br/>
+      <p><strong>Logique SEO :</strong> Capter les recherches liées à la région, à ses habitants et à ses initiatives culturelles. Travailler la visibilité locale et le référencement géographique.</p>
+      <br/>
+      <p><strong>Pages concernées :</strong> Accueil, pages SEO locales Lille et Nord–Pas-de-Calais.</p>
+    </div>
+    <div class="card">
+      <h3>Cluster 3 — La démarche associative</h3>
+      <p><strong>Thématique :</strong> Association culturelle, projet participatif, mécénat, engagement citoyen, photographie sociale.</p>
+      <br/>
+      <p><strong>Logique SEO :</strong> Capter les partenaires institutionnels et les relais médiatiques cherchant des projets culturels à soutenir dans les Hauts-de-France.</p>
+      <br/>
+      <p><strong>Pages concernées :</strong> Le Projet, Nous soutenir, Participer.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Logique de maillage interne</h3>
+    <br/>
+    <div class="maillage-row">
+      <span class="maillage-tag">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Les Portraits</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Pages Portrait individuelles</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-tag">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Le Projet</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Participer</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-tag">Le Projet</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Nous soutenir</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-tag">Pages Portrait individuelles</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Participer</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-tag">Articles de blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Les Portraits</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Participer</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-tag">Pages SEO locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Les Portraits</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-tag">Le Projet</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de Conversion</span>
+  <h2>Tunnel de conversion</h2>
+  <p class="section-intro">Pour 7 Milliards, la "conversion" n'est pas commerciale. Elle se décline selon deux chemins : susciter la participation d'un habitant ou obtenir l'engagement d'un partenaire.</p>
+
+  <div class="tunnel-grid" style="margin-bottom: 40px;">
+    <div class="tunnel-step">
+      <p class="tunnel-num">01 — Découverte</p>
+      <h3>Le visiteur arrive</h3>
+      <p>Via Google, les réseaux sociaux, un article de presse régionale ou le bouche-à-oreille. Il atterrit sur la page d'accueil et est immédiatement saisi par le patchwork de visages.</p>
+      <span class="tunnel-cta">Explorer les portraits →</span>
+    </div>
+    <div class="tunnel-step">
+      <p class="tunnel-num">02 — Intérêt</p>
+      <h3>Il explore</h3>
+      <p>Il consulte plusieurs portraits dans la galerie. Il lit les récits. Il s'identifie, se reconnaît, est touché. Le projet commence à faire sens pour lui.</p>
+      <span class="tunnel-cta">Voir tous les portraits →</span>
+    </div>
+    <div class="tunnel-step">
+      <p class="tunnel-num">03 — Confiance</p>
+      <h3>Il comprend la démarche</h3>
+      <p>Il visite la page "Le Projet". Il comprend la mission associative, la bienveillance de la démarche et la qualité du travail réalisé. Il sent que le projet est sérieux.</p>
+      <span class="tunnel-cta">Découvrir le projet →</span>
+    </div>
+    <div class="tunnel-step">
+      <p class="tunnel-num">04 — Conversion</p>
+      <h3>Il passe à l'action</h3>
+      <p>Il remplit le formulaire de la page "Participer" pour proposer sa propre histoire — ou il contacte 7 Milliards pour un partenariat institutionnel.</p>
+      <span class="tunnel-cta">Je veux participer →</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Note stratégique</h3>
+    <p>Le tunnel repose presque entièrement sur l'émotion et l'authenticité des portraits. Il n'y a pas de mécanisme de pression ou d'urgence. La qualité éditoriale et visuelle est le seul levier de conversion. Plus les portraits sont nombreux et soignés, plus le tunnel est efficace. C'est pourquoi la régularité de publication est un enjeu stratégique central dès le lancement.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers Marketing Recommandés</span>
+  <h2>Leviers marketing</h2>
+  <p class="section-intro">Les leviers recommandés pour 7 Milliards sont sobres, cohérents avec la nature associative du projet et orientés vers la croissance organique.</p>
+
+  <div class="grid-2">
+
+    <div class="card">
+      <h3>📬 Formulaire de participation qualifiant</h3>
+      <p>La page "Participer" doit intégrer un formulaire simple permettant à un habitant de se proposer comme sujet. Champs recommandés :</p>
+      <ul style="margin-top:10px;">
+        <li>Prénom et ville de résidence</li>
+        <li>Ce que j'aimerais partager (texte libre court)</li>
+        <li>Email ou téléphone</li>
+        <li>Disponibilités indicatives</li>
+      </ul>
+      <p style="margin-top:10px;">Ce formulaire permet aussi de détecter les personnes partageant spontanément leur histoire — un signal de confiance fort.</p>
+    </div>
+
+    <div class="card">
+      <h3>📲 Réseaux sociaux comme relais naturel</h3>
+      <p>Chaque portrait publié sur le site doit être déclinable sur Instagram et Facebook. La mise en page du site doit faciliter le partage (format carré ou portrait adapté à Instagram). Le site est la source, les réseaux sont les amplificateurs.</p>
+    </div>
+
+    <div class="card">
+      <h3>🖼️ Portfolio photographique évolutif</h3>
+      <p>La galerie de portraits constitue en elle-même le meilleur argument de crédibilité du projet. Chaque nouveau portrait enrichit l'attractivité du site et renforce le référencement naturel via le contenu frais régulier.</p>
+    </div>
+
+    <div class="card">
+      <h3>📰 Relations presse et médias régionaux</h3>
+      <p>Le site doit permettre aux journalistes et médias régionaux (La Voix du Nord, France 3 Hauts-de-France, etc.) de comprendre immédiatement le projet et de le relayer. Une page "Presse" ou une section dédiée dans "Le Projet" peut faciliter cette prise de contact.</p>
+    </div>
+
+    <div class="card">
+      <h3>✉️ Newsletter éditoriale (recommandé à moyen terme)</h3>
+      <p>Une lettre mensuelle envoyant les nouveaux portraits aux abonnés serait parfaitement cohérente avec le projet. Elle crée un rituel d'attention et fidélise l'audience. À envisager dès que le rythme de publication est stabilisé.</p>
+    </div>
+
+    <div class="card">
+      <h3>🤝 Partenariats institutionnels et culturels</h3>
+      <p>La page "Nous soutenir" doit présenter clairement les formes de partenariat possibles : coproduction, relais de communication, soutien financier ou logistique. Un document de présentation téléchargeable (dossier de projet) peut compléter cette page.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction Visuelle et Éditoriale</span>
+  <h2>Direction visuelle et éditoriale</h2>
+  <p class="section-intro">Une identité visuelle qui s'efface pour laisser toute la place aux visages. Sobre, élégante, contemporaine — au service des portraits.</p>
+
+  <div class="highlight-box" style="margin-bottom: 40px;">
+    <p class="hb-label">Mot d'ordre visuel</p>
+    <p>Le site est un écrin, pas une vitrine. L'interface disparaît pour laisser les portraits exister pleinement. Chaque choix graphique — couleur, typographie, espacement — est au service de l'humain qui est photographié.</p>
+  </div>
+
+  <div class="palette-grid" style="margin-bottom: 48px;">
+    <div class="color-swatch">
+      <div class="color-box" style="background:#1A1A1A;"></div>
+      <span class="color-name">Noir profond</span>
+      <span class="color-hex">#1A1A1A</span>
+    </div>
+    <div class="color-swatch">
+      <div class="color-box" style="background:#2E2E2E;"></div>
+      <span class="color-name">Anthracite</span>
+      <span class="color-hex">#2E2E2E</span>
+    </div>
+    <div class="color-swatch">
+      <div class="color-box" style="background:#F7F5F2;"></div>
+      <span class="color-name">Craie</span>
+      <span class="color-hex">#F7F5F2</span>
+    </div>
+    <div class="color-swatch">
+      <div class="color-box" style="background:#D6CFC4;"></div>
+      <span class="color-name">Sable doux</span>
+      <span class="color-hex">#D6CFC4</span>
+    </div>
+    <div class="color-swatch">
+      <div class="color-box" style="background:#B05B3B;"></div>
+      <span class="color-name">Terracotta</span>
+      <span class="color-hex">#B05B3B</span>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <h3>🖋️ Typographie</h3>
+      <p><strong>Titres :</strong> Playfair Display — serif élégant, légèrement classique, apporte chaleur et dignité aux noms et aux titres de section.</p>
+      <p style="margin-top:8px;"><strong>Corps :</strong> Inter — sans-serif contemporain et très lisible, parfait pour les récits courts et les textes d'interface.</p>
+      <p style="margin-top:8px;">Les textes doivent respirer : grands interlignes, marges généreuses, jamais de blocs de texte denses.</p>
+    </div>
+    <div class="card">
+      <h3>📐 Mise en page</h3>
+      <p>Inspiré de Humans of New York et du Peligoni Club : grands visuels pleine page, navigation quasi invisible, transitions fluides entre les portraits. Le visiteur doit avoir la sensation de tourner les pages d'un livre photographique de qualité.</p>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3>🖼️ Photographies</h3>
+      <p>Portraits centrés sur le visage, fond naturel ou contextuel, lumière douce et directe. Pas de retouche excessive. L'authenticité prime sur la perfection technique.</p>
+    </div>
+    <div class="card">
+      <h3>⬛ Fond sombre pour l'immersion</h3>
+      <p>La page d'accueil et les pages de portraits individuels peuvent adopter un fond sombre (anthracite ou noir) pour faire ressortir les visages avec un maximum d'intensité.</p>
+    </div>
+    <div class="card">
+      <h3>🌿 Textures et formes</h3>
+      <p>Pas d'illustration ni d'icône décorative superflue. Si des séparations visuelles sont nécessaires, privilégier des lignes fines, des espaces blancs ou des tons sable. La sobriété est la règle absolue.</p>
+    </div>
+    <div class="card">
+      <h3>🔴 Couleur d'accent</h3>
+      <p>Le terracotta (#B05B3B) est utilisé avec parcimonie : uniquement pour les CTAs principaux, les numéros de section ou les éléments à mettre en valeur. Il apporte une touche humaine et chaleureuse sans jamais dominer.</p>
+    </div>
+    <div class="card">
+      <h3>🏷️ Logo</h3>
+      <p>Le logo vectoriel fourni par Olivier Dufour sera intégré tel quel ou légèrement retravaillé. Il doit fonctionner aussi bien en blanc sur fond sombre qu'en noir sur fond clair. Sa discrétion renforcera la perception d'élégance du projet.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ 09 ARTICLES BLOG -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles Blog Recommandés</span>
+  <h2>Articles blog recommandés</h2>
+  <p class="section-intro">Le blog de 7 Milliards est d'abord éditorial : il donne de la profondeur au projet, attire des lecteurs et renforce le référencement autour des thématiques clés.</p>
+
+  <div class="blog-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pourquoi 7 Milliards ? La naissance d'un projet photographique dans les Hauts-de-France</td>
+          <td>Démarche associative</td>
+          <td>Informationnel — comprendre qui est 7 Milliards et pourquoi ce projet existe</td>
+          <td><span class="badge badge-prio">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td>Humans of New York : ce qui nous a inspirés, et ce que nous avons voulu faire autrement</td>
+          <td>Portrait humain</td>
+          <td>Informationnel — lecteurs qui connaissent HONY et cherchent des projets similaires en France</td>
+          <td><span class="badge badge-prio">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td>Comment réaliser un portrait photographique authentique : notre démarche sur le terrain</td>
+          <td>Portrait humain</td>
+          <td>Informationnel — photographes et curieux cherchant une méthode de portrait documentaire</td>
+          <td><span class="badge badge-prio">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td>Les Hauts-de-France, une région de visages : ce que les portraits nous apprennent sur un territoire</td>
+          <td>Territoire</td>
+          <td>Informationnel / local — personnes curieuses des initiatives culturelles dans les Hauts-de-France</td>
+          <td><span class="badge badge-prio-m">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Participer à un portrait 7 Milliards : à quoi s'attendre ?</td>
+          <td>Démarche associative</td>
+          <td>Transactionnel — personnes hésitant à se proposer comme sujet et cherchant à comprendre le processus</td>
+          <td><span class="badge badge-prio-m">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Photographie humaniste : une tradition, une urgence contemporaine</td>
+          <td>Portrait humain</td>
+          <td>Informationnel — amateurs de photographie documentaire et journalistes</td>
+          <td><span class="badge badge-prio-m">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Soutenir 7 Milliards : pourquoi les entreprises et institutions des Hauts-de-France ont un rôle à jouer</td>
+          <td>Démarche associative</td>
+          <td>Transactionnel — partenaires potentiels cherchant des projets culturels à soutenir localement</td>
+          <td><span class="badge badge-prio-f">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ FOOTER -->
+<footer>
+  <p><strong>7 Milliards</strong> — Blueprint Stratégique · AR Digital</p>
+  <p style="margin-top:8px;">Document confidentiel — Réservé à Olivier Dufour. Ne pas diffuser.</p>
+</footer>
+
+<style>
+  .bp-validation-box {
+    position: relative;
+    margin: 40px 0 18px;
+    padding: 26px 28px;
+    background: #ffffff;
+    border: 2px solid #E63329;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.25s ease;
+  }
+
+  .bp-validation-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: #E63329;
+    transition: background 0.25s ease;
+  }
+
+  .bp-validation-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 5px 10px;
+    background: #E63329;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .bp-validation-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 7px;
+  }
+
+  .bp-validation-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555555;
+    margin-bottom: 20px;
+  }
+
+  .bp-validation-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .bp-validation-btn {
+    padding: 13px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .bp-validation-approve {
+    background: #1a1a1a;
+    color: #ffffff;
+    border: 2px solid #1a1a1a;
+  }
+
+  .bp-validation-approve:hover {
+    background: #333333;
+    border-color: #333333;
+    transform: translateY(-1px);
+  }
+
+  .bp-validation-comment {
+    background: #ffffff;
+    color: #1a1a1a;
+    border: 2px solid #d8d8d8;
+  }
+
+  .bp-validation-comment:hover {
+    border-color: #E63329;
+    color: #E63329;
+    background: #fff8f7;
+    transform: translateY(-1px);
+  }
+
+  .bp-comment-area {
+    display: none;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .bp-comment-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .bp-comment-help {
+    margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #666666;
+  }
+
+  .bp-comment-textarea {
+    width: 100%;
+    min-height: 120px;
+    box-sizing: border-box;
+    padding: 14px;
+    border: 2px solid #d8d8d8;
+    border-radius: 8px;
+    resize: vertical;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    outline: none;
+  }
+
+  .bp-comment-textarea:focus {
+    border-color: #E63329;
+  }
+
+  .bp-comment-error {
+    display: none;
+    margin-top: 7px;
+    color: #E63329;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .bp-save-comment {
+    margin-top: 12px;
+    background: #1a1a1a;
+    color: #ffffff;
+    border: 2px solid #1a1a1a;
+  }
+
+  .bp-save-comment:hover {
+    background: #333333;
+    border-color: #333333;
+  }
+
+  .bp-validation-result {
+    display: none;
+  }
+
+  .bp-result-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .bp-result-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    border-radius: 50%;
+    background: #198754;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .bp-result-title {
+    color: #146c43;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .bp-result-comment {
+    display: none;
+    margin: 14px 0;
+    padding: 14px 16px;
+    background: #ffffff;
+    border: 1px solid #b7dfc9;
+    border-radius: 8px;
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+  }
+
+  .bp-edit-choice {
+    margin-top: 8px;
+    padding: 9px 13px;
+    background: transparent;
+    color: #555555;
+    border: 1px solid #b7c9be;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .bp-edit-choice:hover {
+    background: #ffffff;
+    color: #1a1a1a;
+  }
+
+  .bp-validation-box.bp-completed {
+    background: #f2fbf6;
+    border-color: #198754;
+    box-shadow: 0 6px 20px rgba(25, 135, 84, 0.10);
+  }
+
+  .bp-validation-box.bp-completed::before {
+    background: #198754;
+  }
+
+  .bp-validation-box.bp-completed .bp-validation-label {
+    background: #198754;
+  }
+
+  /* VALIDATION FINALE */
+
+  .bp-final-validation {
+    margin: 60px 0 30px;
+    padding: 32px;
+    background: #f7f7f7;
+    border: 2px solid #d8d8d8;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
+  }
+
+  .bp-final-validation.bp-final-ready {
+    background: #f2fbf6;
+    border-color: #198754;
+  }
+
+  .bp-final-label {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 6px 11px;
+    background: #1a1a1a;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .bp-final-ready .bp-final-label {
+    background: #198754;
+  }
+
+  .bp-final-title {
+    margin: 0 0 8px;
+    color: #1a1a1a;
+    font-size: 26px;
+    line-height: 1.25;
+    font-weight: 800;
+  }
+
+  .bp-final-intro {
+    margin: 0 0 24px;
+    color: #555555;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .bp-final-progress {
+    margin-bottom: 25px;
+  }
+
+  .bp-final-progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 9px;
+  }
+
+  .bp-final-progress-text {
+    color: #1a1a1a;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .bp-final-progress-count {
+    color: #E63329;
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .bp-final-ready .bp-final-progress-count {
+    color: #198754;
+  }
+
+  .bp-final-progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #e1e1e1;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .bp-final-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #E63329;
+    border-radius: 20px;
+    transition: width 0.3s ease, background 0.3s ease;
+  }
+
+  .bp-final-ready .bp-final-progress-fill {
+    background: #198754;
+  }
+
+  .bp-final-list {
+    margin: 0 0 26px;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  .bp-final-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .bp-final-item:last-child {
+    border-bottom: 0;
+  }
+
+  .bp-final-item-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .bp-final-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    border-radius: 50%;
+    background: #eeeeee;
+    color: #777777;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .bp-final-item.bp-item-completed .bp-final-icon {
+    background: #198754;
+    color: #ffffff;
+  }
+
+  .bp-final-section-name {
+    color: #333333;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .bp-final-status {
+    flex: 0 0 auto;
+    color: #888888;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .bp-final-item.bp-item-completed .bp-final-status {
+    color: #198754;
+  }
+
+  .bp-final-warning {
+    margin-bottom: 22px;
+    padding: 14px 16px;
+    background: #fff3f2;
+    border: 1px solid #f3c1bd;
+    border-radius: 8px;
+    color: #9c2e27;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  .bp-final-success-message {
+    display: none;
+    margin-bottom: 22px;
+    padding: 14px 16px;
+    background: #eaf7ef;
+    border: 1px solid #b7dfc9;
+    border-radius: 8px;
+    color: #146c43;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 700;
+  }
+
+  .bp-final-confirmation {
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    opacity: 0.5;
+    pointer-events: none;
+    transition: all 0.25s ease;
+  }
+
+  .bp-final-confirmation.bp-confirmation-enabled {
+    opacity: 1;
+    pointer-events: auto;
+    border-color: #b7dfc9;
+  }
+
+  .bp-final-checkbox-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+  }
+
+  .bp-final-checkbox {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    margin-top: 2px;
+    accent-color: #198754;
+    cursor: pointer;
+  }
+
+  .bp-final-checkbox-text {
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .bp-final-reference-note {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #eeeeee;
+    color: #666666;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .bp-final-submit {
+    width: 100%;
+    margin-top: 18px;
+    padding: 16px 20px;
+    background: #cccccc;
+    color: #777777;
+    border: 0;
+    border-radius: 9px;
+    cursor: not-allowed;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    transition: all 0.2s ease;
+  }
+
+  .bp-final-submit.bp-submit-enabled {
+    background: #198754;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .bp-final-submit.bp-submit-enabled:hover {
+    background: #146c43;
+    transform: translateY(-1px);
+  }
+
+  .bp-transmission-error {
+    display: none;
+    margin-top: 15px;
+    padding: 14px 16px;
+    background: #fff3f2;
+    border: 1px solid #f3c1bd;
+    border-radius: 8px;
+    color: #9c2e27;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  .bp-transmission-success {
+    display: none;
+    padding: 26px;
+    background: #eaf7ef;
+    border: 2px solid #198754;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .bp-transmission-success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 14px;
+    background: #198754;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 25px;
+    font-weight: 800;
+  }
+
+  .bp-transmission-success-title {
+    margin-bottom: 8px;
+    color: #146c43;
+    font-size: 21px;
+    font-weight: 800;
+  }
+
+  .bp-transmission-success-text {
+    color: #365c47;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 600px) {
+    .bp-validation-box {
+      padding: 22px 20px;
+    }
+
+    .bp-validation-actions {
+      flex-direction: column;
+    }
+
+    .bp-validation-btn {
+      width: 100%;
+    }
+
+    .bp-final-validation {
+      padding: 24px 18px;
+    }
+
+    .bp-final-title {
+      font-size: 22px;
+    }
+
+    .bp-final-item {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .bp-final-status {
+      padding-left: 34px;
+      text-align: left;
+    }
+  }
+</style>
+
+<div id="bp-validation-template" style="display:none;">
+  <div class="bp-validation-box">
+
+    <div class="bp-validation-pending">
+
+      <div class="bp-validation-label">
+        Action requise
+      </div>
+
+      <div class="bp-validation-title">
+        Validez cette section
+      </div>
+
+      <div class="bp-validation-text">
+        Vérifiez attentivement les informations ci-dessus avant de poursuivre.
+        Validez cette section si elle vous convient, ou indiquez les modifications
+        que vous souhaitez apporter.
+      </div>
+
+      <div class="bp-validation-actions">
+
+        <button
+          type="button"
+          class="bp-validation-btn bp-validation-approve"
+        >
+          ✓ Je valide cette section
+        </button>
+
+        <button
+          type="button"
+          class="bp-validation-btn bp-validation-comment"
+        >
+          ✏️ J'ai une modification ou un commentaire
+        </button>
+
+      </div>
+
+      <div class="bp-comment-area">
+
+        <label class="bp-comment-label">
+          Votre demande de modification
+        </label>
+
+        <div class="bp-comment-help">
+          Décrivez précisément ce que vous souhaitez modifier, ajouter ou supprimer
+          dans cette section.
+        </div>
+
+        <textarea
+          class="bp-comment-textarea"
+          placeholder="Écrivez votre commentaire ou votre demande de modification ici..."
+        ></textarea>
+
+        <div class="bp-comment-error">
+          Merci d'indiquer votre demande avant de l'enregistrer.
+        </div>
+
+        <button
+          type="button"
+          class="bp-validation-btn bp-save-comment"
+        >
+          ✓ Enregistrer ma modification
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="bp-validation-result">
+
+      <div class="bp-validation-label">
+        Section complétée
+      </div>
+
+      <div class="bp-result-header">
+
+        <div class="bp-result-check">
+          ✓
+        </div>
+
+        <div class="bp-result-title">
+          Section validée
+        </div>
+
+      </div>
+
+      <div class="bp-result-comment"></div>
+
+      <button
+        type="button"
+        class="bp-edit-choice"
+      >
+        Modifier mon choix
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+<div id="bp-final-validation-template" style="display:none;">
+
+  <div class="bp-final-validation">
+
+    <div class="bp-final-content">
+
+      <div class="bp-final-label">
+        Validation finale
+      </div>
+
+      <h2 class="bp-final-title">
+        Validez définitivement votre retour
+      </h2>
+
+      <p class="bp-final-intro">
+        Avant de transmettre votre Blueprint à notre équipe, vous devez avoir
+        validé ou commenté chacune des 9 sections ci-dessus.
+      </p>
+
+      <div class="bp-final-progress">
+
+        <div class="bp-final-progress-top">
+
+          <div class="bp-final-progress-text">
+            Progression de votre validation
+          </div>
+
+          <div class="bp-final-progress-count">
+            0 / 9
+          </div>
+
+        </div>
+
+        <div class="bp-final-progress-bar">
+          <div class="bp-final-progress-fill"></div>
+        </div>
+
+      </div>
+
+
+      <ul class="bp-final-list">
+
+        <li class="bp-final-item" data-summary-section="bp-section-01">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Positionnement</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-02">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Client cible</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-03">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Objectifs du site</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-04">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Arborescence</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-05">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Cocon sémantique</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-06">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Tunnel de conversion</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-07">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Leviers de croissance</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-08">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Direction visuelle</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-09">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Articles de blog</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+      </ul>
+
+
+      <div class="bp-final-warning">
+        Il reste 9 sections à valider avant de pouvoir transmettre votre retour.
+      </div>
+
+      <div class="bp-final-success-message">
+        ✓ Toutes les sections ont été complétées. Vous pouvez maintenant confirmer
+        et transmettre votre retour.
+      </div>
+
+
+      <div class="bp-final-confirmation">
+
+        <label class="bp-final-checkbox-row">
+
+          <input
+            type="checkbox"
+            class="bp-final-checkbox"
+            disabled
+          >
+
+          <span class="bp-final-checkbox-text">
+            Je confirme avoir relu l'intégralité du Blueprint ainsi que mes
+            éventuels commentaires et demandes de modification. Je confirme que
+            le Blueprint et les retours formulés ci-dessus constituent les
+            instructions de référence à prendre en compte pour la conception
+            de mon site.
+          </span>
+
+        </label>
+
+        <div class="bp-final-reference-note">
+          La conception de votre site sera réalisée sur la base du Blueprint
+          et des demandes de modification que vous validez ici. Toute demande
+          majeure formulée après cette validation et nécessitant de revenir sur
+          un travail déjà réalisé pourra entraîner une facturation complémentaire.
+        </div>
+
+        <button
+          type="button"
+          class="bp-final-submit"
+          disabled
+        >
+          VALIDER ET TRANSMETTRE MON RETOUR
+        </button>
+
+        <div class="bp-transmission-error">
+          Une erreur est survenue pendant la transmission de votre retour.
+          Merci de réessayer dans quelques instants.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="bp-transmission-success">
+
+      <div class="bp-transmission-success-icon">
+        ✓
+      </div>
+
+      <div class="bp-transmission-success-title">
+        Votre retour a bien été transmis !
+      </div>
+
+      <div class="bp-transmission-success-text">
+        Merci pour votre validation. Votre Blueprint ainsi que l'ensemble de
+        vos commentaires et demandes de modification ont bien été transmis à
+        notre équipe.
+        <br><br>
+        Nous allons maintenant préparer votre cahier des charges et reviendrons
+        rapidement vers vous pour la suite de votre projet.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const BLUEPRINT_ID = "6aad243c261a167fd999fcfd";
+
+  const CLIENT_EMAIL =
+    "contact@7milliards.org";
+
+  const WEBHOOK_URL =
+    "https://hook.eu2.make.com/pm0msu9nua1val6ysvda71aqniu0h8fa";
+
+  const sections =
+    document.querySelectorAll('[id^="bp-section-"]');
+
+  const template =
+    document.querySelector("#bp-validation-template");
+
+  const finalTemplate =
+    document.querySelector("#bp-final-validation-template");
+
+  const blueprintResponses = {};
+
+  const sectionNames = {
+    "bp-section-01": "Positionnement",
+    "bp-section-02": "Client cible",
+    "bp-section-03": "Objectifs du site",
+    "bp-section-04": "Arborescence",
+    "bp-section-05": "Cocon sémantique",
+    "bp-section-06": "Tunnel de conversion",
+    "bp-section-07": "Leviers de croissance",
+    "bp-section-08": "Direction visuelle",
+    "bp-section-09": "Articles de blog"
+  };
+
+
+  if (!template || !finalTemplate) {
+    console.log("Template de validation introuvable");
+    return;
+  }
+
+
+  const finalValidation =
+    finalTemplate.firstElementChild.cloneNode(true);
+
+  document.body.appendChild(finalValidation);
+
+
+  const finalContent =
+    finalValidation.querySelector(".bp-final-content");
+
+  const transmissionSuccess =
+    finalValidation.querySelector(".bp-transmission-success");
+
+  const transmissionError =
+    finalValidation.querySelector(".bp-transmission-error");
+
+  const progressCount =
+    finalValidation.querySelector(".bp-final-progress-count");
+
+  const progressFill =
+    finalValidation.querySelector(".bp-final-progress-fill");
+
+  const finalWarning =
+    finalValidation.querySelector(".bp-final-warning");
+
+  const finalSuccessMessage =
+    finalValidation.querySelector(".bp-final-success-message");
+
+  const finalConfirmation =
+    finalValidation.querySelector(".bp-final-confirmation");
+
+  const finalCheckbox =
+    finalValidation.querySelector(".bp-final-checkbox");
+
+  const finalSubmit =
+    finalValidation.querySelector(".bp-final-submit");
+
+
+  function updateFinalValidation() {
+
+    let completedCount = 0;
+
+    Object.keys(sectionNames).forEach(function (sectionId) {
+
+      const summaryItem =
+        finalValidation.querySelector(
+          '[data-summary-section="' + sectionId + '"]'
+        );
+
+      if (!summaryItem) {
+        return;
+      }
+
+      const icon =
+        summaryItem.querySelector(".bp-final-icon");
+
+      const status =
+        summaryItem.querySelector(".bp-final-status");
+
+      const response =
+        blueprintResponses[sectionId];
+
+
+      if (response) {
+
+        completedCount++;
+
+        summaryItem.classList.add("bp-item-completed");
+
+        icon.textContent = "✓";
+
+        if (response.status === "comment") {
+          status.textContent = "Modification enregistrée";
+        } else {
+          status.textContent = "Validé";
+        }
+
+      } else {
+
+        summaryItem.classList.remove("bp-item-completed");
+
+        icon.textContent = "○";
+        status.textContent = "À valider";
+
+      }
+
+    });
+
+
+    progressCount.textContent =
+      completedCount + " / 9";
+
+    progressFill.style.width =
+      ((completedCount / 9) * 100) + "%";
+
+
+    if (completedCount === 9) {
+
+      finalValidation.classList.add("bp-final-ready");
+
+      finalWarning.style.display = "none";
+      finalSuccessMessage.style.display = "block";
+
+      finalConfirmation.classList.add(
+        "bp-confirmation-enabled"
+      );
+
+      finalCheckbox.disabled = false;
+
+    } else {
+
+      finalValidation.classList.remove("bp-final-ready");
+
+      finalSuccessMessage.style.display = "none";
+      finalWarning.style.display = "block";
+
+      const remaining = 9 - completedCount;
+
+      if (remaining === 1) {
+        finalWarning.textContent =
+          "Il reste 1 section à valider avant de pouvoir transmettre votre retour.";
+      } else {
+        finalWarning.textContent =
+          "Il reste " +
+          remaining +
+          " sections à valider avant de pouvoir transmettre votre retour.";
+      }
+
+      finalConfirmation.classList.remove(
+        "bp-confirmation-enabled"
+      );
+
+      finalCheckbox.checked = false;
+      finalCheckbox.disabled = true;
+
+      finalSubmit.disabled = true;
+      finalSubmit.classList.remove("bp-submit-enabled");
+
+    }
+
+  }
+
+
+  finalCheckbox.addEventListener("change", function () {
+
+    if (
+      Object.keys(blueprintResponses).length === 9 &&
+      finalCheckbox.checked
+    ) {
+
+      finalSubmit.disabled = false;
+      finalSubmit.classList.add("bp-submit-enabled");
+
+    } else {
+
+      finalSubmit.disabled = true;
+      finalSubmit.classList.remove("bp-submit-enabled");
+
+    }
+
+  });
+
+
+  finalSubmit.addEventListener("click", async function () {
+
+    if (
+      finalSubmit.disabled ||
+      Object.keys(blueprintResponses).length !== 9 ||
+      !finalCheckbox.checked
+    ) {
+      return;
+    }
+
+
+    transmissionError.style.display = "none";
+
+    finalSubmit.disabled = true;
+    finalSubmit.classList.remove("bp-submit-enabled");
+    finalSubmit.textContent = "TRANSMISSION EN COURS...";
+
+
+    /*
+      PAYLOAD PLAT POUR MAKE
+
+      Une validation = un seul bundle.
+      Plus besoin d'Iterator dans Make.
+    */
+
+    const payload = {
+
+      event_type: "final_validation",
+
+      blueprint_id: BLUEPRINT_ID,
+      email_client: CLIENT_EMAIL,
+
+      section_01_status:
+        blueprintResponses["bp-section-01"].status,
+
+      section_01_comment:
+        blueprintResponses["bp-section-01"].comment,
+
+      section_02_status:
+        blueprintResponses["bp-section-02"].status,
+
+      section_02_comment:
+        blueprintResponses["bp-section-02"].comment,
+
+      section_03_status:
+        blueprintResponses["bp-section-03"].status,
+
+      section_03_comment:
+        blueprintResponses["bp-section-03"].comment,
+
+      section_04_status:
+        blueprintResponses["bp-section-04"].status,
+
+      section_04_comment:
+        blueprintResponses["bp-section-04"].comment,
+
+      section_05_status:
+        blueprintResponses["bp-section-05"].status,
+
+      section_05_comment:
+        blueprintResponses["bp-section-05"].comment,
+
+      section_06_status:
+        blueprintResponses["bp-section-06"].status,
+
+      section_06_comment:
+        blueprintResponses["bp-section-06"].comment,
+
+      section_07_status:
+        blueprintResponses["bp-section-07"].status,
+
+      section_07_comment:
+        blueprintResponses["bp-section-07"].comment,
+
+      section_08_status:
+        blueprintResponses["bp-section-08"].status,
+
+      section_08_comment:
+        blueprintResponses["bp-section-08"].comment,
+
+      section_09_status:
+        blueprintResponses["bp-section-09"].status,
+
+      section_09_comment:
+        blueprintResponses["bp-section-09"].comment
+
+    };
+
+
+    console.log(
+      "Transmission du Blueprint :",
+      payload
+    );
+
+
+    try {
+
+      const response = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+
+      if (!response.ok) {
+        throw new Error(
+          "Erreur HTTP : " + response.status
+        );
+      }
+
+
+      finalContent.style.display = "none";
+      transmissionSuccess.style.display = "block";
+
+      finalValidation.classList.add("bp-final-ready");
+
+      window.scrollTo({
+        top:
+          finalValidation.getBoundingClientRect().top +
+          window.pageYOffset -
+          30,
+        behavior: "smooth"
+      });
+
+
+    } catch (error) {
+
+      console.error(
+        "Erreur transmission Blueprint :",
+        error
+      );
+
+      transmissionError.style.display = "block";
+
+      finalSubmit.disabled = false;
+      finalSubmit.classList.add("bp-submit-enabled");
+      finalSubmit.textContent =
+        "RÉESSAYER LA TRANSMISSION";
+
+    }
+
+  });
+
+
+  sections.forEach(function (section) {
+
+    const validationBox =
+      template.firstElementChild.cloneNode(true);
+
+    const sectionId =
+      section.id;
+
+    validationBox.setAttribute(
+      "data-section-id",
+      sectionId
+    );
+
+    section.appendChild(validationBox);
+
+
+    const pendingArea =
+      validationBox.querySelector(".bp-validation-pending");
+
+    const resultArea =
+      validationBox.querySelector(".bp-validation-result");
+
+    const approveButton =
+      validationBox.querySelector(".bp-validation-approve");
+
+    const commentButton =
+      validationBox.querySelector(".bp-validation-comment");
+
+    const commentArea =
+      validationBox.querySelector(".bp-comment-area");
+
+    const textarea =
+      validationBox.querySelector(".bp-comment-textarea");
+
+    const commentError =
+      validationBox.querySelector(".bp-comment-error");
+
+    const saveCommentButton =
+      validationBox.querySelector(".bp-save-comment");
+
+    const resultTitle =
+      validationBox.querySelector(".bp-result-title");
+
+    const resultComment =
+      validationBox.querySelector(".bp-result-comment");
+
+    const editButton =
+      validationBox.querySelector(".bp-edit-choice");
+
+
+    approveButton.addEventListener("click", function () {
+
+      blueprintResponses[sectionId] = {
+        section_id: sectionId,
+        section_name: sectionNames[sectionId] || sectionId,
+        status: "validated",
+        comment: ""
+      };
+
+      validationBox.classList.add("bp-completed");
+
+      pendingArea.style.display = "none";
+      resultArea.style.display = "block";
+
+      resultTitle.textContent = "Section validée";
+
+      resultComment.textContent = "";
+      resultComment.style.display = "none";
+
+      updateFinalValidation();
+
+    });
+
+
+    commentButton.addEventListener("click", function () {
+
+      commentArea.style.display = "block";
+      commentError.style.display = "none";
+      textarea.focus();
+
+    });
+
+
+    saveCommentButton.addEventListener("click", function () {
+
+      const comment = textarea.value.trim();
+
+      if (comment === "") {
+
+        commentError.style.display = "block";
+        textarea.focus();
+        return;
+
+      }
+
+      commentError.style.display = "none";
+
+      blueprintResponses[sectionId] = {
+        section_id: sectionId,
+        section_name: sectionNames[sectionId] || sectionId,
+        status: "comment",
+        comment: comment
+      };
+
+      validationBox.classList.add("bp-completed");
+
+      pendingArea.style.display = "none";
+      resultArea.style.display = "block";
+
+      resultTitle.textContent =
+        "Modification enregistrée";
+
+      resultComment.textContent = comment;
+      resultComment.style.display = "block";
+
+      updateFinalValidation();
+
+    });
+
+
+    editButton.addEventListener("click", function () {
+
+      const previousResponse =
+        blueprintResponses[sectionId];
+
+      validationBox.classList.remove("bp-completed");
+
+      resultArea.style.display = "none";
+      pendingArea.style.display = "block";
+
+      commentError.style.display = "none";
+
+
+      if (
+        previousResponse &&
+        previousResponse.status === "comment"
+      ) {
+
+        textarea.value =
+          previousResponse.comment || "";
+
+        commentArea.style.display = "block";
+
+      } else {
+
+        textarea.value = "";
+        commentArea.style.display = "none";
+
+      }
+
+
+      delete blueprintResponses[sectionId];
+
+      updateFinalValidation();
+
+    });
+
+  });
+
+
+  updateFinalValidation();
+
+});
+</script>
+
+</body>
+</html>
