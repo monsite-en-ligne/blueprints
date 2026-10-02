@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Souffle & Équilibre</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2c2c2c;
+    background: #faf9f7;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #3b4a3f 0%, #5c6b50 35%, #8c7055 70%, #b07a55 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.85);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 30px;
+    margin-bottom: 40px;
+    backdrop-filter: blur(4px);
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    letter-spacing: -1px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 56px;
+    letter-spacing: 1px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .cover-meta-sep {
+    width: 1px;
+    height: 36px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: #f5f3ef;
+  }
+
+  section:nth-child(odd) {
+    background: #faf9f7;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8c7055;
+    background: rgba(140,112,85,0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #2c2c2c;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: #6b6b6b;
+    margin-bottom: 44px;
+    max-width: 620px;
+  }
+
+  /* CARDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .card-icon {
+    font-size: 26px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #8c7055;
+    margin-bottom: 8px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    color: #5a5a5a;
+    line-height: 1.7;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #5c6b50 0%, #8c7055 100%);
+    border-radius: 18px;
+    padding: 40px 48px;
+    color: #ffffff;
+    margin-bottom: 40px;
+  }
+
+  .highlight-box .hl-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 16px;
+  }
+
+  .highlight-box .hl-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #ffffff;
+  }
+
+  /* LISTE STYLÉE */
+  .styled-list {
+    list-style: none;
+    margin-top: 8px;
+  }
+
+  .styled-list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 14px;
+    color: #4a4a4a;
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+
+  .styled-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #8c7055;
+    font-weight: 600;
+  }
+
+  /* TABLEAU */
+  .table-wrap {
+    overflow-x: auto;
+    margin-top: 32px;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 14px;
+  }
+
+  thead tr {
+    background: #5c6b50;
+    color: #ffffff;
+  }
+
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #f0ede8;
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody td {
+    padding: 16px 20px;
+    color: #3a3a3a;
+    vertical-align: top;
+  }
+
+  tbody tr:hover {
+    background: #fdf9f5;
+  }
+
+  /* BADGES PRIORITÉ */
+  .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-fort {
+    background: #e8f0e5;
+    color: #3d6641;
+  }
+
+  .badge-moyen {
+    background: #fef3e2;
+    color: #a06520;
+  }
+
+  .badge-faible {
+    background: #f2f2f2;
+    color: #7a7a7a;
+  }
+
+  .badge-prio {
+    background: #e8f0e5;
+    color: #3d6641;
+  }
+
+  .badge-med {
+    background: #fef3e2;
+    color: #a06520;
+  }
+
+  .badge-low {
+    background: #f2f2f2;
+    color: #7a7a7a;
+  }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+    position: relative;
+  }
+
+  .tunnel-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+  }
+
+  .tunnel-step {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8c7055;
+    margin-bottom: 12px;
+  }
+
+  .tunnel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin-bottom: 16px;
+  }
+
+  .tunnel-row {
+    margin-bottom: 10px;
+  }
+
+  .tunnel-row-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 3px;
+  }
+
+  .tunnel-row-val {
+    font-size: 13px;
+    color: #4a4a4a;
+    line-height: 1.5;
+  }
+
+  .cta-pill {
+    display: inline-block;
+    margin-top: 14px;
+    background: linear-gradient(135deg, #5c6b50, #8c7055);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 32px;
+    justify-content: center;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  }
+
+  .palette-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #3a3a3a;
+    text-align: center;
+  }
+
+  .palette-hex {
+    font-size: 11px;
+    color: #aaa;
+    font-family: monospace;
+  }
+
+  /* MAILLAGE */
+  .maillage-list {
+    list-style: none;
+    margin-top: 8px;
+  }
+
+  .maillage-list li {
+    font-size: 14px;
+    color: #4a4a4a;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.6;
+  }
+
+  .maillage-list li .source {
+    font-weight: 600;
+    color: #5c6b50;
+  }
+
+  .maillage-list li .arrow {
+    color: #8c7055;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .maillage-list li .target {
+    color: #4a4a4a;
+  }
+
+  /* OBJETS TEXTE */
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .tag {
+    background: rgba(92,107,80,0.1);
+    color: #4a5a40;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* OBJECTIFS PRIORISÉS */
+  .obj-list {
+    list-style: none;
+    counter-reset: obj;
+    margin-top: 20px;
+  }
+
+  .obj-list li {
+    counter-increment: obj;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
+  .obj-num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #5c6b50, #8c7055);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .obj-content .obj-title {
+    font-weight: 600;
+    color: #2c2c2c;
+    font-size: 15px;
+  }
+
+  .obj-content .obj-desc {
+    font-size: 13px;
+    color: #6b6b6b;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #2c2c2c;
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    padding: 36px 40px;
+    font-size: 13px;
+  }
+
+  footer strong {
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* LEVIER CARDS */
+  .levier-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .levier-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(140,112,85,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .levier-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #2c2c2c;
+  }
+
+  /* CLUSTER */
+  .cluster-block {
+    margin-bottom: 32px;
+  }
+
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin-bottom: 6px;
+  }
+
+  .cluster-desc {
+    font-size: 14px;
+    color: #6b6b6b;
+    margin-bottom: 14px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ddd, transparent);
+    margin: 40px 0;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .tunnel-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cover-title {
+      font-size: 42px;
+    }
+
+    .cover-subtitle {
+      font-size: 15px;
+    }
+
+    .cover-meta {
+      gap: 20px;
+    }
+
+    .cover-meta-sep {
+      display: none;
+    }
+
+    section {
+      padding: 50px 24px;
+    }
+
+    h2.section-title {
+      font-size: 26px;
+    }
+
+    .grid-2,
+    .grid-3,
+    .tunnel-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .highlight-box {
+      padding: 28px 24px;
+    }
+
+    .highlight-box .hl-text {
+      font-size: 20px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    .palette-grid {
+      gap: 18px;
+    }
+
+    .maillage-list li {
+      flex-wrap: wrap;
+    }
+
+    .obj-list li {
+      align-items: flex-start;
+    }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique — Document Confidentiel</div>
+  <div class="cover-title">Souffle &amp; Équilibre</div>
+  <div class="cover-subtitle">Stratégie web — Sophrologue certifiée à Vertou</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Cliente</div>
+      <div class="cover-meta-value">Élodie Marchand</div>
+    </div>
+    <div class="cover-meta-sep"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Secteur</div>
+      <div class="cover-meta-value">Bien-être &amp; Sophrologie</div>
+    </div>
+    <div class="cover-meta-sep"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Zone</div>
+      <div class="cover-meta-value">Vertou · Nantes Sud · Visio France</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-inner">
+    <div class="section-badge">01 — Positionnement</div>
+    <h2 class="section-title">Qui êtes-vous, et pourquoi on vous choisit</h2>
+    <p class="section-intro">La fondation stratégique de votre communication — ce qui vous rend reconnaissable et désirable.</p>
+
+    <div class="highlight-box">
+      <div class="hl-label">Promesse de valeur principale</div>
+      <div class="hl-text">« Retrouvez le calme, le sommeil et la confiance en vous grâce à une sophrologie ancrée dans le quotidien — au cabinet, à domicile ou en visio. »</div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-label">Ligne directrice</div>
+        <div class="card-title">Accompagnement bienveillant et outils concrets</div>
+        <div class="card-text">Votre communication met en avant un accompagnement doux mais efficace, où chaque client repart avec des outils pratiques, réutilisables seul au quotidien. Ni jargon, ni promesse magique — juste du concret.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Ton éditorial</div>
+        <div class="card-title">Chaleureux · Concret · Inspirant</div>
+        <div class="card-text">Un ton proche et humain, qui rassure sans infantiliser. Vous parlez vrai, avec des exemples de vie, en évitant les formules trop mystiques. On sent l'expérience vécue derrière chaque mot.</div>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top: 24px;">
+      <div class="card">
+        <span class="card-icon">🌿</span>
+        <div class="card-label">Différenciation 1</div>
+        <div class="card-title">Vécu professionnel ancré dans le réel</div>
+        <div class="card-text">12 ans en RH + burn-out personnel : vous comprenez de l'intérieur les pressions du monde du travail. Une crédibilité rare chez les thérapeutes.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🧒</span>
+        <div class="card-label">Différenciation 2</div>
+        <div class="card-title">Spécialisation large : de 7 ans à l'adulte</div>
+        <div class="card-text">Enfants, ados, adultes, futures mamans : vous êtes l'interlocutrice de toute la famille, avec des formations spécifiques pour chaque profil.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🗺️</span>
+        <div class="card-label">Différenciation 3</div>
+        <div class="card-title">3 modes de consultation flexibles</div>
+        <div class="card-text">Cabinet à Vertou, déplacement à domicile, visio partout en France. Vous supprimez toutes les barrières d'accès à la sophrologie.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🏢</span>
+        <div class="card-label">Différenciation 4</div>
+        <div class="card-title">Offre collective &amp; entreprise</div>
+        <div class="card-text">Séances collectives hebdomadaires et ateliers en entreprise : une double cible (particuliers + professionnels) qui élargit votre marché naturellement.</div>
+      </div>
+      <div class="card">
+        <span class="card-icon">📞</span>
+        <div class="card-label">Différenciation 5</div>
+        <div class="card-title">Appel découverte offert, sans engagement</div>
+        <div class="card-text">15 minutes gratuites pour se rencontrer avant de s'engager. Un levier de conversion puissant qui lève l'hésitation dès le premier contact.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-inner">
+    <div class="section-badge">02 — Client Cible</div>
+    <h2 class="section-title">À qui vous vous adressez</h2>
+    <p class="section-intro">Connaître précisément votre client idéal permet de choisir les bons mots, les bons canaux, et les bonnes pages.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-label">Profil type principal</div>
+        <div class="card-title">L'adulte stressé de Nantes Sud</div>
+        <div class="card-text">Femme ou homme, 30–50 ans, actif·ve, habitant Vertou, Rezé ou Saint-Sébastien. Surcharge mentale, difficultés à dormir, sentiment de tourner en rond. A entendu parler de sophrologie mais ne sait pas vraiment comment ça fonctionne.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Profil secondaire</div>
+        <div class="card-title">Le parent en recherche pour son enfant</div>
+        <div class="card-text">Parent (25–45 ans) dont l'enfant ou l'ado traverse une période difficile : anxiété scolaire, manque de confiance, trouble du sommeil. Cherche une alternative douce au médical, rassurante et concrète.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Motivations principales</div>
+        <div class="card-title">Ce qu'ils viennent chercher</div>
+        <ul class="styled-list">
+          <li>Dormir enfin correctement</li>
+          <li>Gérer leur anxiété au quotidien</li>
+          <li>Se préparer à un examen, un accouchement, un entretien</li>
+          <li>Reprendre confiance en eux</li>
+          <li>Trouver un outil à pratiquer seul chez soi</li>
+          <li>Prévenir l'épuisement professionnel</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Freins &amp; objections</div>
+        <div class="card-title">Ce qui peut les freiner</div>
+        <ul class="styled-list">
+          <li>« Je ne sais pas si ça va vraiment marcher pour moi »</li>
+          <li>« C'est quoi exactement la sophrologie ? »</li>
+          <li>« Est-ce que c'est remboursé ? »</li>
+          <li>« Je n'ai pas le temps d'y aller régulièrement »</li>
+          <li>« Est-ce que c'est sérieux, scientifiquement ? »</li>
+          <li>« Et si je ne suis pas capable de me détendre ? »</li>
+        </ul>
+      </div>
+
+      <div class="card" style="grid-column: 1 / -1;">
+        <div class="card-label">Critères de décision</div>
+        <div class="card-title">Ce qui fait qu'ils choisissent Élodie plutôt qu'une autre</div>
+        <div class="tag-row">
+          <span class="tag">Proximité géographique</span>
+          <span class="tag">Disponibilité en visio</span>
+          <span class="tag">Expérience vécue du burn-out</span>
+          <span class="tag">Approche bienveillante et sans jugement</span>
+          <span class="tag">Tarifs clairs affichés</span>
+          <span class="tag">Appel découverte gratuit</span>
+          <span class="tag">Spécialisation enfants/ados</span>
+          <span class="tag">Avis et témoignages clients</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-inner">
+    <div class="section-badge">03 — Objectifs du Site</div>
+    <h2 class="section-title">Ce que votre site doit accomplir</h2>
+    <p class="section-intro">Voici les objectifs classés par ordre de priorité stratégique pour votre activité.</p>
+
+    <ul class="obj-list">
+      <li>
+        <div class="obj-num">1</div>
+        <div class="obj-content">
+          <div class="obj-title">Prise de rendez-vous en ligne</div>
+          <div class="obj-desc">Via Resalib — le site doit rendre la prise de RDV immédiate et sans friction, visible depuis toutes les pages.</div>
+        </div>
+      </li>
+      <li>
+        <div class="obj-num">2</div>
+        <div class="obj-content">
+          <div class="obj-title">Génération de leads qualifiés</div>
+          <div class="obj-desc">Inciter les visiteurs hésitants à réserver l'appel découverte gratuit de 15 min — le premier pas facile vers l'accompagnement.</div>
+        </div>
+      </li>
+      <li>
+        <div class="obj-num">3</div>
+        <div class="obj-content">
+          <div class="obj-title">SEO local — Nantes Sud &amp; Vertou</div>
+          <div class="obj-desc">Être trouvée par les habitants de Vertou, Rezé, Saint-Sébastien cherchant une sophrologue à proximité.</div>
+        </div>
+      </li>
+      <li>
+        <div class="obj-num">4</div>
+        <div class="obj-content">
+          <div class="obj-title">Réassurance &amp; légitimité</div>
+          <div class="obj-desc">Démontrer la crédibilité d'Élodie (parcours, certifications, témoignages) pour lever les doutes avant le premier contact.</div>
+        </div>
+      </li>
+      <li>
+        <div class="obj-num">5</div>
+        <div class="obj-content">
+          <div class="obj-title">Notoriété locale &amp; visio France</div>
+          <div class="obj-desc">Construire une présence durable sur la sophrologie à Nantes tout en captant des clients en visio partout en France.</div>
+        </div>
+      </li>
+      <li>
+        <div class="obj-num">6</div>
+        <div class="obj-content">
+          <div class="obj-title">Nurturing par le blog</div>
+          <div class="obj-desc">Apporter de la valeur aux visiteurs qui ne sont pas encore prêts à prendre RDV — et les accompagner jusqu'à la décision.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-inner">
+    <div class="section-badge">04 — Arborescence du Site</div>
+    <h2 class="section-title">La structure de votre site web</h2>
+    <p class="section-intro">Chaque page a un rôle clair dans votre stratégie. Une page = un objectif = un mot-clé principal.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>Framework</th>
+            <th>Mot-clé principal</th>
+            <th>Potentiel SEO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Accueil</strong></td>
+            <td>AIDA</td>
+            <td>sophrologue Vertou</td>
+            <td><span class="badge badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>La Sophrologie</strong><br><span style="font-size:12px;color:#888">Qu'est-ce que c'est, comment ça fonctionne, pour qui</span></td>
+            <td>PAS</td>
+            <td>qu'est-ce que la sophrologie</td>
+            <td><span class="badge badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Mes Accompagnements</strong><br><span style="font-size:12px;color:#888">Stress/anxiété, sommeil, confiance, enfants/ados, périnatalité, burn-out, préparation événements</span></td>
+            <td>PAS</td>
+            <td>sophrologie stress anxiété sommeil</td>
+            <td><span class="badge badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Séances &amp; Tarifs</strong><br><span style="font-size:12px;color:#888">Individuel, collectif, entreprise, modalités, forfaits, FAQ</span></td>
+            <td>BAB</td>
+            <td>tarif sophrologue Nantes</td>
+            <td><span class="badge badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>À Propos — Élodie</strong></td>
+            <td>AIDA</td>
+            <td>sophrologue certifiée Vertou</td>
+            <td><span class="badge badge-moyen">Moyen</span></td>
+          </tr>
+          <tr>
+            <td><strong>Sophrologue Nantes Sud</strong><br><span style="font-size:12px;color:#888">Page SEO locale : Vertou, Rezé, Saint-Sébastien, Basse-Goulaine</span></td>
+            <td>PAS</td>
+            <td>sophrologue Nantes Sud</td>
+            <td><span class="badge badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Sophrologie en Visio</strong><br><span style="font-size:12px;color:#888">Page SEO nationale : séances à distance</span></td>
+            <td>BAB</td>
+            <td>séance sophrologie en ligne visio</td>
+            <td><span class="badge badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Blog</strong></td>
+            <td>—</td>
+            <td>sophrologie conseils bien-être</td>
+            <td><span class="badge badge-fort">Fort</span></td>
+          </tr>
+          <tr>
+            <td><strong>Contact</strong></td>
+            <td>—</td>
+            <td>contact sophrologue Vertou</td>
+            <td><span class="badge badge-faible">Faible</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-inner">
+    <div class="section-badge">05 — Cocon Sémantique</div>
+    <h2 class="section-title">La logique de maillage interne</h2>
+    <p class="section-intro">Un cocon sémantique bien construit renforce votre autorité SEO sur chaque sujet et guide naturellement vos visiteurs.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-label">Cluster 1</div>
+        <div class="card-title">🌿 Sophrologie — Comprendre &amp; Pratiquer</div>
+        <div class="card-text" style="margin-bottom: 16px;">Toutes les pages et articles qui expliquent ce qu'est la sophrologie, son fonctionnement et ses bénéfices. Objectif : capter les internautes en phase de découverte.</div>
+        <div class="tag-row">
+          <span class="tag">La Sophrologie (page)</span>
+          <span class="tag">Blog : exercices, bienfaits, mythes</span>
+          <span class="tag">Mes Accompagnements</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Cluster 2</div>
+        <div class="card-title">😌 Thématiques de vie — Problèmes &amp; Solutions</div>
+        <div class="card-text" style="margin-bottom: 16px;">Contenu orienté problème (stress, sommeil, burn-out, confiance) qui attire les recherches symptomatiques et renvoie vers la page Accompagnements.</div>
+        <div class="tag-row">
+          <span class="tag">Mes Accompagnements (page)</span>
+          <span class="tag">Blog : stress, sommeil, burn-out</span>
+          <span class="tag">Séances &amp; Tarifs</span>
+        </div>
+      </div>
+
+      <div class="card" style="grid-column: 1 / -1;">
+        <div class="card-label">Cluster 3</div>
+        <div class="card-title">📍 Géolocalisation &amp; Accessibilité</div>
+        <div class="card-text" style="margin-bottom: 16px;">Pages et contenus liés à la zone d'activité physique et à la sophrologie en ligne. Capte les recherches locales et nationales.</div>
+        <div class="tag-row">
+          <span class="tag">Sophrologue Nantes Sud (page locale)</span>
+          <span class="tag">Sophrologie en Visio (page nationale)</span>
+          <span class="tag">Blog : sophrologie à distance</span>
+          <span class="tag">Accueil → renvoie vers les deux</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="card">
+      <div class="card-label">Maillage interne — Logique de liens</div>
+      <div class="card-title">Quelles pages renvoient vers quelles autres</div>
+      <ul class="maillage-list" style="margin-top: 16px;">
+        <li><span class="source">Accueil</span><span class="arrow">→</span><span class="target">Mes Accompagnements · La Sophrologie · Séances &amp; Tarifs · Appel découverte (CTA)</span></li>
+        <li><span class="source">La Sophrologie</span><span class="arrow">→</span><span class="target">Mes Accompagnements · À Propos · Séances &amp; Tarifs</span></li>
+        <li><span class="source">Mes Accompagnements</span><span class="arrow">→</span><span class="target">Séances &amp; Tarifs · Contact · Articles blog thématiques</span></li>
+        <li><span class="source">Séances &amp; Tarifs</span><span class="arrow">→</span><span class="target">Contact · Prise de RDV (Resalib) · Appel découverte</span></li>
+        <li><span class="source">Pages SEO locales</span><span class="arrow">→</span><span class="target">Mes Accompagnements · Séances &amp; Tarifs · Contact</span></li>
+        <li><span class="source">Articles Blog</span><span class="arrow">→</span><span class="target">Page thématique correspondante · Séances &amp; Tarifs · CTA Appel découverte</span></li>
+        <li><span class="source">À Propos</span><span class="arrow">→</span><span class="target">Mes Accompagnements · Contact · Séances &amp; Tarifs</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-inner">
+    <div class="section-badge">06 — Tunnel de Conversion</div>
+    <h2 class="section-title">Le parcours de vos futurs clients</h2>
+    <p class="section-intro">De la première recherche Google jusqu'à la prise de rendez-vous — chaque étape a une mission précise.</p>
+
+    <div class="tunnel-grid">
+      <div class="tunnel-card">
+        <div class="tunnel-step">Étape 1</div>
+        <div class="tunnel-title">Découverte</div>
+        <div class="tunnel-row">
+          <div class="tunnel-row-label">Source de trafic</div>
+          <div class="tunnel-row-val">Google (SEO local), bouche à oreille, réseaux sociaux</div>
+        </div>
+        <div class="tunnel-row">
+          <div class="tunnel-row-label">Page concernée</div>
+          <div class="tunnel-row-val">Accueil · Pages SEO locales · Articles blog</div>
+        </div>
+        <div class="tunnel-row">
+          <div class="tunnel-row-label">CTA associé</div>
+          <div class="tunnel-row-val">« Découvrir mes accompagnements »</div>
+        </div>
+        <span class="cta-pill">Attirer</span>
+      </div>
+
+      <div class="tunnel-card">
+        <div class="tunnel-step">Étape 2</div>
+        <div class="tunnel-title">Intérêt</div>
+        <div class="tunnel-row">
+          <div class="tunnel-row-label">Source de trafic</div>
+          <div class="tunnel-row-val">Navigation interne depuis l'accueil ou le blog</div>
+        </div>
+        <div class="tunnel-row">
+          <div class="tunnel-row-label">Page concernée</div>
+          <div class="tunnel-row-val">La Sophrologie · Mes Accompagnements</div>
+        </div>
+        <div class="tunnel-row">
+          <div class="tunnel-row-label">CTA associé</div>
+          <div class="tunnel-row-val">« Voir les séances et tarifs »</div>
+        </div>
+        <span class="cta-pill">Engager</span>
+      </div>
+
+      <div class="tunnel-card">
+        <div class="tunnel-step">Étape 3</div>
+        <div class="tunnel-title">Confiance</div>
+        <div class="tunnel-row">
+          <div class="tunnel-row-label">Source de trafic</div>
+          <div class="tunnel-row-val">Navigation interne depuis Accompagnements ou Tarifs</div>
+        </div>
+        <div class="tunnel-row">
+          <div class="tunnel-row-label">Page concernée</div>
+          <div class="tunnel-row-val">À Propos · Séances &amp; Tarifs · Témoignages</div>
+        </div>
+        <div class="tunnel-row">
+          <div class="tunnel-row-label">CTA associé</div>
+          <div class="tunnel-row-val">« Réserver mon appel découverte gratuit »</div>
+        </div>
+        <span class="cta-pill">Rassurer</span>
+      </div>
+
+      <div class="tunnel-card">
+        <div class="tunnel-step">Étape 4</div>
+        <div class="tunnel-title">Conversion</div>
+        <div class="tunnel-row">
+          <div class="tunnel-row-label">Source de trafic</div>
+          <div class="tunnel-row-val">CTA appel découverte ou bouton Resalib</div>
+        </div>
+        <div class="tunnel-row">
+          <div class="tunnel-row-label">Page concernée</div>
+          <div class="tunnel-row-val">Contact · Resalib (prise de RDV)</div>
+        </div>
+        <div class="tunnel-row">
+          <div class="tunnel-row-label">CTA associé</div>
+          <div class="tunnel-row-val">« Prendre rendez-vous » / « Appel 15 min offert »</div>
+        </div>
+        <span class="cta-pill">Convertir</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-inner">
+    <div class="section-badge">07 — Leviers Marketing Recommandés</div>
+    <h2 class="section-title">Les outils pour accélérer votre croissance</h2>
+    <p class="section-intro">Des leviers concrets, adaptés à votre activité et à votre positionnement.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="levier-header">
+          <div class="levier-icon">🎁</div>
+          <div class="levier-title">Lead Magnet</div>
+        </div>
+        <div class="card-text">
+          <strong>« 5 exercices de sophrologie pour mieux dormir ce soir »</strong> — un PDF téléchargeable gratuit, simple et immédiatement utile. Il capture l'email des visiteurs curieux mais pas encore prêts à prendre RDV, et démontre votre expertise en action.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="levier-header">
+          <div class="levier-icon">📅</div>
+          <div class="levier-title">Prise de Rendez-vous</div>
+        </div>
+        <div class="card-text">
+          <strong>Resalib</strong> (déjà utilisé) — intégration d'un bouton de prise de RDV visible sur toutes les pages (header + footer + pages clés). Ajouter un second bouton dédié à l'appel découverte de 15 min, distinct de la réservation classique.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="levier-header">
+          <div class="levier-icon">⭐</div>
+          <div class="levier-title">Preuve Sociale</div>
+        </div>
+        <div class="card-text">
+          Collecter des <strong>témoignages écrits courts</strong> de clients (prénom + contexte : « maman d'un ado anxieux », « cadre en reconversion »). Afficher les avis Google. À terme, 1 ou 2 témoignages vidéo de 30 secondes sur l'accueil et la page Accompagnements.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="levier-header">
+          <div class="levier-icon">📋</div>
+          <div class="levier-title">Formulaire Qualifiant</div>
+        </div>
+        <div class="card-text">
+          Champs recommandés pour la page Contact : <strong>Prénom · Email · Téléphone · Motif principal (liste déroulante) · Tranche d'âge concernée · Mode souhaité (cabinet / domicile / visio) · Message libre.</strong> Permet de mieux préparer l'appel découverte.
+        </div>
+      </div>
+
+      <div class="card" style="grid-column: 1 / -1;">
+        <div class="levier-header">
+          <div class="levier-icon">📨</div>
+          <div class="levier-title">Newsletter — Angle Éditorial</div>
+        </div>
+        <div class="card-text">
+          <strong>1 email mensuel</strong> avec un micro-conseil de sophrologie applicable immédiatement (exercice, posture, habitude), + un sujet de blog récent, + un rappel doux sur l'appel découverte. Ton : chaleureux, court, comme un message d'une amie experte. Sujet type : <em>« Ce soir, essayez ça avant de dormir 💚 »</em>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-inner">
+    <div class="section-badge">08 — Direction Visuelle &amp; Éditoriale</div>
+    <h2 class="section-title">L'identité visuelle de votre site</h2>
+    <p class="section-intro">Un univers doux, naturel et rassurant — en cohérence avec ce que vous avez décrit et avec l'essence de Souffle &amp; Équilibre.</p>
+
+    <div class="card" style="margin-bottom: 32px;">
+      <div class="card-label">Palette de Couleurs</div>
+      <div class="card-title">Vert sauge · Beige · Terracotta · Blanc cassé · Taupe</div>
+      <div class="palette-grid">
+        <div class="palette-item">
+          <div class="palette-swatch" style="background: #7d9469;"></div>
+          <div class="palette-name">Vert Sauge</div>
+          <div class="palette-hex">#7D9469</div>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background: #e8dcc8;"></div>
+          <div class="palette-name">Beige Naturel</div>
+          <div class="palette-hex">#E8DCC8</div>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background: #c47e5a;"></div>
+          <div class="palette-name">Terracotta Doux</div>
+          <div class="palette-hex">#C47E5A</div>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background: #faf8f4;"></div>
+          <div class="palette-name">Blanc Cassé</div>
+          <div class="palette-hex">#FAF8F4</div>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background: #7a6f65;"></div>
+          <div class="palette-name">Taupe Chaud</div>
+          <div class="palette-hex">#7A6F65</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Univers Visuel — 5 Recommandations</div>
+      <div class="card-title">Les images qui racontent votre univers</div>
+      <ul class="styled-list" style="margin-top: 12px;">
+        <li><strong>Mains apaisées</strong> — mains posées sur les genoux, mains tenant une tasse de tisane, geste de respiration : la douceur au sens propre.</li>
+        <li><strong>Nature lumineuse locale</strong> — Loire, vignes de Vertou, feuillages verts : ancre géographique et sentiment de sérénité.</li>
+        <li><strong>Lumière naturelle douce</strong> — tons chauds, contre-jour, ambiance matin calme. Pas de photos studio froide.</li>
+        <li><strong>Portrait authentique d'Élodie</strong> — sourire naturel, cadre chaleureux (cabinet ou extérieur). Shooting photo professionnel recommandé (AR Digital peut vous orienter).</li>
+        <li><strong>Typographie sobre et aérée</strong> — Playfair Display pour les titres (élégance douce), Inter pour le corps (lisibilité et modernité).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-inner">
+    <div class="section-badge">09 — Articles Blog Recommandés</div>
+    <h2 class="section-title">Votre stratégie de contenu</h2>
+    <p class="section-intro">Ces articles renforcent votre SEO, démontrent votre expertise et accompagnent vos visiteurs vers la prise de RDV.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Titre de l'article</th>
+            <th>Cluster</th>
+            <th>Intention de recherche</th>
+            <th>Priorité</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Sophrologie : qu'est-ce que c'est vraiment et comment ça fonctionne ?</strong></td>
+            <td>Cluster 1 — Comprendre</td>
+            <td>Informationnelle — grand public curieux</td>
+            <td><span class="badge badge-prio">Prioritaire</span></td>
+          </tr>
+          <tr>
+            <td><strong>5 exercices de sophrologie pour mieux dormir (à faire ce soir)</strong></td>
+            <td>Cluster 2 — Thématiques</td>
+            <td>Pratique — personne qui souffre d'insomnie</td>
+            <td><span class="badge badge-prio">Prioritaire</span></td>
+          </tr>
+          <tr>
+            <td><strong>Burn-out : comment la sophrologie m'a aidée à reconstruire ma vie</strong></td>
+            <td>Cluster 2 — Thématiques</td>
+            <td>Émotionnelle — personnes en épuisement professionnel</td>
+            <td><span class="badge badge-prio">Prioritaire</span></td>
+          </tr>
+          <tr>
+            <td><strong>Mon enfant est anxieux : la sophrologie peut-elle l'aider ?</strong></td>
+            <td>Cluster 2 — Thématiques</td>
+            <td>Informationnelle — parents inquiets pour leur enfant</td>
+            <td><span class="badge badge-prio">Prioritaire</span></td>
+          </tr>
+          <tr>
+            <td><strong>Sophrologie et préparation à l'accouchement : ce que ça change vraiment</strong></td>
+            <td>Cluster 2 — Thématiques</td>
+            <td>Informationnelle — futures mamans</td>
+            <td><span class="badge badge-med">Moyen</span></td>
+          </tr>
+          <tr>
+            <td><strong>Peut-on faire de la sophrologie en visio ? Tout ce que vous devez savoir</strong></td>
+            <td>Cluster 3 — Accessibilité</td>
+            <td>Pratique — personnes éloignées ou manquant de mobilité</td>
+            <td><span class="badge badge-med">Moyen</span></td>
+          </tr>
+          <tr>
+            <td><strong>Stress au travail : 3 techniques de sophrologie à pratiquer en 5 minutes</strong></td>
+            <td>Cluster 2 — Thématiques</td>
+            <td>Pratique — actifs stressés cherchant des outils rapides</td>
+            <td><span class="badge badge-low">Faible</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Souffle &amp; Équilibre — Élodie Marchand</strong></p>
+  <p style="margin-top: 6px;">Document confidentiel · Blueprint Stratégique · Préparé par AR Digital</p>
+  <p style="margin-top: 4px; font-size: 12px; color: rgba(255,255,255,0.35);">Ce document est destiné exclusivement à la cliente. Toute diffusion est interdite sans accord préalable.</p>
+</footer>
+
+</body>
+</html>
