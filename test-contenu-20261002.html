@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contenu des pages — Élodie Marchand Sophrologue</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  :root {
+    --primary: #9c6b3c;
+    --primary-dark: #3b2112;
+    --primary-light: #c8964a;
+    --bg-lin: #f5ede4;
+    --bg-ivory: #faf9f7;
+    --text-dark: #1e1209;
+    --text-mid: #5a3e28;
+    --text-light: #9c6b3c;
+  }
+
+  @page {
+    size: A4;
+    margin: 15mm 15mm 20mm 15mm;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-dark);
+    background: #fff;
+  }
+
+  /* ===== COUVERTURE ===== */
+  .cover {
+    height: 297mm;
+    background: linear-gradient(145deg, #1e1209 0%, #3b2112 40%, #6b3d1e 75%, #9c6b3c 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    page-break-after: always;
+    break-after: page;
+    text-align: center;
+    padding: 60px 40px;
+  }
+
+  .cover-logo {
+    position: absolute;
+    top: 32px;
+    left: 40px;
+    height: 40px;
+  }
+
+  .cover-client-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 48px;
+    letter-spacing: 0.5px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cover-meta-item {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .cover-meta-sep {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+  }
+
+  .cover-line {
+    width: 80px;
+    height: 2px;
+    background: var(--primary-light);
+    margin: 0 auto 32px auto;
+  }
+
+  /* ===== RAPPEL TON ÉDITORIAL ===== */
+  .tone-section {
+    padding: 60px 60px 40px 60px;
+    background: var(--bg-ivory);
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .tone-card {
+    background: #fff;
+    border-left: 4px solid var(--primary-light);
+    border-radius: 14px;
+    padding: 32px 36px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .tone-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--primary);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .tone-promise {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--primary-dark);
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+
+  .tone-adjectives {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .tone-adj {
+    background: rgba(200,150,74,0.12);
+    color: var(--primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 18px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .tone-note {
+    margin-top: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  /* ===== SECTIONS PAGES ===== */
+  .page-section {
+    padding: 70px 60px;
+    page-break-before: always;
+    break-before: page;
+  }
+
+  .page-section:first-of-type {
+    page-break-before: auto;
+    break-before: auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .section-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: rgba(156,107,60,0.15);
+    line-height: 1;
+  }
+
+  .section-title-wrap {
+    flex: 1;
+  }
+
+  .section-page-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 8px;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .section-badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* Framework badges */
+  .badge-aida {
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-pas {
+    background: #ede9fe;
+    color: #6d28d9;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-bab {
+    background: #d1fae5;
+    color: #065f46;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-seo {
+    background: rgba(156,107,60,0.1);
+    color: var(--primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, var(--primary-light), transparent);
+    margin-bottom: 36px;
+  }
+
+  /* ===== META SEO CARD ===== */
+  .seo-card {
+    background: rgba(245,237,228,0.6);
+    border: 1px solid rgba(200,150,74,0.25);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .seo-card-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--primary);
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .seo-field {
+    margin-bottom: 12px;
+  }
+
+  .seo-field:last-child {
+    margin-bottom: 0;
+  }
+
+  .seo-field-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-mid);
+    margin-bottom: 4px;
+  }
+
+  .seo-field-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    line-height: 1.6;
+    background: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(156,107,60,0.15);
+  }
+
+  /* ===== CONTENT CARDS ===== */
+  .content-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .block-badge {
+    display: inline-block;
+    background: rgba(156,107,60,0.1);
+    color: var(--primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+
+  .block-h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    line-height: 1.25;
+    margin-bottom: 14px;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .block-h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    line-height: 1.3;
+    margin-bottom: 14px;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .block-h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    line-height: 1.4;
+    margin-bottom: 12px;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .block-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-mid);
+  }
+
+  .block-cta {
+    display: inline-block;
+    margin-top: 16px;
+    background: var(--primary);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .block-cta-secondary {
+    display: inline-block;
+    margin-top: 16px;
+    background: transparent;
+    color: var(--primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 8px;
+    border: 2px solid var(--primary);
+    letter-spacing: 0.3px;
+    margin-left: 12px;
+  }
+
+  .block-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--primary-light);
+    line-height: 1.5;
+    border-left: 3px solid var(--primary-light);
+    padding-left: 20px;
+    margin: 12px 0;
+  }
+
+  /* Grilles */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  /* Liste stylée */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0 0;
+  }
+
+  .styled-list li {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-mid);
+    padding: 6px 0 6px 24px;
+    position: relative;
+    border-bottom: 1px solid rgba(156,107,60,0.08);
+  }
+
+  .styled-list li:last-child {
+    border-bottom: none;
+  }
+
+  .styled-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--primary-light);
+    font-size: 10px;
+    top: 9px;
+  }
+
+  /* Témoignages */
+  .testimonial-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-top: 3px solid var(--primary-light);
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .testimonial-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--text-dark);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .testimonial-author {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary);
+  }
+
+  .testimonial-role {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--text-mid);
+    margin-top: 2px;
+  }
+
+  .stars {
+    color: var(--primary-light);
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  /* ===== FOOTER ===== */
+  .doc-footer {
+    background: rgba(156,107,60,0.05);
+    border-top: 2px solid var(--primary);
+    padding: 30px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .footer-item {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #7a5c40;
+  }
+
+  .footer-item strong {
+    color: var(--primary-dark);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .page-section {
+      padding: 24px;
+    }
+    .tone-section {
+      padding: 24px;
+    }
+    .grid-2,
+    .grid-3 {
+      grid-template-columns: 1fr;
+    }
+    .block-h1 {
+      font-size: 28px;
+    }
+    .block-h2 {
+      font-size: 26px;
+    }
+    .cover-client-name {
+      font-size: 36px;
+    }
+    .cover-meta {
+      flex-direction: column;
+      gap: 12px;
+    }
+    .doc-footer {
+      flex-direction: column;
+      gap: 8px;
+      padding: 24px;
+      text-align: center;
+    }
+    .section-number {
+      font-size: 32px;
+    }
+    table {
+      overflow-x: auto;
+      display: block;
+    }
+  }
+
+  @media print {
+    .page-section {
+      page-break-before: always;
+      break-before: page;
+    }
+    .cover {
+      page-break-after: always;
+      break-after: page;
+    }
+    .content-card,
+    .seo-card,
+    .testimonial-card {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .block-h1,
+    .block-h2,
+    .block-h3 {
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== COUVERTURE ===== -->
+<div class="cover">
+  <img src="https://i.imgur.com/72UqvFq.png" alt="AR Digital" class="cover-logo">
+
+  <div class="cover-client-name">Élodie Marchand<br>Sophrologue</div>
+
+  <div class="cover-line"></div>
+
+  <div class="cover-subtitle">Contenu des pages — Prêt pour intégration</div>
+
+  <div class="cover-meta">
+    <span class="cover-meta-item">Juin 2025</span>
+    <div class="cover-meta-sep"></div>
+    <span class="cover-meta-item">Thérapeute / Sophrologie</span>
+    <div class="cover-meta-sep"></div>
+    <span class="cover-meta-item">AR Digital</span>
+  </div>
+</div>
+
+<!-- ===== RAPPEL TON ÉDITORIAL ===== -->
+<div class="tone-section">
+  <div class="tone-card">
+    <span class="tone-label">Rappel du positionnement éditorial</span>
+    <div class="tone-promise">« Retrouver calme, sommeil et confiance en soi grâce à un accompagnement sophrologique sur-mesure, bienveillant et adapté à votre rythme — au cabinet à Vertou, à domicile ou en visio. »</div>
+    <div class="tone-adjectives">
+      <span class="tone-adj">Chaleureux</span>
+      <span class="tone-adj">Rassurant</span>
+      <span class="tone-adj">Ancré</span>
+    </div>
+    <p class="tone-note" style="margin-top:16px;">Ces trois adjectifs guident chaque choix d'écriture : un vocabulaire accessible et humain, une orientation systématique vers les bénéfices concrets du lecteur, et un ancrage dans le réel — sans promesse abstraite ni jargon thérapeutique. Le "vous" est utilisé sur toutes les pages pour maintenir un lien direct et chaleureux avec le visiteur.</p>
+  </div>
+</div>
+
+<!-- ===== PAGE 01 — ACCUEIL ===== -->
+<div class="page-section">
+
+  <div class="section-header">
+    <div class="section-number">01</div>
+    <div class="section-title-wrap">
+      <div class="section-page-name">Page Accueil</div>
+      <div class="section-badges">
+        <span class="badge-aida">AIDA</span>
+        <span class="badge-seo">🔍 sophrologue Vertou</span>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- SEO -->
+  <div class="seo-card">
+    <span class="seo-card-label">Métadonnées SEO</span>
+    <div class="seo-field">
+      <div class="seo-field-name">Balise titre (57 caractères)</div>
+      <div class="seo-field-value">Sophrologue Vertou — Élodie Marchand | Cabinet &amp; Visio</div>
+    </div>
+    <div class="seo-field">
+      <div class="seo-field-name">Meta description (152 caractères)</div>
+      <div class="seo-field-value">Sophrologue certifiée à Vertou. Séances individuelles pour adultes, enfants et futures mamans. Cabinet, domicile ou visio. Réservez votre séance découverte.</div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="content-card">
+    <span class="block-badge">Hero — Attention</span>
+    <h1 class="block-h1">Et si vous vous accordiez enfin le droit de souffler ?</h1>
+    <p class="block-text">Sophrologue certifiée installée à Vertou, j'accompagne adultes, enfants et futures mamans à retrouver calme, sommeil et confiance en soi — grâce à des outils concrets que vous emportez dans votre quotidien.</p>
+    <div style="margin-top:20px;">
+      <span class="block-cta">Réserver ma séance découverte</span>
+      <span class="block-cta-secondary">Découvrir mes accompagnements</span>
+    </div>
+  </div>
+
+  <!-- INTÉRÊT -->
+  <div class="content-card">
+    <span class="block-badge">Contexte — Intérêt</span>
+    <h2 class="block-h2">Vous vous sentez débordé, épuisé, ou simplement à bout ?</h2>
+    <p class="block-text">Le stress s'installe. Le sommeil se dérobe. La confiance en soi s'efface. Vous avancez, mais en pilote automatique — sans vraiment vous sentir présent à votre vie. Ce que vous ressentez est réel, et vous n'avez pas à faire avec.</p>
+    <p class="block-text" style="margin-top:12px;">La sophrologie est une méthode douce et scientifiquement reconnue qui associe respiration, relaxation et visualisation positive. Elle ne demande aucun prérequis — juste de montrer up, séance après séance.</p>
+  </div>
+
+  <!-- BÉNÉFICES — DÉSIR -->
+  <div class="content-card">
+    <span class="block-badge">Bénéfices — Désir</span>
+    <h2 class="block-h2">Ce que vous allez retrouver, concrètement</h2>
+    <ul class="styled-list">
+      <li>Dormir à nouveau profondément, sans ressasser les journées passées</li>
+      <li>Gérer le stress et les émotions sans vous laisser submerger</li>
+      <li>Regagner confiance en vous dans votre vie personnelle et professionnelle</li>
+      <li>Traverser la grossesse avec sérénité, et préparer la naissance en douceur</li>
+      <li>Offrir à votre enfant des outils pour mieux vivre ses émotions dès 7 ans</li>
+      <li>Repartir de chaque séance avec des exercices pratiques à faire chez vous</li>
+    </ul>
+  </div>
+
+  <!-- DIFFÉRENCIATION -->
+  <div class="grid-2">
+    <div class="content-card" style="margin-bottom:0;">
+      <span class="block-badge">Différenciation</span>
+      <h3 class="block-h3">Un accompagnement flexible, à votre image</h3>
+      <p class="block-text">Cabinet à Vertou, déplacement à domicile dans la zone nantaise, ou séance en visio partout en France. Vous choisissez le format qui vous convient — sans contrainte logistique.</p>
+    </div>
+    <div class="content-card" style="margin-bottom:0;">
+      <span class="block-badge">Crédibilité</span>
+      <h3 class="block-h3">Une praticienne formée, certifiée et engagée</h3>
+      <p class="block-text">Titre RNCP, spécialisations sommeil, enfants et périnatalité, membre d'un syndicat professionnel. Et surtout, une reconversion vécue de l'intérieur — Élodie a elle-même traversé ce que vous vivez.</p>
+    </div>
+  </div>
+
+  <!-- CITATION -->
+  <div class="content-card">
+    <div class="block-quote">« Respirer, c'est déjà prendre soin de soi. »</div>
+    <p class="block-text" style="margin-top:8px;">— Élodie Marchand, sophrologue certifiée</p>
+  </div>
+
+  <!-- CTA FINAL -->
+  <div class="content-card" style="background: linear-gradient(135deg, rgba(59,33,18,0.04) 0%, rgba(200,150,74,0.08) 100%); border: 1px solid rgba(200,150,74,0.2);">
+    <span class="block-badge">CTA — Action</span>
+    <h2 class="block-h2">Prêt à faire le premier pas ?</h2>
+    <p class="block-text">La séance découverte est un moment d'échange sans engagement — pour parler de ce que vous traversez, comprendre comment la sophrologie peut vous aider, et décider en toute liberté si vous souhaitez aller plus loin.</p>
+    <div style="margin-top:20px;">
+      <span class="block-cta">Réserver ma séance découverte</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== PAGE 02 — MES ACCOMPAGNEMENTS ===== -->
+<div class="page-section">
+
+  <div class="section-header">
+    <div class="section-number">02</div>
+    <div class="section-title-wrap">
+      <div class="section-page-name">Page Mes Accompagnements</div>
+      <div class="section-badges">
+        <span class="badge-pas">PAS</span>
+        <span class="badge-seo">🔍 séance de sophrologie Nantes</span>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- SEO -->
+  <div class="seo-card">
+    <span class="seo-card-label">Métadonnées SEO</span>
+    <div class="seo-field">
+      <div class="seo-field-name">Balise titre (58 caractères)</div>
+      <div class="seo-field-value">Séances de sophrologie Nantes — Stress, Sommeil, Enfants</div>
+    </div>
+    <div class="seo-field">
+      <div class="seo-field-name">Meta description (154 caractères)</div>
+      <div class="seo-field-value">Sophrologie pour adultes, enfants, futures mamans et entreprises. Séances à Vertou, à domicile côté nantais ou en visio. Découvrez tous les accompagnements d'Élodie.</div>
+    </div>
+  </div>
+
+  <!-- PROBLÈME -->
+  <div class="content-card">
+    <span class="block-badge">Problème</span>
+    <h1 class="block-h1">Vous savez que quelque chose doit changer. Vous ne savez pas par où commencer.</h1>
+    <p class="block-text">Stress chronique, nuits agitées, manque de confiance, grossesse anxieuse, enfant débordé par ses émotions, équipe épuisée… Chaque situation est différente. Et chacune mérite un accompagnement à sa mesure.</p>
+  </div>
+
+  <!-- AGITATION -->
+  <div class="content-card">
+    <span class="block-badge">Agitation</span>
+    <h2 class="block-h2">Laisser les choses en l'état a un coût.</h2>
+    <p class="block-text">La fatigue s'accumule. Les nuits sans sommeil alourdissent les journées. Le doute s'installe là où la confiance devrait être. Et pendant ce temps, vous continuez — mais à quel prix ? La sophrologie ne promet pas un miracle. Elle propose un chemin. Concret, progressif, durable.</p>
+  </div>
+
+  <!-- SOLUTION INTRO -->
+  <div class="content-card">
+    <span class="block-badge">Solution</span>
+    <h2 class="block-h2">Un accompagnement taillé pour votre situation</h2>
+    <p class="block-text">Chaque séance est pensée pour vous — pas pour une idée abstraite de vous. Élodie construit avec vous un parcours qui s'adapte à votre rythme, à vos objectifs, à ce que vous vivez vraiment.</p>
+  </div>
+
+  <!-- ACCOMPAGNEMENTS EN GRILLE -->
+  <div class="grid-2">
+
+    <div class="content-card" style="margin-bottom:0;">
+      <span class="block-badge">Accompagnement 1</span>
+      <h3 class="block-h3">Gestion du stress &amp; des émotions</h3>
+      <p class="block-text">Pour les adultes actifs qui sentent la pression monter — au travail, en famille, partout. Grâce à des techniques de respiration et de relaxation, vous apprenez à désamorcer le stress avant qu'il ne vous dépasse.</p>
+      <ul class="styled-list">
+        <li>Retrouver un ancrage dans le moment présent</li>
+        <li>Réduire les réactions émotionnelles disproportionnées</li>
+        <li>Acquérir des outils utilisables au quotidien, partout</li>
+      </ul>
+    </div>
+
+    <div class="content-card" style="margin-bottom:0;">
+      <span class="block-badge">Accompagnement 2</span>
+      <h3 class="block-h3">Troubles du sommeil</h3>
+      <p class="block-text">Endormissement difficile, réveils nocturnes, pensées qui s'emballent dès que la tête touche l'oreiller… Élodie est spécialisée dans l'accompagnement du sommeil. Chaque séance intègre des protocoles spécifiques pour retrouver des nuits réparatrices.</p>
+      <ul class="styled-list">
+        <li>Techniques d'endormissement à pratiquer seul</li>
+        <li>Réduire l'hypervigilance nocturne</li>
+        <li>Retrouver un cycle de sommeil naturel et profond</li>
+      </ul>
+    </div>
+
+    <div class="content-card" style="margin-bottom:0;">
+      <span class="block-badge">Accompagnement 3</span>
+      <h3 class="block-h3">Confiance en soi &amp; affirmation</h3>
+      <p class="block-text">Prises de parole, entretiens, projets de vie, transitions professionnelles… La confiance ne se décrète pas — elle se construit. La sophrologie travaille sur le corps autant que sur le mental pour ancrer une image de soi plus solide et plus juste.</p>
+      <ul class="styled-list">
+        <li>Dépasser la peur du jugement et du regard des autres</li>
+        <li>Préparer mentalement les situations stressantes</li>
+        <li>Renforcer l'estime et l'assertivité au quotidien</li>
+      </ul>
+    </div>
+
+    <div class="content-card" style="margin-bottom:0;">
+      <span class="block-badge">Accompagnement 4</span>
+      <h3 class="block-h3">Sophrologie pour enfants (dès 7 ans)</h3>
+      <p class="block-text">Anxiété scolaire, difficultés de concentration, colères, peurs, troubles du sommeil chez l'enfant… Élodie propose des séances ludiques et adaptées, pour aider les enfants à mieux comprendre et exprimer ce qu'ils ressentent.</p>
+      <ul class="styled-list">
+        <li>Outils simples que l'enfant peut réutiliser seul</li>
+        <li>Séances courtes, interactives et bienveillantes</li>
+        <li>Implication possible des parents selon les situations</li>
+      </ul>
+    </div>
+
+    <div class="content-card" style="margin-bottom:0;">
+      <span class="block-badge">Accompagnement 5</span>
+      <h3 class="block-h3">Périnatalité &amp; maternité</h3>
+      <p class="block-text">Grossesse anxieuse, préparation à l'accouchement, post-partum, baby blues… Élodie est spécialisée en sophrologie périnatale et accompagne les futures mamans et jeunes mères à chaque étape de ce passage de vie intense.</p>
+      <ul class="styled-list">
+        <li>Visualisations positives de la naissance</li>
+        <li>Gestion de la douleur et de l'anxiété pendant la grossesse</li>
+        <li>Soutien émotionnel dans les premières semaines de maternité</li>
+      </ul>
+    </div>
+
+    <div class="content-card" style="margin-bottom:0;">
+      <span class="block-badge">Accompagnement 6</span>
+      <h3 class="block-h3">Sophrologie en entreprise</h3>
+      <p class="block-text">Ateliers collectifs, séances individuelles en contexte professionnel, accompagnement de la prévention des risques psychosociaux… Élodie intervient en entreprise avec des programmes adaptés aux enjeux de vos équipes.</p>
+      <ul class="styled-list">
+        <li>Réduction du stress et de l'absentéisme</li>
+        <li>Amélioration de la concentration et de la cohésion d'équipe</li>
+        <li>Ateliers ponctuels ou accompagnement sur la durée</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- PREUVES -->
+  <div class="content-card" style="margin-top:24px;">
+    <span class="block-badge">Preuves</span>
+    <h2 class="block-h2">Ce qui fait la différence</h2>
+    <ul class="styled-list">
+      <li>Titre RNCP inscrit au Répertoire National des Certifications Professionnelles</li>
+      <li>Spécialisations reconnues : sommeil, enfants, périnatalité</li>
+      <li>Membre d'un syndicat professionnel de sophrologues</li>
+      <li>Formats flexibles : cabinet Vertou, domicile zone nantaise, visio France entière</li>
+      <li>Exercices pratiques remis après chaque séance pour progresser entre deux rendez-vous</li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <div class="content-card" style="background: linear-gradient(135deg, rgba(59,33,18,0.04) 0%, rgba(200,150,74,0.08) 100%); border: 1px solid rgba(200,150,74,0.2);">
+    <span class="block-badge">CTA</span>
+    <h2 class="block-h2">Vous ne savez pas encore lequel vous convient ?</h2>
+    <p class="block-text">C'est tout à fait normal. La séance découverte est justement faite pour ça : un échange libre, sans engagement, pour comprendre ensemble ce dont vous avez besoin et décider si la sophrologie est le bon chemin pour vous.</p>
+    <div style="margin-top:20px;">
+      <span class="block-cta">Réserver ma séance découverte</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== PAGE 03 — À PROPOS ===== -->
+<div class="page-section">
+
+  <div class="section-header">
+    <div class="section-number">03</div>
+    <div class="section-title-wrap">
+      <div class="section-page-name">Page À Propos</div>
+      <div class="section-badges">
+        <span class="badge-bab">BAB</span>
+        <span class="badge-seo">🔍 sophrologue certifiée Vertou Élodie Marchand</span>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- SEO -->
+  <div class="seo-card">
+    <span class="seo-card-label">Métadonnées SEO</span>
+    <div class="seo-field">
+      <div class="seo-field-name">Balise titre (55 caractères)</div>
+      <div class="seo-field-value">Élodie Marchand — Sophrologue certifiée à Vertou</div>
+    </div>
+    <div class="seo-field">
+      <div class="seo-field-name">Meta description (152 caractères)</div>
+      <div class="seo-field-value">Ex-DRH reconvertie en sophrologue certifiée RNCP, Élodie Marchand accompagne adultes, enfants et futures mamans à Vertou, Nantes et en visio. Son histoire.</div>
+    </div>
+  </div>
+
+  <!-- BEFORE -->
+  <div class="content-card">
+    <span class="block-badge">Before — Situation de départ</span>
+    <h1 class="block-h1">Avant de devenir sophrologue, j'ai vécu de l'intérieur ce que vous traversez.</h1>
+    <p class="block-text">Pendant des années, j'ai exercé comme Directrice des Ressources Humaines. Un métier que j'aimais, mais qui m'a progressivement conduite vers un burn-out. Le stress chronique, les nuits sans sommeil, la perte de repères… J'ai connu tout ça. Et c'est précisément la sophrologie qui m'a aidée à m'en sortir.</p>
+  </div>
+
+  <!-- AFTER -->
+  <div class="content-card">
+    <span class="block-badge">After — Transformation</span>
+    <h2 class="block-h2">Cette expérience a tout changé.</h2>
+    <p class="block-text">En découvrant les bénéfices concrets de la sophrologie sur mon propre quotidien, j'ai compris que c'était cette pratique que je voulais transmettre. J'ai alors choisi de me reconvertir — pleinement, sérieusement — pour accompagner les autres comme j'aurais aimé être accompagnée.</p>
+    <div class="block-quote" style="margin-top:20px;">« Je ne suis pas juste formée à la sophrologie. Je l'ai vécue comme une bouée de sauvetage. »</div>
+  </div>
+
+  <!-- BRIDGE — PARCOURS -->
+  <div class="content-card">
+    <span class="block-badge">Bridge — Parcours &amp; formation</span>
+    <h2 class="block-h2">Un parcours solide, au service de votre mieux-être</h2>
+    <p class="block-text">J'ai suivi une formation complète sanctionnée par un titre RNCP inscrit au Répertoire National des Certifications Professionnelles. J'ai ensuite développé des spécialisations en sophrologie du sommeil, sophrologie pour enfants et en accompagnement périnatal — des domaines qui me tiennent particulièrement à cœur. Je suis également membre d'un syndicat professionnel de sophrologues.</p>
+  </div>
+
+  <!-- VALEURS -->
+  <div class="grid-3">
+    <div class="content-card" style="margin-bottom:0; text-align:center;">
+      <span class="block-badge">Valeur 1</span>
+      <h3 class="block-h3">Bienveillance</h3>
+      <p class="block-text">Chaque personne qui pousse la porte de mon cabinet (ou ouvre une session visio) est accueillie sans jugement, sans attente préalable.</p>
+    </div>
+    <div class="content-card" style="margin-bottom:0; text-align:center;">
+      <span class="block-badge">Valeur 2</span>
+      <h3 class="block-h3">Concret</h3>
+      <p class="block-text">Je ne crois pas aux promesses vagues. Chaque séance se termine avec des exercices que vous pouvez pratiquer seul, chez vous, dès le lendemain.</p>
+    </div>
+    <div class="content-card" style="margin-bottom:0; text-align:center;">
+      <span class="block-badge">Valeur 3</span>
+      <h3 class="block-h3">Adaptation</h3>
+      <p class="block-text">Votre rythme, vos besoins, votre vie. Chaque accompagnement est construit sur mesure — jamais copié sur un modèle générique.</p>
+    </div>
+  </div>
+
+  <!-- PREUVES -->
+  <div class="content-card" style="margin-top:24px;">
+    <span class="block-badge">Preuves &amp; certifications</span>
+    <h2 class="block-h2">Ce qui garantit la qualité de votre accompagnement</h2>
+    <ul class="styled-list">
+      <li>Titre de sophrologue inscrit au RNCP</li>
+      <li>Spécialisation en sophrologie du sommeil</li>
+      <li>Spécialisation en sophrologie pour enfants (dès 7 ans)</li>
+      <li>Spécialisation en sophrologie périnatale</li>
+      <li>Membre d'un syndicat professionnel de sophrologues</li>
+      <li>Interventions en cabinet (Vertou), à domicile (zone nantaise) et en visio</li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <div class="content-card" style="background: linear-gradient(135deg, rgba(59,33,18,0.04) 0%, rgba(200,150,74,0.08) 100%); border: 1px solid rgba(200,150,74,0.2);">
+    <span class="block-badge">CTA</span>
+    <h2 class="block-h2">Vous vous reconnaissez dans ce parcours ?</h2>
+    <p class="block-text">C'est peut-être un signe que nous pourrions travailler ensemble. La séance découverte est un premier pas sans engagement — juste une conversation, pour voir si quelque chose de bon peut commencer.</p>
+    <div style="margin-top:20px;">
+      <span class="block-cta">Réserver ma séance découverte</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== PAGE 04 — CABINET & SECTEUR ===== -->
+<div class="page-section">
+
+  <div class="section-header">
+    <div class="section-number">04</div>
+    <div class="section-title-wrap">
+      <div class="section-page-name">Page Cabinet &amp; Secteur</div>
+      <div class="section-badges">
+        <span class="badge-aida">AIDA</span>
+        <span class="badge-seo">🔍 sophrologue à domicile Nantes</span>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- SEO -->
+  <div class="seo-card">
+    <span class="seo-card-label">Métadonnées SEO</span>
+    <div class="seo-field">
+      <div class="seo-field-name">Balise titre (57 caractères)</div>
+      <div class="seo-field-value">Sophrologue à domicile Nantes &amp; Cabinet Vertou — Élodie</div>
+    </div>
+    <div class="seo-field">
+      <div class="seo-field-name">Meta description (151 caractères)</div>
+      <div class="seo-field-value">Consultez Élodie Marchand à son cabinet de Vertou, à domicile dans la zone nantaise ou en visio partout en France. Flexibilité totale, zéro contrainte logistique.</div>
+    </div>
+  </div>
+
+  <!-- HERO / ATTENTION -->
+  <div class="content-card">
+    <span class="block-badge">Hero — Attention</span>
+    <h1 class="block-h1">La sophrologie, là où vous êtes.</h1>
+    <p class="block-text">Parce que la logistique ne devrait jamais être un obstacle à prendre soin de vous, Élodie vous propose trois formats d'accompagnement : en cabinet à Vertou, à domicile dans la zone nantaise, ou en visio depuis n'importe où en France.</p>
+  </div>
+
+  <!-- FORMATS -->
+  <div class="grid-3">
+
+    <div class="content-card" style="margin-bottom:0;">
+      <span class="block-badge">Format 1</span>
+      <h3 class="block-h3">Cabinet à Vertou</h3>
+      <p class="block-text">Un espace calme et chaleureux, conçu pour favoriser la détente dès le pas de la porte. Vertou est facilement accessible depuis Nantes, Saint-Sébastien-sur-Loire et les communes environnantes.</p>
+    </div>
+
+    <div class="content-card" style="margin-bottom:0;">
+      <span class="block-badge">Format 2</span>
+      <h3 class="block-h3">À domicile</h3>
+      <p class="block-text">Élodie se déplace chez vous dans toute la zone nantaise. Idéal si vous avez des difficultés à vous déplacer, si vous souhaitez être dans votre environnement, ou si vous préférez simplement le confort de chez vous.</p>
+    </div>
+
+    <div class="content-card" style="margin-bottom:0;">
+      <span class="block-badge">Format 3</span>
+      <h3 class="block-h3">En visio</h3>
+      <p class="block-text">La sophrologie fonctionne parfaitement à distance. Séances par visioconférence, depuis votre canapé, votre bureau ou lors d'un déplacement. Disponible partout en France, sans contrainte géographique.</p>
+    </div>
+
+  </div>
+
+  <!-- ZONE GÉOGRAPHIQUE -->
+  <div class="content-card" style="margin-top:24px;">
+    <span class="block-badge">Zone géographique — Intérêt</span>
+    <h2 class="block-h2">Vous êtes à Nantes, Vertou ou en couronne sud ?</h2>
+    <p class="block-text">Le cabinet est situé à Vertou, à deux pas de Nantes. Élodie accompagne régulièrement des clients venus de Saint-Sébastien-sur-Loire, Rezé, Basse-Goulaine, Le Loroux-Bottereau et de toute la métropole nantaise. La zone de déplacement à domicile couvre l'ensemble du secteur sud de Nantes.</p>
+  </div>
+
+  <!-- DÉSIR -->
+  <div class="content-card">
+    <span class="block-badge">Désir</span>
+    <h2 class="block-h2">Un cadre pensé pour vous mettre en confiance</h2>
+    <p class="block-text">Que ce soit au cabinet ou à distance, chaque séance se déroule dans un espace de bienveillance totale. Pas de prise de notes ostensible, pas d'injonctions, pas de jugement. Juste votre voix, votre souffle, et un accompagnement qui vous respecte.</p>
+    <div class="block-quote" style="margin-top:16px;">« Mon cabinet, c'est un endroit où l'on peut laisser le monde dehors — même si ce monde, c'est le vôtre. »</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="content-card" style="background: linear-gradient(135deg, rgba(59,33,18,0.04) 0%, rgba(200,150,74,0.08) 100%); border: 1px solid rgba(200,150,74,0.2);">
+    <span class="block-badge">CTA — Action</span>
+    <h2 class="block-h2">Choisissez le format qui vous convient</h2>
+    <p class="block-text">Pas sûr de savoir quel format choisir ? La séance découverte est justement l'occasion d'en parler. On trouvera ensemble la solution la plus adaptée à votre situation et à votre emploi du temps.</p>
+    <div style="margin-top:20px;">
+      <span class="block-cta">Réserver ma séance découverte</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== PAGE 05 — SÉANCE DÉCOUVERTE ===== -->
+<div class="page-section">
+
+  <div class="section-header">
+    <div class="section-number">05</div>
+    <div class="section-title-wrap">
+      <div class="section-page-name">Page Séance Découverte</div>
+      <div class="section-badges">
+        <span class="badge-pas">PAS</span>
+        <span class="badge-seo">🔍 appel découverte sophrologie</span>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- SEO -->
+  <div class="seo-card">
+    <span class="seo-card-label">Métadonnées SEO</span>
+    <div class="seo-field">
+      <div class="seo-field-name">Balise titre (55 caractères)</div>
+      <div class="seo-field-value">Séance découverte sophrologie — Réservez avec Élodie</div>
+    </div>
+    <div class="seo-field">
+      <div class="seo-field-name">Meta description (148 caractères)</div>
+      <div class="seo-field-value">Réservez votre séance découverte avec Élodie Marchand, sophrologue à Vertou. Un échange sans engagement pour décider en toute liberté de la suite à donner.</div>
+    </div>
+  </div>
+
+  <!-- PROBLÈME -->
+  <div class="content-card">
+    <span class="block-badge">Problème</span>
+    <h1 class="block-h1">Vous sentez que quelque chose doit changer — mais vous ne savez pas par où commencer.</h1>
+    <p class="block-text">Peut-être que vous hésitez depuis un moment. Vous vous demandez si la sophrologie est vraiment faite pour vous. Si ce que vous vivez "mérite" un accompagnement. Si vous allez trouver les bons mots pour expliquer ce que vous ressentez.</p>
+  </div>
+
+  <!-- AGITATION -->
+  <div class="content-card">
+    <span class="block-badge">Agitation</span>
+    <h2 class="block-h2">Attendre ne change rien. Cela aggrave souvent les choses.</h2>
+    <p class="block-text">Chaque semaine qui passe avec un stress non géré, un sommeil chaotique ou un manque de confiance qui s'installe, c'est une semaine de plus à fonctionner en dessous de vos capacités. Et une semaine de plus avant de vous sentir vraiment bien.</p>
+  </div>
+
+  <!-- SOLUTION -->
+  <div class="content-card">
+    <span class="block-badge">Solution</span>
+    <h2 class="block-h2">La séance découverte : un premier pas simple et sans pression.</h2>
+    <p class="block-text">C'est un échange d'environ 30 minutes avec Élodie. Vous parlez de ce que vous traversez. Elle vous explique comment la sophrologie peut vous aider, concrètement. Et vous décidez, en toute liberté, si vous souhaitez aller plus loin. Pas de vente forcée. Pas d'engagement automatique.</p>
+  </div>
+
+  <!-- CE QUI SE PASSE -->
+  <div class="content-card">
+    <span class="block-badge">Déroulé</span>
+    <h2 class="block-h2">Comment ça se passe, concrètement ?</h2>
+    <ul class="styled-list">
+      <li>Vous réservez un créneau directement en ligne — en moins de 2 minutes</li>
+      <li>Élodie vous contacte à l'heure convenue (téléphone ou visio)</li>
+      <li>Vous échangez librement : votre situation, vos attentes, vos questions</li>
+      <li>Élodie vous présente ce qu'un accompagnement pourrait apporter dans votre cas précis</li>
+      <li>Ensemble, vous décidez de la suite — sans pression, sans engagement immédiat</li>
+    </ul>
+  </div>
+
+  <!-- RÉASSURANCE -->
+  <div class="grid-2">
+    <div class="content-card" style="margin-bottom:0;">
+      <span class="block-badge">Réassurance</span>
+      <h3 class="block-h3">Vous n'avez pas besoin de tout expliquer parfaitement.</h3>
+      <p class="block-text">Il n'y a pas de "bonne façon" de décrire ce que vous vivez. Élodie est habituée à accueillir des personnes qui ne trouvent pas leurs mots — ou qui ne savent pas exactement ce dont elles ont besoin.</p>
+    </div>
+    <div class="content-card" style="margin-bottom:0;">
+      <span class="block-badge">Flexibilité</span>
+      <h3 class="block-h3">Téléphone, visio ou en cabinet — vous choisissez.</h3>
+      <p class="block-text">La séance découverte peut se tenir par téléphone, en visioconférence, ou directement au cabinet de Vertou. Vous choisissez le format qui vous met le plus à l'aise.</p>
+    </div>
+  </div>
+
+  <!-- CTA FORT -->
+  <div class="content-card" style="margin-top:24px; background: linear-gradient(135deg, rgba(59,33,18,0.04) 0%, rgba(200,150,74,0.08) 100%); border: 1px solid rgba(200,150,74,0.2);">
+    <span class="block-badge">CTA</span>
+    <h2 class="block-h2">Vous avez tout lu. La prochaine étape, c'est celle-ci.</h2>
+    <p class="block-text">Réservez votre séance découverte maintenant — gratuitement et sans engagement. Dans quelques jours, vous aurez peut-être enfin les réponses que vous cherchez.</p>
+    <div style="margin-top:20px;">
+      <span class="block-cta">Je réserve ma séance découverte</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== PAGE 06 — SEO LOCALE NANTES ===== -->
+<div class="page-section">
+
+  <div class="section-header">
+    <div class="section-number">06</div>
+    <div class="section-title-wrap">
+      <div class="section-page-name">Page locale SEO — Nantes</div>
+      <div class="section-badges">
+        <span class="badge-aida">AIDA</span>
+        <span class="badge-seo">🔍 sophrologue Nantes</span>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- SEO -->
+  <div class="seo-card">
+    <span class="seo-card-label">Métadonnées SEO</span>
+    <div class="seo-field">
+      <div class="seo-field-name">Balise titre (51 caractères)</div>
+      <div class="seo-field-value">Sophrologue Nantes — Élodie Marchand | Vertou</div>
+    </div>
+    <div class="seo-field">
+      <div class="seo-field-name">Meta description (155 caractères)</div>
+      <div class="seo-field-value">Vous cherchez un sophrologue à Nantes ? Élodie Marchand reçoit à Vertou, à domicile dans toute la métropole nantaise et en visio. Certifiée RNCP. Prenez RDV.</div>
+    </div>
+  </div>
+
+  <!-- HERO / ATTENTION -->
+  <div class="content-card">
+    <span class="block-badge">Hero — Attention</span>
+    <h1 class="block-h1">Vous cherchez un sophrologue à Nantes ? Vertou est à deux pas.</h1>
+    <p class="block-text">Élodie Marchand est sophrologue certifiée, installée à Vertou — à quelques minutes seulement du centre de Nantes. Elle accompagne les Nantais qui souhaitent gérer leur stress, retrouver le sommeil, gagner en confiance en soi, ou traverser une grossesse avec plus de sérénité.</p>
+  </div>
+
+  <!-- INTÉRÊT / CONTEXTE LOCAL -->
+  <div class="content-card">
+    <span class="block-badge">Contexte local — Intérêt</span>
+    <h2 class="block-h2">Nantes et sa région, un territoire qui mérite une sophrologie ancrée</h2>
+    <p class="block-text">Cadres nantais sous pression, jeunes actifs en transition, familles cherchant à mieux vivre le rythme quotidien, futures mamans préparant leur naissance… Élodie connaît bien les réalités de vie de la métropole nantaise. Son accompagnement est taillé pour des personnes qui avancent vite, et qui ont besoin de se reposer — sur quelque chose de solide.</p>
+  </div>
+
+  <!-- BÉNÉFICES / DÉSIR -->
+  <div class="content-card">
+    <span class="block-badge">Bénéfices — Désir</span>
+    <h2 class="block-h2">Ce que les Nantais trouvent dans un accompagnement avec Élodie</h2>
+    <ul class="styled-list">
+      <li>Un cabinet accessible depuis Nantes (ligne de tram, bus, parking facile à Vertou)</li>
+      <li>Des séances à domicile dans tout Nantes et sa périphérie sud</li>
+      <li>La possibilité de consulter en visio depuis son bureau ou son domicile</li>
+      <li>Des outils concrets à appliquer dans leur quotidien nantais chargé</li>
+      <li>Un accompagnement personnalisé — pas un programme générique</li>
+    </ul>
+  </div>
+
+  <!-- ACCOMPAGNEMENTS DISPONIBLES -->
+  <div class="content-card">
+    <span class="block-badge">Accompagnements disponibles</span>
+    <h2 class="block-h2">Tout ce qu'il est possible de travailler ensemble</h2>
+    <div class="grid-2" style="margin-top:16px; margin-bottom:0;">
+      <div>
+        <ul class="styled-list">
+          <li>Gestion du stress et des émotions</li>
+          <li>Troubles du sommeil</li>
+          <li>Confiance en soi et affirmation</li>
+        </ul>
+      </div>
+      <div>
+        <ul class="styled-list">
+          <li>Sophrologie pour enfants (dès 7 ans)</li>
+          <li>Périnatalité et maternité</li>
+          <li>Ateliers et séances en entreprise</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="content-card" style="background: linear-gradient(135deg, rgba(59,33,18,0.04) 0%, rgba(200,150,74,0.08) 100%); border: 1px solid rgba(200,150,74,0.2);">
+    <span class="block-badge">CTA — Action</span>
+    <h2 class="block-h2">À Nantes, le mieux-être est à 10 minutes.</h2>
+    <p class="block-text">Que vous veniez en cabinet à Vertou, que vous préfériez une séance à domicile ou que vous optiez pour la visio, Élodie est disponible pour vous. Commencez par une séance découverte gratuite et sans engagement.</p>
+    <div style="margin-top:20px;">
+      <span class="block-cta">Réserver ma séance découverte</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== PAGE 07 — SEO LOCALE SAINT-SÉBASTIEN-SUR-LOIRE ===== -->
+<div class="page-section">
+
+  <div class="section-header">
+    <div class="section-number">07</div>
+    <div class="section-title-wrap">
+      <div class="section-page-name">Page locale SEO — Saint-Sébastien-sur-Loire</div>
+      <div class="section-badges">
+        <span class="badge-aida">AIDA</span>
+        <span class="badge-seo">🔍 sophrologue Saint-Sébastien-sur-Loire</span>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- SEO -->
+  <div class="seo-card">
+    <span class="seo-card-label">Métadonnées SEO</span>
+    <div class="seo-field">
+      <div class="seo-field-name">Balise titre (58 caractères)</div>
+      <div class="seo-field-value">Sophrologue Saint-Sébastien-sur-Loire — Élodie Marchand</div>
+    </div>
+    <div class="seo-field">
+      <div class="seo-field-name">Meta description (155 caractères)</div>
+      <div class="seo-field-value">Sophrologue proche de Saint-Sébastien-sur-Loire. Élodie Marchand reçoit à Vertou, à domicile ou en visio. Stress, sommeil, confiance en soi, enfants. RDV en ligne.</div>
+    </div>
+  </div>
+
+  <!-- HERO / ATTENTION -->
+  <div class="content-card">
+    <span class="block-badge">Hero — Attention</span>
+    <h1 class="block-h1">Un sophrologue à deux pas de Saint-Sébastien-sur-Loire.</h1>
+    <p class="block-text">Vous habitez Saint-Sébastien-sur-Loire et vous souhaitez commencer un accompagnement sophrologique ? Le cabinet d'Élodie Marchand, sophrologue certifiée RNCP, est situé à Vertou — voisine immédiate de Saint-Sébastien — facilement accessible en voiture comme en transports.</p>
+  </div>
+
+  <!-- INTÉRÊT -->
+  <div class="content-card">
+    <span class="block-badge">Contexte local — Intérêt</span>
+    <h2 class="block-h2">Saint-Sébastien-sur-Loire, une commune où les habitants cherchent à ralentir</h2>
+    <p class="block-text">Entre la proximité de Nantes et la douceur du bord de Loire, Saint-Sébastien attire des familles, des actifs et des personnes en transition de vie. Ce cadre agréable ne suffit pas toujours à apaiser le stress du quotidien. C'est là qu'intervient Élodie — avec des outils concrets, une écoute réelle, et un accompagnement adapté à votre vie d'aujourd'hui.</p>
+  </div>
+
+  <!-- BÉNÉFICES / DÉSIR -->
+  <div class="content-card">
+    <span class="block-badge">Bénéfices — Désir</span>
+    <h2 class="block-h2">Proche de chez vous, pour des séances qui s'intègrent à votre quotidien</h2>
+    <ul class="styled-list">
+      <li>Cabinet à Vertou — à 5 minutes de Saint-Sébastien-sur-Loire</li>
+      <li>Déplacement à domicile à Saint-Sébastien et dans les communes voisines</li>
+      <li>Séances en visio si vous préférez rester chez vous</li>
+      <li>Créneaux matin, journée et soir selon disponibilités — pour s'adapter à votre agenda</li>
+      <li>Accompagnements pour toute la famille : adultes, enfants, futures mamans</li>
+    </ul>
+  </div>
+
+  <!-- DÉSIR / DIFFÉRENCIATION -->
+  <div class="content-card">
+    <span class="block-badge">Différenciation</span>
+    <h2 class="block-h2">Pourquoi choisir Élodie pour votre accompagnement ?</h2>
+    <p class="block-text">Élodie n'est pas simplement une sophrologue diplômée. C'est une praticienne qui a elle-même traversé le burn-out et utilisé la sophrologie pour s'en sortir. Cette expérience personnelle lui donne une compréhension fine de ce que vous vivez — et une façon d'accompagner qui sonne juste, parce qu'elle est authentique.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="content-card" style="background: linear-gradient(135deg, rgba(59,33,18,0.04) 0%, rgba(200,150,74,0.08) 100%); border: 1px solid rgba(200,150,74,0.2);">
+    <span class="block-badge">CTA — Action</span>
+    <h2 class="block-h2">Depuis Saint-Sébastien, commencez par une séance découverte.</h2>
+    <p class="block-text">Gratuite, sans engagement, en cabinet à Vertou, à votre domicile ou en visio. C'est la façon la plus simple de voir si la sophrologie avec Élodie peut réellement changer votre quotidien.</p>
+    <div style="margin-top:20px;">
+      <span class="block-cta">Réserver ma séance découverte</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="doc-footer">
+  <div class="footer-item"><strong>Élodie Marchand Sophrologue</strong></div>
+  <div class="footer-item">Thérapeute — Sophrologie</div>
+  <div class="footer-item">Confidentiel — AR Digital</div>
+</div>
+
+</body>
+</html>
