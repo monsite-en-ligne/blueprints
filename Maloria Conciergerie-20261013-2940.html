@@ -1,0 +1,2716 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Maloria Conciergerie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cuivre: #A67556;
+    --beige: #F5EFE6;
+    --taupe: #8B7968;
+    --blanc: #FFFCF8;
+    --brun: #46372F;
+    --shadow: 0 2px 12px rgba(70,55,47,0.08);
+    --radius: 14px;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--brun);
+    background: var(--blanc);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  /* ===== COUVERTURE ===== */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #2C1F18 0%, #46372F 40%, #A67556 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    border: 1px solid rgba(166,117,86,0.6);
+    color: rgba(255,252,248,0.75);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 22px;
+    border-radius: 40px;
+    margin-bottom: 40px;
+  }
+
+  .cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #FFFCF8;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: rgba(245,239,230,0.85);
+    margin-bottom: 50px;
+    font-weight: 400;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-item .label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(166,117,86,0.9);
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-item .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: rgba(255,252,248,0.9);
+    font-weight: 600;
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 1px;
+    background: rgba(166,117,86,0.5);
+    margin: 0 auto 50px auto;
+  }
+
+  /* ===== SECTIONS ===== */
+  .section {
+    padding: 80px 80px;
+    background: var(--blanc);
+  }
+
+  .section-alt {
+    background: var(--beige);
+  }
+
+  .section-header {
+    margin-bottom: 48px;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cuivre);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--brun);
+    line-height: 1.2;
+  }
+
+  .section-line {
+    width: 48px;
+    height: 2px;
+    background: var(--cuivre);
+    margin-top: 16px;
+  }
+
+  /* ===== CARDS ===== */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    background: #FFFFFF;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 32px;
+    border: 1px solid rgba(139,121,104,0.08);
+  }
+
+  .card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--brun);
+    margin-bottom: 10px;
+  }
+
+  .card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--cuivre);
+    margin-bottom: 8px;
+  }
+
+  .card p, .card li {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--taupe);
+  }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card ul li {
+    padding: 4px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .card ul li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--cuivre);
+    font-size: 12px;
+  }
+
+  /* ===== HIGHLIGHT BOX ===== */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--brun) 0%, #5C4A3E 100%);
+    border-radius: var(--radius);
+    padding: 40px 48px;
+    margin-bottom: 40px;
+  }
+
+  .highlight-box .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cuivre);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .highlight-box p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-style: italic;
+    color: var(--beige);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  /* ===== PILIERS ===== */
+  .pilier-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(166,117,86,0.12);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    font-size: 16px;
+  }
+
+  /* ===== TON EDITORIAL ===== */
+  .ton-grid {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .ton-badge {
+    background: rgba(166,117,86,0.1);
+    border: 1px solid rgba(166,117,86,0.3);
+    color: var(--cuivre);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 40px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== OBJECTIFS ===== */
+  .objectif-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 24px;
+    background: #FFFFFF;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(139,121,104,0.08);
+    margin-bottom: 14px;
+  }
+
+  .objectif-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--cuivre);
+    opacity: 0.5;
+    min-width: 36px;
+  }
+
+  .objectif-text strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--brun);
+    margin-bottom: 2px;
+  }
+
+  .objectif-text span {
+    font-size: 13px;
+    color: var(--taupe);
+  }
+
+  /* ===== TABLEAU ===== */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #FFFFFF;
+  }
+
+  thead tr {
+    background: var(--brun);
+  }
+
+  thead th {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--beige);
+    padding: 16px 20px;
+    text-align: left;
+  }
+
+  tbody td {
+    padding: 15px 20px;
+    font-size: 13.5px;
+    color: var(--brun);
+    border-bottom: 1px solid rgba(139,121,104,0.1);
+    vertical-align: top;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  tbody tr:hover {
+    background: rgba(245,239,230,0.4);
+  }
+
+  .badge-seo {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-fort { background: rgba(76,140,74,0.12); color: #3a7a38; }
+  .badge-moyen { background: rgba(166,117,86,0.15); color: #A67556; }
+  .badge-faible { background: rgba(139,121,104,0.12); color: #8B7968; }
+
+  .badge-framework {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    background: rgba(70,55,47,0.08);
+    color: var(--brun);
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+
+  /* ===== COCON ===== */
+  .cluster-card {
+    background: #FFFFFF;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 32px;
+    border: 1px solid rgba(139,121,104,0.08);
+  }
+
+  .cluster-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--brun);
+    margin-bottom: 6px;
+  }
+
+  .cluster-pillar {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--cuivre);
+    margin-bottom: 16px;
+  }
+
+  .cluster-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .cluster-tag {
+    background: var(--beige);
+    border: 1px solid rgba(166,117,86,0.2);
+    color: var(--taupe);
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+
+  /* ===== MAILLAGE ===== */
+  .maillage-item {
+    background: #FFFFFF;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px 28px;
+    border-left: 3px solid var(--cuivre);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .maillage-source {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--brun);
+    min-width: 160px;
+  }
+
+  .maillage-arrow {
+    font-size: 16px;
+    color: var(--cuivre);
+    flex-shrink: 0;
+    line-height: 1.6;
+  }
+
+  .maillage-dest {
+    font-size: 13px;
+    color: var(--taupe);
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  /* ===== TUNNEL ===== */
+  .tunnel-step {
+    background: #FFFFFF;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 32px;
+    border: 1px solid rgba(139,121,104,0.08);
+    position: relative;
+  }
+
+  .tunnel-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: rgba(166,117,86,0.15);
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    line-height: 1;
+  }
+
+  .tunnel-step-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cuivre);
+    margin-bottom: 10px;
+  }
+
+  .tunnel-step h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--brun);
+    margin-bottom: 18px;
+  }
+
+  .tunnel-detail {
+    font-size: 13px;
+    color: var(--taupe);
+    margin-bottom: 6px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .tunnel-detail strong {
+    color: var(--brun);
+    font-weight: 600;
+    min-width: 60px;
+  }
+
+  .tunnel-cta {
+    margin-top: 18px;
+    display: inline-block;
+    background: rgba(166,117,86,0.1);
+    border: 1px solid rgba(166,117,86,0.3);
+    color: var(--cuivre);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== LEVIERS ===== */
+  .levier-icon-box {
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
+
+  /* ===== PALETTE ===== */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 32px;
+  }
+
+  .color-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .color-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(70,55,47,0.15);
+    border: 1px solid rgba(139,121,104,0.15);
+  }
+
+  .color-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--brun);
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: var(--taupe);
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== UNIVERS VISUEL ===== */
+  .visuel-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px 24px;
+    background: #FFFFFF;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(139,121,104,0.08);
+    margin-bottom: 14px;
+  }
+
+  .visuel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cuivre);
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+
+  .visuel-text strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--brun);
+    margin-bottom: 2px;
+  }
+
+  .visuel-text span {
+    font-size: 13px;
+    color: var(--taupe);
+  }
+
+  /* ===== ARTICLES BLOG ===== */
+  .article-card {
+    background: #FFFFFF;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px 32px;
+    border: 1px solid rgba(139,121,104,0.08);
+  }
+
+  .article-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--brun);
+    margin-bottom: 14px;
+    line-height: 1.4;
+  }
+
+  .article-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .article-meta-row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    font-size: 12.5px;
+  }
+
+  .article-meta-row strong {
+    color: var(--cuivre);
+    font-weight: 600;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  .article-meta-row span {
+    color: var(--taupe);
+  }
+
+  .badge-prioritaire { background: rgba(76,140,74,0.12); color: #3a7a38; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; display: inline-block; }
+  .badge-priorite-moyen { background: rgba(166,117,86,0.15); color: #A67556; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; display: inline-block; }
+  .badge-faible-p { background: rgba(139,121,104,0.12); color: #8B7968; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; display: inline-block; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: var(--brun);
+    padding: 36px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--beige);
+  }
+
+  .footer-mention {
+    font-size: 12px;
+    color: rgba(245,239,230,0.5);
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    .section, .cover { page-break-inside: avoid; }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 38px; }
+    .cover-subtitle { font-size: 17px; }
+    .cover { padding: 50px 24px; }
+    .cover-meta { gap: 20px; }
+
+    .section { padding: 48px 24px; }
+
+    .section-title { font-size: 26px; }
+
+    .grid-2, .grid-3, .grid-4 {
+      grid-template-columns: 1fr;
+    }
+
+    .footer {
+      padding: 28px 24px;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    .highlight-box {
+      padding: 28px 24px;
+    }
+
+    .highlight-box p {
+      font-size: 20px;
+    }
+
+    .maillage-item {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .maillage-source, .maillage-arrow, .maillage-dest {
+      min-width: unset;
+    }
+
+    .ton-grid {
+      gap: 10px;
+    }
+
+    .palette-grid {
+      gap: 18px;
+    }
+
+    .tunnel-num {
+      font-size: 36px;
+    }
+
+    .objectif-item {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== COUVERTURE ===== -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique — Document Confidentiel</div>
+  <h1>Maloria Conciergerie</h1>
+  <p class="cover-subtitle">« Votre bien, notre attention »</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="label">Cliente</span>
+      <span class="value">Audrey Lecaille</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Secteur</span>
+      <span class="value">Conciergerie locative — LCD</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Zone</span>
+      <span class="value">Tarn-et-Garonne (82)</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 01 — POSITIONNEMENT ===== -->
+<section id="bp-section-01" class="section">
+  <div class="section-header">
+    <span class="section-badge">01</span>
+    <h2 class="section-title">Positionnement</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="highlight-box" style="margin-bottom: 40px;">
+    <span class="label">Promesse de valeur principale</span>
+    <p>En Tarn-et-Garonne, Maloria Conciergerie prend soin de votre bien comme du sien : un service de proximité humain, rigoureux et personnalisé, pour que vous louiez l'esprit totalement libre.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <h3>Ligne directrice de communication</h3>
+    <p>Proximité terrain premium · Relation de confiance durable · Sérénité sans effort pour le propriétaire</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <h3>Ton éditorial</h3>
+    <div class="ton-grid">
+      <span class="ton-badge">Chaleureux</span>
+      <span class="ton-badge">Rassurant</span>
+      <span class="ton-badge">Élégant</span>
+    </div>
+    <p style="font-size: 14px; color: var(--taupe);">Un discours sincère et humain, porté par l'histoire personnelle d'Audrey, qui allie professionnalisme irréprochable et bienveillance authentique. On ne vend pas un service, on offre une relation de confiance.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="pilier-icon">🏡</div>
+      <h4>Présence locale ancrée</h4>
+      <p>Audrey connaît chaque commune de sa zone d'intervention. Ce n'est pas une plateforme distante, c'est une voisine de confiance, disponible et réactive sur le terrain.</p>
+    </div>
+    <div class="card">
+      <div class="pilier-icon">💛</div>
+      <h4>Histoire humaine et singulière</h4>
+      <p>Le nom Maloria, né des prénoms des quatre filles d'Audrey, incarne des valeurs profondes : famille, confiance, attention portée aux autres. Un récit de marque unique et mémorable.</p>
+    </div>
+    <div class="card">
+      <div class="pilier-icon">✨</div>
+      <h4>Service clé en main sans friction</h4>
+      <p>De la création de l'annonce à la gestion des voyageurs, en passant par les arrivées autonomes, le propriétaire n'a strictement rien à faire.</p>
+    </div>
+    <div class="card">
+      <div class="pilier-icon">📋</div>
+      <h4>Accompagnement complet dès le départ</h4>
+      <p>Le forfait mise en place assure une première location optimale : vérification, livret numérique, QR code, étiquetage. Rien n'est laissé au hasard avant la première arrivée.</p>
+    </div>
+    <div class="card" style="grid-column: 1 / -1;">
+      <div class="pilier-icon">📍</div>
+      <h4>Hyper-localité valorisée</h4>
+      <p>La promotion des bonnes adresses locales, de l'environnement de Valence d'Agen, Espalais, Auvillar et Golfech enrichit l'expérience voyageur et valorise l'attractivité des biens.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02 — CLIENT CIBLE ===== -->
+<section id="bp-section-02" class="section section-alt">
+  <div class="section-header">
+    <span class="section-badge">02</span>
+    <h2 class="section-title">Client Cible</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Profil type</h3>
+      <ul>
+        <li>Propriétaire d'un bien en Tarn-et-Garonne, 35–65 ans</li>
+        <li>Actif, peu disponible ou résidant hors de la zone</li>
+        <li>Déjà sur Airbnb/Booking ou en phase de lancement</li>
+        <li>Motivé par la rentabilité mais freiné par le temps et la complexité</li>
+        <li>Sensible à la relation humaine et à la confiance locale</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Générer des revenus complémentaires sans y passer du temps</li>
+        <li>Déléguer la relation voyageur en toute confiance</li>
+        <li>Optimiser son taux d'occupation et ses tarifs</li>
+        <li>Avoir un interlocuteur unique, disponible et local</li>
+        <li>Démarrer la location dans les meilleures conditions</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Freins et objections</h3>
+      <ul>
+        <li>« La commission de 24 % est-elle justifiée ? »</li>
+        <li>« Comment puis-je faire confiance à quelqu'un que je ne connais pas ? »</li>
+        <li>« Maloria est-elle assez expérimentée ? »</li>
+        <li>« Que se passe-t-il en cas d'imprévu grave ? »</li>
+        <li>« Est-ce vraiment adapté à mon village / ma commune ? »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Proximité géographique et réactivité terrain</li>
+        <li>Transparence sur les tarifs et les services inclus</li>
+        <li>Qualité de la communication et du suivi</li>
+        <li>Témoignages de propriétaires satisfaits</li>
+        <li>Clarté de l'offre et facilité de prise de contact</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 — OBJECTIFS DU SITE ===== -->
+<section id="bp-section-03" class="section">
+  <div class="section-header">
+    <span class="section-badge">03</span>
+    <h2 class="section-title">Objectifs du Site</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="objectif-item">
+    <span class="objectif-num">01</span>
+    <div class="objectif-text">
+      <strong>Génération de leads propriétaires</strong>
+      <span>Capturer les coordonnées de propriétaires qualifiés via formulaire de devis et prise de RDV Calendly</span>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <span class="objectif-num">02</span>
+    <div class="objectif-text">
+      <strong>Réassurance et crédibilité</strong>
+      <span>Convaincre un propriétaire qui découvre Maloria pour la première fois grâce à l'histoire, aux valeurs et aux preuves sociales</span>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <span class="objectif-num">03</span>
+    <div class="objectif-text">
+      <strong>Conversion directe</strong>
+      <span>Transformer les visiteurs en prospects via CTA « Demander un devis » et prise de RDV intégrée</span>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <span class="objectif-num">04</span>
+    <div class="objectif-text">
+      <strong>SEO local</strong>
+      <span>Apparaître sur les recherches de propriétaires en Tarn-et-Garonne cherchant une conciergerie ou un service de location courte durée</span>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <span class="objectif-num">05</span>
+    <div class="objectif-text">
+      <strong>Vitrine logements pour les voyageurs</strong>
+      <span>Présenter les biens gérés avec liens vers Airbnb/Booking, gérable en autonomie par Audrey sans intervention de l'agence</span>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <span class="objectif-num">06</span>
+    <div class="objectif-text">
+      <strong>Notoriété locale</strong>
+      <span>Ancrer Maloria Conciergerie comme la référence de proximité sur Valence d'Agen, Espalais, Auvillar et Golfech</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 — ARBORESCENCE ===== -->
+<section id="bp-section-04" class="section section-alt">
+  <div class="section-header">
+    <span class="section-badge">04</span>
+    <h2 class="section-title">Arborescence du Site</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td>conciergerie location courte durée Tarn-et-Garonne</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre offre propriétaires</strong><br><small style="color:var(--taupe)">Formule Sérénité + Forfait Mise en Place + arrivées autonomes</small></td>
+          <td><span class="badge-framework">PAS</span></td>
+          <td>conciergerie Airbnb propriétaire Tarn-et-Garonne</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Tarifs</strong></td>
+          <td><span class="badge-framework">BAB</span></td>
+          <td>tarif conciergerie location courte durée 82</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — L'histoire de Maloria</strong></td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td>conciergerie humaine proximité Espalais Valence d'Agen</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos logements</strong><br><small style="color:var(--taupe)">Vitrine voyageurs — gestion autonome par Audrey</small></td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td>location courte durée Tarn-et-Garonne séjour</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Zone d'intervention — Valence d'Agen / Espalais</strong><br><small style="color:var(--taupe);">Page SEO locale #1</small></td>
+          <td><span class="badge-framework">PAS</span></td>
+          <td>conciergerie Valence d'Agen Espalais Auvillar Golfech</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Zone d'intervention — Tarn-et-Garonne</strong><br><small style="color:var(--taupe);">Page SEO locale #2</small></td>
+          <td><span class="badge-framework">PAS</span></td>
+          <td>conciergerie location saisonnière Tarn-et-Garonne</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact</strong></td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td>contact conciergerie 82 devis gratuit</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td><span class="badge-framework">—</span></td>
+          <td>conseils location courte durée propriétaire</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 05 — COCON SÉMANTIQUE ===== -->
+<section id="bp-section-05" class="section">
+  <div class="section-header">
+    <span class="section-badge">05</span>
+    <h2 class="section-title">Cocon Sémantique</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="grid-3" style="margin-bottom: 48px;">
+    <div class="cluster-card">
+      <div class="cluster-title">Cluster 1</div>
+      <div class="cluster-pillar">Conciergerie & Services</div>
+      <div class="cluster-tags">
+        <span class="cluster-tag">Accueil</span>
+        <span class="cluster-tag">Offre propriétaires</span>
+        <span class="cluster-tag">Tarifs</span>
+        <span class="cluster-tag">À propos</span>
+        <span class="cluster-tag">Contact</span>
+      </div>
+    </div>
+    <div class="cluster-card">
+      <div class="cluster-title">Cluster 2</div>
+      <div class="cluster-pillar">SEO Local & Zone</div>
+      <div class="cluster-tags">
+        <span class="cluster-tag">Zone Valence d'Agen / Espalais</span>
+        <span class="cluster-tag">Zone Tarn-et-Garonne</span>
+        <span class="cluster-tag">Blog — conseils locaux</span>
+      </div>
+    </div>
+    <div class="cluster-card">
+      <div class="cluster-title">Cluster 3</div>
+      <div class="cluster-pillar">Voyageurs & Logements</div>
+      <div class="cluster-tags">
+        <span class="cluster-tag">Nos logements</span>
+        <span class="cluster-tag">Blog — expérience voyageur</span>
+        <span class="cluster-tag">Zone locale</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--brun); margin-bottom: 20px;">Logique de maillage interne</h3>
+
+  <div class="maillage-item">
+    <span class="maillage-source">Accueil</span>
+    <span class="maillage-arrow">→</span>
+    <span class="maillage-dest">Offre propriétaires · Tarifs · À propos · Nos logements · Contact</span>
+  </div>
+  <div class="maillage-item">
+    <span class="maillage-source">Offre propriétaires</span>
+    <span class="maillage-arrow">→</span>
+    <span class="maillage-dest">Tarifs · Contact (formulaire devis) · Zone d'intervention · À propos</span>
+  </div>
+  <div class="maillage-item">
+    <span class="maillage-source">Pages locales SEO</span>
+    <span class="maillage-arrow">→</span>
+    <span class="maillage-dest">Offre propriétaires · Contact · Blog (articles liés à la zone)</span>
+  </div>
+  <div class="maillage-item">
+    <span class="maillage-source">Articles de Blog</span>
+    <span class="maillage-arrow">→</span>
+    <span class="maillage-dest">Offre propriétaires · Tarifs · Page locale correspondante · Contact</span>
+  </div>
+  <div class="maillage-item">
+    <span class="maillage-source">Nos logements</span>
+    <span class="maillage-arrow">→</span>
+    <span class="maillage-dest">Accueil · Zone locale · Contact propriétaires (invitation à confier son bien)</span>
+  </div>
+</section>
+
+<!-- ===== 06 — TUNNEL DE CONVERSION ===== -->
+<section id="bp-section-06" class="section section-alt">
+  <div class="section-header">
+    <span class="section-badge">06</span>
+    <h2 class="section-title">Tunnel de Conversion</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="tunnel-step">
+      <span class="tunnel-num">1</span>
+      <div class="tunnel-step-label">Étape 01</div>
+      <h3>Découverte</h3>
+      <div class="tunnel-detail"><strong>Source :</strong><span>Google (recherche locale), bouche-à-oreille, réseaux sociaux</span></div>
+      <div class="tunnel-detail"><strong>Page :</strong><span>Accueil / Pages locales SEO / Articles blog</span></div>
+      <span class="tunnel-cta">→ Découvrir Maloria</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-num">2</span>
+      <div class="tunnel-step-label">Étape 02</div>
+      <h3>Intérêt</h3>
+      <div class="tunnel-detail"><strong>Source :</strong><span>Navigation interne, lecture de l'offre et des tarifs</span></div>
+      <div class="tunnel-detail"><strong>Page :</strong><span>Offre propriétaires · Tarifs · À propos</span></div>
+      <span class="tunnel-cta">→ Voir les tarifs</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-num">3</span>
+      <div class="tunnel-step-label">Étape 03</div>
+      <h3>Confiance</h3>
+      <div class="tunnel-detail"><strong>Source :</strong><span>Lecture histoire Maloria, avis clients, lead magnet</span></div>
+      <div class="tunnel-detail"><strong>Page :</strong><span>À propos · Témoignages · Page offre</span></div>
+      <span class="tunnel-cta">→ Télécharger le guide</span>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-num">4</span>
+      <div class="tunnel-step-label">Étape 04</div>
+      <h3>Conversion</h3>
+      <div class="tunnel-detail"><strong>Source :</strong><span>CTA, Calendly, formulaire de devis</span></div>
+      <div class="tunnel-detail"><strong>Page :</strong><span>Contact · Offre propriétaires · Accueil</span></div>
+      <span class="tunnel-cta">→ Demander un devis</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 07 — LEVIERS MARKETING ===== -->
+<section id="bp-section-07" class="section">
+  <div class="section-header">
+    <span class="section-badge">07</span>
+    <h2 class="section-title">Leviers Marketing Recommandés</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="levier-icon-box">🎁</div>
+      <h4>Lead Magnet</h4>
+      <p>Guide PDF : « Les 5 erreurs à éviter avant de louer son bien en Tarn-et-Garonne » — téléchargeable contre email. Aborde les pièges réels rencontrés localement pour maximiser la pertinence et la conversion.</p>
+    </div>
+    <div class="card">
+      <div class="levier-icon-box">📅</div>
+      <h4>Prise de Rendez-vous</h4>
+      <p>Intégration Calendly sur la page Contact et en CTA flottant sur la page Offre. Créneaux dédiés à un « Appel découverte 20 min » pour qualifier le prospect avant toute rencontre terrain.</p>
+    </div>
+    <div class="card">
+      <div class="levier-icon-box">⭐</div>
+      <h4>Preuve Sociale</h4>
+      <p>Avis Google Business à intégrer dès les premières semaines. Témoignages propriétaires en format citation courte sur l'accueil et la page offre. À terme : photos de logements préparés par Maloria.</p>
+    </div>
+    <div class="card">
+      <div class="levier-icon-box">📝</div>
+      <h4>Formulaire Qualifiant</h4>
+      <p>Champs recommandés : Prénom · Email · Téléphone · Commune du bien · Type de bien (maison / appartement) · Situation actuelle (déjà en location / souhait de démarrer) · Message libre.</p>
+    </div>
+    <div class="card">
+      <div class="levier-icon-box">🚀</div>
+      <h4>Offre de Lancement</h4>
+      <p>Les 3 premiers propriétaires bénéficient du forfait mise en place offert (valeur 320 €). Mettre en avant avec un bandeau visible dès l'accueil et un compteur des places restantes pour créer l'urgence.</p>
+    </div>
+    <div class="card">
+      <div class="levier-icon-box">✉️</div>
+      <h4>Newsletter</h4>
+      <p>Angle éditorial : conseils pratiques pour propriétaires bailleurs en LCD — optimisation tarifaire, préparation du logement, évolutions réglementaires locales. Fréquence : 1 email mensuel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 08 — DIRECTION VISUELLE ===== -->
+<section id="bp-section-08" class="section section-alt">
+  <div class="section-header">
+    <span class="section-badge">08</span>
+    <h2 class="section-title">Direction Visuelle & Éditoriale</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <h3>Palette de Couleurs</h3>
+    <p style="font-size:13.5px; color:var(--taupe); margin-top: 8px;">Chic, sobre et intemporelle — telle que vous l'avez définie, Audrey.</p>
+    <div class="palette-grid">
+      <div class="color-item">
+        <div class="color-swatch" style="background: #A67556;"></div>
+        <span class="color-name">Marron Cuivré</span>
+        <span class="color-hex">#A67556</span>
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background: #F5EFE6; border: 1px solid #d9cfc4;"></div>
+        <span class="color-name">Beige Clair</span>
+        <span class="color-hex">#F5EFE6</span>
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background: #8B7968;"></div>
+        <span class="color-name">Taupe</span>
+        <span class="color-hex">#8B7968</span>
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background: #FFFCF8; border: 1px solid #d9cfc4;"></div>
+        <span class="color-name">Blanc Cassé</span>
+        <span class="color-hex">#FFFCF8</span>
+      </div>
+      <div class="color-item">
+        <div class="color-swatch" style="background: #46372F;"></div>
+        <span class="color-name">Brun Profond</span>
+        <span class="color-hex">#46372F</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <h3>Typographie</h3>
+    <div style="margin-top: 16px;">
+      <div style="margin-bottom: 16px;">
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--brun);">Cormorant Garamond</span>
+        <p style="font-size: 13px; color: var(--taupe); margin-top: 4px;">Titres et accroches — élégante, raffinée, intemporelle</p>
+      </div>
+      <div>
+        <span style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; color: var(--brun);">Montserrat — Corps de texte</span>
+        <p style="font-size: 13px; color: var(--taupe); margin-top: 4px;">Paragraphes et légendes — moderne, lisible, sobre</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--brun); margin-bottom: 20px;">Univers Visuel Recommandé</h3>
+
+  <div class="visuel-item">
+    <div class="visuel-dot"></div>
+    <div class="visuel-text">
+      <strong>Photographie d'intérieur lumineuse</strong>
+      <span>Linges blancs bien pliés, tables de nuit soignées, lumière naturelle filtrée — pour montrer la qualité de la préparation des logements par Maloria</span>
+    </div>
+  </div>
+  <div class="visuel-item">
+    <div class="visuel-dot"></div>
+    <div class="visuel-text">
+      <strong>Paysages du Tarn-et-Garonne</strong>
+      <span>Villages de caractère, Garonne, lavandes — ancrer l'identité locale et valoriser le cadre de vie autour des biens gérés</span>
+    </div>
+  </div>
+  <div class="visuel-item">
+    <div class="visuel-dot"></div>
+    <div class="visuel-text">
+      <strong>Portrait authentique d'Audrey</strong>
+      <span>Photo chaleureuse et professionnelle, sourire naturel — humaniser la marque et mettre en confiance le propriétaire dès la première visite</span>
+    </div>
+  </div>
+  <div class="visuel-item">
+    <div class="visuel-dot"></div>
+    <div class="visuel-text">
+      <strong>Icônes linéaires fines style "luxe sobre"</strong>
+      <span>Pictos épurés pour illustrer chaque service — style cohérent avec la palette cuivrée, aucun pictogramme coloré ou enfantin</span>
+    </div>
+  </div>
+  <div class="visuel-item">
+    <div class="visuel-dot"></div>
+    <div class="visuel-text">
+      <strong>Détails de conciergerie haut de gamme</strong>
+      <span>Clé sur boîte à clefs sécurisée, livret d'accueil ouvert, QR code élégamment présenté — montrer le soin du détail et la professionnalisation du service</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 09 — ARTICLES BLOG ===== -->
+<section id="bp-section-09" class="section">
+  <div class="section-header">
+    <span class="section-badge">09</span>
+    <h2 class="section-title">Articles Blog Recommandés</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="article-card">
+      <h4>Comment bien préparer son logement avant la première location en Tarn-et-Garonne ?</h4>
+      <div class="article-meta">
+        <div class="article-meta-row"><strong>Cluster :</strong><span>Conciergerie & Services</span></div>
+        <div class="article-meta-row"><strong>Intention :</strong><span>Informationnelle — propriétaire en phase de lancement</span></div>
+        <div class="article-meta-row"><strong>Priorité :</strong><span><span class="badge-prioritaire">Prioritaire</span></span></div>
+      </div>
+    </div>
+    <div class="article-card">
+      <h4>Location courte durée à Valence d'Agen et Espalais : ce que les voyageurs recherchent vraiment</h4>
+      <div class="article-meta">
+        <div class="article-meta-row"><strong>Cluster :</strong><span>SEO Local & Zone</span></div>
+        <div class="article-meta-row"><strong>Intention :</strong><span>Informationnelle + locale — propriétaire et voyageur</span></div>
+        <div class="article-meta-row"><strong>Priorité :</strong><span><span class="badge-prioritaire">Prioritaire</span></span></div>
+      </div>
+    </div>
+    <div class="article-card">
+      <h4>Conciergerie ou gestion en solo : quel est le vrai coût de votre temps en tant que propriétaire ?</h4>
+      <div class="article-meta">
+        <div class="article-meta-row"><strong>Cluster :</strong><span>Conciergerie & Services</span></div>
+        <div class="article-meta-row"><strong>Intention :</strong><span>Décisionnelle — propriétaire hésitant à déléguer</span></div>
+        <div class="article-meta-row"><strong>Priorité :</strong><span><span class="badge-prioritaire">Prioritaire</span></span></div>
+      </div>
+    </div>
+    <div class="article-card">
+      <h4>5 idées pour améliorer l'attractivité de votre annonce Airbnb en milieu rural</h4>
+      <div class="article-meta">
+        <div class="article-meta-row"><strong>Cluster :</strong><span>Conciergerie & Services</span></div>
+        <div class="article-meta-row"><strong>Intention :</strong><span>Informationnelle — propriétaire souhaitant optimiser</span></div>
+        <div class="article-meta-row"><strong>Priorité :</strong><span><span class="badge-priorite-moyen">Moyen</span></span></div>
+      </div>
+    </div>
+    <div class="article-card">
+      <h4>Visiter Auvillar, Golfech et les villages du Tarn-et-Garonne : nos bonnes adresses locales</h4>
+      <div class="article-meta">
+        <div class="article-meta-row"><strong>Cluster :</strong><span>Voyageurs & Logements</span></div>
+        <div class="article-meta-row"><strong>Intention :</strong><span>Informationnelle — voyageur planifiant son séjour</span></div>
+        <div class="article-meta-row"><strong>Priorité :</strong><span><span class="badge-priorite-moyen">Moyen</span></span></div>
+      </div>
+    </div>
+    <div class="article-card">
+      <h4>Boîte à clefs et arrivée autonome : comment simplifier l'accueil de vos voyageurs sans être sur place</h4>
+      <div class="article-meta">
+        <div class="article-meta-row"><strong>Cluster :</strong><span>Conciergerie & Services</span></div>
+        <div class="article-meta-row"><strong>Intention :</strong><span>Informationnelle — propriétaire souhaitant automatiser</span></div>
+        <div class="article-meta-row"><strong>Priorité :</strong><span><span class="badge-priorite-moyen">Moyen</span></span></div>
+      </div>
+    </div>
+    <div class="article-card" style="grid-column: 1 / -1;">
+      <h4>Quelles obligations légales pour louer en courte durée en Tarn-et-Garonne en 2025 ?</h4>
+      <div class="article-meta">
+        <div class="article-meta-row"><strong>Cluster :</strong><span>SEO Local & Zone</span></div>
+        <div class="article-meta-row"><strong>Intention :</strong><span>Informationnelle — propriétaire souhaitant se conformer</span></div>
+        <div class="article-meta-row"><strong>Priorité :</strong><span><span class="badge-faible-p">Faible</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-brand">Maloria Conciergerie</div>
+  <div class="footer-mention">Document confidentiel — Préparé par AR Digital · 2025</div>
+</footer>
+
+<style>
+  .bp-validation-box {
+    position: relative;
+    margin: 40px 0 18px;
+    padding: 26px 28px;
+    background: #ffffff;
+    border: 2px solid #E63329;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.25s ease;
+  }
+
+  .bp-validation-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: #E63329;
+    transition: background 0.25s ease;
+  }
+
+  .bp-validation-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 5px 10px;
+    background: #E63329;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .bp-validation-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 7px;
+  }
+
+  .bp-validation-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555555;
+    margin-bottom: 20px;
+  }
+
+  .bp-validation-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .bp-validation-btn {
+    padding: 13px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .bp-validation-approve {
+    background: #1a1a1a;
+    color: #ffffff;
+    border: 2px solid #1a1a1a;
+  }
+
+  .bp-validation-approve:hover {
+    background: #333333;
+    border-color: #333333;
+    transform: translateY(-1px);
+  }
+
+  .bp-validation-comment {
+    background: #ffffff;
+    color: #1a1a1a;
+    border: 2px solid #d8d8d8;
+  }
+
+  .bp-validation-comment:hover {
+    border-color: #E63329;
+    color: #E63329;
+    background: #fff8f7;
+    transform: translateY(-1px);
+  }
+
+  .bp-comment-area {
+    display: none;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .bp-comment-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .bp-comment-help {
+    margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #666666;
+  }
+
+  .bp-comment-textarea {
+    width: 100%;
+    min-height: 120px;
+    box-sizing: border-box;
+    padding: 14px;
+    border: 2px solid #d8d8d8;
+    border-radius: 8px;
+    resize: vertical;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    outline: none;
+  }
+
+  .bp-comment-textarea:focus {
+    border-color: #E63329;
+  }
+
+  .bp-comment-error {
+    display: none;
+    margin-top: 7px;
+    color: #E63329;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .bp-save-comment {
+    margin-top: 12px;
+    background: #1a1a1a;
+    color: #ffffff;
+    border: 2px solid #1a1a1a;
+  }
+
+  .bp-save-comment:hover {
+    background: #333333;
+    border-color: #333333;
+  }
+
+  .bp-validation-result {
+    display: none;
+  }
+
+  .bp-result-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .bp-result-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    border-radius: 50%;
+    background: #198754;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .bp-result-title {
+    color: #146c43;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .bp-result-comment {
+    display: none;
+    margin: 14px 0;
+    padding: 14px 16px;
+    background: #ffffff;
+    border: 1px solid #b7dfc9;
+    border-radius: 8px;
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+  }
+
+  .bp-edit-choice {
+    margin-top: 8px;
+    padding: 9px 13px;
+    background: transparent;
+    color: #555555;
+    border: 1px solid #b7c9be;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .bp-edit-choice:hover {
+    background: #ffffff;
+    color: #1a1a1a;
+  }
+
+  .bp-validation-box.bp-completed {
+    background: #f2fbf6;
+    border-color: #198754;
+    box-shadow: 0 6px 20px rgba(25, 135, 84, 0.10);
+  }
+
+  .bp-validation-box.bp-completed::before {
+    background: #198754;
+  }
+
+  .bp-validation-box.bp-completed .bp-validation-label {
+    background: #198754;
+  }
+
+  /* VALIDATION FINALE */
+
+  .bp-final-validation {
+    margin: 60px 0 30px;
+    padding: 32px;
+    background: #f7f7f7;
+    border: 2px solid #d8d8d8;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
+  }
+
+  .bp-final-validation.bp-final-ready {
+    background: #f2fbf6;
+    border-color: #198754;
+  }
+
+  .bp-final-label {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 6px 11px;
+    background: #1a1a1a;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .bp-final-ready .bp-final-label {
+    background: #198754;
+  }
+
+  .bp-final-title {
+    margin: 0 0 8px;
+    color: #1a1a1a;
+    font-size: 26px;
+    line-height: 1.25;
+    font-weight: 800;
+  }
+
+  .bp-final-intro {
+    margin: 0 0 24px;
+    color: #555555;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .bp-final-progress {
+    margin-bottom: 25px;
+  }
+
+  .bp-final-progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 9px;
+  }
+
+  .bp-final-progress-text {
+    color: #1a1a1a;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .bp-final-progress-count {
+    color: #E63329;
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .bp-final-ready .bp-final-progress-count {
+    color: #198754;
+  }
+
+  .bp-final-progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #e1e1e1;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .bp-final-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #E63329;
+    border-radius: 20px;
+    transition: width 0.3s ease, background 0.3s ease;
+  }
+
+  .bp-final-ready .bp-final-progress-fill {
+    background: #198754;
+  }
+
+  .bp-final-list {
+    margin: 0 0 26px;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  .bp-final-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .bp-final-item:last-child {
+    border-bottom: 0;
+  }
+
+  .bp-final-item-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .bp-final-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    border-radius: 50%;
+    background: #eeeeee;
+    color: #777777;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .bp-final-item.bp-item-completed .bp-final-icon {
+    background: #198754;
+    color: #ffffff;
+  }
+
+  .bp-final-section-name {
+    color: #333333;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .bp-final-status {
+    flex: 0 0 auto;
+    color: #888888;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .bp-final-item.bp-item-completed .bp-final-status {
+    color: #198754;
+  }
+
+  .bp-final-warning {
+    margin-bottom: 22px;
+    padding: 14px 16px;
+    background: #fff3f2;
+    border: 1px solid #f3c1bd;
+    border-radius: 8px;
+    color: #9c2e27;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  .bp-final-success-message {
+    display: none;
+    margin-bottom: 22px;
+    padding: 14px 16px;
+    background: #eaf7ef;
+    border: 1px solid #b7dfc9;
+    border-radius: 8px;
+    color: #146c43;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 700;
+  }
+
+  .bp-final-confirmation {
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    opacity: 0.5;
+    pointer-events: none;
+    transition: all 0.25s ease;
+  }
+
+  .bp-final-confirmation.bp-confirmation-enabled {
+    opacity: 1;
+    pointer-events: auto;
+    border-color: #b7dfc9;
+  }
+
+  .bp-final-checkbox-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+  }
+
+  .bp-final-checkbox {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    margin-top: 2px;
+    accent-color: #198754;
+    cursor: pointer;
+  }
+
+  .bp-final-checkbox-text {
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .bp-final-reference-note {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #eeeeee;
+    color: #666666;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .bp-final-submit {
+    width: 100%;
+    margin-top: 18px;
+    padding: 16px 20px;
+    background: #cccccc;
+    color: #777777;
+    border: 0;
+    border-radius: 9px;
+    cursor: not-allowed;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    transition: all 0.2s ease;
+  }
+
+  .bp-final-submit.bp-submit-enabled {
+    background: #198754;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .bp-final-submit.bp-submit-enabled:hover {
+    background: #146c43;
+    transform: translateY(-1px);
+  }
+
+  .bp-transmission-error {
+    display: none;
+    margin-top: 15px;
+    padding: 14px 16px;
+    background: #fff3f2;
+    border: 1px solid #f3c1bd;
+    border-radius: 8px;
+    color: #9c2e27;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  .bp-transmission-success {
+    display: none;
+    padding: 26px;
+    background: #eaf7ef;
+    border: 2px solid #198754;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .bp-transmission-success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 14px;
+    background: #198754;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 25px;
+    font-weight: 800;
+  }
+
+  .bp-transmission-success-title {
+    margin-bottom: 8px;
+    color: #146c43;
+    font-size: 21px;
+    font-weight: 800;
+  }
+
+  .bp-transmission-success-text {
+    color: #365c47;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 600px) {
+    .bp-validation-box {
+      padding: 22px 20px;
+    }
+
+    .bp-validation-actions {
+      flex-direction: column;
+    }
+
+    .bp-validation-btn {
+      width: 100%;
+    }
+
+    .bp-final-validation {
+      padding: 24px 18px;
+    }
+
+    .bp-final-title {
+      font-size: 22px;
+    }
+
+    .bp-final-item {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .bp-final-status {
+      padding-left: 34px;
+      text-align: left;
+    }
+  }
+</style>
+
+<div id="bp-validation-template" style="display:none;">
+  <div class="bp-validation-box">
+
+    <div class="bp-validation-pending">
+
+      <div class="bp-validation-label">
+        Action requise
+      </div>
+
+      <div class="bp-validation-title">
+        Validez cette section
+      </div>
+
+      <div class="bp-validation-text">
+        Vérifiez attentivement les informations ci-dessus avant de poursuivre.
+        Validez cette section si elle vous convient, ou indiquez les modifications
+        que vous souhaitez apporter.
+      </div>
+
+      <div class="bp-validation-actions">
+
+        <button
+          type="button"
+          class="bp-validation-btn bp-validation-approve"
+        >
+          ✓ Je valide cette section
+        </button>
+
+        <button
+          type="button"
+          class="bp-validation-btn bp-validation-comment"
+        >
+          ✏️ J'ai une modification ou un commentaire
+        </button>
+
+      </div>
+
+      <div class="bp-comment-area">
+
+        <label class="bp-comment-label">
+          Votre demande de modification
+        </label>
+
+        <div class="bp-comment-help">
+          Décrivez précisément ce que vous souhaitez modifier, ajouter ou supprimer
+          dans cette section.
+        </div>
+
+        <textarea
+          class="bp-comment-textarea"
+          placeholder="Écrivez votre commentaire ou votre demande de modification ici..."
+        ></textarea>
+
+        <div class="bp-comment-error">
+          Merci d'indiquer votre demande avant de l'enregistrer.
+        </div>
+
+        <button
+          type="button"
+          class="bp-validation-btn bp-save-comment"
+        >
+          ✓ Enregistrer ma modification
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="bp-validation-result">
+
+      <div class="bp-validation-label">
+        Section complétée
+      </div>
+
+      <div class="bp-result-header">
+
+        <div class="bp-result-check">
+          ✓
+        </div>
+
+        <div class="bp-result-title">
+          Section validée
+        </div>
+
+      </div>
+
+      <div class="bp-result-comment"></div>
+
+      <button
+        type="button"
+        class="bp-edit-choice"
+      >
+        Modifier mon choix
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+<div id="bp-final-validation-template" style="display:none;">
+
+  <div class="bp-final-validation">
+
+    <div class="bp-final-content">
+
+      <div class="bp-final-label">
+        Validation finale
+      </div>
+
+      <h2 class="bp-final-title">
+        Validez définitivement votre retour
+      </h2>
+
+      <p class="bp-final-intro">
+        Avant de transmettre votre Blueprint à notre équipe, vous devez avoir
+        validé ou commenté chacune des 9 sections ci-dessus.
+      </p>
+
+      <div class="bp-final-progress">
+
+        <div class="bp-final-progress-top">
+
+          <div class="bp-final-progress-text">
+            Progression de votre validation
+          </div>
+
+          <div class="bp-final-progress-count">
+            0 / 9
+          </div>
+
+        </div>
+
+        <div class="bp-final-progress-bar">
+          <div class="bp-final-progress-fill"></div>
+        </div>
+
+      </div>
+
+
+      <ul class="bp-final-list">
+
+        <li class="bp-final-item" data-summary-section="bp-section-01">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Positionnement</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-02">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Client cible</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-03">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Objectifs du site</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-04">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Arborescence</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-05">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Cocon sémantique</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-06">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Tunnel de conversion</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-07">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Leviers de croissance</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-08">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Direction visuelle</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-09">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Articles de blog</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+      </ul>
+
+
+      <div class="bp-final-warning">
+        Il reste 9 sections à valider avant de pouvoir transmettre votre retour.
+      </div>
+
+      <div class="bp-final-success-message">
+        ✓ Toutes les sections ont été complétées. Vous pouvez maintenant confirmer
+        et transmettre votre retour.
+      </div>
+
+
+      <div class="bp-final-confirmation">
+
+        <label class="bp-final-checkbox-row">
+
+          <input
+            type="checkbox"
+            class="bp-final-checkbox"
+            disabled
+          >
+
+          <span class="bp-final-checkbox-text">
+            Je confirme avoir relu l'intégralité du Blueprint ainsi que mes
+            éventuels commentaires et demandes de modification. Je confirme que
+            le Blueprint et les retours formulés ci-dessus constituent les
+            instructions de référence à prendre en compte pour la conception
+            de mon site.
+          </span>
+
+        </label>
+
+        <div class="bp-final-reference-note">
+          La conception de votre site sera réalisée sur la base du Blueprint
+          et des demandes de modification que vous validez ici. Toute demande
+          majeure formulée après cette validation et nécessitant de revenir sur
+          un travail déjà réalisé pourra entraîner une facturation complémentaire.
+        </div>
+
+        <button
+          type="button"
+          class="bp-final-submit"
+          disabled
+        >
+          VALIDER ET TRANSMETTRE MON RETOUR
+        </button>
+
+        <div class="bp-transmission-error">
+          Une erreur est survenue pendant la transmission de votre retour.
+          Merci de réessayer dans quelques instants.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="bp-transmission-success">
+
+      <div class="bp-transmission-success-icon">
+        ✓
+      </div>
+
+      <div class="bp-transmission-success-title">
+        Votre retour a bien été transmis !
+      </div>
+
+      <div class="bp-transmission-success-text">
+        Merci pour votre validation. Votre Blueprint ainsi que l'ensemble de
+        vos commentaires et demandes de modification ont bien été transmis à
+        notre équipe.
+        <br><br>
+        Nous allons maintenant préparer votre cahier des charges et reviendrons
+        rapidement vers vous pour la suite de votre projet.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const BLUEPRINT_ID = "6ace74fe4dab1c494771d126";
+
+  const CLIENT_EMAIL =
+    "floreaud@yahoo.fr";
+
+  const WEBHOOK_URL =
+    "https://hook.eu2.make.com/pm0msu9nua1val6ysvda71aqniu0h8fa";
+
+  const sections =
+    document.querySelectorAll('[id^="bp-section-"]');
+
+  const template =
+    document.querySelector("#bp-validation-template");
+
+  const finalTemplate =
+    document.querySelector("#bp-final-validation-template");
+
+  const blueprintResponses = {};
+
+  const sectionNames = {
+    "bp-section-01": "Positionnement",
+    "bp-section-02": "Client cible",
+    "bp-section-03": "Objectifs du site",
+    "bp-section-04": "Arborescence",
+    "bp-section-05": "Cocon sémantique",
+    "bp-section-06": "Tunnel de conversion",
+    "bp-section-07": "Leviers de croissance",
+    "bp-section-08": "Direction visuelle",
+    "bp-section-09": "Articles de blog"
+  };
+
+
+  if (!template || !finalTemplate) {
+    console.log("Template de validation introuvable");
+    return;
+  }
+
+
+  const finalValidation =
+    finalTemplate.firstElementChild.cloneNode(true);
+
+  document.body.appendChild(finalValidation);
+
+
+  const finalContent =
+    finalValidation.querySelector(".bp-final-content");
+
+  const transmissionSuccess =
+    finalValidation.querySelector(".bp-transmission-success");
+
+  const transmissionError =
+    finalValidation.querySelector(".bp-transmission-error");
+
+  const progressCount =
+    finalValidation.querySelector(".bp-final-progress-count");
+
+  const progressFill =
+    finalValidation.querySelector(".bp-final-progress-fill");
+
+  const finalWarning =
+    finalValidation.querySelector(".bp-final-warning");
+
+  const finalSuccessMessage =
+    finalValidation.querySelector(".bp-final-success-message");
+
+  const finalConfirmation =
+    finalValidation.querySelector(".bp-final-confirmation");
+
+  const finalCheckbox =
+    finalValidation.querySelector(".bp-final-checkbox");
+
+  const finalSubmit =
+    finalValidation.querySelector(".bp-final-submit");
+
+
+  function updateFinalValidation() {
+
+    let completedCount = 0;
+
+    Object.keys(sectionNames).forEach(function (sectionId) {
+
+      const summaryItem =
+        finalValidation.querySelector(
+          '[data-summary-section="' + sectionId + '"]'
+        );
+
+      if (!summaryItem) {
+        return;
+      }
+
+      const icon =
+        summaryItem.querySelector(".bp-final-icon");
+
+      const status =
+        summaryItem.querySelector(".bp-final-status");
+
+      const response =
+        blueprintResponses[sectionId];
+
+
+      if (response) {
+
+        completedCount++;
+
+        summaryItem.classList.add("bp-item-completed");
+
+        icon.textContent = "✓";
+
+        if (response.status === "comment") {
+          status.textContent = "Modification enregistrée";
+        } else {
+          status.textContent = "Validé";
+        }
+
+      } else {
+
+        summaryItem.classList.remove("bp-item-completed");
+
+        icon.textContent = "○";
+        status.textContent = "À valider";
+
+      }
+
+    });
+
+
+    progressCount.textContent =
+      completedCount + " / 9";
+
+    progressFill.style.width =
+      ((completedCount / 9) * 100) + "%";
+
+
+    if (completedCount === 9) {
+
+      finalValidation.classList.add("bp-final-ready");
+
+      finalWarning.style.display = "none";
+      finalSuccessMessage.style.display = "block";
+
+      finalConfirmation.classList.add(
+        "bp-confirmation-enabled"
+      );
+
+      finalCheckbox.disabled = false;
+
+    } else {
+
+      finalValidation.classList.remove("bp-final-ready");
+
+      finalSuccessMessage.style.display = "none";
+      finalWarning.style.display = "block";
+
+      const remaining = 9 - completedCount;
+
+      if (remaining === 1) {
+        finalWarning.textContent =
+          "Il reste 1 section à valider avant de pouvoir transmettre votre retour.";
+      } else {
+        finalWarning.textContent =
+          "Il reste " +
+          remaining +
+          " sections à valider avant de pouvoir transmettre votre retour.";
+      }
+
+      finalConfirmation.classList.remove(
+        "bp-confirmation-enabled"
+      );
+
+      finalCheckbox.checked = false;
+      finalCheckbox.disabled = true;
+
+      finalSubmit.disabled = true;
+      finalSubmit.classList.remove("bp-submit-enabled");
+
+    }
+
+  }
+
+
+  finalCheckbox.addEventListener("change", function () {
+
+    if (
+      Object.keys(blueprintResponses).length === 9 &&
+      finalCheckbox.checked
+    ) {
+
+      finalSubmit.disabled = false;
+      finalSubmit.classList.add("bp-submit-enabled");
+
+    } else {
+
+      finalSubmit.disabled = true;
+      finalSubmit.classList.remove("bp-submit-enabled");
+
+    }
+
+  });
+
+
+  finalSubmit.addEventListener("click", async function () {
+
+    if (
+      finalSubmit.disabled ||
+      Object.keys(blueprintResponses).length !== 9 ||
+      !finalCheckbox.checked
+    ) {
+      return;
+    }
+
+
+    transmissionError.style.display = "none";
+
+    finalSubmit.disabled = true;
+    finalSubmit.classList.remove("bp-submit-enabled");
+    finalSubmit.textContent = "TRANSMISSION EN COURS...";
+
+
+    /*
+      PAYLOAD PLAT POUR MAKE
+
+      Une validation = un seul bundle.
+      Plus besoin d'Iterator dans Make.
+    */
+
+    const payload = {
+
+      event_type: "final_validation",
+
+      blueprint_id: BLUEPRINT_ID,
+      email_client: CLIENT_EMAIL,
+
+      section_01_status:
+        blueprintResponses["bp-section-01"].status,
+
+      section_01_comment:
+        blueprintResponses["bp-section-01"].comment,
+
+      section_02_status:
+        blueprintResponses["bp-section-02"].status,
+
+      section_02_comment:
+        blueprintResponses["bp-section-02"].comment,
+
+      section_03_status:
+        blueprintResponses["bp-section-03"].status,
+
+      section_03_comment:
+        blueprintResponses["bp-section-03"].comment,
+
+      section_04_status:
+        blueprintResponses["bp-section-04"].status,
+
+      section_04_comment:
+        blueprintResponses["bp-section-04"].comment,
+
+      section_05_status:
+        blueprintResponses["bp-section-05"].status,
+
+      section_05_comment:
+        blueprintResponses["bp-section-05"].comment,
+
+      section_06_status:
+        blueprintResponses["bp-section-06"].status,
+
+      section_06_comment:
+        blueprintResponses["bp-section-06"].comment,
+
+      section_07_status:
+        blueprintResponses["bp-section-07"].status,
+
+      section_07_comment:
+        blueprintResponses["bp-section-07"].comment,
+
+      section_08_status:
+        blueprintResponses["bp-section-08"].status,
+
+      section_08_comment:
+        blueprintResponses["bp-section-08"].comment,
+
+      section_09_status:
+        blueprintResponses["bp-section-09"].status,
+
+      section_09_comment:
+        blueprintResponses["bp-section-09"].comment
+
+    };
+
+
+    console.log(
+      "Transmission du Blueprint :",
+      payload
+    );
+
+
+    try {
+
+      const response = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+
+      if (!response.ok) {
+        throw new Error(
+          "Erreur HTTP : " + response.status
+        );
+      }
+
+
+      finalContent.style.display = "none";
+      transmissionSuccess.style.display = "block";
+
+      finalValidation.classList.add("bp-final-ready");
+
+      window.scrollTo({
+        top:
+          finalValidation.getBoundingClientRect().top +
+          window.pageYOffset -
+          30,
+        behavior: "smooth"
+      });
+
+
+    } catch (error) {
+
+      console.error(
+        "Erreur transmission Blueprint :",
+        error
+      );
+
+      transmissionError.style.display = "block";
+
+      finalSubmit.disabled = false;
+      finalSubmit.classList.add("bp-submit-enabled");
+      finalSubmit.textContent =
+        "RÉESSAYER LA TRANSMISSION";
+
+    }
+
+  });
+
+
+  sections.forEach(function (section) {
+
+    const validationBox =
+      template.firstElementChild.cloneNode(true);
+
+    const sectionId =
+      section.id;
+
+    validationBox.setAttribute(
+      "data-section-id",
+      sectionId
+    );
+
+    section.appendChild(validationBox);
+
+
+    const pendingArea =
+      validationBox.querySelector(".bp-validation-pending");
+
+    const resultArea =
+      validationBox.querySelector(".bp-validation-result");
+
+    const approveButton =
+      validationBox.querySelector(".bp-validation-approve");
+
+    const commentButton =
+      validationBox.querySelector(".bp-validation-comment");
+
+    const commentArea =
+      validationBox.querySelector(".bp-comment-area");
+
+    const textarea =
+      validationBox.querySelector(".bp-comment-textarea");
+
+    const commentError =
+      validationBox.querySelector(".bp-comment-error");
+
+    const saveCommentButton =
+      validationBox.querySelector(".bp-save-comment");
+
+    const resultTitle =
+      validationBox.querySelector(".bp-result-title");
+
+    const resultComment =
+      validationBox.querySelector(".bp-result-comment");
+
+    const editButton =
+      validationBox.querySelector(".bp-edit-choice");
+
+
+    approveButton.addEventListener("click", function () {
+
+      blueprintResponses[sectionId] = {
+        section_id: sectionId,
+        section_name: sectionNames[sectionId] || sectionId,
+        status: "validated",
+        comment: ""
+      };
+
+      validationBox.classList.add("bp-completed");
+
+      pendingArea.style.display = "none";
+      resultArea.style.display = "block";
+
+      resultTitle.textContent = "Section validée";
+
+      resultComment.textContent = "";
+      resultComment.style.display = "none";
+
+      updateFinalValidation();
+
+    });
+
+
+    commentButton.addEventListener("click", function () {
+
+      commentArea.style.display = "block";
+      commentError.style.display = "none";
+      textarea.focus();
+
+    });
+
+
+    saveCommentButton.addEventListener("click", function () {
+
+      const comment = textarea.value.trim();
+
+      if (comment === "") {
+
+        commentError.style.display = "block";
+        textarea.focus();
+        return;
+
+      }
+
+      commentError.style.display = "none";
+
+      blueprintResponses[sectionId] = {
+        section_id: sectionId,
+        section_name: sectionNames[sectionId] || sectionId,
+        status: "comment",
+        comment: comment
+      };
+
+      validationBox.classList.add("bp-completed");
+
+      pendingArea.style.display = "none";
+      resultArea.style.display = "block";
+
+      resultTitle.textContent =
+        "Modification enregistrée";
+
+      resultComment.textContent = comment;
+      resultComment.style.display = "block";
+
+      updateFinalValidation();
+
+    });
+
+
+    editButton.addEventListener("click", function () {
+
+      const previousResponse =
+        blueprintResponses[sectionId];
+
+      validationBox.classList.remove("bp-completed");
+
+      resultArea.style.display = "none";
+      pendingArea.style.display = "block";
+
+      commentError.style.display = "none";
+
+
+      if (
+        previousResponse &&
+        previousResponse.status === "comment"
+      ) {
+
+        textarea.value =
+          previousResponse.comment || "";
+
+        commentArea.style.display = "block";
+
+      } else {
+
+        textarea.value = "";
+        commentArea.style.display = "none";
+
+      }
+
+
+      delete blueprintResponses[sectionId];
+
+      updateFinalValidation();
+
+    });
+
+  });
+
+
+  updateFinalValidation();
+
+});
+</script>
+
+</body>
+</html>
