@@ -1,0 +1,2703 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Cœur & Cocon</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ivoire: #F7F2E9;
+    --sauge: #777967;
+    --terracotta: #D29376;
+    --brun-fonce: #3A3228;
+    --gris-clair: #E8E3DA;
+    --blanc: #FFFFFF;
+    --texte: #3A3228;
+    --texte-leger: #7A7060;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--texte);
+    background: var(--ivoire);
+  }
+
+  /* ── COUVERTURE ── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #2C2820 0%, #3A3228 40%, #4E3E2F 70%, #5C4A35 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(210,147,118,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 30%, rgba(119,121,103,0.10) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    border: 1px solid rgba(210,147,118,0.5);
+    color: var(--terracotta);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 40px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: var(--blanc);
+    line-height: 1.15;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .cover h1 span {
+    color: var(--terracotta);
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    color: rgba(247,242,233,0.65);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    margin-bottom: 56px;
+    position: relative;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(210,147,118,0.7);
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-value {
+    font-size: 13px;
+    color: rgba(247,242,233,0.85);
+    font-weight: 400;
+  }
+
+  .cover-meta-sep {
+    width: 1px;
+    height: 36px;
+    background: rgba(247,242,233,0.15);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 70px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: var(--blanc);
+  }
+
+  section:nth-child(odd) {
+    background: var(--ivoire);
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    background: rgba(210,147,118,0.1);
+    padding: 6px 14px;
+    border-radius: 30px;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--brun-fonce);
+    margin-bottom: 40px;
+    line-height: 1.25;
+  }
+
+  .section-title span {
+    color: var(--sauge);
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, #4E3E2F 0%, #3A3228 100%);
+    border-radius: 18px;
+    padding: 40px 48px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-box::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: rgba(210,147,118,0.1);
+  }
+
+  .highlight-box .label {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--blanc);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  /* ── CARDS ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+  }
+
+  .card {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) .card {
+    background: var(--ivoire);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  .card-icon {
+    font-size: 26px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--brun-fonce);
+    margin-bottom: 10px;
+  }
+
+  .card p, .card li {
+    font-size: 14px;
+    color: var(--texte-leger);
+    line-height: 1.7;
+  }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card ul li {
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+
+  .card ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--terracotta);
+    font-size: 12px;
+  }
+
+  /* ── TONE TAG ── */
+  .tone-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .tone-tag {
+    background: rgba(119,121,103,0.1);
+    color: var(--sauge);
+    border: 1px solid rgba(119,121,103,0.25);
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* ── OBJECTIFS ── */
+  .objectif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 22px 28px;
+    border-radius: 14px;
+    background: var(--blanc);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 16px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) .objectif-item {
+    background: var(--ivoire);
+  }
+
+  .objectif-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--terracotta);
+    min-width: 40px;
+    line-height: 1;
+    padding-top: 4px;
+  }
+
+  .objectif-label {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--brun-fonce);
+    margin-bottom: 4px;
+  }
+
+  .objectif-desc {
+    font-size: 13px;
+    color: var(--texte-leger);
+    line-height: 1.6;
+  }
+
+  /* ── TABLE ── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--blanc);
+    border-radius: 14px;
+    overflow: hidden;
+    font-size: 14px;
+  }
+
+  thead {
+    background: var(--brun-fonce);
+  }
+
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(247,242,233,0.8);
+    font-weight: 500;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--gris-clair);
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody td {
+    padding: 16px 20px;
+    vertical-align: top;
+    color: var(--texte);
+    line-height: 1.55;
+  }
+
+  tbody tr:hover {
+    background: rgba(247,242,233,0.5);
+  }
+
+  .td-page {
+    font-weight: 600;
+    color: var(--brun-fonce);
+    white-space: nowrap;
+  }
+
+  .td-kw {
+    font-size: 13px;
+    color: var(--sauge);
+    font-style: italic;
+  }
+
+  .badge-seo {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .badge-fort { background: rgba(119,121,103,0.15); color: #4a4f3a; }
+  .badge-moyen { background: rgba(210,147,118,0.18); color: #9a5c3a; }
+  .badge-faible { background: rgba(58,50,40,0.08); color: #7A7060; }
+
+  .badge-framework {
+    display: inline-block;
+    background: rgba(210,147,118,0.12);
+    color: var(--terracotta);
+    border: 1px solid rgba(210,147,118,0.3);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* ── COCON ── */
+  .cluster-block {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+  }
+
+  section:nth-child(even) .cluster-block {
+    background: var(--ivoire);
+  }
+
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--brun-fonce);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cluster-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    flex-shrink: 0;
+  }
+
+  .kw-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .kw-tag {
+    background: rgba(119,121,103,0.1);
+    color: var(--sauge);
+    padding: 5px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .maillage-block {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  section:nth-child(even) .maillage-block {
+    background: var(--ivoire);
+  }
+
+  .maillage-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--brun-fonce);
+    margin-bottom: 18px;
+  }
+
+  .maillage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 13px;
+  }
+
+  .maillage-source {
+    background: var(--brun-fonce);
+    color: var(--ivoire);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .maillage-arrow {
+    color: var(--terracotta);
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .maillage-dest {
+    background: rgba(210,147,118,0.12);
+    color: var(--terracotta);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* ── TUNNEL ── */
+  .tunnel-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+    position: relative;
+  }
+
+  .tunnel-step {
+    background: var(--blanc);
+    border-radius: 0;
+    padding: 32px 28px;
+    position: relative;
+    box-shadow: none;
+    border-right: 1px solid var(--gris-clair);
+    page-break-inside: avoid;
+  }
+
+  .tunnel-step:first-child { border-radius: 14px 0 0 14px; }
+  .tunnel-step:last-child { border-radius: 0 14px 14px 0; border-right: none; }
+
+  .tunnel-step-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 8px;
+  }
+
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--brun-fonce);
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--terracotta);
+  }
+
+  .tunnel-step-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sauge);
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+
+  .tunnel-step-value {
+    font-size: 13px;
+    color: var(--texte-leger);
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+
+  .cta-badge {
+    display: inline-block;
+    background: var(--terracotta);
+    color: var(--blanc);
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* ── LEVIERS ── */
+  .levier-card {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) .levier-card {
+    background: var(--ivoire);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  .levier-card .card-title {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .levier-card p {
+    font-size: 13px;
+    color: var(--texte-leger);
+    line-height: 1.65;
+  }
+
+  /* ── PALETTE ── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 48px;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+
+  .palette-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--brun-fonce);
+    text-align: center;
+  }
+
+  .palette-hex {
+    font-size: 11px;
+    color: var(--texte-leger);
+    font-family: monospace;
+  }
+
+  /* ── VISUELS ── */
+  .visuel-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .visuel-list li {
+    background: var(--blanc);
+    border-left: 3px solid var(--terracotta);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    font-size: 14px;
+    color: var(--texte);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  section:nth-child(even) .visuel-list li {
+    background: var(--ivoire);
+  }
+
+  /* ── ARTICLES ── */
+  .article-card {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) .article-card {
+    background: var(--ivoire);
+  }
+
+  .article-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--brun-fonce);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .article-cluster {
+    background: rgba(119,121,103,0.1);
+    color: var(--sauge);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .article-intention {
+    font-size: 13px;
+    color: var(--texte-leger);
+    line-height: 1.55;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--brun-fonce);
+    color: rgba(247,242,233,0.5);
+    text-align: center;
+    padding: 32px 40px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  footer strong {
+    color: rgba(247,242,233,0.85);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 48px;
+    height: 3px;
+    background: var(--terracotta);
+    border-radius: 2px;
+    margin-bottom: 32px;
+  }
+
+  /* ── PRIORITÉ BADGES ARTICLES ── */
+  .badge-prioritaire { background: rgba(119,121,103,0.15); color: #4a4f3a; }
+  .badge-article-moyen { background: rgba(210,147,118,0.18); color: #9a5c3a; }
+  .badge-faible-art { background: rgba(58,50,40,0.08); color: #7A7060; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 38px; }
+    .cover { padding: 50px 24px; }
+    .cover-meta { flex-direction: column; gap: 20px; }
+    .cover-meta-sep { width: 40px; height: 1px; }
+
+    section { padding: 48px 24px; }
+    .section-title { font-size: 26px; }
+
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .tunnel-steps { grid-template-columns: 1fr; }
+
+    .tunnel-step:first-child { border-radius: 14px 14px 0 0; }
+    .tunnel-step:last-child { border-radius: 0 0 14px 14px; }
+    .tunnel-step { border-right: none; border-bottom: 1px solid var(--gris-clair); }
+    .tunnel-step:last-child { border-bottom: none; }
+
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 18px; }
+
+    .visuel-list { grid-template-columns: 1fr; }
+    .palette-grid { gap: 16px; }
+
+    .maillage-row { gap: 6px; }
+
+    table { font-size: 13px; }
+    .table-wrap { border-radius: 10px; }
+
+    .objectif-item { padding: 18px 20px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px; }
+    body { background: white; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique</div>
+  <h1>Cœur &amp; <span>Cocon</span></h1>
+  <p class="cover-subtitle">Votre logement entre de bonnes mains, vos voyageurs comme à la maison</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Cliente</div>
+      <div class="cover-meta-value">Emilie Kinnbacher</div>
+    </div>
+    <div class="cover-meta-sep"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Secteur</div>
+      <div class="cover-meta-value">Conciergerie LCD</div>
+    </div>
+    <div class="cover-meta-sep"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Zone</div>
+      <div class="cover-meta-value">Rosheim · Obernai · Barr · Alsace</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-badge">01</div>
+  <h2 class="section-title">Positionnement</h2>
+  <div class="divider"></div>
+
+  <div class="highlight-box">
+    <div class="label">Promesse de valeur principale</div>
+    <p>« Une conciergerie humaine et engagée au cœur de l'Alsace, qui chouchoute votre logement et offre à vos voyageurs l'art de vivre alsacien — pour que vous encaissiez sereinement, sans vous occuper de rien. »</p>
+  </div>
+
+  <div style="margin-bottom: 36px;">
+    <div class="card-title" style="font-family:'Playfair Display',serif; font-size:18px; color:var(--brun-fonce); margin-bottom:12px;">Ligne directrice de communication</div>
+    <p style="font-size:15px; color:var(--texte-leger);">Accompagnement local chaleureux · Authenticité alsacienne · Sérénité sans compromis</p>
+  </div>
+
+  <div style="margin-bottom: 36px;">
+    <div class="card-title" style="font-family:'Playfair Display',serif; font-size:18px; color:var(--brun-fonce); margin-bottom:16px;">Ton éditorial</div>
+    <div class="tone-tags">
+      <span class="tone-tag">Chaleureux</span>
+      <span class="tone-tag">Authentique</span>
+      <span class="tone-tag">Rassurant</span>
+    </div>
+    <p style="font-size:14px; color:var(--texte-leger);">Un ton sincère et bienveillant, qui parle propriétaire à propriétaire — jamais corporatif. On sent la passion du terrain, le soin du détail et la fierté de faire rayonner l'Alsace à travers chaque séjour.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🌿</span>
+      <div class="card-title">Ancrage local profond</div>
+      <p>Née et enracinée en Alsace, Emilie connaît chaque village, chaque événement, chaque prestataire de confiance. Cette proximité est un avantage concret pour les propriétaires et un plus indéniable pour les voyageurs.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🤝</span>
+      <div class="card-title">Relation humaine avant tout</div>
+      <p>Un seul interlocuteur, disponible, réactif, investi. Pas un call center, pas une franchise — une vraie personne qui s'engage personnellement pour votre logement.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🎁</span>
+      <div class="card-title">L'attention alsacienne incluse</div>
+      <p>Une petite attention locale offerte à chaque voyageur : un geste rare, mémorable, qui génère des avis positifs et distingue immédiatement Cœur &amp; Cocon des offres standardisées.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📊</span>
+      <div class="card-title">Transparence et suivi des revenus</div>
+      <p>Rapports réguliers, tarification dynamique, commission claire à 20 % hors ménage. Le propriétaire sait exactement où il en est, sans mauvaise surprise.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🌍</span>
+      <div class="card-title">Ouverture internationale</div>
+      <p>Plus de 20 ans dans un grand groupe international : une capacité unique à comprendre et accueillir des voyageurs du monde entier, avec les codes culturels qui font la différence.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-badge">02</div>
+  <h2 class="section-title">Client <span>cible</span></h2>
+  <div class="divider"></div>
+
+  <div class="grid-2" style="margin-bottom:24px;">
+    <div class="card">
+      <span class="card-icon">👤</span>
+      <div class="card-title">Profil type</div>
+      <ul>
+        <li>35 – 65 ans, propriétaire d'un bien en Alsace</li>
+        <li>Actif ou semi-retraité, peu disponible au quotidien</li>
+        <li>Souhaite rentabiliser un bien sans s'en occuper</li>
+        <li>Sensible à la qualité, méfiant envers les grandes franchises</li>
+        <li>Attaché à son logement, veut une personne de confiance</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">💡</span>
+      <div class="card-title">Motivations principales</div>
+      <ul>
+        <li>Générer des revenus complémentaires</li>
+        <li>Ne plus gérer les contraintes opérationnelles</li>
+        <li>Offrir une belle expérience aux voyageurs</li>
+        <li>Valoriser son bien et maintenir son standing</li>
+        <li>Trouver un partenaire de confiance local</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">🚧</span>
+      <div class="card-title">Freins et objections</div>
+      <ul>
+        <li>Crainte de perdre le contrôle sur son bien</li>
+        <li>Peur de ne pas rentabiliser (commission perçue comme élevée)</li>
+        <li>Doute sur la fiabilité d'un prestataire indépendant</li>
+        <li>Expérience négative avec une conciergerie précédente</li>
+        <li>Attachement affectif fort au logement</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">✅</span>
+      <div class="card-title">Critères de décision</div>
+      <ul>
+        <li>Transparence sur les tarifs et la commission</li>
+        <li>Proximité géographique et réactivité</li>
+        <li>Preuves sociales (avis, témoignages)</li>
+        <li>Sentiment de confiance envers la personne</li>
+        <li>Professionnalisme perçu dès le premier contact</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-badge">03</div>
+  <h2 class="section-title">Objectifs <span>du site</span></h2>
+  <div class="divider"></div>
+
+  <div class="objectif-item">
+    <div class="objectif-rank">01</div>
+    <div>
+      <div class="objectif-label">Génération de leads qualifiés</div>
+      <div class="objectif-desc">Inciter les propriétaires alsaciens à prendre contact ou à demander un audit de rentabilité. C'est la priorité absolue du site.</div>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">02</div>
+    <div>
+      <div class="objectif-label">Réassurance et confiance</div>
+      <div class="objectif-desc">Convaincre un propriétaire méfiant qu'Emilie est la bonne personne : page À propos forte, témoignages, transparence tarifaire.</div>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">03</div>
+    <div>
+      <div class="objectif-label">SEO local ciblé</div>
+      <div class="objectif-desc">Être visible sur Google pour les recherches "conciergerie Obernai", "conciergerie Rosheim", "gestion location saisonnière Alsace".</div>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">04</div>
+    <div>
+      <div class="objectif-label">Prise de rendez-vous</div>
+      <div class="objectif-desc">Faciliter la prise de contact avec un formulaire qualifiant ou un outil de réservation de créneau découverte.</div>
+    </div>
+  </div>
+  <div class="objectif-item">
+    <div class="objectif-rank">05</div>
+    <div>
+      <div class="objectif-label">Notoriété et positionnement différenciant</div>
+      <div class="objectif-desc">Installer l'image d'une conciergerie locale haut de gamme et authentique, et la faire rayonner durablement en Alsace.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-badge">04</div>
+  <h2 class="section-title">Arborescence <span>du site</span></h2>
+  <div class="divider"></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-page">🏠 Accueil</td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td class="td-kw">conciergerie location courte durée Alsace</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">📋 Nos Services</td>
+          <td><span class="badge-framework">PAS</span></td>
+          <td class="td-kw">services conciergerie Airbnb Alsace</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">👩 À Propos</td>
+          <td><span class="badge-framework">BAB</span></td>
+          <td class="td-kw">conciergerie locale Obernai Rosheim</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">📍 Zones desservies – Obernai &amp; Rosheim</td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td class="td-kw">conciergerie Obernai / conciergerie Rosheim</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">📍 Zones desservies – Barr &amp; Vallée</td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td class="td-kw">conciergerie Barr location saisonnière Alsace</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">💬 Témoignages</td>
+          <td><span class="badge-framework">—</span></td>
+          <td class="td-kw">avis conciergerie Alsace propriétaires</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">✉️ Contact &amp; RDV</td>
+          <td><span class="badge-framework">PAS</span></td>
+          <td class="td-kw">devis conciergerie location Alsace</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">📝 Blog</td>
+          <td><span class="badge-framework">—</span></td>
+          <td class="td-kw">conseils location saisonnière Alsace</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin-top:20px; font-size:13px; color:var(--texte-leger);">⚠️ La page <strong>Nos Services</strong> regroupe l'ensemble des prestations (annonce, ménage, check-in/out, communication voyageurs, tarification, etc.) en une seule page structurée — sans sous-pages par service. Les deux pages locales SEO couvrent les communes clés en regroupant géographiquement les zones desservies.</p>
+</section>
+
+<!-- 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-badge">05</div>
+  <h2 class="section-title">Cocon <span>sémantique</span></h2>
+  <div class="divider"></div>
+
+  <div class="cluster-block">
+    <div class="cluster-title"><span class="cluster-dot"></span>Cluster 1 — Intendance &amp; services propriétaires</div>
+    <p style="font-size:14px; color:var(--texte-leger); margin-bottom:12px;">Pages piliers : Accueil · Nos Services · Pages locales SEO</p>
+    <div class="kw-list">
+      <span class="kw-tag">conciergerie Airbnb Alsace</span>
+      <span class="kw-tag">intendance location saisonnière</span>
+      <span class="kw-tag">gestion Airbnb Obernai</span>
+      <span class="kw-tag">sous-traitance ménage location LCD</span>
+      <span class="kw-tag">check-in autonome Alsace</span>
+      <span class="kw-tag">tarification dynamique location courte durée</span>
+    </div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title"><span class="cluster-dot"></span>Cluster 2 — Expérience voyageurs &amp; art de vivre alsacien</div>
+    <p style="font-size:14px; color:var(--texte-leger); margin-bottom:12px;">Pages piliers : À Propos · Blog · Témoignages</p>
+    <div class="kw-list">
+      <span class="kw-tag">que faire en Alsace</span>
+      <span class="kw-tag">location saisonnière Alsace tourisme</span>
+      <span class="kw-tag">accueil voyageurs Alsace</span>
+      <span class="kw-tag">cadeau bienvenue Alsace</span>
+      <span class="kw-tag">séjour authentique Alsace</span>
+    </div>
+  </div>
+
+  <div class="cluster-block">
+    <div class="cluster-title"><span class="cluster-dot"></span>Cluster 3 — Rentabilité &amp; tranquillité propriétaire</div>
+    <p style="font-size:14px; color:var(--texte-leger); margin-bottom:12px;">Pages piliers : Nos Services · Blog · Contact</p>
+    <div class="kw-list">
+      <span class="kw-tag">rentabiliser un logement Alsace</span>
+      <span class="kw-tag">optimiser revenus location LCD</span>
+      <span class="kw-tag">confier son logement conciergerie</span>
+      <span class="kw-tag">taux d'occupation Airbnb Alsace</span>
+    </div>
+  </div>
+
+  <div class="maillage-block">
+    <div class="maillage-title">🔗 Logique de maillage interne</div>
+    <div class="maillage-row">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact &amp; RDV</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">À Propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Témoignages</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Pages locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact &amp; RDV</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Pages locales</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Témoignages</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact &amp; RDV</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-badge">06</div>
+  <h2 class="section-title">Tunnel de <span>conversion</span></h2>
+  <div class="divider"></div>
+
+  <div class="tunnel-steps">
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 01</div>
+      <div class="tunnel-step-title">Découverte</div>
+      <div class="tunnel-step-label">Source de trafic</div>
+      <div class="tunnel-step-value">Google (SEO local), bouche à oreille, réseaux sociaux (Facebook/Instagram)</div>
+      <div class="tunnel-step-label">Page concernée</div>
+      <div class="tunnel-step-value">Accueil · Pages locales SEO · Articles Blog</div>
+      <div class="tunnel-step-label">CTA</div>
+      <div><span class="cta-badge">Découvrir nos services →</span></div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 02</div>
+      <div class="tunnel-step-title">Intérêt</div>
+      <div class="tunnel-step-label">Source de trafic</div>
+      <div class="tunnel-step-value">Navigation interne depuis l'accueil ou un article de blog</div>
+      <div class="tunnel-step-label">Page concernée</div>
+      <div class="tunnel-step-value">Nos Services · À Propos</div>
+      <div class="tunnel-step-label">CTA</div>
+      <div><span class="cta-badge">Télécharger le guide gratuit</span></div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 03</div>
+      <div class="tunnel-step-title">Confiance</div>
+      <div class="tunnel-step-label">Source de trafic</div>
+      <div class="tunnel-step-value">Retour direct, email de nurturing, lien depuis la page À propos</div>
+      <div class="tunnel-step-label">Page concernée</div>
+      <div class="tunnel-step-value">Témoignages · À Propos</div>
+      <div class="tunnel-step-label">CTA</div>
+      <div><span class="cta-badge">Lire les avis propriétaires</span></div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 04</div>
+      <div class="tunnel-step-title">Conversion</div>
+      <div class="tunnel-step-label">Source de trafic</div>
+      <div class="tunnel-step-value">Clic sur CTA depuis n'importe quelle page du site</div>
+      <div class="tunnel-step-label">Page concernée</div>
+      <div class="tunnel-step-value">Contact &amp; RDV</div>
+      <div class="tunnel-step-label">CTA</div>
+      <div><span class="cta-badge">Réserver mon appel découverte</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-badge">07</div>
+  <h2 class="section-title">Leviers <span>marketing recommandés</span></h2>
+  <div class="divider"></div>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <span class="card-icon">📥</span>
+      <div class="card-title">Lead Magnet</div>
+      <p>Guide PDF téléchargeable : <em>« 7 erreurs qui font perdre des revenus à votre location saisonnière en Alsace »</em>. Simple, concret, directement utile pour un propriétaire hésitant. Collecte l'email et positionne Emilie en experte.</p>
+    </div>
+    <div class="levier-card">
+      <span class="card-icon">📅</span>
+      <div class="card-title">Prise de RDV</div>
+      <p>Outil recommandé : <strong>Calendly</strong> (gratuit, intégrable facilement). Proposer un créneau "Appel découverte 20 min" directement depuis la page Contact et depuis le sticky CTA du site.</p>
+    </div>
+    <div class="levier-card">
+      <span class="card-icon">⭐</span>
+      <div class="card-title">Preuve sociale</div>
+      <p>Témoignages propriétaires en format citation + prénom + ville. Captures d'écrans d'avis Airbnb anonymisés. À terme : vidéo-témoignage d'un propriétaire satisfait filmé sur son logement.</p>
+    </div>
+    <div class="levier-card">
+      <span class="card-icon">📝</span>
+      <div class="card-title">Formulaire qualifiant</div>
+      <p>Champs recommandés : Prénom · Commune du logement · Type de bien (appartement / maison / chambre) · Disponibilité souhaitée · Êtes-vous déjà sur Airbnb ? · Message libre.</p>
+    </div>
+    <div class="levier-card">
+      <span class="card-icon">💌</span>
+      <div class="card-title">Newsletter</div>
+      <p>Angle éditorial : <em>« La Lettre du Propriétaire Alsacien »</em> — conseils pratiques LCD, actualités touristiques de la région, témoignages et bonnes pratiques. Rythme mensuel, ton chaleureux et local.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-badge">08</div>
+  <h2 class="section-title">Direction <span>visuelle &amp; éditoriale</span></h2>
+  <div class="divider"></div>
+
+  <div style="margin-bottom:48px;">
+    <div class="card-title" style="font-family:'Playfair Display',serif; font-size:20px; color:var(--brun-fonce); margin-bottom:28px;">Palette de couleurs</div>
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#F7F2E9;border:1px solid #e0d9ce;"></div>
+        <div class="palette-name">Ivoire doux</div>
+        <div class="palette-hex">#F7F2E9</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#777967;"></div>
+        <div class="palette-name">Vert sauge</div>
+        <div class="palette-hex">#777967</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#D29376;"></div>
+        <div class="palette-name">Terracotta poudré</div>
+        <div class="palette-hex">#D29376</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#3A3228;"></div>
+        <div class="palette-name">Brun profond</div>
+        <div class="palette-hex">#3A3228</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background:#E8E3DA;border:1px solid #d6cfc4;"></div>
+        <div class="palette-name">Lin clair</div>
+        <div class="palette-hex">#E8E3DA</div>
+      </div>
+    </div>
+    <p style="font-size:13px; color:var(--texte-leger); text-align:center;">Palette définie par Emilie Kinnbacher — tons chauds et naturels, zéro couleur flashy. Univers cosy, chaleureux, authentiquement alsacien.</p>
+  </div>
+
+  <div>
+    <div class="card-title" style="font-family:'Playfair Display',serif; font-size:20px; color:var(--brun-fonce); margin-bottom:20px;">Univers visuel recommandé</div>
+    <ul class="visuel-list">
+      <li>📸 Photo lumineuse d'Alsace en hero (vignes, colombages, villages en automne) — lumière dorée, ambiance chaleureuse</li>
+      <li>🛏️ Intérieurs cosy et bien décorés de gîtes alsaciens — draps blancs, textures naturelles, ambiance "chez soi"</li>
+      <li>🤍 Espaces blancs généreux et typographie élégante (Playfair Display pour les titres, Inter pour le corps)</li>
+      <li>🎀 Mise en valeur des petites attentions : bougies, paniers, produits locaux alsaciens — storytelling visuel fort</li>
+      <li>🌿 Textures organiques : lin, bois clair, céramique — en cohérence avec la palette ivoire et terracotta</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-badge">09</div>
+  <h2 class="section-title">Articles <span>blog recommandés</span></h2>
+  <div class="divider"></div>
+
+  <div class="grid-2">
+    <div class="article-card">
+      <div class="article-meta">
+        <span class="article-cluster">Cluster 1 — Intendance</span>
+        <span class="badge-seo badge-prioritaire badge-seo">Prioritaire</span>
+      </div>
+      <div class="article-card-title">Pourquoi confier sa location Airbnb à une conciergerie locale en Alsace plutôt qu'à une grande franchise ?</div>
+      <div class="article-intention">Intention informationnelle — Le propriétaire compare les options avant de choisir. Fort potentiel de conversion en lead.</div>
+    </div>
+    <div class="article-card">
+      <div class="article-meta">
+        <span class="article-cluster">Cluster 3 — Rentabilité</span>
+        <span class="badge-seo badge-prioritaire badge-seo">Prioritaire</span>
+      </div>
+      <div class="article-card-title">Location saisonnière en Alsace : combien peut-on vraiment gagner avec son logement à Obernai ou Rosheim ?</div>
+      <div class="article-intention">Intention informationnelle / transactionnelle — Attire des propriétaires en phase de réflexion sur la rentabilité. Très fort potentiel SEO local.</div>
+    </div>
+    <div class="article-card">
+      <div class="article-meta">
+        <span class="article-cluster">Cluster 1 — Intendance</span>
+        <span class="badge-seo badge-prioritaire badge-seo">Prioritaire</span>
+      </div>
+      <div class="article-card-title">5 erreurs fréquentes des propriétaires qui gèrent eux-mêmes leur location courte durée en Alsace</div>
+      <div class="article-intention">Intention informationnelle — Miroir des douleurs du client cible. Renforce la légitimité d'Emilie et crée un sentiment d'urgence.</div>
+    </div>
+    <div class="article-card">
+      <div class="article-meta">
+        <span class="article-cluster">Cluster 2 — Expérience voyageurs</span>
+        <span class="badge-seo badge-article-moyen badge-seo">Moyen</span>
+      </div>
+      <div class="article-card-title">Que faire à Obernai, Rosheim et Barr ? Notre guide local pour des voyageurs heureux</div>
+      <div class="article-intention">Intention informationnelle / éditoriale — Contenu utile pour les voyageurs et les propriétaires. Renforce l'ancrage local et l'expertise terrain d'Emilie.</div>
+    </div>
+    <div class="article-card">
+      <div class="article-meta">
+        <span class="article-cluster">Cluster 3 — Rentabilité</span>
+        <span class="badge-seo badge-article-moyen badge-seo">Moyen</span>
+      </div>
+      <div class="article-card-title">Tarification dynamique pour une location saisonnière : comment maximiser ses revenus tout au long de l'année en Alsace ?</div>
+      <div class="article-intention">Intention informationnelle — Positionne Cœur &amp; Cocon comme experte en optimisation tarifaire. Crédibilise le service de tarification inclus.</div>
+    </div>
+    <div class="article-card">
+      <div class="article-meta">
+        <span class="article-cluster">Cluster 2 — Expérience voyageurs</span>
+        <span class="badge-seo badge-article-moyen badge-seo">Moyen</span>
+      </div>
+      <div class="article-card-title">L'art de l'accueil alsacien : petites attentions qui font de grands avis 5 étoiles</div>
+      <div class="article-intention">Intention éditoriale / branding — Met en valeur l'attention aux détails, la petite attention locale, le soin apporté aux voyageurs. Fort potentiel viral sur les réseaux.</div>
+    </div>
+    <div class="article-card">
+      <div class="article-meta">
+        <span class="article-cluster">Cluster 1 — Intendance</span>
+        <span class="badge-seo badge-faible-art badge-seo">Faible</span>
+      </div>
+      <div class="article-card-title">Réglementation de la location courte durée en 2024 : ce que tout propriétaire alsacien doit savoir</div>
+      <div class="article-intention">Intention informationnelle — Contenu de réassurance juridique. Positionne Emilie comme référence sérieuse. Potentiel SEO à confirmer selon évolutions législatives.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:6px;"><strong>Cœur &amp; Cocon — Conciergerie</strong> · Rosheim · Obernai · Barr · Alsace</p>
+  <p>Document confidentiel — Blueprint Stratégique établi par AR Digital · Toute reproduction interdite sans autorisation</p>
+</footer>
+
+<style>
+  .bp-validation-box {
+    position: relative;
+    margin: 40px 0 18px;
+    padding: 26px 28px;
+    background: #ffffff;
+    border: 2px solid #E63329;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.25s ease;
+  }
+
+  .bp-validation-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: #E63329;
+    transition: background 0.25s ease;
+  }
+
+  .bp-validation-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 5px 10px;
+    background: #E63329;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .bp-validation-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 7px;
+  }
+
+  .bp-validation-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555555;
+    margin-bottom: 20px;
+  }
+
+  .bp-validation-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .bp-validation-btn {
+    padding: 13px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .bp-validation-approve {
+    background: #1a1a1a;
+    color: #ffffff;
+    border: 2px solid #1a1a1a;
+  }
+
+  .bp-validation-approve:hover {
+    background: #333333;
+    border-color: #333333;
+    transform: translateY(-1px);
+  }
+
+  .bp-validation-comment {
+    background: #ffffff;
+    color: #1a1a1a;
+    border: 2px solid #d8d8d8;
+  }
+
+  .bp-validation-comment:hover {
+    border-color: #E63329;
+    color: #E63329;
+    background: #fff8f7;
+    transform: translateY(-1px);
+  }
+
+  .bp-comment-area {
+    display: none;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .bp-comment-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .bp-comment-help {
+    margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #666666;
+  }
+
+  .bp-comment-textarea {
+    width: 100%;
+    min-height: 120px;
+    box-sizing: border-box;
+    padding: 14px;
+    border: 2px solid #d8d8d8;
+    border-radius: 8px;
+    resize: vertical;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    outline: none;
+  }
+
+  .bp-comment-textarea:focus {
+    border-color: #E63329;
+  }
+
+  .bp-comment-error {
+    display: none;
+    margin-top: 7px;
+    color: #E63329;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .bp-save-comment {
+    margin-top: 12px;
+    background: #1a1a1a;
+    color: #ffffff;
+    border: 2px solid #1a1a1a;
+  }
+
+  .bp-save-comment:hover {
+    background: #333333;
+    border-color: #333333;
+  }
+
+  .bp-validation-result {
+    display: none;
+  }
+
+  .bp-result-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .bp-result-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    border-radius: 50%;
+    background: #198754;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .bp-result-title {
+    color: #146c43;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .bp-result-comment {
+    display: none;
+    margin: 14px 0;
+    padding: 14px 16px;
+    background: #ffffff;
+    border: 1px solid #b7dfc9;
+    border-radius: 8px;
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+  }
+
+  .bp-edit-choice {
+    margin-top: 8px;
+    padding: 9px 13px;
+    background: transparent;
+    color: #555555;
+    border: 1px solid #b7c9be;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .bp-edit-choice:hover {
+    background: #ffffff;
+    color: #1a1a1a;
+  }
+
+  .bp-validation-box.bp-completed {
+    background: #f2fbf6;
+    border-color: #198754;
+    box-shadow: 0 6px 20px rgba(25, 135, 84, 0.10);
+  }
+
+  .bp-validation-box.bp-completed::before {
+    background: #198754;
+  }
+
+  .bp-validation-box.bp-completed .bp-validation-label {
+    background: #198754;
+  }
+
+  /* VALIDATION FINALE */
+
+  .bp-final-validation {
+    margin: 60px 0 30px;
+    padding: 32px;
+    background: #f7f7f7;
+    border: 2px solid #d8d8d8;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
+  }
+
+  .bp-final-validation.bp-final-ready {
+    background: #f2fbf6;
+    border-color: #198754;
+  }
+
+  .bp-final-label {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 6px 11px;
+    background: #1a1a1a;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .bp-final-ready .bp-final-label {
+    background: #198754;
+  }
+
+  .bp-final-title {
+    margin: 0 0 8px;
+    color: #1a1a1a;
+    font-size: 26px;
+    line-height: 1.25;
+    font-weight: 800;
+  }
+
+  .bp-final-intro {
+    margin: 0 0 24px;
+    color: #555555;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .bp-final-progress {
+    margin-bottom: 25px;
+  }
+
+  .bp-final-progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 9px;
+  }
+
+  .bp-final-progress-text {
+    color: #1a1a1a;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .bp-final-progress-count {
+    color: #E63329;
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .bp-final-ready .bp-final-progress-count {
+    color: #198754;
+  }
+
+  .bp-final-progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #e1e1e1;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .bp-final-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #E63329;
+    border-radius: 20px;
+    transition: width 0.3s ease, background 0.3s ease;
+  }
+
+  .bp-final-ready .bp-final-progress-fill {
+    background: #198754;
+  }
+
+  .bp-final-list {
+    margin: 0 0 26px;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  .bp-final-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .bp-final-item:last-child {
+    border-bottom: 0;
+  }
+
+  .bp-final-item-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .bp-final-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    border-radius: 50%;
+    background: #eeeeee;
+    color: #777777;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .bp-final-item.bp-item-completed .bp-final-icon {
+    background: #198754;
+    color: #ffffff;
+  }
+
+  .bp-final-section-name {
+    color: #333333;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .bp-final-status {
+    flex: 0 0 auto;
+    color: #888888;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .bp-final-item.bp-item-completed .bp-final-status {
+    color: #198754;
+  }
+
+  .bp-final-warning {
+    margin-bottom: 22px;
+    padding: 14px 16px;
+    background: #fff3f2;
+    border: 1px solid #f3c1bd;
+    border-radius: 8px;
+    color: #9c2e27;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  .bp-final-success-message {
+    display: none;
+    margin-bottom: 22px;
+    padding: 14px 16px;
+    background: #eaf7ef;
+    border: 1px solid #b7dfc9;
+    border-radius: 8px;
+    color: #146c43;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 700;
+  }
+
+  .bp-final-confirmation {
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    opacity: 0.5;
+    pointer-events: none;
+    transition: all 0.25s ease;
+  }
+
+  .bp-final-confirmation.bp-confirmation-enabled {
+    opacity: 1;
+    pointer-events: auto;
+    border-color: #b7dfc9;
+  }
+
+  .bp-final-checkbox-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+  }
+
+  .bp-final-checkbox {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    margin-top: 2px;
+    accent-color: #198754;
+    cursor: pointer;
+  }
+
+  .bp-final-checkbox-text {
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .bp-final-reference-note {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #eeeeee;
+    color: #666666;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .bp-final-submit {
+    width: 100%;
+    margin-top: 18px;
+    padding: 16px 20px;
+    background: #cccccc;
+    color: #777777;
+    border: 0;
+    border-radius: 9px;
+    cursor: not-allowed;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    transition: all 0.2s ease;
+  }
+
+  .bp-final-submit.bp-submit-enabled {
+    background: #198754;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .bp-final-submit.bp-submit-enabled:hover {
+    background: #146c43;
+    transform: translateY(-1px);
+  }
+
+  .bp-transmission-error {
+    display: none;
+    margin-top: 15px;
+    padding: 14px 16px;
+    background: #fff3f2;
+    border: 1px solid #f3c1bd;
+    border-radius: 8px;
+    color: #9c2e27;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  .bp-transmission-success {
+    display: none;
+    padding: 26px;
+    background: #eaf7ef;
+    border: 2px solid #198754;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .bp-transmission-success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 14px;
+    background: #198754;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 25px;
+    font-weight: 800;
+  }
+
+  .bp-transmission-success-title {
+    margin-bottom: 8px;
+    color: #146c43;
+    font-size: 21px;
+    font-weight: 800;
+  }
+
+  .bp-transmission-success-text {
+    color: #365c47;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 600px) {
+    .bp-validation-box {
+      padding: 22px 20px;
+    }
+
+    .bp-validation-actions {
+      flex-direction: column;
+    }
+
+    .bp-validation-btn {
+      width: 100%;
+    }
+
+    .bp-final-validation {
+      padding: 24px 18px;
+    }
+
+    .bp-final-title {
+      font-size: 22px;
+    }
+
+    .bp-final-item {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .bp-final-status {
+      padding-left: 34px;
+      text-align: left;
+    }
+  }
+</style>
+
+<div id="bp-validation-template" style="display:none;">
+  <div class="bp-validation-box">
+
+    <div class="bp-validation-pending">
+
+      <div class="bp-validation-label">
+        Action requise
+      </div>
+
+      <div class="bp-validation-title">
+        Validez cette section
+      </div>
+
+      <div class="bp-validation-text">
+        Vérifiez attentivement les informations ci-dessus avant de poursuivre.
+        Validez cette section si elle vous convient, ou indiquez les modifications
+        que vous souhaitez apporter.
+      </div>
+
+      <div class="bp-validation-actions">
+
+        <button
+          type="button"
+          class="bp-validation-btn bp-validation-approve"
+        >
+          ✓ Je valide cette section
+        </button>
+
+        <button
+          type="button"
+          class="bp-validation-btn bp-validation-comment"
+        >
+          ✏️ J'ai une modification ou un commentaire
+        </button>
+
+      </div>
+
+      <div class="bp-comment-area">
+
+        <label class="bp-comment-label">
+          Votre demande de modification
+        </label>
+
+        <div class="bp-comment-help">
+          Décrivez précisément ce que vous souhaitez modifier, ajouter ou supprimer
+          dans cette section.
+        </div>
+
+        <textarea
+          class="bp-comment-textarea"
+          placeholder="Écrivez votre commentaire ou votre demande de modification ici..."
+        ></textarea>
+
+        <div class="bp-comment-error">
+          Merci d'indiquer votre demande avant de l'enregistrer.
+        </div>
+
+        <button
+          type="button"
+          class="bp-validation-btn bp-save-comment"
+        >
+          ✓ Enregistrer ma modification
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="bp-validation-result">
+
+      <div class="bp-validation-label">
+        Section complétée
+      </div>
+
+      <div class="bp-result-header">
+
+        <div class="bp-result-check">
+          ✓
+        </div>
+
+        <div class="bp-result-title">
+          Section validée
+        </div>
+
+      </div>
+
+      <div class="bp-result-comment"></div>
+
+      <button
+        type="button"
+        class="bp-edit-choice"
+      >
+        Modifier mon choix
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+<div id="bp-final-validation-template" style="display:none;">
+
+  <div class="bp-final-validation">
+
+    <div class="bp-final-content">
+
+      <div class="bp-final-label">
+        Validation finale
+      </div>
+
+      <h2 class="bp-final-title">
+        Validez définitivement votre retour
+      </h2>
+
+      <p class="bp-final-intro">
+        Avant de transmettre votre Blueprint à notre équipe, vous devez avoir
+        validé ou commenté chacune des 9 sections ci-dessus.
+      </p>
+
+      <div class="bp-final-progress">
+
+        <div class="bp-final-progress-top">
+
+          <div class="bp-final-progress-text">
+            Progression de votre validation
+          </div>
+
+          <div class="bp-final-progress-count">
+            0 / 9
+          </div>
+
+        </div>
+
+        <div class="bp-final-progress-bar">
+          <div class="bp-final-progress-fill"></div>
+        </div>
+
+      </div>
+
+
+      <ul class="bp-final-list">
+
+        <li class="bp-final-item" data-summary-section="bp-section-01">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Positionnement</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-02">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Client cible</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-03">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Objectifs du site</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-04">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Arborescence</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-05">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Cocon sémantique</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-06">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Tunnel de conversion</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-07">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Leviers de croissance</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-08">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Direction visuelle</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-09">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Articles de blog</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+      </ul>
+
+
+      <div class="bp-final-warning">
+        Il reste 9 sections à valider avant de pouvoir transmettre votre retour.
+      </div>
+
+      <div class="bp-final-success-message">
+        ✓ Toutes les sections ont été complétées. Vous pouvez maintenant confirmer
+        et transmettre votre retour.
+      </div>
+
+
+      <div class="bp-final-confirmation">
+
+        <label class="bp-final-checkbox-row">
+
+          <input
+            type="checkbox"
+            class="bp-final-checkbox"
+            disabled
+          >
+
+          <span class="bp-final-checkbox-text">
+            Je confirme avoir relu l'intégralité du Blueprint ainsi que mes
+            éventuels commentaires et demandes de modification. Je confirme que
+            le Blueprint et les retours formulés ci-dessus constituent les
+            instructions de référence à prendre en compte pour la conception
+            de mon site.
+          </span>
+
+        </label>
+
+        <div class="bp-final-reference-note">
+          La conception de votre site sera réalisée sur la base du Blueprint
+          et des demandes de modification que vous validez ici. Toute demande
+          majeure formulée après cette validation et nécessitant de revenir sur
+          un travail déjà réalisé pourra entraîner une facturation complémentaire.
+        </div>
+
+        <button
+          type="button"
+          class="bp-final-submit"
+          disabled
+        >
+          VALIDER ET TRANSMETTRE MON RETOUR
+        </button>
+
+        <div class="bp-transmission-error">
+          Une erreur est survenue pendant la transmission de votre retour.
+          Merci de réessayer dans quelques instants.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="bp-transmission-success">
+
+      <div class="bp-transmission-success-icon">
+        ✓
+      </div>
+
+      <div class="bp-transmission-success-title">
+        Votre retour a bien été transmis !
+      </div>
+
+      <div class="bp-transmission-success-text">
+        Merci pour votre validation. Votre Blueprint ainsi que l'ensemble de
+        vos commentaires et demandes de modification ont bien été transmis à
+        notre équipe.
+        <br><br>
+        Nous allons maintenant préparer votre cahier des charges et reviendrons
+        rapidement vers vous pour la suite de votre projet.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const BLUEPRINT_ID = "6ae9bb0f598b6ee3e28054a4";
+
+  const CLIENT_EMAIL =
+    "emilie_kinnba@hotmail.com";
+
+  const WEBHOOK_URL =
+    "https://hook.eu2.make.com/pm0msu9nua1val6ysvda71aqniu0h8fa";
+
+  const sections =
+    document.querySelectorAll('[id^="bp-section-"]');
+
+  const template =
+    document.querySelector("#bp-validation-template");
+
+  const finalTemplate =
+    document.querySelector("#bp-final-validation-template");
+
+  const blueprintResponses = {};
+
+  const sectionNames = {
+    "bp-section-01": "Positionnement",
+    "bp-section-02": "Client cible",
+    "bp-section-03": "Objectifs du site",
+    "bp-section-04": "Arborescence",
+    "bp-section-05": "Cocon sémantique",
+    "bp-section-06": "Tunnel de conversion",
+    "bp-section-07": "Leviers de croissance",
+    "bp-section-08": "Direction visuelle",
+    "bp-section-09": "Articles de blog"
+  };
+
+
+  if (!template || !finalTemplate) {
+    console.log("Template de validation introuvable");
+    return;
+  }
+
+
+  const finalValidation =
+    finalTemplate.firstElementChild.cloneNode(true);
+
+  document.body.appendChild(finalValidation);
+
+
+  const finalContent =
+    finalValidation.querySelector(".bp-final-content");
+
+  const transmissionSuccess =
+    finalValidation.querySelector(".bp-transmission-success");
+
+  const transmissionError =
+    finalValidation.querySelector(".bp-transmission-error");
+
+  const progressCount =
+    finalValidation.querySelector(".bp-final-progress-count");
+
+  const progressFill =
+    finalValidation.querySelector(".bp-final-progress-fill");
+
+  const finalWarning =
+    finalValidation.querySelector(".bp-final-warning");
+
+  const finalSuccessMessage =
+    finalValidation.querySelector(".bp-final-success-message");
+
+  const finalConfirmation =
+    finalValidation.querySelector(".bp-final-confirmation");
+
+  const finalCheckbox =
+    finalValidation.querySelector(".bp-final-checkbox");
+
+  const finalSubmit =
+    finalValidation.querySelector(".bp-final-submit");
+
+
+  function updateFinalValidation() {
+
+    let completedCount = 0;
+
+    Object.keys(sectionNames).forEach(function (sectionId) {
+
+      const summaryItem =
+        finalValidation.querySelector(
+          '[data-summary-section="' + sectionId + '"]'
+        );
+
+      if (!summaryItem) {
+        return;
+      }
+
+      const icon =
+        summaryItem.querySelector(".bp-final-icon");
+
+      const status =
+        summaryItem.querySelector(".bp-final-status");
+
+      const response =
+        blueprintResponses[sectionId];
+
+
+      if (response) {
+
+        completedCount++;
+
+        summaryItem.classList.add("bp-item-completed");
+
+        icon.textContent = "✓";
+
+        if (response.status === "comment") {
+          status.textContent = "Modification enregistrée";
+        } else {
+          status.textContent = "Validé";
+        }
+
+      } else {
+
+        summaryItem.classList.remove("bp-item-completed");
+
+        icon.textContent = "○";
+        status.textContent = "À valider";
+
+      }
+
+    });
+
+
+    progressCount.textContent =
+      completedCount + " / 9";
+
+    progressFill.style.width =
+      ((completedCount / 9) * 100) + "%";
+
+
+    if (completedCount === 9) {
+
+      finalValidation.classList.add("bp-final-ready");
+
+      finalWarning.style.display = "none";
+      finalSuccessMessage.style.display = "block";
+
+      finalConfirmation.classList.add(
+        "bp-confirmation-enabled"
+      );
+
+      finalCheckbox.disabled = false;
+
+    } else {
+
+      finalValidation.classList.remove("bp-final-ready");
+
+      finalSuccessMessage.style.display = "none";
+      finalWarning.style.display = "block";
+
+      const remaining = 9 - completedCount;
+
+      if (remaining === 1) {
+        finalWarning.textContent =
+          "Il reste 1 section à valider avant de pouvoir transmettre votre retour.";
+      } else {
+        finalWarning.textContent =
+          "Il reste " +
+          remaining +
+          " sections à valider avant de pouvoir transmettre votre retour.";
+      }
+
+      finalConfirmation.classList.remove(
+        "bp-confirmation-enabled"
+      );
+
+      finalCheckbox.checked = false;
+      finalCheckbox.disabled = true;
+
+      finalSubmit.disabled = true;
+      finalSubmit.classList.remove("bp-submit-enabled");
+
+    }
+
+  }
+
+
+  finalCheckbox.addEventListener("change", function () {
+
+    if (
+      Object.keys(blueprintResponses).length === 9 &&
+      finalCheckbox.checked
+    ) {
+
+      finalSubmit.disabled = false;
+      finalSubmit.classList.add("bp-submit-enabled");
+
+    } else {
+
+      finalSubmit.disabled = true;
+      finalSubmit.classList.remove("bp-submit-enabled");
+
+    }
+
+  });
+
+
+  finalSubmit.addEventListener("click", async function () {
+
+    if (
+      finalSubmit.disabled ||
+      Object.keys(blueprintResponses).length !== 9 ||
+      !finalCheckbox.checked
+    ) {
+      return;
+    }
+
+
+    transmissionError.style.display = "none";
+
+    finalSubmit.disabled = true;
+    finalSubmit.classList.remove("bp-submit-enabled");
+    finalSubmit.textContent = "TRANSMISSION EN COURS...";
+
+
+    /*
+      PAYLOAD PLAT POUR MAKE
+
+      Une validation = un seul bundle.
+      Plus besoin d'Iterator dans Make.
+    */
+
+    const payload = {
+
+      event_type: "final_validation",
+
+      blueprint_id: BLUEPRINT_ID,
+      email_client: CLIENT_EMAIL,
+
+      section_01_status:
+        blueprintResponses["bp-section-01"].status,
+
+      section_01_comment:
+        blueprintResponses["bp-section-01"].comment,
+
+      section_02_status:
+        blueprintResponses["bp-section-02"].status,
+
+      section_02_comment:
+        blueprintResponses["bp-section-02"].comment,
+
+      section_03_status:
+        blueprintResponses["bp-section-03"].status,
+
+      section_03_comment:
+        blueprintResponses["bp-section-03"].comment,
+
+      section_04_status:
+        blueprintResponses["bp-section-04"].status,
+
+      section_04_comment:
+        blueprintResponses["bp-section-04"].comment,
+
+      section_05_status:
+        blueprintResponses["bp-section-05"].status,
+
+      section_05_comment:
+        blueprintResponses["bp-section-05"].comment,
+
+      section_06_status:
+        blueprintResponses["bp-section-06"].status,
+
+      section_06_comment:
+        blueprintResponses["bp-section-06"].comment,
+
+      section_07_status:
+        blueprintResponses["bp-section-07"].status,
+
+      section_07_comment:
+        blueprintResponses["bp-section-07"].comment,
+
+      section_08_status:
+        blueprintResponses["bp-section-08"].status,
+
+      section_08_comment:
+        blueprintResponses["bp-section-08"].comment,
+
+      section_09_status:
+        blueprintResponses["bp-section-09"].status,
+
+      section_09_comment:
+        blueprintResponses["bp-section-09"].comment
+
+    };
+
+
+    console.log(
+      "Transmission du Blueprint :",
+      payload
+    );
+
+
+    try {
+
+      const response = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+
+      if (!response.ok) {
+        throw new Error(
+          "Erreur HTTP : " + response.status
+        );
+      }
+
+
+      finalContent.style.display = "none";
+      transmissionSuccess.style.display = "block";
+
+      finalValidation.classList.add("bp-final-ready");
+
+      window.scrollTo({
+        top:
+          finalValidation.getBoundingClientRect().top +
+          window.pageYOffset -
+          30,
+        behavior: "smooth"
+      });
+
+
+    } catch (error) {
+
+      console.error(
+        "Erreur transmission Blueprint :",
+        error
+      );
+
+      transmissionError.style.display = "block";
+
+      finalSubmit.disabled = false;
+      finalSubmit.classList.add("bp-submit-enabled");
+      finalSubmit.textContent =
+        "RÉESSAYER LA TRANSMISSION";
+
+    }
+
+  });
+
+
+  sections.forEach(function (section) {
+
+    const validationBox =
+      template.firstElementChild.cloneNode(true);
+
+    const sectionId =
+      section.id;
+
+    validationBox.setAttribute(
+      "data-section-id",
+      sectionId
+    );
+
+    section.appendChild(validationBox);
+
+
+    const pendingArea =
+      validationBox.querySelector(".bp-validation-pending");
+
+    const resultArea =
+      validationBox.querySelector(".bp-validation-result");
+
+    const approveButton =
+      validationBox.querySelector(".bp-validation-approve");
+
+    const commentButton =
+      validationBox.querySelector(".bp-validation-comment");
+
+    const commentArea =
+      validationBox.querySelector(".bp-comment-area");
+
+    const textarea =
+      validationBox.querySelector(".bp-comment-textarea");
+
+    const commentError =
+      validationBox.querySelector(".bp-comment-error");
+
+    const saveCommentButton =
+      validationBox.querySelector(".bp-save-comment");
+
+    const resultTitle =
+      validationBox.querySelector(".bp-result-title");
+
+    const resultComment =
+      validationBox.querySelector(".bp-result-comment");
+
+    const editButton =
+      validationBox.querySelector(".bp-edit-choice");
+
+
+    approveButton.addEventListener("click", function () {
+
+      blueprintResponses[sectionId] = {
+        section_id: sectionId,
+        section_name: sectionNames[sectionId] || sectionId,
+        status: "validated",
+        comment: ""
+      };
+
+      validationBox.classList.add("bp-completed");
+
+      pendingArea.style.display = "none";
+      resultArea.style.display = "block";
+
+      resultTitle.textContent = "Section validée";
+
+      resultComment.textContent = "";
+      resultComment.style.display = "none";
+
+      updateFinalValidation();
+
+    });
+
+
+    commentButton.addEventListener("click", function () {
+
+      commentArea.style.display = "block";
+      commentError.style.display = "none";
+      textarea.focus();
+
+    });
+
+
+    saveCommentButton.addEventListener("click", function () {
+
+      const comment = textarea.value.trim();
+
+      if (comment === "") {
+
+        commentError.style.display = "block";
+        textarea.focus();
+        return;
+
+      }
+
+      commentError.style.display = "none";
+
+      blueprintResponses[sectionId] = {
+        section_id: sectionId,
+        section_name: sectionNames[sectionId] || sectionId,
+        status: "comment",
+        comment: comment
+      };
+
+      validationBox.classList.add("bp-completed");
+
+      pendingArea.style.display = "none";
+      resultArea.style.display = "block";
+
+      resultTitle.textContent =
+        "Modification enregistrée";
+
+      resultComment.textContent = comment;
+      resultComment.style.display = "block";
+
+      updateFinalValidation();
+
+    });
+
+
+    editButton.addEventListener("click", function () {
+
+      const previousResponse =
+        blueprintResponses[sectionId];
+
+      validationBox.classList.remove("bp-completed");
+
+      resultArea.style.display = "none";
+      pendingArea.style.display = "block";
+
+      commentError.style.display = "none";
+
+
+      if (
+        previousResponse &&
+        previousResponse.status === "comment"
+      ) {
+
+        textarea.value =
+          previousResponse.comment || "";
+
+        commentArea.style.display = "block";
+
+      } else {
+
+        textarea.value = "";
+        commentArea.style.display = "none";
+
+      }
+
+
+      delete blueprintResponses[sectionId];
+
+      updateFinalValidation();
+
+    });
+
+  });
+
+
+  updateFinalValidation();
+
+});
+</script>
+
+</body>
+</html>
