@@ -1,0 +1,2515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Clétitia Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a2e;
+    background: #FAF9F6;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0a1828 0%, #14263D 55%, #1e3a5f 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(200,169,107,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(200,169,107,0.10) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 70px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-logo span {
+    color: #C8A96B;
+  }
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-divider {
+    width: 60px;
+    height: 2px;
+    background: #C8A96B;
+    margin: 0 auto 48px auto;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+  section:nth-child(odd) {
+    background: #FAF9F6;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C8A96B;
+    background: rgba(200,169,107,0.1);
+    border: 1px solid rgba(200,169,107,0.3);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #14263D;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .section-lead {
+    font-size: 15px;
+    color: #6b7280;
+    max-width: 640px;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; }
+
+  /* CARD */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(20,38,61,0.06);
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #14263D;
+    margin-bottom: 10px;
+  }
+  .card-text {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.75;
+  }
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #14263D 0%, #1e3a5f 100%);
+    border-radius: 16px;
+    padding: 40px 44px;
+    color: #ffffff;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-box::after {
+    content: '';
+    position: absolute;
+    right: -30px; top: -30px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(200,169,107,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .highlight-box-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #C8A96B;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 12px;
+  }
+  .highlight-box-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.4;
+    max-width: 700px;
+    position: relative;
+    z-index: 1;
+  }
+  .highlight-box-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    margin-top: 10px;
+    max-width: 640px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* TON EDITORIAL */
+  .tone-tags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .tone-tag {
+    background: rgba(200,169,107,0.12);
+    border: 1px solid rgba(200,169,107,0.4);
+    color: #14263D;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* LIST STYLE */
+  .styled-list { list-style: none; padding: 0; }
+  .styled-list li {
+    padding: 8px 0 8px 22px;
+    position: relative;
+    font-size: 14px;
+    color: #374151;
+    border-bottom: 1px solid rgba(20,38,61,0.05);
+    line-height: 1.6;
+  }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #C8A96B;
+    font-weight: 600;
+  }
+
+  /* OBJECTIFS */
+  .obj-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(20,38,61,0.06);
+  }
+  .obj-item:last-child { border-bottom: none; }
+  .obj-rank {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    background: #14263D;
+    color: #C8A96B;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .obj-content { flex: 1; }
+  .obj-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #14263D;
+    margin-bottom: 2px;
+  }
+  .obj-desc { font-size: 13px; color: #6b7280; }
+
+  /* TABLE */
+  .table-wrapper { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  thead tr {
+    background: #14263D;
+    color: #ffffff;
+  }
+  thead th {
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  tbody tr { border-bottom: 1px solid rgba(20,38,61,0.07); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(200,169,107,0.05); }
+  tbody td { padding: 13px 16px; color: #374151; vertical-align: top; }
+  .td-page { font-weight: 600; color: #14263D; }
+  .badge-seo {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-fort { background: rgba(16,185,129,0.12); color: #065f46; }
+  .badge-moyen { background: rgba(245,158,11,0.12); color: #92400e; }
+  .badge-faible { background: rgba(107,114,128,0.12); color: #374151; }
+  .badge-fw { background: rgba(200,169,107,0.15); color: #7c5c1e; border: 1px solid rgba(200,169,107,0.3); }
+
+  /* COCON */
+  .cluster-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .cluster-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(20,38,61,0.06);
+  }
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #14263D;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cluster-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #C8A96B;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .maillage-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(20,38,61,0.06);
+    font-size: 13.5px;
+    color: #374151;
+  }
+  .maillage-row:last-child { border-bottom: none; }
+  .maillage-from {
+    font-weight: 600;
+    color: #14263D;
+    white-space: nowrap;
+  }
+  .maillage-arrow {
+    color: #C8A96B;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .maillage-to {
+    font-size: 13px;
+    color: #6b7280;
+    flex-wrap: wrap;
+  }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  .tunnel-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-top: 3px solid #C8A96B;
+    border-left: 1px solid rgba(20,38,61,0.06);
+    border-right: 1px solid rgba(20,38,61,0.06);
+    border-bottom: 1px solid rgba(20,38,61,0.06);
+  }
+  .tunnel-step {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #C8A96B;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .tunnel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #14263D;
+    margin-bottom: 14px;
+  }
+  .tunnel-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #9ca3af;
+    font-weight: 600;
+    margin-bottom: 3px;
+    margin-top: 10px;
+  }
+  .tunnel-value {
+    font-size: 13px;
+    color: #374151;
+    line-height: 1.6;
+  }
+  .tunnel-cta {
+    display: inline-block;
+    margin-top: 14px;
+    background: rgba(200,169,107,0.12);
+    border: 1px solid rgba(200,169,107,0.35);
+    color: #14263D;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* LEVIERS */
+  .levier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(20,38,61,0.06);
+  }
+  .levier-icon { font-size: 24px; margin-bottom: 10px; display: block; }
+  .levier-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #14263D;
+    margin-bottom: 10px;
+  }
+  .levier-text { font-size: 13.5px; color: #4b5563; line-height: 1.7; }
+
+  /* COULEURS */
+  .palette-grid {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 32px 0;
+  }
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .color-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .color-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #14263D;
+    text-align: center;
+  }
+  .color-hex {
+    font-size: 11px;
+    color: #9ca3af;
+    text-align: center;
+    font-family: monospace;
+  }
+
+  /* BLOG */
+  .blog-row {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(20,38,61,0.06);
+    margin-bottom: 14px;
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 16px;
+    align-items: center;
+  }
+  .blog-num {
+    width: 36px; height: 36px;
+    min-width: 36px;
+    background: #14263D;
+    color: #C8A96B;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .blog-title { font-weight: 600; font-size: 14px; color: #14263D; margin-bottom: 2px; }
+  .blog-meta { font-size: 12px; color: #9ca3af; }
+  .blog-cluster { font-size: 12px; color: #6b7280; text-align: center; }
+  .badge-prio {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-prioritaire { background: rgba(200,169,107,0.15); color: #7c5c1e; border: 1px solid rgba(200,169,107,0.4); }
+  .badge-moyen2 { background: rgba(20,38,61,0.08); color: #14263D; }
+  .badge-faible2 { background: rgba(107,114,128,0.1); color: #6b7280; }
+
+  /* FOOTER */
+  .footer {
+    background: #0a1828;
+    padding: 40px 60px;
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  .footer strong { color: rgba(255,255,255,0.7); }
+
+  /* VISUEL */
+  .visuel-list { list-style: none; padding: 0; }
+  .visuel-list li {
+    padding: 10px 0 10px 26px;
+    position: relative;
+    font-size: 14px;
+    color: #374151;
+    border-bottom: 1px solid rgba(20,38,61,0.05);
+    line-height: 1.6;
+  }
+  .visuel-list li:last-child { border-bottom: none; }
+  .visuel-list li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: #C8A96B;
+    font-size: 10px;
+    top: 14px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-logo { font-size: 40px; }
+    .cover-meta { gap: 24px; }
+    section { padding: 48px 24px; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4, .cluster-wrap, .tunnel-grid { grid-template-columns: 1fr; }
+    .blog-row { grid-template-columns: auto 1fr; grid-template-rows: auto auto; }
+    .blog-cluster { grid-column: 2; }
+    .badge-prio { grid-column: 2; }
+    .footer { padding: 32px 24px; }
+    .highlight-box { padding: 28px 24px; }
+    .palette-grid { gap: 20px; }
+    .maillage-row { flex-wrap: wrap; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-logo">Clé<span>titia</span></div>
+  <p class="cover-subtitle">Conciergerie</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Client</span>
+      <span class="cover-meta-value">Laetitia Cosenza</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie LCD</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Territoire</span>
+      <span class="cover-meta-value">Oise (60) · Nord Val-d'Oise (95)</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Positionnement stratégique</h2>
+  <p class="section-lead">Ce que Clétitia dit au monde, comment elle le dit, et ce qui la rend unique.</p>
+
+  <div class="highlight-box">
+    <span class="highlight-box-label">Promesse de valeur principale</span>
+    <p class="highlight-box-title">« Confiez-nous votre logement comme vous confieriez votre maison à quelqu'un de confiance : nous le traitons avec le soin, l'attention et l'exigence qu'il mérite. »</p>
+    <p class="highlight-box-sub">Ligne directrice : accompagnement humain de proximité, expertise terrain, sérénité sans friction pour le propriétaire.</p>
+  </div>
+
+  <div style="margin-bottom: 32px;">
+    <p style="font-size:13px; text-transform:uppercase; letter-spacing:2px; color:#C8A96B; font-weight:600; margin-bottom:14px;">Ton éditorial</p>
+    <div class="tone-tags">
+      <span class="tone-tag">Chaleureux</span>
+      <span class="tone-tag">Exigeant</span>
+      <span class="tone-tag">Sincère</span>
+    </div>
+    <p style="font-size:14px; color:#4b5563; max-width:640px; line-height:1.75;">Un ton professionnel mais jamais froid — celui d'une experte qui connaît son territoire, parle vrai, rassure sans survendre, et met l'humain au centre de chaque phrase.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🏡</span>
+      <p class="card-title">Ancrage local profond</p>
+      <p class="card-text">Clétitia connaît l'Oise et le nord du Val-d'Oise comme personne : ses bassins touristiques, ses profils de voyageurs, ses spécificités. Une conciergerie du territoire, pas une franchise nationale.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🤝</span>
+      <p class="card-title">15 ans d'expertise client & immobilière</p>
+      <p class="card-text">Une fondatrice issue de l'immobilier, habituée à la confiance, à la discrétion et au conseil. Une expérience qui se traduit par une gestion de bien sérieuse et structurée.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✨</span>
+      <p class="card-title">Service personnalisé, pas industrialisé</p>
+      <p class="card-text">Pas de modèle standard : chaque accompagnement est construit autour du bien, des objectifs du propriétaire et du profil de ses voyageurs. Forfait complet ou à la carte.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🗺️</span>
+      <p class="card-title">Valorisation d'un territoire sous-estimé</p>
+      <p class="card-text">Clétitia défend le potentiel locatif de l'Oise et du Val-d'Oise avec conviction : patrimoine, aéroports, nature, tourisme d'affaires. Un positionnement différenciant et pédagogique.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🔑</span>
+      <p class="card-title">Relation de confiance durable</p>
+      <p class="card-text">La transparence et la disponibilité sont des engagements concrets : le propriétaire reste maître de son bien et reçoit un suivi régulier. Pas un prestataire, un partenaire.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client cible</span>
+  <h2 class="section-title">Profil du propriétaire idéal</h2>
+  <p class="section-lead">Qui Clétitia cherche à convaincre, ce qu'il ressent, ce qui le freine.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <p class="card-title">Profil type</p>
+      <ul class="styled-list">
+        <li>35–60 ans, propriétaire d'une résidence secondaire ou d'un investissement locatif</li>
+        <li>Actif, peu disponible, soucieux du rendement et de la tranquillité</li>
+        <li>Localisé en Oise, Val-d'Oise ou Île-de-France proche</li>
+        <li>Débutant en LCD ou désengagé d'une mauvaise expérience</li>
+        <li>Attaché à son bien, exigeant sur la qualité du service</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="card-title">Motivations principales</p>
+      <ul class="styled-list">
+        <li>Générer des revenus complémentaires sans y passer du temps</li>
+        <li>Déléguer à quelqu'un de confiance, local et réactif</li>
+        <li>Valoriser un bien parfois sous-exploité</li>
+        <li>Profiter personnellement du logement quand il le souhaite</li>
+        <li>Être accompagné sans jargon ni technicité excessive</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="card-title">Freins & objections</p>
+      <ul class="styled-list">
+        <li>« Est-ce que l'Oise attire vraiment des voyageurs ? »</li>
+        <li>« Je ne sais pas si mon logement est adapté »</li>
+        <li>« J'ai peur de perdre le contrôle de mon bien »</li>
+        <li>« Les commissions, ça coûte cher »</li>
+        <li>« Comment puis-je faire confiance à quelqu'un que je ne connais pas ? »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="card-title">Critères de décision</p>
+      <ul class="styled-list">
+        <li>Proximité géographique et connaissance du territoire</li>
+        <li>Transparence sur les tarifs et le fonctionnement</li>
+        <li>Sensation de relation personnalisée (pas un call center)</li>
+        <li>Preuves sociales et témoignages de propriétaires locaux</li>
+        <li>Facilité de prise de contact et réactivité</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du site</span>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+  <p class="section-lead">Les priorités stratégiques classées par ordre d'impact.</p>
+
+  <div class="card" style="max-width: 760px;">
+    <div class="obj-item">
+      <div class="obj-rank">1</div>
+      <div class="obj-content">
+        <p class="obj-title">Génération de leads qualifiés</p>
+        <p class="obj-desc">Inciter les propriétaires locaux à soumettre une demande de contact ou à réserver un appel de découverte.</p>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">2</div>
+      <div class="obj-content">
+        <p class="obj-title">Réassurance & confiance</p>
+        <p class="obj-desc">Convaincre un propriétaire hésitant que Clétitia est sérieuse, locale, compétente et digne de confiance.</p>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">3</div>
+      <div class="obj-content">
+        <p class="obj-title">SEO local</p>
+        <p class="obj-desc">Être visible sur les requêtes « conciergerie Airbnb Oise », « conciergerie location courte durée Chantilly / L'Isle-Adam… »</p>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">4</div>
+      <div class="obj-content">
+        <p class="obj-title">Conversion & prise de RDV</p>
+        <p class="obj-desc">Faciliter le passage à l'action à chaque étape du site via des CTA contextuels et un formulaire qualifiant.</p>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">5</div>
+      <div class="obj-content">
+        <p class="obj-title">Éducation & nurturing</p>
+        <p class="obj-desc">Convaincre les propriétaires sceptiques sur le potentiel LCD de l'Oise via la page territoire et les articles de blog.</p>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-rank">6</div>
+      <div class="obj-content">
+        <p class="obj-title">Notoriété locale</p>
+        <p class="obj-desc">Ancrer la marque Clétitia comme la référence conciergerie indépendante de l'Oise et du Val-d'Oise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence</span>
+  <h2 class="section-title">Structure du site web</h2>
+  <p class="section-lead">Chaque page a un rôle précis, un framework rédactionnel et une cible SEO.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-page">🏠 Accueil</td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Oise</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">📋 Nos offres</td>
+          <td>PAS</td>
+          <td>conciergerie Airbnb Oise forfait</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">🗺️ Notre territoire</td>
+          <td>BAB</td>
+          <td>location saisonnière Oise potentiel</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">👩 À propos</td>
+          <td>AIDA</td>
+          <td>conciergerie indépendante Oise Laetitia</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">❓ FAQ</td>
+          <td>PAS</td>
+          <td>confier logement conciergerie questions</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">📍 Page locale SEO #1 — Chantilly / Senlis / Compiègne</td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Chantilly Senlis</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">📍 Page locale SEO #2 — L'Isle-Adam / Auvers-sur-Oise / Pontoise</td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Val-d'Oise</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">✉️ Contact</td>
+          <td>BAB</td>
+          <td>contact conciergerie Oise</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td class="td-page">📰 Blog</td>
+          <td>—</td>
+          <td>location courte durée conseils Oise</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size:12.5px; color:#9ca3af; margin-top:14px; font-style:italic;">* La page « Nos offres » regroupe le Forfait Complet ET les Prestations à la carte sur une seule page. Les deux formules sont présentées en sections distinctes à l'intérieur.</p>
+</section>
+
+<!-- SECTION 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon sémantique</span>
+  <h2 class="section-title">Architecture sémantique & maillage</h2>
+  <p class="section-lead">Les clusters thématiques et les liens stratégiques entre les pages.</p>
+
+  <div class="cluster-wrap">
+    <div class="cluster-card">
+      <p class="cluster-title"><span class="cluster-dot"></span> Cluster 1 — Confier son logement</p>
+      <ul class="styled-list">
+        <li>Accueil → Nos offres → Contact</li>
+        <li>FAQ → Nos offres → Contact</li>
+        <li>À propos → Nos offres → Contact</li>
+        <li>Blog (conseils propriétaires) → Nos offres</li>
+      </ul>
+    </div>
+    <div class="cluster-card">
+      <p class="cluster-title"><span class="cluster-dot"></span> Cluster 2 — Territoire & potentiel LCD</p>
+      <ul class="styled-list">
+        <li>Notre territoire → Pages locales SEO</li>
+        <li>Blog (tourisme Oise) → Notre territoire</li>
+        <li>Pages locales → Nos offres → Contact</li>
+        <li>Accueil → Notre territoire</li>
+      </ul>
+    </div>
+    <div class="cluster-card">
+      <p class="cluster-title"><span class="cluster-dot"></span> Cluster 3 — Réassurance & FAQ</p>
+      <ul class="styled-list">
+        <li>FAQ → À propos → Contact</li>
+        <li>FAQ → Nos offres</li>
+        <li>Blog (guides propriétaires) → FAQ</li>
+        <li>À propos → Blog → FAQ</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="max-width: 760px;">
+    <p class="card-title" style="margin-bottom:16px;">Logique de maillage interne</p>
+    <div class="maillage-row">
+      <span class="maillage-from">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Nos offres, Notre territoire, À propos, Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">Nos offres</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">FAQ, Contact, Notre territoire</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">Notre territoire</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Page locale #1, Page locale #2, Nos offres, Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">Pages locales SEO</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Nos offres, Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Nos offres, FAQ, Notre territoire, Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">FAQ</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Nos offres, À propos, Contact</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de conversion</span>
+  <h2 class="section-title">Parcours propriétaire vers la prise de contact</h2>
+  <p class="section-lead">4 étapes pour transformer un inconnu en propriétaire convaincu.</p>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-card">
+      <p class="tunnel-step">Étape 1</p>
+      <p class="tunnel-title">Découverte</p>
+      <p class="tunnel-label">Source de trafic</p>
+      <p class="tunnel-value">Google (SEO local), réseaux sociaux, bouche-à-oreille</p>
+      <p class="tunnel-label">Page concernée</p>
+      <p class="tunnel-value">Accueil · Pages locales SEO · Notre territoire</p>
+      <span class="tunnel-cta">« Découvrir Clétitia »</span>
+    </div>
+    <div class="tunnel-card">
+      <p class="tunnel-step">Étape 2</p>
+      <p class="tunnel-title">Intérêt</p>
+      <p class="tunnel-label">Source de trafic</p>
+      <p class="tunnel-value">Navigation interne, blog, retargeting</p>
+      <p class="tunnel-label">Page concernée</p>
+      <p class="tunnel-value">Notre territoire · Blog · Nos offres</p>
+      <span class="tunnel-cta">« Voir nos offres »</span>
+    </div>
+    <div class="tunnel-card">
+      <p class="tunnel-step">Étape 3</p>
+      <p class="tunnel-title">Confiance</p>
+      <p class="tunnel-label">Source de trafic</p>
+      <p class="tunnel-value">Navigation interne, re-visite</p>
+      <p class="tunnel-label">Page concernée</p>
+      <p class="tunnel-value">À propos · FAQ · Témoignages</p>
+      <span class="tunnel-cta">« Lire les avis »</span>
+    </div>
+    <div class="tunnel-card">
+      <p class="tunnel-step">Étape 4</p>
+      <p class="tunnel-title">Conversion</p>
+      <p class="tunnel-label">Source de trafic</p>
+      <p class="tunnel-value">CTA internes, formulaire, appel direct</p>
+      <p class="tunnel-label">Page concernée</p>
+      <p class="tunnel-value">Contact · Nos offres (CTA bas de page)</p>
+      <span class="tunnel-cta">« Parler de mon projet »</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers marketing recommandés</span>
+  <h2 class="section-title">Les outils pour accélérer la croissance</h2>
+  <p class="section-lead">Leviers concrets, adaptés à l'activité et au territoire de Clétitia.</p>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <span class="levier-icon">🎁</span>
+      <p class="levier-title">Lead Magnet — Guide PDF</p>
+      <p class="levier-text">« Guide du propriétaire : comment réussir sa location courte durée en Oise et Val-d'Oise » — 1 page téléchargeable, en échange d'un email. Contenu : potentiel du territoire, checklist préparation logement, 5 erreurs à éviter.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">📅</span>
+      <p class="levier-title">Prise de RDV — Calendly</p>
+      <p class="levier-text">Intégration d'un Calendly ou Cal.com sur la page Contact et en bas de la page Nos offres. CTA : « Réservez votre appel découverte gratuit (20 min) ». Élimine les frictions et rassure par la disponibilité.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">⭐</span>
+      <p class="levier-title">Preuve sociale — Témoignages propriétaires</p>
+      <p class="levier-text">Priorité aux avis de propriétaires locaux (Oise, Val-d'Oise). Format recommandé : photo du propriétaire + ville + citation courte. À intégrer sur l'accueil, la page offres et la page à propos.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">📝</span>
+      <p class="levier-title">Formulaire qualifiant</p>
+      <p class="levier-text">Champs recommandés : prénom / email / téléphone / commune du bien / type de logement / situation actuelle (jamais loué / déjà en LCD / change de prestataire) / message libre.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">📬</span>
+      <p class="levier-title">Newsletter — Angle éditorial</p>
+      <p class="levier-text">Fréquence mensuelle. Angle : « La lettre du propriétaire Clétitia » — 1 conseil pratique, 1 actualité du territoire, 1 article de blog à lire. Ton chaleureux, signé Laetitia. Fidélise les leads non encore convertis.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">🗺️</span>
+      <p class="levier-title">Page territoire comme outil de conviction</p>
+      <p class="levier-text">La page « Notre territoire » est un levier marketing rare dans le secteur. Elle éduque les propriétaires sceptiques sur le potentiel LCD local — un différenciateur fort face aux conciergeries génériques.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction visuelle & éditoriale</span>
+  <h2 class="section-title">L'univers graphique de Clétitia</h2>
+  <p class="section-lead">Une identité élégante, chaleureuse et premium — ancrée dans les couleurs choisies par Laetitia.</p>
+
+  <p style="font-size:13px; text-transform:uppercase; letter-spacing:2px; color:#C8A96B; font-weight:600; margin-bottom:24px; margin-top:8px;">Palette de couleurs</p>
+
+  <div class="palette-grid">
+    <div class="palette-item">
+      <div class="color-swatch" style="background:#14263D;"></div>
+      <p class="color-name">Bleu marine profond</p>
+      <p class="color-hex">#14263D</p>
+    </div>
+    <div class="palette-item">
+      <div class="color-swatch" style="background:#C8A96B;"></div>
+      <p class="color-name">Or champagne</p>
+      <p class="color-hex">#C8A96B</p>
+    </div>
+    <div class="palette-item">
+      <div class="color-swatch" style="background:#FAF9F6; border: 1px solid #e5e7eb;"></div>
+      <p class="color-name">Blanc ivoire</p>
+      <p class="color-hex">#FAF9F6</p>
+    </div>
+    <div class="palette-item">
+      <div class="color-swatch" style="background:#1e3a5f;"></div>
+      <p class="color-name">Bleu nuit doux</p>
+      <p class="color-hex">#1E3A5F</p>
+    </div>
+    <div class="palette-item">
+      <div class="color-swatch" style="background:#E8DCC8;"></div>
+      <p class="color-name">Or pâle (accents)</p>
+      <p class="color-hex">#E8DCC8</p>
+    </div>
+  </div>
+
+  <div class="card" style="max-width: 760px; margin-top: 32px;">
+    <p class="card-title" style="margin-bottom: 14px;">Univers visuel recommandé</p>
+    <ul class="visuel-list">
+      <li>Photographies lumineuses de logements locaux (intérieurs soignés, extérieurs avec caractère) — pas de visuels stocks génériques</li>
+      <li>Portraits chaleureux de Laetitia en situation (visite logement, accueil voyageur) pour humaniser la marque</li>
+      <li>Icônes fines, style trait doré sur fond marine — cohérence avec la palette</li>
+      <li>Typographie soignée : Playfair Display pour les accroches, Inter pour le corps — contraste élégant entre serif et sans-serif</li>
+      <li>Espaces blancs généreux, mise en page aérée — univers premium sans ostentation. Référence visuelle : idylliq.fr (apprécié par la cliente)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECTION 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles blog recommandés</span>
+  <h2 class="section-title">Stratégie éditoriale — Blog Clétitia</h2>
+  <p class="section-lead">7 sujets d'articles pour capter du trafic SEO et nourrir la réflexion des propriétaires.</p>
+
+  <div class="blog-row">
+    <div class="blog-num">1</div>
+    <div>
+      <p class="blog-title">Location saisonnière en Oise : pourquoi votre logement a plus de potentiel que vous ne le croyez</p>
+      <p class="blog-meta">Cluster : Territoire & potentiel LCD · Intention : informationnelle / convaincre</p>
+    </div>
+    <div class="blog-cluster" style="font-size:12px; color:#6b7280; white-space:nowrap;">Territoire</div>
+    <div><span class="badge-prio badge-prioritaire">Prioritaire</span></div>
+  </div>
+
+  <div class="blog-row">
+    <div class="blog-num">2</div>
+    <div>
+      <p class="blog-title">5 erreurs à éviter quand on confie son logement à une conciergerie pour la première fois</p>
+      <p class="blog-meta">Cluster : Confier son logement · Intention : informationnelle / réassurance</p>
+    </div>
+    <div class="blog-cluster" style="font-size:12px; color:#6b7280; white-space:nowrap;">Confier</div>
+    <div><span class="badge-prio badge-prioritaire">Prioritaire</span></div>
+  </div>
+
+  <div class="blog-row">
+    <div class="blog-num">3</div>
+    <div>
+      <p class="blog-title">Chantilly, Senlis, Compiègne : les destinations touristiques de l'Oise qui font (vraiment) voyager</p>
+      <p class="blog-meta">Cluster : Territoire & potentiel LCD · Intention : SEO local / éducation</p>
+    </div>
+    <div class="blog-cluster" style="font-size:12px; color:#6b7280; white-space:nowrap;">Territoire</div>
+    <div><span class="badge-prio badge-prioritaire">Prioritaire</span></div>
+  </div>
+
+  <div class="blog-row">
+    <div class="blog-num">4</div>
+    <div>
+      <p class="blog-title">Forfait complet ou prestations à la carte : quelle formule de conciergerie choisir selon votre situation ?</p>
+      <p class="blog-meta">Cluster : Confier son logement · Intention : transactionnelle / comparaison</p>
+    </div>
+    <div class="blog-cluster" style="font-size:12px; color:#6b7280; white-space:nowrap;">Confier</div>
+    <div><span class="badge-prio badge-prioritaire">Prioritaire</span></div>
+  </div>
+
+  <div class="blog-row">
+    <div class="blog-num">5</div>
+    <div>
+      <p class="blog-title">Aéroport CDG et Beauvais : comment attirer les voyageurs en transit avec votre location courte durée</p>
+      <p class="blog-meta">Cluster : Territoire & potentiel LCD · Intention : informationnelle / SEO</p>
+    </div>
+    <div class="blog-cluster" style="font-size:12px; color:#6b7280; white-space:nowrap;">Territoire</div>
+    <div><span class="badge-prio badge-moyen2">Moyen</span></div>
+  </div>
+
+  <div class="blog-row">
+    <div class="blog-num">6</div>
+    <div>
+      <p class="blog-title">Préparer son logement pour la location saisonnière : la checklist complète du propriétaire</p>
+      <p class="blog-meta">Cluster : Réassurance & FAQ · Intention : informationnelle / lead nurturing</p>
+    </div>
+    <div class="blog-cluster" style="font-size:12px; color:#6b7280; white-space:nowrap;">Réassurance</div>
+    <div><span class="badge-prio badge-moyen2">Moyen</span></div>
+  </div>
+
+  <div class="blog-row">
+    <div class="blog-num">7</div>
+    <div>
+      <p class="blog-title">Auvers-sur-Oise, L'Isle-Adam, Vexin : le Val-d'Oise, nouvelle destination de charme pour les voyageurs</p>
+      <p class="blog-meta">Cluster : Territoire & potentiel LCD · Intention : SEO local / longue traîne</p>
+    </div>
+    <div class="blog-cluster" style="font-size:12px; color:#6b7280; white-space:nowrap;">Territoire</div>
+    <div><span class="badge-prio badge-faible2">Faible</span></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p><strong>Clétitia Conciergerie</strong> — Blueprint Stratégique · Document confidentiel</p>
+  <p style="margin-top:6px;">Préparé par AR Digital · Réservé à l'usage exclusif de Laetitia Cosenza</p>
+</div>
+
+<style>
+  .bp-validation-box {
+    position: relative;
+    margin: 40px 0 18px;
+    padding: 26px 28px;
+    background: #ffffff;
+    border: 2px solid #E63329;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.25s ease;
+  }
+
+  .bp-validation-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: #E63329;
+    transition: background 0.25s ease;
+  }
+
+  .bp-validation-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 5px 10px;
+    background: #E63329;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .bp-validation-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 7px;
+  }
+
+  .bp-validation-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555555;
+    margin-bottom: 20px;
+  }
+
+  .bp-validation-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .bp-validation-btn {
+    padding: 13px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .bp-validation-approve {
+    background: #1a1a1a;
+    color: #ffffff;
+    border: 2px solid #1a1a1a;
+  }
+
+  .bp-validation-approve:hover {
+    background: #333333;
+    border-color: #333333;
+    transform: translateY(-1px);
+  }
+
+  .bp-validation-comment {
+    background: #ffffff;
+    color: #1a1a1a;
+    border: 2px solid #d8d8d8;
+  }
+
+  .bp-validation-comment:hover {
+    border-color: #E63329;
+    color: #E63329;
+    background: #fff8f7;
+    transform: translateY(-1px);
+  }
+
+  .bp-comment-area {
+    display: none;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .bp-comment-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .bp-comment-help {
+    margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #666666;
+  }
+
+  .bp-comment-textarea {
+    width: 100%;
+    min-height: 120px;
+    box-sizing: border-box;
+    padding: 14px;
+    border: 2px solid #d8d8d8;
+    border-radius: 8px;
+    resize: vertical;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    outline: none;
+  }
+
+  .bp-comment-textarea:focus {
+    border-color: #E63329;
+  }
+
+  .bp-comment-error {
+    display: none;
+    margin-top: 7px;
+    color: #E63329;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .bp-save-comment {
+    margin-top: 12px;
+    background: #1a1a1a;
+    color: #ffffff;
+    border: 2px solid #1a1a1a;
+  }
+
+  .bp-save-comment:hover {
+    background: #333333;
+    border-color: #333333;
+  }
+
+  .bp-validation-result {
+    display: none;
+  }
+
+  .bp-result-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .bp-result-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    border-radius: 50%;
+    background: #198754;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .bp-result-title {
+    color: #146c43;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .bp-result-comment {
+    display: none;
+    margin: 14px 0;
+    padding: 14px 16px;
+    background: #ffffff;
+    border: 1px solid #b7dfc9;
+    border-radius: 8px;
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+  }
+
+  .bp-edit-choice {
+    margin-top: 8px;
+    padding: 9px 13px;
+    background: transparent;
+    color: #555555;
+    border: 1px solid #b7c9be;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .bp-edit-choice:hover {
+    background: #ffffff;
+    color: #1a1a1a;
+  }
+
+  .bp-validation-box.bp-completed {
+    background: #f2fbf6;
+    border-color: #198754;
+    box-shadow: 0 6px 20px rgba(25, 135, 84, 0.10);
+  }
+
+  .bp-validation-box.bp-completed::before {
+    background: #198754;
+  }
+
+  .bp-validation-box.bp-completed .bp-validation-label {
+    background: #198754;
+  }
+
+  /* VALIDATION FINALE */
+
+  .bp-final-validation {
+    margin: 60px 0 30px;
+    padding: 32px;
+    background: #f7f7f7;
+    border: 2px solid #d8d8d8;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
+  }
+
+  .bp-final-validation.bp-final-ready {
+    background: #f2fbf6;
+    border-color: #198754;
+  }
+
+  .bp-final-label {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 6px 11px;
+    background: #1a1a1a;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .bp-final-ready .bp-final-label {
+    background: #198754;
+  }
+
+  .bp-final-title {
+    margin: 0 0 8px;
+    color: #1a1a1a;
+    font-size: 26px;
+    line-height: 1.25;
+    font-weight: 800;
+  }
+
+  .bp-final-intro {
+    margin: 0 0 24px;
+    color: #555555;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .bp-final-progress {
+    margin-bottom: 25px;
+  }
+
+  .bp-final-progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 9px;
+  }
+
+  .bp-final-progress-text {
+    color: #1a1a1a;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .bp-final-progress-count {
+    color: #E63329;
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .bp-final-ready .bp-final-progress-count {
+    color: #198754;
+  }
+
+  .bp-final-progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #e1e1e1;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .bp-final-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #E63329;
+    border-radius: 20px;
+    transition: width 0.3s ease, background 0.3s ease;
+  }
+
+  .bp-final-ready .bp-final-progress-fill {
+    background: #198754;
+  }
+
+  .bp-final-list {
+    margin: 0 0 26px;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  .bp-final-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .bp-final-item:last-child {
+    border-bottom: 0;
+  }
+
+  .bp-final-item-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .bp-final-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    border-radius: 50%;
+    background: #eeeeee;
+    color: #777777;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .bp-final-item.bp-item-completed .bp-final-icon {
+    background: #198754;
+    color: #ffffff;
+  }
+
+  .bp-final-section-name {
+    color: #333333;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .bp-final-status {
+    flex: 0 0 auto;
+    color: #888888;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .bp-final-item.bp-item-completed .bp-final-status {
+    color: #198754;
+  }
+
+  .bp-final-warning {
+    margin-bottom: 22px;
+    padding: 14px 16px;
+    background: #fff3f2;
+    border: 1px solid #f3c1bd;
+    border-radius: 8px;
+    color: #9c2e27;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  .bp-final-success-message {
+    display: none;
+    margin-bottom: 22px;
+    padding: 14px 16px;
+    background: #eaf7ef;
+    border: 1px solid #b7dfc9;
+    border-radius: 8px;
+    color: #146c43;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 700;
+  }
+
+  .bp-final-confirmation {
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    opacity: 0.5;
+    pointer-events: none;
+    transition: all 0.25s ease;
+  }
+
+  .bp-final-confirmation.bp-confirmation-enabled {
+    opacity: 1;
+    pointer-events: auto;
+    border-color: #b7dfc9;
+  }
+
+  .bp-final-checkbox-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+  }
+
+  .bp-final-checkbox {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    margin-top: 2px;
+    accent-color: #198754;
+    cursor: pointer;
+  }
+
+  .bp-final-checkbox-text {
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .bp-final-reference-note {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #eeeeee;
+    color: #666666;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .bp-final-submit {
+    width: 100%;
+    margin-top: 18px;
+    padding: 16px 20px;
+    background: #cccccc;
+    color: #777777;
+    border: 0;
+    border-radius: 9px;
+    cursor: not-allowed;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    transition: all 0.2s ease;
+  }
+
+  .bp-final-submit.bp-submit-enabled {
+    background: #198754;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .bp-final-submit.bp-submit-enabled:hover {
+    background: #146c43;
+    transform: translateY(-1px);
+  }
+
+  .bp-transmission-error {
+    display: none;
+    margin-top: 15px;
+    padding: 14px 16px;
+    background: #fff3f2;
+    border: 1px solid #f3c1bd;
+    border-radius: 8px;
+    color: #9c2e27;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  .bp-transmission-success {
+    display: none;
+    padding: 26px;
+    background: #eaf7ef;
+    border: 2px solid #198754;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .bp-transmission-success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 14px;
+    background: #198754;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 25px;
+    font-weight: 800;
+  }
+
+  .bp-transmission-success-title {
+    margin-bottom: 8px;
+    color: #146c43;
+    font-size: 21px;
+    font-weight: 800;
+  }
+
+  .bp-transmission-success-text {
+    color: #365c47;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 600px) {
+    .bp-validation-box {
+      padding: 22px 20px;
+    }
+
+    .bp-validation-actions {
+      flex-direction: column;
+    }
+
+    .bp-validation-btn {
+      width: 100%;
+    }
+
+    .bp-final-validation {
+      padding: 24px 18px;
+    }
+
+    .bp-final-title {
+      font-size: 22px;
+    }
+
+    .bp-final-item {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .bp-final-status {
+      padding-left: 34px;
+      text-align: left;
+    }
+  }
+</style>
+
+<div id="bp-validation-template" style="display:none;">
+  <div class="bp-validation-box">
+
+    <div class="bp-validation-pending">
+
+      <div class="bp-validation-label">
+        Action requise
+      </div>
+
+      <div class="bp-validation-title">
+        Validez cette section
+      </div>
+
+      <div class="bp-validation-text">
+        Vérifiez attentivement les informations ci-dessus avant de poursuivre.
+        Validez cette section si elle vous convient, ou indiquez les modifications
+        que vous souhaitez apporter.
+      </div>
+
+      <div class="bp-validation-actions">
+
+        <button
+          type="button"
+          class="bp-validation-btn bp-validation-approve"
+        >
+          ✓ Je valide cette section
+        </button>
+
+        <button
+          type="button"
+          class="bp-validation-btn bp-validation-comment"
+        >
+          ✏️ J'ai une modification ou un commentaire
+        </button>
+
+      </div>
+
+      <div class="bp-comment-area">
+
+        <label class="bp-comment-label">
+          Votre demande de modification
+        </label>
+
+        <div class="bp-comment-help">
+          Décrivez précisément ce que vous souhaitez modifier, ajouter ou supprimer
+          dans cette section.
+        </div>
+
+        <textarea
+          class="bp-comment-textarea"
+          placeholder="Écrivez votre commentaire ou votre demande de modification ici..."
+        ></textarea>
+
+        <div class="bp-comment-error">
+          Merci d'indiquer votre demande avant de l'enregistrer.
+        </div>
+
+        <button
+          type="button"
+          class="bp-validation-btn bp-save-comment"
+        >
+          ✓ Enregistrer ma modification
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="bp-validation-result">
+
+      <div class="bp-validation-label">
+        Section complétée
+      </div>
+
+      <div class="bp-result-header">
+
+        <div class="bp-result-check">
+          ✓
+        </div>
+
+        <div class="bp-result-title">
+          Section validée
+        </div>
+
+      </div>
+
+      <div class="bp-result-comment"></div>
+
+      <button
+        type="button"
+        class="bp-edit-choice"
+      >
+        Modifier mon choix
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+<div id="bp-final-validation-template" style="display:none;">
+
+  <div class="bp-final-validation">
+
+    <div class="bp-final-content">
+
+      <div class="bp-final-label">
+        Validation finale
+      </div>
+
+      <h2 class="bp-final-title">
+        Validez définitivement votre retour
+      </h2>
+
+      <p class="bp-final-intro">
+        Avant de transmettre votre Blueprint à notre équipe, vous devez avoir
+        validé ou commenté chacune des 9 sections ci-dessus.
+      </p>
+
+      <div class="bp-final-progress">
+
+        <div class="bp-final-progress-top">
+
+          <div class="bp-final-progress-text">
+            Progression de votre validation
+          </div>
+
+          <div class="bp-final-progress-count">
+            0 / 9
+          </div>
+
+        </div>
+
+        <div class="bp-final-progress-bar">
+          <div class="bp-final-progress-fill"></div>
+        </div>
+
+      </div>
+
+
+      <ul class="bp-final-list">
+
+        <li class="bp-final-item" data-summary-section="bp-section-01">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Positionnement</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-02">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Client cible</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-03">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Objectifs du site</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-04">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Arborescence</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-05">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Cocon sémantique</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-06">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Tunnel de conversion</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-07">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Leviers de croissance</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-08">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Direction visuelle</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-09">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Articles de blog</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+      </ul>
+
+
+      <div class="bp-final-warning">
+        Il reste 9 sections à valider avant de pouvoir transmettre votre retour.
+      </div>
+
+      <div class="bp-final-success-message">
+        ✓ Toutes les sections ont été complétées. Vous pouvez maintenant confirmer
+        et transmettre votre retour.
+      </div>
+
+
+      <div class="bp-final-confirmation">
+
+        <label class="bp-final-checkbox-row">
+
+          <input
+            type="checkbox"
+            class="bp-final-checkbox"
+            disabled
+          >
+
+          <span class="bp-final-checkbox-text">
+            Je confirme avoir relu l'intégralité du Blueprint ainsi que mes
+            éventuels commentaires et demandes de modification. Je confirme que
+            le Blueprint et les retours formulés ci-dessus constituent les
+            instructions de référence à prendre en compte pour la conception
+            de mon site.
+          </span>
+
+        </label>
+
+        <div class="bp-final-reference-note">
+          La conception de votre site sera réalisée sur la base du Blueprint
+          et des demandes de modification que vous validez ici. Toute demande
+          majeure formulée après cette validation et nécessitant de revenir sur
+          un travail déjà réalisé pourra entraîner une facturation complémentaire.
+        </div>
+
+        <button
+          type="button"
+          class="bp-final-submit"
+          disabled
+        >
+          VALIDER ET TRANSMETTRE MON RETOUR
+        </button>
+
+        <div class="bp-transmission-error">
+          Une erreur est survenue pendant la transmission de votre retour.
+          Merci de réessayer dans quelques instants.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="bp-transmission-success">
+
+      <div class="bp-transmission-success-icon">
+        ✓
+      </div>
+
+      <div class="bp-transmission-success-title">
+        Votre retour a bien été transmis !
+      </div>
+
+      <div class="bp-transmission-success-text">
+        Merci pour votre validation. Votre Blueprint ainsi que l'ensemble de
+        vos commentaires et demandes de modification ont bien été transmis à
+        notre équipe.
+        <br><br>
+        Nous allons maintenant préparer votre cahier des charges et reviendrons
+        rapidement vers vous pour la suite de votre projet.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const BLUEPRINT_ID = "6aeb56596c46a3c143bcf9a5";
+
+  const CLIENT_EMAIL =
+    "conciergerie@cletitia.fr";
+
+  const WEBHOOK_URL =
+    "https://hook.eu2.make.com/pm0msu9nua1val6ysvda71aqniu0h8fa";
+
+  const sections =
+    document.querySelectorAll('[id^="bp-section-"]');
+
+  const template =
+    document.querySelector("#bp-validation-template");
+
+  const finalTemplate =
+    document.querySelector("#bp-final-validation-template");
+
+  const blueprintResponses = {};
+
+  const sectionNames = {
+    "bp-section-01": "Positionnement",
+    "bp-section-02": "Client cible",
+    "bp-section-03": "Objectifs du site",
+    "bp-section-04": "Arborescence",
+    "bp-section-05": "Cocon sémantique",
+    "bp-section-06": "Tunnel de conversion",
+    "bp-section-07": "Leviers de croissance",
+    "bp-section-08": "Direction visuelle",
+    "bp-section-09": "Articles de blog"
+  };
+
+
+  if (!template || !finalTemplate) {
+    console.log("Template de validation introuvable");
+    return;
+  }
+
+
+  const finalValidation =
+    finalTemplate.firstElementChild.cloneNode(true);
+
+  document.body.appendChild(finalValidation);
+
+
+  const finalContent =
+    finalValidation.querySelector(".bp-final-content");
+
+  const transmissionSuccess =
+    finalValidation.querySelector(".bp-transmission-success");
+
+  const transmissionError =
+    finalValidation.querySelector(".bp-transmission-error");
+
+  const progressCount =
+    finalValidation.querySelector(".bp-final-progress-count");
+
+  const progressFill =
+    finalValidation.querySelector(".bp-final-progress-fill");
+
+  const finalWarning =
+    finalValidation.querySelector(".bp-final-warning");
+
+  const finalSuccessMessage =
+    finalValidation.querySelector(".bp-final-success-message");
+
+  const finalConfirmation =
+    finalValidation.querySelector(".bp-final-confirmation");
+
+  const finalCheckbox =
+    finalValidation.querySelector(".bp-final-checkbox");
+
+  const finalSubmit =
+    finalValidation.querySelector(".bp-final-submit");
+
+
+  function updateFinalValidation() {
+
+    let completedCount = 0;
+
+    Object.keys(sectionNames).forEach(function (sectionId) {
+
+      const summaryItem =
+        finalValidation.querySelector(
+          '[data-summary-section="' + sectionId + '"]'
+        );
+
+      if (!summaryItem) {
+        return;
+      }
+
+      const icon =
+        summaryItem.querySelector(".bp-final-icon");
+
+      const status =
+        summaryItem.querySelector(".bp-final-status");
+
+      const response =
+        blueprintResponses[sectionId];
+
+
+      if (response) {
+
+        completedCount++;
+
+        summaryItem.classList.add("bp-item-completed");
+
+        icon.textContent = "✓";
+
+        if (response.status === "comment") {
+          status.textContent = "Modification enregistrée";
+        } else {
+          status.textContent = "Validé";
+        }
+
+      } else {
+
+        summaryItem.classList.remove("bp-item-completed");
+
+        icon.textContent = "○";
+        status.textContent = "À valider";
+
+      }
+
+    });
+
+
+    progressCount.textContent =
+      completedCount + " / 9";
+
+    progressFill.style.width =
+      ((completedCount / 9) * 100) + "%";
+
+
+    if (completedCount === 9) {
+
+      finalValidation.classList.add("bp-final-ready");
+
+      finalWarning.style.display = "none";
+      finalSuccessMessage.style.display = "block";
+
+      finalConfirmation.classList.add(
+        "bp-confirmation-enabled"
+      );
+
+      finalCheckbox.disabled = false;
+
+    } else {
+
+      finalValidation.classList.remove("bp-final-ready");
+
+      finalSuccessMessage.style.display = "none";
+      finalWarning.style.display = "block";
+
+      const remaining = 9 - completedCount;
+
+      if (remaining === 1) {
+        finalWarning.textContent =
+          "Il reste 1 section à valider avant de pouvoir transmettre votre retour.";
+      } else {
+        finalWarning.textContent =
+          "Il reste " +
+          remaining +
+          " sections à valider avant de pouvoir transmettre votre retour.";
+      }
+
+      finalConfirmation.classList.remove(
+        "bp-confirmation-enabled"
+      );
+
+      finalCheckbox.checked = false;
+      finalCheckbox.disabled = true;
+
+      finalSubmit.disabled = true;
+      finalSubmit.classList.remove("bp-submit-enabled");
+
+    }
+
+  }
+
+
+  finalCheckbox.addEventListener("change", function () {
+
+    if (
+      Object.keys(blueprintResponses).length === 9 &&
+      finalCheckbox.checked
+    ) {
+
+      finalSubmit.disabled = false;
+      finalSubmit.classList.add("bp-submit-enabled");
+
+    } else {
+
+      finalSubmit.disabled = true;
+      finalSubmit.classList.remove("bp-submit-enabled");
+
+    }
+
+  });
+
+
+  finalSubmit.addEventListener("click", async function () {
+
+    if (
+      finalSubmit.disabled ||
+      Object.keys(blueprintResponses).length !== 9 ||
+      !finalCheckbox.checked
+    ) {
+      return;
+    }
+
+
+    transmissionError.style.display = "none";
+
+    finalSubmit.disabled = true;
+    finalSubmit.classList.remove("bp-submit-enabled");
+    finalSubmit.textContent = "TRANSMISSION EN COURS...";
+
+
+    /*
+      PAYLOAD PLAT POUR MAKE
+
+      Une validation = un seul bundle.
+      Plus besoin d'Iterator dans Make.
+    */
+
+    const payload = {
+
+      event_type: "final_validation",
+
+      blueprint_id: BLUEPRINT_ID,
+      email_client: CLIENT_EMAIL,
+
+      section_01_status:
+        blueprintResponses["bp-section-01"].status,
+
+      section_01_comment:
+        blueprintResponses["bp-section-01"].comment,
+
+      section_02_status:
+        blueprintResponses["bp-section-02"].status,
+
+      section_02_comment:
+        blueprintResponses["bp-section-02"].comment,
+
+      section_03_status:
+        blueprintResponses["bp-section-03"].status,
+
+      section_03_comment:
+        blueprintResponses["bp-section-03"].comment,
+
+      section_04_status:
+        blueprintResponses["bp-section-04"].status,
+
+      section_04_comment:
+        blueprintResponses["bp-section-04"].comment,
+
+      section_05_status:
+        blueprintResponses["bp-section-05"].status,
+
+      section_05_comment:
+        blueprintResponses["bp-section-05"].comment,
+
+      section_06_status:
+        blueprintResponses["bp-section-06"].status,
+
+      section_06_comment:
+        blueprintResponses["bp-section-06"].comment,
+
+      section_07_status:
+        blueprintResponses["bp-section-07"].status,
+
+      section_07_comment:
+        blueprintResponses["bp-section-07"].comment,
+
+      section_08_status:
+        blueprintResponses["bp-section-08"].status,
+
+      section_08_comment:
+        blueprintResponses["bp-section-08"].comment,
+
+      section_09_status:
+        blueprintResponses["bp-section-09"].status,
+
+      section_09_comment:
+        blueprintResponses["bp-section-09"].comment
+
+    };
+
+
+    console.log(
+      "Transmission du Blueprint :",
+      payload
+    );
+
+
+    try {
+
+      const response = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+
+      if (!response.ok) {
+        throw new Error(
+          "Erreur HTTP : " + response.status
+        );
+      }
+
+
+      finalContent.style.display = "none";
+      transmissionSuccess.style.display = "block";
+
+      finalValidation.classList.add("bp-final-ready");
+
+      window.scrollTo({
+        top:
+          finalValidation.getBoundingClientRect().top +
+          window.pageYOffset -
+          30,
+        behavior: "smooth"
+      });
+
+
+    } catch (error) {
+
+      console.error(
+        "Erreur transmission Blueprint :",
+        error
+      );
+
+      transmissionError.style.display = "block";
+
+      finalSubmit.disabled = false;
+      finalSubmit.classList.add("bp-submit-enabled");
+      finalSubmit.textContent =
+        "RÉESSAYER LA TRANSMISSION";
+
+    }
+
+  });
+
+
+  sections.forEach(function (section) {
+
+    const validationBox =
+      template.firstElementChild.cloneNode(true);
+
+    const sectionId =
+      section.id;
+
+    validationBox.setAttribute(
+      "data-section-id",
+      sectionId
+    );
+
+    section.appendChild(validationBox);
+
+
+    const pendingArea =
+      validationBox.querySelector(".bp-validation-pending");
+
+    const resultArea =
+      validationBox.querySelector(".bp-validation-result");
+
+    const approveButton =
+      validationBox.querySelector(".bp-validation-approve");
+
+    const commentButton =
+      validationBox.querySelector(".bp-validation-comment");
+
+    const commentArea =
+      validationBox.querySelector(".bp-comment-area");
+
+    const textarea =
+      validationBox.querySelector(".bp-comment-textarea");
+
+    const commentError =
+      validationBox.querySelector(".bp-comment-error");
+
+    const saveCommentButton =
+      validationBox.querySelector(".bp-save-comment");
+
+    const resultTitle =
+      validationBox.querySelector(".bp-result-title");
+
+    const resultComment =
+      validationBox.querySelector(".bp-result-comment");
+
+    const editButton =
+      validationBox.querySelector(".bp-edit-choice");
+
+
+    approveButton.addEventListener("click", function () {
+
+      blueprintResponses[sectionId] = {
+        section_id: sectionId,
+        section_name: sectionNames[sectionId] || sectionId,
+        status: "validated",
+        comment: ""
+      };
+
+      validationBox.classList.add("bp-completed");
+
+      pendingArea.style.display = "none";
+      resultArea.style.display = "block";
+
+      resultTitle.textContent = "Section validée";
+
+      resultComment.textContent = "";
+      resultComment.style.display = "none";
+
+      updateFinalValidation();
+
+    });
+
+
+    commentButton.addEventListener("click", function () {
+
+      commentArea.style.display = "block";
+      commentError.style.display = "none";
+      textarea.focus();
+
+    });
+
+
+    saveCommentButton.addEventListener("click", function () {
+
+      const comment = textarea.value.trim();
+
+      if (comment === "") {
+
+        commentError.style.display = "block";
+        textarea.focus();
+        return;
+
+      }
+
+      commentError.style.display = "none";
+
+      blueprintResponses[sectionId] = {
+        section_id: sectionId,
+        section_name: sectionNames[sectionId] || sectionId,
+        status: "comment",
+        comment: comment
+      };
+
+      validationBox.classList.add("bp-completed");
+
+      pendingArea.style.display = "none";
+      resultArea.style.display = "block";
+
+      resultTitle.textContent =
+        "Modification enregistrée";
+
+      resultComment.textContent = comment;
+      resultComment.style.display = "block";
+
+      updateFinalValidation();
+
+    });
+
+
+    editButton.addEventListener("click", function () {
+
+      const previousResponse =
+        blueprintResponses[sectionId];
+
+      validationBox.classList.remove("bp-completed");
+
+      resultArea.style.display = "none";
+      pendingArea.style.display = "block";
+
+      commentError.style.display = "none";
+
+
+      if (
+        previousResponse &&
+        previousResponse.status === "comment"
+      ) {
+
+        textarea.value =
+          previousResponse.comment || "";
+
+        commentArea.style.display = "block";
+
+      } else {
+
+        textarea.value = "";
+        commentArea.style.display = "none";
+
+      }
+
+
+      delete blueprintResponses[sectionId];
+
+      updateFinalValidation();
+
+    });
+
+  });
+
+
+  updateFinalValidation();
+
+});
+</script>
+
+</body>
+</html>
