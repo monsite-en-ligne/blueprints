@@ -1,0 +1,2628 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Mademoiselle Marie Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ivoire: #F5F0E8;
+    --sauge: #8A9E85;
+    --sauge-fonce: #4A6741;
+    --champagne: #C9A96E;
+    --blanc: #FFFFFF;
+    --texte: #2C2C2C;
+    --texte-doux: #6B6B6B;
+    --ombre: 0 2px 12px rgba(0,0,0,0.06);
+    --radius: 14px;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--texte);
+    background: var(--ivoire);
+  }
+
+  /* ===== COUVERTURE ===== */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #2a3828 0%, #3d5438 40%, #4A6741 70%, #6b8562 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(201,169,110,0.08) 0%, transparent 70%);
+  }
+
+  .cover-badge {
+    display: inline-block;
+    border: 1px solid rgba(201,169,110,0.5);
+    color: rgba(201,169,110,0.9);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 30px;
+    margin-bottom: 40px;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    position: relative;
+  }
+
+  .cover-title span {
+    color: rgba(201,169,110,0.85);
+    font-style: italic;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.7);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-value {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+  }
+
+  .cover-divider {
+    width: 1px;
+    height: 30px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: #FAFAF7;
+  }
+
+  section:nth-child(odd) {
+    background: var(--ivoire);
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sauge-fonce);
+    background: rgba(138,158,133,0.12);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--sauge-fonce);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: var(--texte-doux);
+    max-width: 600px;
+    margin-bottom: 50px;
+    line-height: 1.8;
+  }
+
+  /* ===== CARDS ===== */
+  .card {
+    background: var(--blanc);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: var(--ombre);
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--sauge-fonce);
+    margin-bottom: 10px;
+  }
+
+  .card p, .card li {
+    font-size: 14px;
+    color: var(--texte-doux);
+    line-height: 1.75;
+  }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card ul li::before {
+    content: '—';
+    color: var(--champagne);
+    margin-right: 8px;
+    font-weight: 600;
+  }
+
+  /* ===== GRILLES ===== */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ===== HIGHLIGHT BOX ===== */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--sauge-fonce) 0%, #3d5438 100%);
+    border-radius: var(--radius);
+    padding: 40px;
+    color: white;
+    margin-bottom: 50px;
+  }
+
+  .highlight-box .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.8);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: rgba(255,255,255,0.95);
+    line-height: 1.6;
+  }
+
+  /* ===== TABLEAU ===== */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--ombre);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--blanc);
+    font-size: 14px;
+  }
+
+  thead {
+    background: var(--sauge-fonce);
+    color: white;
+  }
+
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(138,158,133,0.1);
+    transition: background 0.2s;
+  }
+
+  tbody tr:hover {
+    background: rgba(138,158,133,0.04);
+  }
+
+  tbody td {
+    padding: 16px 20px;
+    color: var(--texte);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  /* ===== BADGES SEO ===== */
+  .badge-seo {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-fort {
+    background: rgba(74,103,65,0.12);
+    color: var(--sauge-fonce);
+  }
+
+  .badge-moyen {
+    background: rgba(201,169,110,0.15);
+    color: #8B6914;
+  }
+
+  .badge-faible {
+    background: rgba(107,107,107,0.1);
+    color: var(--texte-doux);
+  }
+
+  .badge-framework {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(138,158,133,0.12);
+    color: var(--sauge-fonce);
+  }
+
+  /* ===== TUNNEL ===== */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--ombre);
+  }
+
+  .tunnel-step {
+    background: var(--blanc);
+    padding: 32px 24px;
+    border-right: 1px solid rgba(138,158,133,0.12);
+    position: relative;
+  }
+
+  .tunnel-step:last-child {
+    border-right: none;
+  }
+
+  .tunnel-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: rgba(138,158,133,0.2);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--sauge-fonce);
+    margin-bottom: 16px;
+  }
+
+  .tunnel-step p {
+    font-size: 13px;
+    color: var(--texte-doux);
+    line-height: 1.65;
+    margin-bottom: 8px;
+  }
+
+  .tunnel-step .meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--champagne);
+    margin-top: 12px;
+    display: block;
+  }
+
+  .tunnel-cta {
+    display: inline-block;
+    margin-top: 8px;
+    background: rgba(74,103,65,0.08);
+    color: var(--sauge-fonce);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+
+  /* ===== COCON ===== */
+  .maillage-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--texte);
+  }
+
+  .maillage-row .page-pill {
+    background: rgba(74,103,65,0.08);
+    color: var(--sauge-fonce);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .maillage-row .arrow {
+    color: var(--champagne);
+    font-weight: 600;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  /* ===== COULEURS ===== */
+  .colors-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .color-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .color-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+
+  .color-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--texte);
+    text-align: center;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: var(--texte-doux);
+    font-family: monospace;
+  }
+
+  /* ===== BLOG CARDS ===== */
+  .blog-card {
+    background: var(--blanc);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--ombre);
+  }
+
+  .blog-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--texte);
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .blog-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 14px;
+  }
+
+  .blog-tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    background: rgba(138,158,133,0.1);
+    color: var(--sauge-fonce);
+    font-weight: 500;
+  }
+
+  .priority-label {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  .priority-p {
+    background: rgba(74,103,65,0.1);
+    color: var(--sauge-fonce);
+  }
+
+  .priority-m {
+    background: rgba(201,169,110,0.15);
+    color: #8B6914;
+  }
+
+  .priority-f {
+    background: rgba(107,107,107,0.1);
+    color: var(--texte-doux);
+  }
+
+  .blog-intention {
+    font-size: 12px;
+    color: var(--texte-doux);
+    font-style: italic;
+    margin-top: 6px;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: var(--sauge-fonce);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 40px 60px;
+    font-size: 13px;
+  }
+
+  .footer strong {
+    color: rgba(201,169,110,0.9);
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  /* ===== OBJECTIFS ===== */
+  .objectif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(138,158,133,0.1);
+  }
+
+  .objectif-item:last-child {
+    border-bottom: none;
+  }
+
+  .objectif-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(138,158,133,0.25);
+    min-width: 36px;
+    line-height: 1;
+  }
+
+  .objectif-content strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--sauge-fonce);
+    margin-bottom: 4px;
+  }
+
+  .objectif-content p {
+    font-size: 13px;
+    color: var(--texte-doux);
+  }
+
+  /* ===== CLUSTER ===== */
+  .cluster-header {
+    background: var(--sauge-fonce);
+    color: white;
+    padding: 16px 24px;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+
+  .cluster-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .cluster-body {
+    background: var(--blanc);
+    padding: 24px;
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--ombre);
+  }
+
+  .cluster-body ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .cluster-body ul li {
+    font-size: 13px;
+    color: var(--texte-doux);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(138,158,133,0.08);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cluster-body ul li::before {
+    content: '◆';
+    font-size: 8px;
+    color: var(--champagne);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 38px; }
+    .cover-meta { gap: 20px; }
+    .cover-divider { display: none; }
+
+    section { padding: 50px 24px; }
+
+    .section-title { font-size: 26px; }
+
+    .grid-2, .grid-3, .grid-4 {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tunnel-step {
+      border-right: none;
+      border-bottom: 1px solid rgba(138,158,133,0.12);
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table { min-width: 600px; }
+
+    .footer { padding: 32px 24px; }
+
+    .highlight-box { padding: 28px 20px; }
+    .highlight-box p { font-size: 18px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique — Document Confidentiel</div>
+  <div class="cover-title">Mademoiselle <span>Marie</span></div>
+  <div class="cover-subtitle">Conciergerie de courte durée — L'art de rendre chaque moment précieux</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Client</span>
+      <span class="cover-meta-value">Marie Afane</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie & Hospitalité</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Territoire</span>
+      <span class="cover-meta-value">Fontainebleau & Gâtinais</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Domaine</span>
+      <span class="cover-meta-value">mademoisellemarie-conciergerie.fr</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 01 — POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Positionnement & Identité de Marque</h2>
+  <p class="section-intro">Le socle éditorial qui guidera chaque mot, chaque image et chaque interaction sur le site.</p>
+
+  <div class="highlight-box">
+    <span class="label">Promesse de valeur principale</span>
+    <p>« Une conciergerie à taille humaine qui transforme chaque logement en expérience mémorable — pour les propriétaires qui veulent déléguer sereinement, et les voyageurs qui méritent de se sentir attendus. »</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <div class="card-title">Ligne directrice de communication</div>
+      <p>Hospitalité raffinée à la française, service personnalisé avec âme, et attention portée aux détails qui font la différence — sans jamais tomber dans l'ostentation.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Ton éditorial</div>
+      <p><strong style="color: var(--sauge-fonce);">Élégant · Chaleureux · Sincère</strong></p>
+      <p style="margin-top: 10px;">Un ton qui parle comme une hôte de maison de charme : doux, précis, humain. On ressent la passion derrière chaque phrase, sans excès de jargon commercial.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family: 'Playfair Display', serif; font-size: 20px; color: var(--sauge-fonce); margin-bottom: 24px;">Piliers de différenciation</h3>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">🌿 L'hospitalité comme art de vivre</div>
+      <p>Mademoiselle Marie n'est pas une prestataire parmi d'autres : c'est une passionnée de l'accueil, des fleurs et de l'art de la table qui apporte une dimension émotionnelle unique à chaque séjour.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">✉️ Les attentions personnalisées</div>
+      <p>Cartes manuscrites, compositions florales, packs romantiques, paniers gourmands… Des détails rares dans une offre de conciergerie standard, qui créent une expérience inoubliable.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🤝 Relation de confiance avec les propriétaires</div>
+      <p>Un lien direct, transparent et humain avec chaque propriétaire. Pas d'intermédiaire opaque : Marie s'implique personnellement et signale chaque anomalie.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">📍 Ancrage local profond</div>
+      <p>Implantée entre Fontainebleau, Milly-la-Forêt, Barbizon et le Gâtinais, Mademoiselle Marie connaît son territoire, ses prestataires et ses bonnes adresses mieux que quiconque.</p>
+    </div>
+    <div class="card" style="grid-column: 1 / -1;">
+      <div class="card-title">🌸 Une identité visuelle et éditoriale distinctive</div>
+      <p>Ivoire, vert sauge, champagne et muguet : un univers immédiatement reconnaissable qui évoque la douceur, l'élégance et la nature — cohérent du site jusqu'au moindre accessoire d'accueil.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 02 — CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client Cible</span>
+  <h2 class="section-title">Portrait du Client Idéal</h2>
+  <p class="section-intro">Deux profils distincts à adresser sur le site, avec des messages adaptés à chacun.</p>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <div class="card-title">Profil A — Le Propriétaire</div>
+      <ul>
+        <li>35–60 ans, propriétaire d'un bien secondaire ou d'un logement locatif</li>
+        <li>Actif, peu disponible, souhaite déléguer l'intendance sans perdre le contrôle</li>
+        <li>Sensible à la qualité de l'accueil voyageur et à la valorisation de son bien</li>
+        <li>Région parisienne ou propriété en Gâtinais / Fontainebleau</li>
+        <li>Recherche un interlocuteur de confiance, réactif et discret</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Profil B — Le Voyageur</div>
+      <ul>
+        <li>Couple, famille ou groupe en séjour dans la région (week-end, occasion spéciale)</li>
+        <li>Sensible à l'expérience, au confort et aux petites attentions</li>
+        <li>Prêt à payer un supplément pour un accueil personnalisé et soigné</li>
+        <li>Réserve via Airbnb / Booking, puis découvre les options Mademoiselle Marie</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">Motivations principales</div>
+      <ul>
+        <li>Déléguer sans stress toute la logistique du séjour</li>
+        <li>Offrir une expérience mémorable à leurs voyageurs</li>
+        <li>Préserver leur bien grâce à un suivi attentif</li>
+        <li>Travailler avec quelqu'un de fiable, discret et passionné</li>
+        <li>Se distinguer sur les plateformes de réservation</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Freins & Objections</div>
+      <ul>
+        <li>« Est-ce vraiment sérieux et professionnel ? »</li>
+        <li>« Vais-je perdre le contrôle sur mon logement ? »</li>
+        <li>« Est-ce que ça vaut le coût ? »</li>
+        <li>« Qui sera réellement présent en cas de problème ? »</li>
+        <li>« Comment puis-je être sûr de la qualité du ménage ? »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Critères de décision</div>
+      <ul>
+        <li>L'image et la confiance dégagées par le site</li>
+        <li>La clarté des formules et de la tarification</li>
+        <li>Les avis et témoignages de propriétaires satisfaits</li>
+        <li>La personnalité humaine et accessible de Marie</li>
+        <li>La facilité à prendre contact rapidement</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03 — OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du Site</span>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+  <p class="section-intro">Liste priorisée des objectifs stratégiques, du plus critique au complémentaire.</p>
+
+  <div class="card">
+    <div class="objectif-item">
+      <div class="objectif-rank">1</div>
+      <div class="objectif-content">
+        <strong>Génération de leads qualifiés (propriétaires)</strong>
+        <p>Transformer les visites en demandes de contact concrètes via des CTA clairs et un formulaire qualifiant.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">2</div>
+      <div class="objectif-content">
+        <strong>Réassurance & confiance</strong>
+        <p>Faire sentir immédiatement le sérieux, la passion et le savoir-faire de Marie à travers le design, les textes et les preuves sociales.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">3</div>
+      <div class="objectif-content">
+        <strong>Conversion — Prise de contact / RDV</strong>
+        <p>Proposer un parcours fluide vers le formulaire de contact ou la prise de rendez-vous, sur toutes les pages clés.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">4</div>
+      <div class="objectif-content">
+        <strong>SEO local (Fontainebleau & Gâtinais)</strong>
+        <p>Être trouvé sur Google par des propriétaires cherchant une conciergerie dans la région de Fontainebleau, Milly-la-Forêt ou Barbizon.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">5</div>
+      <div class="objectif-content">
+        <strong>Notoriété & storytelling de marque</strong>
+        <p>Raconter l'histoire de Mademoiselle Marie, ancrer l'identité de marque et créer un attachement émotionnel durable.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">6</div>
+      <div class="objectif-content">
+        <strong>Information & nurturing voyageurs</strong>
+        <p>Présenter les options de bienvenue et d'expériences personnalisées aux voyageurs qui séjourneront dans les logements partenaires.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04 — ARBORESCENCE -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence du Site</span>
+  <h2 class="section-title">Structure des Pages</h2>
+  <p class="section-intro">Architecture pensée pour guider le visiteur et maximiser la performance SEO et la conversion.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td>Conciergerie location courte durée Fontainebleau</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — L'univers Mademoiselle Marie</strong></td>
+          <td><span class="badge-framework">BAB</span></td>
+          <td>Conciergerie personnalisée Fontainebleau</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Prestations</strong> (3 formules détaillées en interne)</td>
+          <td><span class="badge-framework">PAS</span></td>
+          <td>Prestations conciergerie location saisonnière</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Pour les Propriétaires</strong></td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td>Conciergerie pour propriétaires Airbnb Gâtinais</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Pour les Voyageurs</strong></td>
+          <td><span class="badge-framework">BAB</span></td>
+          <td>Accueil personnalisé voyageurs Fontainebleau</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Fontainebleau & Barbizon</strong></td>
+          <td><span class="badge-framework">PAS</span></td>
+          <td>Conciergerie Airbnb Fontainebleau Barbizon</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Milly-la-Forêt & Gâtinais</strong></td>
+          <td><span class="badge-framework">PAS</span></td>
+          <td>Conciergerie location courte durée Milly-la-Forêt</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact</strong></td>
+          <td><span class="badge-framework">AIDA</span></td>
+          <td>Contacter conciergerie Fontainebleau</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td><span class="badge-framework">—</span></td>
+          <td>Conseils location courte durée Essonne</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Mentions légales / CGV</strong></td>
+          <td><span class="badge-framework">—</span></td>
+          <td>—</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECTION 05 — COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon Sémantique</span>
+  <h2 class="section-title">Architecture Sémantique & Maillage</h2>
+  <p class="section-intro">Trois clusters thématiques pour dominer les requêtes prioritaires dans le Gâtinais et sur Fontainebleau.</p>
+
+  <div class="grid-3" style="margin-bottom: 40px;">
+    <div>
+      <div class="cluster-header">
+        <h3>Cluster 1 — Conciergerie & Propriétaires</h3>
+      </div>
+      <div class="cluster-body">
+        <ul>
+          <li>Page Propriétaires (pilier)</li>
+          <li>Page Prestations</li>
+          <li>Page locale Fontainebleau</li>
+          <li>Page locale Milly-la-Forêt</li>
+          <li>Articles : déléguer sa location, checklist propriétaire</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="cluster-header">
+        <h3>Cluster 2 — Hospitalité & Expérience Voyageur</h3>
+      </div>
+      <div class="cluster-body">
+        <ul>
+          <li>Page Voyageurs (pilier)</li>
+          <li>Page Prestations (attentions & expériences)</li>
+          <li>Page Accueil (section expériences)</li>
+          <li>Articles : idées séjour romantique, week-end Gâtinais</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="cluster-header">
+        <h3>Cluster 3 — Territoire & Art de vivre local</h3>
+      </div>
+      <div class="cluster-body">
+        <ul>
+          <li>Pages locales Fontainebleau & Milly (piliers)</li>
+          <li>Page À propos</li>
+          <li>Articles : bonnes adresses, activités locales, forêt de Fontainebleau</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family: 'Playfair Display', serif; font-size: 20px; color: var(--sauge-fonce); margin-bottom: 24px;">Logique de maillage interne</h3>
+  <div class="card">
+    <div class="maillage-row">
+      <span class="page-pill">Accueil</span>
+      <span class="arrow">→</span>
+      <span class="page-pill">Prestations</span>
+      <span class="arrow">→</span>
+      <span class="page-pill">Propriétaires</span>
+      <span class="arrow">→</span>
+      <span class="page-pill">Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="page-pill">Pages locales</span>
+      <span class="arrow">→</span>
+      <span class="page-pill">Propriétaires</span>
+      <span class="arrow">+</span>
+      <span class="page-pill">Prestations</span>
+      <span class="arrow">→</span>
+      <span class="page-pill">Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="page-pill">Articles Blog</span>
+      <span class="arrow">→</span>
+      <span class="page-pill">Pages locales</span>
+      <span class="arrow">+</span>
+      <span class="page-pill">Prestations</span>
+      <span class="arrow">→</span>
+      <span class="page-pill">Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="page-pill">À propos</span>
+      <span class="arrow">→</span>
+      <span class="page-pill">Prestations</span>
+      <span class="arrow">+</span>
+      <span class="page-pill">Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="page-pill">Voyageurs</span>
+      <span class="arrow">→</span>
+      <span class="page-pill">Pages locales</span>
+      <span class="arrow">+</span>
+      <span class="page-pill">Contact</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 06 — TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de Conversion</span>
+  <h2 class="section-title">Du Premier Contact à la Demande</h2>
+  <p class="section-intro">Quatre étapes clés pour transformer un visiteur inconnu en propriétaire convaincu.</p>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <span class="tunnel-num">01</span>
+      <div class="tunnel-step-title">Découverte</div>
+      <span class="meta-label">Source de trafic</span>
+      <p>Google (SEO local), bouche-à-oreille, Instagram, recommandations Airbnb</p>
+      <span class="meta-label">Page concernée</span>
+      <p>Accueil / Pages locales / Articles Blog</p>
+      <span class="meta-label">CTA</span>
+      <div class="tunnel-cta">Découvrir notre histoire →</div>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-num">02</span>
+      <div class="tunnel-step-title">Intérêt</div>
+      <span class="meta-label">Source de trafic</span>
+      <p>Navigation interne depuis l'accueil ou les pages locales</p>
+      <span class="meta-label">Page concernée</span>
+      <p>À propos / Nos Prestations</p>
+      <span class="meta-label">CTA</span>
+      <div class="tunnel-cta">Voir nos formules →</div>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-num">03</span>
+      <div class="tunnel-step-title">Confiance</div>
+      <span class="meta-label">Source de trafic</span>
+      <p>Navigation vers la page dédiée propriétaires</p>
+      <span class="meta-label">Page concernée</span>
+      <p>Pour les Propriétaires (témoignages, FAQ, valeurs)</p>
+      <span class="meta-label">CTA</span>
+      <div class="tunnel-cta">Parlons de votre projet →</div>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-num">04</span>
+      <div class="tunnel-step-title">Conversion</div>
+      <span class="meta-label">Source de trafic</span>
+      <p>Depuis toutes les pages via CTA secondaires</p>
+      <span class="meta-label">Page concernée</span>
+      <p>Contact (formulaire qualifiant)</p>
+      <span class="meta-label">CTA</span>
+      <div class="tunnel-cta">Envoyer ma demande →</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 07 — LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers Marketing Recommandés</span>
+  <h2 class="section-title">Outils & Mécaniques de Croissance</h2>
+  <p class="section-intro">Les leviers concrets à activer pour transformer le site en moteur d'acquisition régulier.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">🎁 Lead Magnet</div>
+      <p><strong style="color: var(--sauge-fonce);">« Le guide des 7 attentions qui font la différence pour vos voyageurs »</strong></p>
+      <p style="margin-top: 10px;">Un PDF élégant à télécharger gratuitement, qui donne des idées concrètes aux propriétaires et positionne immédiatement Mademoiselle Marie comme experte de l'hospitalité soignée.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">📅 Prise de RDV</div>
+      <p><strong style="color: var(--sauge-fonce);">Outil recommandé : Calendly (plan gratuit ou Pro)</strong></p>
+      <p style="margin-top: 10px;">Intégré directement dans la page Propriétaires et dans le footer. Permet de proposer un « échange découverte de 20 min » sans friction, sans aller-retour email.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">⭐ Preuve Sociale</div>
+      <p>Témoignages texte de propriétaires (avec prénom et ville), avis Google My Business, photos avant/après d'un logement préparé. À terme : vidéo témoignage d'un propriétaire satisfait.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">📋 Formulaire Qualifiant</div>
+      <p>Champs recommandés : <strong style="color: var(--sauge-fonce);">Nom & Prénom — Email — Téléphone — Objet (propriétaire / voyageur / autre) — Ville du logement — Nombre de logements — Message libre.</strong></p>
+    </div>
+    <div class="card" style="grid-column: 1 / -1;">
+      <div class="card-title">💌 Newsletter — Angle Éditorial</div>
+      <p>Une lettre mensuelle dans l'esprit d'une carte postale : <em>« La lettre de Mademoiselle Marie »</em>. Partage des coulisses (une jolie table dressée, un bouquet du moment, une adresse locale), des conseils pour propriétaires et des idées d'escapades dans le Gâtinais. Ton intime et chaleureux, jamais promotionnel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 08 — DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction Visuelle & Éditoriale</span>
+  <h2 class="section-title">Identité Graphique du Site</h2>
+  <p class="section-intro">Un univers cohérent du premier pixel au dernier détail, fidèle à l'âme de Mademoiselle Marie.</p>
+
+  <h3 style="font-family: 'Playfair Display', serif; font-size: 20px; color: var(--sauge-fonce); margin-bottom: 32px; text-align: center;">Palette de couleurs</h3>
+
+  <div class="colors-grid" style="margin-bottom: 60px;">
+    <div class="color-item">
+      <div class="color-swatch" style="background: #F5F0E8;"></div>
+      <span class="color-name">Ivoire</span>
+      <span class="color-hex">#F5F0E8</span>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background: #8A9E85;"></div>
+      <span class="color-name">Vert Sauge</span>
+      <span class="color-hex">#8A9E85</span>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background: #4A6741;"></div>
+      <span class="color-name">Vert Profond</span>
+      <span class="color-hex">#4A6741</span>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background: #C9A96E; border: 1px solid rgba(0,0,0,0.05);"></div>
+      <span class="color-name">Champagne</span>
+      <span class="color-hex">#C9A96E</span>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background: #FFFFFF; border: 1px solid rgba(0,0,0,0.08);"></div>
+      <span class="color-name">Blanc Pur</span>
+      <span class="color-hex">#FFFFFF</span>
+    </div>
+  </div>
+
+  <h3 style="font-family: 'Playfair Display', serif; font-size: 20px; color: var(--sauge-fonce); margin-bottom: 24px;">Éléments visuels recommandés</h3>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">📸 Photographies</div>
+      <p>Compositions florales (muguet, fleurs blanches), intérieurs lumineux et soignés, détails de table dressée, mains qui posent une carte de bienvenue. Lumière naturelle, tons chauds et doux.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🎬 Vidéo d'ambiance</div>
+      <p>Vidéo cinématique 30s en plein écran sur la page d'accueil : Marie en train de préparer un logement, disposer des fleurs, déposer une carte. Mouvement lent, musique douce instrumentale.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">✍️ Typographie</div>
+      <p><strong>Titres :</strong> Playfair Display (serif élégant, avec italiques pour les slogans). <strong>Corps :</strong> Inter ou Lato, léger, aéré. Grande taille de corps (16–17px) pour faciliter la lecture.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🌿 Éléments graphiques</div>
+      <p>Filets fins champagne comme séparateurs, feuilles de muguet en filigrane très discrets, espacements généreux, beaucoup de blanc. Aucune illustration clipart ou icône générique.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">✨ Animations</div>
+      <p>Très discrètes : fondu à l'entrée des sections (fade-in), parallaxe léger sur les images héros. Jamais d'effets qui distraient du contenu ou ralentissent la navigation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 09 — ARTICLES BLOG -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Stratégie Blog & Contenus SEO</span>
+  <h2 class="section-title">Articles Recommandés</h2>
+  <p class="section-intro">Des sujets pensés pour attirer les propriétaires et voyageurs via Google, et renforcer l'expertise de Mademoiselle Marie.</p>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <div class="blog-card-title">Pourquoi confier votre location courte durée à une conciergerie locale à Fontainebleau ?</div>
+      <p class="blog-intention">Intention : informationnelle / décision — propriétaire hésitant</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 1 — Propriétaires</span>
+        <span class="priority-label priority-p">Prioritaire</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Les 7 attentions qui font d'un séjour ordinaire un moment inoubliable</div>
+      <p class="blog-intention">Intention : inspirationnelle — propriétaires & voyageurs sensibles à l'expérience</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 2 — Hospitalité</span>
+        <span class="priority-label priority-p">Prioritaire</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Week-end romantique à Fontainebleau : nos idées et bonnes adresses</div>
+      <p class="blog-intention">Intention : informationnelle / locale — voyageurs cherchant une escapade</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 3 — Territoire</span>
+        <span class="priority-label priority-p">Prioritaire</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Préparer son logement Airbnb pour la saison : la checklist complète du propriétaire</div>
+      <p class="blog-intention">Intention : pratique — propriétaire Airbnb en phase de préparation</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 1 — Propriétaires</span>
+        <span class="priority-label priority-m">Moyen</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Art de la table et hospitalité : comment créer un accueil qui se souvient</div>
+      <p class="blog-intention">Intention : inspirationnelle — valorisation de l'expertise unique de Mademoiselle Marie</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 2 — Hospitalité</span>
+        <span class="priority-label priority-m">Moyen</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Que faire à Milly-la-Forêt et dans le Gâtinais ? Le guide des escapades nature</div>
+      <p class="blog-intention">Intention : informationnelle / locale — voyageurs et propriétaires cherchant à valoriser la région</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 3 — Territoire</span>
+        <span class="priority-label priority-m">Moyen</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-title">Fleurs, bougies et mots doux : l'art de la mise en scène romantique dans une location</div>
+      <p class="blog-intention">Intention : inspirationnelle — voyageurs ou propriétaires cherchant à proposer des expériences spéciales</p>
+      <div class="blog-meta">
+        <span class="blog-tag">Cluster 2 — Hospitalité</span>
+        <span class="priority-label priority-f">Faible</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <strong>Mademoiselle Marie Conciergerie</strong>
+  <p>Blueprint Stratégique — Document confidentiel préparé par AR Digital</p>
+  <p style="margin-top: 8px; font-size: 12px; color: rgba(255,255,255,0.4);">Ce document est destiné exclusivement à Marie Afane — Toute reproduction est interdite</p>
+</footer>
+
+<style>
+  .bp-validation-box {
+    position: relative;
+    margin: 40px 0 18px;
+    padding: 26px 28px;
+    background: #ffffff;
+    border: 2px solid #E63329;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.25s ease;
+  }
+
+  .bp-validation-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: #E63329;
+    transition: background 0.25s ease;
+  }
+
+  .bp-validation-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 5px 10px;
+    background: #E63329;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .bp-validation-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 7px;
+  }
+
+  .bp-validation-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555555;
+    margin-bottom: 20px;
+  }
+
+  .bp-validation-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .bp-validation-btn {
+    padding: 13px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .bp-validation-approve {
+    background: #1a1a1a;
+    color: #ffffff;
+    border: 2px solid #1a1a1a;
+  }
+
+  .bp-validation-approve:hover {
+    background: #333333;
+    border-color: #333333;
+    transform: translateY(-1px);
+  }
+
+  .bp-validation-comment {
+    background: #ffffff;
+    color: #1a1a1a;
+    border: 2px solid #d8d8d8;
+  }
+
+  .bp-validation-comment:hover {
+    border-color: #E63329;
+    color: #E63329;
+    background: #fff8f7;
+    transform: translateY(-1px);
+  }
+
+  .bp-comment-area {
+    display: none;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .bp-comment-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .bp-comment-help {
+    margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #666666;
+  }
+
+  .bp-comment-textarea {
+    width: 100%;
+    min-height: 120px;
+    box-sizing: border-box;
+    padding: 14px;
+    border: 2px solid #d8d8d8;
+    border-radius: 8px;
+    resize: vertical;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    outline: none;
+  }
+
+  .bp-comment-textarea:focus {
+    border-color: #E63329;
+  }
+
+  .bp-comment-error {
+    display: none;
+    margin-top: 7px;
+    color: #E63329;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .bp-save-comment {
+    margin-top: 12px;
+    background: #1a1a1a;
+    color: #ffffff;
+    border: 2px solid #1a1a1a;
+  }
+
+  .bp-save-comment:hover {
+    background: #333333;
+    border-color: #333333;
+  }
+
+  .bp-validation-result {
+    display: none;
+  }
+
+  .bp-result-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .bp-result-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    border-radius: 50%;
+    background: #198754;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .bp-result-title {
+    color: #146c43;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .bp-result-comment {
+    display: none;
+    margin: 14px 0;
+    padding: 14px 16px;
+    background: #ffffff;
+    border: 1px solid #b7dfc9;
+    border-radius: 8px;
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+  }
+
+  .bp-edit-choice {
+    margin-top: 8px;
+    padding: 9px 13px;
+    background: transparent;
+    color: #555555;
+    border: 1px solid #b7c9be;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .bp-edit-choice:hover {
+    background: #ffffff;
+    color: #1a1a1a;
+  }
+
+  .bp-validation-box.bp-completed {
+    background: #f2fbf6;
+    border-color: #198754;
+    box-shadow: 0 6px 20px rgba(25, 135, 84, 0.10);
+  }
+
+  .bp-validation-box.bp-completed::before {
+    background: #198754;
+  }
+
+  .bp-validation-box.bp-completed .bp-validation-label {
+    background: #198754;
+  }
+
+  /* VALIDATION FINALE */
+
+  .bp-final-validation {
+    margin: 60px 0 30px;
+    padding: 32px;
+    background: #f7f7f7;
+    border: 2px solid #d8d8d8;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
+  }
+
+  .bp-final-validation.bp-final-ready {
+    background: #f2fbf6;
+    border-color: #198754;
+  }
+
+  .bp-final-label {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 6px 11px;
+    background: #1a1a1a;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .bp-final-ready .bp-final-label {
+    background: #198754;
+  }
+
+  .bp-final-title {
+    margin: 0 0 8px;
+    color: #1a1a1a;
+    font-size: 26px;
+    line-height: 1.25;
+    font-weight: 800;
+  }
+
+  .bp-final-intro {
+    margin: 0 0 24px;
+    color: #555555;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .bp-final-progress {
+    margin-bottom: 25px;
+  }
+
+  .bp-final-progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 9px;
+  }
+
+  .bp-final-progress-text {
+    color: #1a1a1a;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .bp-final-progress-count {
+    color: #E63329;
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .bp-final-ready .bp-final-progress-count {
+    color: #198754;
+  }
+
+  .bp-final-progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #e1e1e1;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .bp-final-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #E63329;
+    border-radius: 20px;
+    transition: width 0.3s ease, background 0.3s ease;
+  }
+
+  .bp-final-ready .bp-final-progress-fill {
+    background: #198754;
+  }
+
+  .bp-final-list {
+    margin: 0 0 26px;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  .bp-final-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .bp-final-item:last-child {
+    border-bottom: 0;
+  }
+
+  .bp-final-item-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .bp-final-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    border-radius: 50%;
+    background: #eeeeee;
+    color: #777777;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .bp-final-item.bp-item-completed .bp-final-icon {
+    background: #198754;
+    color: #ffffff;
+  }
+
+  .bp-final-section-name {
+    color: #333333;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .bp-final-status {
+    flex: 0 0 auto;
+    color: #888888;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .bp-final-item.bp-item-completed .bp-final-status {
+    color: #198754;
+  }
+
+  .bp-final-warning {
+    margin-bottom: 22px;
+    padding: 14px 16px;
+    background: #fff3f2;
+    border: 1px solid #f3c1bd;
+    border-radius: 8px;
+    color: #9c2e27;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  .bp-final-success-message {
+    display: none;
+    margin-bottom: 22px;
+    padding: 14px 16px;
+    background: #eaf7ef;
+    border: 1px solid #b7dfc9;
+    border-radius: 8px;
+    color: #146c43;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 700;
+  }
+
+  .bp-final-confirmation {
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    opacity: 0.5;
+    pointer-events: none;
+    transition: all 0.25s ease;
+  }
+
+  .bp-final-confirmation.bp-confirmation-enabled {
+    opacity: 1;
+    pointer-events: auto;
+    border-color: #b7dfc9;
+  }
+
+  .bp-final-checkbox-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+  }
+
+  .bp-final-checkbox {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    margin-top: 2px;
+    accent-color: #198754;
+    cursor: pointer;
+  }
+
+  .bp-final-checkbox-text {
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .bp-final-reference-note {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #eeeeee;
+    color: #666666;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .bp-final-submit {
+    width: 100%;
+    margin-top: 18px;
+    padding: 16px 20px;
+    background: #cccccc;
+    color: #777777;
+    border: 0;
+    border-radius: 9px;
+    cursor: not-allowed;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    transition: all 0.2s ease;
+  }
+
+  .bp-final-submit.bp-submit-enabled {
+    background: #198754;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .bp-final-submit.bp-submit-enabled:hover {
+    background: #146c43;
+    transform: translateY(-1px);
+  }
+
+  .bp-transmission-error {
+    display: none;
+    margin-top: 15px;
+    padding: 14px 16px;
+    background: #fff3f2;
+    border: 1px solid #f3c1bd;
+    border-radius: 8px;
+    color: #9c2e27;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  .bp-transmission-success {
+    display: none;
+    padding: 26px;
+    background: #eaf7ef;
+    border: 2px solid #198754;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .bp-transmission-success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 14px;
+    background: #198754;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 25px;
+    font-weight: 800;
+  }
+
+  .bp-transmission-success-title {
+    margin-bottom: 8px;
+    color: #146c43;
+    font-size: 21px;
+    font-weight: 800;
+  }
+
+  .bp-transmission-success-text {
+    color: #365c47;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 600px) {
+    .bp-validation-box {
+      padding: 22px 20px;
+    }
+
+    .bp-validation-actions {
+      flex-direction: column;
+    }
+
+    .bp-validation-btn {
+      width: 100%;
+    }
+
+    .bp-final-validation {
+      padding: 24px 18px;
+    }
+
+    .bp-final-title {
+      font-size: 22px;
+    }
+
+    .bp-final-item {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .bp-final-status {
+      padding-left: 34px;
+      text-align: left;
+    }
+  }
+</style>
+
+<div id="bp-validation-template" style="display:none;">
+  <div class="bp-validation-box">
+
+    <div class="bp-validation-pending">
+
+      <div class="bp-validation-label">
+        Action requise
+      </div>
+
+      <div class="bp-validation-title">
+        Validez cette section
+      </div>
+
+      <div class="bp-validation-text">
+        Vérifiez attentivement les informations ci-dessus avant de poursuivre.
+        Validez cette section si elle vous convient, ou indiquez les modifications
+        que vous souhaitez apporter.
+      </div>
+
+      <div class="bp-validation-actions">
+
+        <button
+          type="button"
+          class="bp-validation-btn bp-validation-approve"
+        >
+          ✓ Je valide cette section
+        </button>
+
+        <button
+          type="button"
+          class="bp-validation-btn bp-validation-comment"
+        >
+          ✏️ J'ai une modification ou un commentaire
+        </button>
+
+      </div>
+
+      <div class="bp-comment-area">
+
+        <label class="bp-comment-label">
+          Votre demande de modification
+        </label>
+
+        <div class="bp-comment-help">
+          Décrivez précisément ce que vous souhaitez modifier, ajouter ou supprimer
+          dans cette section.
+        </div>
+
+        <textarea
+          class="bp-comment-textarea"
+          placeholder="Écrivez votre commentaire ou votre demande de modification ici..."
+        ></textarea>
+
+        <div class="bp-comment-error">
+          Merci d'indiquer votre demande avant de l'enregistrer.
+        </div>
+
+        <button
+          type="button"
+          class="bp-validation-btn bp-save-comment"
+        >
+          ✓ Enregistrer ma modification
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="bp-validation-result">
+
+      <div class="bp-validation-label">
+        Section complétée
+      </div>
+
+      <div class="bp-result-header">
+
+        <div class="bp-result-check">
+          ✓
+        </div>
+
+        <div class="bp-result-title">
+          Section validée
+        </div>
+
+      </div>
+
+      <div class="bp-result-comment"></div>
+
+      <button
+        type="button"
+        class="bp-edit-choice"
+      >
+        Modifier mon choix
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+<div id="bp-final-validation-template" style="display:none;">
+
+  <div class="bp-final-validation">
+
+    <div class="bp-final-content">
+
+      <div class="bp-final-label">
+        Validation finale
+      </div>
+
+      <h2 class="bp-final-title">
+        Validez définitivement votre retour
+      </h2>
+
+      <p class="bp-final-intro">
+        Avant de transmettre votre Blueprint à notre équipe, vous devez avoir
+        validé ou commenté chacune des 9 sections ci-dessus.
+      </p>
+
+      <div class="bp-final-progress">
+
+        <div class="bp-final-progress-top">
+
+          <div class="bp-final-progress-text">
+            Progression de votre validation
+          </div>
+
+          <div class="bp-final-progress-count">
+            0 / 9
+          </div>
+
+        </div>
+
+        <div class="bp-final-progress-bar">
+          <div class="bp-final-progress-fill"></div>
+        </div>
+
+      </div>
+
+
+      <ul class="bp-final-list">
+
+        <li class="bp-final-item" data-summary-section="bp-section-01">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Positionnement</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-02">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Client cible</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-03">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Objectifs du site</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-04">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Arborescence</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-05">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Cocon sémantique</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-06">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Tunnel de conversion</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-07">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Leviers de croissance</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-08">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Direction visuelle</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+        <li class="bp-final-item" data-summary-section="bp-section-09">
+          <div class="bp-final-item-left">
+            <span class="bp-final-icon">○</span>
+            <span class="bp-final-section-name">Articles de blog</span>
+          </div>
+          <span class="bp-final-status">À valider</span>
+        </li>
+
+      </ul>
+
+
+      <div class="bp-final-warning">
+        Il reste 9 sections à valider avant de pouvoir transmettre votre retour.
+      </div>
+
+      <div class="bp-final-success-message">
+        ✓ Toutes les sections ont été complétées. Vous pouvez maintenant confirmer
+        et transmettre votre retour.
+      </div>
+
+
+      <div class="bp-final-confirmation">
+
+        <label class="bp-final-checkbox-row">
+
+          <input
+            type="checkbox"
+            class="bp-final-checkbox"
+            disabled
+          >
+
+          <span class="bp-final-checkbox-text">
+            Je confirme avoir relu l'intégralité du Blueprint ainsi que mes
+            éventuels commentaires et demandes de modification. Je confirme que
+            le Blueprint et les retours formulés ci-dessus constituent les
+            instructions de référence à prendre en compte pour la conception
+            de mon site.
+          </span>
+
+        </label>
+
+        <div class="bp-final-reference-note">
+          La conception de votre site sera réalisée sur la base du Blueprint
+          et des demandes de modification que vous validez ici. Toute demande
+          majeure formulée après cette validation et nécessitant de revenir sur
+          un travail déjà réalisé pourra entraîner une facturation complémentaire.
+        </div>
+
+        <button
+          type="button"
+          class="bp-final-submit"
+          disabled
+        >
+          VALIDER ET TRANSMETTRE MON RETOUR
+        </button>
+
+        <div class="bp-transmission-error">
+          Une erreur est survenue pendant la transmission de votre retour.
+          Merci de réessayer dans quelques instants.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="bp-transmission-success">
+
+      <div class="bp-transmission-success-icon">
+        ✓
+      </div>
+
+      <div class="bp-transmission-success-title">
+        Votre retour a bien été transmis !
+      </div>
+
+      <div class="bp-transmission-success-text">
+        Merci pour votre validation. Votre Blueprint ainsi que l'ensemble de
+        vos commentaires et demandes de modification ont bien été transmis à
+        notre équipe.
+        <br><br>
+        Nous allons maintenant préparer votre cahier des charges et reviendrons
+        rapidement vers vous pour la suite de votre projet.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const BLUEPRINT_ID = "6af482c7decc59832fed9541";
+
+  const CLIENT_EMAIL =
+    "marie.afane@outlook.fr";
+
+  const WEBHOOK_URL =
+    "https://hook.eu2.make.com/pm0msu9nua1val6ysvda71aqniu0h8fa";
+
+  const sections =
+    document.querySelectorAll('[id^="bp-section-"]');
+
+  const template =
+    document.querySelector("#bp-validation-template");
+
+  const finalTemplate =
+    document.querySelector("#bp-final-validation-template");
+
+  const blueprintResponses = {};
+
+  const sectionNames = {
+    "bp-section-01": "Positionnement",
+    "bp-section-02": "Client cible",
+    "bp-section-03": "Objectifs du site",
+    "bp-section-04": "Arborescence",
+    "bp-section-05": "Cocon sémantique",
+    "bp-section-06": "Tunnel de conversion",
+    "bp-section-07": "Leviers de croissance",
+    "bp-section-08": "Direction visuelle",
+    "bp-section-09": "Articles de blog"
+  };
+
+
+  if (!template || !finalTemplate) {
+    console.log("Template de validation introuvable");
+    return;
+  }
+
+
+  const finalValidation =
+    finalTemplate.firstElementChild.cloneNode(true);
+
+  document.body.appendChild(finalValidation);
+
+
+  const finalContent =
+    finalValidation.querySelector(".bp-final-content");
+
+  const transmissionSuccess =
+    finalValidation.querySelector(".bp-transmission-success");
+
+  const transmissionError =
+    finalValidation.querySelector(".bp-transmission-error");
+
+  const progressCount =
+    finalValidation.querySelector(".bp-final-progress-count");
+
+  const progressFill =
+    finalValidation.querySelector(".bp-final-progress-fill");
+
+  const finalWarning =
+    finalValidation.querySelector(".bp-final-warning");
+
+  const finalSuccessMessage =
+    finalValidation.querySelector(".bp-final-success-message");
+
+  const finalConfirmation =
+    finalValidation.querySelector(".bp-final-confirmation");
+
+  const finalCheckbox =
+    finalValidation.querySelector(".bp-final-checkbox");
+
+  const finalSubmit =
+    finalValidation.querySelector(".bp-final-submit");
+
+
+  function updateFinalValidation() {
+
+    let completedCount = 0;
+
+    Object.keys(sectionNames).forEach(function (sectionId) {
+
+      const summaryItem =
+        finalValidation.querySelector(
+          '[data-summary-section="' + sectionId + '"]'
+        );
+
+      if (!summaryItem) {
+        return;
+      }
+
+      const icon =
+        summaryItem.querySelector(".bp-final-icon");
+
+      const status =
+        summaryItem.querySelector(".bp-final-status");
+
+      const response =
+        blueprintResponses[sectionId];
+
+
+      if (response) {
+
+        completedCount++;
+
+        summaryItem.classList.add("bp-item-completed");
+
+        icon.textContent = "✓";
+
+        if (response.status === "comment") {
+          status.textContent = "Modification enregistrée";
+        } else {
+          status.textContent = "Validé";
+        }
+
+      } else {
+
+        summaryItem.classList.remove("bp-item-completed");
+
+        icon.textContent = "○";
+        status.textContent = "À valider";
+
+      }
+
+    });
+
+
+    progressCount.textContent =
+      completedCount + " / 9";
+
+    progressFill.style.width =
+      ((completedCount / 9) * 100) + "%";
+
+
+    if (completedCount === 9) {
+
+      finalValidation.classList.add("bp-final-ready");
+
+      finalWarning.style.display = "none";
+      finalSuccessMessage.style.display = "block";
+
+      finalConfirmation.classList.add(
+        "bp-confirmation-enabled"
+      );
+
+      finalCheckbox.disabled = false;
+
+    } else {
+
+      finalValidation.classList.remove("bp-final-ready");
+
+      finalSuccessMessage.style.display = "none";
+      finalWarning.style.display = "block";
+
+      const remaining = 9 - completedCount;
+
+      if (remaining === 1) {
+        finalWarning.textContent =
+          "Il reste 1 section à valider avant de pouvoir transmettre votre retour.";
+      } else {
+        finalWarning.textContent =
+          "Il reste " +
+          remaining +
+          " sections à valider avant de pouvoir transmettre votre retour.";
+      }
+
+      finalConfirmation.classList.remove(
+        "bp-confirmation-enabled"
+      );
+
+      finalCheckbox.checked = false;
+      finalCheckbox.disabled = true;
+
+      finalSubmit.disabled = true;
+      finalSubmit.classList.remove("bp-submit-enabled");
+
+    }
+
+  }
+
+
+  finalCheckbox.addEventListener("change", function () {
+
+    if (
+      Object.keys(blueprintResponses).length === 9 &&
+      finalCheckbox.checked
+    ) {
+
+      finalSubmit.disabled = false;
+      finalSubmit.classList.add("bp-submit-enabled");
+
+    } else {
+
+      finalSubmit.disabled = true;
+      finalSubmit.classList.remove("bp-submit-enabled");
+
+    }
+
+  });
+
+
+  finalSubmit.addEventListener("click", async function () {
+
+    if (
+      finalSubmit.disabled ||
+      Object.keys(blueprintResponses).length !== 9 ||
+      !finalCheckbox.checked
+    ) {
+      return;
+    }
+
+
+    transmissionError.style.display = "none";
+
+    finalSubmit.disabled = true;
+    finalSubmit.classList.remove("bp-submit-enabled");
+    finalSubmit.textContent = "TRANSMISSION EN COURS...";
+
+
+    /*
+      PAYLOAD PLAT POUR MAKE
+
+      Une validation = un seul bundle.
+      Plus besoin d'Iterator dans Make.
+    */
+
+    const payload = {
+
+      event_type: "final_validation",
+
+      blueprint_id: BLUEPRINT_ID,
+      email_client: CLIENT_EMAIL,
+
+      section_01_status:
+        blueprintResponses["bp-section-01"].status,
+
+      section_01_comment:
+        blueprintResponses["bp-section-01"].comment,
+
+      section_02_status:
+        blueprintResponses["bp-section-02"].status,
+
+      section_02_comment:
+        blueprintResponses["bp-section-02"].comment,
+
+      section_03_status:
+        blueprintResponses["bp-section-03"].status,
+
+      section_03_comment:
+        blueprintResponses["bp-section-03"].comment,
+
+      section_04_status:
+        blueprintResponses["bp-section-04"].status,
+
+      section_04_comment:
+        blueprintResponses["bp-section-04"].comment,
+
+      section_05_status:
+        blueprintResponses["bp-section-05"].status,
+
+      section_05_comment:
+        blueprintResponses["bp-section-05"].comment,
+
+      section_06_status:
+        blueprintResponses["bp-section-06"].status,
+
+      section_06_comment:
+        blueprintResponses["bp-section-06"].comment,
+
+      section_07_status:
+        blueprintResponses["bp-section-07"].status,
+
+      section_07_comment:
+        blueprintResponses["bp-section-07"].comment,
+
+      section_08_status:
+        blueprintResponses["bp-section-08"].status,
+
+      section_08_comment:
+        blueprintResponses["bp-section-08"].comment,
+
+      section_09_status:
+        blueprintResponses["bp-section-09"].status,
+
+      section_09_comment:
+        blueprintResponses["bp-section-09"].comment
+
+    };
+
+
+    console.log(
+      "Transmission du Blueprint :",
+      payload
+    );
+
+
+    try {
+
+      const response = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+
+      if (!response.ok) {
+        throw new Error(
+          "Erreur HTTP : " + response.status
+        );
+      }
+
+
+      finalContent.style.display = "none";
+      transmissionSuccess.style.display = "block";
+
+      finalValidation.classList.add("bp-final-ready");
+
+      window.scrollTo({
+        top:
+          finalValidation.getBoundingClientRect().top +
+          window.pageYOffset -
+          30,
+        behavior: "smooth"
+      });
+
+
+    } catch (error) {
+
+      console.error(
+        "Erreur transmission Blueprint :",
+        error
+      );
+
+      transmissionError.style.display = "block";
+
+      finalSubmit.disabled = false;
+      finalSubmit.classList.add("bp-submit-enabled");
+      finalSubmit.textContent =
+        "RÉESSAYER LA TRANSMISSION";
+
+    }
+
+  });
+
+
+  sections.forEach(function (section) {
+
+    const validationBox =
+      template.firstElementChild.cloneNode(true);
+
+    const sectionId =
+      section.id;
+
+    validationBox.setAttribute(
+      "data-section-id",
+      sectionId
+    );
+
+    section.appendChild(validationBox);
+
+
+    const pendingArea =
+      validationBox.querySelector(".bp-validation-pending");
+
+    const resultArea =
+      validationBox.querySelector(".bp-validation-result");
+
+    const approveButton =
+      validationBox.querySelector(".bp-validation-approve");
+
+    const commentButton =
+      validationBox.querySelector(".bp-validation-comment");
+
+    const commentArea =
+      validationBox.querySelector(".bp-comment-area");
+
+    const textarea =
+      validationBox.querySelector(".bp-comment-textarea");
+
+    const commentError =
+      validationBox.querySelector(".bp-comment-error");
+
+    const saveCommentButton =
+      validationBox.querySelector(".bp-save-comment");
+
+    const resultTitle =
+      validationBox.querySelector(".bp-result-title");
+
+    const resultComment =
+      validationBox.querySelector(".bp-result-comment");
+
+    const editButton =
+      validationBox.querySelector(".bp-edit-choice");
+
+
+    approveButton.addEventListener("click", function () {
+
+      blueprintResponses[sectionId] = {
+        section_id: sectionId,
+        section_name: sectionNames[sectionId] || sectionId,
+        status: "validated",
+        comment: ""
+      };
+
+      validationBox.classList.add("bp-completed");
+
+      pendingArea.style.display = "none";
+      resultArea.style.display = "block";
+
+      resultTitle.textContent = "Section validée";
+
+      resultComment.textContent = "";
+      resultComment.style.display = "none";
+
+      updateFinalValidation();
+
+    });
+
+
+    commentButton.addEventListener("click", function () {
+
+      commentArea.style.display = "block";
+      commentError.style.display = "none";
+      textarea.focus();
+
+    });
+
+
+    saveCommentButton.addEventListener("click", function () {
+
+      const comment = textarea.value.trim();
+
+      if (comment === "") {
+
+        commentError.style.display = "block";
+        textarea.focus();
+        return;
+
+      }
+
+      commentError.style.display = "none";
+
+      blueprintResponses[sectionId] = {
+        section_id: sectionId,
+        section_name: sectionNames[sectionId] || sectionId,
+        status: "comment",
+        comment: comment
+      };
+
+      validationBox.classList.add("bp-completed");
+
+      pendingArea.style.display = "none";
+      resultArea.style.display = "block";
+
+      resultTitle.textContent =
+        "Modification enregistrée";
+
+      resultComment.textContent = comment;
+      resultComment.style.display = "block";
+
+      updateFinalValidation();
+
+    });
+
+
+    editButton.addEventListener("click", function () {
+
+      const previousResponse =
+        blueprintResponses[sectionId];
+
+      validationBox.classList.remove("bp-completed");
+
+      resultArea.style.display = "none";
+      pendingArea.style.display = "block";
+
+      commentError.style.display = "none";
+
+
+      if (
+        previousResponse &&
+        previousResponse.status === "comment"
+      ) {
+
+        textarea.value =
+          previousResponse.comment || "";
+
+        commentArea.style.display = "block";
+
+      } else {
+
+        textarea.value = "";
+        commentArea.style.display = "none";
+
+      }
+
+
+      delete blueprintResponses[sectionId];
+
+      updateFinalValidation();
+
+    });
+
+  });
+
+
+  updateFinalValidation();
+
+});
+</script>
+
+</body>
+</html>
